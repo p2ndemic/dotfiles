@@ -1,0 +1,30 @@
+#===============================#
+# Octopi Default theme:
+#===============================#
+
+# Default colors
+[colors.primary]
+background = "#000000"
+foreground = "#FEFEFE"
+
+# Normal colors
+[colors.normal]
+black      = "#000000"
+red        = "#B11717"
+green      = "#17B117"
+yellow     = "#B16717"
+blue       = "#1717B1"
+magenta    = "#B117B1"
+cyan       = "#17B1B1"
+white      = "#B1B1B1"
+
+# Bright colors
+[colors.bright]
+black      = "#676767"
+red        = "#FF5454"
+green      = "#54FF54"
+yellow     = "#FEFF54"
+blue       = "#5454FE"
+magenta    = "#FF54FE"
+cyan       = "#54FEFE"
+white      = "#FEFEFE"

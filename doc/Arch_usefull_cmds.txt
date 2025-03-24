@@ -26,3 +26,8 @@ dns_addresses = {
 
 https://gitlab.com/hagezi/mirror/-/raw/main/dns-blocklists/adblock/pro.plus.txt
 https://www.redhat.com/en/blog/bound-dns
+
+Post Install:
+General QOL Fixes
+Run the audio script [https://github.com/WeirdTreeThing/chromebook-linux-audio] if you haven't already.
+Run the cros-keyboard-map script [https://github.com/WeirdTreeThing/cros-keyboard-map] to remap top row FX keys.

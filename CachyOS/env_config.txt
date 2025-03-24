@@ -1,0 +1,11 @@
+### Intel
+echo "set -Ux TERMINAL alacritty" >> ~/.config/fish/config.fish
+echo "set -Ux EDITOR nano" >> ~/.config/fish/config.fish
+echo "set -Ux DIFFPROG meld" >> ~/.config/fish/config.fish
+echo "set -Ux ANV_VIDEO_DECODE 1" >> ~/.config/fish/config.fish
+
+### AMD
+echo "set -Ux TERMINAL alacritty" >> ~/.config/fish/config.fish
+echo "set -Ux EDITOR nano" >> ~/.config/fish/config.fish
+echo "set -Ux DIFFPROG meld" >> ~/.config/fish/config.fish
+echo "set -Ux RADV_PERFTEST video_decode" >> ~/.config/fish/config.fish

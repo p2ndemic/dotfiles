@@ -1,0 +1,28 @@
+sudo pacman -Syu
+
+su
+
+pacman -Syu && pacman -Qdtq | pacman -Rns -
+
+pacman -Qdtq | pacman -Rs -
+
+sudo pacman -Rsn package
+
+https://wiki.archlinux.org/title/Pacman/Tips_and_tricks#Removing_unused_packages_(orphans)
+https://www.reddit.com/r/archlinux/comments/ki9hmm/how_to_properly_removeuninstall_packagesapps_with/
+
+
+dns_addresses = {
+    "Cloudflare DNS": ["1.1.1.1", "1.0.0.1"],
+    "Google Public DNS": ["8.8.8.8", "8.8.4.4"],
+    "OpenDNS": ["208.67.222.222", "208.67.220.220"],
+    "Yandex.DNS": ["77.88.8.8", "77.88.8.1"],
+    "Quad9 High Security / High Privacy": ["149.112.112.112", "9.9.9.9"],
+    "Quad9 High Security / Moderate Privacy": ["149.112.112.11", "9.9.9.11"],
+    "Quad9 Low Security / High Privacy": ["149.112.112.10", "9.9.9.10"],
+    "SafeDNS": ["195.46.39.39", "195.46.39.40"],
+    "Adguard DNS": ["94.140.14.14", "94.140.15.15"]
+}
+
+https://gitlab.com/hagezi/mirror/-/raw/main/dns-blocklists/adblock/pro.plus.txt
+https://www.redhat.com/en/blog/bound-dns

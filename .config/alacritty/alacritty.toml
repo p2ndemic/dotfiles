@@ -183,5 +183,5 @@ action = "ToggleFullscreen"
 live_config_reload = true
 working_directory = "None"
 import = [
-    "~/.config/alacritty/my_themes/octopi_default_theme.toml"
+    "~/.config/alacritty/themes/octopi_default_theme.toml"
 ]

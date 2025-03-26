@@ -1,7 +1,3 @@
-# mkdir -p ~/.local/share/kio/servicemenus/
-# touch ~/.local/share/kio/servicemenus/7z_extract.desktop
-# chmod -R +x ~/.local/share/kio/servicemenus/7z_extract.desktop
-
 [Desktop Entry]
 Type=Service
 Encoding=UTF-8
@@ -17,28 +13,28 @@ Icon=application-x-archive
 Name=Extract here
 Name[ru]=Извлечь здесь
 Icon=application-x-archive
-Exec=7z x %f -o./
+Exec=7z x -aoa %f -o./
 
 [Desktop Action extractToSubdir]
 Name=Extract to subfolder
 Name[ru]=Извлечь в подпапку
 Icon=application-x-archive
-Exec=7z x %f -o./%n
+Exec=7z x -aoa %f -o./%n
 
 [Desktop Action extractTo]
 Name=Extract to...
 Name[ru]=Извлечь в...
 Icon=application-x-archive
-Exec=7z x %f -o"$(kdialog --getexistingdirectory %d/ --title "Select directory to extract")"
+Exec=7z x -aoa %f -o"$(kdialog --getexistingdirectory %d/ --title "Select directory to extract")"
 
 [Desktop Action extractHerePass]
 Name=Extract here (Enter password)
 Name[ru]=Извлечь здесь (Введите пароль)
 Icon=application-x-archive
-Exec=alacritty -e 7z x %f -o./
+Exec=alacritty -e 7z x -aoa %f -o./
 
 [Desktop Action extractToSubdirPass]
 Name=Extract to subfolder (Enter password)
 Name[ru]=Извлечь в подпапку (Введите пароль)
 Icon=application-x-archive
-Exec=alacritty -e 7z x %f -o./%n
+Exec=alacritty -e 7z x -aoa %f -o./

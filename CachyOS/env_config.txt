@@ -26,7 +26,7 @@ echo "set -Ux ANV_VIDEO_DECODE 1" >> ~/.config/fish/config.fish
 # AMD
 echo "set -Ux RADV_PERFTEST video_decode" >> ~/.config/fish/config.fish
 
-###Bash
+### Bash
 echo "export TERM=alacritty" >> ~/.bashrc
 echo "export TERMINAL=/usr/bin/alacritty" >> ~/.bashrc
 echo "export COLORTERM=truecolor" >> ~/.bashrc

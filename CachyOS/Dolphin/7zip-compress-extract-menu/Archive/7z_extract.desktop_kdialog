@@ -30,7 +30,7 @@ Exec=/bin/sh -c 'archive="%f"; dir="${archive%.*}"; 7z x -aoa "%f" -o"$dir"'
 Name=Extract to...
 Name[ru]=Извлечь в...
 Icon=application-x-archive
-Exec=7z x -aoa %f -o$(kdialog --getexistingdirectory --title "Select directory to extract")
+Exec=7z x -aoa %f -o"$(kdialog --getexistingdirectory --title "Select directory to extract")"
 
 [Desktop Action extractHerePass]
 Name=Extract here (Enter password)

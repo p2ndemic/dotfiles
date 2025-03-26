@@ -1,13 +1,30 @@
 ### Intel
+echo "set -Ux TERM alacritty" >> ~/.config/fish/config.fish
 echo "set -Ux TERMINAL alacritty" >> ~/.config/fish/config.fish
+echo "set -Ux COLORTERM truecolor" >> ~/.config/fish/config.fish
 echo "set -Ux EDITOR nano" >> ~/.config/fish/config.fish
+echo "set -Ux VISUAL nano" >> ~/.config/fish/config.fish
+echo "set -Ux SUDO_EDITOR nano" >> ~/.config/fish/config.fish
+echo "set -Ux FCEDIT nano" >> ~/.config/fish/config.fish
 echo "set -Ux DIFFPROG meld" >> ~/.config/fish/config.fish
+echo "set -Ux RADV_PERFTEST video_decode" >> ~/.config/fish/config.fish
 echo "set -Ux ANV_VIDEO_DECODE 1" >> ~/.config/fish/config.fish
 echo "set -Ux PROTON_ENABLE_WAYLAND 1" >> ~/.config/fish/config.fish
 
 ### AMD
+echo "set -Ux TERM alacritty" >> ~/.config/fish/config.fish
 echo "set -Ux TERMINAL alacritty" >> ~/.config/fish/config.fish
+echo "set -Ux COLORTERM truecolor" >> ~/.config/fish/config.fish
 echo "set -Ux EDITOR nano" >> ~/.config/fish/config.fish
+echo "set -Ux VISUAL nano" >> ~/.config/fish/config.fish
+echo "set -Ux SUDO_EDITOR nano" >> ~/.config/fish/config.fish
+echo "set -Ux FCEDIT nano" >> ~/.config/fish/config.fish
 echo "set -Ux DIFFPROG meld" >> ~/.config/fish/config.fish
 echo "set -Ux RADV_PERFTEST video_decode" >> ~/.config/fish/config.fish
 echo "set -Ux PROTON_ENABLE_WAYLAND 1" >> ~/.config/fish/config.fish
+
+
+export EDITOR="vim"
+export VISUAL="$EDITOR"
+export SUDO_EDITOR="$EDITOR"
+export FCEDIT="$EDITOR"

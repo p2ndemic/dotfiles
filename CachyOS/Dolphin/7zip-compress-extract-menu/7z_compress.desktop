@@ -1,0 +1,40 @@
+[Desktop Entry]
+Type=Service
+Encoding=UTF-8
+ServiceTypes=KonqPopupMenu/Plugin
+MimeType=all/all;
+Actions=pack7z;pack7zMax;pack7zPass;packTarGz;packZip;
+X-KDE-Submenu=Compress 7z
+X-KDE-Submenu[ru]=Упаковать 7z
+X-KDE-Priority=TopLevel
+Icon=application-x-archive
+
+[Desktop Action pack7z]
+Name=Compress to .7z
+Name[ru]=Упаковать в .7z
+Icon=application-x-archive
+Exec=/bin/sh -c '~/.local/bin/compress_files.sh pack7z %F'
+
+[Desktop Action pack7zMax]
+Name=Compress to .7z (max compression)
+Name[ru]=Упаковать в .7z (макс. сжатие)
+Icon=application-x-archive
+Exec=/bin/sh -c '~/.local/bin/compress_files.sh pack7zMax %F'
+
+[Desktop Action pack7zPass]
+Name=Compress to .7z (with password)
+Name[ru]=Упаковать в .7z (с паролем)
+Icon=application-x-archive
+Exec=/bin/sh -c '~/.local/bin/compress_files.sh pack7zPass %F'
+
+[Desktop Action packTarGz]
+Name=Compress to .tar.gz
+Name[ru]=Упаковать в .tar.gz
+Icon=application-x-gzip
+Exec=/bin/sh -c '~/.local/bin/compress_files.sh packTarGz %F'
+
+[Desktop Action packZip]
+Name=Compress to .zip
+Name[ru]=Упаковать в .zip
+Icon=application-zip
+Exec=/bin/sh -c '~/.local/bin/compress_files.sh packZip %F'

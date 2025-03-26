@@ -1,4 +1,14 @@
-### Intel
+########################################################################
+# [Dolphin] Change the default terminal emulator
+# The setting can also be directly changed by modifying the configuration file ~/.config/kdeglobals. For example, to use alacritty add in the [General] section:
+# TerminalApplication=alacritty
+# TerminalService=Alacritty.desktop
+########################################################################
+
+########################################################################
+Environment variables
+########################################################################
+### Fish
 echo "set -Ux TERM alacritty" >> ~/.config/fish/config.fish
 echo "set -Ux TERMINAL alacritty" >> ~/.config/fish/config.fish
 echo "set -Ux COLORTERM truecolor" >> ~/.config/fish/config.fish
@@ -7,24 +17,27 @@ echo "set -Ux VISUAL nano" >> ~/.config/fish/config.fish
 echo "set -Ux SUDO_EDITOR nano" >> ~/.config/fish/config.fish
 echo "set -Ux FCEDIT nano" >> ~/.config/fish/config.fish
 echo "set -Ux DIFFPROG meld" >> ~/.config/fish/config.fish
-echo "set -Ux RADV_PERFTEST video_decode" >> ~/.config/fish/config.fish
+echo "set -Ux PROTON_ENABLE_WAYLAND 1" >> ~/.config/fish/config.fish
+
+# Intel
 echo "set -Ux ANV_VIDEO_DECODE 1" >> ~/.config/fish/config.fish
-echo "set -Ux PROTON_ENABLE_WAYLAND 1" >> ~/.config/fish/config.fish
 
-### AMD
-echo "set -Ux TERM alacritty" >> ~/.config/fish/config.fish
-echo "set -Ux TERMINAL alacritty" >> ~/.config/fish/config.fish
-echo "set -Ux COLORTERM truecolor" >> ~/.config/fish/config.fish
-echo "set -Ux EDITOR nano" >> ~/.config/fish/config.fish
-echo "set -Ux VISUAL nano" >> ~/.config/fish/config.fish
-echo "set -Ux SUDO_EDITOR nano" >> ~/.config/fish/config.fish
-echo "set -Ux FCEDIT nano" >> ~/.config/fish/config.fish
-echo "set -Ux DIFFPROG meld" >> ~/.config/fish/config.fish
+# AMD
 echo "set -Ux RADV_PERFTEST video_decode" >> ~/.config/fish/config.fish
-echo "set -Ux PROTON_ENABLE_WAYLAND 1" >> ~/.config/fish/config.fish
 
+###Bash
+echo "export TERM=alacritty" >> ~/.bashrc
+echo "export TERMINAL=/usr/bin/alacritty" >> ~/.bashrc
+echo "export COLORTERM=truecolor" >> ~/.bashrc
+echo "export EDITOR=/usr/bin/nano" >> ~/.bashrc
+echo "export VISUAL=/usr/bin/nano" >> ~/.bashrc
+echo "export SUDO_EDITOR=/usr/bin/nano" >> ~/.bashrc
+echo "export FCEDIT=/usr/bin/nano" >> ~/.bashrc
+echo "export DIFFPROG=/usr/bin/meld" >> ~/.bashrc
+echo "export PROTON_ENABLE_WAYLAND=1" >> ~/.bashrc
 
-export EDITOR="vim"
-export VISUAL="$EDITOR"
-export SUDO_EDITOR="$EDITOR"
-export FCEDIT="$EDITOR"
+# Intel
+echo "export ANV_VIDEO_DECODE=1" >> ~/.bashrc
+
+# Intel
+echo "export RADV_PERFTEST=video_decode" >> ~/.bashrc

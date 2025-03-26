@@ -1,0 +1,44 @@
+# mkdir -p ~/.local/share/kio/servicemenus/
+# touch ~/.local/share/kio/servicemenus/7z_compress.desktop
+# chmod -R +x ~/.local/share/kio/servicemenus/7zip_compress.desktop
+
+[Desktop Entry]
+Type=Service
+Encoding=UTF-8
+ServiceTypes=KonqPopupMenu/Plugin
+MimeType=all/all
+Actions=pack7z;pack7zMax;pack7zPass;packTarGz;packZip;
+X-KDE-Submenu=Compress 7z
+X-KDE-Submenu[ru]=Упаковать 7z
+X-KDE-Priority=TopLevel
+Icon=application-x-archive
+
+[Desktop Action pack7z]
+Name=Compress to .7z
+Name[ru]=Упаковать в .7z
+Icon=application-x-archive
+Exec=7z a -t7z "%n.7z" %F
+
+[Desktop Action pack7zMax]
+Name=Compress to .7z (max compression)
+Name[ru]=Упаковать в .7z (макс. сжатие)
+Icon=application-x-archive
+Exec=7z a -t7z -m0=lzma2 -mx=9 "%n.7z" %F
+
+[Desktop Action pack7zPass]
+Name=Compress to .7z (with password)
+Name[ru]=Упаковать в .7z (с паролем)
+Icon=application-x-archive
+Exec=7z a -t7z -p"qweasd123" "%n.7z" %F
+
+[Desktop Action packTarGz]
+Name=Compress to .tar.gz
+Name[ru]=Упаковать в .tar.gz
+Icon=application-x-gzip
+Exec=tar -czvf "%n.tar.gz" %F
+
+[Desktop Action packZip]
+Name=Compress to .zip
+Name[ru]=Упаковать в .zip
+Icon=application-zip
+Exec=7z a -tzip "%n.zip" %F

@@ -19,7 +19,7 @@ Terminal=true
 Name=Extract here
 Name[ru]=Извлечь здесь
 Icon=application-x-archive
-Exec=7z x -aoa %f -o./
+Exec=7z x %f -o./
 
 [Desktop Action extractToSubdir]
 Name=Extract to subfolder
@@ -31,4 +31,4 @@ Exec=/bin/sh -c 'archive="%f"; dir="${archive%.*}"; 7z x -aoa "%f" -o"$dir"'
 Name=Extract to...
 Name[ru]=Извлечь в...
 Icon=application-x-archive
-Exec=7z x -aoa %f -o"$(zenity --file-selection --directory --title="Select directory to extract")"
+Exec=7z x %f -o"$(zenity --file-selection --directory --title="Select directory to extract")"

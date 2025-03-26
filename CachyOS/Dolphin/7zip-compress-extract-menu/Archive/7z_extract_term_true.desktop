@@ -25,10 +25,10 @@ Exec=7z x %f -o./
 Name=Extract to subfolder
 Name[ru]=Извлечь в подпапку
 Icon=application-x-archive
-Exec=/bin/sh -c 'archive="%f"; dir="${archive%.*}"; 7z x -aoa "%f" -o"$dir"'
+Exec=sh -c 'archive="%f"; dir="${archive%.*}"; 7z x -aoa "%f" -o"$dir"'
 
 [Desktop Action extractTo]
 Name=Extract to...
 Name[ru]=Извлечь в...
 Icon=application-x-archive
-Exec=7z x %f -o"$(zenity --file-selection --directory --title="Select directory to extract")"
+Exec=7z x %f -o"$(kdialog --getexistingdirectory --title "Select directory to extract)"

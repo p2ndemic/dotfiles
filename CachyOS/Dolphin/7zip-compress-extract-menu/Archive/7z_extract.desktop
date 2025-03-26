@@ -1,3 +1,8 @@
+# https://specifications.freedesktop.org/desktop-entry-spec/latest/
+# mkdir -p ~/.local/share/kio/servicemenus/
+# touch ~/.local/share/kio/servicemenus/7z_extract.desktop
+# chmod -R +x ~/.local/share/kio/servicemenus/7z_extract.desktop
+
 [Desktop Entry]
 Type=Service
 Encoding=UTF-8
@@ -19,13 +24,13 @@ Exec=7z x -aoa %f -o./
 Name=Extract to subfolder
 Name[ru]=Извлечь в подпапку
 Icon=application-x-archive
-Exec=7z x -aoa %f -o./%n
+Exec=/bin/sh -c 'archive="%f"; dir="${archive%.*}"; 7z x -aoa "%f" -o"$dir"'
 
 [Desktop Action extractTo]
 Name=Extract to...
 Name[ru]=Извлечь в...
 Icon=application-x-archive
-Exec=7z x -aoa %f -o"$(kdialog --getexistingdirectory %d/ --title "Select directory to extract")"
+Exec=7z x -aoa %f -o"$(kdialog --getexistingdirectory --title "Select directory to extract")"
 
 [Desktop Action extractHerePass]
 Name=Extract here (Enter password)

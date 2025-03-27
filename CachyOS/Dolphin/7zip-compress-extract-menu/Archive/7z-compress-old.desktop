@@ -1,18 +1,17 @@
 # https://specifications.freedesktop.org/desktop-entry-spec/latest/
 # mkdir -p ~/.local/share/kio/servicemenus/
 # touch ~/.local/share/kio/servicemenus/7z_compress.desktop
-# chmod -R +x ~/.local/share/kio/servicemenus/7zip_compress.desktop
+# chmod +x ~/.local/share/kio/servicemenus/7zip_compress.desktop
 
 [Desktop Entry]
+Icon=application-x-archive
+Terminal=false
 Type=Service
-Encoding=UTF-8
 ServiceTypes=KonqPopupMenu/Plugin
 MimeType=all/all
-Actions=pack7z;pack7zMax;pack7zPass;packTarGz;packZip;
-X-KDE-Submenu=Compress 7z
-X-KDE-Submenu[ru]=Упаковать 7z
+X-KDE-Submenu=Extract 7z
+X-KDE-Submenu[ru]=Распаковать 7z
 X-KDE-Priority=TopLevel
-Icon=application-x-archive
 
 [Desktop Action pack7z]
 Name=Compress to .7z

@@ -37,7 +37,7 @@ case "$desktop_action" in
     
     password=$(kdialog --password "Enter archive password" --title "Password diaglog")
     if [ -n "$password" ]; then
-        7z a -t7z -p"$password" "${archive_name}.7z" "${files[@]}"
+        7z a -t7z -p"$password" "$current_dir/$archive_name.7z" "${files[@]}"
     else
         echo "Operation canceled"
         exit 1

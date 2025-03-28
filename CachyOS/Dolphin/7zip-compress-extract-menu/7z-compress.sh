@@ -11,9 +11,9 @@
 # $1 — desktop entry action (pack7z, packZip и т.д.)
 # $2... — выбранные файлы (%F)
 
+current_dir="$PWD"
 desktop_action="$1"
 files=("${@:2}")  # Все файлы, кроме первого аргумента (типа архива)
-current_dir="$PWD"
 
 # Определить имя архива
 if [ ${#files[@]} -eq 1 ]; then

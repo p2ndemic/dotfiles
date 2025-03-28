@@ -49,10 +49,3 @@ case "$desktop_action" in
     "packZip")
         7z a -tzip "$current_dir/$archive_name.zip" "${files[@]}" ;;
 esac
-
-if [ $? -eq 0 ]; then
-    echo "Archive created: $archive_name"
-else
-    echo "Error creating archive"
-    exit 1
-fi

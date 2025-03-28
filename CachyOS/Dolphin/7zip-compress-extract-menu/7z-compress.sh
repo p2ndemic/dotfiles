@@ -19,7 +19,7 @@ current_dir="$PWD"
 if [ ${#files[@]} -eq 1 ]; then
     # Один файл/папка: имя_файла.расширение
     base_name=$(basename "${files[0]}")
-    archive_name="${base_name%.*.*}"  # Убрать расширение
+    archive_name="${base_name%%.*}"  # Убрать расширение
 else
     # Несколько файлов: имя_текущей_папки
     archive_name=$(basename "$current_dir")

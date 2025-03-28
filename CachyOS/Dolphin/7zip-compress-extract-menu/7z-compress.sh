@@ -12,7 +12,7 @@
 # $2... — выбранные файлы (%F)
 
 current_dir="$PWD"
-desktop_action="$1"
+action="$1"
 files=("${@:2}")  # Все файлы, кроме первого аргумента (типа архива)
 
 # Определить имя архива
@@ -26,7 +26,7 @@ else
 fi
 
 # Создать архив
-case "$desktop_action" in
+case "$action" in
     "pack7z")
         7z a -t7z "$current_dir/$archive_name.7z" "${files[@]}" ;;
 

@@ -34,7 +34,6 @@ case "$desktop_action" in
         7z a -t7z -m0=lzma2 -mx=9 "$current_dir/$archive_name.7z" "${files[@]}" ;;
 
     "pack7zPass")
-    
     password=$(kdialog --password "Enter archive password" --title "Password diaglog")
     if [ -n "$password" ]; then
         7z a -t7z -p"$password" "$current_dir/$archive_name.7z" "${files[@]}"

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# mkdir -p ~/.local/bin/ && touch 7z-compress.sh
+# mkdir -p ~/.local/bin/ && touch ~/.local/bin/7z-compress.sh
 
 # Проверка зависимостей
 # command -v 7z >/dev/null 2>&1 || { echo "Error: 7zip not installed"; exit 1; }

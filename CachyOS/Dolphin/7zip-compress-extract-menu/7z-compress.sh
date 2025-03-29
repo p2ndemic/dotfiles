@@ -9,7 +9,7 @@
 
 action="$1"
 files=("${@:2}")
-current_dir="$(pwd -P)"
+current_dir="$(pwd -P)" # Use physical directory path
 
 # Функция обработки ошибок
 handle_error() {

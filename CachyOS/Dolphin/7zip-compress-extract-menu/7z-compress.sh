@@ -44,13 +44,13 @@ get_archive_extension() {
     # FIX: Correct syntax for local variable assignment
     local current_action="$1"
     case "$current_action" in
-        "pack7z"|"pack7zMax"|"pack7zPass")
+        "-pack7z"|"-pack7zMax"|"-pack7zPass")
             echo ".7z"
             ;;
-        "packTarGz")
+        "-packTarGz")
             echo ".tar.gz"
             ;;
-        "packZip")
+        "-packZip")
             echo ".zip"
             ;;
         *)
@@ -76,13 +76,13 @@ check_existing_archive
 
 # Создать архив
 case "$action" in
-    "pack7z")
+    "-pack7z")
         7z a -t7z "$archive_full_name" "${files[@]}" -aoa || handle_error "Failed to create $extension archive"
         ;;
-    "pack7zMax")
+    "-pack7zMax")
         7z a -t7z -m0=lzma2 -mx=9 "$archive_full_name" "${files[@]}" -aoa || handle_error "Failed to create $extension archive"
         ;;
-    "pack7zPass")
+    "-pack7zPass")
         password="$(kdialog --password "Enter archive password" --title "Password dialog")"
         if [ -n "$password" ]; then
             7z a -y -t7z -p"$password" "$archive_full_name" "${files[@]}" -aoa || handle_error "Failed to create $extension archive"
@@ -91,10 +91,10 @@ case "$action" in
             exit 1
         fi
         ;;
-    "packTarGz")
+    "-packTarGz")
         tar -czvf "$archive_full_name" -- "${files[@]}" || handle_error "Failed to create $extension archive"
         ;;
-    "packZip")
+    "-packZip")
         7z a -tzip "$archive_full_name" "${files[@]}" -aoa || handle_error "Failed to create $extension archive"
         ;;
     *)

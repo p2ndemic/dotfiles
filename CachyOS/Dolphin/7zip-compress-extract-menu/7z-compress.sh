@@ -40,8 +40,9 @@ fi
 
 # Функция для получения расширения архива
 get_archive_extension() {
-    local action="$1"
-    case "$action" in
+    # FIX: Correct syntax for local variable assignment
+    local current_action="$1"
+    case "$current_action" in
         "pack7z"|"pack7zMax"|"pack7zPass")
             echo ".7z"
             ;;
@@ -52,7 +53,8 @@ get_archive_extension() {
             echo ".zip"
             ;;
         *)
-            handle_error "Unknown desktop action for extension: $action"
+            # Use the passed action in the error message
+            handle_error "Unknown desktop action for extension: $current_action"
             ;;
     esac
 }

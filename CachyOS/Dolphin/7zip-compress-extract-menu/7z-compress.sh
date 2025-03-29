@@ -1,6 +1,7 @@
 #!/bin/bash
 # https://specifications.freedesktop.org/notification-spec/latest/
 # mkdir -p ~/.local/bin/ && touch ~/.local/bin/7z-compress.sh
+# Вариант с KDE kdialog и notify-send
 
 # Входные данные:
 # $1 — desktop entry action (pack7z, packZip и т.д.)

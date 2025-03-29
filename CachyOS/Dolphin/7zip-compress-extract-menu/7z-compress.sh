@@ -34,7 +34,7 @@ if [ ${#files[@]} -eq 1 ]; then
     archive_name="${base_name%%.*}"
 else
     archive_name="$(basename "$current_dir")"
-    # Требовать указать имя архива при выборе нескольких файлов/папок
+    # Требовать указать имя архива при выборе нескольких файлов/папок через kdialog
     archive_name=$(kdialog --inputbox "Enter archive name" "$archive_name")
     [ -z "$archive_name" ] && handle_error "Archive name not provided"
 fi

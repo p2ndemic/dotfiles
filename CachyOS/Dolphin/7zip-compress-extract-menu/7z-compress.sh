@@ -25,9 +25,7 @@ command -v kdialog >/dev/null 2>&1 || handle_error "kdialog not installed"
 
 # Проверка аргументов
 if [ -z "$action" ] || [ ${#files[@]} -eq 0 ]; then
-    echo "Usage: <-action> <file1> [file2 ...]";
-    handle_error "Usage: <-action> <file1> [file2 ...]";
-    exit 1
+    handle_error "Usage: <-action> <file1> [file2 ...]"
 fi
 
 # Определить имя архива
@@ -36,15 +34,14 @@ if [ ${#files[@]} -eq 1 ]; then
     archive_name="${base_name%%.*}"
 else
     archive_name="$(basename "$current_dir")"
-    # Требовать указать имя архива при выборе нескольких файлов
     archive_name=$(kdialog --inputbox "Enter archive name" "$archive_name")
     [ -z "$archive_name" ] && handle_error "Archive name not provided"
 fi
 
 # Функция для получения расширения архива
 get_archive_extension() {
-    local extension = "$1"
-    case "$extension" in
+    local action="$1"
+    case "$action" in
         "pack7z"|"pack7zMax"|"pack7zPass")
             echo ".7z"
             ;;
@@ -70,6 +67,9 @@ check_existing_archive() {
         kdialog --yesno "The file $archive_name$extension already exists. Overwrite?" || exit 1
     fi
 }
+
+# Проверка на существование архива перед созданием
+check_existing_archive
 
 # Создать архив
 case "$action" in
@@ -105,7 +105,5 @@ notify-send --app-name="Dolphin" \
 "Success" \
 "Archive created successfully: <b><a href='file://$archive_full_name'>$archive_name$extension</a></b>"
 
-# Обработка клика по действию "Open Location"
-if [ $? -eq 0 ]; then
-    xdg-open "$current_dir" &
-fi
+# Обработка действия Open Location указанного в аргументе --action notify-send 
+xdg-open "$current_dir" &

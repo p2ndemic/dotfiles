@@ -4,7 +4,7 @@
 # Вариант с kdialog и notify-send [KDE native]
 
 # Входные данные:
-# $1 — desktop entry action (pack7z, packZip и т.д.)
+# $1 — desktop entry action (-pack7z, -packZip и т.д.)
 # $2... — выбранные файлы (%F)
 
 action="$1"

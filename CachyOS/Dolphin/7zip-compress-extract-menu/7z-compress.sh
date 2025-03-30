@@ -115,5 +115,5 @@ notify-send --app-name="Dolphin" \
 "Success" \
 "Archive created successfully: <b><a href='file://$archive_full_name'>$archive_name$extension</a></b>"
 
-# Обработка действия Open Location указанного в аргументе --action notify-send 
+# Обработка действия --action="open=Open Location"
 xdg-open "$current_dir" &

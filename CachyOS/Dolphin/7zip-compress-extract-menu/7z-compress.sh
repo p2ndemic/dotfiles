@@ -140,9 +140,9 @@ wait $arch_pid || handle_error "Archiving process failed"
 
 # Уведомление
 notify-send --app-name="Dolphin" \
---action="open=Open Location" \
-"✅ Success" \
-"Archive created successfully: <b><a href='file://$archive_full_name'>$archive_name$extension</a></b>"
+    --action="open=Open Location" \
+    "✅ Success" \
+    "Archive created successfully: <b><a href='file://$archive_full_name'>$archive_name$extension</a></b>"
 # Обработка действия --action="open=Open Location"
 xdg-open "$current_dir" &
 # Помечаем успешное завершение

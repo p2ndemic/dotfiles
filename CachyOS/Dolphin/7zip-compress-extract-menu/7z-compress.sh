@@ -31,7 +31,6 @@ fi
 # Определить имя архива
 if [ ${#files[@]} -eq 1 ]; then
     base_name="$(basename "${files[0]}")"
-    
     # Для скрытых файлов/папок (начинающихся с точки) - сохранить полное имя
     if [[ "$base_name" = .* ]]; then
         archive_name="$base_name"

@@ -110,29 +110,32 @@ check_existing_archive
 # Создать архив согласно входным параметрам
 case "$action" in
     "-pack7z")
-        7z a -t7z "$archive_full_name" "${files[@]}" -aoa || handle_error "Failed to create $extension archive"
+        7z a -t7z "$archive_full_name" "${files[@]}" -aoa &
+        arch_pid=$!
+        wait $arch_pid || handle_error "Failed to create $extension archive"
         ;;
     "-pack7zMax")
-        7z a -t7z -m0=lzma2 -mx=9 "$archive_full_name" "${files[@]}" -aoa || handle_error "Failed to create $extension archive"
+        7z a -t7z -m0=lzma2 -mx=9 "$archive_full_name" "${files[@]}" -aoa &
+        arch_pid=$!
+        wait $arch_pid || handle_error "Failed to create $extension archive"
         ;;
     "-pack7zPass")
-        password="$(kdialog --password "Enter archive password" --title "Password dialog")"
-        if [ -n "$password" ]; then
-            7z a -y -t7z -p"$password" "$archive_full_name" "${files[@]}" -aoa || handle_error "Failed to create $extension archive"
-        else
-            notify-send --app-name="Dolphin" "❕ Info" "Operation canceled"
-            exit 1
-        fi
+        password=$(kdialog --password "Enter archive password")
+        7z a -y -t7z -p"$password" "$archive_full_name" "${files[@]}" -aoa &
+        arch_pid=$!
+        wait $arch_pid || handle_error "Failed to create $extension archive"
         ;;
     "-packTarGz")
-        tar -czf "$archive_full_name" -- "${files[@]}" || handle_error "Failed to create $extension archive"
+        tar -czvf "$archive_full_name" -- "${files[@]}" &
+        arch_pid=$!
+        wait $arch_pid || handle_error "Failed to create $extension archive"
         ;;
     "-packZip")
-        7z a -tzip "$archive_full_name" "${files[@]}" -aoa || handle_error "Failed to create $extension archive"
+        7z a -tzip "$archive_full_name" "${files[@]}" -aoa &
+        arch_pid=$!
+        wait $arch_pid || handle_error "Failed to create $extension archive"
         ;;
-    *)
-        handle_error "Unknown action: $action"
-        ;;
+    *) handle_error "Unknown action: $action" ;;
 esac
 
 # Сохраняем PID процесса архивации

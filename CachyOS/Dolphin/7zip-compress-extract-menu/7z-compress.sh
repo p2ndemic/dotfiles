@@ -93,6 +93,7 @@ get_archive_extension() {
     esac
 }
 
+# Получить расширение архива
 extension="$(get_archive_extension "$action")"
 archive_full_name="$current_dir/$archive_name$extension" 
 

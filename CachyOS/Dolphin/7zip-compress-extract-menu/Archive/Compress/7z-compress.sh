@@ -14,7 +14,7 @@ current_dir="$(pwd -P)" # Использовать физический путь
 # Функция обработки ошибок
 handle_error() {
     local message="$1"  # Сообщение об ошибке
-    notify-send --app-name="Dolphin" "Error" "$message"
+    notify-send --app-name="Dolphin" "❌ Error" "$message"
     exit 1
 }
 
@@ -93,12 +93,12 @@ case "$action" in
         if [ -n "$password" ]; then
             7z a -y -t7z -p"$password" "$archive_full_name" "${files[@]}" -aoa || handle_error "Failed to create $extension archive"
         else
-            notify-send --app-name="Dolphin" "Info" "Operation canceled"
+            notify-send --app-name="Dolphin" "❕ Info" "Operation canceled"
             exit 1
         fi
         ;;
     "-packTarGz")
-        tar -czvf "$archive_full_name" -- "${files[@]}" || handle_error "Failed to create $extension archive"
+        tar -czf "$archive_full_name" -- "${files[@]}" || handle_error "Failed to create $extension archive"
         ;;
     "-packZip")
         7z a -tzip "$archive_full_name" "${files[@]}" -aoa || handle_error "Failed to create $extension archive"
@@ -111,7 +111,7 @@ esac
 # Уведомление
 notify-send --app-name="Dolphin" \
 --action="open=Open Location" \
-"Success" \
+"✅ Success" \
 "Archive created successfully: <b><a href='file://$archive_full_name'>$archive_name$extension</a></b>"
 # Обработка действия --action="open=Open Location"
 xdg-open "$current_dir" &

@@ -31,10 +31,17 @@ fi
 # Определить имя архива
 if [ ${#files[@]} -eq 1 ]; then
     base_name="$(basename "${files[0]}")"
-    archive_name="${base_name%%.*}"
+    
+    # Для скрытых файлов/папок (начинающихся с точки) - сохранить полное имя
+    if [[ "$base_name" = .* ]]; then
+        archive_name="$base_name"
+    else
+        # Для обычных файлов - удалить все расширения
+        archive_name="${base_name%%.*}"
+    fi
 else
     archive_name="$(basename "$current_dir")"
-    # Требовать указать имя архива при выборе нескольких файлов/папок через kdialog
+    # Вывод окна kdialog для ввода имени архива при выборе нескольких файлов/папок
     archive_name=$(kdialog --inputbox "Enter archive name" "$archive_name")
     [ -z "$archive_name" ] && handle_error "Archive name not provided"
 fi

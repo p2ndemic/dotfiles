@@ -9,22 +9,22 @@
 # Кастомные уведомления
 # ---------------------------
 dolphin_notify() {
-    local summary="$1"
-    local body="$2"
+    local SUMMARY="$1"
+    local BODY="$2"
     notify-send \
         --app-name="🐬 Dolphin" \
         --expire-time=2000 \
         --urgency=normal \
-        "$summary" \
-        "$body"
+        "$SUMMARY" \
+        "$BODY"
 }
 
 # ---------------------------
 # Функция обработки ошибок
 # ---------------------------
 handle_error() {
-    local message="$1"  # Сообщение об ошибке
-    dolphin_notify "❌ Error" "$message"
+    local MESSAGE="$1"  # Сообщение об ошибке
+    dolphin_notify "❌ Error" "$MESSAGE"
     exit 1
 }
 
@@ -49,10 +49,10 @@ echo $$ > "$PID_FILE"  # Сохраняем PID текущего процесс�
 pid_cleanup() {
     rm -f "$PID_FILE"  # Удаляем PID-файл при завершении
     # Принудительно завершаем процесс архивации, если он активен
-    if [ -n "$archiving_pid" ]; then
-        kill -TERM "$archiving_pid" 2>/dev/null # Отправляем сигнал SIGTERM процессу архивации для корректного завершения
+    if [ -n "$ARCHIVING_PID" ]; then
+        kill -TERM "$ARCHIVING_PID" 2>/dev/null # Отправляем сигнал SIGTERM процессу архивации для корректного завершения
         sleep 1 # Даем 1 секунду на завершение. Если процесс все еще активен, используем kill -9
-        kill -0 "$archiving_pid" 2>/dev/null && kill -9 "$archiving_pid" 2>/dev/null
+        kill -0 "$ARCHIVING_PID" 2>/dev/null && kill -9 "$ARCHIVING_PID" 2>/dev/null
     fi
 }
 trap pid_cleanup EXIT  # Регистрируем функцию очистки при выходе
@@ -61,8 +61,8 @@ trap pid_cleanup EXIT  # Регистрируем функцию очистки 
 # Обработчик сигнала отмены
 # ---------------------------
 handle_cancel() {
-    if [ -n "$archiving_pid" ]; then
-        kill -TERM "$archiving_pid" 2>/dev/null  # Отправляем SIGTERM процессу архивации
+    if [ -n "$ARCHIVING_PID" ]; then
+        kill -TERM "$ARCHIVING_PID" 2>/dev/null  # Отправляем SIGTERM процессу архивации
         dolphin_notify "🚫 Archiving Canceled" "Process interrupted by user"
         exit 2
     fi
@@ -72,14 +72,14 @@ trap handle_cancel $CANCEL_SIGNAL  # Регистрируем обработчи
 # ---------------------------
 # Входные данные
 # ---------------------------
-action="$1"                      # Действие из .desktop файла (-pack7z, -packZip и т.д.)
-files=("${@:2}")                 # Список всех выбранных файлов (%F)
-current_dir="$(pwd -P)"          # Использовать полный физический путь к директории, игнорируя симлинки
+ACTION="$1"                      # Действие из .desktop файла (-pack7z, -packZip и т.д.)
+FILES=("${@:2}")                 # Список всех выбранных файлов (%F)
+CURRENT_DIR="$(pwd -P)"          # Использовать полный физический путь к директории, игнорируя симлинки
 
 # ---------------------------
 # Проверка аргументов
 # ---------------------------
-if [ -z "$action" ] || [ ${#files[@]} -eq 0 ]; then
+if [ -z "$ACTION" ] || [ ${#FILES[@]} -eq 0 ]; then
     handle_error "Invalid arguments. Usage: <-action> <file1> [file2 ...]"
 fi
 
@@ -87,51 +87,51 @@ fi
 # Функция генерации имени архива
 # ---------------------------
 generate_archive_name() {
-    if [ ${#files[@]} -eq 1 ]; then
+    if [ ${#FILES[@]} -eq 1 ]; then
         # Обработка одиночного файла
-        local base_name="$(basename "${files[0]}")"
+        local BASE_NAME="$(basename "${FILES[0]}")"
         
         # Для скрытых файлов сохраняем полное имя
-        if [[ "$base_name" = .* ]]; then
-            echo "$base_name"
+        if [[ "$BASE_NAME" = .* ]]; then
+            echo "$BASE_NAME"
         else
             # Удаляем только последнее расширение
-            echo "${base_name%.*}"
+            echo "${BASE_NAME%.*}"
         fi
     else
         # Ввод имени архива для нескольких файлов
-        local dir_name="$(basename "$current_dir")"
-        local custom_name=$(kdialog --title "Archive Name" --inputbox "Enter archive name" "$dir_name")
-        [ -z "$custom_name" ] && dolphin_notify "Archive name not provided"
-        echo "$custom_name"
+        local DIR_NAME="$(basename "$CURRENT_DIR")"
+        local CUSTOM_NAME=$(kdialog --title "Archive Name" --inputbox "Enter archive name" "$DIR_NAME")
+        [ -z "$CUSTOM_NAME" ] && dolphin_notify "Archive name not provided"
+        echo "$CUSTOM_NAME"
     fi
 }
 # Генерация имени архива
-archive_name=$(generate_archive_name)
+ARCHIVE_NAME=$(generate_archive_name)
 
 # ---------------------------
 # Функция определения расширения архива
 # ---------------------------
 get_archive_extension() {
-    local current_action="$1"
-    case "$current_action" in
+    local CURRENT_ACTION="$1"
+    case "$CURRENT_ACTION" in
         "-pack7z"|"-pack7zMax"|"-pack7zPass") echo ".7z" ;;
         "-packTarGz") echo ".tar.gz" ;;
         "-packZip") echo ".zip" ;;
-        *) handle_error "Unknown action: $current_action" ;;
+        *) handle_error "Unknown action: $CURRENT_ACTION" ;;
     esac
 }
 
 # Получить расширение и имя архива включая полный путь
-extension="$(get_archive_extension "$action")"
-archive_full_name="$current_dir/$archive_name$extension"
+EXTENSION="$(get_archive_extension "$ACTION")"
+ARCHIVE_FULL_NAME="$CURRENT_DIR/$ARCHIVE_NAME$EXTENSION"
 
 # ---------------------------
 # Функция проверки существующего архива
 # ---------------------------
 check_existing_archive() {
-    if [ -f "$archive_full_name" ]; then
-        kdialog --title "Overwrite Warning" --yesno "The file $archive_name$extension already exists. Overwrite?"
+    if [ -f "$ARCHIVE_FULL_NAME" ]; then
+        kdialog --title "Overwrite Warning" --yesno "The file $ARCHIVE_NAME$EXTENSION already exists. Overwrite?"
         [ $? -ne 0 ] && exit 1
     fi
 }
@@ -141,41 +141,41 @@ check_existing_archive
 # ---------------------------
 # Процесс архивации с отслеживанием PID
 # ---------------------------
-case "$action" in
+case "$ACTION" in
     "-pack7z")
-        7z a -t7z "$archive_full_name" "${files[@]}" -aoa &
-        archiving_pid=$!
-        wait $archiving_pid || handle_error "Failed to create $extension archive"
+        7z a -t7z "$ARCHIVE_FULL_NAME" "${FILES[@]}" -aoa &
+        ARCHIVING_PID=$!
+        wait $ARCHIVING_PID || handle_error "Failed to create $EXTENSION archive"
         ;;
 
     "-pack7zMax")
-        7z a -t7z -m0=lzma2 -mx=9 "$archive_full_name" "${files[@]}" -aoa &
-        archiving_pid=$!
-        wait $archiving_pid || handle_error "Failed to create $extension archive"
+        7z a -t7z -m0=lzma2 -mx=9 "$ARCHIVE_FULL_NAME" "${FILES[@]}" -aoa &
+        ARCHIVING_PID=$!
+        wait $ARCHIVING_PID || handle_error "Failed to create $EXTENSION archive"
         ;;
 
     "-pack7zPass")
-        password=$(kdialog --title "Password protection" --password "Enter archive password:")
+        PASSWORD=$(kdialog --title "Password protection" --password "Enter archive password:")
         # Проверяем код возврата kdialog (0 - OK, 1 - Cancel/пусто)
-        if [ $? -ne 0 ] || [ -z "$password" ]; then
+        if [ $? -ne 0 ] || [ -z "$PASSWORD" ]; then
              dolphin_notify "❕ Info" "Password entry canceled. Archive not created."
              exit 5 # Выход с кодом 5 (отмена ввода)
         fi
-        7z a -t7z -p"$password" -mhe=on "$archive_full_name" "${files[@]}" -aoa &
-        archiving_pid=$!
-        wait $archiving_pid || handle_error "Failed to create password protected $extension archive"
+        7z a -t7z -p"$PASSWORD" -mhe=on "$ARCHIVE_FULL_NAME" "${FILES[@]}" -aoa &
+        ARCHIVING_PID=$!
+        wait $ARCHIVING_PID || handle_error "Failed to create password protected $EXTENSION archive"
         ;;
 
     "-packTarGz")
-        tar -czf "$archive_full_name" -- "${files[@]}" &
-        archiving_pid=$!
-        wait $archiving_pid || handle_error "Failed to create $extension archive"
+        tar -czf "$ARCHIVE_FULL_NAME" -- "${FILES[@]}" &
+        ARCHIVING_PID=$!
+        wait $ARCHIVING_PID || handle_error "Failed to create $EXTENSION archive"
         ;;
 
     "-packZip")
-        7z a -tzip "$archive_full_name" "${files[@]}" -aoa &
-        archiving_pid=$!
-        wait $archiving_pid || handle_error "Failed to create $extension archive"
+        7z a -tzip "$ARCHIVE_FULL_NAME" "${FILES[@]}" -aoa &
+        ARCHIVING_PID=$!
+        wait $ARCHIVING_PID || handle_error "Failed to create $EXTENSION archive"
         ;;
 
     *)
@@ -186,7 +186,7 @@ esac
 # ---------------------------
 # Отправка финального уведомления
 # ---------------------------
-dolphin_notify "✅ Success" "Archive Created: <a href='file://$archive_full_name'>${archive_name}${extension}</a>"
+dolphin_notify "✅ Success" "Archive Created: <a href='file://$ARCHIVE_FULL_NAME'>${ARCHIVE_NAME}${EXTENSION}</a>"
 # Открываем директорию с архивом
-xdg-open "$current_dir" &  
+xdg-open "$CURRENT_DIR" &  
 exit 0

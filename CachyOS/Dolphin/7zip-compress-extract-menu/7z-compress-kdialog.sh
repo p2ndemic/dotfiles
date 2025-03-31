@@ -87,21 +87,25 @@ fi
 # ---------------------------
 #  Генерация имени архива
 # ---------------------------
-if [ ${#files[@]} -eq 1 ]; then
-    base_name="$(basename "${files[0]}")"
-    # Для скрытых файлов/папок (начинающихся с точки) - сохранить полное имя
-    if [[ "$base_name" = .* ]]; then
-        archive_name="$base_name"
+
+generate_archive_name() {
+    if [ ${#FILES[@]} -eq 1 ]; then
+        local base_name="$(basename "${FILES[0]}")"
+        # Для скрытых файлов/папок (начинающихся с точки) - сохранить полное имя
+        if [[ "$base_name" = .* ]]; then
+            # Для обычных файлов - удалить все расширения
+            ARCHIVE_NAME="$base_name"
+        else
+            ARCHIVE_NAME="${base_name%%.*}"
+        fi
     else
-        # Для обычных файлов - удалить все расширения
-        archive_name="${base_name%%.*}"
+        ARCHIVE_NAME="$(basename "$CURRENT_DIR")"
+        # Вывод окна kdialog для ввода имени архива при выборе нескольких файлов/папок
+        ARCHIVE_NAME=$(kdialog --inputbox "Enter archive name" "$ARCHIVE_NAME")
+        [ -z "$ARCHIVE_NAME" ] && handle_error "Archive name not provided"
     fi
-else
-    archive_name="$(basename "$current_dir")"
-    # Вывод окна kdialog для ввода имени архива при выборе нескольких файлов/папок
-    archive_name=$(kdialog --inputbox "Enter archive name" "$archive_name")
-    [ -z "$archive_name" ] && handle_error "Archive name not provided"
-fi
+}
+ARCHIVE_NAME=$(generate_archive_name)
 
 # ---------------------------
 # Функция определения расширения архива

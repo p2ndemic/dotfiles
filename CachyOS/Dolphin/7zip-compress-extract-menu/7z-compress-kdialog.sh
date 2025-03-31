@@ -163,7 +163,7 @@ case "$ACTION" in
 
     "-pack7zPass")
         PASSWORD=$(kdialog --title "Password protection" --password "Enter archive password:")
-        if [ -n "$password" ]; then
+        if [ -n "$PASSWORD" ]; then
         # [ -n "$password" ] проверяет, не пуста ли переменная $password
         # Если пользователь ввел пароль и нажал "OK", $password содержит значение == условие истинно
         # Если пользователь нажал "Cancel" или оставил поле пустым, $password будет пустой == условие ложно

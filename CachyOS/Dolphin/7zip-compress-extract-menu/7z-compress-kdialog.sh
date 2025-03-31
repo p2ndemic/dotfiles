@@ -1,10 +1,10 @@
 #!/bin/bash
+set -euo pipefail
 # https://specifications.freedesktop.org/notification-spec/latest/
 # https://documentation.help/7-Zip/start.htm
 # mkdir -p ~/.local/bin/ && touch ~/.local/bin/7z-compress.sh
 # Полная версия скрипта архивации с управлением прерыванием и поддержкой горячик клавиш для завершения архивации
 # Вариант с kdialog и notify-send [KDE native]
-set -euo pipefail
 
 # ---------------------------
 # Кастомные уведомления

@@ -210,7 +210,7 @@ esac
 # ---------------------------
 # Отправка финального уведомления
 # ---------------------------
-dolphin_notify "✅ Success" "Archive Created: <a href='file://$ARCHIVE_FULL_NAME'>${ARCHIVE_NAME}${EXTENSION}</a>"
+dolphin_notify "✅ Success" "Archive Created: <a href='file://$ARCHIVE_FULL_NAME'>$ARCHIVE_NAME$EXTENSION</a>"
 # Открываем директорию с архивом
 xdg-open "$CURRENT_DIR" &  
 exit 0

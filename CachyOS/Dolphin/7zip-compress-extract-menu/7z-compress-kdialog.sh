@@ -91,14 +91,14 @@ fi
 generate_archive_name() {
     if [ ${#FILES[@]} -eq 1 ]; then
         # Обработка одиночного файла
-        local BASE_NAME="$(basename "${FILES[0]}")"
+        local FILE_NAME="$(basename "${FILES[0]}")"
         
         # Для скрытых файлов сохраняем полное имя
-        if [[ "$BASE_NAME" = .* ]]; then
-            echo "$BASE_NAME"
+        if [[ "$FILE_NAME" = .* ]]; then
+            echo "$FILE_NAME"
         else
             # Удаляем только последнее расширение
-            echo "${BASE_NAME%.*}"
+            echo "${FILE_NAME%.*}"
         fi
     else
         # Ввод имени архива для нескольких файлов

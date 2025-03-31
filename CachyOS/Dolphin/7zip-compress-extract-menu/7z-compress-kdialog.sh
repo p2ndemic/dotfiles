@@ -4,6 +4,7 @@
 # mkdir -p ~/.local/bin/ && touch ~/.local/bin/7z-compress.sh
 # Полная версия скрипта архивации с управлением прерыванием и поддержкой горячик клавиш для завершения архивации
 # Вариант с kdialog и notify-send [KDE native]
+set -euo pipefail
 
 # ---------------------------
 # Кастомные уведомления
@@ -38,6 +39,7 @@ command -v kdialog >/dev/null 2>&1 || handle_error "kdialog not installed"
 # ---------------------------
 # Конфигурационные параметры
 # ---------------------------
+ARCHIVING_PID=""
 PID_FILE="/tmp/7z-compress.pid"            # Файл для хранения PID процесса
 CANCEL_SIGNAL="SIGUSR1"                    # Сигнал для прерывания архивации
 

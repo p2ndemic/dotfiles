@@ -3,7 +3,7 @@
 # https://documentation.help/7-Zip/start.htm
 # mkdir -p ~/.local/bin/ && touch ~/.local/bin/7z-compress.sh
 # Полная версия скрипта архивации с управлением прерыванием и поддержкой горячик клавиш для завершения архивации
-# Вариант с kdialog и notify-send [KDE native]
+# Вариант с kdialog и notify-send [[KDE native]]
 
 # ---------------------------
 # Кастомные уведомления
@@ -50,7 +50,7 @@ echo $$ > "$PID_FILE"  # Сохраняем PID текущего процесс�
 pid_cleanup() {
     rm -f "$PID_FILE"  # Удаляем PID-файл при завершении
     # Принудительно завершаем процесс архивации, если он активен
-    if [ -n "$ARCHIVING_PID" ]; then
+    if [[ -n "$ARCHIVING_PID" ]]; then
         kill -TERM "$ARCHIVING_PID" 2>/dev/null # Отправляем сигнал SIGTERM процессу архивации для корректного завершения
         sleep 1 # Даем 1 секунду на завершение. Если процесс все еще активен, используем kill -9
         kill -0 "$ARCHIVING_PID" 2>/dev/null && kill -9 "$ARCHIVING_PID" 2>/dev/null
@@ -62,7 +62,7 @@ trap pid_cleanup EXIT  # Регистрируем функцию очистки 
 # Обработчик сигнала отмены
 # ---------------------------
 handle_cancel() {
-    if [ -n "$ARCHIVING_PID" ]; then
+    if [[ -n "$ARCHIVING_PID" ]]; then
         kill -TERM "$ARCHIVING_PID" 2>/dev/null  # Отправляем SIGTERM процессу архивации
         dolphin_notify "🚫 Archiving Canceled" "Process interrupted by user"
         exit 2
@@ -80,8 +80,8 @@ CURRENT_DIR="$(pwd -P)"          # Использовать полный физ�
 # ---------------------------
 # Проверка аргументов
 # ---------------------------
-if [ -z "$ACTION" ] || [ ${#FILES[@]} -eq 0 ]; then
-    handle_error "Invalid arguments. Usage: <-action> <file1> [file2 ...]"
+if [[ -z "$ACTION" ]] || [[ ${#FILES[@]} -eq 0 ]]; then
+    handle_error "Invalid arguments. Usage: <-action> <file1> [[file2 ...]]"
 fi
 
 # ---------------------------
@@ -150,7 +150,7 @@ ARCHIVE_FULL_NAME="$CURRENT_DIR/$ARCHIVE_NAME$EXTENSION"
 # ---------------------------
 check_existing_archive() {
     local EXIT_CODE
-    if [ -f "$ARCHIVE_FULL_NAME" ]; then
+    if [[ -f "$ARCHIVE_FULL_NAME" ]]; then
         kdialog --title "Overwrite Warning" --yesno "The file $ARCHIVE_NAME$EXTENSION already exists. Overwrite?"
         EXIT_CODE=$? # сразу присваиваем код возврата последней команды ($?) в локальную переменную EXIT_CODE и ссылаемся на нее для надежности
         if [[ "$EXIT_CODE" -eq 1 ]]; then
@@ -181,8 +181,8 @@ case "$ACTION" in
 
     "-pack7zPass")
         PASSWORD=$(kdialog --title "Password protection" --password "Enter archive password:")
-        if [ -n "$PASSWORD" ]; then
-        # [ -n "$password" ] проверяет, не пуста ли переменная $password
+        if [[ -n "$PASSWORD" ]]; then
+        # [[ -n "$password" ]] проверяет, не пуста ли переменная $password
         # Если пользователь ввел пароль и нажал "OK", $password содержит значение == условие истинно
         # Если пользователь нажал "Cancel" или оставил поле пустым, $password будет пустой == условие ложно
         7z a -t7z -p"$PASSWORD" -mhe=on "$ARCHIVE_FULL_NAME" "${FILES[@]}" -aoa &

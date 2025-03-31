@@ -134,7 +134,8 @@ ARCHIVE_FULL_NAME="$CURRENT_DIR/$ARCHIVE_NAME$EXTENSION"
 check_existing_archive() {
     if [ -f "$ARCHIVE_FULL_NAME" ]; then
         kdialog --title "Overwrite Warning" --yesno "The file $ARCHIVE_NAME$EXTENSION already exists. Overwrite?"
-        if [ $? -eq 1 ]; then
+        EXIT_CODE=$? # сразу присваиваем код возврата последней команды ($?) в перменную EXIT_CODE и ссылаемся на нее для надежности
+        if [ "$EXIT_CODE" -eq 1 ]; then
             # Нажато "No" — завершаем программу
             exit 1
         fi
@@ -162,14 +163,17 @@ case "$ACTION" in
 
     "-pack7zPass")
         PASSWORD=$(kdialog --title "Password protection" --password "Enter archive password:")
-        # Проверяем код возврата kdialog (0 - OK, 1 - Cancel/пусто)
-        if [ $? -ne 0 ] || [ -z "$PASSWORD" ]; then
-             dolphin_notify "❕ Info" "Password entry canceled. Archive not created."
-             exit 5 # Выход с кодом 5 (отмена ввода)
-        fi
+        if [ -n "$password" ]; then
+        # [ -n "$password" ] проверяет, не пуста ли переменная $password
+        # Если пользователь ввел пароль и нажал "OK", $password содержит значение - условие истинно
+        # Если пользователь нажал "Cancel" или оставил поле пустым, $password будет пустой - условие ложно
         7z a -t7z -p"$PASSWORD" -mhe=on "$ARCHIVE_FULL_NAME" "${FILES[@]}" -aoa &
         ARCHIVING_PID=$!
         wait $ARCHIVING_PID || handle_error "Failed to create password protected $EXTENSION archive"
+        else
+            dolphin_notify "❕ Info" "Password entry canceled"
+            exit 1
+        fi
         ;;
 
     "-packTarGz")

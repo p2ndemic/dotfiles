@@ -87,7 +87,6 @@ fi
 # ---------------------------
 #  Генерация имени архива
 # ---------------------------
-
 generate_archive_name() {
     if [ ${#FILES[@]} -eq 1 ]; then
         local base_name="$(basename "${FILES[0]}")"

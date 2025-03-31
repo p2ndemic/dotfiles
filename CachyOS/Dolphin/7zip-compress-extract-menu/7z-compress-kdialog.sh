@@ -165,8 +165,8 @@ case "$ACTION" in
         PASSWORD=$(kdialog --title "Password protection" --password "Enter archive password:")
         if [ -n "$password" ]; then
         # [ -n "$password" ] проверяет, не пуста ли переменная $password
-        # Если пользователь ввел пароль и нажал "OK", $password содержит значение - условие истинно
-        # Если пользователь нажал "Cancel" или оставил поле пустым, $password будет пустой - условие ложно
+        # Если пользователь ввел пароль и нажал "OK", $password содержит значение == условие истинно
+        # Если пользователь нажал "Cancel" или оставил поле пустым, $password будет пустой == условие ложно
         7z a -t7z -p"$PASSWORD" -mhe=on "$ARCHIVE_FULL_NAME" "${FILES[@]}" -aoa &
         ARCHIVING_PID=$!
         wait $ARCHIVING_PID || handle_error "Failed to create password protected $EXTENSION archive"

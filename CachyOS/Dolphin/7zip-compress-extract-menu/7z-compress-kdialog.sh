@@ -38,9 +38,9 @@ command -v kdialog >/dev/null 2>&1 || handle_error "kdialog not installed"
 # ---------------------------
 # Конфигурационные параметры
 # ---------------------------
+ARCHIVING_PID=""
 PID_FILE="/tmp/7z-compress.pid"            # Файл для хранения PID процесса
 CANCEL_SIGNAL="SIGUSR1"                    # Сигнал для прерывания архивации
-ARCHIVING_PID=""
 
 # ---------------------------
 # Регистрация PID и очистка

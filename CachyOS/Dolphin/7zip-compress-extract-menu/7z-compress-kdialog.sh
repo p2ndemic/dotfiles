@@ -134,7 +134,11 @@ ARCHIVE_FULL_NAME="$CURRENT_DIR/$ARCHIVE_NAME$EXTENSION"
 check_existing_archive() {
     if [ -f "$ARCHIVE_FULL_NAME" ]; then
         kdialog --title "Overwrite Warning" --yesno "The file $ARCHIVE_NAME$EXTENSION already exists. Overwrite?"
-        || exit 1
+        if [ $? -eq 1 ]; then
+            # Нажато "No" — завершаем программу
+            exit 1
+        fi
+        # Нажато "Yes" — продолжаем выполнение
     fi
 }
 # Проверка существования архива перед запуском процесса архивации

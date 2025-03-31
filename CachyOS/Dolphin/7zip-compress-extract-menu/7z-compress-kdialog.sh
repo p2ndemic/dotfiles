@@ -120,7 +120,6 @@ generate_archive_name() {
             exit 1
         fi
     fi
-
 }
 # Вызываем функцию генерации имени архива с глобальной переменной $ARCHIVE_NAME
 generate_archive_name

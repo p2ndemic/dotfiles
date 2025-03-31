@@ -163,7 +163,7 @@ case "$action" in
         ;;
 
     "-pack7zPass")
-        password=$(kdialog --title "Password Required" --password "Enter archive password:")
+        password=$(kdialog --title "Password protection" --password "Enter archive password:")
         # Проверяем код возврата kdialog (0 - OK, 1 - Cancel/пусто)
         if [ $? -ne 0 ] || [ -z "$password" ]; then
              dolphin_notify "❕ Info" "Password entry canceled. Archive not created."

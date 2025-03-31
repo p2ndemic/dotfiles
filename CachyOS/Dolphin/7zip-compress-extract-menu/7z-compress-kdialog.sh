@@ -20,7 +20,7 @@ dolphin_notify() {
     local body="$2"
     notify-send \
         --app-name="🐬 Dolphin" \
-        --expire-time=1000 \
+        --expire-time=2000 \
         --urgency=normal \
         "$summary" \
         "$body"

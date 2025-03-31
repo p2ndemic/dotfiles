@@ -88,23 +88,43 @@ fi
 #  Генерация имени архива
 # ---------------------------
 generate_archive_name() {
+    local BASE_NAME
+    local DIR_NAME
+    local EXIT_CODE
+    local CUSTOM_NAME
+
+    # Определить имя архива
     if [ ${#FILES[@]} -eq 1 ]; then
-        local base_name="$(basename "${FILES[0]}")"
+        BASE_NAME="$(basename "${FILES[0]}")"
         # Для скрытых файлов/папок (начинающихся с точки) - сохранить полное имя
-        if [[ "$base_name" = .* ]]; then
-            # Для обычных файлов - удалить все расширения
-            ARCHIVE_NAME="$base_name"
+        if [[ "$BASE_NAME" = .* ]]; then
+            echo "$BASE_NAME"
         else
-            ARCHIVE_NAME="${base_name%%.*}"
+            # Для обычных файлов - удалить все расширения
+            echo "${BASE_NAME%%.*}"
         fi
     else
-        ARCHIVE_NAME="$(basename "$CURRENT_DIR")"
+        # Получаем имя директории/папки без пути
+        DIR_NAME="$(basename "$CURRENT_DIR")"
         # Вывод окна kdialog для ввода имени архива при выборе нескольких файлов/папок
-        ARCHIVE_NAME=$(kdialog --inputbox "Enter archive name" "$ARCHIVE_NAME")
-        [ -z "$ARCHIVE_NAME" ] && handle_error "Archive name not provided"
+        CUSTOM_NAME="$(kdialog --title "Archive Name" --inputbox "Enter archive name" "$DIR_NAME")"
+        EXIT_CODE=$? # сразу присваиваем код возврата последней команды ($?) в локальную переменную EXIT_CODE и ссылаемся на нее для надежности
+        # Если пользователь нажал Cancel
+        if [[ "$EXIT_CODE" -eq 1 ]]; then
+            dolphin_notify "❕ Info" "Operation canceled"
+            exit 1
+        fi
+        # Если пользователь оставил поле пустым
+        if [[ -z "$CUSTOM_NAME" ]]; then
+            dolphin_notify "❕ Info" "Archive name cannot be empty"
+            exit 1
+        fi
+        echo "$CUSTOM_NAME"
     fi
+
 }
-ARCHIVE_NAME=$(generate_archive_name)
+generate_archive_name # Явно вызываем функцию генерации имени архива. Присвоение функции к имени архива ее не инициализирует. Проверено эксперементальным путем. Возможно особенность BASH, в дальнейшем нужно изучить подробнее
+ARCHIVE_NAME=$(generate_archive_name) # Присваиваем функцию к переменной
 
 # ---------------------------
 # Функция определения расширения архива
@@ -127,12 +147,13 @@ ARCHIVE_FULL_NAME="$CURRENT_DIR/$ARCHIVE_NAME$EXTENSION"
 # Функция проверки существующего архива
 # ---------------------------
 check_existing_archive() {
+    local EXIT_CODE
     if [ -f "$ARCHIVE_FULL_NAME" ]; then
         kdialog --title "Overwrite Warning" --yesno "The file $ARCHIVE_NAME$EXTENSION already exists. Overwrite?"
-        EXIT_CODE=$? # сразу присваиваем код возврата последней команды ($?) в перменную EXIT_CODE и ссылаемся на нее для надежности
-        if [ "$EXIT_CODE" -eq 1 ]; then
+        EXIT_CODE=$? # сразу присваиваем код возврата последней команды ($?) в локальную переменную EXIT_CODE и ссылаемся на нее для надежности
+        if [[ "$EXIT_CODE" -eq 1 ]]; then
             # Нажато "No" — завершаем программу
-            exit 1
+            exit 1 # Тихо завершаем завершаем работу без уведомления чтобы не раздражать пользователя :)
         fi
         # Нажато "Yes" — продолжаем выполнение
     fi

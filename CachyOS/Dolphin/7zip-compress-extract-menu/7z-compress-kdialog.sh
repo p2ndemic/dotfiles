@@ -1,8 +1,6 @@
 #!/bin/bash
-# https://specifications.freedesktop.org/notification-spec/latest/
-# mkdir -p ~/.local/bin/ && touch ~/.local/bin/7z-compress.sh
-# Полная версия скрипта архивации с управлением прерыванием и поддержкой горячик клавиш для завершения архивации
-# Вариант с kdialog и notify-send [KDE native]
+
+# https://documentation.help/7-Zip/start.htm
 
 # ---------------------------
 # Входные данные
@@ -62,10 +60,12 @@ echo $$ > "$PID_FILE"  # Сохраняем PID текущего процесс�
 
 cleanup() {
     rm -f "$PID_FILE"  # Удаляем PID-файл при завершении
-    
     # Принудительно завершаем процесс архивации, если он активен
-    [ -n "$archiving_pid" ] && kill -9 "$archiving_pid" 2>/dev/null
-    
+    if [ -n "$archiving_pid" ]; then
+        kill -TERM "$archiving_pid" 2>/dev/null # Отправляем сигнал SIGTERM процессу архивации для корректного
+        sleep 1 # Даем 1 секунду на завершение. Если процесс все еще активен, используем kill -9
+        kill -0 "$archiving_pid" 2>/dev/null && kill -9 "$archiving_pid" 2>/dev/null
+    fi
     # Удаляем частичный архив при неудачном завершении
     if [ "$archive_created" -ne 1 ] && [ -f "$archive_full_name" ]; then
         rm -f "$archive_full_name"
@@ -98,14 +98,14 @@ generate_archive_name() {
         if [[ "$base_name" = .* ]]; then
             echo "$base_name"
         else
-            # Удаляем все расширения для обычных файлов
-            echo "${base_name%%.*}"
+            # Удаляем только последнее расширение
+            echo "${base_name%.*}"
         fi
     else
-        # Вывод окна kdialog для ввода имени архива при выборе нескольких файлов/папок
+        # Ввод имени архива для нескольких файлов
         local dir_name="$(basename "$current_dir")"
         local custom_name=$(kdialog --title "Archive Name" --inputbox "Enter archive name" "$dir_name")
-        [ -z "$custom_name" ] && handle_error "Archive name not provided"
+        [ -z "$custom_name" ] && dolphin_notify "Archive name not provided"
         echo "$custom_name"
     fi
 }
@@ -135,7 +135,10 @@ check_existing_archive() {
     if [ -f "$archive_full_name" ]; then
         kdialog --title "Overwrite Warning" \
                 --yesno "The file $archive_name$extension already exists. Overwrite?"
-        || exit 1
+        if [ $? -ne 0 ]; then
+            dolphin_notify "❕Operation Canceled" "Archiving was canceled by user"
+            exit 0
+        fi
     fi
 }
 check_existing_archive
@@ -157,11 +160,15 @@ case "$action" in
         ;;
 
     "-pack7zPass")
-        password=$(kdialog --title "Password Required" --password "Enter archive password")
-        [ -z "$password" ] && handle_error "❕ Info" "Operation canceled"
-        7z a -t7z -p"$password" "$archive_full_name" "${files[@]}" -aoa &
+        password=$(kdialog --title "Password Required" --password "Enter archive password:")
+        # Проверяем код возврата kdialog (0 - OK, 1 - Cancel/пусто)
+        if [ $? -ne 0 ] || [ -z "$password" ]; then
+             dolphin_notify "❕ Info" "Password entry canceled. Archive not created."
+             exit 5 # Выход с кодом 5 (отмена ввода)
+        fi
+        7z a -t7z -p"$password" -mhe=on "$archive_full_name" "${files[@]}" -aoa &
         archiving_pid=$!
-        wait $archiving_pid || handle_error "Password protected archive failed"
+        wait $archiving_pid || handle_error "Failed to create password protected $extension archive"
         ;;
 
     "-packTarGz")
@@ -184,7 +191,8 @@ esac
 # ---------------------------
 # Финальное уведомление
 # ---------------------------
-dolphin_notify --action="open=Open Location" "✅ Archive Created" "Successfully created: <b><a href='file://$archive_full_name'>${archive_name}${extension}</a></b>"
+dolphin_notify "✅ Archive Created" "Successfully created: <b><a href='file://$archive_full_name'>${archive_name}${extension}</a></b>"
 
 archive_created=1  # Помечаем успешное завершение
 xdg-open "$current_dir" &  # Открываем директорию с архивом
+exit 0

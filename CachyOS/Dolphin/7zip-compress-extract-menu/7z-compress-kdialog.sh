@@ -51,7 +51,7 @@ cleanup() {
     rm -f "$PID_FILE"  # Удаляем PID-файл при завершении
     # Принудительно завершаем процесс архивации, если он активен
     if [ -n "$archiving_pid" ]; then
-        kill -TERM "$archiving_pid" 2>/dev/null # Отправляем сигнал SIGTERM процессу архивации для корректного
+        kill -TERM "$archiving_pid" 2>/dev/null # Отправляем сигнал SIGTERM процессу архивации для корректного завершения
         sleep 1 # Даем 1 секунду на завершение. Если процесс все еще активен, используем kill -9
         kill -0 "$archiving_pid" 2>/dev/null && kill -9 "$archiving_pid" 2>/dev/null
     fi

@@ -58,7 +58,7 @@ cleanup() {
     # Удаляем частичный архив при неудачном завершении
     if [ "$archive_created" -ne 1 ] && [ -f "$archive_full_name" ]; then
         rm -f "$archive_full_name"
-        dolphin_notify "❕Temporary Files Removed" "Incomplete archive deleted"
+        dolphin_notify "🚮 Temporary Files Removed" "Incomplete archive deleted"
     fi
 }
 trap cleanup EXIT  # Регистрируем функцию очистки при выходе

@@ -6,13 +6,6 @@
 # Вариант с kdialog и notify-send [KDE native]
 
 # ---------------------------
-# Входные данные
-# ---------------------------
-action="$1"                      # Действие из .desktop файла (-pack7z, -packZip и т.д.)
-files=("${@:2}")                 # Список всех выбранных файлов (%F)
-current_dir="$(pwd -P)"          # Использовать полный физический путь к директории, игнорируя симлинки
-
-# ---------------------------
 # Кастомные уведомления
 # ---------------------------
 dolphin_notify() {
@@ -41,13 +34,6 @@ handle_error() {
 command -v 7z >/dev/null 2>&1 || handle_error "7zip not installed"
 command -v tar >/dev/null 2>&1 || handle_error "tar not installed"
 command -v kdialog >/dev/null 2>&1 || handle_error "kdialog not installed"
-
-# ---------------------------
-# Проверка аргументов
-# ---------------------------
-if [ -z "$action" ] || [ ${#files[@]} -eq 0 ]; then
-    handle_error "Invalid arguments. Usage: <-action> <file1> [file2 ...]"
-fi
 
 # ---------------------------
 # Конфигурационные параметры
@@ -90,6 +76,20 @@ handle_cancel() {
 trap handle_cancel $CANCEL_SIGNAL  # Регистрируем обработчик сигнала
 
 # ---------------------------
+# Входные данные
+# ---------------------------
+action="$1"                      # Действие из .desktop файла (-pack7z, -packZip и т.д.)
+files=("${@:2}")                 # Список всех выбранных файлов (%F)
+current_dir="$(pwd -P)"          # Использовать полный физический путь к директории, игнорируя симлинки
+
+# ---------------------------
+# Проверка аргументов
+# ---------------------------
+if [ -z "$action" ] || [ ${#files[@]} -eq 0 ]; then
+    handle_error "Invalid arguments. Usage: <-action> <file1> [file2 ...]"
+fi
+
+# ---------------------------
 # Функция генерации имени архива
 # ---------------------------
 generate_archive_name() {
@@ -115,7 +115,7 @@ generate_archive_name() {
 archive_name=$(generate_archive_name)
 
 # ---------------------------
-# Определение расширения архива
+# Функция определения расширения архива
 # ---------------------------
 get_archive_extension() {
     local current_action="$1"
@@ -132,7 +132,7 @@ extension="$(get_archive_extension "$action")"
 archive_full_name="$current_dir/$archive_name$extension"
 
 # ---------------------------
-# Проверка существующего архива
+# Функция проверки существующего архива
 # ---------------------------
 check_existing_archive() {
     if [ -f "$archive_full_name" ]; then
@@ -144,6 +144,7 @@ check_existing_archive() {
         fi
     fi
 }
+# Проверка существования архива перед запуском процесса архивации
 check_existing_archive
 
 # ---------------------------

@@ -97,7 +97,7 @@ generate_archive_name() {
             echo "$FILE_NAME"
         else
             # Удаляем только последнее расширение
-            echo "${FILE_NAME%.*}"
+            echo "${FILE_NAME%%.*}"
         fi
     else
         # Ввод имени архива для нескольких файлов

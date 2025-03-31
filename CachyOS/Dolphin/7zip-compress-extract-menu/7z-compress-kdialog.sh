@@ -181,10 +181,6 @@ case "$action" in
         ;;
 esac
 
-# Сохраняем PID процесса архивации
-archiving_pid=$!
-wait $archiving_pid || handle_error "Archiving process failed"
-
 # ---------------------------
 # Финальное уведомление
 # ---------------------------

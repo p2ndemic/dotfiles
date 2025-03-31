@@ -85,30 +85,23 @@ if [ -z "$ACTION" ] || [ ${#FILES[@]} -eq 0 ]; then
 fi
 
 # ---------------------------
-# Функция генерации имени архива
+#  генерации имени архива
 # ---------------------------
-generate_archive_name() {
-    if [ ${#FILES[@]} -eq 1 ]; then
-        # Обработка одиночного файла
-        local FILE_NAME="$(basename "${FILES[0]}")"
-        
-        # Для скрытых файлов сохраняем полное имя
-        if [[ "$FILE_NAME" = .* ]]; then
-            echo "$FILE_NAME"
-        else
-            # Удаляем только последнее расширение
-            echo "${FILE_NAME%%.*}"
-        fi
+if [ ${#files[@]} -eq 1 ]; then
+    base_name="$(basename "${files[0]}")"
+    # Для скрытых файлов/папок (начинающихся с точки) - сохранить полное имя
+    if [[ "$base_name" = .* ]]; then
+        archive_name="$base_name"
     else
-        # Ввод имени архива для нескольких файлов
-        local DIR_NAME="$(basename "$CURRENT_DIR")"
-        local CUSTOM_NAME=$(kdialog --title "Archive Name" --inputbox "Enter archive name" "$DIR_NAME")
-        [ -z "$CUSTOM_NAME" ] && dolphin_notify "Archive name not provided"
-        echo "$CUSTOM_NAME"
+        # Для обычных файлов - удалить все расширения
+        archive_name="${base_name%%.*}"
     fi
-}
-# Генерация имени архива
-ARCHIVE_NAME=$(generate_archive_name)
+else
+    archive_name="$(basename "$current_dir")"
+    # Вывод окна kdialog для ввода имени архива при выборе нескольких файлов/папок
+    archive_name=$(kdialog --inputbox "Enter archive name" "$archive_name")
+    [ -z "$archive_name" ] && handle_error "Archive name not provided"
+fi
 
 # ---------------------------
 # Функция определения расширения архива

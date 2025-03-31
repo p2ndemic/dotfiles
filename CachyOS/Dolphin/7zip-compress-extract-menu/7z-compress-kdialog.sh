@@ -13,6 +13,20 @@ files=("${@:2}")                 # Список всех выбранных фа
 current_dir="$(pwd -P)"          # Использовать полный физический путь к директории, игнорируя симлинки
 
 # ---------------------------
+# Кастомные уведомления
+# ---------------------------
+dolphin_notify() {
+    local summary="$1"
+    local body="$2"
+    notify-send \
+        --app-name="🐬 Dolphin" \
+        --expire-time=1000 \
+        --urgency=normal \
+        "$summary" \
+        "$body"
+}
+
+# ---------------------------
 # Функция обработки ошибок
 # ---------------------------
 handle_error() {
@@ -34,20 +48,6 @@ command -v kdialog >/dev/null 2>&1 || handle_error "kdialog not installed"
 if [ -z "$action" ] || [ ${#files[@]} -eq 0 ]; then
     handle_error "Invalid arguments. Usage: <-action> <file1> [file2 ...]"
 fi
-
-# ---------------------------
-# Кастомные уведомления
-# ---------------------------
-dolphin_notify() {
-    local summary="$1"
-    local body="$2"
-    notify-send \
-        --app-name="🐬 Dolphin" \
-        --expire-time=1000 \
-        --urgency=normal \
-        "$summary" \
-        "$body"
-}
 
 # ---------------------------
 # Конфигурационные параметры

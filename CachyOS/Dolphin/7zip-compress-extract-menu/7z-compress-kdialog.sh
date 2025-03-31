@@ -136,8 +136,7 @@ archive_full_name="$current_dir/$archive_name$extension"
 # ---------------------------
 check_existing_archive() {
     if [ -f "$archive_full_name" ]; then
-        kdialog --title "Overwrite Warning" \
-                --yesno "The file $archive_name$extension already exists. Overwrite?"
+        kdialog --title "Overwrite Warning" --yesno "The file $archive_name$extension already exists. Overwrite?"
         if [ $? -ne 0 ]; then
             dolphin_notify "❕Operation Canceled" "Archiving was canceled by user"
             exit 0

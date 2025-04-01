@@ -2,7 +2,7 @@
 # Based on github.com/CachyOS/cachyos-alacritty-config
 #=====================================================#
 [env]
-TERM = "alacritty"
+TERM = "xterm-256color"
 WINIT_X11_SCALE_FACTOR = "1"
 
 [window]
@@ -183,5 +183,5 @@ action = "ToggleFullscreen"
 live_config_reload = true
 working_directory = "None"
 import = [
-    "~/.config/alacritty/themes/octopi_default_theme.toml"
+    "~/.config/alacritty/themes/github_dark_high_contrast.toml"
 ]

@@ -122,13 +122,22 @@ generate_archive_name # Вызываем функцию генерации им�
 # ---------------------------
 # Функция определения расширения архива
 # ---------------------------
+# Функция для получения расширения архива
 get_archive_extension() {
     local CURRENT_ACTION="$1"
     case "$CURRENT_ACTION" in
-        "-pack7z"|"-pack7zMax"|"-pack7zPass") echo ".7z" ;;
-        "-packTarGz") echo ".tar.gz" ;;
-        "-packZip") echo ".zip" ;;
-        *) handle_error "Unknown action: $CURRENT_ACTION" ;;
+        "-pack7z"|"-pack7zMax"|"-pack7zPass")
+            echo ".7z"
+            ;;
+        "-packTarGz")
+            echo ".tar.gz"
+            ;;
+        "-packZip")
+            echo ".zip"
+            ;;
+        *)
+            handle_error "Unknown action: $CURRENT_ACTION"
+            ;;
     esac
 }
 

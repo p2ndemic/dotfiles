@@ -1,9 +1,9 @@
 ########################################################################
 # [Dolphin] Change the default terminal emulator
 # The setting can also be directly changed by modifying the configuration file ~/.config/kdeglobals. For example, to use alacritty add in the [General] section:
-# [General]
-# TerminalApplication=alacritty
-# TerminalService=Alacritty.desktop
+[General]
+TerminalApplication=alacritty
+TerminalService=Alacritty.desktop
 ########################################################################
 
 ########################################################################

@@ -10,9 +10,12 @@ TerminalService=Alacritty.desktop
 Environment variables
 ########################################################################
 ### Fish
-echo "set -Ux TERM alacritty" >> ~/.config/fish/config.fish
-echo "set -Ux TERMINAL alacritty" >> ~/.config/fish/config.fish
-echo "set -Ux COLORTERM truecolor" >> ~/.config/fish/config.fish
+#echo "set -Ux TERM alacritty" >> ~/.config/fish/config.fish
+#echo "set -Ux TERMINAL alacritty" >> ~/.config/fish/config.fish
+#echo "set -Ux TERM xterm-256color" >> ~/.config/fish/config.fish
+#echo "set -Ux TERMINAL xterm-256color" >> ~/.config/fish/config.fish
+#echo "set -Ux COLORTERM truecolor" >> ~/.config/fish/config.fish
+
 echo "set -Ux EDITOR nano" >> ~/.config/fish/config.fish
 echo "set -Ux VISUAL nano" >> ~/.config/fish/config.fish
 echo "set -Ux SUDO_EDITOR nano" >> ~/.config/fish/config.fish

@@ -33,7 +33,7 @@ handle_error() {
 # ---------------------------
 command -v 7z >/dev/null 2>&1 || handle_error "7zip not installed"
 command -v tar >/dev/null 2>&1 || handle_error "tar not installed"
-command -v kdialog >/dev/null 2>&1 || handle_error "kdialog not installed"
+command -v zenity >/dev/null 2>&1 || handle_error "zenity not installed"
 
 # ---------------------------
 # Конфигурационные параметры
@@ -103,7 +103,7 @@ generate_archive_name() {
         # Получаем имя директории/папки без пути
         DIR_NAME="$(basename "$CURRENT_DIR")"
         # Вывод окна kdialog для ввода имени архива при выборе нескольких файлов/папок
-        ARCHIVE_NAME="$(kdialog --title "Archive Name" --inputbox "Enter archive name" "$DIR_NAME")"
+        ARCHIVE_NAME="$(zenity --entry --title="Archive Name" --text="Enter archive name" --entry-text="$DIR_NAME")"
         EXIT_CODE=$? # сразу присваиваем код возврата последней команды ($?) в локальную переменную EXIT_CODE и ссылаемся на нее для надежности
         # Если пользователь нажал Cancel
         if [[ "$EXIT_CODE" -eq 1 ]]; then
@@ -151,7 +151,7 @@ ARCHIVE_FULL_NAME="$CURRENT_DIR/$ARCHIVE_NAME$EXTENSION"
 check_existing_archive() {
     local EXIT_CODE
     if [[ -f "$ARCHIVE_FULL_NAME" ]]; then
-        kdialog --title "Overwrite Warning" --yesno "The file $ARCHIVE_NAME$EXTENSION already exists. Overwrite?"
+        zenity --question --title="Confirm Overwrite" --text="The file $ARCHIVE_NAME$EXTENSION already exists. Overwrite?"
         EXIT_CODE=$? # сразу присваиваем код возврата последней команды ($?) в локальную переменную EXIT_CODE и ссылаемся на нее для надежности
         if [[ "$EXIT_CODE" -eq 1 ]]; then
             # Нажато "No" — завершаем программу
@@ -180,7 +180,7 @@ case "$ACTION" in
         ;;
 
     "-pack7zPass")
-        PASSWORD=$(kdialog --title "Password protection" --password "Enter archive password:")
+        PASSWORD=$(zenity --title="Password protection" --entry --text="Enter archive password" --hide-text)
         if [[ -n "$PASSWORD" ]]; then
         # [[ -n "$password" ]] проверяет, не пуста ли переменная $password
         # Если пользователь ввел пароль и нажал "OK", $password содержит значение == условие истинно

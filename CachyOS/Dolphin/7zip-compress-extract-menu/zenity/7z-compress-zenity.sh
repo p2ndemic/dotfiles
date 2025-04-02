@@ -102,7 +102,7 @@ generate_archive_name() {
     else
         # Получаем имя директории/папки без пути
         DIR_NAME="$(basename "$CURRENT_DIR")"
-        # Вывод окна kdialog для ввода имени архива при выборе нескольких файлов/папок
+        # Вывод окна zenity для ввода имени архива при выборе нескольких файлов/папок
         ARCHIVE_NAME="$(zenity --entry --title="Archive Name" --text="Enter archive name" --entry-text="$DIR_NAME")"
         EXIT_CODE=$? # сразу присваиваем код возврата последней команды ($?) в локальную переменную EXIT_CODE и ссылаемся на нее для надежности
         # Если пользователь нажал Cancel

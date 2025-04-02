@@ -1,7 +1,7 @@
 ### General
 --restrict-filenames
---output "~/Загрузки/Arch1ve/yt-dlp/%(title)s.%(ext)s"
---output-na-placeholder "~/Загрузки/Arch1ve/yt-dlp/%(title)s.audio.%(ext)s"
+--output "$HOME/Загрузки/Arch1ve/yt-dlp/%(title)s.%(ext)s"
+--output-na-placeholder "$HOME/Загрузки/Arch1ve/yt-dlp/%(title)s.audio.%(ext)s"
 --no-mtime
 --no-mark-watched
 #--ignore-errors
@@ -10,12 +10,12 @@
 
 ### Download archive [optional]
 ### Download only videos not listed in the archive file. Record the IDs of all downloaded videos in it.
-#--download-archive ~/Загрузки/Arch1ve/yt-dlp/ytdlp_archive.txt
+#--download-archive $HOME/Загрузки/Arch1ve/yt-dlp/ytdlp_archive.txt
 #--break-on-existing
 
 
 ### Network | Cache
---cache-dir "~/Загрузки/Arch1ve/yt-dlp/cache"
+--cache-dir "$HOME/Загрузки/Arch1ve/yt-dlp/cache"
 --concurrent-fragments 8
 --buffer-size 16K
 --resize-buffer

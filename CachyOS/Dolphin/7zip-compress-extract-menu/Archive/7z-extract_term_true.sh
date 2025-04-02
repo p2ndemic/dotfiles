@@ -18,7 +18,7 @@ extract_archive() {
     local output_dir="$2"
 
     case "$archive" in
-        *.tar|*.tar.gz|*.tar.bz2|*.tar.xz|*.tgz)
+        *.tar|*.tar.bz2|*.tbz2|*.tar.gz|*.tgz|*.tar.lzo|*.tar.xz|*.txz|*.tar.zst|*.tzst)
             tar -xf "$archive" -C "$output_dir"
             ;;
         *)

@@ -31,9 +31,15 @@ handle_error() {
 # ---------------------------
 # Проверка зависимостей
 # ---------------------------
-command -v 7z >/dev/null 2>&1 || handle_error "7zip not installed"
-command -v tar >/dev/null 2>&1 || handle_error "tar not installed"
-command -v kdialog >/dev/null 2>&1 || handle_error "kdialog not installed"
+check_deps() {
+    local CMD
+    for CMD in 7z tar kdialog; do
+        if ! command -v "$CMD" &>/dev/null; then
+            handle_error "$CMD not installed"
+        fi
+    done
+}
+check_deps
 
 # ---------------------------
 # Конфигурационные параметры

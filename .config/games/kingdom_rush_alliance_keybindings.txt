@@ -1,4 +1,4 @@
-# ~/Prefixes/default/Kingdom Rush 5 Alliance TD/pfx/drive_c/users/steamuser/AppData/Roaming/kingdom_rush_alliance/settings.lua
+# $HOME/Games/Heroic/Prefixes/default/Kingdom Rush Alliance/pfx/drive_c/users/steamuser/AppData/Roaming/kingdom_rush_alliance/settings.lua
 
 ["joy_rate_limit_delay_repeat"] = 0.15;
 

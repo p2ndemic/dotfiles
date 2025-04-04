@@ -1,0 +1,6 @@
+# Исправление ошибки:
+kwin_wayland[776]: kwin_scene_opengl: Invalid framebuffer status:  "GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT"
+
+
+# Выполнить
+systemctl --user enable plasma-plasmashell

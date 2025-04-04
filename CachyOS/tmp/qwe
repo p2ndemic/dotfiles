@@ -1,0 +1,14 @@
+check_existing_archive() {
+    local kdialog_EXIT_CODE
+    if [[ -f "$ARCHIVE_FULL_NAME" ]]; then
+        kdialog --title "Confirm Overwrite" --yesno "The file $ARCHIVE_NAME$EXTENSION already exists. Overwrite?"
+        EXIT_CODE=$? # сразу присваиваем код возврата последней команды ($?) в локальную переменную EXIT_CODE и ссылаемся на нее для надежности
+        if [[ "$kdialog_EXIT_CODE" -eq 1 ]]; then
+            # Нажато "No" — завершаем программу
+            return 1 # Тихо завершаем завершаем работу без уведомления чтобы не раздражать пользователя
+        fi
+            return 0
+        # Нажато "Yes" — продолжаем выполнение
+    fi
+    return 0
+}

@@ -12,7 +12,7 @@ Arch Linux, как и большинство современных дистри
 
 Чтобы увидеть все логи с момента последней загрузки системы, выполните:
 
-sudo journalctl -b | grep -iE 'error|failed|warn|invalid'
+sudo journalctl -b | grep -iE 'error|failed|warn|invalid|bad|unable'
 
 ```bash
 journalctl -b

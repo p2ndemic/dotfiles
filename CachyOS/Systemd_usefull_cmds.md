@@ -14,6 +14,7 @@ Arch Linux, как и большинство современных дистри
 
 ```sudo journalctl -b | grep -iE 'error|failed|warn|invalid|bad|unable' | gawk '!seen[$0]++'```
 
+```gawk '!seen[$0]++' | sudo journalctl -b -p 4```
 ```bash
 journalctl -b
 -b (или --boot): Показывает сообщения только для текущей загрузки. Без этого флага journalctl покажет все сохраненные логи, что может быть очень много.

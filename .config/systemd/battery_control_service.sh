@@ -53,7 +53,7 @@ WantedBy=multi-user.target
 EOF
 
 # 5. Делаем скрипты исполняемыми
-sudo chmod +x /usr/local/bin/{static,dynamic}-charge-*.sh
+sudo chmod +ax /usr/local/bin/{static,dynamic}-charge-*.sh
 
 # 6. Перечитываем конфигурацию systemd
 sudo systemctl daemon-reload

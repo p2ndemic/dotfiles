@@ -14,7 +14,7 @@ sudo tee /usr/local/bin/dynamic-charge-control.sh > /dev/null <<'EOF'
 trap "exit 0" SIGTERM
 UPPER_LIMIT=80
 LOWER_LIMIT=20
-CHECK_INTERVAL=60
+CHECK_INTERVAL=180
 
 while true; do
     CURRENT_CAPACITY=$(cat /sys/class/power_supply/BAT0/capacity)
@@ -34,8 +34,8 @@ sudo tee /etc/systemd/system/dynamic-charge-control.service > /dev/null <<'EOF'
 [Unit]
 Description=Dynamic Battery Charge Control
 After=multi-user.target
+Conflicts=shutdown.target reboot.target halt.target
 Before=shutdown.target reboot.target halt.target
-#Conflicts=shutdown.target reboot.target halt.target
 
 [Service]
 Type=simple

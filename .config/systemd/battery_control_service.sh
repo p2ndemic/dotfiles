@@ -35,14 +35,16 @@ sudo tee /etc/systemd/system/dynamic-charge-control.service > /dev/null <<'EOF'
 Description=Dynamic Battery Charge Control
 After=multi-user.target
 Before=shutdown.target reboot.target halt.target
-Conflicts=shutdown.target reboot.target halt.target
+#Conflicts=shutdown.target reboot.target halt.target
 
 [Service]
 Type=simple
 User=root
+Group=root
 ExecStart=/usr/local/bin/dynamic-charge-control.sh
 ExecStop=/usr/local/bin/static-charge-limit.sh
 Restart=on-failure
+RestartSec=10
 TimeoutStopSec=5
 KillMode=control-group
 

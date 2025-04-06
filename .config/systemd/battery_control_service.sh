@@ -12,18 +12,18 @@ EOF
 sudo tee /usr/local/bin/dynamic-charge-control.sh > /dev/null <<'EOF'
 #!/bin/bash
 trap "exit 0" SIGTERM
-UPPER_LIMIT=80
-LOWER_LIMIT=20
-CHECK_INTERVAL=120
+UPPER_LIMIT=80 # Верхний лимит заряда
+LOWER_LIMIT=20 # Нижний лимит заряда
+CHECK_INTERVAL=120 # Интервал проверки скрипта
 
 while true; do
-    CURRENT_CAPACITY=$(cat /sys/class/power_supply/BAT0/capacity)
-    CURRENT_MODE=$(cat /sys/class/power_supply/BAT0/charge_behaviour)
+    CURRENT_CAPACITY=$(cat /sys/class/power_supply/BAT0/capacity) # Текущий уровень заряда
+    CURRENT_MODE=$(cat /sys/class/power_supply/BAT0/charge_behaviour) # Текущий статус (Charging/Discharging) 
 
     if [ "$CURRENT_CAPACITY" -le "$LOWER_LIMIT" ] && [ "$CURRENT_MODE" != "auto" ]; then
-        echo "auto" | tee /sys/class/power_supply/BAT0/charge_behaviour
+        echo "auto" | tee /sys/class/power_supply/BAT0/charge_behaviour # Если заряд <= MIN_THRESHOLD и батарея разряжается:
     elif [ "$CURRENT_CAPACITY" -ge "$UPPER_LIMIT" ] && [ "$CURRENT_MODE" != "inhibit-charge" ]; then
-        echo "inhibit-charge" | tee /sys/class/power_supply/BAT0/charge_behaviour
+        echo "inhibit-charge" | tee /sys/class/power_supply/BAT0/charge_behaviour # Если подключено питание, вернуть авторежим
     fi
     sleep $CHECK_INTERVAL
 done

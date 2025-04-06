@@ -14,7 +14,7 @@ sudo tee /usr/local/bin/dynamic-charge-control.sh > /dev/null <<'EOF'
 trap "exit 0" SIGTERM
 UPPER_LIMIT=80
 LOWER_LIMIT=20
-CHECK_INTERVAL=180
+CHECK_INTERVAL=120
 
 while true; do
     CURRENT_CAPACITY=$(cat /sys/class/power_supply/BAT0/capacity)

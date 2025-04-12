@@ -4,7 +4,7 @@ sudo tee /usr/local/bin/set-battery-threshold.sh <<'EOF'
 echo 80 | tee /sys/class/power_supply/BAT0/charge_control_end_threshold
 EOF
 
-# Дать права на выполнение (безопасная версия)
+# Дать права на выполнение
 sudo chmod +x /usr/local/bin/set-battery-threshold.sh
 
 # Создать systemd службу

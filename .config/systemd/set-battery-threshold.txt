@@ -8,7 +8,7 @@ EOF
 sudo chmod +x /usr/local/bin/set-battery-threshold.sh
 
 # Создать systemd службу
-sudo tee /etc/systemd/system/battery-threshold.service <<'EOF'
+sudo tee /etc/systemd/system/set-battery-threshold.service <<'EOF'
 [Unit]
 Description=Set battery charge threshold
 After=multi-user.target
@@ -24,4 +24,4 @@ WantedBy=multi-user.target
 EOF
 
 # Активировать и запустить службу
-sudo systemctl enable --now battery-threshold.service
+sudo systemctl enable --now set-battery-threshold.service

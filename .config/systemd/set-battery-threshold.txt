@@ -16,6 +16,7 @@ After=multi-user.target
 [Service]
 Type=oneshot
 ExecStart=/usr/local/bin/set-battery-threshold.sh
+Restart=on-failure
 RemainAfterExit=yes
 
 [Install]

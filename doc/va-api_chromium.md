@@ -1,6 +1,7 @@
 https://chromium.googlesource.com/chromium/src/+/refs/heads/main/docs/gpu/vaapi.md#va_api
 https://bbs.archlinux.org/viewtopic.php?id=244031&p=38
 https://bbs.archlinux.org/viewtopic.php?id=244031&p=44
+https://github.com/kvaster/gentoo-notes/blob/19889a937171a471891cf95bfde16a4fac2b4410/chromium.md?plain=1#L40
 
 find / -name "*chromium*" 2> /dev/null
 

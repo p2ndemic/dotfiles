@@ -93,3 +93,49 @@ VaAPI on Linux with Vulkan
 --enable-features=AcceleratedVideoEncoder,VaapiOnNvidiaGPUs,VaapiIgnoreDriverChecks,Vulkan,DefaultANGLEVulkan,VulkanFromANGLE \
 --ignore-gpu-blocklist --disable-gpu-driver-bug-workaround
 Refer to the previous section to verify support and use of the VaAPI.
+
+#################################################################################################
+
+Full Vilkan support on native Wayland:
+--ozone-platform=wayland --use-vulkan --enable-features=Vulkan,VulkanFromANGLE,DefaultANGLEVulkan
+
+Optional hint for Vulkan:
+--use-gl=angle --use-angle=vulkan
+--enable-features=UseOzonePlatform
+
+Optional Wayland hint:
+--enable-features=WaylandWindowDecorations
+
+
+VAAPI Decode (basic):
+--enable-features=AcceleratedVideoDecodeLinuxGL
+
+also zero copy variant:
+--enable-features=AcceleratedVideoDecodeLinuxZeroCopyGL
+
+VAAPI Decode (more options, not guarantee to work on new versions):
+--enable-features=VaapiIgnoreDriverChecks,UseMultiPlaneFormatForHardwareVideo,PlatformHEVCDecoderSupport
+
+VAAPI Encode:
+--enable-features=AcceleratedVideoEncoder
+
+also some other old options:
+--enable-accelerated-mjpeg-decode --enable-global-vaapi-lock --use-gpu-scheduler-dfs --cast-streaming-hardware-h264
+
+
+Other "performance" options
+--enable-zero-copy --canvas-oop-rasterization --enable-gpu-rasterization
+--enable-features=CanvasOopRasterization
+
+
+Enabling Web GPU (only with unsafe option):
+--enable-gpu --enable-unsafe-webgpu
+
+
+Also a lot of workaround options like:
+--disable-gpu-driver-bug-workarounds --ignore-gpu-blocklist
+But they are for situations when "nothing helped"
+
+
+!!! Do not try to enable Skia Graphite with Vulkan -- you will get neither Vulkan, nor Skia Graphite working !!!
+!!! RawDraw with Vulkan "works" but you'll get content with all text disappeared !!!

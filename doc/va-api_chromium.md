@@ -2,6 +2,7 @@ https://chromium.googlesource.com/chromium/src/+/refs/heads/main/docs/gpu/vaapi.
 https://bbs.archlinux.org/viewtopic.php?id=244031&p=38
 https://bbs.archlinux.org/viewtopic.php?id=244031&p=44
 https://github.com/kvaster/gentoo-notes/blob/19889a937171a471891cf95bfde16a4fac2b4410/chromium.md?plain=1#L40
+https://github.com/dimaslanjaka/dimaslanjaka.github.io/blob/2b298b94bbdd332d9037c8a083e117de0090b2d1/list-of-chrome-driver-command-line-arguments.html#L864
 
 find / -name "*chromium*" 2> /dev/null
 

@@ -2,6 +2,8 @@ https://chromium.googlesource.com/chromium/src/+/refs/heads/main/docs/gpu/vaapi.
 https://bbs.archlinux.org/viewtopic.php?id=244031&p=38
 https://bbs.archlinux.org/viewtopic.php?id=244031&p=44
 
+find / -name "*chromium*" 2> /dev/null
+
 VA-API
 This page documents tracing and debugging the Video Acceleration API (VaAPI or VA-API) on ChromeOS. VA-API is an open-source library and API specification, providing access to graphics hardware acceleration capabilities for video and image processing. VA-API is used on ChromeOS on both Intel and AMD platforms.
 

@@ -31,3 +31,54 @@ Post Install:
 General QOL Fixes
 Run the audio script [https://github.com/WeirdTreeThing/chromebook-linux-audio] if you haven't already.
 Run the cros-keyboard-map script [https://github.com/WeirdTreeThing/cros-keyboard-map] to remap top row FX keys.
+
+
+Chromium flags:
+
+https://github.com/ozankiratli/dotfiles/blob/0ce24771f5c8de6a238fef3ef28812cc7d28a791/.config/sway/scripts/rstudio-wayland#L49
+
+
+
+############
+All flags I'm using:
+
+--ignore-gpu-blocklist
+--canvas-msaa-sample-count=2
+--enable-accelerated-2d-canvas
+--enable-checker-imaging
+--enable-experimental-canvas-features
+--enable-fast-unload
+--enable-gpu-compositing
+--enable-gpu-rasterization
+--enable-gpu-memory-buffers
+--enable-oop-rasterization
+--enable-raw-draw
+--enable-tcp-fastopen
+--enable-webgl-image-chromium
+--enable-zero-copy
+--force-display-list-2d-canvas
+--force-gpu-rasterization
+--javascript-harmony
+--ui-enable-zero-copy
+--use-skia-deferred-display-list
+--use-skia-renderer
+--use-vulkan
+--v8-cache-options=code
+--v8-cache-strategies-for-cache-storage=aggressive
+--enable-accelerated-video
+--enable-accelerated-video-decode
+--enable-accelerated-video-encode
+--enable-accelerated-vpx-decode=3
+--enable-accelerated-mjpeg-decode
+--enable-vp9-kSVC-decode-acceleration
+--use-gl=angle
+--use-angle=vulkan
+--enable-features=VaapiVideoDecoder,VaapiVideoEncoder,VaapiIgnoreDriverChecks,CanvasOopRasterization,Vulkan,VulkanFromANGLE,DefaultANGLEVulkan,PlatformHEVCDecoderSupport,UseChromeOSDirectVideoDecoder,UseMultiPlaneFormatForHardwareVideo
+If I remove:
+
+--use-angle=vulkan
+and chnage features to:
+
+--enable-features=VaapiVideoDecoder,VaapiVideoEncoder,VaapiIgnoreDriverChecks,CanvasOopRasterization,Vulkan,PlatformHEVCDecoderSupport,UseChromeOSDirectVideoDecoder,UseMultiPlaneFormatForHardwareVideo
+I will see that GL_RENDERER points to integrated gpu (GPU0), but hw video decoding is not working anymore (same for video encoding).
+############

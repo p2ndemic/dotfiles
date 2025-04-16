@@ -1,0 +1,6 @@
+sudo nano /etc/makepkg.conf
+
+# Обновить значения ниже:
+CARCH="x86_64_v3"
+CHOST="x86_64-pc-linux-gnu"
+PACKAGECARCH="x86_64_v3"

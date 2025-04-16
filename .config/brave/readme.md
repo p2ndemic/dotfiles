@@ -25,6 +25,7 @@ _--### ChromeOSDirectVideoDecoder ###--_
 ```--enable-features==UseChromeOSDirectVideoDecoder```  
 ```--disable-features=UseChromeOSDirectVideoDecoder```
 
+_--### Disable prerender from omnibox ###--_  
 ```--prerender-from-omnibox=disabled```
 
 _--### Enable Async Dns [unstable] ###--_  

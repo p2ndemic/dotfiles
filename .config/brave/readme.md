@@ -11,5 +11,5 @@ cp ./policies.json /etc/brave/policies/managed/
 ```
 
 Adblock Lists [choose one]:
-```https://big.oisd.nl``` \
-```https://gitlab.com/hagezi/mirror/-/raw/main/dns-blocklists/adblock/pro.plus.txt```
+\ ```https://big.oisd.nl```
+\ ```https://gitlab.com/hagezi/mirror/-/raw/main/dns-blocklists/adblock/pro.plus.txt```

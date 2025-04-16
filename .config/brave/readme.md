@@ -24,3 +24,5 @@ _--### UseOzonePlatform ###--_
 _--### ChromeOSDirectVideoDecoder ###--_  
 ```--enable-features==UseChromeOSDirectVideoDecoder```  
 ```--disable-features=UseChromeOSDirectVideoDecoder```
+
+```--prerender-from-omnibox=disabled```

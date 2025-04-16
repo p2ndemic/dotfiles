@@ -28,7 +28,7 @@
 
 # Curl
 # --downloader curl
-# --downloader-args "curl:--http3 --tcp-fastopen --parallel --parallel-immediate --parallel-max 8 --location"
+# --downloader-args "curl:--http3 --tcp-fastopen --mptcp --parallel --parallel-immediate --parallel-max 50 --location"
 
 # Aria2c
 #--downloader aria2c

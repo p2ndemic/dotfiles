@@ -1,7 +1,7 @@
-### Config location:
+#### Config location:
 ```cp ./brave-flags.conf ~/.config/```
 
-###
+### Policies location:
 - https://support.brave.com/hc/en-us/articles/360039248271-Group-Policy
 - https://github.com/MulesGaming/brave-debloatinator/wiki/Additional-Resources#other-tools
 

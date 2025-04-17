@@ -36,3 +36,6 @@ _--### Enable Async Dns [unstable] ###--_
 
 ```--num-raster-threads=4```
 ```--use-cmd-decoder=passthrough```
+
+_--### Enable Raw-draw [unstable] ###--_ 
+```--enable-raw-draw```

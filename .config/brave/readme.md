@@ -26,9 +26,9 @@ _--### ChromeOSDirectVideoDecoder ###--_
 ```--disable-features=UseChromeOSDirectVideoDecoder```
 
 _--### Disable prerender from omnibox ###--_  
-```--prerender-from-omnibox=disabled```
-
-_--### Attempts to run a page's unload event handler independent of the main browser thread, potentially speeding up tab closing. ###--_
+```--prerender-from-omnibox=disabled```  
+  
+_--### Attempts to run a page's unload event handler independent of the main browser thread, potentially speeding up tab closing. ###--_  
 ```--enable-fast-unload```
 
 _--### Enable Async Dns [unstable] ###--_  

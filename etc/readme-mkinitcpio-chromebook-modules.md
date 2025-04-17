@@ -9,5 +9,5 @@ https://github.com/torvalds/linux/tree/master/drivers/platform/chrome
 Загрузить следующие модули:  
 chromeos_acpi chromeos_laptop cros_ec cros_ec_lpc cros_ec_lpc_mec cros_ec_proto cros_ec_typec  
 ```MODULES=(chromeos_acpi chromeos_laptop cros_ec cros_ec_lpc cros_ec_lpc_mec cros_ec_proto cros_ec_typec)```
-...
+...   
 ```sudo mkinitcpio -P```

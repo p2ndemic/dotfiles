@@ -32,10 +32,10 @@ _--### Attempts to run a page's unload event handler independent of the main bro
 ```--enable-fast-unload```
 
 _--### Enable Async Dns [unstable] ###--_  
-```--enable-async-dns```
+```--enable-async-dns```  
 
-```--num-raster-threads=4```
-```--use-cmd-decoder=passthrough```
+```--num-raster-threads=4```  
+```--use-cmd-decoder=passthrough```  
 
-_--### Enable Raw-draw [unstable] ###--_ 
-```--enable-raw-draw```
+_--### Enable Raw-draw [unstable] ###--_  
+```--enable-raw-draw```  

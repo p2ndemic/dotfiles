@@ -1,4 +1,5 @@
 ##### Добавить модули Chromebook чтобы исправить ошибку kernel: cros_ec_lpcs GOOG0004:00: packet too long (1 bytes, expected 0)  
+##### Драйвера/модули ядра для Chromebook:
 ```https://github.com/torvalds/linux/tree/master/drivers/platform/chrome```
 
 ##### Проверить какие модули загружены:

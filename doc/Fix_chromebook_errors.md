@@ -66,7 +66,7 @@
 Учитывая специфику `drivers/platform/chrome/`, если у вас не Chromebook, то отсутствие этих драйверов в ядре CachyOS, скорее всего, является ожидаемым поведением и не должно вызывать проблем. Они нужны в основном для взаимодействия с Embedded Controller (EC) на ChromeOS-устройствах для управления питанием, клавиатурой, подсветкой и т.д.
 
 ----#######################################----
-
+```bash
 ❯ zcat /proc/config.gz | grep CONFIG_CHROME_PLATFORMS
 CONFIG_CHROME_PLATFORMS=y
 
@@ -171,3 +171,4 @@ CONFIG_CROS_EC_MKBP_PROXIMITY=m
 /lib/modules/6.14.2-2-cachyos/kernel/drivers/platform/chrome/wilco_ec/wilco_ec_debugfs.ko.zst
 /lib/modules/6.14.2-2-cachyos/kernel/drivers/platform/chrome/wilco_ec/wilco_ec_events.ko.zst
 /lib/modules/6.14.2-2-cachyos/kernel/drivers/platform/chrome/wilco_ec/wilco_ec_telem.ko.zst
+```

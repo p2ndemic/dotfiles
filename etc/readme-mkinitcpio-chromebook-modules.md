@@ -8,9 +8,8 @@
 ```find /lib/modules/$(uname -r) -path '*platform/chrome*' -name '*.ko*'```  
   
 ##### Загрузить следующие модули:  
-_chromeos_acpi chromeos_laptop cros_ec cros_ec_lpc cros_ec_lpc_mec cros_ec_proto cros_ec_typec_  
-  
-```MODULES=(chromeos_acpi chromeos_laptop cros_ec cros_ec_lpc cros_ec_lpc_mec cros_ec_proto cros_ec_typec)```  
+_chromeos_acpi chromeos_laptop cros_ec cros_ec_lpcs cros_ec_typec_  
+```MODULES=(chromeos_acpi chromeos_laptop cros_ec cros_ec_lpcs cros_ec_typec)```  
 ...
 ##### затем выполнить   
    

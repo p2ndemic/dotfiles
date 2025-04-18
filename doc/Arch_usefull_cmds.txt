@@ -34,7 +34,7 @@ Run the cros-keyboard-map script [https://github.com/WeirdTreeThing/cros-keyboar
 
 
 Chromium flags:
-
+find / -iname '*thorium*' 2>/dev/null
 https://github.com/ozankiratli/dotfiles/blob/0ce24771f5c8de6a238fef3ef28812cc7d28a791/.config/sway/scripts/rstudio-wayland#L49
 
 

@@ -1,3 +1,5 @@
+```https://source.chromium.org/chromium/chromium/src/+/main:media/base/media_switches.cc;drc=a6e3765baaa2e2f09b52527ea60db304355d9a9d;l=689```
+
 #### Config location:
 ```cp ./brave-flags.conf ~/.config/```
 

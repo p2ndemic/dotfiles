@@ -3,6 +3,36 @@
 # To use it within dnsproxy specify the --config-path=/<path-to-config.yaml>
 # option.  Any other command-line options specified will override the values
 # from the config file.
+
+# =============================================
+#   Dnsproxy configuration
+# =============================================
+# Reference: https://github.com/AdguardTeam/dnsproxy
+# Reference: https://github.com/AdguardTeam/AdGuardHome
+# FAQ: https://adguard-dns.io/kb/adguard-home/faq/
+# FAQ: https://github.com/AdguardTeam/AdGuardHome/wiki/FAQ#bindinuse
+
+# =============================================
+#   DNS Block list
+# =============================================
+# DNS Block list: https://github.com/hagezi/dns-blocklists
+# Hazegi Pro++ DNS Blocklist Host compressed list: https://gitlab.com/hagezi/mirror/-/raw/main/dns-blocklists/hosts/pro.plus-compressed.txt
+# Download via curl and save to: /etc/dnsproxy/dnsproxy_hosts.txt [create a systemd timer that will run every 12 hours]
+# curl -sSL -o /etc/dnsproxy/dnsproxy_hosts.txt https://gitlab.com/hagezi/mirror/-/raw/main/dns-blocklists/hosts/pro.plus-compressed.txt
+
+# =============================================
+#   Check HTTP/3 & QUIC
+# =============================================
+# https://developers.cloudflare.com/speed/optimization/protocol/http3/
+# https://cloudflare-quic.com/
+
+# =============================================
+#   DNS Providers list
+# =============================================
+# https://adguard-dns.io/kb/general/dns-providers/
+# https://github.com/hagezi/dns-blocklists?tab=readme-ov-file#dnsservices
+# [Cloudflare | Rethink DNS preferred]
+
 ---
 bootstrap:
   - "8.8.8.8:53"

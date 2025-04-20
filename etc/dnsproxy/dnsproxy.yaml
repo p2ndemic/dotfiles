@@ -16,7 +16,7 @@
 #   DNS Block list
 # =============================================
 # DNS Block list: https://github.com/hagezi/dns-blocklists
-# Hazegi Pro++ DNS Blocklist Host compressed list: https://gitlab.com/hagezi/mirror/-/raw/main/dns-blocklists/hosts/pro.plus-compressed.txt
+# Hazegi Pro++ DNS Blocklist Hosts compressed list: https://gitlab.com/hagezi/mirror/-/raw/main/dns-blocklists/hosts/pro.plus-compressed.txt
 # Download via curl and save to: /etc/dnsproxy/dnsproxy_hosts.txt [create a systemd timer that will run every 12 hours]
 # curl -sSL -o /etc/dnsproxy/dnsproxy_hosts.txt https://gitlab.com/hagezi/mirror/-/raw/main/dns-blocklists/hosts/pro.plus-compressed.txt
 

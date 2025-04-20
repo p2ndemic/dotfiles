@@ -11,6 +11,7 @@
 # Reference: https://github.com/AdguardTeam/AdGuardHome
 # FAQ: https://adguard-dns.io/kb/adguard-home/faq/
 # FAQ: https://github.com/AdguardTeam/AdGuardHome/wiki/FAQ#bindinuse
+# FAQ: https://wiki.archlinux.org/title/Domain_name_resolution#DNS_servers
 
 # =============================================
 #   DNS Block list

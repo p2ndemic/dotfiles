@@ -21,17 +21,17 @@
 # curl -sSL -o /etc/dnsproxy/dnsproxy_hosts.txt https://gitlab.com/hagezi/mirror/-/raw/main/dns-blocklists/hosts/pro.plus-compressed.txt
 
 # =============================================
-#   Check HTTP/3 & QUIC
-# =============================================
-# https://developers.cloudflare.com/speed/optimization/protocol/http3/
-# https://cloudflare-quic.com/
-
-# =============================================
 #   DNS Providers list
 # =============================================
 # https://adguard-dns.io/kb/general/dns-providers/
 # https://github.com/hagezi/dns-blocklists?tab=readme-ov-file#dnsservices
 # [Cloudflare Secure DNS | Rethink DNS preferred]
+
+# =============================================
+#   Check HTTP/3 & QUIC
+# =============================================
+# https://developers.cloudflare.com/speed/optimization/protocol/http3/
+# https://cloudflare-quic.com/
 ---
 # Enable HTTP/3 for DoH
 http3: true

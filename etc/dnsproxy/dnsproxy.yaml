@@ -57,7 +57,7 @@ listen-ports:
   - 53
 
 # Upstream mode settings
-upstream-mode: parallel          # Send queries in parallel to all upstreams, take the first response
+upstream-mode: parallel          # Send queries in parallel to all upstreams, take the first response. Optional use - [fastest_addr]
 pending-requests-enabled: true   # Prevent duplicate upstream queries
 timeout: "5s"                    # Timeout for upstream queries
 

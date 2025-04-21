@@ -87,7 +87,7 @@ cache-optimistic: true   # serve stale entries until fresh ones arrive
 hosts-file-enabled: true
 hosts-files:
   - "/etc/dnsproxy/dnsproxy_hosts.txt"
-  
+
 # Logging
 verbose: true
 output: "/var/log/dnsproxy.log"

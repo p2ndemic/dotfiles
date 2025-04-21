@@ -63,7 +63,7 @@ timeout: "5s"                    # Timeout for upstream queries
 
 # Enable EDNS Client Subnet extension
 #edns: true
-#edns-addr: "100.100.100.100"    # IP to include in EDNS Client Subnet
+#edns-addr: "100.100.100.100"    # IP to include in EDNS Client Subnet (optional)
 
 # Performance and Resource Tuning
 max-go-routines: 0              # Concurrency: no hard limit on goroutines

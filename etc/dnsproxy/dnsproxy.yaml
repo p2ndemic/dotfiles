@@ -5,7 +5,7 @@
 # from the config file.
 
 # =============================================
-#   Dnsproxy configuration
+#   Dnsproxy configuration optimized for speed with HTTP/3, DOH, EDNS, and caching
 # =============================================
 # Reference: https://github.com/AdguardTeam/dnsproxy
 # Reference: https://github.com/AdguardTeam/AdGuardHome
@@ -32,30 +32,62 @@
 # https://adguard-dns.io/kb/general/dns-providers/
 # https://github.com/hagezi/dns-blocklists?tab=readme-ov-file#dnsservices
 # [Cloudflare Secure DNS | Rethink DNS preferred]
-
 ---
+# Enable HTTP/3 for DoH
+http3: true
+
+# Primary upstream (DoH over HTTPS/3)
 upstream:
-  - "https://security.cloudflare-dns.com/dns-query"
-  #- "https://sky.rethinkdns.com/1:AAoACAgA" # Hazegi Pro Plus + TIF Filter
+  - "https://security.cloudflare-dns.com/dns-query"   # 1.1.1.1 Malware Blocking mode
+  #- "https://sky.rethinkdns.com/1:AAoACAgA"           # Hazegi Pro plus + TIF DNS blocklist
+
+# Bootstrap servers for DoH (used instead of system resolver)
 bootstrap:
-  - "1.1.1.2"
-  - "1.0.0.2"
-  - "2606:4700:4700::1112"
-  - "2606:4700:4700::1002"
+  - "1.1.1.2:53"
+  - "1.0.0.2:53"
+
+# Fallback resolvers if primary is unavailable
 fallback:
-  - "8.8.8.8"
-  - "8.8.4.4"
-  - "2001:4860:4860::8888"
-  - "2001:4860:4860::8844"
+  - "8.8.8.8:53"
+  - "8.8.4.4:53"
+
+# Listen on all interfaces, port 53 (UDP+TCP)
 listen-addrs:
   - "0.0.0.0"
 listen-ports:
   - 53
-max-go-routines: 0
-ratelimit: 0
-ratelimit-subnet-len-ipv4: 24
-ratelimit-subnet-len-ipv6: 64
+
+# Upstream mode settings
+upstream-mode: parallel          # Send queries in parallel to all upstreams, take the first response
+pending-requests-enabled: true   # Prevent duplicate upstream queries
+timeout: "5s"                    # Timeout for upstream queries
+
+# Enable EDNS Client Subnet extension
+edns: true
+#edns-addr: "100.100.100.100"    # IP to include in EDNS Client Subnet
+
+# Performance and Resource Tuning
+max-go-routines: 0              # Concurrency: no hard limit on goroutines
+ratelimit: 0                    # No global rate limit (0 = unlimited)
+ratelimit-subnet-len-ipv4: 24   # Subnet mask length for grouping IPv4 addresses (when ratelimit > 0)
+ratelimit-subnet-len-ipv6: 64   # Subnet mask length for grouping IPv6 addresses (when ratelimit > 0)
+refuse-any: true                # Refuse ANY queries for security/performance
+
+# UDP buffer size (0 = system default)
 udp-buf-size: 0
-upstream:
-  - "1.1.1.1:53"
-timeout: '10s'
+
+# Caching settings
+cache: true
+cache-size: 67108864     # 64 MiB
+cache-min-ttl: 3600      # minimum 1 hour
+cache-max-ttl: 86400     # maximum 24 hours
+cache-optimistic: true   # serve stale entries until fresh ones arrive
+
+# Hosts file resolution
+hosts-file-enabled: true
+hosts-files:
+  - "/etc/dnsproxy/dnsproxy_hosts.txt"
+  
+# Logging
+verbose: true
+output: "/var/log/dnsproxy.log"

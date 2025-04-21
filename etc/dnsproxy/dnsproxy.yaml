@@ -4,7 +4,7 @@
 # Any other command-line options specified will override the values from the config file.
 
 # =============================================
-#   Dnsproxy configuration optimized for speed and security
+#   Dnsproxy configuration
 # =============================================
 # Reference: https://github.com/AdguardTeam/dnsproxy
 # Reference: https://github.com/AdguardTeam/AdGuardHome
@@ -38,7 +38,9 @@ http3: true
 
 # Primary upstream (DoH over HTTPS/3)
 upstream:
-  - "https://security.cloudflare-dns.com/dns-query"   # 1.1.1.1 Malware Blocking mode
+  - "1.1.1.2:53"
+  - "1.0.0.2:53"
+  #- "https://security.cloudflare-dns.com/dns-query"   # 1.1.1.1 Malware Blocking mode
   #- "https://sky.rethinkdns.com/1:AAoACAgA"           # Hazegi Pro plus + TIF DNS blocklist
 
 # Bootstrap servers for DoH (used instead of system resolver)

@@ -71,7 +71,7 @@ max-go-routines: 0              # Concurrency: no hard limit on goroutines
 ratelimit: 0                    # No global rate limit (0 = unlimited)
 ratelimit-subnet-len-ipv4: 24   # Subnet mask length for grouping IPv4 addresses (when ratelimit > 0)
 ratelimit-subnet-len-ipv6: 64   # Subnet mask length for grouping IPv6 addresses (when ratelimit > 0)
-refuse-any: true                # Refuse ANY queries for security/performance
+refuse-any: true                # Refuse ANY queries for security
 
 # UDP buffer size (0 = system default)
 udp-buf-size: 0

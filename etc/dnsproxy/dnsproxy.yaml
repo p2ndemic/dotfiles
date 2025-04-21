@@ -4,7 +4,7 @@
 # Any other command-line options specified will override the values from the config file.
 
 # =============================================
-#   Dnsproxy configuration optimized for speed with HTTP/3, DOH, EDNS, and caching
+#   Dnsproxy configuration optimized for speed and security
 # =============================================
 # Reference: https://github.com/AdguardTeam/dnsproxy
 # Reference: https://github.com/AdguardTeam/AdGuardHome

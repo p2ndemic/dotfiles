@@ -31,7 +31,7 @@
 # =============================================
 # https://adguard-dns.io/kb/general/dns-providers/
 # https://github.com/hagezi/dns-blocklists?tab=readme-ov-file#dnsservices
-# [Cloudflare | Rethink DNS preferred]
+# [Cloudflare Secure DNS | Rethink DNS preferred]
 
 ---
 bootstrap:

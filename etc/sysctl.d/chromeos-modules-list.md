@@ -20,7 +20,6 @@ cros_ec_mkbp_proximity https://www.kernelconfig.io/config_cros_ec_mkbp_proximity
 cros_ec_rpmsg https://www.kernelconfig.io/config_cros_ec_rpmsg?arch=x86&kernelversion=6.14.3
 cros-ec-sensorhub https://www.kernelconfig.io/config_cros_ec_sensorhub?arch=x86&kernelversion=6.14.3
 cros_ec_spi https://www.kernelconfig.io/config_cros_ec_spi?arch=x86&kernelversion=6.14.3
-
 cros_ec_lpcs https://www.kernelconfig.io/search?kernelversion=6.14.3&q=ChromeOS&page=4
 cros-ec-typec https://www.kernelconfig.io/config_cros_ec_typec?arch=x86&kernelversion=6.14.3
 cros_ec_uart https://www.kernelconfig.io/config_cros_ec_uart?arch=x86&kernelversion=6.14.3
@@ -38,3 +37,16 @@ i2c-cros-ec-tunnel https://www.kernelconfig.io/config_i2c_cros_ec_tunnel?arch=x8
 cros_ec_accel_legacy https://www.kernelconfig.io/config_iio_cros_ec_accel_legacy?arch=x86&kernelversion=6.14.3
 cros_ec_baro https://www.kernelconfig.io/config_iio_cros_ec_baro?arch=x86&kernelversion=6.14.3
 cros_ec_light_prox https://www.kernelconfig.io/config_iio_cros_ec_light_prox?arch=x86&kernelversion=6.14.3
+cros_ec_sensors https://www.kernelconfig.io/config_iio_cros_ec_sensors?arch=x86&kernelversion=6.14.3
+cros_ec_sensors_core https://www.kernelconfig.io/config_iio_cros_ec_sensors_core?arch=x86&kernelversion=6.14.3
+cros_ec_lid_angle https://www.kernelconfig.io/config_iio_cros_ec_sensors_lid_angle?arch=x86&kernelversion=6.14.3
+cros_ec_keyb https://www.kernelconfig.io/config_keyboard_cros_ec?arch=x86&kernelversion=6.14.3
+leds-cros_ec https://www.kernelconfig.io/config_leds_cros_ec?arch=x86&kernelversion=6.14.3
+cros_ec_dev https://www.kernelconfig.io/config_mfd_cros_ec_dev?arch=x86&kernelversion=6.14.3
+pwm-cros-ec https://www.kernelconfig.io/config_pwm_cros_ec?arch=x86&kernelversion=6.14.3
+cros-ec-regulator https://www.kernelconfig.io/config_regulator_cros_ec?arch=x86&kernelversion=6.14.3
+cros_ec_hwmon https://www.kernelconfig.io/config_sensors_cros_ec?arch=x86&kernelversion=6.14.3
+snd-soc-cros-ec-codec https://www.kernelconfig.io/config_snd_soc_cros_ec_codec?arch=x86&kernelversion=6.14.3
+snd-soc-sof_nau8825 https://www.kernelconfig.io/config_snd_soc_intel_sof_nau8825_mach?arch=x86&kernelversion=6.14.3
+snd-soc-nau8825 https://www.kernelconfig.io/config_snd_soc_nau8825?arch=x86&kernelversion=6.14.3
+snd-soc-avs-nau8825 https://www.kernelconfig.io/config_snd_soc_intel_avs_mach_nau8825?arch=x86&kernelversion=6.14.3

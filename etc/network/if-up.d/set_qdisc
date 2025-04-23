@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# В WLAN драйвере для Chromebook (возможно и др. устройств) есть баг с применением дисциплин сетевых очередей (Queue disciplines) через net.core.default_qdisc
+# При установке параметра через sysctl он применяется только ethernet, игнорируя wlan
+# Проверка: ip link show | grep -iE 'qdisc' или tc qdisc show
+# Скрипт автоматически устанавливает дисциплину очереди `fq` для интерфейса `wlan0` при его активации (поднятии).
+
+if [ "$IFACE" = "wlan0" ]; then
+    tc qdisc replace dev wlan0 root fq
+fi
+
+# Сделать исполняемым и перезапустить интерфейс:
+# sudo chmod +x /etc/network/if-up.d/set_qdisc
+# sudo ip link set wlan0 down && sudo ip link set wlan0 up

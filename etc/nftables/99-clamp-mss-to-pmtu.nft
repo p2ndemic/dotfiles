@@ -30,3 +30,5 @@ table ip6 mangle {
 
 # Проверка:
 # sudo nft list ruleset | grep -iE 'maxseg'
+
+# Если используется UFW Файрвол, то ничего не нужно. Можно задать правила его конф. файле и он ретранслирует их в nftables (через iptables-nft -> nftables)

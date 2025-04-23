@@ -1,36 +1,17 @@
 # Настройка UFW: Разрешение ICMP для PMTUD в Arch
 (К сожалению настройку нельзя сделать через drop in конфиги, т.к ufw их не поддерживает)
 
-Эта инструкция описывает, как разрешить необходимые типы ICMP в UFW (Uncomplicated Firewall) для корректной работы механизма Path MTU Discovery (PMTUD) в Arch Linux. Это важно для стабильной работы сети, особенно при взаимодействии с хостами через маршрутизаторы с меньшим MTU.
+Работа с ICMP (ping и PMTU Discovery):
+ufw по умолчанию уже содержит необходимые правила для основного функционала ICMP (включая ping и PMTU Discovery) в конфигурационных файлах /etc/ufw/before.rules и /etc/ufw/before6.rules. Эти правила обрабатываются до основных правил ufw allow/deny.
 
-Изменения вносятся в файлы `/etc/ufw/before.rules` (для IPv4) и `/etc/ufw/before6.rules` (для IPv6).
+Стандартные правила в before.rules обычно разрешают следующие типы ICMPv4:
 
-## Шаг 1: Редактирование правил IPv4 (`before.rules`)
+destination-unreachable (Type 3) - Необходимо для PMTU Discovery (Code 4)
+time-exceeded (Type 11) - Используется traceroute
+parameter-problem (Type 12)
+echo-request (Type 8) - Необходимо для ответа на ping
+Аналогичные правила есть в before6.rules для ICMPv6.
 
-1. sudo nano /etc/ufw/before.rules
+Вам НЕ нужно добавлять общие правила sudo ufw allow icmp! Стандартных правил в before.rules обычно достаточно. Вы можете проверить их наличие:
 
-2.  Найдите в файле раздел правил для цепочки `ufw-before-input`. Обычно он содержит комментарии и уже существующие правила.
-
-3.  Добавьте следующую строку **перед** любыми финальными правилами `DROP` или `REJECT` в этой цепочке (если их нет, добавьте в конец секции `ufw-before-input`, но *до* строки `COMMIT`):
-
-    ```
-    # Разрешаем ICMPv4 Destination Unreachable (необходимо для PMTUD и ошибок)
-    -A ufw-before-input -p icmp --icmp-type destination-unreachable -j ACCEPT
-    ```
-
-## Шаг 2: Редактирование правил IPv6 (`before6.rules`)
-
-1. sudo nano /etc/ufw/before6.rules
-
-2.  Найдите в файле раздел правил для цепочки `ufw6-before-input`.
-
-3.  Добавьте следующую строку **перед** любыми финальными правилами `DROP` или `REJECT` в этой цепочке (или до `COMMIT`, как в шаге 1):
-
-    ```
-    # Разрешаем ICMPv6 Packet Too Big (необходимо для PMTUD)
-    -A ufw6-before-input -p ipv6-icmp --icmp-type packet-too-big -j ACCEPT
-    ```
-
-Чтобы новые правила вступили в силу, перезагрузите UFW:
-
-sudo ufw reload
+cat /etc/ufw/before.rules | grep -iE 'icmp'

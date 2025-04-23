@@ -21,4 +21,20 @@ cros_ec_rpmsg https://www.kernelconfig.io/config_cros_ec_rpmsg?arch=x86&kernelve
 cros-ec-sensorhub https://www.kernelconfig.io/config_cros_ec_sensorhub?arch=x86&kernelversion=6.14.3
 cros_ec_spi https://www.kernelconfig.io/config_cros_ec_spi?arch=x86&kernelversion=6.14.3
 
-
+cros_ec_lpcs https://www.kernelconfig.io/search?kernelversion=6.14.3&q=ChromeOS&page=4
+cros-ec-typec https://www.kernelconfig.io/config_cros_ec_typec?arch=x86&kernelversion=6.14.3
+cros_ec_uart https://www.kernelconfig.io/config_cros_ec_uart?arch=x86&kernelversion=6.14.3
+cros_ec_ucsi https://www.kernelconfig.io/config_cros_ec_ucsi?arch=x86&kernelversion=6.14.3
+cros_ec_vbc https://www.kernelconfig.io/config_cros_ec_vbc?arch=x86&kernelversion=6.14.3
+cros_ec_wdt https://www.kernelconfig.io/config_cros_ec_watchdog?arch=x86&kernelversion=6.14.3
+cros_hps_i2c https://www.kernelconfig.io/config_cros_hps_i2c?arch=x86&kernelversion=6.14.3
+cros_kunit_proto_test https://www.kernelconfig.io/config_cros_kunit_ec_proto_test?arch=x86&kernelversion=6.14.3
+cros_typec_switch https://www.kernelconfig.io/config_cros_typec_switch?arch=x86&kernelversion=6.14.3
+cros_usbpd_notify https://www.kernelconfig.io/config_cros_usbpd_notify?arch=x86&kernelversion=6.14.3
+cros-ec-anx7688 https://www.kernelconfig.io/config_drm_cros_ec_anx7688?arch=x86&kernelversion=6.14.3
+extcon-usbc-cros-ec https://www.kernelconfig.io/config_extcon_usbc_cros_ec?arch=x86&kernelversion=6.14.3
+gpio-cros-ec https://www.kernelconfig.io/config_gpio_cros_ec?arch=x86&kernelversion=6.14.3
+i2c-cros-ec-tunnel https://www.kernelconfig.io/config_i2c_cros_ec_tunnel?arch=x86&kernelversion=6.14.3
+cros_ec_accel_legacy https://www.kernelconfig.io/config_iio_cros_ec_accel_legacy?arch=x86&kernelversion=6.14.3
+cros_ec_baro https://www.kernelconfig.io/config_iio_cros_ec_baro?arch=x86&kernelversion=6.14.3
+cros_ec_light_prox https://www.kernelconfig.io/config_iio_cros_ec_light_prox?arch=x86&kernelversion=6.14.3

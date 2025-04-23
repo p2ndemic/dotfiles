@@ -2,6 +2,8 @@ chromeos_laptop https://www.kernelconfig.io/config_chromeos_laptop?arch=x86&kern
 chromeos_pstore https://www.kernelconfig.io/config_chromeos_pstore?arch=x86&kernelversion=6.14.3
 chromeos_acpi https://www.kernelconfig.io/config_chromeos_acpi?arch=x86&kernelversion=6.14.3
 chromeos_of_hw_prober https://www.kernelconfig.io/config_chromeos_of_hw_prober?arch=x86&kernelversion=6.14.3
+chromeos_privacy_screen https://www.kernelconfig.io/config_chromeos_privacy_screen?arch=x86&kernelversion=6.14.3
+chromeos_tbmc https://www.kernelconfig.io/config_chromeos_tbmc?arch=x86&kernelversion=6.14.3
 cros-ec-cec https://www.kernelconfig.io/config_cec_cros_ec?arch=x86&kernelversion=6.14.3
 cros_charge-control https://www.kernelconfig.io/config_charger_cros_control?arch=x86&kernelversion=6.14.3
 cros_peripheral_charger https://www.kernelconfig.io/config_charger_cros_pchg?arch=x86&kernelversion=6.14.3
@@ -10,6 +12,7 @@ wilco-charger https://www.kernelconfig.io/config_charger_wilco?arch=x86&kernelve
 wilco_ec https://www.kernelconfig.io/config_wilco_ec?arch=x86&kernelversion=6.14.3
 cros_ec https://www.kernelconfig.io/config_cros_ec?arch=x86&kernelversion=6.14.3
 cros_ec_chardev https://www.kernelconfig.io/config_cros_ec_chardev?arch=x86&kernelversion=6.14.3
+cros_ec_debugfs https://www.kernelconfig.io/config_cros_ec_debugfs?arch=x86&kernelversion=6.14.3
 cros_ec_i2c https://www.kernelconfig.io/config_cros_ec_i2c?arch=x86&kernelversion=6.14.3
 cros_ec_ishtp https://www.kernelconfig.io/config_cros_ec_ishtp?arch=x86&kernelversion=6.14.3
 cros_ec_lpcs https://www.kernelconfig.io/config_cros_ec_lpc?arch=x86&kernelversion=6.14.3
@@ -17,3 +20,5 @@ cros_ec_mkbp_proximity https://www.kernelconfig.io/config_cros_ec_mkbp_proximity
 cros_ec_rpmsg https://www.kernelconfig.io/config_cros_ec_rpmsg?arch=x86&kernelversion=6.14.3
 cros-ec-sensorhub https://www.kernelconfig.io/config_cros_ec_sensorhub?arch=x86&kernelversion=6.14.3
 cros_ec_spi https://www.kernelconfig.io/config_cros_ec_spi?arch=x86&kernelversion=6.14.3
+
+

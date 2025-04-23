@@ -25,5 +25,8 @@ table ip6 mangle {
 # ...
 # include "/etc/nftables/99-clamp-mss-to-pmtu.nft"
 
+# sudo systemctl restart nftables
+# sudo systemctl enable --now nftables
+
 # Проверка:
 # sudo nft list ruleset | grep -iE 'maxseg'

@@ -50,3 +50,10 @@
 * [snd-soc-sof_nau8825](https://www.kernelconfig.io/config_snd_soc_intel_sof_nau8825_mach?arch=x86&kernelversion=6.14.3)
 * [snd-soc-nau8825](https://www.kernelconfig.io/config_snd_soc_nau8825?arch=x86&kernelversion=6.14.3)
 * [snd-soc-avs-nau8825](https://www.kernelconfig.io/config_snd_soc_intel_avs_mach_nau8825?arch=x86&kernelversion=6.14.3)
+
+ChromeOS FULL:
+MODULES=(chromeos_laptop chromeos_pstore chromeos_acpi chromeos_of_hw_prober chromeos_privacy_screen chromeos_tbmc cros-ec-cec cros_charge-control cros_peripheral_charger cros_usbpd-charger wilco-charger wilco_ec cros_ec cros_ec_chardev cros_ec_debugfs cros_ec_i2c cros_ec_ishtp cros_ec_lpcs cros_ec_mkbp_proximity cros_ec_rpmsg cros-ec-sensorhub cros_ec_spi cros_ec_lpcs cros-ec-typec cros_ec_uart cros_ec_ucsi cros_ec_vbc cros_ec_wdt cros_hps_i2c cros_kunit_proto_test cros_typec_switch cros_usbpd_notify cros-ec-anx7688 extcon-usbc-cros-ec gpio-cros-ec i2c-cros-ec-tunnel cros_ec_accel_legacy cros_ec_baro cros_ec_light_prox cros_ec_sensors cros_ec_sensors_core cros_ec_lid_angle cros_ec_keyb leds-cros_ec cros_ec_dev pwm-cros-ec cros-ec-regulator cros_ec_hwmon snd-soc-cros-ec-codec snd-soc-sof_nau8825 snd-soc-nau8825 snd-soc-avs-nau8825)
+
+ChromeOS Cachy (отсутствуют следующие модули в конф. ядра: chromeos_of_hw_prober cros_ec_rpmsg cros_ec_vbc cros_kunit_proto_test cros_ec_anx7688 cros_ec_regulator)
+
+MODULES=(chromeos_laptop chromeos_pstore chromeos_acpi chromeos_privacy_screen chromeos_tbmc cros-ec-cec cros_charge-control cros_peripheral_charger cros_usbpd-charger wilco-charger wilco_ec cros_ec cros_ec_chardev cros_ec_debugfs cros_ec_i2c cros_ec_ishtp cros_ec_lpcs cros_ec_mkbp_proximity cros-ec-sensorhub cros_ec_spi cros-ec-typec cros_ec_uart cros_ec_ucsi cros_ec_wdt cros_hps_i2c cros_typec_switch cros_usbpd_notify extcon-usbc-cros-ec gpio-cros-ec i2c-cros-ec-tunnel cros_ec_accel_legacy cros_ec_baro cros_ec_light_prox cros_ec_sensors cros_ec_sensors_core cros_ec_lid_angle cros_ec_keyb leds-cros_ec cros_ec_dev pwm-cros-ec cros_ec_hwmon snd-soc-cros-ec-codec snd-soc-sof_nau8825 snd-soc-nau8825 snd-soc-avs-nau8825)

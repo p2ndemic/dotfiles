@@ -1,24 +1,13 @@
-# Настройка UFW: Разрешение ICMP для PMTUD в Arch
-(К сожалению настройку нельзя сделать через drop in конфиги, т.к ufw их не поддерживает)
+Ufw работает через backend iptables используя слой трансляции iptables-nft, поэтому лучше использовать Firewalld т.к он работает с nftables нативно, хотя он сложнее в использовании. 
 
-Работа с ICMP (ping и PMTU Discovery):
-ufw по умолчанию уже содержит необходимые правила для основного функционала ICMP (включая ping и PMTU Discovery) в конфигурационных файлах /etc/ufw/before.rules и /etc/ufw/before6.rules. Эти правила обрабатываются до основных правил ufw allow/deny.
-
-Стандартные правила в before.rules обычно разрешают следующие типы ICMPv4:
-
-destination-unreachable (Type 3) - Необходимо для PMTU Discovery (Code 4)
-time-exceeded (Type 11) - Используется traceroute
-parameter-problem (Type 12)
-echo-request (Type 8) - Необходимо для ответа на ping
-Аналогичные правила есть в before6.rules для ICMPv6.
-
-Вам НЕ нужно добавлять общие правила sudo ufw allow icmp! Стандартных правил в before.rules обычно достаточно. Вы можете проверить их наличие:
-
-cat /etc/ufw/before.rules | grep -iE 'icmp'
-
+# ============================================
+# Настройка MSS clamping для UFW.
+# ============================================
 
 !Добавить в /etc/ufw/before.rules - для IPv4
           в /etc/ufw/before6.rules - для IPv6
+
+============================================
 
 !Добавить правило перед COMMIT
 ... 

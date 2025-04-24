@@ -2,7 +2,10 @@
 
 # https://unix.stackexchange.com/questions/672742/why-mss-clamping-in-iptables-nft-seems-to-take-no-effect-in-nftables
 # https://unix.stackexchange.com/questions/744973/enable-nat-with-tcpmss-using-ufw?utm_source=chatgpt.com
-# Настройка MSS (MTU - 40). Аналогично: iptables-translate -t mangle -A FORWARD -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu
+# Настройка MSS (MTU - 40).
+# Аналогично: iptables-translate -t mangle -A FORWARD -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu
+# iptables -t mangle -A FORWARD -p tcp -m tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu
+# ip6tables -t mangle -A FORWARD -p tcp -m tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu
 # CLI команда: nft add rule ip mangle FORWARD tcp flags & (syn|rst) == syn counter tcp option maxseg size set rt mtu - 40
 
 # Для IPv4

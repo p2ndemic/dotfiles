@@ -15,3 +15,13 @@ echo-request (Type 8) - Необходимо для ответа на ping
 Вам НЕ нужно добавлять общие правила sudo ufw allow icmp! Стандартных правил в before.rules обычно достаточно. Вы можете проверить их наличие:
 
 cat /etc/ufw/before.rules | grep -iE 'icmp'
+
+
+*mangle
+:PREROUTING ACCEPT [0:0]
+:INPUT ACCEPT [0:0]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+:POSTROUTING ACCEPT [0:0]
+-A FORWARD -p tcp -m tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu
+COMMIT

@@ -12,7 +12,7 @@
 table ip mangle {
     chain forward {
         type filter hook forward priority mangle; policy accept;
-        meta l4proto tcp tcp flags & (syn | rst) == syn tcp option maxseg size set rt mtu - 40
+        tcp flags & (syn | rst) == syn tcp option maxseg size set rt mtu
     }
 }
 
@@ -20,7 +20,7 @@ table ip mangle {
 table ip6 mangle {
     chain forward {
         type filter hook forward priority mangle; policy accept;
-        meta l4proto tcp tcp flags & (syn | rst) == syn tcp option maxseg size set rt mtu - 40
+        tcp flags & (syn | rst) == syn tcp option maxseg size set rt mtu
     }
 }
 
@@ -35,4 +35,4 @@ table ip6 mangle {
 # Проверка:
 # sudo nft list ruleset | grep -iE 'maxseg'
 
-# Если используется UFW Файрвол, то ничего не нужно. Можно задать правила его конф. файле и он ретранслирует их в nftables (через iptables-nft -> nftables)
+# Если используется UFW Файрвол, то можно задать правила его конф. файле и он ретранслирует их в nftables (через iptables-nft -> nftables)

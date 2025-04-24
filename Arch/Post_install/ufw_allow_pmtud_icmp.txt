@@ -17,11 +17,21 @@ echo-request (Type 8) - Необходимо для ответа на ping
 cat /etc/ufw/before.rules | grep -iE 'icmp'
 
 
+!Добавить в /etc/ufw/before.rules - для IPv4
+          в /etc/ufw/before6.rules - для IPv6
+
+!Добавить правило перед COMMIT
+... 
+---> (это правило) <---
+
 *mangle
 :PREROUTING ACCEPT [0:0]
 :INPUT ACCEPT [0:0]
 :FORWARD ACCEPT [0:0]
 :OUTPUT ACCEPT [0:0]
 :POSTROUTING ACCEPT [0:0]
+# Правило для IPv4 MSS clamping
 -A FORWARD -p tcp -m tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu
+
+---> (это правило) <---
 COMMIT

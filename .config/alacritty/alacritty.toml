@@ -1,6 +1,13 @@
 #=====================================================#
 # Based on github.com/CachyOS/cachyos-alacritty-config
 #=====================================================#
+[general]
+live_config_reload = true
+working_directory = "None"
+import = [
+    "~/.config/alacritty/themes/github_dark_high_contrast.toml"
+]
+
 [env]
 TERM = "xterm-256color"
 WINIT_X11_SCALE_FACTOR = "1"
@@ -150,21 +157,6 @@ mode = "Vi"
 action = "ClearSelection"
 
 [[keyboard.bindings]]
-key = "Key0"
-mods = "Control"
-action = "ResetFontSize"
-
-[[keyboard.bindings]]
-action = "IncreaseFontSize"
-key = "="
-mods = "Control"
-
-[[keyboard.bindings]]
-action = "DecreaseFontSize"
-key = "-"
-mods = "Control"
-
-[[keyboard.bindings]]
 key = "Q"
 mods = "Alt"
 action = "Quit"
@@ -175,13 +167,16 @@ mods = "Alt"
 action = "CreateNewWindow"
 
 [[keyboard.bindings]]
+key = "E"
+mods = "Alt"
+chars = "exit\n"
+
+[[keyboard.bindings]]
+key = "U"
+mods = "Alt"
+chars = "sudo pacman -Syu\n"
+
+[[keyboard.bindings]]
 key = "Enter"
 mods = "Alt"
 action = "ToggleFullscreen"
-
-[general]
-live_config_reload = true
-working_directory = "None"
-import = [
-    "~/.config/alacritty/themes/github_dark_high_contrast.toml"
-]

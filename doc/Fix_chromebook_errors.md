@@ -2,7 +2,7 @@
 #### https://github.com/torvalds/linux/tree/master/drivers/platform/chrome
 #### https://www.kernelconfig.io/search?kernelversion=6.14.3&q=cros_ec&page=1
 #### https://www.kernelconfig.io/search?q=Chrome&kernelversion=6.14.3&arch=x86
-
+####### https://raw.githubusercontent.com/chrultrabook/linux-tools/main/debugging.sh; bash debugging.sh
 
 Привет! Понимаю ваше беспокойство по поводу кастомного ядра. CachyOS действительно оптимизирует свои ядра, и иногда это может включать отключение драйверов, которые считаются ненужными для большинства пользователей. Драйверы из `drivers/platform/chrome/` специфичны для устройств ChromeOS и их встроенных контроллеров (EC). Если ваше оборудование не является Chromebook или не использует компоненты, требующие этих специфических драйверов, то их отсутствие, скорее всего, не повлияет на работу системы.
 

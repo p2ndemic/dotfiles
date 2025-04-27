@@ -12,6 +12,8 @@ Arch Linux, как и большинство современных дистри
 
 Чтобы увидеть все логи с момента последней загрузки системы, выполните:
 
+sudo journalctl -b -p 3 | sort | uniq
+
 ```sudo journalctl -b | grep -iE 'error|failed|warn|invalid|bad|unable' | gawk '!seen[$0]++'```
 
 ```sudo journalctl -b -p 4 | gawk '!seen[$0]++'```
@@ -129,3 +131,53 @@ Bash
 
 sudo journalctl -b -p err
 Arch Wiki: Не забывайте про Arch Wiki, это отличный ресурс для получения более подробной информации о journalctl и логировании в Arch Linux.
+
+
+
+
+Чтобы удалить повторяющиеся строки из вывода `journalctl`, можно использовать команду `uniq`. Вот несколько способов с использованием стандартных Unix-утилит:
+
+1. **Базовый вариант с `uniq`**:
+   ```bash
+   sudo journalctl -b -p 3 | uniq
+   ```
+   Команда `uniq` удаляет только соседние повторяющиеся строки, поэтому перед использованием убедитесь, что вывод отсортирован (если порядок строк не важен).
+
+2. **Сортировка и удаление дубликатов**:
+   Если повторяющиеся строки не находятся рядом, используйте `sort` вместе с `uniq`:
+   ```bash
+   sudo journalctl -b -p 3 | sort | uniq
+   ```
+   Команда `sort` сортирует строки, а `uniq` удаляет дубликаты.
+
+3. **Игнорирование временных меток**:
+   Если вы хотите считать строки одинаковыми, игнорируя временные метки, можно обрезать их с помощью `cut` или `sed`:
+   ```bash
+   sudo journalctl -b -p 3 | cut -d ' ' -f 5- | sort | uniq
+   ```
+   Здесь `cut -d ' ' -f 5-` удаляет первые 4 поля (включая временную метку и хост), оставляя только сообщение.
+
+4. **Сохранение результата в файл**:
+   Если нужно сохранить результат:
+   ```bash
+   sudo journalctl -b -p 3 | sort | uniq > output.log
+   ```
+
+**Пример результата** для вашего вывода (с `sort | uniq`):
+```
+апр 27 21:45:10 admin-osiris kernel: cros-ec-keyb GOOG0007:00: cannot register non-matrix inputs: -74
+апр 27 21:45:10 admin-osiris kernel: cros-ec-keyb GOOG0007:00: probe with driver cros-ec-keyb failed with error -74
+апр 27 21:45:10 admin-osiris kernel: cros_ec_lpcs GOOG0004:00: Cannot identify the EC: error -95
+апр 27 21:45:10 admin-osiris kernel: cros_ec_lpcs GOOG0004:00: EC responded to v2 hello with error: 1
+апр 27 21:45:10 admin-osiris kernel: cros_ec_lpcs GOOG0004:00: couldn't register ec_dev (-95)
+апр 27 21:45:10 admin-osiris kernel: cros_ec_lpcs GOOG0004:00: probe with driver cros_ec_lpcs failed with error -95
+апр 27 21:45:11 admin-osiris kernel: Bluetooth: hci0: No support for _PRR ACPI method
+апр 27 21:45:11 admin-osiris kernel: cros-ec-typec GOOG0014:00: couldn't find parent EC device
+апр 27 21:45:15 admin-osiris kernel: HDMI2: ASoC: error at __soc_pcm_hw_params on HDMI2: -5
+апр 27 21:45:15 admin-osiris kernel: HDMI2: ASoC: error at dpcm_fe_dai_hw_params on HDMI2: -5
+апр 27 21:45:15 admin-osiris kernel: sof-audio-pci-intel-tgl 0000:00:1f.3: ASoC: error at snd_soc_pcm_component_hw_params o>
+апр 27 21:45:15 admin-osiris kernel: sof-audio-pci-intel-tgl 0000:00:1f.3: HW params ipc failed for stream 1
+апр 27 21:45:15 admin-osiris kernel: sof-audio-pci-intel-tgl 0000:00:1f.3: ipc tx error for 0x60010000 (msg/reply size: 108>
+```
+
+Выберите вариант в зависимости от того, хотите ли вы сохранить временные метки или игнорировать их при сравнении строк.

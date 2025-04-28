@@ -182,5 +182,7 @@ Card #42
 Ок, с этими данными будем работать.
 
 
-Далее, гуглим 
+Далее, гуглим и изучаем маны/гайды SOF. Находим вот вот эту статью: https://thesofproject.github.io/latest/getting_started/intel_debug/introduction.html
+
+
 

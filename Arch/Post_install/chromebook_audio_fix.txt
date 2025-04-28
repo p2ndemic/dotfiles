@@ -1,1 +1,2 @@
 https://thesofproject.github.io/latest/getting_started/intel_debug/introduction.html
+https://wiki.archlinux.org/title/Kernel_module

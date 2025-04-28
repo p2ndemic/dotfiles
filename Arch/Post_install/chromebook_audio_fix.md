@@ -237,7 +237,7 @@ Card #42
      - **Исключения**:  
        $\color{Red}\large{\textbf{Chromebooks}}$ и Up2/Up-Extreme платы используют **community key**, что позволяет устанавливать кастомную прошивку.
    - **Проблема с Intel ME**:  
-     Management Engine (ME) проверяет подпись прошивки. Если ME отключен в BIOS, загрузка прошивки **SOF** невозможна. Решение — переключиться на `snd-hda-intel` или включить ME.
+     Management Engine (ME) проверяет подпись прошивки. Если ME отключен в BIOS, загрузка прошивки **SOF** ***невозможна***. Решение — переключиться на `snd-hda-intel` или включить ME.
    - Может быть переопределен через параметры ядра: `snd_sof` `fw_path` и `fw_filename`
      - Пример:  
        `sudo nano /etc/modprobe.d/sof.conf`

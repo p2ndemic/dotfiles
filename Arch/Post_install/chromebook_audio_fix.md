@@ -92,8 +92,8 @@ soundcore              16384  1 snd
 ---
 
 Тут мы видим:  
-1. Множество ошибок связанных с sof-audio-pci-intel-tgl в journalctl. Это и есть причина проблемы.  
-2. Множество загруженных модулей аудиодрайверов. Нас интересуют два их них - snd_soc_sof_nau8825 и snd_sof_pci_intel_tgl. Остальные будем добавлять в блеклист и тестить.  
+1. Множество ошибок связанных с `sof-audio-pci-intel-tgl` в `journalctl`. Это и есть причина проблемы.  
+2. Множество загруженных модулей аудиодрайверов. Нас интересуют два их них - `snd_soc_sof_nau8825` и `snd_sof_pci_intel_tgl`. Остальные будем добавлять в блеклист и тестить.  
 В общем будем дальше искать rootcause ...  
 
 ---
@@ -239,17 +239,17 @@ Card #42
      Management Engine (ME) проверяет подпись прошивки. Если ME отключен в BIOS, загрузка прошивки **SOF** невозможна. Решение — переключиться на `snd-hda-intel` или включить ME.
    - Может быть переопределен через параметры ядра: `snd_sof` `fw_path` и `fw_filename`
      - Пример: `sudo nano /etc/modprobe.d/sof.conf`
-     - options snd_sof fw_path="/lib/firmware/intel/sof-ipc4/adl/community/" fw_filename="sof-adl.ri".
+     - `options snd_sof fw_path="/lib/firmware/intel/sof-ipc4/adl/community/" fw_filename="sof-adl.ri"`.
 
 
 2. **Топологический файл**:
    - Описывает структуру аудиокомпонентов (кодеки, PCM-устройства).
    - Пути:  
-     - IPC3: `/lib/firmware/intel/sof-tplg/`.
-     - IPC4: `/lib/firmware/intel/sof-ipc4-tplg/`.
+     - **IPC3**: `/lib/firmware/intel/sof-tplg/`.
+     - **IPC4**: `/lib/firmware/intel/sof-ipc4-tplg/`.
    - Может быть переопределен через параметры ядра: `snd_sof` `tplg_path` и `tplg_filename`.
      - Пример: `sudo nano /etc/modprobe.d/sof.conf`
-     - options snd_sof tplg_path="/lib/firmware/intel/sof-tplg/" tplg_filename="sof-adl-nau8825.tplg".
+     - `options snd_sof tplg_path="/lib/firmware/intel/sof-tplg/" tplg_filename="sof-adl-nau8825.tplg"`.
 
 3. **UCM-файлы**:
    - Конфигурируют управление аудиоустройствами (например, громкость, переключение между динамиками и наушниками).

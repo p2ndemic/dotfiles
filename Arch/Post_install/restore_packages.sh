@@ -1,9 +1,10 @@
 #!/bin/bash
 
 # Сохранение списка установленных пакетов
-# pacman -Q > installed_packages.txt
+#pacman -Qenq > pkglist_repo.txt
+#pacman -Qemq > pkglist_aur.txt
 
-# Если вы хотите сохранить только имена пакетов без версий, используйте:
+# Способ через pacman -Q:
 # pacman -Q | cut -d' ' -f1 | sort | uniq > installed_packages.txt
 
 # Путь к файлу со списком старых пакетов

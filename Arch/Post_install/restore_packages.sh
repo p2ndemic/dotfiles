@@ -4,7 +4,7 @@
 # pacman -Q > installed_packages.txt
 
 # Если вы хотите сохранить только имена пакетов без версий, используйте:
-# pacman -Q | cut -d' ' -f1 > installed_packages.txt
+# pacman -Q | cut -d' ' -f1 | sort | uniq > installed_packages.txt
 
 # Путь к файлу со списком старых пакетов
 OLD_PACKAGES_FILE="installed_packages.txt"

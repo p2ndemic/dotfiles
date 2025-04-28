@@ -250,6 +250,9 @@ Card #42
    - Может быть переопределен через параметры ядра: `snd_sof` `tplg_path` и `tplg_filename`.
      - Пример: `sudo nano /etc/modprobe.d/sof.conf`
      - `options snd_sof tplg_path="/lib/firmware/intel/sof-tplg/" tplg_filename="sof-adl-nau8825.tplg"`.
+       ```bash
+       options snd_sof tplg_path="/lib/firmware/intel/sof-tplg/" tplg_filename="sof-adl-nau8825.tplg"
+       ```
 
 3. **UCM-файлы**:
    - Конфигурируют управление аудиоустройствами (например, громкость, переключение между динамиками и наушниками).

@@ -118,6 +118,8 @@ Audio:
   Server-1: PipeWire v: 1.4.2 status: active with: 1: pipewire-pulse
     status: active 2: wireplumber status: active 3: pipewire-alsa type: plugin
     4: pw-jack type: plugin tools: pactl,pw-cat,pw-cli,wpctl
+```
+```
 [admin@admin-osiris ~]$ pactl list cards
 Card #42
 	Name: alsa_card.pci-0000_00_1f.3-platform-adl_nau8825_def

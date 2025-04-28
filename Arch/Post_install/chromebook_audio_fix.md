@@ -1,6 +1,8 @@
 https://thesofproject.github.io/latest/getting_started/intel_debug/introduction.html  
 https://wiki.archlinux.org/title/Kernel_module  
 
+---  
+  
 Ох и намучался я с этой ошибкой :( Столько времени ушло на поиски и примерного решения этой проблемы. Есть примерный вариант исправления, но я еще не проверял его в деле.  
   
 В общем, после замены ненавистного ChromeOS на прошивку от любезного Mr. Chromebox и установки дистрибутива на базе Arch Linux, я столкнулся со следующей проблемой:

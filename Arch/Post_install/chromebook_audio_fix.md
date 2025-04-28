@@ -239,7 +239,9 @@ Card #42
      Management Engine (ME) проверяет подпись прошивки. Если ME отключен в BIOS, загрузка прошивки **SOF** невозможна. Решение — переключиться на `snd-hda-intel` или включить ME.
    - Может быть переопределен через параметры ядра: `snd_sof` `fw_path` и `fw_filename`
      - Пример: `sudo nano /etc/modprobe.d/sof.conf`
-     - `options snd_sof fw_path="/lib/firmware/intel/sof-ipc4/adl/community/" fw_filename="sof-adl.ri"`.
+       ```bash
+       options snd_sof fw_path="/lib/firmware/intel/sof-ipc4/adl/community/" fw_filename="sof-adl.ri"
+       ```
 
 
 2. **Топологический файл**:
@@ -249,7 +251,6 @@ Card #42
      - **IPC4**: `/lib/firmware/intel/sof-ipc4-tplg/`.
    - Может быть переопределен через параметры ядра: `snd_sof` `tplg_path` и `tplg_filename`.
      - Пример: `sudo nano /etc/modprobe.d/sof.conf`
-     - `options snd_sof tplg_path="/lib/firmware/intel/sof-tplg/" tplg_filename="sof-adl-nau8825.tplg"`.
        ```bash
        options snd_sof tplg_path="/lib/firmware/intel/sof-tplg/" tplg_filename="sof-adl-nau8825.tplg"
        ```

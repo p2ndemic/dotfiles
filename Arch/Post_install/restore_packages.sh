@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Сохранение списка установленных пакетов
+# pacman -Q > installed_packages.txt
+
+# Если вы хотите сохранить только имена пакетов без версий, используйте:
+# pacman -Q | cut -d' ' -f1 > installed_packages.txt
+
 # Путь к файлу со списком старых пакетов
 OLD_PACKAGES_FILE="installed_packages.txt"
 
@@ -10,10 +16,10 @@ if [ ! -f "$OLD_PACKAGES_FILE" ]; then
 fi
 
 # Получаем список текущих установленных пакетов (только имена)
-CURRENT_PACKAGES=$(pacman -Q | cut -d' ' -f1 | sort)
+CURRENT_PACKAGES=$(pacman -Q | cut -d' ' -f1 | sort | uniq)
 
 # Читаем список старых пакетов и сортируем
-OLD_PACKAGES=$(cat "$OLD_PACKAGES_FILE" | cut -d' ' -f1 | sort)
+OLD_PACKAGES=$(cat "$OLD_PACKAGES_FILE" | cut -d' ' -f1 | sort | uniq)
 
 # Находим недостающие пакеты (те, что есть в старом списке, но нет в текущем)
 MISSING_PACKAGES=$(comm -23 <(echo "$OLD_PACKAGES") <(echo "$CURRENT_PACKAGES"))

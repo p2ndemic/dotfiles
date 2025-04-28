@@ -14,7 +14,7 @@ https://wiki.archlinux.org/title/Kernel_module
 Первое что нужно сделать, это проверить логи ошибки ядра через `journalctl` и загруженные модули звуковых драйверов через `lsmod | grep -iE 'snd'`:  
 
 
-- _команда:_  
+_команда:_  
 `sudo journalctl -b -p 3 | sort | uniq`  
 ```
 [admin@admin-osiris ~]$ sudo journalctl -b -p 3 | sort | uniq

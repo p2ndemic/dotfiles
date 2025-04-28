@@ -218,13 +218,22 @@ Card #42
 Для корректной работы SOF необходимы три компонента:
 
 1. **Прошивка DSP**:
-   - Расположение: `/lib/firmware/intel/sof/` (IPC3) или `/lib/firmware/intel/sof-ipc4/PLAT/` (IPC4, например, для Tiger Lake).
+
+| Platform                                 | IPC type | Load path                                    |
+| ---------------------------------------- | -------- | -------------------------------------------- |
+| Raptor Lake and older                    | IPC3     | /lib/firmware/intel/sof/                     |
+| Raptor Lake and older (community signed) | IPC3     | /lib/firmware/intel/sof/community/           |
+| Tiger Lake and newer                     | IPC4     | /lib/firmware/intel/sof-ipc4/PLAT/           |
+| iger Lake and newer (community signed)   | IPC4     | /lib/firmware/intel/sof-ipc4/PLAT/community/ |
+
    - Подпись: 
      - Обычно требуется подпись Intel (для потребительских устройств).
      - **Исключения**: Chromebooks и Up2/Up-Extreme платы используют **community key**, что позволяет устанавливать кастомную прошивку.
    - **Проблема с Intel ME**:  
      Management Engine (ME) проверяет подпись прошивки. Если ME отключен в BIOS, загрузка прошивки **SOF** невозможна. Решение — переключиться на `snd-hda-intel` или включить ME.
-
+   - Может быть переопределен через параметры ядра: `snd_sof` `fw_path` и `fw_filename`
+     - Пример: `sudo nano /etc/modprobe.d/sof.conf`
+     - options snd_sof fw_path="/lib/firmware/intel/sof-ipc4/adl/community/" fw_filename="sof-adl.ri".
 
 
 2. **Топологический файл**:
@@ -232,7 +241,9 @@ Card #42
    - Пути:  
      - IPC3: `/lib/firmware/intel/sof-tplg/`.
      - IPC4: `/lib/firmware/intel/sof-ipc4-tplg/`.
-   - Может быть переопределен через параметры ядра: `tplg_path`, `tplg_filename`.
+   - Может быть переопределен через параметры ядра: `snd_sof` `tplg_path` и `tplg_filename`.
+     - Пример: `sudo nano /etc/modprobe.d/sof.conf`
+     - options snd_sof tplg_path="/lib/firmware/intel/sof-tplg/" tplg_filename="sof-adl-nau8825.tplg".
 
 3. **UCM-файлы**:
    - Конфигурируют управление аудиоустройствами (например, громкость, переключение между динамиками и наушниками).

@@ -1,15 +1,18 @@
-https://thesofproject.github.io/latest/getting_started/intel_debug/introduction.html
-https://wiki.archlinux.org/title/Kernel_module
+https://thesofproject.github.io/latest/getting_started/intel_debug/introduction.html  
+https://wiki.archlinux.org/title/Kernel_module  
 
-Ох и намучался я с этой ошибкой :( Столько времени ушло на поиски и примерного решения этой проблемы. Есть примерный вариант исправления, но я еще не проверял его в деле.
+Ох и намучался я с этой ошибкой :( Столько времени ушло на поиски и примерного решения этой проблемы. Есть примерный вариант исправления, но я еще не проверял его в деле.  
+  
+В общем, после замены ненавистного ChromeOS на прошивку от любезного Mr. Chromebox и установки дистрибутива на базе Arch Linux, я столкнулся со следующей проблемой.  
+После загрузки системы не работает звук. При нажатии на значок громкости в KDE, система сообщает что 'Не найдено устройств ввода или вывода звука'.  
 
-В общем, после замены ненавистного ChromeOS на прошивку от любезного Mr. Chromebox и установки дистрибутива на базе Arch Linux, я столкнулся со следующей проблемой.
-После загрузки системы не работает звук. При нажатии на значок громкости в KDE, система сообщает что 'Не найдено устройств ввода или вывода звука'.
+---
+  
+Первое что нужно сделать, это проверить логи ошибки ядра через 'journalctl' и загруженные модули звуковых драйверов через lsmod | grep -iE 'snd':  
 
-Первое что нужно сделать, это проверить логи ошибки ядра через 'journalctl' и загруженные модули звуковых драйверов через lsmod | grep -iE 'snd':
 
-команда: sudo journalctl -b -p 3 | sort | uniq
-
+команда: ```sudo journalctl -b -p 3 | sort | uniq```
+```
 [admin@admin-osiris ~]$ sudo journalctl -b -p 3 | sort | uniq
 апр 28 21:05:22 admin-osiris kernel: Bluetooth: hci0: No support for _PRR ACPI method
 апр 28 21:05:27 admin-osiris kernel:  Bluetooth: ASoC: error at dpcm_fe_dai_hw_params on Bluetooth: -22
@@ -27,9 +30,9 @@ https://wiki.archlinux.org/title/Kernel_module
 апр 28 21:05:27 admin-osiris kernel: sof-audio-pci-intel-tgl 0000:00:1f.3: HW params ipc failed for stream 1
 апр 28 21:05:27 admin-osiris kernel: sof-audio-pci-intel-tgl 0000:00:1f.3: ipc tx error for 0x60010000 (msg/reply size: 108/20): -22
 апр 28 21:05:27 admin-osiris kernel: sof-audio-pci-intel-tgl 0000:00:1f.3: ipc tx error for 0x60010000 (msg/reply size: 108/20): -5
+```
 
-
-
+```
 [admin@admin-osiris ~]$ lsmod | grep -iE 'snd'
 snd_seq_dummy          12288  0
 snd_hrtimer            12288  1
@@ -80,24 +83,27 @@ snd_timer              57344  3 snd_seq,snd_hrtimer,snd_pcm
 snd                   155648  16 snd_seq,snd_seq_device,snd_hda_codec_hdmi,snd_hwdep,snd_soc_sof_nau8825,snd_hda_intel,snd_hda_codec,snd_sof,snd_timer,snd_compress,snd_soc_core,snd_pcm
 soundcore              16384  1 snd
 [admin@admin-osiris ~]$
+```
 
+---
 
-Тут мы видим
-1: Множество ошибок связанных с sof-audio-pci-intel-tgl в journalctl. Это и есть причина проблемы.
-2: Множество загруженных модулей аудиодрайверов. Нас интересуют два их них - snd_soc_sof_nau8825 и snd_sof_pci_intel_tgl. Остальные будем добавлять в блеклист и тестить.
-В общем будем дальше искать rootcause ...
+Тут мы видим:  
+1. Множество ошибок связанных с sof-audio-pci-intel-tgl в journalctl. Это и есть причина проблемы.  
+2. Множество загруженных модулей аудиодрайверов. Нас интересуют два их них - snd_soc_sof_nau8825 и snd_sof_pci_intel_tgl. Остальные будем добавлять в блеклист и тестить.  
+В общем будем дальше искать rootcause ...  
 
+---
+  
+Первое что нужно сделать - определить технические характеристики текущего устройства. Тут помогут CLI утилиты ```inxi``` и  ```pactl```, а также ```wpctl``` (опционально).
 
-Первое что нужно сделать - определить технические характеристики текущего устройства. Тут помогут CLI утилиты 'inxi' и  'pactl', а также 'wpctl' (опционально).
+Примеры использования ***inxi***:  
+  ```inxi -Fxz``` - вывести всю необходимую информацию о системе/устройстве  
+  ```inxi -Aa``` - вывести информацию о аудиоустройстве/аудиокодеках  
+  
+Пример использования ***pactl***:  
+  ```pactl list cards``` - вывести полную информацию о аудиокарте
 
-Примеры использования inxi:
-  'inxi -Fxz' - вывести всю необходимую информацию о системе/устройстве
-  'inxi -Aa' - вывести информацию о аудиоустройстве/аудиокодеках
-
-Пример использования pactl:
-  'pactl list cards' - вывести полную информацию о аудиокарте
-
-###
+---
 Запустим эти две утилиты и проверим информацию:
 
 ```
@@ -172,10 +178,10 @@ Card #42
 			Part of profile(s): output:stereo-fallback
 [admin@admin-osiris ~]$
 ```
-
+---
 Тут мы видим следующую инфомацию:
-1.  Device-1: Intel Alder Lake PCH-P High Definition Audio
-    driver: sof-audio-pci-intel-tgl alternate: snd_hda_intel, snd_soc_avs
+1. Device-1: Intel Alder Lake PCH-P High Definition Audio  
+   driver: sof-audio-pci-intel-tgl alternate: snd_hda_intel, snd_soc_avs
 2. device.product.name = "Alder Lake PCH-P High Definition Audio Controller
    alsa.driver_name = "snd_soc_sof_nau8825"
    sysfs.path = "/devices/pci0000:00/0000:00:1f.3/adl_nau8825_def/sound/card0"
@@ -184,5 +190,53 @@ Card #42
 
 Далее, гуглим и изучаем маны/гайды SOF. Находим вот вот эту статью: https://thesofproject.github.io/latest/getting_started/intel_debug/introduction.html
 
+Краткий анализ документации:
+
+### Анализ указанных разделов статьи:
+
+---
+
+#### **1. Конфликты драйверов и настройка через `snd-intel-dspcfg`**
+- **Проблема**:  
+  До 2020 года разные драйверы (например, `snd-hda-intel`, `snd-sof`, `snd-soc-skl`) могли регистрироваться на одно и то же PCI ID, что приводило к конфликтам. Решение требовало ручного редактирования конфигурации ядра (`/etc/modprobe.d/`) или исключения драйверов, что было неудобно для пользователей и дистрибутивов.
+
+- **Решение**:  
+  В 2020 году появился модуль **`snd-intel-dspcfg`**, который:
+  - Унифицирует API для всех драйверов.
+  - Позволяет переопределить выбор драйвера через параметр **`dsp_driver`**:
+    - **`dsp_driver=1`** — принудительно использовать legacy-драйвер `snd-hda-intel`. Подходит для базовых аудиоустройств (динамики, наушники), но **не поддерживает цифровые микрофоны (DMIC)**.
+    - **`dsp_driver=3`** — принудительно использовать современный драйвер **SOF** (Sound Open Firmware), даже если DSP не требуется. Это полезно, если OEM включил DSP, но система не рассчитана на его использование.
+
+  Пример настройки в `/etc/modprobe.d/`:  
+  ```bash
+  options snd-intel-dspcfg dsp_driver=1  # или 3
+  ```
+
+---
+
+#### **2. Требования к файловой системе и прошивке**
+Для корректной работы SOF необходимы три компонента:
+
+1. **Прошивка DSP**:
+   - Расположение: `/lib/firmware/intel/sof/` (IPC3) или `/lib/firmware/intel/sof-ipc4/PLAT/` (IPC4, например, для Tiger Lake).
+   - Подпись: 
+     - Обычно требуется подпись Intel (для потребительских устройств).
+     - **Исключения**: Chromebooks и Up2/Up-Extreme платы используют **community key**, что позволяет устанавливать кастомную прошивку.
+   - **Проблема с Intel ME**:  
+     Management Engine (ME) проверяет подпись прошивки. Если ME отключен в BIOS, загрузка прошивки **SOF** невозможна. Решение — переключиться на `snd-hda-intel` или включить ME.
 
 
+
+2. **Топологический файл**:
+   - Описывает структуру аудиокомпонентов (кодеки, PCM-устройства).
+   - Пути:  
+     - IPC3: `/lib/firmware/intel/sof-tplg/`.
+     - IPC4: `/lib/firmware/intel/sof-ipc4-tplg/`.
+   - Может быть переопределен через параметры ядра: `tplg_path`, `tplg_filename`.
+
+3. **UCM-файлы**:
+   - Конфигурируют управление аудиоустройствами (например, громкость, переключение между динамиками и наушниками).
+   - Расположение: `/usr/share/alsa/ucm2/`.
+   - Совместимы с разными драйверами, включая `snd-hda-intel` и SOF.
+
+---

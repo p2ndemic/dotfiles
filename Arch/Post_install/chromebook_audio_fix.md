@@ -12,7 +12,8 @@ https://wiki.archlinux.org/title/Kernel_module
 Первое что нужно сделать, это проверить логи ошибки ядра через 'journalctl' и загруженные модули звуковых драйверов через ```lsmod | grep -iE 'snd'```:  
 
 
-команда: ```sudo journalctl -b -p 3 | sort | uniq```
+команда:  
+```sudo journalctl -b -p 3 | sort | uniq```  
 ```
 [admin@admin-osiris ~]$ sudo journalctl -b -p 3 | sort | uniq
 апр 28 21:05:22 admin-osiris kernel: Bluetooth: hci0: No support for _PRR ACPI method

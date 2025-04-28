@@ -6,7 +6,7 @@ https://wiki.archlinux.org/title/Kernel_module
 В общем, после замены ненавистного ChromeOS на прошивку от любезного Mr. Chromebox и установки дистрибутива на базе Arch Linux, я столкнулся со следующей проблемой.
 После загрузки системы не работает звук. При нажатии на значок громкости в KDE, система сообщает что 'Не найдено устройств ввода или вывода звука'.
 
-Первое что нужно сделать, это проверить логи ошибки ядра через 'journalctl' и загруженные модули звуковых драйверов через lsmod | grep -iE 'snd|sof':
+Первое что нужно сделать, это проверить логи ошибки ядра через 'journalctl' и загруженные модули звуковых драйверов через lsmod | grep -iE 'snd':
 
 команда: sudo journalctl -b -p 3 | sort | uniq
 
@@ -29,7 +29,64 @@ https://wiki.archlinux.org/title/Kernel_module
 апр 28 21:05:27 admin-osiris kernel: sof-audio-pci-intel-tgl 0000:00:1f.3: ipc tx error for 0x60010000 (msg/reply size: 108/20): -5
 
 
-Тут мы видим множество ошибок связанных с sof-audio-pci-intel-tgl. Это и есть причина проблемы. Теперь нужно искать rootcause ...
+
+[admin@admin-osiris ~]$ lsmod | grep -iE 'snd'
+snd_seq_dummy          12288  0
+snd_hrtimer            12288  1
+snd_seq               131072  7 snd_seq_dummy
+snd_seq_device         16384  1 snd_seq
+snd_soc_sof_nau8825    20480  1
+snd_soc_intel_sof_nuvoton_common    12288  1 snd_soc_sof_nau8825
+snd_soc_intel_sof_realtek_common    32768  1 snd_soc_sof_nau8825
+snd_soc_intel_sof_board_helpers    28672  1 snd_soc_sof_nau8825
+snd_soc_intel_hda_dsp_common    16384  1 snd_soc_intel_sof_board_helpers
+snd_sof_probes         28672  0
+snd_soc_intel_sof_maxim_common    32768  1 snd_soc_sof_nau8825
+snd_soc_dmic           12288  1
+snd_sof_pci_intel_tgl    16384  0
+snd_sof_pci_intel_cnl    20480  1 snd_sof_pci_intel_tgl
+snd_sof_intel_hda_generic    45056  2 snd_sof_pci_intel_tgl,snd_sof_pci_intel_cnl
+soundwire_intel        86016  1 snd_sof_intel_hda_generic
+snd_sof_intel_hda_common   208896  3 snd_sof_intel_hda_generic,snd_sof_pci_intel_tgl,snd_sof_pci_intel_cnl
+snd_soc_hdac_hda       28672  1 snd_sof_intel_hda_common
+snd_sof_intel_hda_mlink    36864  3 soundwire_intel,snd_sof_intel_hda_common,snd_sof_intel_hda_generic
+snd_sof_intel_hda      20480  2 snd_sof_intel_hda_common,snd_sof_intel_hda_generic
+snd_hda_codec_hdmi     98304  1
+snd_sof_pci            24576  3 snd_sof_intel_hda_generic,snd_sof_pci_intel_tgl,snd_sof_pci_intel_cnl
+snd_sof_xtensa_dsp     16384  1 snd_sof_intel_hda_generic
+snd_sof               466944  9 snd_soc_sof_nau8825,snd_sof_pci,snd_sof_intel_hda_common,snd_soc_intel_sof_realtek_common,snd_sof_intel_hda_generic,snd_soc_intel_sof_maxim_common,snd_sof_probes,snd_sof_intel_hda,snd_sof_pci_intel_cnl
+snd_sof_utils          16384  1 snd_sof
+snd_soc_acpi_intel_match   131072  4 snd_soc_intel_sof_board_helpers,snd_sof_intel_hda_generic,snd_sof_pci_intel_tgl,snd_sof_pci_intel_cnl
+snd_soc_acpi_intel_sdca_quirks    12288  1 snd_soc_acpi_intel_match
+snd_soc_acpi           16384  2 snd_soc_acpi_intel_match,snd_sof_intel_hda_generic
+snd_soc_sdca           12288  2 snd_soc_acpi_intel_sdca_quirks,soundwire_bus
+snd_soc_avs           241664  0
+snd_soc_hda_codec      28672  1 snd_soc_avs
+snd_hda_ext_core       36864  6 snd_soc_avs,snd_soc_hda_codec,snd_sof_intel_hda_common,snd_soc_hdac_hda,snd_sof_intel_hda_mlink,snd_sof_intel_hda
+snd_hda_intel          69632  0
+snd_soc_max98357a      16384  1
+snd_soc_nau8825        73728  1
+snd_intel_dspcfg       40960  5 snd_soc_avs,snd_hda_intel,snd_sof,snd_sof_intel_hda_common,snd_sof_intel_hda_generic
+snd_intel_sdw_acpi     16384  2 snd_intel_dspcfg,snd_sof_intel_hda_generic
+snd_soc_core          450560  15 snd_soc_avs,snd_soc_hda_codec,snd_soc_sof_nau8825,snd_soc_intel_sof_nuvoton_common,soundwire_intel,snd_sof,snd_soc_intel_sof_board_helpers,snd_sof_intel_hda_common,snd_soc_intel_sof_realtek_common,snd_soc_hdac_hda,snd_soc_intel_sof_maxim_common,snd_soc_max98357a,snd_sof_probes,snd_soc_dmic,snd_soc_nau8825
+snd_hda_codec         212992  7 snd_soc_avs,snd_hda_codec_hdmi,snd_soc_hda_codec,snd_hda_intel,snd_soc_intel_hda_dsp_common,snd_soc_hdac_hda,snd_sof_intel_hda
+snd_compress           28672  3 snd_soc_avs,snd_soc_core,snd_sof_probes
+snd_hda_core          147456  10 snd_soc_avs,snd_hda_codec_hdmi,snd_soc_hda_codec,snd_hda_intel,snd_hda_ext_core,snd_hda_codec,snd_soc_intel_hda_dsp_common,snd_sof_intel_hda_common,snd_soc_hdac_hda,snd_sof_intel_hda
+ac97_bus               12288  1 snd_soc_core
+snd_pcm_dmaengine      16384  1 snd_soc_core
+snd_hwdep              20480  1 snd_hda_codec
+snd_pcm               200704  16 snd_soc_avs,snd_hda_codec_hdmi,snd_hda_intel,snd_hda_codec,soundwire_intel,snd_sof,snd_sof_intel_hda_common,snd_compress,snd_soc_intel_sof_realtek_common,snd_sof_intel_hda_generic,snd_soc_core,snd_sof_utils,snd_soc_intel_sof_maxim_common,snd_hda_core,snd_soc_nau8825,snd_pcm_dmaengine
+snd_timer              57344  3 snd_seq,snd_hrtimer,snd_pcm
+snd                   155648  16 snd_seq,snd_seq_device,snd_hda_codec_hdmi,snd_hwdep,snd_soc_sof_nau8825,snd_hda_intel,snd_hda_codec,snd_sof,snd_timer,snd_compress,snd_soc_core,snd_pcm
+soundcore              16384  1 snd
+[admin@admin-osiris ~]$
+
+
+Тут мы видим
+1: Множество ошибок связанных с sof-audio-pci-intel-tgl в journalctl. Это и есть причина проблемы.
+2: Множество загруженных модулей аудиодрайверов. Нас интересуют два их них - snd_soc_sof_nau8825 и snd_sof_pci_intel_tgl. Остальные будем добавлять в блеклист и тестить.
+В общем будем дальше искать rootcause ...
+
 
 Первое что нужно сделать - определить технические характеристики текущего устройства. Тут помогут CLI утилиты 'inxi' и  'pactl', а также 'wpctl' (опционально).
 
@@ -122,5 +179,8 @@ Card #42
 2. device.product.name = "Alder Lake PCH-P High Definition Audio Controller
    alsa.driver_name = "snd_soc_sof_nau8825"
    sysfs.path = "/devices/pci0000:00/0000:00:1f.3/adl_nau8825_def/sound/card0"
-Ок, с этими данными будем работать
+Ок, с этими данными будем работать.
+
+
+Далее, гуглим 
 

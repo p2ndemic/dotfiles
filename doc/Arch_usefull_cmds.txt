@@ -39,3 +39,5 @@ https://github.com/ozankiratli/dotfiles/blob/0ce24771f5c8de6a238fef3ef28812cc7d2
 
 Сформировать весь список пакетов в виде дерева и перенаправить в файл:
 pacman -Q | cut -d' ' -f1 | xargs -I {} pactree {} > packages_tree.txt
+
+expac -S "%n %v %d" | sort | uniq > packages_expac.txt

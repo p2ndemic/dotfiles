@@ -58,7 +58,7 @@ lrwxrwxrwx 1 root root    0 апр 29 22:01 subsystem -> ../../../../../../../..
 -r--r--r-- 1 root root 4096 апр 29 22:01 voltage_min_design
 -r--r--r-- 1 root root 4096 апр 29 22:01 voltage_now
 ```
-![screenshot_20250429_220550-1](https://github.com/user-attachments/assets/c85a743f-f623-4ff0-9b7e-2ff928335223)
+<img src="https://github.com/user-attachments/assets/c85a743f-f623-4ff0-9b7e-2ff928335223" width=50% height=50%>
 
 ---
 

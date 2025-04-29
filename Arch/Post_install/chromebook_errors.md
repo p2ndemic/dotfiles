@@ -23,6 +23,43 @@ https://wiki.archlinux.org/title/Kernel_module
   
 Код ошибки `-22` обычно означает `EINVAL` (Invalid argument - Неверный аргумент). Вероятно, драйверы ядра Linux получают от EC или через ACPI данные, которые они не ожидают или не поддерживают для данной конкретной модели Chromebook (Osiris). Это может приводить к некорректной работе ACPI, проблемам с пробуждением из сна, функциональных клавиш клавиатуры или с функциональностью портов Type-C (например, Power Delivery).  
 
+**Результат:**  
+Эта ошибка критична т.к она приводит к некорректной работе ACPI, что в свою очередь влияет на функции управления питанием ноутбука.
+Из-за нее пропала функция возможность устанавливать пороги заряда через параметр `charge_control_end_threshold` (файл отсутствует в директрии `/sys/class/power_supply/`) и параметрах управления питанием KDE: "Параметры системы" -> "Управление питанием" -> "Дополнительные параметры управления питанием" (см. скриншот)
+
+```bash
+[admin@admin-osiris ~]$ cat /sys/class/power_supply/BAT0/charge_control_end_threshold
+cat: /sys/class/power_supply/BAT0/charge_control_end_threshold: Нет такого файла или каталога
+```
+```bash
+[admin@admin-osiris ~]$ ls -l /sys/class/power_supply/BAT0/
+итого 0
+-rw-r--r-- 1 root root 4096 апр 29 22:01 alarm
+-r--r--r-- 1 root root 4096 апр 29 22:01 capacity
+-r--r--r-- 1 root root 4096 апр 29 22:01 capacity_level
+-r--r--r-- 1 root root 4096 апр 29 22:01 charge_full
+-r--r--r-- 1 root root 4096 апр 29 22:01 charge_full_design
+-r--r--r-- 1 root root 4096 апр 29 22:01 charge_now
+-r--r--r-- 1 root root 4096 апр 29 22:01 current_now
+-r--r--r-- 1 root root 4096 апр 29 22:01 cycle_count
+lrwxrwxrwx 1 root root    0 апр 29 22:01 device -> ../../../PNP0C0A:00
+drwxr-xr-x 2 root root    0 апр 29 22:01 extensions
+drwxr-xr-x 3 root root    0 апр 29 22:01 hwmon2
+-r--r--r-- 1 root root 4096 апр 29 22:01 manufacturer
+-r--r--r-- 1 root root 4096 апр 29 22:01 model_name
+drwxr-xr-x 2 root root    0 апр 29 22:01 power
+-r--r--r-- 1 root root 4096 апр 29 22:01 present
+-r--r--r-- 1 root root 4096 апр 29 22:01 serial_number
+-r--r--r-- 1 root root 4096 апр 29 22:01 status
+lrwxrwxrwx 1 root root    0 апр 29 22:01 subsystem -> ../../../../../../../../../class/power_supply
+-r--r--r-- 1 root root 4096 апр 29 22:01 technology
+-r--r--r-- 1 root root 4096 апр 29 22:01 type
+-rw-r--r-- 1 root root 4096 апр 29 22:01 uevent
+-r--r--r-- 1 root root 4096 апр 29 22:01 voltage_min_design
+-r--r--r-- 1 root root 4096 апр 29 22:01 voltage_now
+```
+![screenshot_20250429_220550-1](https://github.com/user-attachments/assets/c85a743f-f623-4ff0-9b7e-2ff928335223)
+
 ---
 
 **2. Ошибки Bluetooth:**
@@ -60,7 +97,7 @@ https://wiki.archlinux.org/title/Kernel_module
 Первое что нужно сделать, это проверить логи ошибки ядра через `journalctl` и загруженные модули звуковых драйверов через `lsmod | grep -iE 'snd'`:  
   
 `sudo journalctl -b -p 3 | sort | uniq`  
-```
+```bash
 [admin@admin-osiris ~]$ sudo journalctl -b -p 3 | sort | uniq
 апр 29 20:20:00 admin-osiris kernel: Bluetooth: hci0: No support for _PRR ACPI method
 апр 29 20:20:00 admin-osiris kernel: cros-ec-keyb GOOG0007:00: cannot register non-matrix inputs: -22
@@ -85,7 +122,7 @@ https://wiki.archlinux.org/title/Kernel_module
 апр 29 20:20:05 admin-osiris kernel: sof-audio-pci-intel-tgl 0000:00:1f.3: ipc tx error for 0x60010000 (msg/reply size: 108/20): -5
 ```
 `lsmod | grep -iE 'snd'`  
-```
+```bash
 [admin@admin-osiris ~]$ lsmod | grep -iE 'snd'
 snd_seq_dummy          12288  0
 snd_hrtimer            12288  1

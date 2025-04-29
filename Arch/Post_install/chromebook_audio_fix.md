@@ -12,9 +12,7 @@ https://wiki.archlinux.org/title/Kernel_module
 ---
   
 Первое что нужно сделать, это проверить логи ошибки ядра через `journalctl` и загруженные модули звуковых драйверов через `lsmod | grep -iE 'snd'`:  
-
-
-_команда:_  
+  
 `sudo journalctl -b -p 3 | sort | uniq`  
 ```
 [admin@admin-osiris ~]$ sudo journalctl -b -p 3 | sort | uniq
@@ -35,7 +33,7 @@ _команда:_
 апр 28 21:05:27 admin-osiris kernel: sof-audio-pci-intel-tgl 0000:00:1f.3: ipc tx error for 0x60010000 (msg/reply size: 108/20): -22
 апр 28 21:05:27 admin-osiris kernel: sof-audio-pci-intel-tgl 0000:00:1f.3: ipc tx error for 0x60010000 (msg/reply size: 108/20): -5
 ```
-
+`lsmod | grep -iE 'snd'`  
 ```
 [admin@admin-osiris ~]$ lsmod | grep -iE 'snd'
 snd_seq_dummy          12288  0

@@ -8,6 +8,8 @@ https://wiki.archlinux.org/title/Kernel_module
   
 В общем, после замены ненавистного ChromeOS на прошивку от любезного Mr. Chromebox и установки дистрибутива на базе Arch Linux, я столкнулся со следующей проблемами:
 
+---
+
 **1. Ошибки, связанные с ChromeOS Embedded Controller (EC):**
 
 * `cros-ec-keyb GOOG0007:00: cannot register non-matrix inputs: -22`
@@ -16,32 +18,41 @@ https://wiki.archlinux.org/title/Kernel_module
 * `cros-ec-typec GOOG0014:00: failed to get PD command version info`
 * `cros-ec-typec GOOG0014:00: probe with driver cros-ec-typec failed with error -22`
 
-* Эти ошибки указывают на проблемы с инициализацией драйверов, отвечающих за взаимодействие со встроенным контроллером ChromeOS (`cros-ec`). Этот контроллер управляет клавиатурой (особенно функциональными клавишами), питанием, режимом сна/пробуждения, портами Type-C и другими низкоуровневыми функциями.
-* Код ошибки `-22` обычно означает `EINVAL` (Invalid argument - Неверный аргумент). Вероятно, драйверы ядра Linux получают от EC или через ACPI данные, которые они не ожидают или не поддерживают для данной конкретной модели Chromebook (Osiris). Это может приводить к некорректной работе функциональных клавиш клавиатуры, проблемам с пробуждением из сна или с функциональностью портов Type-C (например, Power Delivery).
+  Эти ошибки указывают на проблемы с инициализацией драйверов, отвечающих за взаимодействие со встроенным контроллером ChromeOS (`cros-ec`). Этот контроллер управляет клавиатурой (особенно функциональными клавишами), питанием, режимом сна/пробуждения, портами Type-C и другими низкоуровневыми функциями.
+  
+  Код ошибки `-22` обычно означает `EINVAL` (Invalid argument - Неверный аргумент). Вероятно, драйверы ядра Linux получают от EC или через ACPI данные, которые они не ожидают или не поддерживают для данной конкретной модели Chromebook (Osiris). Это может приводить к некорректной работе функциональных клавиш клавиатуры, проблемам с пробуждением из сна или с функциональностью портов Type-C (например, Power Delivery).
+
+---
 
 **2. Ошибки Bluetooth:**
 
-* `Bluetooth: hci0: No support for _PRR ACPI method`
-* `Bluetooth: ASoC: error at dpcm_fe_dai_hw_params on Bluetooth: -22`
-* `Bluetooth: ASoC: error at __soc_pcm_hw_params on Bluetooth: -22`
+* `Bluetooth: hci0: No support for _PRR ACPI method`  
+* `Bluetooth: ASoC: error at dpcm_fe_dai_hw_params on Bluetooth: -22`  
+* `Bluetooth: ASoC: error at __soc_pcm_hw_params on Bluetooth: -22`  
+  
+Первая ошибка (`_PRR ACPI method`) указывает на отсутствие поддержки специфического метода управления питанием Bluetooth через ACPI. Это может быть некритично, но потенциально может влиять на энергопотребление Bluetooth.  
+  
+Остальные ошибки Bluetooth связаны с аудиоподсистемой ALSA (ASoC - ALSA System on Chip) и указывают на проблемы при настройке параметров аудиопотока для Bluetooth. Опять же, ошибка `-22` (`EINVAL`). Это может мешать работе Bluetooth-аудиоустройств (наушников, колонок).
 
-* Первая ошибка (`_PRR ACPI method`) указывает на отсутствие поддержки специфического метода управления питанием Bluetooth через ACPI. Это может быть некритично, но потенциально может влиять на энергопотребление Bluetooth.
-* Остальные ошибки Bluetooth связаны с аудиоподсистемой ALSA (ASoC - ALSA System on Chip) и указывают на проблемы при настройке параметров аудиопотока для Bluetooth. Опять же, ошибка `-22` (`EINVAL`). Это может мешать работе Bluetooth-аудиоустройств (наушников, колонок).
+---
 
 **3. Ошибки Аудио (SOF - Sound Open Firmware / ASoC):**
 
-* `sof-audio-pci-intel-tgl 0000:00:1f.3: ASoC: error at snd_soc_pcm_component_hw_params on 0000:00:1f.3: -22`
-* `sof-audio-pci-intel-tgl 0000:00:1f.3: ASoC: error at snd_soc_pcm_component_hw_params on 0000:00:1f.3: -5`
-* `sof-audio-pci-intel-tgl 0000:00:1f.3: HW params ipc failed for stream 1`
-* `sof-audio-pci-intel-tgl 0000:00:1f.3: ipc tx error for 0x60010000 (msg/reply size: 108/20): -22`
-* `sof-audio-pci-intel-tgl 0000:00:1f.3: ipc tx error for 0x60010000 (msg/reply size: 108/20): -5`
-
-
-* Это самая многочисленная группа ошибок, и все они связаны с аудиоподсистемой `sof-audio-pci-intel-tgl`, которая используется на современных платформах Intel (включая вашу Alder Lake-P). SOF (Sound Open Firmware) - это прошивка и драйверы для обработки звука на DSP (цифровом сигнальном процессоре).
-* Ошибки указывают на проблемы с настройкой параметров (`hw_params`) для различных аудиоинтерфейсов: цифрового микрофона (`DMIC`), HDMI-аудиовыходов и основного аудиоустройства PCI.
-* Коды ошибок `-22` (`EINVAL`) и `-5` (`EIO` - Input/Output error - Ошибка ввода/вывода) говорят о проблемах с передачей корректных параметров оборудованию или об ошибках связи (IPC - Inter-Process Communication) с прошивкой SOF на DSP.
-* **Результат:** 
-После загрузки системы не работает звук. При нажатии на значок громкости в KDE, система сообщает что `'Не найдено устройств ввода или вывода звука'`.  
+* `sof-audio-pci-intel-tgl 0000:00:1f.3: ASoC: error at snd_soc_pcm_component_hw_params on 0000:00:1f.3: -22`  
+* `sof-audio-pci-intel-tgl 0000:00:1f.3: ASoC: error at snd_soc_pcm_component_hw_params on 0000:00:1f.3: -5`  
+* `sof-audio-pci-intel-tgl 0000:00:1f.3: HW params ipc failed for stream 1`  
+* `sof-audio-pci-intel-tgl 0000:00:1f.3: ipc tx error for 0x60010000 (msg/reply size: 108/20): -22`  
+* `sof-audio-pci-intel-tgl 0000:00:1f.3: ipc tx error for 0x60010000 (msg/reply size: 108/20): -5`  
+  
+Это самая многочисленная группа ошибок, и все они связаны с аудиоподсистемой `sof-audio-pci-intel-tgl`, которая используется на современных платформах Intel (включая вашу Alder Lake-P). SOF (Sound Open Firmware) - это прошивка и драйверы для обработки звука на DSP (цифровом сигнальном процессоре).  
+  
+Ошибки указывают на проблемы с настройкой параметров (`hw_params`) для различных аудиоинтерфейсов: цифрового микрофона (`DMIC`), HDMI-аудиовыходов и основного аудиоустройства PCI.  
+  
+Коды ошибок `-22` (`EINVAL`) и `-5` (`EIO` - Input/Output error - Ошибка ввода/вывода) говорят о проблемах с передачей корректных параметров оборудованию или об ошибках связи (IPC - Inter-Process Communication) с прошивкой SOF на DSP.  
+  
+**Результат:**  
+После загрузки системы не работает звук. При нажатии на значок громкости в KDE, система сообщает что `'Не найдено устройств ввода или
+вывода звука'`.  
 
 ---
   

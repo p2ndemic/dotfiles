@@ -195,10 +195,9 @@ Card #42
 Далее, гуглим и изучаем маны/гайды SOF. Находим вот вот эту статью: https://thesofproject.github.io/latest/getting_started/intel_debug/introduction.html
 
 #### Краткий анализ документации:  
-   
   
 ---
-
+  
 #### **1. Конфликты драйверов и настройка через `snd-intel-dspcfg`**
 - **Проблема**:  
   До 2020 года разные драйверы (например, `snd-hda-intel`, `snd-sof`, `snd-soc-skl`) могли регистрироваться на одно и то же PCI ID, что приводило к конфликтам. Решение требовало ручного редактирования конфигурации ядра (`/etc/modprobe.d/`) или исключения драйверов, что было неудобно для пользователей и дистрибутивов.
@@ -214,21 +213,21 @@ Card #42
   ```bash
   options snd-intel-dspcfg dsp_driver=1  # или 3
   ```
-
+  
 ---
-
-#### **2. Требования к файловой системе и прошивке**
-Для корректной работы SOF необходимы три компонента:
-
-1. **Прошивка DSP**:
-
+  
+#### **2. Требования к файловой системе и прошивке**  
+Для корректной работы SOF необходимы три компонента:  
+  
+1. **Прошивка DSP**:  
+  
 | Platform                                 | IPC type | Load path                                    |
 | ---------------------------------------- | -------- | -------------------------------------------- |
 | Raptor Lake and older                    | IPC3     | /lib/firmware/intel/sof/                     |
 | Raptor Lake and older (community signed) | IPC3     | /lib/firmware/intel/sof/community/           |
 | Tiger Lake and newer                     | IPC4     | /lib/firmware/intel/sof-ipc4/PLAT/           |
 | iger Lake and newer (community signed)   | IPC4     | /lib/firmware/intel/sof-ipc4/PLAT/community/ |
-
+  
    - Подпись: 
      - Обычно требуется подпись Intel (для потребительских устройств).
      - **Исключения**:  
@@ -240,9 +239,8 @@ Card #42
        `sudo nano /etc/modprobe.d/sof.conf`
        ```bash
        options snd_sof fw_path="/lib/firmware/intel/sof-ipc4/adl/community/" fw_filename="sof-adl.ri"
-       ```
-
-
+       ```  
+  
 2. **Топологический файл**:
    - Описывает структуру аудиокомпонентов (кодеки, PCM-устройства).
    - Пути:  
@@ -253,8 +251,8 @@ Card #42
        `sudo nano /etc/modprobe.d/sof.conf`
        ```bash
        options snd_sof tplg_path="/lib/firmware/intel/sof-tplg/" tplg_filename="sof-adl-nau8825.tplg"
-       ```
-
+       ```  
+  
 3. **UCM-файлы**:
    - Конфигурируют управление аудиоустройствами (например, громкость, переключение между динамиками и наушниками).
    - Расположение: `/usr/share/alsa/ucm2/`.

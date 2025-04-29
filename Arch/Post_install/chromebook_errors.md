@@ -8,7 +8,7 @@ https://wiki.archlinux.org/title/Kernel_module
   
 В общем, после замены ненавистного ChromeOS на прошивку от любезного Mr. Chromebox и установки дистрибутива на базе Arch Linux, я столкнулся со следующими проблемами:
 
-`sudo journalctl -b -p 3 | sort | uniq`  
+`sudo journalctl -b -p 3 | sort | uniq`:  
 ```bash
 [admin@admin-osiris ~]$ sudo journalctl -b -p 3 | sort | uniq
 апр 29 20:20:00 admin-osiris kernel: Bluetooth: hci0: No support for _PRR ACPI method

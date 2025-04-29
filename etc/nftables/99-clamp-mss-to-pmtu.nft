@@ -28,7 +28,7 @@ table ip6 mangle {
 # Чтобы правило автоматически загружалось вместе с системой, нужно добавить строку для подключения файла в /etc/nftables.conf
 # sudo nano /etc/nftables.conf
 # ...
-# include "/etc/nftables/99-clamp-mss-to-pmtu.nft"
+# include "/etc/nftables/*"
 
 # sudo systemctl restart nftables
 # sudo systemctl enable --now nftables

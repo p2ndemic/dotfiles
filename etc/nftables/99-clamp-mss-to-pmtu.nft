@@ -1,5 +1,6 @@
 #!/usr/sbin/nft -f
 
+# https://wiki.nftables.org/wiki-nftables/index.php/Scripting
 # https://unix.stackexchange.com/questions/672742/why-mss-clamping-in-iptables-nft-seems-to-take-no-effect-in-nftables
 # https://unix.stackexchange.com/questions/744973/enable-nat-with-tcpmss-using-ufw?utm_source=chatgpt.com
 # Настройка MSS (MTU - 40).

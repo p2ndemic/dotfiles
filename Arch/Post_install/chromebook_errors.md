@@ -112,12 +112,12 @@ lrwxrwxrwx 1 root root    0 апр 29 22:01 subsystem -> ../../../../../../../..
 * `sof-audio-pci-intel-tgl 0000:00:1f.3: ASoC: error at snd_soc_pcm_component_hw_params on 0000:00:1f.3: -5`  
 * `sof-audio-pci-intel-tgl 0000:00:1f.3: HW params ipc failed for stream 1`  
 * `sof-audio-pci-intel-tgl 0000:00:1f.3: ipc tx error for 0x60010000 (msg/reply size: 108/20): -22`  
-* `sof-audio-pci-intel-tgl 0000:00:1f.3: ipc tx error for 0x60010000 (msg/reply size: 108/20): -5`
-
-* `DMIC16kHz: ASoC: error at dpcm_fe_dai_hw_params on DMIC16kHz: -22`
-* `DMIC16kHz: ASoC: error at __soc_pcm_hw_params on DMIC16kHz: -22`
-* `HDMIx: ASoC: error at dpcm_fe_dai_hw_params on HDMI2: -5`
-
+* `sof-audio-pci-intel-tgl 0000:00:1f.3: ipc tx error for 0x60010000 (msg/reply size: 108/20): -5`  
+  
+* `DMIC16kHz: ASoC: error at dpcm_fe_dai_hw_params on DMIC16kHz: -22`  
+* `DMIC16kHz: ASoC: error at __soc_pcm_hw_params on DMIC16kHz: -22`  
+* `HDMIx: ASoC: error at dpcm_fe_dai_hw_params on HDMI2: -5`  
+  
 **Описание:**  
 - Это самая многочисленная группа ошибок, и все они связаны с аудиоподсистемой `sof-audio-pci-intel-tgl`, которая используется на современных платформах Intel (включая Alder Lake-P). SOF (Sound Open Firmware) - это прошивка и драйверы для обработки звука на DSP (цифровом сигнальном процессоре).  
   

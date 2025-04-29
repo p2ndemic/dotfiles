@@ -7,8 +7,9 @@ https://wiki.archlinux.org/title/Kernel_module
 Столько времени ушло на поиски и примерного решения этой проблемы 😮‍💨. Есть примерный вариант исправления, но я еще не проверял его в деле.  
   
 В общем, после замены ненавистного ChromeOS на прошивку от любезного Mr. Chromebox и установки дистрибутива на базе Arch Linux, я столкнулся со следующей проблемой:
-    
-После загрузки системы не работает звук. При нажатии на значок громкости в KDE, система сообщает что `'Не найдено устройств ввода или вывода звука'`.  
+
+1. 
+2. После загрузки системы не работает звук. При нажатии на значок громкости в KDE, система сообщает что `'Не найдено устройств ввода или вывода звука'`.  
 
 ---
   
@@ -17,22 +18,27 @@ https://wiki.archlinux.org/title/Kernel_module
 `sudo journalctl -b -p 3 | sort | uniq`  
 ```
 [admin@admin-osiris ~]$ sudo journalctl -b -p 3 | sort | uniq
-апр 28 21:05:22 admin-osiris kernel: Bluetooth: hci0: No support for _PRR ACPI method
-апр 28 21:05:27 admin-osiris kernel:  Bluetooth: ASoC: error at dpcm_fe_dai_hw_params on Bluetooth: -22
-апр 28 21:05:27 admin-osiris kernel:  Bluetooth: ASoC: error at __soc_pcm_hw_params on Bluetooth: -22
-апр 28 21:05:27 admin-osiris kernel:  DMIC16kHz: ASoC: error at dpcm_fe_dai_hw_params on DMIC16kHz: -22
-апр 28 21:05:27 admin-osiris kernel:  DMIC16kHz: ASoC: error at __soc_pcm_hw_params on DMIC16kHz: -22
-апр 28 21:05:27 admin-osiris kernel:  HDMI2: ASoC: error at dpcm_fe_dai_hw_params on HDMI2: -5
-апр 28 21:05:27 admin-osiris kernel:  HDMI2: ASoC: error at __soc_pcm_hw_params on HDMI2: -5
-апр 28 21:05:27 admin-osiris kernel:  HDMI3: ASoC: error at dpcm_fe_dai_hw_params on HDMI3: -5
-апр 28 21:05:27 admin-osiris kernel:  HDMI3: ASoC: error at __soc_pcm_hw_params on HDMI3: -5
-апр 28 21:05:27 admin-osiris kernel:  HDMI4: ASoC: error at dpcm_fe_dai_hw_params on HDMI4: -5
-апр 28 21:05:27 admin-osiris kernel:  HDMI4: ASoC: error at __soc_pcm_hw_params on HDMI4: -5
-апр 28 21:05:27 admin-osiris kernel: sof-audio-pci-intel-tgl 0000:00:1f.3: ASoC: error at snd_soc_pcm_component_hw_params on 0000:00:1f.3: -22
-апр 28 21:05:27 admin-osiris kernel: sof-audio-pci-intel-tgl 0000:00:1f.3: ASoC: error at snd_soc_pcm_component_hw_params on 0000:00:1f.3: -5
-апр 28 21:05:27 admin-osiris kernel: sof-audio-pci-intel-tgl 0000:00:1f.3: HW params ipc failed for stream 1
-апр 28 21:05:27 admin-osiris kernel: sof-audio-pci-intel-tgl 0000:00:1f.3: ipc tx error for 0x60010000 (msg/reply size: 108/20): -22
-апр 28 21:05:27 admin-osiris kernel: sof-audio-pci-intel-tgl 0000:00:1f.3: ipc tx error for 0x60010000 (msg/reply size: 108/20): -5
+апр 29 20:20:00 admin-osiris kernel: Bluetooth: hci0: No support for _PRR ACPI method
+апр 29 20:20:00 admin-osiris kernel: cros-ec-keyb GOOG0007:00: cannot register non-matrix inputs: -22
+апр 29 20:20:00 admin-osiris kernel: cros-ec-keyb GOOG0007:00: probe with driver cros-ec-keyb failed with error -22
+апр 29 20:20:00 admin-osiris kernel: cros_ec_lpcs GOOG0004:00: failed to retrieve wake mask: -22
+апр 29 20:20:00 admin-osiris kernel: cros-ec-typec GOOG0014:00: failed to get PD command version info
+апр 29 20:20:00 admin-osiris kernel: cros-ec-typec GOOG0014:00: probe with driver cros-ec-typec failed with error -22
+апр 29 20:20:05 admin-osiris kernel:  Bluetooth: ASoC: error at dpcm_fe_dai_hw_params on Bluetooth: -22
+апр 29 20:20:05 admin-osiris kernel:  Bluetooth: ASoC: error at __soc_pcm_hw_params on Bluetooth: -22
+апр 29 20:20:05 admin-osiris kernel:  DMIC16kHz: ASoC: error at dpcm_fe_dai_hw_params on DMIC16kHz: -22
+апр 29 20:20:05 admin-osiris kernel:  DMIC16kHz: ASoC: error at __soc_pcm_hw_params on DMIC16kHz: -22
+апр 29 20:20:05 admin-osiris kernel:  HDMI2: ASoC: error at dpcm_fe_dai_hw_params on HDMI2: -5
+апр 29 20:20:05 admin-osiris kernel:  HDMI2: ASoC: error at __soc_pcm_hw_params on HDMI2: -5
+апр 29 20:20:05 admin-osiris kernel:  HDMI3: ASoC: error at dpcm_fe_dai_hw_params on HDMI3: -5
+апр 29 20:20:05 admin-osiris kernel:  HDMI3: ASoC: error at __soc_pcm_hw_params on HDMI3: -5
+апр 29 20:20:05 admin-osiris kernel:  HDMI4: ASoC: error at dpcm_fe_dai_hw_params on HDMI4: -5
+апр 29 20:20:05 admin-osiris kernel:  HDMI4: ASoC: error at __soc_pcm_hw_params on HDMI4: -5
+апр 29 20:20:05 admin-osiris kernel: sof-audio-pci-intel-tgl 0000:00:1f.3: ASoC: error at snd_soc_pcm_component_hw_params on 0000:00:1f.3: -22
+апр 29 20:20:05 admin-osiris kernel: sof-audio-pci-intel-tgl 0000:00:1f.3: ASoC: error at snd_soc_pcm_component_hw_params on 0000:00:1f.3: -5
+апр 29 20:20:05 admin-osiris kernel: sof-audio-pci-intel-tgl 0000:00:1f.3: HW params ipc failed for stream 1
+апр 29 20:20:05 admin-osiris kernel: sof-audio-pci-intel-tgl 0000:00:1f.3: ipc tx error for 0x60010000 (msg/reply size: 108/20): -22
+апр 29 20:20:05 admin-osiris kernel: sof-audio-pci-intel-tgl 0000:00:1f.3: ipc tx error for 0x60010000 (msg/reply size: 108/20): -5
 ```
 `lsmod | grep -iE 'snd'`  
 ```

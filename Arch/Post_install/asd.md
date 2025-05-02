@@ -16,7 +16,6 @@
 | `cros_ec_hwmon`          | Мониторинг температуры/вентиляторов через EC _[загружен]_          |       ✓       |
 | `cros_ec_keyb`           | Драйвер встроенной клавиатуры через EC _[загружен]_                |       ✓       |
 | `cros_ec_lpcs`           | **Транспорт:** Связь с EC по шине **LPC** _[загружен]_             |       ✓       |
-| `cros_ec_sensors_core`   | Ядро фреймворка для сенсоров EC (IIO)                              |       ✓       |
 | `cros_ec_sysfs`          | Интерфейс sysfs для информации от EC _[загружен]_                  |       ✓       |
 | `cros-ec-typec`          | **Управление USB Type-C** через EC _[загружен]_                    |       ✓       |
 | `cros_kbd_led_backlight` | Управление **подсветкой клавиатуры** через EC _[загружен]_         |       ✓       |
@@ -24,7 +23,7 @@
 | `cros_usbpd-charger`     | Информация о зарядном устройстве USB PD _[загружен]_               |       ✓       |
 | `cros_usbpd_logger`      | Логирование событий USB PD (отладка) _[загружен]_                  |       ✓       |
 | `cros_usbpd_notify`      | Уведомления о событиях USB PD _[загружен]_                         |       ✓       |
-| `extcon-usbc-cros-ec`    | **Мост м/у EC и Extcon** для событий/свойств USB-C портов          |       ✓       |
+| `extcon-usbc-cros-ec`    | **Мост м/у EC и Extcon** для событий/свойств USB-C портов          |       ~       |
 | `gpio-cros-ec`           | Доступ к GPIO, управляемым EC (напр., датчик крышки) _[загружен]_  |       ✓       |
 | `leds-cros_ec`           | Упр. светодиодами статуса (питание, батарея) через EC _[загружен]_ |       ✓       |
 | `pwm-cros-ec`            | Управление PWM через EC (например, вентиляторы)                    |       ✓       |
@@ -41,14 +40,15 @@
 | `cros_ec_accel_legacy`   | Драйвер для старых акселерометров через EC                         |               |
 | `cros_ec_baro`           | Барометр через EC (IIO)                                            |               |
 | `cros-ec-cec`            | Управление HDMI CEC через EC                                       |               |
-| `cros_ec_sensors`        | Module to handle 3d contiguous sensors like Accelerometers, Gyroscope and Magnetometer (IIO) |       ✓       |
+| `cros_ec_sensors`        | Module to handle 3d contiguous sensors like Accelerometers, Gyroscope and Magnetometer (IIO) |               |
+| `cros_ec_sensors_core`   | Ядро фреймворка для сенсоров EC (IIO)                              |               |
 | `cros_ec_i2c`            | Связь с EC по шине I2C (не используется)                           |               |
 | `cros_ec_ishtp`          | Связь с EC через Intel ISH (не используется)                       |               |
 | `cros_ec_lid_angle`      | Датчик угла открытия крышки через EC (IIO)                         |               |
 | `cros_ec_light_prox`     | Датчик освещенности/приближения через EC (IIO)                     |               |
 | `cros_ec_lightbar`       | Управление световой панелью (старые Pixel)                         |               |
 | `cros_ec_mkbp_proximity` | Специфический датчик приближения через EC (IIO)                    |               |
-| `cros-ec-sensorhub`      | Мост для сенсоров EC в подсистему IIO                              |       ✓       |
+| `cros-ec-sensorhub`      | Мост для сенсоров EC в подсистему IIO                              |               |
 | `cros_ec_spi`            | Связь с EC по шине SPI (не используется)                           |               |
 | `cros_ec_uart`           | Связь с EC по UART (не используется)                               |               |
 | `cros_ec_ucsi`           | Мост UCSI <-> EC (не используется, т.к. активен `cros-ec-typec`)   |               |

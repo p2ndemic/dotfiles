@@ -1,44 +1,28 @@
 #!/bin/bash
 
 # Сохранение списка установленных пакетов
-#pacman -Qenq > pkglist_repo.txt
+#pacman -Qenq > user_pkglist_repo.txt
+#zypper packages --userinstalled > ~/installed-packages.txt (опционально)
+
+-Q: Эта опция указывает Pacman на выполнение запроса (query).
+-e: Эта опция в запросе означает "explicitly installed". Она выводит список только тех пакетов, которые были установлены пользователем вручную, а не как зависимости других пакетов.
+-n: Эта опция в запросе означает "native". Она фильтрует список, показывая только те пакеты, которые установлены из репозиториев, а не были собраны и установлены локально.
+-q: Эта опция в запросе означает "quiet". Она заставляет Pacman выводить только имена пакетов, без дополнительной информации о версии и статусе.
+>: Это оператор перенаправления вывода в командной строке. Он берет стандартный вывод предыдущей команды (pacman -Qenq) и перенаправляет его в указанный файл.
+
 #pacman -Qemq > pkglist_aur.txt
+(Все опции выше) +
+-m: Запрашивает только "foreign" пакеты. Это пакеты, которые не принадлежат ни одному из настроенных репозиториев. Обычно это пакеты, установленные вручную из локальных файлов (.tar.zst) или из AUR (Arch User Repository) с помощью таких помощников, как yay или paru.
 
 # Способ через pacman -Q:
-# pacman -Q | cut -d' ' -f1 | sort | uniq > installed_packages.txt
+# pacman -Qnq > pkglist_repo_all.txt
+или
+# pacman -Q | cut -d' ' -f1 | sort | uniq > pkglist_repo_all.txt
 
-# Путь к файлу со списком старых пакетов
-OLD_PACKAGES_FILE="installed_packages.txt"
-
-# Проверяем, существует ли файл
-if [ ! -f "$OLD_PACKAGES_FILE" ]; then
-    echo "Ошибка: файл $OLD_PACKAGES_FILE не найден!"
-    exit 1
-fi
-
-# Получаем список текущих установленных пакетов (только имена)
-CURRENT_PACKAGES=$(pacman -Q | cut -d' ' -f1 | sort | uniq)
-
-# Читаем список старых пакетов и сортируем
-OLD_PACKAGES=$(cat "$OLD_PACKAGES_FILE" | cut -d' ' -f1 | sort | uniq)
-
-# Находим недостающие пакеты (те, что есть в старом списке, но нет в текущем)
-MISSING_PACKAGES=$(comm -23 <(echo "$OLD_PACKAGES") <(echo "$CURRENT_PACKAGES"))
-
-# Проверяем, есть ли недостающие пакеты
-if [ -z "$MISSING_PACKAGES" ]; then
-    echo "Все пакеты из списка уже установлены."
-    exit 0
-fi
-
-# Выводим недостающие пакеты
-echo "Недостающие пакеты:"
-echo "$MISSING_PACKAGES"
 
 # Устанавливаем недостающие пакеты
-read -p "Установить недостающие пакеты? (y/n): " CONFIRM
-if [ "$CONFIRM" = "y" ]; then
-    sudo pacman -S $MISSING_PACKAGES
-else
-    echo "Установка отменена."
-fi
+# sudo pacman -S --needed - < pkglist_repo.txt
+sudo: Необходим для установки пакетов, так как это действие требует прав администратора.
+pacman -S: Команда для установки (sync) пакетов.
+       --needed: Эта опция указывает pacman устанавливать только те пакеты, которые еще не установлены в системе. Если пакет из списка уже установлен, pacman пропустит его.
+       - < pkglist_repo.txt: Перенаправляет содержимое файла pkglist_repo.txt в стандартный ввод команды pacman -S.

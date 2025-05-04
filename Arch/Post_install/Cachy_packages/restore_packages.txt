@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # Сохранение списка установленных пакетов
 #pacman -Qenq > user_pkglist_repo.txt
 

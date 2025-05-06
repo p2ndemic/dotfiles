@@ -1,7 +1,7 @@
 ### General
 --restrict-filenames
---output "$HOME/Загрузки/Arch1ve/yt-dlp/%(title)s.%(ext)s"
---output-na-placeholder "$HOME/Загрузки/Arch1ve/yt-dlp/%(title)s.audio.%(ext)s"
+--output "$HOME/Arch1ve/yt-dlp/%(title)s.%(ext)s"
+--output-na-placeholder "$HOME/Arch1ve/yt-dlp/%(title)s.audio.%(ext)s"
 --no-mtime
 --no-mark-watched
 #--ignore-errors
@@ -10,25 +10,27 @@
 
 ### Download archive [optional]
 ### Download only videos not listed in the archive file. Record the IDs of all downloaded videos in it.
-#--download-archive $HOME/Загрузки/Arch1ve/yt-dlp/ytdlp_archive.txt
+#--download-archive $HOME/Arch1ve/yt-dlp/ytdlp_archive.txt
 #--break-on-existing
 
 
-### Network | Cache
---cache-dir "$HOME/Загрузки/Arch1ve/yt-dlp/cache"
+### Cache
+--cache-dir "$HOME/Arch1ve/yt-dlp/cache"
+
+
+### Network
 --concurrent-fragments 8
 --buffer-size 16K
 --resize-buffer
 
-### Network [high buffer|chunk]
+### Network | High buffer & chunk
 #--buffer-size 1M
 #--http-chunk-size 10M
 
 ### Network | External downloader [optional]
-
 # Curl
-# --downloader curl
-# --downloader-args "curl:--http3 --tcp-fastopen --mptcp --parallel --parallel-immediate --parallel-max 50 --location"
+#--downloader curl
+#--downloader-args "curl:--http3 --tcp-fastopen --mptcp --parallel --parallel-immediate --parallel-max 50 --location"
 
 # Aria2c
 #--downloader aria2c
@@ -71,8 +73,11 @@
 #--compat-options embed-thumbnail-atomicparsley
 
 
-### Sponsorblock | Geobypass
+### Sponsorblock 
 --sponsorblock-remove all
+
+
+### Geobypass [optional]
 #--xff "default" || #--xff US
 
 

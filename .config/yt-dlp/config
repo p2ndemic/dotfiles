@@ -1,4 +1,4 @@
-### General ###
+### General
 --restrict-filenames
 --output "$HOME/Arch1ve/yt-dlp/%(title)s.%(ext)s"
 --output-na-placeholder "$HOME/Arch1ve/yt-dlp/%(title)s.audio.%(ext)s"
@@ -7,24 +7,27 @@
 #--ignore-errors
 #--no-warnings
 
-### Download archive [optional] ###
+
+### Download archive [optional]
 ### Download only videos not listed in the archive file. Record the IDs of all downloaded videos in it.
 #--download-archive $HOME/Arch1ve/yt-dlp/ytdlp_archive.txt
 #--break-on-existing
 
-### Cache ###
+
+### Cache
 #--cache-dir "/tmp/yt-dlp"
 
-### Network ###
+
+### Network
 --concurrent-fragments 8
 --buffer-size 16K
 --resize-buffer
 
-### Network | High buffer & chunk ###
+### Network | High buffer & chunk
 #--buffer-size 1M
 #--http-chunk-size 10M
 
-### Network | External downloader [optional] ###
+### Network | External downloader [optional]
 ### Curl
 #--downloader curl
 #--downloader-args "curl:--http3 --tcp-fastopen --mptcp --parallel --parallel-immediate --parallel-max 50 --location"
@@ -33,17 +36,20 @@
 #--downloader aria2c
 #--downloader-args "aria2c:--continue --max-concurrent-downloads=4 --max-connection-per-server=8 --split=8 --min-split-size=1M"
 
-### Video | Audio format ###
+
+### Video | Audio format
 --prefer-free-formats
 --audio-quality 0
 --remux-video mkv
 
-### Format | Format sort examples: ###
+
+### Format | Format sort examples:
 #--format "bv*+ba/b"
 #--format "bv*[height<=?1440]+ba[ext=webm]/bv*+ba/b"
 #--format-sort "res:1440,aext:webm"
 
-### Subtitle ###
+
+### Subtitle
 --write-subs
 --sub-langs "ru,en.*,-live_chat"
 --compat-options no-live-chat
@@ -51,24 +57,29 @@
 --convert-subs srt
 --embed-subs
 
-### Metadata | Chapters ###
+
+### Metadata | Chapters
 --add-metadata
 --embed-metadata
 --xattrs
 --xattr-set-filesize
 --embed-chapters
 
-### Thumbnails [optional] ###
+
+### Thumbnails [optional]
 #--write-thumbnail
 #--convert-thumbnails webp
 #--embed-thumbnail
 #--compat-options embed-thumbnail-atomicparsley
 
-### Sponsorblock ###
+
+### Sponsorblock
 --sponsorblock-remove all
 
-### Geobypass [optional] ###
+
+### Geobypass [optional]
 #--xff "default" || #--xff US
 
-### Cookies [optional] ###
+
+### Cookies [optional]
 #--cookies-from-browser brave

@@ -79,7 +79,7 @@
 
 
 ### Geobypass [optional]
-#--xff "default" || #--xff US
+#--xff "default" #--xff US
 
 
 ### Cookies [optional]

@@ -27,6 +27,7 @@
 #--buffer-size 1M
 #--http-chunk-size 10M
 
+
 ### Network | External downloader [optional]
 ### Curl
 #--downloader curl
@@ -34,7 +35,7 @@
 
 ### Aria2c 
 #--downloader aria2c
-#--downloader-args "aria2c:--continue --max-concurrent-downloads=4 --max-connection-per-server=8 --split=8 --min-split-size=1M"
+#--downloader-args "aria2c:--continue --max-concurrent-downloads=5 --max-connection-per-server=10 --split=10 --min-split-size=1M"
 
 
 ### Video | Audio format

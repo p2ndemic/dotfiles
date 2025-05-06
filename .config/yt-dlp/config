@@ -15,7 +15,7 @@
 
 
 ### Cache
---cache-dir "$HOME/Arch1ve/yt-dlp/cache"
+#--cache-dir "$HOME/Arch1ve/yt-dlp/cache"
 
 
 ### Network

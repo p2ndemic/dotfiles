@@ -10,16 +10,16 @@
 
     Keybindings:
         - '/'          Save the current URL to the bookmark list (with duplicate check).
-        - 'Alt+/'    Remove the currently playing url-bookmark.
-        - 'Alt+,'   Load the first url-bookmark from the list.
-        - 'Alt+.'    Load the last url-bookmark from the list.
+        - 'Alt+/'      Remove the currently playing url-bookmark.
+        - 'Alt+,'      Load the first url-bookmark from the list.
+        - 'Alt+.'      Load the last url-bookmark from the list.
         - ','          Navigate to the previous url-bookmark.
         - '.'          Navigate to the next url-bookmark.
 
     Add the desired hotkeys to input.conf:
         /              script-binding save_current_url_bookmark
-        Alt+/        script-binding remove_current_url_bookmark
-        Alt+,         script-binding load_first_url_bookmark
+        Alt+/          script-binding remove_current_url_bookmark
+        Alt+,          script-binding load_first_url_bookmark
         Alt+.          script-binding load_last_url_bookmark
         ,              script-binding prev_url_bookmark
         .              script-binding next_url_bookmark

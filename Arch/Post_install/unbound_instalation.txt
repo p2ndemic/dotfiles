@@ -1,0 +1,8 @@
+# =============================================
+#    Unbound installion guide
+# =============================================
+# Ref: https://wiki.archlinux.org/title/Unbound
+# Ref: https://blobfolio.com/2017/fix-linux-dns-issues-caused-by-systemd-resolved/
+# Ref: https://yandex.cloud/ru/docs/tutorials/infrastructure-management/local-dns-cache
+
+

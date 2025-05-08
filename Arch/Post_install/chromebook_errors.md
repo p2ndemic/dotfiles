@@ -249,7 +249,7 @@ vivaldi_fmap           12288  2 atkbd,cros_ec_keyb
 2. Выведем список **всех** доступных модулей (драйверов) `cros`, `chrome`:  
 `find /lib/modules/$(uname -r)/ -iname '*cros*.ko*' -o -iname '*chrome*.ko*' | sort` _или_  
 `find /lib/modules/$(uname -r)/ -iname '*.ko*' | grep -iE 'cros|chrome' | sort`  
-```nginx
+```fish
 ❯ find /lib/modules/$(uname -r)/ -iname '*.ko*' | grep -iE 'cros|chrome' | sort
 /lib/modules/6.14.5-3-cachyos/kernel/drivers/extcon/extcon-usbc-cros-ec.ko.zst
 /lib/modules/6.14.5-3-cachyos/kernel/drivers/gpio/gpio-cros-ec.ko.zst

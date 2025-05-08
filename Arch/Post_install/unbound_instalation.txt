@@ -5,4 +5,27 @@
 # Ref: https://blobfolio.com/2017/fix-linux-dns-issues-caused-by-systemd-resolved/
 # Ref: https://yandex.cloud/ru/docs/tutorials/infrastructure-management/local-dns-cache
 
+# 1. Установить unbound с репозитория
+sudo pacman -S unbound
+
+# 2. Остановить и деактивировать systemd-resolved
+sudo systemctl disable --now systemd-resolved
+
+# 3. CachyOS:
+# По умолчанию в CachyOS настроен systemd-resolved в качестве локального dns резолвера
+# Перед тем как настроить Network Manager удалите файл /lib/NetworkManager/conf.d/dns.conf
+sudo rm /lib/NetworkManager/conf.d/dns.conf
+
+# 4. Настройте unbound в качестве локального dns резолвера
+# Создайте директорию для drop in конфигурации Network manager если она не создана по умолчанию
+sudo mkdir -p /etc/NetworkManager/conf.d
+
+# Создайте конфигурационный файл /etc/NetworkManager/conf.d/99-unbound-dns.conf
+sudo touch /etc/NetworkManager/conf.d/99-unbound-dns.conf
+
+# Внесите следующие настройки чтобы установить unbound в качестве локального dns резолвера
+[main]
+dns=unbound
+
+# 5. Включите службу unbound и перезагрузите компьютер
 

@@ -471,7 +471,7 @@ soundwire_intel        81920  1 snd_sof_intel_hda_generic
 ---
 Запустим эти две утилиты и проверим информацию:
 
-```
+```yaml
 ❯ inxi -aA
 Audio:
   Device-1: Intel Alder Lake PCH-P High Definition Audio
@@ -486,7 +486,7 @@ Audio:
 ~
 ❯
 ```
-```
+```yaml
 ❯ pactl list cards
 Card #42
 	Name: alsa_card.pci-0000_00_1f.3-platform-adl_nau8825_def

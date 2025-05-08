@@ -138,11 +138,11 @@ Info:
 Параметр также недоступен в KDE: "_Параметры системы_" -> "_Управление питанием_" -> "_Дополнительные параметры управления питанием_" (см. скриншот).  
 2. Верхний функциональный и цифровой ряд клавиатуры дает сбой и не работает время от времени. Приходится перезагружаться, чтобы драйвер `cros_ec_keyb` смог правильно инициализироваться.  
 
-```console
+```fish
 ❯ cat /sys/class/power_supply/BAT0/charge_control_end_threshold
 cat: /sys/class/power_supply/BAT0/charge_control_end_threshold: Нет такого файла или каталога
 ```
-```nginx
+```fish
 ❯ ls -l /sys/class/power_supply/BAT0/
 lrwxrwxrwx    - root  8 мая 21:48  device -> ../../../PNP0C0A:00
 drwxr-xr-x    - root  8 мая 21:48  extensions
@@ -249,7 +249,7 @@ vivaldi_fmap           12288  2 atkbd,cros_ec_keyb
 2. Выведем список **всех** доступных модулей (драйверов) `cros`, `chrome`:  
 `find /lib/modules/$(uname -r)/ -iname '*cros*.ko*' -o -iname '*chrome*.ko*' | sort` _или_  
 `find /lib/modules/$(uname -r)/ -iname '*.ko*' | grep -iE 'cros|chrome' | sort`  
-```sh
+```nginx
 ❯ find /lib/modules/$(uname -r)/ -iname '*.ko*' | grep -iE 'cros|chrome' | sort
 /lib/modules/6.14.5-3-cachyos/kernel/drivers/extcon/extcon-usbc-cros-ec.ko.zst
 /lib/modules/6.14.5-3-cachyos/kernel/drivers/gpio/gpio-cros-ec.ko.zst
@@ -308,14 +308,14 @@ vivaldi_fmap           12288  2 atkbd,cros_ec_keyb
 - Как видно из вывода терминала, множество потенциально **необходимых** для корректной работы системы драйверов были не загружены ядром.  
 К примеру модули: `chromeos_acpi`, `cros_usbpd-charger`, `cros_charge-control`, `gpio-cros-ec` требуются для правильной работы подсистемы ACPI.  
 В частности отсутствие модуля `cros_charge-control` напрямую влияет на параметр `charge_control_end_threshold` через который можно устанавливать пороги зарядки батареи ноутбука. Как было выялено ранее, сейчас этот параметр недоступен:
-```console
+```fish
 ❯ cat /sys/class/power_supply/BAT0/charge_control_end_threshold
 cat: /sys/class/power_supply/BAT0/charge_control_end_threshold: Нет такого файла или каталога
 ```
 
 3. Проверим какие драйверы встроены в ядро Linux, а какие доступны для загрузки как внешние модули:
 `zgrep -iE 'cros|chrome' /proc/config.gz | sort`
-```properties
+```ini
 ❯ zgrep -iE 'cros|chrome' /proc/config.gz | sort
 CONFIG_CEC_CROS_EC=m
 CONFIG_CHARGER_CROS_CONTROL=m

@@ -2,6 +2,84 @@ https://thesofproject.github.io/latest/getting_started/intel_debug/introduction.
 https://wiki.archlinux.org/title/Kernel_module  
 
 ---  
+
+```
+❯ inxi -Fxz
+System:
+  Kernel: 6.14.5-3-cachyos arch: x86_64 bits: 64 compiler: clang v: 19.1.7
+  Desktop: KDE Plasma v: 6.3.4 Distro: CachyOS base: Arch Linux
+Machine:
+  Type: Laptop System: Google product: Osiris v: rev3
+    serial: <superuser required>
+  Mobo: Google model: Osiris v: rev3 serial: <superuser required>
+    UEFI: coreboot v: MrChromebox-2408.1 date: 09/14/2024
+Battery:
+  ID-1: BAT0 charge: 11.7 Wh (18.5%) condition: 63.2/65.2 Wh (97.0%)
+    volts: 11.9 min: 11.7 model: COSMX K AP22ABN status: charging
+CPU:
+  Info: 12-core (4-mt/8-st) model: 12th Gen Intel Core i5-1240P bits: 64
+    type: MST AMCP arch: Alder Lake rev: 3 cache: L1: 1.1 MiB L2: 9 MiB
+    L3: 12 MiB
+  Speed (MHz): avg: 400 min/max: 400/4400:3300 cores: 1: 400 2: 400 3: 400
+    4: 400 5: 400 6: 400 7: 400 8: 400 9: 400 10: 400 11: 400 12: 400 13: 400
+    14: 400 15: 400 16: 400 bogomips: 67584
+  Flags: avx avx2 ht lm nx pae sse sse2 sse3 sse4_1 sse4_2 ssse3 vmx
+Graphics:
+  Device-1: Intel Alder Lake-P GT2 [Iris Xe Graphics] driver: i915 v: kernel
+    arch: Xe bus-ID: 00:02.0
+  Device-2: Quanta ACER FHD User Facing driver: uvcvideo type: USB
+    bus-ID: 3-6:2
+  Display: wayland server: X.org v: 1.21.1.16 with: Xwayland v: 24.1.6
+    compositor: kwin_wayland driver: gpu: i915 resolution: 2560x1600~120Hz
+  API: EGL v: 1.5 drivers: iris,swrast platforms:
+    active: gbm,wayland,x11,surfaceless,device inactive: N/A
+  API: OpenGL v: 4.6 compat-v: 4.5 vendor: intel mesa v: 25.0.5-cachyos1.2
+    glx-v: 1.4 direct-render: yes renderer: Mesa Intel Iris Xe Graphics (ADL
+    GT2)
+  API: Vulkan v: 1.4.309 drivers: intel surfaces: xcb,xlib,wayland
+    devices: 1
+  Info: Tools: api: clinfo, eglinfo, glxinfo, vulkaninfo
+    de: kscreen-console,kscreen-doctor wl: wayland-info
+    x11: xdpyinfo, xprop, xrandr
+Audio:
+  Device-1: Intel Alder Lake PCH-P High Definition Audio
+    driver: sof-audio-pci-intel-tgl bus-ID: 00:1f.3
+  API: ALSA v: k6.14.5-3-cachyos status: kernel-api
+  Server-1: JACK v: 1.9.22 status: off
+  Server-2: PipeWire v: 1.4.2 status: active
+Network:
+  Device-1: Intel Alder Lake-P PCH CNVi WiFi driver: iwlwifi v: kernel
+    bus-ID: 00:14.3
+  IF: wlan0 state: up mac: <filter>
+  Device-2: Realtek RTL8125 2.5GbE driver: r8169 v: kernel port: 2000
+    bus-ID: 02:00.0
+  IF: eno0 state: down mac: <filter>
+Bluetooth:
+  Device-1: Intel AX211 Bluetooth driver: btusb v: 0.8 type: USB
+    bus-ID: 3-10:4
+  Report: btmgmt ID: hci0 rfk-id: 0 state: down bt-service: enabled,running
+    rfk-block: hardware: no software: yes address: <filter> bt-v: 5.3 lmp-v: 12
+Drives:
+  Local Storage: total: 238.47 GiB used: 12.07 GiB (5.1%)
+  ID-1: /dev/nvme0n1 vendor: SK Hynix model: HFM256GD3JX016N
+    size: 238.47 GiB temp: 38.9 C
+Partition:
+  ID-1: / size: 236.47 GiB used: 11.86 GiB (5.0%) fs: f2fs dev: /dev/nvme0n1p2
+  ID-2: /boot size: 2 GiB used: 212.5 MiB (10.4%) fs: vfat
+    dev: /dev/nvme0n1p1
+Swap:
+  ID-1: swap-1 type: zram size: 7.59 GiB used: 2.1 MiB (0.0%) dev: /dev/zram0
+Sensors:
+  System Temperatures: cpu: 40.5 C mobo: N/A
+  Fan Speeds (rpm): cpu: 2560 fan-2: 0
+Info:
+  Memory: total: 8 GiB note: est. available: 7.59 GiB used: 2.96 GiB (39.0%)
+  Processes: 308 Uptime: 1h 33m Init: systemd
+  Packages: 1060 Compilers: clang: b536128bd29a83a26c0aafda19942995b30fc5fd
+    gcc: 15.1.1 Shell: fish v: 4.0.2 inxi: 3.3.38
+~
+❯
+```
   
 Ох и намучался я с этой ошибкой 🫩.  
 Столько времени ушло на поиски и примерного решения этой проблемы 😮‍💨. Есть примерный вариант исправления, но я еще не проверял его в деле.  
@@ -315,60 +393,61 @@ CONFIG_SND_SOC_CROS_EC_CODEC=m
 
 ---
 
-Первое что нужно сделать, это проверить логи ошибки ядра через `journalctl` и загруженные модули звуковых драйверов через `lsmod | grep -iE 'snd'`:  
+Первое что нужно сделать, это проверить логи ошибки ядра через `journalctl` и загруженные модули звуковых драйверов через `lsmod | grep -iE 'snd' | sort`:  
   
-`lsmod | grep -iE 'snd'`  
+`lsmod | grep -iE 'snd' | sort`  
 ```bash
-[admin@admin-osiris ~]$ lsmod | grep -iE 'snd'
-snd_seq_dummy          12288  0
+❯ lsmod | grep -iE 'snd' | sort
+ac97_bus               12288  1 snd_soc_core
+snd                   155648  16 snd_seq,snd_seq_device,snd_hda_codec_hdmi,snd_hwdep,snd_soc_sof_nau8825,snd_hda_intel,snd_hda_codec,snd_sof,snd_timer,snd_compress,snd_soc_core,snd_pcm
+snd_compress           28672  3 snd_soc_avs,snd_soc_core,snd_sof_probes
+snd_hda_codec         233472  7 snd_soc_avs,snd_hda_codec_hdmi,snd_soc_hda_codec,snd_hda_intel,snd_soc_intel_hda_dsp_common,snd_soc_hdac_hda,snd_sof_intel_hda
+snd_hda_codec_hdmi     98304  1
+snd_hda_core          155648  10 snd_soc_avs,snd_hda_codec_hdmi,snd_soc_hda_codec,snd_hda_intel,snd_hda_ext_core,snd_hda_codec,snd_soc_intel_hda_dsp_common,snd_sof_intel_hda_common,snd_soc_hdac_hda,snd_sof_intel_hda
+snd_hda_ext_core       36864  6 snd_soc_avs,snd_soc_hda_codec,snd_sof_intel_hda_common,snd_soc_hdac_hda,snd_sof_intel_hda_mlink,snd_sof_intel_hda
+snd_hda_intel          65536  0
 snd_hrtimer            12288  1
-snd_seq               131072  7 snd_seq_dummy
+snd_hwdep              20480  1 snd_hda_codec
+snd_intel_dspcfg       45056  5 snd_soc_avs,snd_hda_intel,snd_sof,snd_sof_intel_hda_common,snd_sof_intel_hda_generic
+snd_intel_sdw_acpi     16384  2 snd_intel_dspcfg,snd_sof_intel_hda_generic
+snd_pcm               208896  16 snd_soc_avs,snd_hda_codec_hdmi,snd_hda_intel,snd_hda_codec,soundwire_intel,snd_sof,snd_sof_intel_hda_common,snd_compress,snd_soc_intel_sof_realtek_common,snd_sof_intel_hda_generic,snd_soc_core,snd_sof_utils,snd_soc_intel_sof_maxim_common,snd_hda_core,snd_soc_nau8825,snd_pcm_dmaengine
+snd_pcm_dmaengine      16384  1 snd_soc_core
+snd_seq               139264  7 snd_seq_dummy
 snd_seq_device         16384  1 snd_seq
-snd_soc_sof_nau8825    20480  1
+snd_seq_dummy          12288  0
+snd_soc_acpi           16384  2 snd_soc_acpi_intel_match,snd_sof_intel_hda_generic
+snd_soc_acpi_intel_match   126976  4 snd_soc_intel_sof_board_helpers,snd_sof_intel_hda_generic,snd_sof_pci_intel_tgl,snd_sof_pci_intel_cnl
+snd_soc_acpi_intel_sdca_quirks    12288  1 snd_soc_acpi_intel_match
+snd_soc_avs           241664  0
+snd_soc_core          446464  15 snd_soc_avs,snd_soc_hda_codec,snd_soc_sof_nau8825,snd_soc_intel_sof_nuvoton_common,soundwire_intel,snd_sof,snd_soc_intel_sof_board_helpers,snd_sof_intel_hda_common,snd_soc_intel_sof_realtek_common,snd_soc_hdac_hda,snd_soc_intel_sof_maxim_common,snd_soc_max98357a,snd_sof_probes,snd_soc_dmic,snd_soc_nau8825
+snd_soc_dmic           12288  1
+snd_soc_hdac_hda       28672  1 snd_sof_intel_hda_common
+snd_soc_hda_codec      28672  1 snd_soc_avs
+snd_soc_intel_hda_dsp_common    16384  1 snd_soc_intel_sof_board_helpers
+snd_soc_intel_sof_board_helpers    24576  1 snd_soc_sof_nau8825
+snd_soc_intel_sof_maxim_common    28672  1 snd_soc_sof_nau8825
 snd_soc_intel_sof_nuvoton_common    12288  1 snd_soc_sof_nau8825
 snd_soc_intel_sof_realtek_common    32768  1 snd_soc_sof_nau8825
-snd_soc_intel_sof_board_helpers    28672  1 snd_soc_sof_nau8825
-snd_soc_intel_hda_dsp_common    16384  1 snd_soc_intel_sof_board_helpers
-snd_sof_probes         28672  0
-snd_soc_intel_sof_maxim_common    32768  1 snd_soc_sof_nau8825
-snd_soc_dmic           12288  1
-snd_sof_pci_intel_tgl    16384  0
-snd_sof_pci_intel_cnl    20480  1 snd_sof_pci_intel_tgl
-snd_sof_intel_hda_generic    45056  2 snd_sof_pci_intel_tgl,snd_sof_pci_intel_cnl
-soundwire_intel        86016  1 snd_sof_intel_hda_generic
-snd_sof_intel_hda_common   208896  3 snd_sof_intel_hda_generic,snd_sof_pci_intel_tgl,snd_sof_pci_intel_cnl
-snd_soc_hdac_hda       28672  1 snd_sof_intel_hda_common
-snd_sof_intel_hda_mlink    36864  3 soundwire_intel,snd_sof_intel_hda_common,snd_sof_intel_hda_generic
-snd_sof_intel_hda      20480  2 snd_sof_intel_hda_common,snd_sof_intel_hda_generic
-snd_hda_codec_hdmi     98304  1
-snd_sof_pci            24576  3 snd_sof_intel_hda_generic,snd_sof_pci_intel_tgl,snd_sof_pci_intel_cnl
-snd_sof_xtensa_dsp     16384  1 snd_sof_intel_hda_generic
-snd_sof               466944  9 snd_soc_sof_nau8825,snd_sof_pci,snd_sof_intel_hda_common,snd_soc_intel_sof_realtek_common,snd_sof_intel_hda_generic,snd_soc_intel_sof_maxim_common,snd_sof_probes,snd_sof_intel_hda,snd_sof_pci_intel_cnl
-snd_sof_utils          16384  1 snd_sof
-snd_soc_acpi_intel_match   131072  4 snd_soc_intel_sof_board_helpers,snd_sof_intel_hda_generic,snd_sof_pci_intel_tgl,snd_sof_pci_intel_cnl
-snd_soc_acpi_intel_sdca_quirks    12288  1 snd_soc_acpi_intel_match
-snd_soc_acpi           16384  2 snd_soc_acpi_intel_match,snd_sof_intel_hda_generic
-snd_soc_sdca           12288  2 snd_soc_acpi_intel_sdca_quirks,soundwire_bus
-snd_soc_avs           241664  0
-snd_soc_hda_codec      28672  1 snd_soc_avs
-snd_hda_ext_core       36864  6 snd_soc_avs,snd_soc_hda_codec,snd_sof_intel_hda_common,snd_soc_hdac_hda,snd_sof_intel_hda_mlink,snd_sof_intel_hda
-snd_hda_intel          69632  0
 snd_soc_max98357a      16384  1
 snd_soc_nau8825        73728  1
-snd_intel_dspcfg       40960  5 snd_soc_avs,snd_hda_intel,snd_sof,snd_sof_intel_hda_common,snd_sof_intel_hda_generic
-snd_intel_sdw_acpi     16384  2 snd_intel_dspcfg,snd_sof_intel_hda_generic
-snd_soc_core          450560  15 snd_soc_avs,snd_soc_hda_codec,snd_soc_sof_nau8825,snd_soc_intel_sof_nuvoton_common,soundwire_intel,snd_sof,snd_soc_intel_sof_board_helpers,snd_sof_intel_hda_common,snd_soc_intel_sof_realtek_common,snd_soc_hdac_hda,snd_soc_intel_sof_maxim_common,snd_soc_max98357a,snd_sof_probes,snd_soc_dmic,snd_soc_nau8825
-snd_hda_codec         212992  7 snd_soc_avs,snd_hda_codec_hdmi,snd_soc_hda_codec,snd_hda_intel,snd_soc_intel_hda_dsp_common,snd_soc_hdac_hda,snd_sof_intel_hda
-snd_compress           28672  3 snd_soc_avs,snd_soc_core,snd_sof_probes
-snd_hda_core          147456  10 snd_soc_avs,snd_hda_codec_hdmi,snd_soc_hda_codec,snd_hda_intel,snd_hda_ext_core,snd_hda_codec,snd_soc_intel_hda_dsp_common,snd_sof_intel_hda_common,snd_soc_hdac_hda,snd_sof_intel_hda
-ac97_bus               12288  1 snd_soc_core
-snd_pcm_dmaengine      16384  1 snd_soc_core
-snd_hwdep              20480  1 snd_hda_codec
-snd_pcm               200704  16 snd_soc_avs,snd_hda_codec_hdmi,snd_hda_intel,snd_hda_codec,soundwire_intel,snd_sof,snd_sof_intel_hda_common,snd_compress,snd_soc_intel_sof_realtek_common,snd_sof_intel_hda_generic,snd_soc_core,snd_sof_utils,snd_soc_intel_sof_maxim_common,snd_hda_core,snd_soc_nau8825,snd_pcm_dmaengine
+snd_soc_sdca           12288  2 snd_soc_acpi_intel_sdca_quirks,soundwire_bus
+snd_soc_sof_nau8825    20480  1
+snd_sof               471040  9 snd_soc_sof_nau8825,snd_sof_pci,snd_sof_intel_hda_common,snd_soc_intel_sof_realtek_common,snd_sof_intel_hda_generic,snd_soc_intel_sof_maxim_common,snd_sof_probes,snd_sof_intel_hda,snd_sof_pci_intel_cnl
+snd_sof_intel_hda      20480  2 snd_sof_intel_hda_common,snd_sof_intel_hda_generic
+snd_sof_intel_hda_common   208896  3 snd_sof_intel_hda_generic,snd_sof_pci_intel_tgl,snd_sof_pci_intel_cnl
+snd_sof_intel_hda_generic    36864  2 snd_sof_pci_intel_tgl,snd_sof_pci_intel_cnl
+snd_sof_intel_hda_mlink    36864  3 soundwire_intel,snd_sof_intel_hda_common,snd_sof_intel_hda_generic
+snd_sof_pci            24576  3 snd_sof_intel_hda_generic,snd_sof_pci_intel_tgl,snd_sof_pci_intel_cnl
+snd_sof_pci_intel_cnl    20480  1 snd_sof_pci_intel_tgl
+snd_sof_pci_intel_tgl    12288  0
+snd_sof_probes         28672  0
+snd_sof_utils          16384  1 snd_sof
+snd_sof_xtensa_dsp     16384  1 snd_sof_intel_hda_generic
 snd_timer              57344  3 snd_seq,snd_hrtimer,snd_pcm
-snd                   155648  16 snd_seq,snd_seq_device,snd_hda_codec_hdmi,snd_hwdep,snd_soc_sof_nau8825,snd_hda_intel,snd_hda_codec,snd_sof,snd_timer,snd_compress,snd_soc_core,snd_pcm
 soundcore              16384  1 snd
-[admin@admin-osiris ~]$
+soundwire_intel        81920  1 snd_sof_intel_hda_generic
+~
+❯
 ```
 
 ---
@@ -393,19 +472,22 @@ soundcore              16384  1 snd
 Запустим эти две утилиты и проверим информацию:
 
 ```
-[admin@admin-osiris ~]$ inxi -aA
+❯ inxi -aA
 Audio:
   Device-1: Intel Alder Lake PCH-P High Definition Audio
     driver: sof-audio-pci-intel-tgl alternate: snd_hda_intel, snd_soc_avs,
     snd_sof_pci_intel_tgl bus-ID: 00:1f.3 chip-ID: 8086:51c8 class-ID: 0401
-  API: ALSA v: k6.14.4-arch1-1 status: kernel-api
+  API: ALSA v: k6.14.5-3-cachyos status: kernel-api
     tools: alsactl,alsamixer,amixer
-  Server-1: PipeWire v: 1.4.2 status: active with: 1: pipewire-pulse
+  Server-1: JACK v: 1.9.22 status: off tools: N/A
+  Server-2: PipeWire v: 1.4.2 status: active with: 1: pipewire-pulse
     status: active 2: wireplumber status: active 3: pipewire-alsa type: plugin
-    4: pw-jack type: plugin tools: pactl,pw-cat,pw-cli,wpctl
+    tools: pactl,pw-cat,pw-cli,wpctl
+~
+❯
 ```
 ```
-[admin@admin-osiris ~]$ pactl list cards
+❯ pactl list cards
 Card #42
 	Name: alsa_card.pci-0000_00_1f.3-platform-adl_nau8825_def
 	Driver: alsa
@@ -429,7 +511,7 @@ Card #42
 		device.icon_name = "audio-card-analog-pci"
 		device.name = "alsa_card.pci-0000_00_1f.3-platform-adl_nau8825_def"
 		device.nick = "sof-nau8825"
-		device.plugged.usec = "4233721"
+		device.plugged.usec = "2980893"
 		device.product.id = "0x51c8"
 		device.product.name = "Alder Lake PCH-P High Definition Audio Controller"
 		device.subsystem = "sound"
@@ -464,7 +546,8 @@ Card #42
 				device.icon_name = "audio-headphones"
 				card.profile.port = "0"
 			Part of profile(s): output:stereo-fallback
-[admin@admin-osiris ~]$
+~
+❯
 ```
 ---
 Тут мы видим следующую инфомацию:

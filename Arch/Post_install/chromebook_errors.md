@@ -87,7 +87,7 @@ Info:
 В общем, после замены ненавистного ChromeOS на прошивку от любезного Mr. Chromebox и установки дистрибутива на базе Arch Linux, я столкнулся со следующими проблемами:
 
 `sudo journalctl -b -p 3 | sort | uniq`:  
-```bash
+```yaml
 ❯ journalctl -b -p 3 | sort | uniq
 мая 08 21:42:09 google-osiris kernel: Bluetooth: hci0: No support for _PRR ACPI method
 мая 08 21:42:09 google-osiris kernel: cros-ec-keyb GOOG0007:00: cannot register non-matrix inputs: -22

@@ -10,28 +10,32 @@ https://wiki.archlinux.org/title/Kernel_module
 
 `sudo journalctl -b -p 3 | sort | uniq`:  
 ```bash
-[admin@admin-osiris ~]$ sudo journalctl -b -p 3 | sort | uniq
-апр 29 20:20:00 admin-osiris kernel: Bluetooth: hci0: No support for _PRR ACPI method
-апр 29 20:20:00 admin-osiris kernel: cros-ec-keyb GOOG0007:00: cannot register non-matrix inputs: -22
-апр 29 20:20:00 admin-osiris kernel: cros-ec-keyb GOOG0007:00: probe with driver cros-ec-keyb failed with error -22
-апр 29 20:20:00 admin-osiris kernel: cros_ec_lpcs GOOG0004:00: failed to retrieve wake mask: -22
-апр 29 20:20:00 admin-osiris kernel: cros-ec-typec GOOG0014:00: failed to get PD command version info
-апр 29 20:20:00 admin-osiris kernel: cros-ec-typec GOOG0014:00: probe with driver cros-ec-typec failed with error -22
-апр 29 20:20:05 admin-osiris kernel:  Bluetooth: ASoC: error at dpcm_fe_dai_hw_params on Bluetooth: -22
-апр 29 20:20:05 admin-osiris kernel:  Bluetooth: ASoC: error at __soc_pcm_hw_params on Bluetooth: -22
-апр 29 20:20:05 admin-osiris kernel:  DMIC16kHz: ASoC: error at dpcm_fe_dai_hw_params on DMIC16kHz: -22
-апр 29 20:20:05 admin-osiris kernel:  DMIC16kHz: ASoC: error at __soc_pcm_hw_params on DMIC16kHz: -22
-апр 29 20:20:05 admin-osiris kernel:  HDMI2: ASoC: error at dpcm_fe_dai_hw_params on HDMI2: -5
-апр 29 20:20:05 admin-osiris kernel:  HDMI2: ASoC: error at __soc_pcm_hw_params on HDMI2: -5
-апр 29 20:20:05 admin-osiris kernel:  HDMI3: ASoC: error at dpcm_fe_dai_hw_params on HDMI3: -5
-апр 29 20:20:05 admin-osiris kernel:  HDMI3: ASoC: error at __soc_pcm_hw_params on HDMI3: -5
-апр 29 20:20:05 admin-osiris kernel:  HDMI4: ASoC: error at dpcm_fe_dai_hw_params on HDMI4: -5
-апр 29 20:20:05 admin-osiris kernel:  HDMI4: ASoC: error at __soc_pcm_hw_params on HDMI4: -5
-апр 29 20:20:05 admin-osiris kernel: sof-audio-pci-intel-tgl 0000:00:1f.3: ASoC: error at snd_soc_pcm_component_hw_params on 0000:00:1f.3: -22
-апр 29 20:20:05 admin-osiris kernel: sof-audio-pci-intel-tgl 0000:00:1f.3: ASoC: error at snd_soc_pcm_component_hw_params on 0000:00:1f.3: -5
-апр 29 20:20:05 admin-osiris kernel: sof-audio-pci-intel-tgl 0000:00:1f.3: HW params ipc failed for stream 1
-апр 29 20:20:05 admin-osiris kernel: sof-audio-pci-intel-tgl 0000:00:1f.3: ipc tx error for 0x60010000 (msg/reply size: 108/20): -22
-апр 29 20:20:05 admin-osiris kernel: sof-audio-pci-intel-tgl 0000:00:1f.3: ipc tx error for 0x60010000 (msg/reply size: 108/20): -5
+❯ journalctl -b -p 3 | sort | uniq
+мая 08 21:42:09 google-osiris kernel: Bluetooth: hci0: No support for _PRR ACPI method
+мая 08 21:42:09 google-osiris kernel: cros-ec-keyb GOOG0007:00: cannot register non-matrix inputs: -22
+мая 08 21:42:09 google-osiris kernel: cros-ec-keyb GOOG0007:00: probe with driver cros-ec-keyb failed with error -22
+мая 08 21:42:09 google-osiris kernel: cros_ec_lpcs GOOG0004:00: failed to retrieve wake mask: -22
+мая 08 21:42:09 google-osiris kernel: cros-ec-typec GOOG0014:00: failed to get PD command version info
+мая 08 21:42:09 google-osiris kernel: cros-ec-typec GOOG0014:00: probe with driver cros-ec-typec failed with error -22
+мая 08 21:42:11 google-osiris bluetoothd[658]: Failed to set mode: Failed (0x03)
+мая 08 21:42:13 google-osiris kernel:  Bluetooth: ASoC: error at dpcm_fe_dai_hw_params on Bluetooth: -22
+мая 08 21:42:13 google-osiris kernel:  Bluetooth: ASoC: error at __soc_pcm_hw_params on Bluetooth: -22
+мая 08 21:42:13 google-osiris kernel:  DMIC16kHz: ASoC: error at dpcm_fe_dai_hw_params on DMIC16kHz: -22
+мая 08 21:42:13 google-osiris kernel:  DMIC16kHz: ASoC: error at __soc_pcm_hw_params on DMIC16kHz: -22
+мая 08 21:42:13 google-osiris kernel:  HDMI2: ASoC: error at dpcm_fe_dai_hw_params on HDMI2: -5
+мая 08 21:42:13 google-osiris kernel:  HDMI2: ASoC: error at __soc_pcm_hw_params on HDMI2: -5
+мая 08 21:42:13 google-osiris kernel:  HDMI3: ASoC: error at dpcm_fe_dai_hw_params on HDMI3: -5
+мая 08 21:42:13 google-osiris kernel:  HDMI3: ASoC: error at __soc_pcm_hw_params on HDMI3: -5
+мая 08 21:42:13 google-osiris kernel:  HDMI4: ASoC: error at dpcm_fe_dai_hw_params on HDMI4: -5
+мая 08 21:42:13 google-osiris kernel:  HDMI4: ASoC: error at __soc_pcm_hw_params on HDMI4: -5
+мая 08 21:42:13 google-osiris kernel: sof-audio-pci-intel-tgl 0000:00:1f.3: ASoC: error at snd_soc_pcm_component_hw_params on 0000:00:1f.3: -22
+мая 08 21:42:13 google-osiris kernel: sof-audio-pci-intel-tgl 0000:00:1f.3: ASoC: error at snd_soc_pcm_component_hw_params on 0000:00:1f.3: -5
+мая 08 21:42:13 google-osiris kernel: sof-audio-pci-intel-tgl 0000:00:1f.3: HW params ipc failed for stream 1
+мая 08 21:42:13 google-osiris kernel: sof-audio-pci-intel-tgl 0000:00:1f.3: ipc tx error for 0x60010000 (msg/reply size: 108/20): -22
+мая 08 21:42:13 google-osiris kernel: sof-audio-pci-intel-tgl 0000:00:1f.3: ipc tx error for 0x60010000 (msg/reply size: 108/20): -5
+мая 08 21:42:14 google-osiris bluetoothd[658]: Failed to set mode: Failed (0x03)
+мая 08 21:42:15 google-osiris bluetoothd[658]: Failed to set mode: Failed (0x03)
+~
 ```
 
 ---
@@ -57,35 +61,36 @@ https://wiki.archlinux.org/title/Kernel_module
 2. Верхний функциональный и цифровой ряд клавиатуры дает сбой и не работает время от времени. Приходится перезагружаться, чтобы драйвер `cros_ec_keyb` смог правильно инициализироваться.  
 
 ```bash
-[admin@admin-osiris ~]$ cat /sys/class/power_supply/BAT0/charge_control_end_threshold
+❯ cat /sys/class/power_supply/BAT0/charge_control_end_threshold
 cat: /sys/class/power_supply/BAT0/charge_control_end_threshold: Нет такого файла или каталога
 ```
 ```bash
-[admin@admin-osiris ~]$ ls -l /sys/class/power_supply/BAT0/
-итого 0
--rw-r--r-- 1 root root 4096 апр 29 22:01 alarm
--r--r--r-- 1 root root 4096 апр 29 22:01 capacity
--r--r--r-- 1 root root 4096 апр 29 22:01 capacity_level
--r--r--r-- 1 root root 4096 апр 29 22:01 charge_full
--r--r--r-- 1 root root 4096 апр 29 22:01 charge_full_design
--r--r--r-- 1 root root 4096 апр 29 22:01 charge_now
--r--r--r-- 1 root root 4096 апр 29 22:01 current_now
--r--r--r-- 1 root root 4096 апр 29 22:01 cycle_count
-lrwxrwxrwx 1 root root    0 апр 29 22:01 device -> ../../../PNP0C0A:00
-drwxr-xr-x 2 root root    0 апр 29 22:01 extensions
-drwxr-xr-x 3 root root    0 апр 29 22:01 hwmon2
--r--r--r-- 1 root root 4096 апр 29 22:01 manufacturer
--r--r--r-- 1 root root 4096 апр 29 22:01 model_name
-drwxr-xr-x 2 root root    0 апр 29 22:01 power
--r--r--r-- 1 root root 4096 апр 29 22:01 present
--r--r--r-- 1 root root 4096 апр 29 22:01 serial_number
--r--r--r-- 1 root root 4096 апр 29 22:01 status
-lrwxrwxrwx 1 root root    0 апр 29 22:01 subsystem -> ../../../../../../../../../class/power_supply
--r--r--r-- 1 root root 4096 апр 29 22:01 technology
--r--r--r-- 1 root root 4096 апр 29 22:01 type
--rw-r--r-- 1 root root 4096 апр 29 22:01 uevent
--r--r--r-- 1 root root 4096 апр 29 22:01 voltage_min_design
--r--r--r-- 1 root root 4096 апр 29 22:01 voltage_now
+❯ ls -l /sys/class/power_supply/BAT0/
+lrwxrwxrwx    - root  8 мая 21:48  device -> ../../../PNP0C0A:00
+drwxr-xr-x    - root  8 мая 21:48  extensions
+drwxr-xr-x    - root  8 мая 21:48  hwmon2
+drwxr-xr-x    - root  8 мая 21:48  power
+lrwxrwxrwx    - root  8 мая 21:48  subsystem -> ../../../../../../../../../class/power_supply
+.rw-r--r-- 4,1k root  8 мая 21:48  alarm
+.r--r--r-- 4,1k root  8 мая 21:48  capacity
+.r--r--r-- 4,1k root  8 мая 21:48  capacity_level
+.r--r--r-- 4,1k root  8 мая 21:48  charge_full
+.r--r--r-- 4,1k root  8 мая 21:48  charge_full_design
+.r--r--r-- 4,1k root  8 мая 21:48  charge_now
+.r--r--r-- 4,1k root  8 мая 21:48  current_now
+.r--r--r-- 4,1k root  8 мая 21:48  cycle_count
+.r--r--r-- 4,1k root  8 мая 21:48  manufacturer
+.r--r--r-- 4,1k root  8 мая 21:48  model_name
+.r--r--r-- 4,1k root  8 мая 21:48  present
+.r--r--r-- 4,1k root  8 мая 21:48  serial_number
+.r--r--r-- 4,1k root  8 мая 21:48  status
+.r--r--r-- 4,1k root  8 мая 21:48  technology
+.r--r--r-- 4,1k root  8 мая 21:48  type
+.rw-r--r-- 4,1k root  8 мая 21:48  uevent
+.r--r--r-- 4,1k root  8 мая 21:48  voltage_min_design
+.r--r--r-- 4,1k root  8 мая 21:48  voltage_now
+~
+❯
 ```
 <img src="https://github.com/user-attachments/assets/c85a743f-f623-4ff0-9b7e-2ff928335223" width=50% height=50%>
 

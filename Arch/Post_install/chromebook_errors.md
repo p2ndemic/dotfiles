@@ -3,7 +3,7 @@ https://wiki.archlinux.org/title/Kernel_module
 
 ---  
 
-```toml
+```yaml
 ❯ inxi -Fxz
 System:
   Kernel: 6.14.5-3-cachyos arch: x86_64 bits: 64 compiler: clang v: 19.1.7

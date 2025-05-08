@@ -138,11 +138,11 @@ Info:
 Параметр также недоступен в KDE: "_Параметры системы_" -> "_Управление питанием_" -> "_Дополнительные параметры управления питанием_" (см. скриншот).  
 2. Верхний функциональный и цифровой ряд клавиатуры дает сбой и не работает время от времени. Приходится перезагружаться, чтобы драйвер `cros_ec_keyb` смог правильно инициализироваться.  
 
-```bash
+```console
 ❯ cat /sys/class/power_supply/BAT0/charge_control_end_threshold
 cat: /sys/class/power_supply/BAT0/charge_control_end_threshold: Нет такого файла или каталога
 ```
-```bash
+```console
 ❯ ls -l /sys/class/power_supply/BAT0/
 lrwxrwxrwx    - root  8 мая 21:48  device -> ../../../PNP0C0A:00
 drwxr-xr-x    - root  8 мая 21:48  extensions
@@ -226,7 +226,7 @@ lrwxrwxrwx    - root  8 мая 21:48  subsystem -> ../../../../../../../../..
 Итак, начинаем решать проблему `#1`:  
 1. Выведем список kernel modules (KMODs) `cros`, `chrome` которые были загружены:  
 `lsmod | grep -iE 'cros|chrome' | sort`
-```bash
+```console
 ❯ lsmod | grep -iE 'cros|chrome' | sort
 cros_ec                20480  1 cros_ec_lpcs
 cros_ec_chardev        12288  0
@@ -249,7 +249,7 @@ vivaldi_fmap           12288  2 atkbd,cros_ec_keyb
 2. Выведем список **всех** доступных модулей (драйверов) `cros`, `chrome`:  
 `find /lib/modules/$(uname -r)/ -iname '*cros*.ko*' -o -iname '*chrome*.ko*' | sort` _или_  
 `find /lib/modules/$(uname -r)/ -iname '*.ko*' | grep -iE 'cros|chrome' | sort`  
-```bash
+```console
 ❯ find /lib/modules/$(uname -r)/ -iname '*.ko*' | grep -iE 'cros|chrome' | sort
 /lib/modules/6.14.5-3-cachyos/kernel/drivers/extcon/extcon-usbc-cros-ec.ko.zst
 /lib/modules/6.14.5-3-cachyos/kernel/drivers/gpio/gpio-cros-ec.ko.zst
@@ -308,14 +308,14 @@ vivaldi_fmap           12288  2 atkbd,cros_ec_keyb
 - Как видно из вывода терминала, множество потенциально **необходимых** для корректной работы системы драйверов были не загружены ядром.  
 К примеру модули: `chromeos_acpi`, `cros_usbpd-charger`, `cros_charge-control`, `gpio-cros-ec` требуются для правильной работы подсистемы ACPI.  
 В частности отсутствие модуля `cros_charge-control` напрямую влияет на параметр `charge_control_end_threshold` через который можно устанавливать пороги зарядки батареи ноутбука. Как было выялено ранее, сейчас этот параметр недоступен:
-```bash
+```console
 ❯ cat /sys/class/power_supply/BAT0/charge_control_end_threshold
 cat: /sys/class/power_supply/BAT0/charge_control_end_threshold: Нет такого файла или каталога
 ```
 
 3. Проверим какие драйверы встроены в ядро Linux, а какие доступны для загрузки как внешние модули:
 `zgrep -iE 'cros|chrome' /proc/config.gz | sort`
-```bash
+```console
 ❯ zgrep -iE 'cros|chrome' /proc/config.gz | sort
 CONFIG_CEC_CROS_EC=m
 CONFIG_CHARGER_CROS_CONTROL=m
@@ -396,7 +396,7 @@ CONFIG_SND_SOC_CROS_EC_CODEC=m
 Первое что нужно сделать, это проверить логи ошибки ядра через `journalctl` и загруженные модули звуковых драйверов через `lsmod | grep -iE 'snd' | sort`:  
   
 `lsmod | grep -iE 'snd' | sort`  
-```bash
+```console
 ❯ lsmod | grep -iE 'snd' | sort
 ac97_bus               12288  1 snd_soc_core
 snd                   155648  16 snd_seq,snd_seq_device,snd_hda_codec_hdmi,snd_hwdep,snd_soc_sof_nau8825,snd_hda_intel,snd_hda_codec,snd_sof,snd_timer,snd_compress,snd_soc_core,snd_pcm
@@ -486,7 +486,7 @@ Audio:
 ~
 ❯
 ```
-```yaml
+```console
 ❯ pactl list cards
 Card #42
 	Name: alsa_card.pci-0000_00_1f.3-platform-adl_nau8825_def

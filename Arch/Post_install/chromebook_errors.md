@@ -365,3 +365,22 @@ Card #42
    - Совместимы с разными драйверами, включая `snd-hda-intel` и SOF.
 
 ---
+
+
+#if IS_ENABLED(CONFIG_SND_SOC_SOF_TIGERLAKE)
+static const struct sof_dev_desc tgl_desc = {
+	.machines               = snd_soc_acpi_intel_tgl_machines,
+	.alt_machines		= snd_soc_acpi_intel_tgl_sdw_machines,
+	.use_acpi_target_states	= true,
+	.resindex_lpe_base      = 0,
+	.resindex_pcicfg_base   = -1,
+	.resindex_imr_base      = -1,
+	.irqindex_host_ipc      = -1,
+	.resindex_dma_base      = -1,
+	.chip_info = &tgl_chip_info,
+	.default_fw_path = "intel/sof",
+	.default_tplg_path = "intel/sof-tplg",
+	.default_fw_filename = "sof-tgl.ri",
+	.nocodec_tplg_filename = "sof-tgl-nocodec.tplg",
+	.ops = &sof_tgl_ops,
+};

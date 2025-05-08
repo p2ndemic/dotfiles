@@ -146,24 +146,158 @@ lrwxrwxrwx    - root  8 мая 21:48  subsystem -> ../../../../../../../../..
 
 Итак, начинаем решать проблему `#1`:  
 1. Выведем список kernel modules (KMODs) `cros`, `chrome` которые были загружены:  
-```lsmod | grep -iE 'cros|chrome'```
+`lsmod | grep -iE 'cros|chrome' | sort`
 ```bash
-❯ lsmod | grep -iE 'cros|chrome'
-cros_ec_sysfs          12288  0
-cros_ec_hwmon          12288  0
-cros_ec_debugfs        16384  0
+❯ lsmod | grep -iE 'cros|chrome' | sort
+cros_ec                20480  1 cros_ec_lpcs
 cros_ec_chardev        12288  0
+cros_ec_debugfs        16384  0
 cros_ec_dev            20480  0
+cros_ec_hwmon          12288  0
+cros_ec_keyb           20480  0
+cros_ec_lpcs           28672  0
+cros_ec_sysfs          12288  0
 cros_ec_typec          49152  0
 cros_kbd_led_backlight    12288  0
 cros_usbpd_notify      20480  1 cros_ec_typec
-typec                 118784  2 cros_ec_typec,intel_pmc_mux
-roles                  16384  2 cros_ec_typec,intel_pmc_mux
-cros_ec_lpcs           28672  0
-cros_ec                20480  1 cros_ec_lpcs
-cros_ec_keyb           20480  0
 matrix_keymap          12288  1 cros_ec_keyb
+roles                  16384  2 cros_ec_typec,intel_pmc_mux
+typec                 118784  2 cros_ec_typec,intel_pmc_mux
 vivaldi_fmap           12288  2 atkbd,cros_ec_keyb
+~
+❯
+```
+2. Выведем список **всех** доступных модулей (драйверов) `cros`, `chrome`:  
+`find /lib/modules/$(uname -r)/ -iname '*cros*.ko*' -o -iname '*chrome*.ko*' | sort` _или_  
+`find /lib/modules/$(uname -r)/ -iname '*.ko*' | grep -iE 'cros|chrome' | sort`  
+```bash
+❯ find /lib/modules/$(uname -r)/ -iname '*.ko*' | grep -iE 'cros|chrome' | sort
+/lib/modules/6.14.5-3-cachyos/kernel/drivers/extcon/extcon-usbc-cros-ec.ko.zst
+/lib/modules/6.14.5-3-cachyos/kernel/drivers/gpio/gpio-cros-ec.ko.zst
+/lib/modules/6.14.5-3-cachyos/kernel/drivers/hid/hid-microsoft.ko.zst
+/lib/modules/6.14.5-3-cachyos/kernel/drivers/hwmon/cros_ec_hwmon.ko.zst
+/lib/modules/6.14.5-3-cachyos/kernel/drivers/i2c/busses/i2c-cros-ec-tunnel.ko.zst
+/lib/modules/6.14.5-3-cachyos/kernel/drivers/iio/accel/cros_ec_accel_legacy.ko.zst
+/lib/modules/6.14.5-3-cachyos/kernel/drivers/iio/common/cros_ec_sensors/cros_ec_lid_angle.ko.zst
+/lib/modules/6.14.5-3-cachyos/kernel/drivers/iio/common/cros_ec_sensors/cros_ec_sensors_core.ko.zst
+/lib/modules/6.14.5-3-cachyos/kernel/drivers/iio/common/cros_ec_sensors/cros_ec_sensors.ko.zst
+/lib/modules/6.14.5-3-cachyos/kernel/drivers/iio/light/cros_ec_light_prox.ko.zst
+/lib/modules/6.14.5-3-cachyos/kernel/drivers/iio/pressure/cros_ec_baro.ko.zst
+/lib/modules/6.14.5-3-cachyos/kernel/drivers/iio/proximity/cros_ec_mkbp_proximity.ko.zst
+/lib/modules/6.14.5-3-cachyos/kernel/drivers/input/keyboard/cros_ec_keyb.ko.zst
+/lib/modules/6.14.5-3-cachyos/kernel/drivers/leds/leds-cros_ec.ko.zst
+/lib/modules/6.14.5-3-cachyos/kernel/drivers/media/cec/platform/cros-ec/cros-ec-cec.ko.zst
+/lib/modules/6.14.5-3-cachyos/kernel/drivers/mfd/cros_ec_dev.ko.zst
+/lib/modules/6.14.5-3-cachyos/kernel/drivers/net/ethernet/microsoft/mana/mana.ko.zst
+/lib/modules/6.14.5-3-cachyos/kernel/drivers/platform/chrome/chromeos_acpi.ko.zst
+/lib/modules/6.14.5-3-cachyos/kernel/drivers/platform/chrome/chromeos_laptop.ko.zst
+/lib/modules/6.14.5-3-cachyos/kernel/drivers/platform/chrome/chromeos_privacy_screen.ko.zst
+/lib/modules/6.14.5-3-cachyos/kernel/drivers/platform/chrome/chromeos_pstore.ko.zst
+/lib/modules/6.14.5-3-cachyos/kernel/drivers/platform/chrome/chromeos_tbmc.ko.zst
+/lib/modules/6.14.5-3-cachyos/kernel/drivers/platform/chrome/cros_ec_chardev.ko.zst
+/lib/modules/6.14.5-3-cachyos/kernel/drivers/platform/chrome/cros_ec_debugfs.ko.zst
+/lib/modules/6.14.5-3-cachyos/kernel/drivers/platform/chrome/cros_ec_i2c.ko.zst
+/lib/modules/6.14.5-3-cachyos/kernel/drivers/platform/chrome/cros_ec_ishtp.ko.zst
+/lib/modules/6.14.5-3-cachyos/kernel/drivers/platform/chrome/cros_ec.ko.zst
+/lib/modules/6.14.5-3-cachyos/kernel/drivers/platform/chrome/cros_ec_lightbar.ko.zst
+/lib/modules/6.14.5-3-cachyos/kernel/drivers/platform/chrome/cros_ec_lpcs.ko.zst
+/lib/modules/6.14.5-3-cachyos/kernel/drivers/platform/chrome/cros-ec-sensorhub.ko.zst
+/lib/modules/6.14.5-3-cachyos/kernel/drivers/platform/chrome/cros_ec_spi.ko.zst
+/lib/modules/6.14.5-3-cachyos/kernel/drivers/platform/chrome/cros_ec_sysfs.ko.zst
+/lib/modules/6.14.5-3-cachyos/kernel/drivers/platform/chrome/cros-ec-typec.ko.zst
+/lib/modules/6.14.5-3-cachyos/kernel/drivers/platform/chrome/cros_ec_uart.ko.zst
+/lib/modules/6.14.5-3-cachyos/kernel/drivers/platform/chrome/cros_hps_i2c.ko.zst
+/lib/modules/6.14.5-3-cachyos/kernel/drivers/platform/chrome/cros_kbd_led_backlight.ko.zst
+/lib/modules/6.14.5-3-cachyos/kernel/drivers/platform/chrome/cros_typec_switch.ko.zst
+/lib/modules/6.14.5-3-cachyos/kernel/drivers/platform/chrome/cros_usbpd_logger.ko.zst
+/lib/modules/6.14.5-3-cachyos/kernel/drivers/platform/chrome/cros_usbpd_notify.ko.zst
+/lib/modules/6.14.5-3-cachyos/kernel/drivers/platform/chrome/wilco_ec/wilco_ec_debugfs.ko.zst
+/lib/modules/6.14.5-3-cachyos/kernel/drivers/platform/chrome/wilco_ec/wilco_ec_events.ko.zst
+/lib/modules/6.14.5-3-cachyos/kernel/drivers/platform/chrome/wilco_ec/wilco_ec.ko.zst
+/lib/modules/6.14.5-3-cachyos/kernel/drivers/platform/chrome/wilco_ec/wilco_ec_telem.ko.zst
+/lib/modules/6.14.5-3-cachyos/kernel/drivers/power/supply/cros_charge-control.ko.zst
+/lib/modules/6.14.5-3-cachyos/kernel/drivers/power/supply/cros_peripheral_charger.ko.zst
+/lib/modules/6.14.5-3-cachyos/kernel/drivers/power/supply/cros_usbpd-charger.ko.zst
+/lib/modules/6.14.5-3-cachyos/kernel/drivers/pwm/pwm-cros-ec.ko.zst
+/lib/modules/6.14.5-3-cachyos/kernel/drivers/rtc/rtc-cros-ec.ko.zst
+/lib/modules/6.14.5-3-cachyos/kernel/drivers/usb/typec/ucsi/cros_ec_ucsi.ko.zst
+/lib/modules/6.14.5-3-cachyos/kernel/drivers/watchdog/cros_ec_wdt.ko.zst
+/lib/modules/6.14.5-3-cachyos/kernel/sound/soc/codecs/snd-soc-cros-ec-codec.ko.zst
+~
+❯
+```
+Как видно из вывода терминала, множество потенциально **необходимых** для корректной работы системы драйверов были не загружены ядром.  
+К примеру модули: `chromeos_acpi`, `cros_usbpd-charger`, `cros_charge-control`, `gpio-cros-ec` требуются для правильной работы подсистемы ACPI.  
+В частности отсутствие модуля `cros_charge-control` напрямую влияет на параметр `charge_control_end_threshold` через можно устанавливать пороги зарядки батареи ноутбука. Как было выялено ранее этот параметр недоступен:
+```bash
+❯ cat /sys/class/power_supply/BAT0/charge_control_end_threshold
+cat: /sys/class/power_supply/BAT0/charge_control_end_threshold: Нет такого файла или каталога
+```
+
+3. Проверим какие драйверы встроены в ядро Linux, а какие доступны для загрузки для внешние модули:
+`zgrep -iE 'cros|chrome' /proc/config.gz | sort`
+```bash
+❯ zgrep -iE 'cros|chrome' /proc/config.gz | sort
+CONFIG_CEC_CROS_EC=m
+CONFIG_CHARGER_CROS_CONTROL=m
+CONFIG_CHARGER_CROS_PCHG=m
+CONFIG_CHARGER_CROS_USBPD=m
+CONFIG_CHROMEOS_ACPI=m
+CONFIG_CHROMEOS_LAPTOP=m
+CONFIG_CHROMEOS_PRIVACY_SCREEN=m
+CONFIG_CHROMEOS_PSTORE=m
+CONFIG_CHROMEOS_TBMC=m
+CONFIG_CHROME_PLATFORMS=y
+CONFIG_CROS_EC_CHARDEV=m
+CONFIG_CROS_EC_DEBUGFS=m
+CONFIG_CROS_EC_I2C=m
+CONFIG_CROS_EC_ISHTP=m
+CONFIG_CROS_EC_LIGHTBAR=m
+CONFIG_CROS_EC_LPC=m
+CONFIG_CROS_EC=m
+CONFIG_CROS_EC_MKBP_PROXIMITY=m
+CONFIG_CROS_EC_PROTO=y
+CONFIG_CROS_EC_SENSORHUB=m
+CONFIG_CROS_EC_SPI=m
+CONFIG_CROS_EC_SYSFS=m
+CONFIG_CROS_EC_TYPEC_ALTMODES=y
+CONFIG_CROS_EC_TYPEC=m
+CONFIG_CROS_EC_UART=m
+CONFIG_CROS_EC_UCSI=m
+CONFIG_CROS_EC_WATCHDOG=m
+CONFIG_CROS_HPS_I2C=m
+CONFIG_CROS_KBD_LED_BACKLIGHT=m
+CONFIG_CROSS_MEMORY_ATTACH=y
+CONFIG_CROS_TYPEC_SWITCH=m
+CONFIG_CROS_USBPD_LOGGER=m
+CONFIG_CROS_USBPD_NOTIFY=m
+CONFIG_EXTCON_USBC_CROS_EC=m
+CONFIG_GPIO_CROS_EC=m
+CONFIG_HID_MICROSOFT=m
+CONFIG_I2C_CROS_EC_TUNNEL=m
+CONFIG_IIO_CROS_EC_ACCEL_LEGACY=m
+CONFIG_IIO_CROS_EC_BARO=m
+CONFIG_IIO_CROS_EC_LIGHT_PROX=m
+CONFIG_IIO_CROS_EC_SENSORS_CORE=m
+CONFIG_IIO_CROS_EC_SENSORS_LID_ANGLE=m
+CONFIG_IIO_CROS_EC_SENSORS=m
+CONFIG_KEYBOARD_CROS_EC=m
+CONFIG_LEDS_CROS_EC=m
+CONFIG_MFD_CROS_EC_DEV=m
+CONFIG_MICROSEMI_PHY=m
+CONFIG_MICROSOFT_MANA=m
+CONFIG_NET_VENDOR_MICROSEMI=y
+CONFIG_NET_VENDOR_MICROSOFT=y
+CONFIG_PWM_CROS_EC=m
+CONFIG_RTC_DRV_CROS_EC=m
+CONFIG_SENSORS_CROS_EC=m
+CONFIG_SND_SOC_CROS_EC_CODEC=m
+# CONFIG_TUN_VNET_CROSS_LE is not set
+# CONFIG_VHOST_CROSS_ENDIAN_LEGACY is not set
+# end of Microsoft Hyper-V guest support
+# Microsoft Hyper-V guest support
+~
+❯
 ```
 
 

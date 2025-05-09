@@ -26,4 +26,5 @@ https://github.com/KhronosGroup/OpenCL-ICD-Loader?tab=readme-ov-file#table-of-de
 
 clinfo -l
 inxi -Ga
-vulkaninfo 
+vulkaninfo
+glxinfo

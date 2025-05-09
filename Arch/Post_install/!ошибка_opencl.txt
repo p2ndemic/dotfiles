@@ -75,3 +75,4 @@ Graphics:
 ❯ ls -l /usr/share/vulkan/
 drwxr-xr-x - root  4 мая 23:50  icd.d
 
+https://www.phoronix.com/news/Mesa-20.1-Vulkan-Dev-Selection

@@ -21,12 +21,6 @@
   },
   "modules": [
     {
-      "type": "command",
-      "key": "  ",
-      "keyColor": "cyan",
-      "text": "splash=$(hyprctl splash);echo $splash"
-    },
-    {
       "type": "custom",
       "format": "┌──────────────────────────────────────────┐"
     },

@@ -15,8 +15,6 @@
       "right": 7
     },
     "position": "left",
-    "printRemaining": false,
-    "preserveAspectRatio": true
   },
   "display": {
     "separator": " : "
@@ -45,13 +43,13 @@
     },
     {
       "type": "kernel",
-      "key": "   Kernel",
+      "key": "   Kernel",
       "format": "{2}",
       "keyColor": "cyan"
     },
     {
       "type": "packages",
-      "key": "  󰏗 Packages",
+      "key": "  󰏖 Packages",
       "keyColor": "cyan"
     },
     {
@@ -116,7 +114,7 @@
     {
       "type": "gpu",
       "format": "{3}",
-      "key": "  󰍛 GPU Driver",
+      "key": "  󰎗 GPU Driver",
       "keyColor": "cyan"
     },
     {
@@ -131,16 +129,15 @@
       "keyColor": "cyan"
     },
     {
-      "type": "command",
+      "type": "swap",
       "format": "{1} used",
       "key": "  󰓅 ZRAM",
-      "keyColor": "cyan",
-      "text": "zramctl -o DATA | tail -n 1"
+      "keyColor": "cyan"
     },
     {
       "type": "battery",
       "format": "{4} [{5}]",
-      "key": "  󰁹 Battery ",
+      "key": "   Battery ",
       "keyColor": "cyan"
     },
     {

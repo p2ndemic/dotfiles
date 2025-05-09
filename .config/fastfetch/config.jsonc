@@ -39,7 +39,7 @@
     //"separator":  " ➟ ",
     //"separator":  " ⤑ ",
     //"separator":  "  ⋗ ",
-    "separator": "\u001b[1;32m  ⋗ \u001b[0m",
+    "separator": "\u001b[1;36m  ⋗ \u001b[0m",
     //"separator":  " ⇨ ",
     //"separator":  " ⥤ ",
     //"separator":  " ➞ ",
@@ -105,29 +105,29 @@
     {
       "type": "host",
       "key": "  ",
-      "keyColor": "cyan"
+      "keyColor": "magenta"
     },
     {
       "type": "os",
       "key": "  󰣇",
       "format": "{2}",
-      "keyColor": "magenta"
+      "keyColor": "blue"
     },
     {
       "type": "kernel",
       "key": "  ",
       "format": "{2}",
-      "keyColor": "cyan"
+      "keyColor": "yellow"
     },
     {
       "type": "packages",
       "key": "  󰏖",
-      "keyColor": "cyan"
+      "keyColor": "green"
     },
     {
       "type": "shell",
       "key": "  ",
-      "keyColor": "cyan"
+      "keyColor": "red"
     },
     {
       "type": "de",
@@ -138,17 +138,17 @@
       "type": "wm",
       "key": "  󱂬",
       "format": "{2}",
-      "keyColor": "cyan"
+      "keyColor": "magenta"
     },
     {
       "type": "terminal",
       "key": "  ",
-      "keyColor": "cyan"
+      "keyColor": "blue"
     },
     {
       "type": "terminalfont",
       "key": "  󰙩",
-      "keyColor": "cyan"
+      "keyColor": "yellow"
     },
     {
       "type": "custom",
@@ -169,13 +169,13 @@
       "type": "display",
       "key": "  󰍹",
       "format": "{1}x{2} @ {3}Hz [{7}]",
-      "keyColor": "cyan"
+      "keyColor": "green"
     },
     {
       "type": "cpu",
       "format": "{1} @ {7}",
       "key": "  ",
-      "keyColor": "cyan"
+      "keyColor": "red"
     },
     {
       "type": "gpu",
@@ -187,30 +187,30 @@
       "type": "gpu",
       "format": "{3}",
       "key": "  󰎗",
-      "keyColor": "cyan"
+      "keyColor": "magenta"
     },
     {
       "type": "disk",
       "key": "  ",
       "folders": "/",
-      "keyColor": "cyan"
+      "keyColor": "blue"
     },
     {
       "type": "memory",
       "key": "  󰘚",
-      "keyColor": "cyan"
+      "keyColor": "yellow"
     },
     {
       "type": "swap",
       "format": "{1} used",
       "key": "  󰓅",
-      "keyColor": "cyan"
+      "keyColor": "green"
     },
     {
       "type": "battery",
       "format": "{4} [{5}]",
       "key": "  ",
-      "keyColor": "cyan"
+      "keyColor": "red"
     },
     {
       "type": "custom",

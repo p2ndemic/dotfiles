@@ -131,7 +131,7 @@
     },
     {
       "type": "memory",
-      "key": "  󰘚 Memory",
+      "key": "  󰘚 RAM ",
       "keyColor": "cyan"
     },
     {
@@ -144,7 +144,7 @@
     {
       "type": "battery",
       "format": "{4} [{5}]",
-      "key": "  󰁹 Battery",
+      "key": "  󰁹 Battery ",
       "keyColor": "cyan"
     },
     {

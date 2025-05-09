@@ -1,5 +1,8 @@
+// Download the JSON schema and save into $HOME/.config/fastfetch/
+// curl -sSLo $HOME/.config/fastfetch/fastfetch_schema.json https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json
+
 {
-  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "$schema": "file://$HOME/.config/fastfetch/fastfetch_schema.json",
   "logo": {
     "type": "builtin",
     "source": "arch",

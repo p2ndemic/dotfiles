@@ -46,7 +46,7 @@
     },
     {
       "type": "locale",
-      "key": "  󰗊 Locale"
+      "key": "  󰗊  󰢾 󰢿  Locale"
     },
     {
       "type": "gpu",
@@ -79,5 +79,17 @@
     {
       "type": "packages",
       "key": "  󰏗  󰏖 Packages",
+      "keyColor": "cyan"
+    },
+    {
+      "type": "disk",
+      "key": "   󰋊  Disk",
+      "folders": "/",
+      "keyColor": "cyan"
+    },
+    {
+      "type": "swap",
+      "format": "{1} used",
+      "key": "  󰓅  󰑤 󰿣 ZRAM",
       "keyColor": "cyan"
     },

@@ -1,0 +1,6 @@
+❯ clinfo -l
+WARNING: OpenCL support via iris driver is incomplete.
+For a complete and conformant OpenCL implementation, use
+https://github.com/intel/compute-runtime instead
+Platform #0: rusticl
+ `-- Device #0: Mesa Intel(R) Iris(R) Xe Graphics (ADL GT2)

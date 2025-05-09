@@ -4,3 +4,26 @@ For a complete and conformant OpenCL implementation, use
 https://github.com/intel/compute-runtime instead
 Platform #0: rusticl
  `-- Device #0: Mesa Intel(R) Iris(R) Xe Graphics (ADL GT2)
+
+Установить пакеты:
+sudo pacman -S intel-compute-runtime opencl-icd-loader
+
+https://github.com/intel/compute-runtime
+https://github.com/KhronosGroup/OpenCL-ICD-Loader
+
+Настроить переменные окружения OpenCL ICD loader:
+
+К примеру:
+OCL_ICD_FILENAMES
+OPENCL_LAYERS
+OCL_ICD_VENDORS
+OPENCL_LAYER_PATH
+
+https://github.com/KhronosGroup/OpenCL-ICD-Loader?tab=readme-ov-file#table-of-debug-environment-variables
+
+
+Проверить данные OpenCL:
+
+clinfo -l
+inxi -Ga
+vulkaninfo 

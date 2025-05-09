@@ -1,16 +1,16 @@
 {
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
   "logo": {
-    "type": "builtin", //small
+    "type": "builtin",
     "source": "arch",
     "color": {
       "1": "cyan",
-      "2": "blue"
+      "2": "white"
     },
     "padding": {
-      "top": 2,
-      "left": 10,
-      "right": 10
+      "top": 3,
+      "left": 7,
+      "right": 7
     },
     "position": "left",
     "printRemaining": false,
@@ -23,7 +23,7 @@
     {
       "type": "command",
       "key": "  ",
-      "keyColor": "blue",
+      "keyColor": "cyan",
       "text": "splash=$(hyprctl splash);echo $splash"
     },
     {
@@ -33,7 +33,8 @@
     {
       "type": "chassis",
       "key": "  󱗃 Chassis",
-      "format": "{1} {2} {3}"
+      "format": "{1} {2} {3}",
+      "keyColor": "cyan"
     },
     {
       "type": "host",
@@ -44,44 +45,44 @@
       "type": "os",
       "key": "  󰣇 OS",
       "format": "{2}",
-      "keyColor": "red"
+      "keyColor": "cyan"
     },
     {
       "type": "kernel",
       "key": "   Kernel",
       "format": "{2}",
-      "keyColor": "red"
+      "keyColor": "cyan"
     },
     {
       "type": "packages",
       "key": "  󰏗 Packages",
-      "keyColor": "green"
-    },
-    {
-      "type": "de",
-      "key": "  󰧨  DE",
-      "keyColor": "yellow"
+      "keyColor": "cyan"
     },
     {
       "type": "shell",
-      "key": "    Shell",
-      "keyColor": "yellow"
+      "key": "   Shell",
+      "keyColor": "cyan"
     },
     {
-      "type": "terminal",
-      "key": "   Terminal",
-      "keyColor": "yellow"
-    },
-    {
-      "type": "terminalfont",
-      "key": "  󰙩 Terminal Font",
-      "keyColor": "yellow"
+      "type": "de",
+      "key": "  󰧨 DE",
+      "keyColor": "cyan"
     },
     {
       "type": "wm",
       "key": "  󱂬 WM",
       "format": "{2}",
-      "keyColor": "yellow"
+      "keyColor": "cyan"
+    },
+    {
+      "type": "terminal",
+      "key": "   Terminal",
+      "keyColor": "cyan"
+    },
+    {
+      "type": "terminalfont",
+      "key": "  󰙩 Terminal Font",
+      "keyColor": "cyan"
     },
     {
       "type": "custom",
@@ -91,7 +92,8 @@
     {
       "type": "title",
       "key": "  ",
-      "format": "{6} {7} {8}"
+      "format": "{6} {7} {8}",
+      "keyColor": "cyan"
     },
     {
       "type": "custom",
@@ -101,53 +103,49 @@
       "type": "display",
       "key": "  󰍹 Display",
       "format": "{1}x{2} @ {3}Hz [{7}]",
-      "keyColor": "green"
+      "keyColor": "cyan"
     },
     {
       "type": "cpu",
       "format": "{1} @ {7}",
       "key": "   CPU",
-      "keyColor": "blue"
+      "keyColor": "cyan"
     },
     {
       "type": "gpu",
       "format": "{1} {2} @ {12} [{6}]",
       "key": "  󰢮 GPU",
-      "keyColor": "blue"
+      "keyColor": "cyan"
     },
     {
       "type": "gpu",
       "format": "{3}",
       "key": "  󰍛 GPU Driver",
-      "keyColor": "magenta"
+      "keyColor": "cyan"
     },
     {
       "type": "disk",
       "key": "   Disk",
       "folders": "/",
-      "keyColor": "red"
+      "keyColor": "cyan"
     },
     {
       "type": "memory",
       "key": "  󰘚 Memory",
-      "keyColor": "magenta"
+      "keyColor": "cyan"
     },
     {
       "type": "command",
       "format": "{1} used",
-      "key": "  󰓅 Swap",
-      "keyColor": "magenta",
+      "key": "  󰓅 ZRAM",
+      "keyColor": "cyan",
       "text": "zramctl -o DATA | tail -n 1"
     },
     {
-      "type": "localip",
-      "key": "  󰩟 Local IP",
-      "keyColor": "green"
-    },
-    {
       "type": "battery",
+      "format": "{4} [{5}]",
       "key": "  󰁹 Battery",
-      "keyColor": "green",
+      "keyColor": "cyan"
     },
     {
       "type": "custom",

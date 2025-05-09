@@ -1,0 +1,202 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "type": "builtin",
+    "source": "arch",
+    //"width": 18,
+    "color": {
+      "1": "cyan",
+      "2": "blue"
+    },
+    "padding": {
+      "top": 0,
+      "left": 0,
+      "right": 0
+    },
+    "position": "left",
+    "printRemaining": false,
+    "preserveAspectRatio": true
+  },
+  "display": {
+    "separator": " : "
+  },
+  "modules": [
+    {
+      "type": "command",
+      "key": "  ",
+      "keyColor": "blue",
+      "text": "splash=$(hyprctl splash);echo $splash"
+    },
+    {
+      "type": "custom",
+      "format": "┌──────────────────────────────────────────┐"
+    },
+    {
+      "type": "chassis",
+      "key": "  󰟸 󰡋 󰁯 󰏇 󱗃 Chassis",
+      "format": "{1} {2} {3}"
+    },
+    {
+      "type": "host",
+      "key": "   Host",
+      "keyColor": "cyan"
+    },
+    {
+      "type": "os",
+      "key": "  󰣇 OS",
+      "format": "{2}",
+      "keyColor": "red"
+    },
+    {
+      "type": "kernel",
+      "key": "   Kernel",
+      "format": "{2}",
+      "keyColor": "red"
+    },
+    {
+      "type": "packages",
+      "key": "  󰏗 Packages",
+      "keyColor": "green"
+    },
+    {
+      "type": "terminal",
+      "key": "   Terminal",
+      "keyColor": "yellow"
+    },
+    {
+      "type": "terminalfont",
+      "key": "  󰙩 Terminal Font",
+      "keyColor": "yellow"
+    },
+    {
+      "type": "shell",
+      "key": "    Shell",
+      "keyColor": "yellow"
+    },
+    {
+      "type": "de",
+      "key": "  󰧨  DE",
+      "keyColor": "yellow"
+    },
+    {
+      "type": "wm",
+      "key": "  󱂬 WM",
+      "format": "{2}",
+      "keyColor": "yellow"
+    },
+    {
+      "type": "wmtheme",
+      "key": "  󰉼 WM Theme",
+      "keyColor": "green"
+    },
+    {
+      "type": "custom",
+      "format": "└──────────────────────────────────────────┘"
+    },
+    "break",
+    {
+      "type": "title",
+      "key": "  ",
+      "format": "{6} {7} {8}"
+    },
+    {
+      "type": "custom",
+      "format": "┌──────────────────────────────────────────┐"
+    },
+    {
+      "type": "display",
+      "key": "  󰍹 Display",
+      "format": "{1}x{2} @ {3}Hz [{7}]",
+      "keyColor": "green"
+    },
+    {
+      "type": "cpu",
+      "format": "{1} @ {7}",
+      "key": "   CPU",
+      "keyColor": "blue"
+    },
+    {
+      "type": "gpu",
+      "format": "{1} {2}",
+      "key": "  󰊴 󰢮 GPU",
+      "keyColor": "blue"
+    },
+    {
+      "type": "gpu",
+      "format": "{3}",
+      "key": "  󰍛 󰍛 󰟾 󰒓  GPU Driver",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "memory",
+      "key": "  󰘚 Memory",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "command",
+      "format": "{1} used",
+      "key": "  󰓅 Swap",
+      "keyColor": "magenta",
+      "text": "zramctl -o DATA | tail -n 1"
+    },
+    {
+      "type": "localip",
+      "key": "  󰩟 Local IP",
+      "keyColor": "green"
+    },
+    {
+      "type": "disk",
+      "key": "   Disk",
+      "folders": "/",
+      "keyColor": "red"
+    },
+    {
+      "type": "cursor",
+      "key": "  󰇀 Cursor",
+      "keyColor": "cyan"
+    },
+    {
+      "type": "icons",
+      "key": "  󰏘 Icons",
+      "keyColor": "blue"
+    },
+    {
+      "type": "font",
+      "key": "   Font",
+      "keyColor": "red"
+    },
+    {
+      "type": "font",
+      "key": "   Font",
+      "format": "{5}",
+      "keyColor": "green"
+    },
+    {
+      "type": "battery",
+      "key": "  󰁹 Battery",
+      "format": "{4} ({5})",
+      "keyColor": "yellow"
+    },
+    {
+      "type": "battery",
+      "key": "  󰁹 Battery",
+      "keyColor": "green",
+    },
+    {
+      "type": "locale",
+      "key": "  󰗊 Locale",
+      "format": "{1}",
+      "keyColor": "cyan"
+    },
+    {
+      "type": "custom",
+      "format": "└──────────────────────────────────────────┘"
+    },
+    {
+      "type": "colors",
+      "paddingLeft": 2,
+      "symbol": "circle"
+    },
+    "break"
+  ]
+}

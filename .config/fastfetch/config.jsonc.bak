@@ -68,3 +68,9 @@
       "keyColor": "cyan",
       "text": "zramctl -o DATA | tail -n 1"
     },
+    {
+      "type": "kernel",
+      "key": "   Kernel",
+      "format": "{2}",
+      "keyColor": "cyan"
+    },

@@ -82,14 +82,14 @@
     //"separator":  " ➯ ",
     //"separator":  " : "
     "color": "cyan",
-    //"separator": "\u001b[1;30m : \u001b[0m" // Яркий чёрный (тёмно-серый) / Bright black (dark gray)
-    //"separator": "\u001b[1;31m : \u001b[0m" // Яркий красный / Bright red
-    //"separator": "\u001b[1;32m : \u001b[0m" // Яркий зелёный / Bright green
-    //"separator": "\u001b[1;33m : \u001b[0m" // Яркий жёлтый / Bright yellow
-    //"separator": "\u001b[1;34m : \u001b[0m" // Яркий синий / Bright blue
-    //"separator": "\u001b[1;35m : \u001b[0m" // Яркий пурпурный / Bright magenta
-    //"separator": "\u001b[1;36m : \u001b[0m" // Яркий голубой / Bright cyan
-    //"separator": "\u001b[1;37m : \u001b[0m" // Яркий белый / Bright white
+    //"separator": "\u001b[1;30m : \u001b[0m" // Bright black (dark gray)
+    //"separator": "\u001b[1;31m : \u001b[0m" // Bright red
+    //"separator": "\u001b[1;32m : \u001b[0m" // Bright green
+    //"separator": "\u001b[1;33m : \u001b[0m" // Bright yellow
+    //"separator": "\u001b[1;34m : \u001b[0m" // Bright blue
+    //"separator": "\u001b[1;35m : \u001b[0m" // Bright magenta
+    //"separator": "\u001b[1;36m : \u001b[0m" // Bright cyan
+    //"separator": "\u001b[1;37m : \u001b[0m" // Bright white
   },
   "modules": [
     {
@@ -137,7 +137,6 @@
     {
       "type": "wm",
       "key": "  󱂬",
-      "format": "{2}",
       "keyColor": "magenta"
     },
     {
@@ -202,8 +201,8 @@
     },
     {
       "type": "swap",
-      "format": "{1} used",
-      "key": "  󰓅",
+      //"format": "{1} used",
+      "key": "  󰑤",
       "keyColor": "green"
     },
     {

@@ -1,226 +1,95 @@
-// Download JSON schema and save into $HOME/.config/fastfetch/
-// curl -sSLo $HOME/.config/fastfetch/fastfetch_schema.json https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json
-{
-  "$schema": "file://$HOME/.config/fastfetch/fastfetch_schema.json",
-  "logo": {
-    "type": "builtin",
-    "source": "arch",
-    "color": {
-      "1": "cyan",
-      "2": "white"
-    },
-    "padding": {
-      "top": 3,
-      "left": 7,
-      "right": 7
-    },
-    "position": "left",
-  },
-  "display": {
-    //"separator":  " --➤ ",
-    //"separator":  " •➤ ",
-    //"separator":  " → ",
-    //"separator":  " ⇒ ",
-    //"separator":  " ➔ ",
-    //"separator":  " ➜ ",
-    //"separator":  " ⟶ ",
-    //"separator":  " >> ",
-    //"separator":  " ▶ ",
-    //"separator":  " ▸ ",
-    //"separator":  " →➤ ",
-    //"separator":  " •→ ",
-    //"separator":  " •⇒ ",
-    //"separator":  " ➤ ",
-    //"separator":  " 🔹➤ ",
-    //"separator":  " ✦➤ ",
-    //"separator":  " •••➤ ",
-    //"separator":  " ⮕ ",
-    //"separator":  " →→ ",
-    //"separator":  " ➟ ",
-    //"separator":  " ⤑ ",
-    //"separator":  "  ⋗ ",
-    "separator": "\u001b[1;36m  ⋗ \u001b[0m",
-    //"separator":  " ⇨ ",
-    //"separator":  " ⥤ ",
-    //"separator":  " ➞ ",
-    //"separator":  " ➠ ",
-    //"separator":  " ✱➤ ",
-    //"separator":  " ✧➤ ",
-    //"separator":  " ••➤ ",
-    //"separator":  " ●➤ ",
-    //"separator":  " ⊳ ",
-    //"separator":  " ➤➤ ",
-    //"separator":  " ‣ ",
-    //"separator":  " ► ",
-    //"separator":  " ➤→ ",
-    //"separator":  " 🔸→ ",
-    //"separator":  " ➡ ",
-    //"separator":  " ↠ ",
-    //"separator":  " ↦ ",
-    //"separator":  " ➲ ",
-    //"separator":  " ➩ ",
-    //"separator":  " ➪ ",
-    //"separator":  " ➳ ",
-    //"separator":  " ➛ ",
-    //"separator":  " ⇾ ",
-    //"separator":  " ↪ ",
-    //"separator":  " ➝ ",
-    //"separator":  " ↣ ",
-    //"separator":  " ⇢ ",
-    //"separator":  " ➭ ",
-    //"separator":  " ➮ ",
-    //"separator":  " ↬ ",
-    //"separator":  " ⇛ ",
-    //"separator":  " ➥ ",
-    //"separator":  " ↝ ",
-    //"separator":  " ⇝ ",
-    //"separator":  " ➦ ",
-    //"separator":  " ↘ ",
-    //"separator":  " ↗ ",
-    //"separator":  " ⇖ ",
-    //"separator":  " ⇗ ",
-    //"separator":  " ➯ ",
-    //"separator":  " : "
-    "color": "cyan",
-    //"separator": "\u001b[1;30m : \u001b[0m" // Bright black (dark gray)
-    //"separator": "\u001b[1;31m : \u001b[0m" // Bright red
-    //"separator": "\u001b[1;32m : \u001b[0m" // Bright green
-    //"separator": "\u001b[1;33m : \u001b[0m" // Bright yellow
-    //"separator": "\u001b[1;34m : \u001b[0m" // Bright blue
-    //"separator": "\u001b[1;35m : \u001b[0m" // Bright magenta
-    //"separator": "\u001b[1;36m : \u001b[0m" // Bright cyan
-    //"separator": "\u001b[1;37m : \u001b[0m" // Bright white
-  },
-  "modules": [
+    "printRemaining": false,
+    "preserveAspectRatio": true
     {
-      "type": "custom",
-      "format": "┌──────────────────────────────────────────┐"
+      "key": "󰟸󰡋󰁯󰟾"
     },
     {
-      "type": "chassis",
-      "key": "  󱗃",
-      "format": "{1} {2} {3}",
-      "keyColor": "cyan"
-    },
-    {
-      "type": "host",
-      "key": "  ",
-      "keyColor": "magenta"
-    },
-    {
-      "type": "os",
-      "key": "  󰣇",
-      "format": "{2}",
-      "keyColor": "blue"
-    },
-    {
-      "type": "kernel",
-      "key": "  ",
-      "format": "{2}",
-      "keyColor": "yellow"
-    },
-    {
-      "type": "packages",
-      "key": "  󰏖",
+      "type": "wmtheme",
+      "key": "  󰉼 WM Theme",
       "keyColor": "green"
-    },
-    {
-      "type": "shell",
-      "key": "  ",
-      "keyColor": "red"
-    },
-    {
-      "type": "de",
-      "key": "  󰧨",
-      "keyColor": "cyan"
-    },
-    {
-      "type": "wm",
-      "key": "  󱂬",
-      "format": "{2}",
-      "keyColor": "magenta"
-    },
-    {
-      "type": "terminal",
-      "key": "  ",
-      "keyColor": "blue"
-    },
-    {
-      "type": "terminalfont",
-      "key": "  󰙩",
-      "keyColor": "yellow"
-    },
-    {
-      "type": "custom",
-      "format": "└──────────────────────────────────────────┘"
-    },
-    "break",
-    {
-      "type": "title",
-      "key": "  ",
-      "format": "{6} {7} {8}",
-      "keyColor": "white"
-    },
-    {
-      "type": "custom",
-      "format": "┌──────────────────────────────────────────┐"
-    },
-    {
-      "type": "display",
-      "key": "  󰍹",
-      "format": "{1}x{2} @ {3}Hz [{7}]",
-      "keyColor": "green"
-    },
-    {
-      "type": "cpu",
-      "format": "{1} @ {7}",
-      "key": "  ",
-      "keyColor": "red"
     },
     {
       "type": "gpu",
       "format": "{1} {2} @ {12} [{6}]",
-      "key": "  󰢮",
+      "key": "  󰊴 GPU",
+      "keyColor": "blue"
+    },
+    {
+      "type": "gpu",
+      "key": "  󰒓  GPU Driver",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "localip",
+      "key": "  󰩟 Local IP",
+      "keyColor": "green"
+    },
+    {
+      "type": "cursor",
+      "key": "  󰇀 Cursor",
       "keyColor": "cyan"
+    },
+    {
+      "type": "icons",
+      "key": "  󰏘 Icons",
+      "keyColor": "blue"
+    },
+    {
+      "type": "font",
+      "key": "   Font",
+      "keyColor": "red"
+    },
+    {
+      "type": "font",
+      "key": "   Font",
+      "keyColor": "green"
+    },
+    {
+      "type": "locale",
+      "key": "  󰗊  󰢾 󰢿  Locale"
     },
     {
       "type": "gpu",
       "format": "{3}",
-      "key": "  󰎗",
-      "keyColor": "magenta"
+      "key": "  󰍛󰘦 󰎗 GPU Driver",
+      "keyColor": "cyan"
+    },
+    {
+      "type": "de",
+      "key": "  󰧨󰍺󰕮  DE",
+      "keyColor": "cyan"
+    },
+    {
+      "type": "packages",
+      "key": "󰏖"
+    },
+    {
+      "type": "command",
+      "format": "{1} used",
+      "key": "  󰓅 ZRAM",
+      "keyColor": "cyan",
+      "text": "zramctl -o DATA | tail -n 1"
+    },
+    {
+      "type": "kernel",
+      "key": "   Kernel",
+      "format": "{2}",
+      "keyColor": "cyan"
+    },
+    {
+      "type": "packages",
+      "key": "  󰏗  󰏖 Packages",
+      "keyColor": "cyan"
     },
     {
       "type": "disk",
-      "key": "  ",
+      "key": "   󰋊  Disk",
       "folders": "/",
-      "keyColor": "blue"
-    },
-    {
-      "type": "memory",
-      "key": "  󰘚",
-      "keyColor": "yellow"
+      "keyColor": "cyan"
     },
     {
       "type": "swap",
-      //"format": "{1} used",
-      "key": "  󰑤",
-      "keyColor": "green"
+      "format": "{1} used",
+      "key": "  󰓅  󰑤 󰿣 ZRAM",
+      "keyColor": "cyan"
     },
-    {
-      "type": "battery",
-      "format": "{4} [{5}]",
-      "key": "  ",
-      "keyColor": "red"
-    },
-    {
-      "type": "custom",
-      "format": "└──────────────────────────────────────────┘"
-    },
-    {
-      "type": "colors",
-      "paddingLeft": 2,
-      "symbol": "circle"
-    },
-    "break"
-  ]
-}

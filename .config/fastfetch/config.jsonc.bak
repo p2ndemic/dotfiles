@@ -46,3 +46,25 @@
       "type": "locale",
       "key": "  󰗊 Locale"
     },
+    {
+      "type": "gpu",
+      "format": "{3}",
+      "key": "  󰍛󰘦 󰎗 GPU Driver",
+      "keyColor": "cyan"
+    },
+    {
+      "type": "de",
+      "key": "  󰧨󰍺󰕮  DE",
+      "keyColor": "cyan"
+    },
+    {
+      "type": "packages",
+      "key": "󰏖"
+    },
+    {
+      "type": "command",
+      "format": "{1} used",
+      "key": "  󰓅 ZRAM",
+      "keyColor": "cyan",
+      "text": "zramctl -o DATA | tail -n 1"
+    },

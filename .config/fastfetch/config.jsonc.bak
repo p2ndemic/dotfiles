@@ -8,7 +8,7 @@
     },
     {
       "type": "gpu",
-      "format": "{1} {2}",
+      "format": "{1} {2} @ {12} [{6}]",
       "key": "  󰊴 GPU",
       "keyColor": "blue"
     },
@@ -40,7 +40,6 @@
     {
       "type": "font",
       "key": "   Font",
-      "format": "{5}",
       "keyColor": "green"
     },
     {

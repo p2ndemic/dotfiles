@@ -9,20 +9,20 @@
         - The format of the file is: URL|Title (optional)
 
     Keybindings:
-        - /            Save the current URL to the bookmark list (with duplicate check).
-        - Alt+/        Remove the currently playing url-bookmark.
-        - ;            Navigate to the previous url-bookmark.
-        - '            Navigate to the next url-bookmark.
-        - Alt+;        Load the first url-bookmark from the list.
-        - Alt+'        Load the last url-bookmark from the list.
+        - /          Save the current URL to the bookmark list (with duplicate check).
+        - Alt+/      Remove the currently playing url-bookmark.
+        - ;          Navigate to the previous url-bookmark.
+        - '          Navigate to the next url-bookmark.
+        - Alt+;      Load the first url-bookmark from the list.
+        - Alt+'      Load the last url-bookmark from the list.
 
     Add the desired hotkeys to input.conf:
-        /              script-binding save_current_url_bookmark
-        Alt+/          script-binding remove_current_url_bookmark
-        ;              script-binding prev_url_bookmark
-        '              script-binding next_url_bookmark
-        Alt+;          script-binding load_first_url_bookmark
-        Alt+'          script-binding load_last_url_bookmark
+        /            script-binding save_current_url_bookmark    # Save current URL to bookmark list
+        Alt+/        script-binding remove_current_url_bookmark  # Remove current URL from bookmark list
+        ;            script-binding prev_url_bookmark            # Navigate to previous URL-bookmark
+        '            script-binding next_url_bookmark            # Navigate to next URL-bookmark
+        Alt+;        script-binding load_first_url_bookmark      # Load first URL-bookmark
+        Alt+'        script-binding load_last_url_bookmark       # Load last URL-bookmark
 --]]
 
 local mp = require 'mp'

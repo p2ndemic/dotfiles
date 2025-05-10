@@ -188,5 +188,5 @@ mp.add_key_binding(nil, "next_url_bookmark", next_url_bookmark)
 mp.add_key_binding(nil, "load_first_url_bookmark", first_url_bookmark)
 mp.add_key_binding(nil, "load_last_url_bookmark", last_url_bookmark)
 
--- 🚀 Initialize
+-- 🚀 Init
 load_url_bookmarks()

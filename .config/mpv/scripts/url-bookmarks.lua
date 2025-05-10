@@ -9,20 +9,20 @@
         - The format of the file is: URL|Title (optional)
 
     Keybindings:
-        - '/'          Save the current URL to the bookmark list (with duplicate check).
-        - 'Alt+/'      Remove the currently playing url-bookmark.
-        - 'Alt+,'      Load the first url-bookmark from the list.
-        - 'Alt+.'      Load the last url-bookmark from the list.
-        - ','          Navigate to the previous url-bookmark.
-        - '.'          Navigate to the next url-bookmark.
+        - /            Save the current URL to the bookmark list (with duplicate check).
+        - Alt+/        Remove the currently playing url-bookmark.
+        - ;            Navigate to the previous url-bookmark.
+        - '            Navigate to the next url-bookmark.
+        - Alt+;        Load the first url-bookmark from the list.
+        - Alt+'        Load the last url-bookmark from the list.
 
     Add the desired hotkeys to input.conf:
         /              script-binding save_current_url_bookmark
         Alt+/          script-binding remove_current_url_bookmark
-        Alt+,          script-binding load_first_url_bookmark
-        Alt+.          script-binding load_last_url_bookmark
-        ,              script-binding prev_url_bookmark
-        .              script-binding next_url_bookmark
+        ;              script-binding prev_url_bookmark
+        '              script-binding next_url_bookmark
+        Alt+;          script-binding load_first_url_bookmark
+        Alt+'          script-binding load_last_url_bookmark
 --]]
 
 local mp = require 'mp'
@@ -164,14 +164,6 @@ end
 
 
 -- 🔄 Navigation helpers
-local function first_url_bookmark()
-    load_url_bookmark(1)
-end
-
-local function last_url_bookmark()
-    load_url_bookmark(#url_bm)
-end
-
 local function prev_url_bookmark()
     load_url_bookmark(current_index - 1)
 end
@@ -180,13 +172,21 @@ local function next_url_bookmark()
     load_url_bookmark(current_index + 1)
 end
 
+local function first_url_bookmark()
+    load_url_bookmark(1)
+end
+
+local function last_url_bookmark()
+    load_url_bookmark(#url_bm)
+end
+
 -- ⌨️ Register bindings
 mp.add_key_binding(nil, "save_current_url_bookmark", save_current_url_bookmark)
 mp.add_key_binding(nil, "remove_current_url_bookmark", remove_current_url_bookmark)
-mp.add_key_binding(nil, "load_first_url_bookmark", first_url_bookmark)
-mp.add_key_binding(nil, "load_last_url_bookmark", last_url_bookmark)
 mp.add_key_binding(nil, "prev_url_bookmark", prev_url_bookmark)
 mp.add_key_binding(nil, "next_url_bookmark", next_url_bookmark)
+mp.add_key_binding(nil, "load_first_url_bookmark", first_url_bookmark)
+mp.add_key_binding(nil, "load_last_url_bookmark", last_url_bookmark)
 
 -- 🚀 Initialize
 load_url_bookmarks()

@@ -1,7 +1,7 @@
 --[[
     https://github.com/p2ndemic
 
-    MPV URL-Bookmark Script v2.5
+    MPV URL-Bookmark Script v2.7
     This script allows you to manage url-bookmarks in MPV.
 
     Configuration:

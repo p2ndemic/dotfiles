@@ -80,16 +80,16 @@
     //"separator":  " ⇖ ",
     //"separator":  " ⇗ ",
     //"separator":  " ➯ ",
-    //"separator":  " : "
-    "color": "cyan",
-    //"separator": "\u001b[1;30m : \u001b[0m" // Bright black (dark gray)
-    //"separator": "\u001b[1;31m : \u001b[0m" // Bright red
-    //"separator": "\u001b[1;32m : \u001b[0m" // Bright green
-    //"separator": "\u001b[1;33m : \u001b[0m" // Bright yellow
-    //"separator": "\u001b[1;34m : \u001b[0m" // Bright blue
-    //"separator": "\u001b[1;35m : \u001b[0m" // Bright magenta
-    //"separator": "\u001b[1;36m : \u001b[0m" // Bright cyan
-    //"separator": "\u001b[1;37m : \u001b[0m" // Bright white
+    //"separator":  " : ",
+    //"separator": "\u001b[1;30m : \u001b[0m", // Bright black (dark gray)
+    //"separator": "\u001b[1;31m : \u001b[0m", // Bright red
+    //"separator": "\u001b[1;32m : \u001b[0m", // Bright green
+    //"separator": "\u001b[1;33m : \u001b[0m", // Bright yellow
+    //"separator": "\u001b[1;34m : \u001b[0m", // Bright blue
+    //"separator": "\u001b[1;35m : \u001b[0m", // Bright magenta
+    //"separator": "\u001b[1;36m : \u001b[0m", // Bright cyan
+    //"separator": "\u001b[1;37m : \u001b[0m", // Bright white
+    "color": "cyan"
   },
   "modules": [
     {
@@ -206,10 +206,15 @@
       "keyColor": "green"
     },
     {
+      "type": "localip",
+      "key": "  󰩟",
+      "keyColor": "red"
+    },
+    {
       "type": "battery",
       "format": "{4} [{5}]",
       "key": "  ",
-      "keyColor": "red"
+      "keyColor": "cyan"
     },
     {
       "type": "custom",

@@ -1,3 +1,7 @@
+### Config location
+#--config-location "~/.config/yt-dlp/config"
+
+
 ### General
 --restrict-filenames
 --output "$HOME/Arch1ve/yt-dlp/%(title)s.%(ext)s"
@@ -42,6 +46,10 @@
 --prefer-free-formats
 --audio-quality 0
 --remux-video mkv
+
+
+### Format selection
+--format "bestvideo*+bestaudio/best"
 
 
 ### Format | Format sort examples:

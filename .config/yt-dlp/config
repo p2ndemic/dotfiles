@@ -30,7 +30,7 @@
 ### Network | High buffer & chunk
 #--buffer-size 1M
 #--http-chunk-size 10M
-
+#--resize-buffer
 
 ### Network | External downloader [optional]
 ### Curl

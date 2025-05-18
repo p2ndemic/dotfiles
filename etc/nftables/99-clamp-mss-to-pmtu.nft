@@ -1,8 +1,16 @@
 #!/usr/sbin/nft -f
-
+# =============================================
+#    Custom Global Environment Variables
+# =============================================
+# https://en.wikipedia.org/wiki/Maximum_segment_size
+# https://en.wikipedia.org/wiki/Nagle%27s_algorithm
 # https://wiki.nftables.org/wiki-nftables/index.php/Scripting
 # https://unix.stackexchange.com/questions/672742/why-mss-clamping-in-iptables-nft-seems-to-take-no-effect-in-nftables
 # https://unix.stackexchange.com/questions/744973/enable-nat-with-tcpmss-using-ufw?utm_source=chatgpt.com
+# =============================================
+# Первое что я хочу сказать - всегда проверяйте инфомарцию из любого источника. Даже если это инфомация из Вики именитых разрабочиков и профессионалов в области сетевой инфраструктуры.
+# Разработчики NFTables советую в Вики 
+
 # Настройка MSS (MTU - 40).
 # Аналогично: iptables-translate -t mangle -A FORWARD -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu
 # iptables -t mangle -A FORWARD -p tcp -m tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu

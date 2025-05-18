@@ -88,6 +88,11 @@
       "keyColor": "cyan"
     },
     {
+      "type": "memory",
+      "key": "  󰘚 ",
+      "keyColor": "yellow"
+    },
+    {
       "type": "swap",
       "format": "{1} used",
       "key": "  󰓅  󰑤 󰿣 ZRAM",

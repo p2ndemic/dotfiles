@@ -4,6 +4,11 @@
       "key": "󰟸󰡋󰁯󰟾"
     },
     {
+      "type": "wm",
+      "key": "  󱂬 ",
+      "keyColor": "magenta"
+    },
+    {
       "type": "wmtheme",
       "key": "  󰉼 WM Theme",
       "keyColor": "green"

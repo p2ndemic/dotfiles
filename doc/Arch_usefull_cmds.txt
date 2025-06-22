@@ -85,5 +85,6 @@ journalctl -xb | grep -iE 'kernel command line' | sort | uniq
 
 ss -tni
 
+---
 
 3gp,aac,avi,ac3,eac3,flac,mkv,m3u8,m4a,m4s,m4v,mpg,mov,mp2,mp3,mp4,mpeg,mpegts,ogg,ogv,oga,ts,vob,wav

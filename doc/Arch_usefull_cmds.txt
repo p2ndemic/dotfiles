@@ -41,3 +41,46 @@ https://github.com/ozankiratli/dotfiles/blob/0ce24771f5c8de6a238fef3ef28812cc7d2
 pacman -Q | cut -d' ' -f1 | xargs -I {} pactree {} > packages_tree.txt
 
 expac -S "%n %v %d" | sort | uniq > packages_expac.txt
+
+
+
+---
+
+journalctl -p 3 -xb | sort | uniq
+
+lsmod | grep -iE 'cros|chrome'
+
+cat /sys/class/power_supply/BAT0/charge_control_end_threshold
+
+ls -l /sys/class/power_supply/BAT0/
+
+
+find /lib/modules/$(uname -r)/ -iname '*.ko*' | grep -iE 'cros|chrome' | sort
+find /lib/modules/$(uname -r)/ -iname '*cros*.ko*' -o -iname '*chrome*.ko*'
+
+
+zgrep -iE 'cros|chrome' /proc/config.gz | sort | uniq
+
+lsmod | grep -iE 'snd'
+
+
+ls -l /lib/firmware/intel/sof-ipc4/adl/
+ls -l /lib/firmware/intel/sof-ipc4-tplg/
+
+ls -l /lib/firmware/intel/sof/
+ls -l /lib/firmware/intel/sof-tplg/
+
+
+inxi -Fxz
+inxi -Aa
+pactl list cards
+wpctl
+
+
+
+modinfo snd-intel-dspcfg
+modinfo snd_sof
+
+
+
+journalctl -xb | grep -iE 'kernel command line' | sort | uniq

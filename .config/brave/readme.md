@@ -8,8 +8,8 @@
 - https://github.com/MulesGaming/brave-debloatinator/wiki/Additional-Resources#other-tools
 
 ```
-mkdir -p /etc/brave/policies/managed/
-cp ./policies.json /etc/brave/policies/managed/
+sudo mkdir -p /etc/brave/policies/managed/
+sudo cp ./brave_policies.json /etc/brave/policies/managed/
 ```
 
 #### Adblock Lists [choose one]:  

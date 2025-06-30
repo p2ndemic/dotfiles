@@ -1,4 +1,4 @@
-# REF: https://thesofproject.github.io/latest/getting_started/intel_debug/introduction.html
+# Ref: https://thesofproject.github.io/latest/getting_started/intel_debug/introduction.html
 # =============================================
 blacklist snd_soc_avs
 blacklist snd_sof_pci_intel_tgl

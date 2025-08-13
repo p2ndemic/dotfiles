@@ -14,6 +14,7 @@ user_settings = {
     # Helpful to track bound executable
 #   "PROTON_LOG_COMMAND_TO_PREFIX": "1",
 
+
     ###### Graphics / API ######
 
     # Disables DX12
@@ -24,6 +25,7 @@ user_settings = {
 
     #Use Wine DXGI instead of DXVK's. This is needed to make use of VKD3D when DXVK is enabled. It will prevent the use of DXVK's DXGI functions.
 #   "PROTON_USE_WINE_DXGI": "1",
+
 
     ###### Debug / Performance Tweaks ######
     
@@ -54,6 +56,7 @@ user_settings = {
     #Alternative way to run executables directly with wine binary instead of using steam.exe. This is the preffered way when using proton standalone.
 #   "PROTON_STANDALONE_START": "1",
 
+
     ###### AMD FSR ######
 
     # Enable automatic upgrading of AMD FidelityFX Super Resolution (FSR) to FSR4.
@@ -71,6 +74,7 @@ user_settings = {
     # FSR sharpening (0–5, lower is sharper). #2 is the AMD recommended default and is set by proton-ge.
 #   "WINE_FULLSCREEN_FSR_STRENGTH": "2",
 
+
     ###### NVIDIA NVAPI / DLSS ######
 
     # Enable nvapi support (for DLSS)
@@ -78,6 +82,7 @@ user_settings = {
 
     # Disable nvapi and nvapi64
     "PROTON_NVAPI_DISABLE": "1",
+
 
     ###### Sync Primitives ######
 
@@ -93,10 +98,12 @@ user_settings = {
     # Disable support for fast (one syscall per NT syscall) synchronization primitives using the winesync driver in the kernel
 #   "PROTON_NO_NTSYNC": "1",
 
+
     ###### Shader Cache ######
 
     # Enforce driver shader cache path when Steam's shader pre-caching is disabled
 #   "PROTON_BYPASS_SHADERCACHE_PATH": "",
+
 
     ###### DXVK ######
     
@@ -128,6 +135,7 @@ user_settings = {
     # Vulkan debug layers. Requires the Vulkan SDK to be installed
 #   "VK_INSTANCE_LAYERS": "VK_LAYER_KHRONOS_validation",
 
+
     ###### VKD3D-Proton ######
     
     #Spoof D3D12 feature level supported by VKD3D-Proton. Needed for some D3D12 games to work.
@@ -144,6 +152,7 @@ user_settings = {
 
     #vkd3d-shader debug logging
 #   "VKD3D_SHADER_DEBUG": "fixme",
+
 
     ###### Wine ######
 

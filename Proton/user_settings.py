@@ -118,9 +118,6 @@ user_settings = {
 
     # DXVK debug logging; none|error|warn|info|debug
 #   "DXVK_LOG_LEVEL": "info",
-    
-    #DXVK-NVAPI debug logging
-#   "DXVK_NVAPI_LOG_LEVEL": "info",
 
     # DXVK debug log; Set to none to disable log file creation entirely, without disabling logging
 #   "DXVK_LOG_PATH": "~/",

@@ -116,7 +116,7 @@ user_settings = {
 #   "DXVK_CONFIG_FILE": "~/.config/dxvk.conf",
 
     # Enable DXVK's HUD; devinfo|fps|frametimes|submissions|drawcalls|pipelines|descriptors|memory|allocations|gpuload|version|api|cs|compiler|samplers|ffshaders|swvp|scale=x|opacity=y
-    # Additionally, DXVK_HUD=1 has the same effect as DXVK_HUD=devinfo,fps, and DXVK_HUD=full enables all available HUD elements
+    # DXVK_HUD=1 has the same effect as DXVK_HUD=devinfo,fps, and DXVK_HUD=full enables all available HUD elements
 #   "DXVK_HUD": "devinfo,fps",
 
     # Limit the frame rate

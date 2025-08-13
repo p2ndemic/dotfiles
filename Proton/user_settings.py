@@ -15,9 +15,6 @@ user_settings = {
 #   "PROTON_LOG_COMMAND_TO_PREFIX": "1",
 
     ###### Graphics / API ######
-    
-    #Spoof d3d12 feature level supported by vkd3d. Needed for some d3d12 games to work.
-    "VKD3D_FEATURE_LEVEL": "12_2",
 
     # Disables DX12
 #   "PROTON_NO_D3D12": "1",
@@ -102,25 +99,16 @@ user_settings = {
 #   "PROTON_BYPASS_SHADERCACHE_PATH": "",
 
     ###### DXVK ######
-
-    # DXVK debug logging; none|error|warn|info|debug
-#   "DXVK_LOG_LEVEL": "info",
-
-    # DXVK debug log; Set to none to disable log file creation entirely, without disabling logging
-#   "DXVK_LOG_PATH": "~/",
-
-    # Enables use of the VK_EXT_debug_utils extension for translating performance event markers
-#   "DXVK_PERF_EVENTS": "1",
-
+    
     # Set DXVK config file path
 #   "DXVK_CONFIG_FILE": "~/.config/dxvk.conf",
+
+    # Limit the frame rate
+#   "DXVK_FRAME_RATE": "60",
 
     # Enable DXVK's HUD; devinfo|fps|frametimes|submissions|drawcalls|pipelines|descriptors|memory|allocations|gpuload|version|api|cs|compiler|samplers|ffshaders|swvp|scale=x|opacity=y
     # DXVK_HUD=1 has the same effect as DXVK_HUD=devinfo,fps, and DXVK_HUD=full enables all available HUD elements
 #   "DXVK_HUD": "devinfo,fps",
-
-    # Limit the frame rate
-#   "DXVK_FRAME_RATE": "60",
 
     # DXVK pipeline cache; "0" disable|"/some/directory" Defaults to the current working directory of the application
 #   "DXVK_STATE_CACHE": "0",
@@ -128,8 +116,37 @@ user_settings = {
     # Selects devices with a matching Vulkan device name, which can be retrieved with tools such as vulkaninfo
 #   "DXVK_FILTER_DEVICE_NAME": "Device Name",
 
+    # DXVK debug logging; none|error|warn|info|debug
+#   "DXVK_LOG_LEVEL": "info",
+    
+    #DXVK-NVAPI debug logging
+#   "DXVK_NVAPI_LOG_LEVEL": "info",
+
+    # DXVK debug log; Set to none to disable log file creation entirely, without disabling logging
+#   "DXVK_LOG_PATH": "~/",
+
+    # Enables use of the VK_EXT_debug_utils extension for translating performance event markers
+#   "DXVK_PERF_EVENTS": "1",
+
     # Vulkan debug layers. Requires the Vulkan SDK to be installed
 #   "VK_INSTANCE_LAYERS": "VK_LAYER_KHRONOS_validation",
+
+    ###### VKD3D-Proton ######
+    
+    #Spoof D3D12 feature level supported by VKD3D-Proton. Needed for some D3D12 games to work.
+    "VKD3D_FEATURE_LEVEL": "12_2",
+
+    # VKD3D disable DirectX Raytracing
+    "VKD3D_CONFIG": "nodxr,force_host_cached",
+    
+    # VKD3D enable DirectX Raytracing
+#   "VKD3D_CONFIG": "dxr,dxr12,force_host_cached",
+
+    #vkd3d debug logging
+#   "VKD3D_DEBUG": "warn",
+
+    #vkd3d-shader debug logging
+#   "VKD3D_SHADER_DEBUG": "fixme",
 
     ###### Wine ######
 
@@ -139,19 +156,14 @@ user_settings = {
     # Wine debug logging
 #   "WINEDEBUG": "+timestamp,+pid,+seh,+unwind,+debugstr,+loaddll,+mscoree",
 
-    # VKD3D debug logging
-#   "VKD3D_DEBUG": "warn",
-
     # Wine-mono debug logging
 #   "WINE_MONO_TRACE": "E:System.NotImplementedException",
 #   "MONO_LOG_LEVEL": "info",
 
-    ###### GStreamer Media ######
-
     # General purpose media logging
 #   "GST_DEBUG": "4",
 
-    # Verbose converter logging (may impact performance)
+    # or Verbose converter logging (may impact performance)
 #   "GST_DEBUG": "4,WINE:7,protonaudioconverter:7,protonaudioconverterbin:7,protonvideoconverter:7",
 #   "GST_DEBUG_NO_COLOR": "1",
 }

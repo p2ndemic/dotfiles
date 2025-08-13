@@ -103,32 +103,32 @@ user_settings = {
 
     ###### DXVK ######
 
-    #DXVK debug logging; none|error|warn|info|debug
+    # DXVK debug logging; none|error|warn|info|debug
 #   "DXVK_LOG_LEVEL": "info",
 
-    #DXVK debug log; Set to none to disable log file creation entirely, without disabling logging.
+    # DXVK debug log; Set to none to disable log file creation entirely, without disabling logging
 #   "DXVK_LOG_PATH": "~/",
 
-    #Enables use of the VK_EXT_debug_utils extension for translating performance event markers.
+    # Enables use of the VK_EXT_debug_utils extension for translating performance event markers
 #   "DXVK_PERF_EVENTS": "1",
 
-    #Enables use of the VK_EXT_debug_utils extension for translating performance event markers.
+    # Set DXVK config file path
 #   "DXVK_CONFIG_FILE": "~/.config/dxvk.conf",
 
-    #Enable DXVK's HUD; devinfo|fps|frametimes|submissions|drawcalls|pipelines|descriptors|memory|allocations|gpuload|version|api|cs|compiler|samplers|ffshaders|swvp|scale=x|opacity=y
-    #Additionally, DXVK_HUD=1 has the same effect as DXVK_HUD=devinfo,fps, and DXVK_HUD=full enables all available HUD elements.
+    # Enable DXVK's HUD; devinfo|fps|frametimes|submissions|drawcalls|pipelines|descriptors|memory|allocations|gpuload|version|api|cs|compiler|samplers|ffshaders|swvp|scale=x|opacity=y
+    # Additionally, DXVK_HUD=1 has the same effect as DXVK_HUD=devinfo,fps, and DXVK_HUD=full enables all available HUD elements
 #   "DXVK_HUD": "devinfo,fps",
 
-    #Limit the frame rate. A value of 0 uncaps the frame rate, while any positive value will limit rendering to the given number of frames per second.
+    # Limit the frame rate
 #   "DXVK_FRAME_RATE": "60",
 
-    #DXVK pipeline cache; "0" disable|"/some/directory" Defaults to the current working directory of the application.
+    # DXVK pipeline cache; "0" disable|"/some/directory" Defaults to the current working directory of the application
 #   "DXVK_STATE_CACHE": "0",
 
-    #Selects devices with a matching Vulkan device name, which can be retrieved with tools such as vulkaninfo.
+    # Selects devices with a matching Vulkan device name, which can be retrieved with tools such as vulkaninfo
 #   "DXVK_FILTER_DEVICE_NAME": "Device Name",
 
-    #Vulkan debug layers. Requires the Vulkan SDK to be installed.
+    # Vulkan debug layers. Requires the Vulkan SDK to be installed
 #   "VK_INSTANCE_LAYERS": "VK_LAYER_KHRONOS_validation",
 
     ###### Wine ######

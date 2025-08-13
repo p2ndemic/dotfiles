@@ -59,9 +59,6 @@ user_settings = {
 
     ###### AMD FSR ######
 
-    # Enable automatic upgrading of AMD FidelityFX Super Resolution (FSR) to FSR4.
-#   "PROTON_FSR4_UPGRADE": "1",
-
     #Disable/Enable AMD FidelityFX Super Resolution (FSR), as it is enabled by default. FSR only works in vulkan games (dxvk and vkd3d-proton included).
 #   "WINE_FULLSCREEN_FSR": "0",
 
@@ -74,6 +71,8 @@ user_settings = {
     # FSR sharpening (0–5, lower is sharper). #2 is the AMD recommended default and is set by proton-ge.
 #   "WINE_FULLSCREEN_FSR_STRENGTH": "2",
 
+    # Enable automatic upgrading of AMD FidelityFX Super Resolution (FSR) to FSR4.
+#   "PROTON_FSR4_UPGRADE": "1",
 
     ###### NVIDIA NVAPI / DLSS ######
 

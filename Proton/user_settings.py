@@ -10,6 +10,15 @@ user_settings = {
     # Enable logging
     "PROTON_LOG": "0",
 
+    #Log directory can be overridden with $PROTON_LOG_DIR.
+#   "PROTON_LOG_DIR": "~/",
+
+    #When running a game, Proton will write some useful debug scripts for that game into $PROTON_DEBUG_DIR/proton_$USER/.
+#   "PROTON_DUMP_DEBUG_COMMANDS": "1",
+
+    #Root directory for the Proton debug scripts, /tmp by default.
+#   "PROTON_DEBUG_DIR": "1",
+
     # Write the command Proton sends to Wine for targeted prefix (/prefix/path/launch_command)
     # Helpful to track bound executable
 #   "PROTON_LOG_COMMAND_TO_PREFIX": "1",

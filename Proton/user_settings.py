@@ -41,12 +41,12 @@ user_settings = {
     # Reduce Pulse Latency
     "PROTON_PULSE_LOWLATENCY": "1",
 
-    #Enable Wayland display output. Required for HDR support
-    "PROTON_ENABLE_WAYLAND": "1",
-
     # Enable WoW64 Mode For Wine Prefixes
     "PROTON_USE_WOW64": "1",
-    
+
+    #Enable Wayland display output. Currently under active development. May cause input lag in some games (e.g., Unity engine). Required for HDR.
+#   "PROTON_ENABLE_WAYLAND": "1",
+
     #Enable HDR support. Requires Wayland to be enabled and for HDR to be enabled in system settings.
 #    "PROTON_ENABLE_HDR": "1",
 
@@ -55,6 +55,19 @@ user_settings = {
 
     #Alternative way to run executables directly with wine binary instead of using steam.exe. This is the preffered way when using proton standalone.
 #   "PROTON_STANDALONE_START": "1",
+
+    #Delay freeing some memory, to work around application use-after-free bugs.
+#   "PROTON_HEAP_DELAY_FREE": "1",
+
+    #Disable support for memory write watches in ntdll. This is a very dangerous hack and should only be applied if you have verified that the game can operate without write watches.
+    #This improves performance for some very specific games (e.g. CoreRT-based games).
+#   "PROTON_NO_WRITE_WATCH": "1",
+
+
+    ###### Input Settings ######
+
+    #When this envvar is set steam input and hidraw are disabled so that SDL takes priority over controller support.
+#   "PROTON_PREFER_SDL": "1",
 
 
     ###### AMD FSR ######
@@ -81,6 +94,10 @@ user_settings = {
 
     # Disable nvapi and nvapi64
     "PROTON_NVAPI_DISABLE": "1",
+
+    #Force Nvidia GPUs to always be reported as AMD GPUs. Some games require this if they depend on Windows-only Nvidia driver functionality.
+    #See also DXVK's nvapiHack config, which only affects reporting from Direct3D.
+#   "PROTON_HIDE_NVIDIA_GPU": "1",
 
 
     ###### Sync Primitives ######

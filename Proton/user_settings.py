@@ -63,7 +63,7 @@ user_settings = {
 #   "PROTON_ENABLE_WAYLAND": "1",
 
     #Enable HDR support. Requires Wayland to be enabled and for HDR to be enabled in system settings.
-#    "PROTON_ENABLE_HDR": "1",
+#   "PROTON_ENABLE_HDR": "1",
 
     # Enable Winetricks prompt on game launch
 #   "PROTON_WINETRICKS": "1",

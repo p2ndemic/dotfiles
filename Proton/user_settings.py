@@ -26,13 +26,13 @@ user_settings = {
 
     ###### Graphics / API ######
 
-    # Disables DX12
+    #Disable DiretX12 [d3d12.dll], for d3d12 games which can fall back to and run better with d3d11.
 #   "PROTON_NO_D3D12": "1",
 
-    #Disable d3d11.dll, for d3d11 games which can fall back to and run better with d3d9.
+    #Disable DiretX11 [d3d11.dll], for d3d11 games which can fall back to and run better with d3d10.
 #   "PROTON_NO_D3D11": "1",
 
-    #Disable d3d10.dll and dxgi.dll, for d3d10 games which can fall back to and run better with d3d9.
+    #Disable DiretX10 [d3d10.dll] and [dxgi.dll], for d3d10 games which can fall back to and run better with d3d9.
 #   "PROTON_NO_D3D10": "1",
 
     # Use OpenGL-based wined3d for d3d11, d3d10, and d3d9 instead of Vulkan-based DXVK

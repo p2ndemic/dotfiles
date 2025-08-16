@@ -81,9 +81,9 @@ user_settings = {
 
     ###### Input Settings ######
 
-    #When this envvar is set steam input and hidraw are disabled so that SDL takes priority over controller support.
+    # Use SDL input instead of HIDRAW/Steam Input. When this envvar is set steam input and hidraw are disabled so that SDL takes priority over controller support.
 #   "PROTON_PREFER_SDL": "1",
-
+#   "PROTON_USE_SDL": "1",
 
     ###### AMD FSR ######
 
@@ -116,6 +116,9 @@ user_settings = {
 
 
     ###### Sync Primitives ######
+
+    # Enable NTsync
+    "PROTON_USE_NTSYNC": "1",
 
     # Disable eventfd-based in-process synchronization primitives
     "PROTON_NO_ESYNC": "1",

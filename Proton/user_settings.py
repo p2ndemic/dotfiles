@@ -103,9 +103,6 @@ user_settings = {
     # Enable automatic upgrading of AMD FidelityFX Super Resolution (FSR) to FSR4.
 #   "PROTON_FSR4_UPGRADE": "1",
 
-    # Enable automatic upgrading of AMD FidelityFX Super Resolution (FSR) to FSR4.
-#   "PROTON_FSR4_UPGRADE": "1",
-
     # Added PROTON_FSR4_RDNA3_UPGRADE for RDNA3 GPUs. Does the same thing as 'PROTON_FSR4_UPGRADE' but also sets some other necessary variables.
     # Ref: https://github.com/CachyOS/proton-cachyos/releases/tag/cachyos-10.0-20250807-slr
 #   "PROTON_FSR4_RDNA3_UPGRADE": "1",

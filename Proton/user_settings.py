@@ -78,13 +78,6 @@ user_settings = {
     #This improves performance for some very specific games (e.g. CoreRT-based games).
 #   "PROTON_NO_WRITE_WATCH": "1",
 
-
-    ###### Input Settings ######
-
-    # Use SDL input instead of HIDRAW/Steam Input. When this envvar is set steam input and hidraw are disabled so that SDL takes priority over controller support.
-#   "PROTON_PREFER_SDL": "1",
-#   "PROTON_USE_SDL": "1",
-
     
     ###### INTEL XeSS ######
 
@@ -165,6 +158,20 @@ user_settings = {
     # Added per-game shader cache, enabled by default, can be disabled with PROTON_LOCAL_SHADER_CACHE=0. Shaders will be cached under <steamlibrary>/shadercache/<appid> for each game, similarly to when shader pre-caching is enabled. You will get stuttering as the shader cache for each game is rebuilt but the cached shaders won't be evicted due to limited cache size.
     # Ref: https://github.com/CachyOS/proton-cachyos/releases/tag/cachyos-10.0-20250807-slr
 #   "PROTON_LOCAL_SHADER_CACHE": "0",
+
+
+    ###### Input Settings ######
+
+    # Use SDL input instead of HIDRAW/Steam Input. When this envvar is set steam input and hidraw are disabled so that SDL takes priority over controller support.
+#   "PROTON_PREFER_SDL": "1",
+#   "PROTON_USE_SDL": "1",
+
+
+    ###### Other ######
+
+    # Added PROTON_ENABLE_MEDIACONV env variable to enable proton mediaconverter. Mostly for testing purposes.
+    # Ref: https://github.com/CachyOS/proton-cachyos/releases/tag/cachyos-10.0-20250702-slr
+#   "PROTON_ENABLE_MEDIACONV": "0",
 
 
     ###### DXVK ######

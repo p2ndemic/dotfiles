@@ -85,6 +85,14 @@ user_settings = {
 #   "PROTON_PREFER_SDL": "1",
 #   "PROTON_USE_SDL": "1",
 
+    
+    ###### INTEL XeSS ######
+
+    # → Added downloader for XeSS dlls (version 2.1.0), similar to the DLSS downloader
+    # Ref: https://github.com/CachyOS/proton-cachyos/releases/tag/cachyos-10.0-20250807-slr
+#   "PROTON_XESS_UPGRADE": "1",
+
+
     ###### AMD FSR ######
 
     #Disable/Enable AMD FidelityFX Super Resolution (FSR), as it is enabled by default. FSR only works in vulkan games (dxvk and vkd3d-proton included).
@@ -102,6 +110,14 @@ user_settings = {
     # Enable automatic upgrading of AMD FidelityFX Super Resolution (FSR) to FSR4.
 #   "PROTON_FSR4_UPGRADE": "1",
 
+    # Enable automatic upgrading of AMD FidelityFX Super Resolution (FSR) to FSR4.
+#   "PROTON_FSR4_UPGRADE": "1",
+
+    # Added PROTON_FSR4_RDNA3_UPGRADE for RDNA3 GPUs. Does the same thing as 'PROTON_FSR4_UPGRADE' but also sets some other necessary variables.
+    # Ref: https://github.com/CachyOS/proton-cachyos/releases/tag/cachyos-10.0-20250807-slr
+#   "PROTON_FSR4_RDNA3_UPGRADE": "1",
+
+
     ###### NVIDIA NVAPI / DLSS ######
 
     # Enable nvapi support (for DLSS)
@@ -110,9 +126,17 @@ user_settings = {
     # Disable nvapi and nvapi64
     "PROTON_NVAPI_DISABLE": "1",
 
-    #Force Nvidia GPUs to always be reported as AMD GPUs. Some games require this if they depend on Windows-only Nvidia driver functionality.
-    #See also DXVK's nvapiHack config, which only affects reporting from Direct3D.
+    # Force Nvidia GPUs to always be reported as AMD GPUs. Some games require this if they depend on Windows-only Nvidia driver functionality.
+    # See also DXVK's nvapiHack config, which only affects reporting from Direct3D.
 #   "PROTON_HIDE_NVIDIA_GPU": "1",
+
+    # Added downloader for DLSS dlls (version 310.3.0), similar to the FSR4 downloader. Use 'PROTON_DLSS_UPGRADE=1' environment variable to enable it.
+    # Ref: https://github.com/CachyOS/proton-cachyos/releases/tag/cachyos-10.0-20250714-slr
+#   "PROTON_DLSS_UPGRADE": "1",
+
+    # Added PROTON_DLSS_INDICATOR=1 environment variable to enable DLSS hud.
+    # Ref: https://github.com/CachyOS/proton-cachyos/releases/tag/cachyos-10.0-20250714-slr
+#   "PROTON_DLSS_INDICATOR": "1",
 
 
     ###### Sync Primitives ######
@@ -137,6 +161,10 @@ user_settings = {
 
     # Enforce driver shader cache path when Steam's shader pre-caching is disabled
 #   "PROTON_BYPASS_SHADERCACHE_PATH": "",
+
+    # Added per-game shader cache, enabled by default, can be disabled with PROTON_LOCAL_SHADER_CACHE=0. Shaders will be cached under <steamlibrary>/shadercache/<appid> for each game, similarly to when shader pre-caching is enabled. You will get stuttering as the shader cache for each game is rebuilt but the cached shaders won't be evicted due to limited cache size.
+    # Ref: https://github.com/CachyOS/proton-cachyos/releases/tag/cachyos-10.0-20250807-slr
+#   "PROTON_LOCAL_SHADER_CACHE": "0",
 
 
     ###### DXVK ######

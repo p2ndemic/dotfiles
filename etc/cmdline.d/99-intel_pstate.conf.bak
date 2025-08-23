@@ -1,6 +1,7 @@
-# https://docs.kernel.org/admin-guide/pm/intel_idle.html
-# https://access.redhat.com/solutions/2895271
-# https://gist.github.com/Brainiarc7/8dfd6bb189b8e6769bb5817421aec6d1
+# Ref: https://docs.kernel.org/admin-guide/kernel-parameters.html
+# Ref: https://docs.kernel.org/admin-guide/pm/intel_idle.html
+# Ref: https://access.redhat.com/solutions/2895271
+# Ref: https://gist.github.com/Brainiarc7/8dfd6bb189b8e6769bb5817421aec6d1
 # =============================================
 # ... TODO ...
 # =============================================

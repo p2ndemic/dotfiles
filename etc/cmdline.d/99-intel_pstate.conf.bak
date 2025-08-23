@@ -1,6 +1,7 @@
 # https://docs.kernel.org/admin-guide/pm/intel_idle.html
 # https://access.redhat.com/solutions/2895271
 # https://gist.github.com/Brainiarc7/8dfd6bb189b8e6769bb5817421aec6d1
+# =============================================
 # ... TODO ...
-#
+# =============================================
 # intel_idle.max_cstate=1 intel_pstate=active

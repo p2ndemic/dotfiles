@@ -1,0 +1,8 @@
+# Ref: https://docs.kernel.org/admin-guide/kernel-parameters.html
+# Ref: https://docs.mesa3d.org/perf.html
+# Ref: https://docs.dolphinics.com/latest/guides/iommu.html
+# Ref: https://www.reddit.com/r/archlinux/comments/75on3s/is_intel_iommuoff_save_if_i_dont_do_gpu/
+# =============================================
+# Это вещь только для виртуализации, повышает задержки. Mesa рекомандует отключить эту функцию: https://docs.mesa3d.org/perf.html
+# =============================================
+amd_iommu=off iommu=off intremap=off

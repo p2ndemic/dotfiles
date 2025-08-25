@@ -8,8 +8,9 @@
 # =============================================
 # → Create systemd daemon:
 # sudo nano /etc/systemd/system/battery-threshold-tuning.service
+# → See: https://github.com/p2ndemic/dotfiles/tree/main/etc/systemd/
 # =============================================
-# → Reload systemd and enable the 'battery-threshold-tuning.service' immediately:
+# → Reload systemd and enable/start the 'battery-threshold-tuning.service' immediately:
 # sudo systemctl daemon-reload
 # sudo systemctl enable --now battery-threshold-tuning.service
 # =============================================

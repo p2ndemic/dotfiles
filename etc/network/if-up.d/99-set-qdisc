@@ -10,5 +10,5 @@ if [ "$IFACE" = "wlan0" ]; then
 fi
 
 # Сделать исполняемым и перезапустить интерфейс:
-# sudo chmod +x /etc/network/if-up.d/set_qdisc
+# sudo chmod +x /etc/network/if-up.d/99-set_qdisc
 # sudo ip link set wlan0 down && sudo ip link set wlan0 up

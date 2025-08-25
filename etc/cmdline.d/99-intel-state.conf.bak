@@ -7,3 +7,5 @@
 # ... TODO ...
 # =============================================
 # intel_pstate=active intel_idle.max_cstate=2
+
+# sudo systemctl enable --now thermald

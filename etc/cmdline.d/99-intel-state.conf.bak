@@ -5,4 +5,4 @@
 # =============================================
 # ... TODO ...
 # =============================================
-# intel_idle.max_cstate=1 intel_pstate=active
+# intel_pstate=active intel_idle.max_cstate=2

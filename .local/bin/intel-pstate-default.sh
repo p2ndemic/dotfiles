@@ -1,6 +1,28 @@
 #!/bin/bash
+# =============================================
 # Script to set default INTEL P-State settings
 # Balances performance with power efficiency
+# =============================================
+# Installation: 
+# Create file: sudo nano ~/.local/bin/intel-pstate-default.sh
+# Grant permissions to execute the script: sudo chmod +x ~/.local/bin/intel-pstate-default.sh
+# =============================================
+# Create systemd daemon: sudo nano /etc/systemd/system/intel-pstate-tuning.service
+# =============================================
+#[Unit]
+#Description=Set custom Intel P-State Settings
+#After=multi-user.target
+#
+#[Service]
+#Type=oneshot
+#ExecStart=~/.local/bin/intel-pstate-default.sh
+#
+#[Install]
+#WantedBy=multi-user.target
+# =============================================
+# Reload systemd and enable the Intel-pstate-tuning.service:
+# sudo systemctl daemon-reload && sudo systemctl enable --now pstate-default.service
+# =============================================
 
 # Set governor
 echo "powersave" > /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor

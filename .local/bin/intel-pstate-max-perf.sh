@@ -1,5 +1,11 @@
 #!/bin/bash
-# Intel Max Performance power profile script
+# =============================================
+# Intel P-State Max Performance power profile script
+# =============================================
+# Installation: 
+# Create file: sudo nano ~/.local/bin/intel-pstate-max-perf.sh
+# Grant permissions to execute the script: sudo chmod +x ~/.local/bin/intel-pstate-max-perf.sh
+# =============================================
 
 # Set governor to performance
 echo "performance" > /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor

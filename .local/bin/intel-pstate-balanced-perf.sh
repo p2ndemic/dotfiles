@@ -1,5 +1,11 @@
 #!/bin/bash
-# Intel Balanced Performance power profile script
+# =============================================
+# Intel P-State Balanced Performance power profile script
+# =============================================
+# Installation: 
+# Create file: sudo nano ~/.local/bin/intel-pstate-balanced-perf.sh
+# Grant permissions to execute the script: sudo chmod +x ~/.local/bin/intel-pstate-balanced-perf.sh
+# =============================================
 
 # Set governor to powersave
 echo "powersave" > /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor

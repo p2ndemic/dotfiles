@@ -4,7 +4,7 @@
 # =============================================
 # → Installation: 
 # → Create file: sudo nano ~/.local/bin/intel-pstate-max-perf.sh
-# → Grant permissions to execute the script: sudo chmod +x ~/.local/bin/intel-pstate-max-perf.sh
+# → Make the script executable: sudo chmod +x ~/.local/bin/intel-pstate-max-perf.sh
 # =============================================
 
 # Set governor to performance

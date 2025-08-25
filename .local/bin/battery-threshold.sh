@@ -1,6 +1,6 @@
 #!/bin/env bash
 # =============================================
-# Script to set the battery charge threshold
+# Script to set the Battery charge threshold
 # =============================================
 # → Installation: 
 # → Create file: sudo nano ~/.local/bin/battery-threshold.sh

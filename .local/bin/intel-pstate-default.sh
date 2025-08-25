@@ -3,7 +3,7 @@
 # Balances performance with power efficiency
 
 # Set governor
-echo "powersave" | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+echo "powersave" > /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 
 # Set energy performance preference
 for preference in /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference

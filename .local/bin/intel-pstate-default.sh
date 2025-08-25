@@ -3,11 +3,11 @@
 # Script to set default INTEL P-State settings
 # Balances performance with power efficiency
 # =============================================
-# Installation: 
-# Create file: sudo nano ~/.local/bin/intel-pstate-default.sh
-# Grant permissions to execute the script: sudo chmod +x ~/.local/bin/intel-pstate-default.sh
+# → Installation: 
+# → Create file: sudo nano ~/.local/bin/intel-pstate-default.sh
+# → Grant permissions to execute the script: sudo chmod +x ~/.local/bin/intel-pstate-default.sh
 # =============================================
-# Create systemd daemon: sudo nano /etc/systemd/system/intel-pstate-tuning.service
+# → Create systemd daemon: sudo nano /etc/systemd/system/intel-pstate-tuning.service
 # =============================================
 #[Unit]
 #Description=Set custom Intel P-State Settings
@@ -20,7 +20,7 @@
 #[Install]
 #WantedBy=multi-user.target
 # =============================================
-# Reload systemd and enable the Intel-pstate-tuning.service:
+# → Reload systemd and enable the Intel-pstate-tuning.service:
 # sudo systemctl daemon-reload && sudo systemctl enable --now pstate-default.service
 # =============================================
 

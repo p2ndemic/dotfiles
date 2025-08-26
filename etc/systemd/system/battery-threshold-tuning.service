@@ -14,7 +14,7 @@ After=multi-user.target
 
 [Service]
 Type=oneshot
-ExecStart=~/.local/bin/battery-threshold.sh
+ExecStart=%h/.local/bin/battery-threshold.sh
 
 [Install]
 WantedBy=multi-user.target

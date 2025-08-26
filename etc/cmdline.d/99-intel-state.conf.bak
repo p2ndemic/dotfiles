@@ -6,7 +6,7 @@
 # =============================================
 # ... TODO ...
 # =============================================
-# intel_pstate=active intel_idle.max_cstate=2
+# intel_pstate=active intel_idle.max_cstate=3
 
 # sudo systemctl enable --now thermald
 # Install tuned: sudo pacman -S tuned

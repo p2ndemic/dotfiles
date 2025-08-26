@@ -1,7 +1,5 @@
 # =============================================
-# Battery Charge Threshold daemon
-# =============================================
-# Ref: https://www.freedesktop.org/software/systemd/man/latest/systemd.unit.html#Specifiers
+# www.freedesktop.org/software/systemd/man/latest/systemd.unit.html#Specifiers
 # =============================================
 # → Installation: 
 # → Create the service file: sudo nano /etc/systemd/system/battery-threshold-tuning.service

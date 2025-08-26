@@ -4,24 +4,15 @@
 # Balances performance with power efficiency
 # =============================================
 # → Installation: 
-# → Create file: sudo nano ~/.local/bin/intel-pstate-default.sh
+# → Create a file: sudo nano ~/.local/bin/intel-pstate-default.sh
 # → Make the script executable: sudo chmod +x ~/.local/bin/intel-pstate-default.sh
 # =============================================
 # → Create systemd daemon: sudo nano /etc/systemd/system/intel-pstate-tuning.service
+# → See: https://github.com/p2ndemic/dotfiles/blob/main/etc/systemd/system/intel-pstate-tuning.service
 # =============================================
-#[Unit]
-#Description=Set custom Intel P-State settings
-#After=multi-user.target
-#
-#[Service]
-#Type=oneshot
-#ExecStart=~/.local/bin/intel-pstate-default.sh
-#
-#[Install]
-#WantedBy=multi-user.target
-# =============================================
-# → Reload systemd and enable|start the 'intel-pstate-tuning.service' immediately:
-# sudo systemctl daemon-reload && sudo systemctl enable --now pstate-default.service
+# → Reload systemd and enable/start the 'intel-pstate-tuning.service' immediately:
+# sudo systemctl daemon-reload
+# sudo systemctl enable --now intel-pstate-tuning.service
 # =============================================
 
 # Set governor

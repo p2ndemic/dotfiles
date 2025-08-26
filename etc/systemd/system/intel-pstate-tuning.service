@@ -1,4 +1,6 @@
 # =============================================
+# www.freedesktop.org/software/systemd/man/latest/systemd.unit.html#Specifiers
+# =============================================
 # → Installation: 
 # → Create the service file: sudo nano /etc/systemd/system/intel-pstate-tuning.service
 # =============================================

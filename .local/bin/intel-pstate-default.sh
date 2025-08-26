@@ -16,6 +16,8 @@
 # =============================================
 # → Install thermald: sudo pacman -S thermald && systemctl enable --now thermald
 # =============================================
+# → Install tuned: sudo pacman -S tuned && systemctl enable --now tuned
+# =============================================
 
 # Set scaling governor
 for governor in /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor

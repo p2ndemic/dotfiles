@@ -1,9 +1,9 @@
-#!/bin/bash
+#!/bin/env bash
 # =============================================
 # Script to set default INTEL P-State settings
 # Balances performance with power efficiency
 # =============================================
-# → Installation: 
+# → Installation: 
 # → Create a file: sudo nano ~/.local/bin/intel-pstate-default.sh
 # → Make the script executable: sudo chmod +x ~/.local/bin/intel-pstate-default.sh
 # =============================================
@@ -14,11 +14,14 @@
 # sudo systemctl daemon-reload
 # sudo systemctl enable --now intel-pstate-tuning.service
 # =============================================
-# → Install thermald: sudo pacman -S thermald
+# → Install thermald: sudo pacman -S thermald && systemctl enable --now thermald
 # =============================================
 
-# Set governor
-echo "powersave" > /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+# Set scaling governor
+for governor in /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+do
+    echo "powersave" > "$governor"
+done
 
 # Set energy performance preference
 for preference in /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference

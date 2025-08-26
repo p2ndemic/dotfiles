@@ -3,6 +3,8 @@
 # Script to set default INTEL P-State settings
 # Balances performance with power efficiency
 # =============================================
+# Ref: https://wiki.archlinux.org/title/CPU_frequency_scaling
+# =============================================
 # → Installation: 
 # → Create a file: sudo nano ~/.local/bin/intel-pstate-default.sh
 # → Make the script executable: sudo chmod +x ~/.local/bin/intel-pstate-default.sh

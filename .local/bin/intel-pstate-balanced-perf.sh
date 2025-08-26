@@ -3,7 +3,7 @@
 # Intel P-State Balanced Performance power profile script
 # =============================================
 # → Installation: 
-# → Create file: sudo nano ~/.local/bin/intel-pstate-balanced-perf.sh
+# → Create a file: sudo nano ~/.local/bin/intel-pstate-balanced-perf.sh
 # → Make the script executable: sudo chmod +x ~/.local/bin/intel-pstate-balanced-perf.sh
 # =============================================
 

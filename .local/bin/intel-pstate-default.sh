@@ -14,6 +14,8 @@
 # sudo systemctl daemon-reload
 # sudo systemctl enable --now intel-pstate-tuning.service
 # =============================================
+# → Install thermald: sudo pacman -S thermald
+# =============================================
 
 # Set governor
 echo "powersave" > /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor

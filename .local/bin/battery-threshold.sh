@@ -3,7 +3,7 @@
 # Script to set the Battery charge threshold
 # =============================================
 # → Installation: 
-# → Create file: sudo nano ~/.local/bin/battery-threshold.sh
+# → Create a file: sudo nano ~/.local/bin/battery-threshold.sh
 # → Make the script executable: sudo chmod +x ~/.local/bin/battery-threshold.sh
 # =============================================
 # → Create systemd daemon:

@@ -33,12 +33,9 @@ do
     echo "balance_performance" > "$preference"
 done
 
-# Enable Turbo Boost
-echo 0 > /sys/devices/system/cpu/intel_pstate/no_turbo
-
-# Enable HWP dynamic boost if available
-if [[ -f /sys/devices/system/cpu/intel_pstate/hwp_dynamic_boost ]]; then
-    echo 1 > /sys/devices/system/cpu/intel_pstate/hwp_dynamic_boost
+# Enable Turbo Boost if files exist
+if [[ -f /sys/devices/system/cpu/intel_pstate/no_turbo ]]; then
+    echo 10 > /sys/devices/system/cpu/intel_pstate/no_turbo
 fi
 
 # Reset performance limits to default if files exist
@@ -51,8 +48,8 @@ if [[ -f /sys/devices/system/cpu/intel_pstate/max_perf_pct ]]; then
 fi
 
 # Check and enable thermald if not active
-if ! systemctl is-active --quiet thermald; then
-    systemctl enable --now thermald
-fi
+#if ! systemctl is-active --quiet thermald; then
+#    systemctl enable --now thermald
+#fi
 
 echo "Default Intel power profile activated"

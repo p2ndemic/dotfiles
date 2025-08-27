@@ -19,4 +19,11 @@ do
     echo "performance" > "$preference"
 done
 
+# Enable HWP dynamic boost if available.
+# Controls the hardware P-States booting. Allowing intel_pstate to use iowait boosting in the active mode with HWP enabled
+# This parameter may improve performance and reduce latency, but it can also cause regressions. Individual testing on each system is required.
+if [[ -f /sys/devices/system/cpu/intel_pstate/hwp_dynamic_boost ]]; then
+    echo 1 > /sys/devices/system/cpu/intel_pstate/hwp_dynamic_boost
+fi
+
 echo "Intel Balanced Performance power profile activated"

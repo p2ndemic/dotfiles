@@ -1,0 +1,113 @@
+#!/bin/env bash
+# =============================================
+# Script to set default INTEL P-State settings
+# Balances performance with power efficiency
+# =============================================
+# Ref: https://wiki.archlinux.org/title/CPU_frequency_scaling
+# =============================================
+# → Installation: 
+# → Create a file: sudo nano /usr/local/bin/intel-pstate-helper
+# → Make the script executable: sudo chmod +x /usr/local/bin/intel-pstate-helper
+# =============================================
+# → Create systemd daemons:
+# ✦ sudo nano /etc/systemd/system/intel-pstate-default.service
+# ✦ sudo nano /etc/systemd/system/intel-pstate-performance-powersave.service
+# ✦ sudo nano /etc/systemd/system/intel-pstate-performance-max.service
+# → See: https://github.com/p2ndemic/dotfiles/tree/main/etc/systemd/system
+# =============================================
+# → Additional installation:
+# → Install thermald: sudo pacman -S thermald && systemctl enable --now thermald
+# =============================================
+# → Remove power-profiles-daemon:
+# sudo pacman -Rns power-profiles-daemon
+# =============================================
+# → Install tuned:
+# sudo pacman -S tuned && systemctl enable --now tuned
+# =============================================
+
+# Parse arguments
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --governor)
+            GOVERNOR="$2"
+            shift
+            shift
+            ;;
+        --epp)
+            EPP="$2"
+            shift
+            shift
+            ;;
+        --no-turbo)
+            NO_TURBO="$2"
+            shift
+            shift
+            ;;
+        --hwp-dynamic-boost)
+            HWP_DYNAMIC_BOOST="$2"
+            shift
+            shift
+            ;;
+        --min-perf-pct)
+            MIN_PERF_PCT="$2"
+            shift
+            shift
+            ;;
+        --max-perf-pct)
+            MAX_PERF_PCT="$2"
+            shift
+            shift
+            ;;
+        *)
+            echo "Unknown parameter: $1"
+            exit 1
+            ;;
+    esac
+done
+
+# Set scaling governor
+if [[ -n "$GOVERNOR" ]]; then
+    for cpu in /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor; do
+        echo "$GOVERNOR" > "$cpu"
+    done
+fi
+
+# Set energy performance preference
+if [[ -n "$EPP" ]]; then
+    for cpu in /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference; do
+        echo "$EPP" > "$cpu"
+    done
+fi
+
+# Enable Turbo Boost if available
+if [[ -n "$NO_TURBO" ]]; then
+    echo "$NO_TURBO" > /sys/devices/system/cpu/intel_pstate/no_turbo
+fi
+
+# Enable HWP dynamic boost if available
+# Controls the hardware P-States booting. Allowing intel_pstate to use iowait boosting in the active mode with HWP enabled
+# This parameter may improve performance and reduce latency, but it can also cause regressions. Individual testing on each system is required.
+if [[ -n "$HWP_DYNAMIC_BOOST" ]]; then
+    if [[ -f /sys/devices/system/cpu/intel_pstate/hwp_dynamic_boost ]]; then
+        echo "$HWP_DYNAMIC_BOOST" > /sys/devices/system/cpu/intel_pstate/hwp_dynamic_boost
+    fi
+fi
+
+# Set Min P-state allowed, as % of max supported (highest turbo P-state)
+if [[ -n "$MIN_PERF_PCT" ]]; then
+    echo "$MIN_PERF_PCT" > /sys/devices/system/cpu/intel_pstate/min_perf_pct
+fi
+
+# Set Max P-state allowed, as % of max supported (highest turbo P-state)
+if [[ -n "$MAX_PERF_PCT" ]]; then
+    echo "$MAX_PERF_PCT" > /sys/devices/system/cpu/intel_pstate/max_perf_pct
+fi
+
+# Check and enable thermald (only for default mode)
+#if [[ "$GOVERNOR" == "powersave" && "$EPP" == "balance_performance" ]]; then
+#    if ! systemctl is-active --quiet thermald; then
+#        systemctl enable --now thermald >/dev/null 2>&1
+#    fi
+#fi
+
+echo "Settings applied: governor=$GOVERNOR, epp=$EPP, no_turbo=$NO_TURBO"

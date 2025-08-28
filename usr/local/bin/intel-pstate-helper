@@ -1,6 +1,6 @@
 #!/bin/env bash
 # =============================================
-# Intel P-state helper
+# Intel P-State helper
 # =============================================
 # Ref: https://wiki.archlinux.org/title/CPU_frequency_scaling
 # =============================================

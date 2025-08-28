@@ -102,11 +102,4 @@ if [[ -n "$MAX_PERF_PCT" ]]; then
     echo "$MAX_PERF_PCT" > /sys/devices/system/cpu/intel_pstate/max_perf_pct
 fi
 
-# Check and enable thermald (only for default mode)
-#if [[ "$GOVERNOR" == "powersave" && "$EPP" == "balance_performance" ]]; then
-#    if ! systemctl is-active --quiet thermald; then
-#        systemctl enable --now thermald >/dev/null 2>&1
-#    fi
-#fi
-
 echo "Settings applied: governor=$GOVERNOR, epp=$EPP, no_turbo=$NO_TURBO"

@@ -1,0 +1,62 @@
+#!/bin/bash
+
+# Parse arguments
+MODE="default"
+APP_ARGS=()
+
+# Parse mode options
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --performance-powersave)
+            MODE="performance-powersave"
+            shift
+            ;;
+        --performance-max)
+            MODE="performance-max"
+            shift
+            ;;
+        *)
+            # All other arguments are treated as part of the command to run
+            APP_ARGS+=("$1")
+            shift
+            ;;
+    esac
+done
+
+# Check if application is specified
+if [[ ${#APP_ARGS[@]} -eq 0 ]]; then
+    echo "Usage: pwr-mode [OPTION]... APPLICATION [ARGUMENTS]..."
+    echo "Options:"
+    echo "  --performance-powersave  Use performance-powersave profile"
+    echo "  --performance-max        Use performance-max profile"
+    exit 1
+fi
+
+# Apply selected profile
+case $MODE in
+    "performance-powersave")
+        systemctl start intel-pstate-performance-powersave.service
+        PROFILE_NAME="Performance-Powersave"
+        ;;
+    "performance-max")
+        systemctl start intel-pstate-performance-max.service
+        PROFILE_NAME="Performance-Max"
+        ;;
+    *)
+        PROFILE_NAME="Default"
+        ;;
+esac
+
+echo "Running with $PROFILE_NAME CPU profile: ${APP_ARGS[*]}"
+
+# Run the application
+"${APP_ARGS[@]}"
+EXIT_CODE=$?
+
+# Return to default profile after application exits
+if [[ $MODE != "default" ]]; then
+    echo "Returning to default CPU profile"
+    systemctl start intel-pstate-default.service
+fi
+
+exit $EXIT_CODE

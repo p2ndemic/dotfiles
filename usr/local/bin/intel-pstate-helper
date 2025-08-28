@@ -4,6 +4,7 @@
 # =============================================
 # Ref: https://www.kernel.org/doc/html/v4.12/admin-guide/pm/intel_pstate.html
 # Ref: https://www.clearlinux.org/clear-linux-documentation/guides/maintenance/cpu-performance.html
+# Ref: https://docs.mesa3d.org/perf.html
 # =============================================
 # → Installation: 
 # → Create a file: sudo nano /usr/local/bin/intel-pstate-helper

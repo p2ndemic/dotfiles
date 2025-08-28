@@ -1,7 +1,6 @@
 #!/bin/env bash
 # =============================================
-# Script to set default INTEL P-State settings
-# Balances performance with power efficiency
+# Intel P-state helper
 # =============================================
 # Ref: https://wiki.archlinux.org/title/CPU_frequency_scaling
 # =============================================
@@ -79,7 +78,7 @@ if [[ -n "$EPP" ]]; then
     done
 fi
 
-# Enable Turbo Boost if available
+# Enable Turbo Boost
 if [[ -n "$NO_TURBO" ]]; then
     echo "$NO_TURBO" > /sys/devices/system/cpu/intel_pstate/no_turbo
 fi

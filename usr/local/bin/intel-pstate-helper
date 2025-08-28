@@ -99,7 +99,7 @@ if [[ -n "$NO_TURBO" ]]; then
 fi
 
 # Enable HWP dynamic boost
-# Controls the hardware P-States booting. Allowing intel_pstate to use iowait boosting in the active mode with HWP enabled
+# Controls the CPU P-States booting. Allowing intel_pstate to use iowait boosting in the active mode with HWP enabled
 # This parameter may improve performance and reduce latency, but it can also cause regressions. Individual testing on each system is required.
 if [[ -n "$HWP_DYNAMIC_BOOST" ]]; then
     if [[ -f /sys/devices/system/cpu/intel_pstate/hwp_dynamic_boost ]]; then

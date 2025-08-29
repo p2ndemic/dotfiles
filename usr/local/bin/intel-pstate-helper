@@ -114,7 +114,7 @@ if [[ -n "$GOVERNOR" ]]; then
     done
 fi
 
-Set energy performance preference
+# Set energy performance preference
 if [[ -n "$EPP" ]]; then
     for cpu in /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference; do
         echo "$EPP" > "$cpu"

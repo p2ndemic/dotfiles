@@ -1,0 +1,172 @@
+#!/bin/env bash
+
+# --- Check for root privileges ---
+if [[ $EUID -ne 0 ]]; then
+   echo "This script must be run as root. Please use sudo." 
+   exit 1
+fi
+
+# --- Initialize variables ---
+GOVERNOR=""
+EPP=""
+NO_TURBO=""
+HWP_DYNAMIC_BOOST=""
+MIN_PERF_PCT=""
+MAX_PERF_PCT=""
+
+# --- Validation functions ---
+validate_governor() {
+    local available_governors
+    available_governors=$(cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors 2>/dev/null)
+    
+    if [[ -z "$available_governors" ]]; then
+        echo "Error: Could not retrieve available governors"
+        exit 1
+    fi
+    
+    if ! echo "$available_governors" | grep -qw "$1"; then
+        echo "Error: Unsupported governor '$1'. Available: $available_governors"
+        exit 1
+    fi
+}
+
+validate_epp() {
+    local available_preferences
+    available_preferences=$(cat /sys/devices/system/cpu/cpu0/cpufreq/energy_performance_available_preferences 2>/dev/null)
+    
+    if [[ -z "$available_preferences" ]]; then
+        echo "Error: Could not retrieve available EPP preferences"
+        exit 1
+    fi
+    
+    if ! echo "$available_preferences" | grep -qw "$1"; then
+        echo "Error: Unsupported EPP '$1'. Available: $available_preferences"
+        exit 1
+    fi
+}
+
+validate_boolean() {
+    if [[ "$1" != "0" && "$1" != "1" ]]; then
+        echo "Error: Value must be 0 or 1, received: $1"
+        exit 1
+    fi
+}
+
+validate_percentage() {
+    if ! [[ "$1" =~ ^[0-9]+$ ]] || [[ "$1" -lt 1 || "$1" -gt 100 ]]; then
+        echo "Error: Value must be a number between 1 and 100, received: $1"
+        exit 1
+    fi
+}
+
+# --- Argument parsing ---
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --governor)
+            if [[ -z "$2" ]]; then
+                echo "Error: No value specified for --governor"
+                exit 1
+            fi
+            validate_governor "$2"
+            GOVERNOR="$2"
+            shift
+            shift
+            ;;
+        --epp)
+            if [[ -z "$2" ]]; then
+                echo "Error: No value specified for --epp"
+                exit 1
+            fi
+            validate_epp "$2"
+            EPP="$2"
+            shift
+            shift
+            ;;
+        --no-turbo)
+            if [[ -z "$2" ]]; then
+                echo "Error: No value specified for --no-turbo"
+                exit 1
+            fi
+            validate_boolean "$2"
+            NO_TURBO="$2"
+            shift
+            shift
+            ;;
+        --hwp-dynamic-boost)
+            if [[ -z "$2" ]]; then
+                echo "Error: No value specified for --hwp-dynamic-boost"
+                exit 1
+            fi
+            validate_boolean "$2"
+            HWP_DYNAMIC_BOOST="$2"
+            shift
+            shift
+            ;;
+        --min-perf-pct)
+            if [[ -z "$2" ]]; then
+                echo "Error: No value specified for --min-perf-pct"
+                exit 1
+            fi
+            validate_percentage "$2"
+            MIN_PERF_PCT="$2"
+            shift
+            shift
+            ;;
+        --max-perf-pct)
+            if [[ -z "$2" ]]; then
+                echo "Error: No value specified for --max-perf-pct"
+                exit 1
+            fi
+            validate_percentage "$2"
+            MAX_PERF_PCT="$2"
+            shift
+            shift
+            ;;
+        *)
+            echo "Unknown parameter: $1"
+            exit 1
+            ;;
+    esac
+done
+
+# --- Apply settings ---
+if [[ -n "$GOVERNOR" ]]; then
+    for cpu in /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor; do
+        echo "$GOVERNOR" > "$cpu"
+    done
+fi
+
+if [[ -n "$EPP" ]]; then
+    for cpu in /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference; do
+        echo "$EPP" > "$cpu"
+    done
+fi
+
+if [[ -n "$NO_TURBO" ]]; then
+    echo "$NO_TURBO" > /sys/devices/system/cpu/intel_pstate/no_turbo
+fi
+
+if [[ -n "$HWP_DYNAMIC_BOOST" ]]; then
+    if [[ -f /sys/devices/system/cpu/intel_pstate/hwp_dynamic_boost ]]; then
+        echo "$HWP_DYNAMIC_BOOST" > /sys/devices/system/cpu/intel_pstate/hwp_dynamic_boost
+    else
+        echo "Warning: hwp_dynamic_boost is not supported on this system"
+    fi
+fi
+
+if [[ -n "$MIN_PERF_PCT" ]]; then
+    echo "$MIN_PERF_PCT" > /sys/devices/system/cpu/intel_pstate/min_perf_pct
+fi
+
+if [[ -n "$MAX_PERF_PCT" ]]; then
+    echo "$MAX_PERF_PCT" > /sys/devices/system/cpu/intel_pstate/max_perf_pct
+fi
+
+# Check and enable thermald (only for default mode)
+if [[ "$GOVERNOR" == "powersave" && "$EPP" == "balance_performance" ]]; then
+    if ! systemctl is-active --quiet thermald; then
+        systemctl enable --now thermald >/dev/null 2>&1
+    fi
+fi
+
+echo "Settings applied: governor=$GOVERNOR, epp=$EPP, no_turbo=$NO_TURBO"

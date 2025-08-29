@@ -38,11 +38,10 @@ case "$MODE" in
         exit 0
         ;;
     *)
-        echo "Error: Invalid mode '$MODE'. Use --help to see available options." >&2
+        echo "Error: Invalid profile option - '$MODE'. Use --help to see available options."
         exit 1
         ;;
 esac
-
 
 # Run the application
 echo "INFO: Starting application: $@"

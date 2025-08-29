@@ -19,20 +19,28 @@ if [[ $# -lt 2 ]]; then
     exit 1
 fi
 
-PROFILE=""
-case $1 in
-  -pp|--performance-powersave)
-    PROFILE="intel-pstate-performance-powersave"
-    shift
-    ;;
-  -pm|--performance-max)
-    PROFILE="intel-pstate-performance-max"
-    shift
-    ;;
-  *)
-    echo "Invalid profile option. Use -pp or -pm."
-    exit 1
-    ;;
+MODE="$1"
+
+# --- Select and apply the performance profile ---
+case "$MODE" in
+    --pp|--performance-powersave)
+        echo "INFO: Activating 'performance-powersave' profile..."
+        systemctl start intel-pstate-performance-powersave.service
+        shift # Remove mode argument
+        ;;
+    --pm|--performance-max)
+        echo "INFO: Activating 'max-performance' profile..."
+        systemctl start intel-pstate-performance-max.service
+        shift # Remove mode argument
+        ;;
+    --help)
+        show_usage
+        exit 0
+        ;;
+    *)
+        echo "Error: Invalid mode '$MODE'. Use --help to see available options." >&2
+        exit 1
+        ;;
 esac
 
 

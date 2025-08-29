@@ -87,16 +87,21 @@ while [[ $# -gt 0 ]]; do
             shift
             shift
             ;;
+        --help)
+            echo "Usage: intel-pstate-helper [OPTIONS]"
+            echo "Options:"
+            echo "  --governor <value>           Set CPU governor"
+            echo "  --epp <value>                Set energy performance preference"
+            echo "  --no-turbo <0 or 1>          Set no_turbo (0=enable turbo, 1=disable turbo)"
+            echo "  --hwp-dynamic-boost <0 or 1> Set HWP dynamic boost"
+            echo "  --min-perf-pct <value>       Set minimum performance percentage"
+            echo "  --max-perf-pct <value>       Set maximum performance percentage"
+            echo "  --help                       Show this help message"
+            exit 0
+            ;;
         *)
             echo "Unknown parameter: $1"
-            echo "Usage: $0 [OPTIONS]"
-            echo "Options:"
-            echo "  --governor VALUE        Set CPU governor (powersave, performance)"
-            echo "  --epp VALUE             Set energy performance preference"
-            echo "  --no-turbo VALUE        Enable/disable turbo boost (0/1)"
-            echo "  --hwp-dynamic-boost VALUE Enable/disable HWP dynamic boost"
-            echo "  --min-perf-pct VALUE    Set minimum performance percentage"
-            echo "  --max-perf-pct VALUE    Set maximum performance percentage"
+            echo "Use --help for usage information."
             exit 1
             ;;
     esac
@@ -140,4 +145,4 @@ if [[ -n "$MAX_PERF_PCT" ]]; then
     echo "$MAX_PERF_PCT" > /sys/devices/system/cpu/intel_pstate/max_perf_pct
 fi
 
-echo "Settings applied: governor=$GOVERNOR, epp=$EPP, no_turbo=$NO_TURBO"
+echo "Settings applied: governor=$GOVERNOR, epp=$EPP, no_turbo=$NO_TURBO hwp_dynamic_boost=$HWP_DYNAMIC_BOOST min_perf_pct=$MIN_PERF_PCT max_perf_pct=$MAX_PERF_PCT" 

@@ -52,7 +52,7 @@ show_usage() {
     echo "Usage: $0 [--pp|--performance-powersave | --pm|--performance-max | --help] <command> [args...]"
     echo "  --pp, --performance-powersave  Balanced performance profile"
     echo "  --pm, --performance-max        Maximum performance profile"
-    echo "  --help                        Display this help message"
+    echo "  --help                         Display this help message"
 }
 
 # Check for minimum required arguments

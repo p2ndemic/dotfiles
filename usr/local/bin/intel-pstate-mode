@@ -1,4 +1,42 @@
 #!/bin/bash
+# =============================================
+# Intel-Pstate-Mode: Wrapper to switch P-state profiles for applications/games
+# =============================================
+# Ref: https://www.kernel.org/doc/html/v4.12/admin-guide/pm/intel_pstate.html
+# Ref: https://www.clearlinux.org/clear-linux-documentation/guides/maintenance/cpu-performance.html
+# Ref: https://docs.mesa3d.org/perf.html
+# =============================================
+# → Installation: 
+# → Create a file: sudo nano /usr/local/bin/intel-pstate-mode
+# → Make the script executable: sudo chmod +x /usr/local/bin/intel-pstate-mode
+# =============================================
+# → Create systemd daemons:
+# → See: https://github.com/p2ndemic/dotfiles/tree/main/etc/systemd/system
+# =============================================
+# → Additional installation:
+# → Install thermald: sudo pacman -S thermald && systemctl enable --now thermald
+# =============================================
+# → Remove power-profiles-daemon:
+# sudo pacman -Rns power-profiles-daemon
+# =============================================
+# → Install tuned:
+# sudo pacman -S tuned && systemctl enable --now tuned
+# =============================================
+# → Testing:
+# → Check current CPU power mode settings:
+# cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_driver | head -1
+# cat /sys/devices/system/cpu/intel_pstate/status
+# cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor | head -1
+# cat /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference | head -1
+# cat /sys/devices/system/cpu/intel_pstate/no_turbo
+# cat /sys/devices/system/cpu/intel_pstate/hwp_dynamic_boost
+# cat /sys/devices/system/cpu/intel_pstate/min_perf_pct
+# cat /sys/devices/system/cpu/intel_pstate/max_perf_pct
+# =============================================
+# → Test the helper script directly:
+# sudo intel-pstate-mode --pp steam mygame
+# sudo intel-pstate-mode --performance-powersave steam mygame
+# =============================================
 
 # Check for root privileges
 if [[ $EUID -ne 0 ]]; then

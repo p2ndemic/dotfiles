@@ -57,7 +57,6 @@ show_usage() {
     echo "  --min-perf-pct <value>        Set minimum performance percentage"
     echo "  --max-perf-pct <value>        Set maximum performance percentage"
     echo "  --help                        Show this help message"
-    exit 0
 }
 
 # Initialize all variables
@@ -103,6 +102,7 @@ while [[ $# -gt 0 ]]; do
             ;;
         --help)
             show_usage
+            exit 0
             ;;
         *)
             echo "Unknown parameter: $1"

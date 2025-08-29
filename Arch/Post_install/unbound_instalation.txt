@@ -16,16 +16,3 @@ sudo systemctl disable --now systemd-resolved
 # Перед тем как настроить Network Manager удалите файл /lib/NetworkManager/conf.d/dns.conf
 sudo rm /lib/NetworkManager/conf.d/dns.conf
 
-# 4. Настройте unbound в качестве локального dns резолвера
-# Создайте директорию для drop in конфигурации Network manager если она не создана по умолчанию
-sudo mkdir -p /etc/NetworkManager/conf.d
-
-# Создайте конфигурационный файл /etc/NetworkManager/conf.d/99-unbound-dns.conf
-sudo touch /etc/NetworkManager/conf.d/99-unbound-dns.conf
-
-# Внесите следующие настройки чтобы установить unbound в качестве локального dns резолвера
-[main]
-dns=unbound
-
-# 5. Включите службу unbound и перезагрузите компьютер
-

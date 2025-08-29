@@ -35,7 +35,7 @@
 # =============================================
 # → Test the helper script directly:
 # sudo intel-pstate-mode --pp steam mygame
-# sudo intel-pstate-mode --performance-powersave steam mygame
+# sudo intel-pstate-mode --performance-powersave wine mygame
 # =============================================
 
 # Check for root privileges

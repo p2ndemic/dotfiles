@@ -46,6 +46,19 @@ if [[ $EUID -ne 0 ]]; then
    exit 1
 fi
 
+show_usage() {
+    echo "Usage: $0 [OPTIONS]"
+    echo "Options:"
+    echo "  --governor <value>            Set CPU governor"
+    echo "  --epp <value>                 Set energy performance preference"
+    echo "  --no-turbo <0 | 1>            Set no_turbo (0=enable turbo boost, 1=disable turbo boost)"
+    echo "  --hwp-dynamic-boost <0 | 1>   Set HWP dynamic boost"
+    echo "  --min-perf-pct <value>        Set minimum performance percentage"
+    echo "  --max-perf-pct <value>        Set maximum performance percentage"
+    echo "  --help                        Show this help message"
+    exit 0
+}
+
 # Initialize all variables
 GOVERNOR=""
 EPP=""
@@ -88,20 +101,11 @@ while [[ $# -gt 0 ]]; do
             shift
             ;;
         --help)
-            echo "Usage: intel-pstate-helper [OPTIONS]"
-            echo "Options:"
-            echo "  --governor <value>           Set CPU governor"
-            echo "  --epp <value>                Set energy performance preference"
-            echo "  --no-turbo <0 or 1>          Set no_turbo (0=enable turbo, 1=disable turbo)"
-            echo "  --hwp-dynamic-boost <0 or 1> Set HWP dynamic boost"
-            echo "  --min-perf-pct <value>       Set minimum performance percentage"
-            echo "  --max-perf-pct <value>       Set maximum performance percentage"
-            echo "  --help                       Show this help message"
-            exit 0
+            show_usage
             ;;
         *)
             echo "Unknown parameter: $1"
-            echo "Use --help for usage information."
+            show_usage
             exit 1
             ;;
     esac

@@ -89,7 +89,7 @@ while [[ $# -gt 0 ]]; do
             ;;
         *)
             echo "Unknown parameter: $1"
-            echo "Usage: intel-pstate-helper [OPTIONS]"
+            echo "Usage: $0 [OPTIONS]"
             echo "Options:"
             echo "  --governor VALUE        Set CPU governor (powersave, performance)"
             echo "  --epp VALUE             Set energy performance preference"

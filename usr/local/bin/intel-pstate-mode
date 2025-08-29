@@ -13,6 +13,9 @@
 # → Create systemd daemons:
 # → See: https://github.com/p2ndemic/dotfiles/tree/main/etc/systemd/system
 # =============================================
+# → Enable default service for autostart:
+# sudo systemctl enable --now intel-pstate-default.service && sudo systemctl daemon-reload
+# =============================================
 # → Additional installation:
 # → Install thermald: sudo pacman -S thermald && systemctl enable --now thermald
 # =============================================

@@ -40,6 +40,20 @@
 # sudo intel-pstate-helper --governor powersave --epp balance_power --no-turbo 0 --hwp-dynamic-boost 0 --min-perf-pct 10  --max-perf-pct 75
 # =============================================
 
+# Check for root privileges
+if [[ $EUID -ne 0 ]]; then
+   echo "This script must be run as root. Please use sudo." 
+   exit 1
+fi
+
+# Initialize all variables
+GOVERNOR=""
+EPP=""
+NO_TURBO=""
+HWP_DYNAMIC_BOOST=""
+MIN_PERF_PCT=""
+MAX_PERF_PCT=""
+
 # Parse arguments
 while [[ $# -gt 0 ]]; do
     case $1 in
@@ -75,6 +89,14 @@ while [[ $# -gt 0 ]]; do
             ;;
         *)
             echo "Unknown parameter: $1"
+            echo "Usage: intel-pstate-helper [OPTIONS]"
+            echo "Options:"
+            echo "  --governor VALUE        Set CPU governor (powersave, performance)"
+            echo "  --epp VALUE             Set energy performance preference"
+            echo "  --no-turbo VALUE        Enable/disable turbo boost (0/1)"
+            echo "  --hwp-dynamic-boost VALUE Enable/disable HWP dynamic boost"
+            echo "  --min-perf-pct VALUE    Set minimum performance percentage"
+            echo "  --max-perf-pct VALUE    Set maximum performance percentage"
             exit 1
             ;;
     esac
@@ -87,7 +109,7 @@ if [[ -n "$GOVERNOR" ]]; then
     done
 fi
 
-# Set energy performance preference
+Set energy performance preference
 if [[ -n "$EPP" ]]; then
     for cpu in /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference; do
         echo "$EPP" > "$cpu"

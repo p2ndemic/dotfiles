@@ -132,6 +132,8 @@ fi
 if [[ -n "$HWP_DYNAMIC_BOOST" ]]; then
     if [[ -f /sys/devices/system/cpu/intel_pstate/hwp_dynamic_boost ]]; then
         echo "$HWP_DYNAMIC_BOOST" > /sys/devices/system/cpu/intel_pstate/hwp_dynamic_boost
+    else
+        echo "Warning: hwp_dynamic_boost is not supported on this system"
     fi
 fi
 

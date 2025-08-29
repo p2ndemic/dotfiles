@@ -1,6 +1,6 @@
 #!/bin/bash
 # =============================================
-# Intel-Pstate-Mode: Wrapper to switch P-state profiles for applications/games
+# Wrapper to switch P-state profiles for applications/games
 # =============================================
 # Ref: https://www.kernel.org/doc/html/v4.12/admin-guide/pm/intel_pstate.html
 # Ref: https://www.clearlinux.org/clear-linux-documentation/guides/maintenance/cpu-performance.html

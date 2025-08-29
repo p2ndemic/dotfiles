@@ -6,10 +6,11 @@ if [[ $EUID -ne 0 ]]; then
     exit 1
 fi
 
-# --- Function to show usage information ---
+# Function to show usage information
 show_usage() {
-    echo "Usage: $0 [--pp|--performance-powersave | --pm|--performance-max | --help] <command> [args...]"
-    echo "Example: $0 --pm steam mygame"
+    echo "Usage: $0 [--performance-powersave | -pp] [--performance-max | -pm] -- <command>"
+    echo "  -pp, --performance-powersave  Balanced performance profile"
+    echo "  -pm, --performance-max        Maximum performance profile"
 }
 
 # Check for minimum required arguments
@@ -18,31 +19,27 @@ if [[ $# -lt 2 ]]; then
     exit 1
 fi
 
-MODE="$1"
-
-# Select and apply the performance profile
-case "$MODE" in
-    --pp|--performance-powersave)
-        echo "INFO: Activating 'performance-powersave' profile..."
-        systemctl start intel-pstate-performance-powersave.service
-        shift # Remove mode argument
-        ;;
-    --pm|--performance-max)
-        echo "INFO: Activating 'max-performance' profile..."
-        systemctl start intel-pstate-performance-max.service
-        shift # Remove mode argument
-        ;;
-    --help)
-        show_usage
-        exit 0
-        ;;
-    *)
-        echo "Error: Invalid mode '$MODE'. Use --help to see available options." >&2
-        exit 1
-        ;;
+PROFILE=""
+case $1 in
+  -pp|--performance-powersave)
+    PROFILE="intel-pstate-performance-powersave"
+    shift
+    ;;
+  -pm|--performance-max)
+    PROFILE="intel-pstate-performance-max"
+    shift
+    ;;
+  *)
+    echo "Invalid profile option. Use -pp or -pm."
+    exit 1
+    ;;
 esac
 
-# --- Execute the application ---
-echo "INFO: Starting application: $*"
 
+# Run the application
+echo "INFO: Starting application: $@"
 exec "$@"
+
+# Restore default profile after application exits
+echo "Restoring default profile"
+systemctl start intel-pstate-default.service

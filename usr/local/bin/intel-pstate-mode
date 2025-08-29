@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#  Check for root privileges
+# Check for root privileges
 if [[ $EUID -ne 0 ]]; then
     echo "This script must be run as root. Please use sudo."
     exit 1
@@ -11,6 +11,7 @@ show_usage() {
     echo "Usage: $0 [--pp|--performance-powersave | --pm|--performance-max | --help] <command> [args...]"
     echo "  --pp, --performance-powersave  Balanced performance profile"
     echo "  --pm, --performance-max        Maximum performance profile"
+    echo "  --help                        Display this help message"
 }
 
 # Check for minimum required arguments
@@ -21,24 +22,24 @@ fi
 
 MODE="$1"
 
-# --- Select and apply the performance profile ---
+# Select and apply the performance profile
 case "$MODE" in
     --pp|--performance-powersave)
         echo "INFO: Activating 'performance-powersave' profile..."
         systemctl start intel-pstate-performance-powersave.service
-        shift # Remove mode argument
+        shift
         ;;
     --pm|--performance-max)
-        echo "INFO: Activating 'max-performance' profile..."
+        echo "INFO: Activating 'performance-max' profile..."
         systemctl start intel-pstate-performance-max.service
-        shift # Remove mode argument
+        shift
         ;;
     --help)
         show_usage
         exit 0
         ;;
     *)
-        echo "Error: Invalid profile option - '$MODE'. Use --help to see available options."
+        echo "ERROR: Invalid profile option '$MODE'. Use --help for available options."
         exit 1
         ;;
 esac
@@ -48,5 +49,5 @@ echo "INFO: Starting application: $@"
 exec "$@"
 
 # Restore default profile after application exits
-echo "Restoring default profile"
+echo "INFO: Restoring default profile..."
 systemctl start intel-pstate-default.service

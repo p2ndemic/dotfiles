@@ -42,21 +42,22 @@
 
 # Check for root privileges
 if [[ $EUID -ne 0 ]]; then
-   echo "This script must be run as root. Please use sudo." 
-   exit 1
+    echo "This script must be run as root. Please use sudo."
+    exit 1
 fi
 
+# Usage function
 show_usage() {
-   echo "Usage: $0 [OPTIONS]"
-   echo "Options:"
-   echo "  --governor <value>            Set CPU governor"
-   echo "  --epp <value>                 Set energy performance preference"
-   echo "  --no-turbo <0 | 1>            Set no_turbo (0=enable turbo boost, 1=disable turbo boost)"
-   echo "  --hwp-dynamic-boost <0 | 1>   Set HWP dynamic boost"
-   echo "  --min-perf-pct <value>        Set minimum performance percentage"
-   echo "  --max-perf-pct <value>        Set maximum performance percentage"
-   echo "  --help                        Show this help message"
-   exit 0
+    echo "Usage: $0 [OPTIONS]"
+    echo "Options:"
+    echo "  --governor <value>            Set CPU governor"
+    echo "  --epp <value>                 Set energy performance preference"
+    echo "  --no-turbo <0 | 1>            Set no_turbo (0=enable turbo boost, 1=disable turbo boost)"
+    echo "  --hwp-dynamic-boost <0 | 1>   Set HWP dynamic boost"
+    echo "  --min-perf-pct <value>        Set minimum performance percentage"
+    echo "  --max-perf-pct <value>        Set maximum performance percentage"
+    echo "  --help                        Show this help message"
+    exit 0
 }
 
 # Initialize all variables
@@ -151,4 +152,4 @@ if [[ -n "$MAX_PERF_PCT" ]]; then
     echo "$MAX_PERF_PCT" > /sys/devices/system/cpu/intel_pstate/max_perf_pct
 fi
 
-echo "Settings applied: governor=$GOVERNOR, epp=$EPP, no_turbo=$NO_TURBO hwp_dynamic_boost=$HWP_DYNAMIC_BOOST min_perf_pct=$MIN_PERF_PCT max_perf_pct=$MAX_PERF_PCT" 
+echo "Settings applied: governor=$GOVERNOR, epp=$EPP, no_turbo=$NO_TURBO, hwp_dynamic_boost=$HWP_DYNAMIC_BOOST, min_perf_pct=$MIN_PERF_PCT, max_perf_pct=$MAX_PERF_PCT"

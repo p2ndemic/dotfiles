@@ -1,62 +1,56 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# Parse arguments
-MODE="default"
-APP_ARGS=()
-
-# Parse mode options
-while [[ $# -gt 0 ]]; do
-    case $1 in
-        --performance-powersave)
-            MODE="performance-powersave"
-            shift
-            ;;
-        --performance-max)
-            MODE="performance-max"
-            shift
-            ;;
-        *)
-            # All other arguments are treated as part of the command to run
-            APP_ARGS+=("$1")
-            shift
-            ;;
-    esac
-done
-
-# Check if application is specified
-if [[ ${#APP_ARGS[@]} -eq 0 ]]; then
-    echo "Usage: pwr-mode [OPTION]... APPLICATION [ARGUMENTS]..."
-    echo "Options:"
-    echo "  --performance-powersave  Use performance-powersave profile"
-    echo "  --performance-max        Use performance-max profile"
+# Check for root privileges
+if [[ $EUID -ne 0 ]]; then
+    echo "This script must be run as root. Please use sudo."
     exit 1
 fi
 
-# Apply selected profile
+# Function to show usage information
+show_usage() {
+    echo "Usage: $0 [-pp|--performance-powersave | -pm|--performance-max | -h|--help] <command> [args...]"
+    echo "Example: $0 -pm steam mygame"
+}
+
+# --- Function to restore default settings ---
+restore_defaults() {
+    echo "INFO: Application closed. Restoring default power profile..."
+    systemctl start intel-pstate-default.service
+}
+
+# --- Set a trap to call restore_defaults on script exit or interruption ---
+
+trap restore_defaults EXIT INT TERM HUP QUIT
+
+
+# Check for minimum required arguments
+if [ "$#" -lt 2 ]; then
+    show_usage
+    exit 1
+fi
+
+MODE="$1"
+
+# Select and apply the performance profile
 case $MODE in
-    "performance-powersave")
+    -pp|--performance-powersave)
+        echo "INFO: Activating 'performance-powersave' profile..."
         systemctl start intel-pstate-performance-powersave.service
-        PROFILE_NAME="Performance-Powersave"
+        shift # Remove mode argument from the list
         ;;
-    "performance-max")
+    -pm|--performance-max)
+        echo "INFO: Activating 'max-performance' profile..."
         systemctl start intel-pstate-performance-max.service
-        PROFILE_NAME="Performance-Max"
+        shift # Remove mode argument from the list
         ;;
     *)
-        PROFILE_NAME="Default"
+        echo "Error: Invalid mode '$MODE'. Use --help to see available options." >&2
+        exit 1
         ;;
 esac
 
-echo "Running with $PROFILE_NAME CPU profile: ${APP_ARGS[*]}"
+# --- Execute the application ---
+echo "INFO: Starting application: $@"
 
-# Run the application
-"${APP_ARGS[@]}"
-EXIT_CODE=$?
-
-# Return to default profile after application exits
-if [[ $MODE != "default" ]]; then
-    echo "Returning to default CPU profile"
-    systemctl start intel-pstate-default.service
-fi
-
-exit $EXIT_CODE
+# Execute the rest of the arguments as a command
+"$@"

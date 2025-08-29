@@ -8,9 +8,9 @@ fi
 
 # Function to show usage information
 show_usage() {
-    echo "Usage: $0 [--performance-powersave | -pp] [--performance-max | -pm] -- <command>"
-    echo "  -pp, --performance-powersave  Balanced performance profile"
-    echo "  -pm, --performance-max        Maximum performance profile"
+    echo "Usage: $0 [--pp|--performance-powersave | --pm|--performance-max | --help] <command> [args...]"
+    echo "  --pp, --performance-powersave  Balanced performance profile"
+    echo "  --pm, --performance-max        Maximum performance profile"
 }
 
 # Check for minimum required arguments

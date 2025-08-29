@@ -1,30 +1,19 @@
 #!/usr/bin/env bash
 
-# Check for root privileges
+#  Check for root privileges
 if [[ $EUID -ne 0 ]]; then
     echo "This script must be run as root. Please use sudo."
     exit 1
 fi
 
-# Function to show usage information
+# --- Function to show usage information ---
 show_usage() {
-    echo "Usage: $0 [-pp|--performance-powersave | -pm|--performance-max | -h|--help] <command> [args...]"
-    echo "Example: $0 -pm steam mygame"
+    echo "Usage: $0 [--pp|--performance-powersave | --pm|--performance-max | --help] <command> [args...]"
+    echo "Example: $0 --pm steam mygame"
 }
-
-# --- Function to restore default settings ---
-restore_defaults() {
-    echo "INFO: Application closed. Restoring default power profile..."
-    systemctl start intel-pstate-default.service
-}
-
-# --- Set a trap to call restore_defaults on script exit or interruption ---
-
-trap restore_defaults EXIT INT TERM HUP QUIT
-
 
 # Check for minimum required arguments
-if [ "$#" -lt 2 ]; then
+if [[ $# -lt 2 ]]; then
     show_usage
     exit 1
 fi
@@ -32,16 +21,20 @@ fi
 MODE="$1"
 
 # Select and apply the performance profile
-case $MODE in
-    -pp|--performance-powersave)
+case "$MODE" in
+    --pp|--performance-powersave)
         echo "INFO: Activating 'performance-powersave' profile..."
         systemctl start intel-pstate-performance-powersave.service
-        shift # Remove mode argument from the list
+        shift # Remove mode argument
         ;;
-    -pm|--performance-max)
+    --pm|--performance-max)
         echo "INFO: Activating 'max-performance' profile..."
         systemctl start intel-pstate-performance-max.service
-        shift # Remove mode argument from the list
+        shift # Remove mode argument
+        ;;
+    --help)
+        show_usage
+        exit 0
         ;;
     *)
         echo "Error: Invalid mode '$MODE'. Use --help to see available options." >&2
@@ -50,7 +43,6 @@ case $MODE in
 esac
 
 # --- Execute the application ---
-echo "INFO: Starting application: $@"
+echo "INFO: Starting application: $*"
 
-# Execute the rest of the arguments as a command
-"$@"
+exec "$@"

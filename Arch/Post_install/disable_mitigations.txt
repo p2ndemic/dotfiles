@@ -1,8 +1,0 @@
-# Откройте файл конфигурации загрузчика CachyOS SystemD-Boot:
-sudo nano /boot/loader/entries/linux-cachyos.conf
-
-# Найдите строку, начинающуюся с 'options root=...', и добавьте в конец строки параметры ядра:
-mitigations=off
-
-# Перезагрузите систему и проверьте статус mitigations:
-cat /sys/devices/system/cpu/vulnerabilities/*

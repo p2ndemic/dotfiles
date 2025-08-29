@@ -46,7 +46,7 @@ if [[ $EUID -ne 0 ]]; then
     exit 1
 fi
 
-# Usage function
+# Function to show usage information
 show_usage() {
     echo "Usage: $0 [OPTIONS]"
     echo "Options:"

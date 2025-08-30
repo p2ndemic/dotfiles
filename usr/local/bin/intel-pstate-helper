@@ -186,4 +186,4 @@ if [[ -n "$NOSMT" ]]; then
     fi
 fi
 
-echo "Settings applied: governor=$GOVERNOR, epp=$EPP, no_turbo=$NO_TURBO, hwp_dynamic_boost=$HWP_DYNAMIC_BOOST, min_perf_pct=$MIN_PERF_PCT, max_perf_pct=$MAX_PERF_PCT, energy_efficiency=$ENERGY_EFFICIENCY, nosmt=$NOSMT"
+echo "Settings applied: governor=$GOVERNOR, epp=$EPP, no_turbo=$NO_TURBO, hwp_dynamic_boost=$HWP_DYNAMIC_BOOST, min_perf_pct=$MIN_PERF_PCT, max_perf_pct=$MAX_PERF_PCT, nosmt=$NOSMT"

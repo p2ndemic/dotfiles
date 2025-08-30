@@ -166,7 +166,7 @@ if [[ -n "$MAX_PERF_PCT" ]]; then
     echo "$MAX_PERF_PCT" > /sys/devices/system/cpu/intel_pstate/max_perf_pct
 fi
 
-# Enable/disable energy-efficiency optimizations [if available] (Kaby Lake/Coffee Lake only)
+# Enable/disable energy-efficiency optimizations [if available] ← (Kaby Lake/Coffee Lake only)
 # When enabled (1), may limit max frequency (with HWP: in turbo range; without HWP: entire range). Disabled (0) by default with HWP.
 if [[ -n "$ENERGY_EFFICIENCY" ]]; then
     if [[ -f /sys/devices/system/cpu/intel_pstate/energy_efficiency ]]; then

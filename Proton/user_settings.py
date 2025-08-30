@@ -59,9 +59,6 @@ user_settings = {
     #Enable HDR support. Requires Wayland to be enabled and for HDR to be enabled in system settings.
 #   "PROTON_ENABLE_HDR": "1",
 
-    # Enable Winetricks prompt on game launch
-#   "PROTON_WINETRICKS": "1",
-
     #Alternative way to run executables directly with wine binary instead of using steam.exe. This is the preffered way when using proton standalone.
 #   "PROTON_STANDALONE_START": "1",
 

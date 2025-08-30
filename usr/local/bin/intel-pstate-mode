@@ -114,16 +114,16 @@ case "$MODE" in
 esac
 
 # Activate the selected profile
-echo "INFO: Activating '$PROFILE_NAME' profile..."
+#echo "INFO: Activating '$PROFILE_NAME' profile..."
 show_notify "Profile Activated" "Activated $PROFILE_NAME profile for performance tuning."
 systemctl start "$SERVICE"
 
 # Run the application
-echo "INFO: Starting application: $@"
+#echo "INFO: Starting application: $@"
 show_notify "Application Started" "Launching $@ with $PROFILE_NAME profile."
 exec "$@"
 
 # Restore default profile after application exits
-echo "INFO: Restoring default profile..."
+#echo "INFO: Restoring default profile..."
 show_notify "Profile Restored" "Restored default profile after application exit."
 systemctl start intel-pstate-default.service

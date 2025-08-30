@@ -58,7 +58,7 @@ show_notify() {
 show_usage() {
     echo "Usage: $0 [OPTIONS] <command> [args...]"
     echo "Options:"
-    echo "  --p0, --powersave-balance      Powersave mode with balanced energy preference (governor=powersave, epp=balance_performance, hwp_dynamic_boost=0)"
+    echo "  --p0, --powersave-balance      Powersave mode with balanced energy preference [default mode] (governor=powersave, epp=balance_performance, hwp_dynamic_boost=0)"
     echo "  --p1, --powersave-performance  Powersave mode with performance-focused energy preference (governor=powersave, epp=performance, hwp_dynamic_boost=0)"
     echo "  --p2, --performance-balance    Performance mode with balanced energy preference (governor=performance, epp=balance_performance, hwp_dynamic_boost=0)"
     echo "  --p3, --performance-max        Maximum performance mode (governor=performance, epp=performance, hwp_dynamic_boost=1)"

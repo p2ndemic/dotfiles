@@ -61,7 +61,7 @@ show_usage() {
     echo "  --p1, --powersave-performance  Powersave mode with performance-focused energy preference (governor=powersave, epp=performance, hwp_dynamic_boost=0)"
     echo "  --p2, --performance-balance    Performance mode with balanced energy preference (governor=performance, epp=balance_performance, hwp_dynamic_boost=0)"
     echo "  --p3, --performance-max        Maximum performance mode (governor=performance, epp=performance, hwp_dynamic_boost=1)"
-    echo "  --p4, --custom                 Use custom profile (with the settings from Intel_pstate-cust.service)"
+    echo "  --p4, --custom                 Use custom profile (with the settings from /etc/systemd/system/intel_pstate-cust.service)"
     echo "  --help                         Display this help message"
 }
 
@@ -114,16 +114,13 @@ case "$MODE" in
 esac
 
 # Activate the selected profile
-#echo "INFO: Activating '$PROFILE_NAME' profile..."
 show_notify "Profile Activated" "Activated $PROFILE_NAME profile for performance tuning."
 systemctl start "$SERVICE"
 
 # Run the application
-#echo "INFO: Starting application: $@"
 show_notify "Application Started" "Launching $@ with $PROFILE_NAME profile."
 exec "$@"
 
 # Restore default profile after application exits
-#echo "INFO: Restoring default profile..."
 show_notify "Profile Restored" "Restored default profile after application exit."
 systemctl start intel-pstate-default.service

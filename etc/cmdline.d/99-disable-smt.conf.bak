@@ -10,7 +10,7 @@
 # Отключение SMT через терминал (работает только до перезагрузки):
 # echo off | sudo tee /sys/devices/system/cpu/smt/control
 
-# Включение SMT:
+# Включение SMT через терминал (работает только до перезагрузки):
 # echo on | sudo tee /sys/devices/system/cpu/smt/control
 
 # Узнать текущий статус SMT:

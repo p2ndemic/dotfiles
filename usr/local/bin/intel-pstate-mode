@@ -127,5 +127,5 @@ trap profile_cleanup EXIT
 show_notify "Profile Activated" "Activated $PROFILE_NAME profile for performance tuning."
 systemctl start "$SERVICE"
 
-# Run the application. Use exec to replace the shell process with the application
+# Run the application. Use <exec> to replace the shell process with the application
 exec "$@"

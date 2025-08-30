@@ -25,11 +25,11 @@
 # Дополнительно можно добавить модуль в blacklist и установить nomodeset:
 # modprobe.blacklist=i915 i915.modeset=0
 # =============================================
-# Оптимизация XE драйвера:
-# xe.enable_fbc=1 (xe.mitigations=off) - не рабоает
+# Оптимизация XE драйвера (xe.mitigations=off) <- не рабоает:
+# xe.enable_fbc=1
 # =============================================
 # Финально:
-# i915.force_probe=!46a6 xe.force_probe=46a6 xe.enable_fbc=1 xe.mitigations=off
+# i915.force_probe=!46a6 xe.force_probe=46a6 xe.enable_fbc=1
 # =============================================
 # Пересоберите образ initramfs:
 # sudo mkinitcpio -P

@@ -53,9 +53,6 @@ user_settings = {
     # Disable conhost
     "PROTON_CONHOST_DISABLE": "1",
 
-    # Reduce Pulse Latency
-    "PROTON_PULSE_LOWLATENCY": "1",
-
     # Enable WoW64 Mode For Wine Prefixes
     "PROTON_USE_WOW64": "1",
 

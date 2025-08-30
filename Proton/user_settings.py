@@ -65,10 +65,6 @@ user_settings = {
     #Delay freeing some memory, to work around application use-after-free bugs.
 #   "PROTON_HEAP_DELAY_FREE": "1",
 
-    #Disable support for memory write watches in ntdll. This is a very dangerous hack and should only be applied if you have verified that the game can operate without write watches.
-    #This improves performance for some very specific games (e.g. CoreRT-based games).
-#   "PROTON_NO_WRITE_WATCH": "1",
-
 
     ###### Input Settings ######
 

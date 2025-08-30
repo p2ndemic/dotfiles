@@ -37,8 +37,8 @@
 # cat /sys/devices/system/cpu/intel_pstate/max_perf_pct
 # =============================================
 # → Test the helper script directly:
-# sudo intel-pstate-mode --p0 steam mygame
-# sudo intel-pstate-mode --p1 wine mygame
+# intel-pstate-mode --p1 -- steam mygame
+# intel-pstate-mode --p4 -- gamescope --rt --immediate-flips -w 1680 -h 1050 -W 2560 -H 1600 -f -r 120 --force-grab-cursor --mangoapp -- %command%
 # =============================================
 
 # Function to show notification

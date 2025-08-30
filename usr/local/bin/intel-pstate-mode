@@ -6,7 +6,7 @@
 # Ref: https://www.clearlinux.org/clear-linux-documentation/guides/maintenance/cpu-performance.html
 # Ref: https://docs.mesa3d.org/perf.html
 # =============================================
-# → Installation: 
+# → Installation:
 # → Create a file: sudo nano /usr/local/bin/intel-pstate-mode
 # → Make the script executable: sudo chmod +x /usr/local/bin/intel-pstate-mode
 # =============================================
@@ -37,21 +37,31 @@
 # cat /sys/devices/system/cpu/intel_pstate/max_perf_pct
 # =============================================
 # → Test the helper script directly:
-# sudo intel-pstate-mode --pp steam mygame
-# sudo intel-pstate-mode --performance-powersave wine mygame
+# sudo intel-pstate-mode --p0 steam mygame
+# sudo intel-pstate-mode --p1 wine mygame
 # =============================================
 
-# Check for root privileges
-if [[ $EUID -ne 0 ]]; then
-    echo "This script must be run as root. Please use sudo."
-    exit 1
-fi
+# Function to show notification
+show_notify() {
+    local SUMMARY="$1"
+    local BODY="$2"
+    notify-send \
+        --app-name="🚀 intel-pstate-mode" \
+        --expire-time=1000 \
+        --urgency=normal \
+        "$SUMMARY" \
+        "$BODY"
+}
 
 # Function to show usage information
 show_usage() {
-    echo "Usage: $0 [--pp|--performance-powersave | --pm|--performance-max | --help] <command> [args...]"
-    echo "  --pp, --performance-powersave  Balanced performance profile"
-    echo "  --pm, --performance-max        Maximum performance profile"
+    echo "Usage: $0 [OPTIONS] <command> [args...]"
+    echo "Options:"
+    echo "  --p0, --powersave-balance      Powersave mode with balanced energy preference (governor=powersave, epp=balance_performance, hwp_dynamic_boost=0)"
+    echo "  --p1, --powersave-performance  Powersave mode with performance-focused energy preference (governor=powersave, epp=performance, hwp_dynamic_boost=0)"
+    echo "  --p2, --performance-balance    Performance mode with balanced energy preference (governor=performance, epp=balance_performance, hwp_dynamic_boost=0)"
+    echo "  --p3, --performance-max        Maximum performance mode (governor=performance, epp=performance, hwp_dynamic_boost=1)"
+    echo "  --p4, --custom                 Use custom profile (with the settings from Intel_pstate-cust.service)"
     echo "  --help                         Display this help message"
 }
 
@@ -61,18 +71,36 @@ if [[ $# -lt 2 ]]; then
     exit 1
 fi
 
-MODE="$1"
+# Initialize variables
+MODE=$1
+PROFILE_NAME=""
+SERVICE=""
 
-# Select and apply the performance profile
+# Select profile
 case "$MODE" in
-    --pp|--performance-powersave)
-        echo "INFO: Activating 'performance-powersave' profile..."
-        systemctl start intel-pstate-performance-powersave.service
+    --p0|--powersave-balance)
+        PROFILE_NAME="powersave-balance"
+        SERVICE="intel-pstate-powersave-balance.service"
         shift
         ;;
-    --pm|--performance-max)
-        echo "INFO: Activating 'performance-max' profile..."
-        systemctl start intel-pstate-performance-max.service
+    --p1|--powersave-performance)
+        PROFILE_NAME="powersave-performance"
+        SERVICE="intel-pstate-powersave-performance.service"
+        shift
+        ;;
+    --p2|--performance-balance)
+        PROFILE_NAME="performance-balance"
+        SERVICE="intel-pstate-performance-balance.service"
+        shift
+        ;;
+    --p3|--performance-max)
+        PROFILE_NAME="performance-max"
+        SERVICE="intel-pstate-performance-max.service"
+        shift
+        ;;
+    --p4|--custom)
+        PROFILE_NAME="custom"
+        SERVICE="intel-pstate-custom.service"
         shift
         ;;
     --help)
@@ -85,10 +113,17 @@ case "$MODE" in
         ;;
 esac
 
+# Activate the selected profile
+echo "INFO: Activating '$PROFILE_NAME' profile..."
+show_notify "Profile Activated" "Activated $PROFILE_NAME profile for performance tuning."
+systemctl start "$SERVICE"
+
 # Run the application
 echo "INFO: Starting application: $@"
+show_notify "Application Started" "Launching $@ with $PROFILE_NAME profile."
 exec "$@"
 
 # Restore default profile after application exits
 echo "INFO: Restoring default profile..."
+show_notify "Profile Restored" "Restored default profile after application exit."
 systemctl start intel-pstate-default.service

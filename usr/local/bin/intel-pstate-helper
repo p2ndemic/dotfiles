@@ -146,8 +146,8 @@ if [[ -n "$NO_TURBO" ]]; then
 fi
 
 # Enable/disable HWP dynamic boost [if available]
-# Controls the CPU P-States boosting. Allowing intel_pstate to use iowait boosting in the active mode with HWP enabled
-# This parameter may improve performance and reduce latency, but it can also cause regressions. Individual testing on each system is required.
+# Controls the CPU P-States boosting. Allowing intel_pstate to use iowait boosting in the active mode with HWP enabled.
+# This parameter may improve performance and reduce latency, but it can also cause regressions. Individual testing on each system is required. Disabled (0) by default.
 if [[ -n "$HWP_DYNAMIC_BOOST" ]]; then
     if [[ -f /sys/devices/system/cpu/intel_pstate/hwp_dynamic_boost ]]; then
         echo "$HWP_DYNAMIC_BOOST" > /sys/devices/system/cpu/intel_pstate/hwp_dynamic_boost
@@ -177,7 +177,7 @@ if [[ -n "$ENERGY_EFFICIENCY" ]]; then
 fi
 
 # Enable/disable SMT (Hyper-Threading) [if available]
-# Controls Hyper-Threading: 'on' enables SMT, 'off' disables it. Affects system performance and power consumption.
+# Controls Hyper-Threading: 'on' enables SMT, 'off' disables it. Affects system performance and power consumption. Enabled (on) by default.
 if [[ -n "$NOSMT" ]]; then
     if [[ -f /sys/devices/system/cpu/smt/control ]]; then
         echo "$NOSMT" > /sys/devices/system/cpu/smt/control

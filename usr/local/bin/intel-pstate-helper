@@ -39,7 +39,7 @@
 # cat /sys/devices/system/cpu/smt/control
 # =============================================
 # → Test the helper script directly:
-# sudo intel-pstate-helper --governor powersave --epp balance_power --no-turbo 0 --hwp-dynamic-boost 0 --min-perf-pct 10  --max-perf-pct 75
+# sudo intel-pstate-helper --governor powersave --epp balance_power --no-turbo 0 --hwp-dynamic-boost 0 --min-perf-pct 10  --max-perf-pct 75 --nosmt on
 # =============================================
 
 # Check for root privileges

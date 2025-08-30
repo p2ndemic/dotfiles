@@ -135,10 +135,7 @@ user_settings = {
     "PROTON_NO_ESYNC": "1",
 
     # Disable futex-based in-process synchronization primitives
-#   "PROTON_NO_FSYNC": "1",
-
-    # Disable futex2-based in-process synchronization primitives
-#   "PROTON_NO_FUTEX2": "1",
+    "PROTON_NO_FSYNC": "1",
 
     # Disable support for fast (one syscall per NT syscall) synchronization primitives using the winesync driver in the kernel
 #   "PROTON_NO_NTSYNC": "1",

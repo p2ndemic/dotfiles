@@ -14,7 +14,7 @@ After=multi-user.target
 
 [Service]
 Type=oneshot
-ExecStart=%h/.local/bin/intel-pstate-default.sh
+ExecStart=/usr/local/bin/intel-pstate-default
 
 [Install]
 WantedBy=multi-user.target

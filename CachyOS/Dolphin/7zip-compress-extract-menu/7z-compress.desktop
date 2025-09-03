@@ -1,10 +1,15 @@
-# https://specifications.freedesktop.org/desktop-entry-spec/latest/
-# https://specifications.freedesktop.org/notification-spec/latest/
-# https://develop.kde.org/docs/apps/dolphin/service-menus/
-# mkdir -p ~/.local/share/kio/servicemenus/
-# touch ~/.local/share/kio/servicemenus/7z-compress.sh
-# chmod +x ~/.local/share/kio/servicemenus/7zip-compress.desktop
-# 'Exec=$HOME/.local/bin/7z-compress.sh -pack7z %F 2> ~/debug.log' for debug
+# =============================================
+# Dolphin 7zip compress/extract menu
+# =============================================
+# Ref: https://specifications.freedesktop.org/desktop-entry-spec/latest/
+# Ref: https://specifications.freedesktop.org/notification-spec/latest/
+# Ref: https://develop.kde.org/docs/apps/dolphin/service-menus/
+# =============================================
+# → Installation: 
+# → Create a file: mkdir -p ~/.local/share/kio/servicemenus/ && touch ~/.local/share/kio/servicemenus/7zip-compress.desktop
+# → Make the script executable: sudo chmod -R +x ~/.local/share/kio/servicemenus/7zip-compress.desktop
+# → Testing: 'Exec=$HOME/.local/bin/7z-compress.sh -pack7z %F 2> ~/debug.log' for debug
+# =============================================
 
 [Desktop Entry]
 Icon=application-x-archive

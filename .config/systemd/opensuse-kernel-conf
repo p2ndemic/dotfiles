@@ -1,1 +1,0 @@
-root=/dev/nvme0n1p2 splash=silent resume=/dev/disk/by-uuid/739dd4c8-d7ef-44a4-aa86-dcd77b714f75 quiet security= 

@@ -2,11 +2,11 @@
 # www.freedesktop.org/software/systemd/man/latest/systemd.unit.html#Specifiers
 # =============================================
 # → Installation: 
-# → Create the service file: sudo nano /etc/systemd/system/battery-threshold-tuning.service
+# → Create the service file: sudo nano /etc/systemd/system/battery-threshold.service
 # =============================================
-# → Reload systemd and enable/start the 'battery-threshold-tuning.service' immediately:
+# → Reload systemd and enable/start the 'battery-threshold.service' immediately:
 # sudo systemctl daemon-reload
-# sudo systemctl enable --now battery-threshold-tuning.service
+# sudo systemctl enable --now battery-threshold.service
 # =============================================
 [Unit]
 Description=Set battery charge threshold on boot

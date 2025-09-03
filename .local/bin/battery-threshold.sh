@@ -14,4 +14,12 @@
 # sudo systemctl daemon-reload
 # sudo systemctl enable --now battery-threshold-tuning.service
 # =============================================
+# На KDE Plasma 6.3.2 есть проблема со сбросом значения ограничения уровня заряда батареи [Charge Limit threshold] выставленного в настройках управления питанием.
+# После перезагрузки значение постоянно сбрасывается до стандартного значения = 100%.
+# Этот фикс призван временно устранить проблему до выхода официального патча KDE.
+# =============================================
+# Ref: https://bugs.kde.org/show_bug.cgi?id=450551
+# Ref: https://invent.kde.org/plasma/powerdevil/-/issues/36
+# Ref: https://gitlab.freedesktop.org/upower/upower/-/merge_requests/208
+# =============================================
 echo 80 | tee /sys/class/power_supply/BAT0/charge_control_end_threshold

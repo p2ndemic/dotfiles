@@ -1,0 +1,11 @@
+# My Acer Chromebook 516 GE monitor settings
+
+output "AU Optronics 0x1CA7 Unknown" {
+    mode  2560x1600@120.017Hz
+    pos 0 0
+    transform normal
+    scale 2.0
+    scale_filter nearest
+    adaptive_sync off
+    dpms on
+}

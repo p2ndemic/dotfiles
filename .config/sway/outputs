@@ -1,6 +1,7 @@
 # My Acer Chromebook 516 GE monitor settings
+# swaymsg -t get_outputs
 
-output eDP1 {
+output "eDP-1" {
     mode  2560x1600@120.017Hz
     pos 0 0
     transform normal

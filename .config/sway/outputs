@@ -2,7 +2,7 @@
 # swaymsg -t get_outputs
 
 output "eDP-1" {
-    mode  2560x1600@120.017Hz
+    mode 2560x1600@120.017Hz
     pos 0 0
     transform normal
     scale 2.0

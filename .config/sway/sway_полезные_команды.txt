@@ -22,3 +22,52 @@ bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 
 Если хочешь, чтобы все новые окна по умолчанию открывались во вкладках, можно задать это в конфиге так:
 default_layout tabbed
+
+
+################
+
+# gaps
+gaps inner 10
+gaps outer 10
+smart_gaps off
+
+###############
+
+
+exec systemctl --user import-environment
+###############
+# My Acer Chromebook 516 GE monitor settings
+# swaymsg -t get_outputs
+
+output "eDP-1" {
+    mode 2560x1600@120.017Hz
+    pos 0 0
+    transform normal
+    scale 2.0
+    scale_filter nearest
+    adaptive_sync off
+    dpms on
+}
+################
+
+input "type:keyboard" {
+  xkb_layout us,ru
+  repeat_delay 300
+  repeat_rate 40
+  xkb_capslock disabled
+  xkb_numlock disabled
+  xkb_options grp:alt_shift_toggle
+}
+bindsym --release Super_L exec $menu
+
+################
+
+input "type:pointer" {
+  natural_scroll disabled
+  scroll_factor 1.0
+  left_handed disabled
+}
+
+
+# Your preferred application launcher
+set $menu fuzzel

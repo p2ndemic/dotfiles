@@ -17,3 +17,8 @@ bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
 
 # Отключить/включить звук через wpctl (XF86AudioMute)
 bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+
+
+
+Если хочешь, чтобы все новые окна по умолчанию открывались во вкладках, можно задать это в конфиге так:
+default_layout tabbed

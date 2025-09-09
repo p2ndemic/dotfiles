@@ -1,4 +1,19 @@
 # Тут будут полезные команды Sway которые будут тестироваться перед импортом в основной конфиг:
 
 # Закрыть окно щелчком средней кнопки по заголовку:
-bindsym --border button2 kill 
+bindsym --border button2 kill
+
+Переключиться следующий по порядку воркспейс [Super + Alt + Right]: 
+bindsym $mod+Mod1+Right workspace next
+
+Переключиться на предыдущий по порядку воркспейс [Super + Alt + Right]: 
+bindsym $mod+Mod1+Left workspace prev
+
+# Увеличить громкость через wpctl (XF86AudioRaiseVolume)
+bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+
+# Уменьшить громкость через wpctl (XF86AudioLowerVolume)
+bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+
+# Отключить/включить звук через wpctl (XF86AudioMute)
+bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle

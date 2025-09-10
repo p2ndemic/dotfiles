@@ -75,3 +75,8 @@ set $menu fuzzel
 bar {
     swaybar_command waybar
 }
+
+
+    # Kill focused window
+    bindsym $mod+q kill
+    bindsym Mod1+q kill

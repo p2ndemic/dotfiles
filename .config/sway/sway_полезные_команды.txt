@@ -81,5 +81,5 @@ bar {
     bindsym $mod+q kill
     bindsym Mod1+q kill
 
-# Закрыть все окна в текущем воркспейсе:
-bindsym $mod+Mod1+Down focus parent; kill
+# Закрыть все окна в текущем воркспейсе и переключиться на предыдущий воркспейс:
+bindsym $mod+Mod1+Down focus parent; kill; workspace prev

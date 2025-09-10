@@ -71,3 +71,7 @@ input "type:pointer" {
 
 # Your preferred application launcher
 set $menu fuzzel
+
+bar {
+    swaybar_command waybar
+}

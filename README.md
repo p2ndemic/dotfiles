@@ -20,8 +20,8 @@
 |**Music Player**|[mpd](https://github.com/MusicPlayerDaemon/MPD), [ncmpcpp](https://github.com/ncmpcpp/ncmpcpp), [mpc](https://github.com/MusicPlayerDaemon/mpc), [Netease-cloud-music-gtk](https://github.com/gmg137/netease-cloud-music-gtk)|
 |**Media Player**|[mpv](https://github.com/mpv-player/mpv)|
 |**Audio Visualizer**|[cava](https://github.com/karlstav/cava)|
-|**Console Text Editor**|[Micro](https://github.com/zyedidia/micro), [Nano](https://cgit.git.savannah.gnu.org/cgit/nano.git) |
 |**Text Editor**|[Zed](https://github.com/neovim/neovim)|
+|**Console Text Editor**|[Micro](https://github.com/zyedidia/micro), [Nano](https://cgit.git.savannah.gnu.org/cgit/nano.git)|
 |**GTK Theme**|[Catppuccin](https://github.com/catppuccin/gtk)|
 |**Icons**|[Papirus Dark](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)|
 |**Fonts**|[Nerd fonts](https://github.com/ryanoasis/nerd-fonts)|

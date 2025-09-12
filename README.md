@@ -19,6 +19,7 @@
 |**Shell Framework**|[Oh-My-Fish](https://github.com/oh-my-fish/oh-my-fish)|
 |**Music Player**|[mpd](https://github.com/MusicPlayerDaemon/MPD), [ncmpcpp](https://github.com/ncmpcpp/ncmpcpp), [mpc](https://github.com/MusicPlayerDaemon/mpc), [Netease-cloud-music-gtk](https://github.com/gmg137/netease-cloud-music-gtk)|
 |**Media Player**|[mpv](https://github.com/mpv-player/mpv)|
+|**Audio Visualizer**|[cava](https://github.com/karlstav/cava)|
 |**Console Text Editor**|[Micro](https://github.com/zyedidia/micro), [Nano](https://cgit.git.savannah.gnu.org/cgit/nano.git) |
 |**Text Editor**|[Zed](https://github.com/neovim/neovim)|
 |**GTK Theme**|[Catppuccin](https://github.com/catppuccin/gtk)|
@@ -30,6 +31,7 @@
 |**Clipboard**|[wl-clipboard-rs](https://github.com/YaLTeR/wl-clipboard-rs)|
 |**Logout menu**|[wleave](https://github.com/AMNatty/wleave)|
 |**Tool to freeze the screen**|[wayfreeze]([https://github.com/AMNatty/wleave](https://github.com/Jappie3/wayfreeze))|
+|**PDF Reader**|[wayfreeze]([https://github.com/AMNatty/wleave](https://github.com/Jappie3/wayfreeze))|
 ### 🔨 Dependencies
 #### Packages
   - sway

@@ -10,7 +10,7 @@
 |**Application Launcher**|[fuzzel](https://codeberg.org/dnkl/fuzzel)|
 |**Notification Daemon**|[fnott](https://codeberg.org/dnkl/fnott)|
 |**Bar**|[waybar](https://github.com/Alexays/Waybar)|
-|**network management tool**|[NetworkManager](https://networkmanager.dev/)|
+|**network management tool**|[NetworkManager](https://networkmanager.dev/), [network-manager-applet](https://gitlab.gnome.org/GNOME/network-manager-applet)|
 |**Input method framework**|[Fcitx5](https://github.com/fcitx/fcitx5)|
 |**System resource monitor**|[Btop](https://github.com/aristocratos/btop),[resources](https://github.com/nokyan/resources)|
 |**File Manager**|[pcmanfm-qt](https://github.com/lxqt/pcmanfm-qt), [Nautilus](https://wiki.gnome.org/action/show/Apps/Files?action=show&redirect=Apps%2FNautilus)|

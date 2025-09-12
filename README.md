@@ -5,11 +5,11 @@
 |Program|Name|
 | - | :--: |
 |**Window Manager**|[Sway](https://github.com/swaywm/sway)|
+|**Display Manager**|[ly](https://github.com/fairyglade/ly)|
 |**Terminal Emulator**|[foot](https://codeberg.org/dnkl/foot)|
-|**Bar**|[waybar](https://github.com/Alexays/Waybar)|
 |**Application Launcher**|[fuzzel](https://codeberg.org/dnkl/fuzzel)|
 |**Notification Daemon**|[fnott](https://codeberg.org/dnkl/fnott)|
-|**Display Manager**|[ly](https://github.com/fairyglade/ly)|
+|**Bar**|[waybar](https://github.com/Alexays/Waybar)|
 |**network management tool**|[NetworkManager](https://networkmanager.dev/)|
 |**Input method framework**|[Fcitx5](https://github.com/fcitx/fcitx5)|
 |**System resource monitor**|[Btop](https://github.com/aristocratos/btop)|

@@ -30,8 +30,8 @@
 |**Screen Recording**|[wl-screenrec](https://github.com/russelltg/wl-screenrec), [gpu-screen-recorder](https://git.dec05eba.com/gpu-screen-recorder/about/) [OBS](https://obsproject.com)|
 |**Clipboard**|[wl-clipboard-rs](https://github.com/YaLTeR/wl-clipboard-rs)|
 |**Logout menu**|[wleave](https://github.com/AMNatty/wleave)|
-|**Tool to freeze the screen**|[wayfreeze]([https://github.com/AMNatty/wleave](https://github.com/Jappie3/wayfreeze))|
-|**PDF Reader**|[wayfreeze]([https://github.com/AMNatty/wleave](https://github.com/Jappie3/wayfreeze))|
+|**Tool to freeze the screen**|[wayfreeze](https://github.com/Jappie3/wayfreeze)|
+|**PDF Reader**|[zathura](https://github.com/pwmt/zathura)|
 ### 🔨 Dependencies
 #### Packages
   - sway

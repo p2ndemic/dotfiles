@@ -26,7 +26,7 @@
 |**Icons**|[Papirus Dark](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)|
 |**Fonts**|[Nerd fonts](https://github.com/ryanoasis/nerd-fonts)|
 |**Image Viewer**|[oculante](https://github.com/woelper/oculante)|
-|**Screenshot Software**|[grimshot](https://github.com/swaywm/sway/blob/master/contrib/grimshot)|
+|**Screenshot Software**| [wayshot](https://git.sr.ht/~shinyzenith/wayshot) \| [grimshot](https://github.com/swaywm/sway/blob/master/contrib/grimshot)|
 |**Screen Recording**|[wl-screenrec](https://github.com/russelltg/wl-screenrec) \| [gpu-screen-recorder](https://git.dec05eba.com/gpu-screen-recorder/about/) \| [OBS](https://obsproject.com)|
 |**Clipboard**|[wl-clipboard-rs](https://github.com/YaLTeR/wl-clipboard-rs)|
 |**Logout menu**|[wleave](https://github.com/AMNatty/wleave)|

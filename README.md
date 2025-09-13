@@ -13,15 +13,15 @@
 |**network management tool**|[NetworkManager](https://networkmanager.dev/) \| [network-manager-applet](https://gitlab.gnome.org/GNOME/network-manager-applet)|
 |**Input method framework**|[Fcitx5](https://github.com/fcitx/fcitx5)|
 |**System resource monitor**|[Btop](https://github.com/aristocratos/btop) \| [resources](https://github.com/nokyan/resources)|
-|**File Manager**|[pcmanfm-qt](https://github.com/lxqt/pcmanfm-qt) \| [Nautilus](https://wiki.gnome.org/action/show/Apps/Files?action=show&redirect=Apps%2FNautilus)|
-|**Lockscreen**|[swaylock](https://github.com/swaywm/swaylock) \| [Swaylock-effects](https://github.com/mortie/swaylock-effects)|
+|**File Manager**|[pcmanfm-qt](https://github.com/lxqt/pcmanfm-qt) \| [nautilus](https://wiki.gnome.org/action/show/Apps/Files?action=show&redirect=Apps%2FNautilus)|
+|**Lockscreen**|[swaylock](https://github.com/swaywm/swaylock) \| [swaylock-effects](https://github.com/mortie/swaylock-effects)|
 |**Shell**|[Fish](https://github.com/fish-shell/fish-shell)|
 |**Shell Framework**|[Oh-My-Fish](https://github.com/oh-my-fish/oh-my-fish)|
 |**Music Player**|[mpd](https://github.com/MusicPlayerDaemon/MPD) \| [ncmpcpp](https://github.com/ncmpcpp/ncmpcpp) \| [mpc](https://github.com/MusicPlayerDaemon/mpc) \| [Netease-cloud-music-gtk](https://github.com/gmg137/netease-cloud-music-gtk)|
 |**Media Player**|[mpv](https://github.com/mpv-player/mpv)|
 |**Audio Visualizer**|[cava](https://github.com/karlstav/cava)|
 |**Text Editor**|[Zed](https://github.com/neovim/neovim)|
-|**Console Text Editor**|[Micro](https://github.com/zyedidia/micro) \| [Nano](https://cgit.git.savannah.gnu.org/cgit/nano.git)|
+|**Console Text Editor**|[Micro](https://github.com/zyedidia/micro) \| [nano](https://cgit.git.savannah.gnu.org/cgit/nano.git)|
 |**GTK Theme**|[Catppuccin](https://github.com/catppuccin/gtk)|
 |**Icons**|[Papirus Dark](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)|
 |**Fonts**|[Nerd fonts](https://github.com/ryanoasis/nerd-fonts)|

@@ -4,6 +4,7 @@
 
 |Program|Name|
 | - | :--: |
+|**OS**|[arch linux](https://archlinux.org/)|
 |**Window Manager**|[sway](https://github.com/swaywm/sway)|
 |**Display Manager**|[greetd](https://git.sr.ht/~kennylevinsen/greetd) \| [gtkgreet](https://git.sr.ht/~kennylevinsen/gtkgreet)|
 |**Terminal Emulator**|[foot](https://codeberg.org/dnkl/foot)|

@@ -2,3 +2,5 @@
 # Ref: https://technat.ch/posts/sway-de/
 # Ref: https://github.com/swaywm/sway/wiki/Useful-add-ons-for-sway
 # Ref: https://kl.wtf/
+
+exec_always systemctl --user import-environment

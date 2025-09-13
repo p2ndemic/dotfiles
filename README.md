@@ -22,6 +22,7 @@
 |**Audio Visualizer**|[cava](https://github.com/karlstav/cava)|
 |**Text Editor**|[zed](https://github.com/neovim/neovim)|
 |**Console Text Editor**|[micro](https://github.com/zyedidia/micro) \| [nano](https://cgit.git.savannah.gnu.org/cgit/nano.git)|
+|**QT Theme**|[]()|
 |**GTK Theme**|[Catppuccin](https://github.com/catppuccin/gtk)|
 |**Icons**|[papirus Dark](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)|
 |**Fonts**|[nerd fonts](https://github.com/ryanoasis/nerd-fonts)|

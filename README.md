@@ -17,9 +17,9 @@
 |**Lockscreen**|[swaylock](https://github.com/swaywm/swaylock) \| [swaylock-effects](https://github.com/mortie/swaylock-effects)|
 |**Shell**|[Fish](https://github.com/fish-shell/fish-shell)|
 |**Shell Framework**|[Oh-My-Fish](https://github.com/oh-my-fish/oh-my-fish)|
+|**Media Player**|[mpv](https://github.com/mpv-player/mpv)|
 |**Audio Player**|[rmpc](https://github.com/mierak/rmpc)
 |**Audio Visualizer**|[cava](https://github.com/karlstav/cava)|
-|**Media Player**|[mpv](https://github.com/mpv-player/mpv)|
 |**Text Editor**|[zed](https://github.com/neovim/neovim)|
 |**Console Text Editor**|[micro](https://github.com/zyedidia/micro) \| [nano](https://cgit.git.savannah.gnu.org/cgit/nano.git)|
 |**GTK Theme**|[Catppuccin](https://github.com/catppuccin/gtk)|

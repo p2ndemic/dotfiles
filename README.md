@@ -29,7 +29,7 @@
 |**Image Viewer**|[oculante](https://github.com/woelper/oculante)|
 |**Screenshot Software**| [wayshot](https://git.sr.ht/~shinyzenith/wayshot) \| [grimshot](https://github.com/swaywm/sway/blob/master/contrib/grimshot)|
 |**Screen Recording**|[wl-screenrec](https://github.com/russelltg/wl-screenrec) \| [gpu-screen-recorder](https://git.dec05eba.com/gpu-screen-recorder/about/) \| [obs](https://obsproject.com)|
-|**Clipboard**|[wl-clipboard-rs](https://github.com/YaLTeR/wl-clipboard-rs)|
+|**Clipboard**|[wl-clipboard-rs](https://github.com/YaLTeR/wl-clipboard-rs) \| [cliphist](https://github.com/sentriz/cliphist)|
 |**Logout menu**|[wleave](https://github.com/AMNatty/wleave)|
 |**Tool to freeze the screen**|[wayfreeze](https://github.com/Jappie3/wayfreeze)|
 |**PDF Reader**|[zathura](https://github.com/pwmt/zathura)|

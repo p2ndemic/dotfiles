@@ -50,56 +50,6 @@
 | **Fonts**                    | [nerd fonts](https://github.com/ryanoasis/nerd-fonts) |
 | **Misc**                     | [xdg-ninja](https://github.com/b3nj5m1n/xdg-ninja) \| [wayfreeze](https://github.com/Jappie3/wayfreeze) \| [arch-update](https://github.com/Antiz96/arch-update)
 | **Console Utils**            | [fzf](https://github.com/junegunn/fzf) \| [skim](https://github.com/skim-rs/skim) \| [dua-cli](https://github.com/Byron/dua-cli) \| [bandwhich](https://github.com/imsnif/bandwhich) \| [pik](https://github.com/jacek-kurlit/pik) \| [kmon](https://github.com/orhun/kmon) \| [iotop](https://github.com/Tomas-M/iotop) \| [nvtop](https://github.com/Syllo/nvtop) \| [systemd-manager-tui](https://github.com/matheus-git/systemd-manager-tui) \| [s-tui](https://github.com/amanusk/s-tui) \| [navi](https://github.com/denisidoro/navi) \| [powertop](https://github.com/fenrus75/powertop) \| [laptop-mode-tools](https://github.com/rickysarraf/laptop-mode-tools/) \| [thermald](https://github.com/intel/thermal_daemon) \| [eza](https://github.com/eza-community/eza) \| [bat](https://github.com/sharkdp/bat) \| [ripgrep](https://github.com/BurntSushi/ripgrep) \| [fd](https://github.com/sharkdp/fd) \| [inxi](https://codeberg.org/smxi/inxi) \| [broot](https://github.com/Canop/broot) \| [fselect](https://github.com/jhspetersson/fselect) \| [starship](https://github.com/starship/starship) \| [kmon](https://github.com/orhun/kmon) \| [kmon](https://github.com/orhun/kmon) \| [kmon](https://github.com/orhun/kmon)
-
-|Program|Name|
-| - | - |
-|**OS**|[arch linux](https://archlinux.org/)|
-|**Wayland Compositor**|[sway](https://github.com/swaywm/sway)|
-|**Wayland Protocols**|[wayland-protocols](https://gitlab.freedesktop.org/wayland/wayland-protocols) + [wlr-protocols](https://gitlab.freedesktop.org/wlroots/wlr-protocols) + [frog-protocols](https://github.com/misyltoad/frog-protocols)
-|**XGD Portal**|[xdg-desktop-portal-wlr](https://github.com/emersion/xdg-desktop-portal-wlr)|
-|**Power Daemon**|[tuned](https://github.com/redhat-performance/tuned) + [tuned-gui](https://github.com/redhat-performance/tuned)|
-|**Power Alert Daemon**|[poweralertd](https://sr.ht/~kennylevinsen/poweralertd/)|
-|**Network Management Tool**|[networkmanager](https://networkmanager.dev/) + [nm-connection-editor](https://gitlab.gnome.org/GNOME/network-manager-applet)|
-|**OSD**|[swayosd](https://github.com/ErikReider/SwayOSD)|
-|**Gamma Adjustments Tool**|[wlsunset](https://git.sr.ht/~kennylevinsen/wlsunset)|
-|**Configuration Tool**|[swaysettings](https://github.com/ErikReider/SwaySettings) + [nwg-displays](https://github.com/nwg-piotr/nwg-displays) + [nwg-look](https://github.com/nwg-piotr/nwg-look) + [kvantum](https://github.com/tsujan/Kvantum)|
-
-|**Display Manager**|[ly](https://codeberg.org/fairyglade/ly) \| [gdm](https://gitlab.gnome.org/GNOME/gdm.git) \| [greetd](https://git.sr.ht/~kennylevinsen/greetd) + [regreet](https://github.com/rharish101/ReGreet)|
-|**Terminal Emulator**|[foot](https://codeberg.org/dnkl/foot)|
-|**Application Launcher**|[fuzzel](https://codeberg.org/dnkl/fuzzel)|
-|**Notification Daemon**|[fnott](https://codeberg.org/dnkl/fnott)|
-|**Wayland Bar**|[waybar](https://github.com/Alexays/Waybar)|
-|**System Monitoring**|[btop](https://github.com/aristocratos/btop) \| [glances](https://github.com/nicolargo/glances) \| [resources](https://github.com/nokyan/resources) \| [s-tui](https://github.com/amanusk/s-tui)|
-|**File Manager**|[pcmanfm-qt](https://github.com/lxqt/pcmanfm-qt) \| [nautilus](https://wiki.gnome.org/action/show/Apps/Files?action=show&redirect=Apps%2FNautilus)|
-|**Lockscreen**|[swaylock](https://github.com/swaywm/swaylock) \| [swaylock-effects](https://github.com/mortie/swaylock-effects)|
-|**Shell**|[fish](https://github.com/fish-shell/fish-shell) + [oh-my-fish](https://github.com/oh-my-fish/oh-my-fish)|
-|**Media Player**|[mpv](https://github.com/mpv-player/mpv) + [yt-dlp](https://github.com/yt-dlp/yt-dlp)|
-|**Audio Player**|[rmpc](https://github.com/mierak/rmpc)|
-|**Audio Visualizer**|[cava](https://github.com/karlstav/cava) \| [musializer](https://github.com/tsoding/musializer)|
-|**Text Editor**|[zed](https://github.com/zed-industries/zed) \| [vscode](https://wiki.archlinux.org/title/Visual_Studio_Code)|
-|**Console Text Editor**|[micro](https://github.com/zyedidia/micro) \| [orbiton](https://github.com/xyproto/orbiton) \| [nano](https://cgit.git.savannah.gnu.org/cgit/nano.git)|
-|**QT Theme**|[breeze](https://github.com/KDE/breeze)|
-|**GTK Theme**|[breeze-gtk](https://github.com/KDE/breeze-gtk)|
-|**Icons**|[papirus Dark](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)|
-|**Fonts**|[nerd fonts](https://github.com/ryanoasis/nerd-fonts)|
-|**Image Viewer**|[oculante](https://github.com/woelper/oculante)|
-|**Screenshot Software**| [wayshot](https://git.sr.ht/~shinyzenith/wayshot) \| [grimshot](https://github.com/swaywm/sway/blob/master/contrib/grimshot)|
-|**Screen Recording**|[wl-screenrec](https://github.com/russelltg/wl-screenrec) \| [gpu-screen-recorder](https://git.dec05eba.com/gpu-screen-recorder/about/) \| [obs](https://obsproject.com)|
-|**Clipboard**|[wl-clipboard-rs](https://github.com/YaLTeR/wl-clipboard-rs) + [cliphist](https://github.com/sentriz/cliphist)|
-|**Logout menu**|[wleave](https://github.com/AMNatty/wleave)|
-|**PDF Reader**|[zathura](https://github.com/pwmt/zathura)|
-|**Clock**|[tenki](https://github.com/ckaznable/tenki)|
-|**Terminal Visuals**|[ascii-rain](https://github.com/nkleemann/ascii-rain)|
-|**Fetch**|[fastfetch](https://github.com/fastfetch-cli/fastfetch)|
-|**Misc**|[xdg-ninja](https://github.com/b3nj5m1n/xdg-ninja) \| [wayfreeze](https://github.com/Jappie3/wayfreeze) \| [arch-update](https://github.com/Antiz96/arch-update)|
-|**Notes**|[obsidian](https://obsidian.md/) + [notesnook](https://notesnook.com/)|
-|**Bookmark manager**|[raindrop](https://raindrop.io/)
-|**SQL Tools**|[usql](https://github.com/xo/usql)
-|**Emoji picker**|[bemoji](https://github.com/marty-oehme/bemoji)
-
-
-
-
 ### 🔨 Dependencies
 #### Packages
   - sway

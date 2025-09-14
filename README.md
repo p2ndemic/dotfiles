@@ -37,12 +37,11 @@
 |**Screen Recording**|[wl-screenrec](https://github.com/russelltg/wl-screenrec) \| [gpu-screen-recorder](https://git.dec05eba.com/gpu-screen-recorder/about/) \| [obs](https://obsproject.com)|
 |**Clipboard**|[wl-clipboard-rs](https://github.com/YaLTeR/wl-clipboard-rs) + [cliphist](https://github.com/sentriz/cliphist)|
 |**Logout menu**|[wleave](https://github.com/AMNatty/wleave)|
-|**Tool to freeze the screen**|[wayfreeze](https://github.com/Jappie3/wayfreeze)|
 |**PDF Reader**|[zathura](https://github.com/pwmt/zathura)|
 |**Clock**|[tenki](https://github.com/ckaznable/tenki)|
 |**Terminal Visuals**|[ascii-rain](https://github.com/nkleemann/ascii-rain)|
 |**Fetch**|[fastfetch](https://github.com/fastfetch-cli/fastfetch)|
-|**Misc**|[xdg-ninja](https://github.com/b3nj5m1n/xdg-ninja) \| [arch-update](https://github.com/Antiz96/arch-update)|
+|**Misc**|[xdg-ninja](https://github.com/b3nj5m1n/xdg-ninja) \| [wayfreeze](https://github.com/Jappie3/wayfreeze) \| [arch-update](https://github.com/Antiz96/arch-update)|
 |**Notes**|[obsidian](https://obsidian.md/) + [notesnook](https://notesnook.com/)|
 |**Bookmark manager**|[raindrop](https://raindrop.io/)
 |**SQL Tools**|[usql](https://github.com/xo/usql)

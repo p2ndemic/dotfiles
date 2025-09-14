@@ -3,7 +3,7 @@
 ### 🗒️ Info
 
 |Program|Name|
-| - | :--: |
+| - | - |
 |**OS**|[Arch Linux](https://archlinux.org/)|
 |**Wayland Compositor**|[sway](https://github.com/swaywm/sway)|
 |**WL Protocols**|[wayland-protocols](https://gitlab.freedesktop.org/wayland/wayland-protocols)| [wayland-protocols](https://gitlab.freedesktop.org/wayland/wayland-protocols)

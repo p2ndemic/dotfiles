@@ -18,13 +18,14 @@
 | **Notification Daemon**      | [fnott](https://codeberg.org/dnkl/fnott) |
 | **Bar**                      | [waybar](https://github.com/Alexays/Waybar) |
 | **OSD**                      | [swayosd](https://github.com/ErikReider/SwayOSD) |
+| **Wallpaper Tool**           |[swaybg](https://github.com/swaywm/swaybg) \| [wpaperd](https://github.com/danyspin97/wpaperd)| 
 | **Lockscreen**               | [swaylock](https://github.com/swaywm/swaylock) \| [swaylock-effects](https://github.com/mortie/swaylock-effects) |
 | **Logout menu**              | [wleave](https://github.com/AMNatty/wleave) |
 | **Configuration Tools**      | [swaysettings](https://github.com/ErikReider/SwaySettings) + [nwg-displays](https://github.com/nwg-piotr/nwg-displays)|
 | **Logout menu**              | [wleave](https://github.com/AMNatty/wleave) |
 | **Gamma Adjustments Tool**   | [wlsunset](https://git.sr.ht/~kennylevinsen/wlsunset) |
 | **File Manager**             | [pcmanfm-qt](https://github.com/lxqt/pcmanfm-qt) \| [nautilus](https://wiki.gnome.org/Apps/Files) \| [yazi](https://github.com/sxyazi/yazi)|
-| **Clipboard**                | [wl-clipboard-rs](https://github.com/YaLTeR/wl-clipboard-rs) + [cliphist](https://github.com/sentriz/cliphist) |
+| **Clipboard**                | [wl-clipboard-rs](https://github.com/YaLTeR/wl-clipboard-rs) + [cliphist](https://github.com/sentriz/cliphist) \| [clipvault](https://github.com/rolv-apneseth/clipvault) \| [clipse](https://github.com/savedra1/clipse)|
 | **Screenshot Software**      | [wayshot](https://git.sr.ht/~shinyzenith/wayshot) \| [grimshot](https://github.com/swaywm/sway/blob/master/contrib/grimshot) |
 | **Screen Recording**         | [wl-screenrec](https://github.com/russelltg/wl-screenrec) \| [gpu-screen-recorder](https://git.dec05eba.com/gpu-screen-recorder/about/) \| [obs](https://obsproject.com) |
 | **System Monitoring**        | [btop](https://github.com/aristocratos/btop) \| [glances](https://github.com/nicolargo/glances) \| [resources](https://github.com/nokyan/resources) \| [s-tui](https://github.com/amanusk/s-tui) |
@@ -62,7 +63,7 @@
 |**OSD**|[swayosd](https://github.com/ErikReider/SwayOSD)|
 |**Gamma Adjustments Tool**|[wlsunset](https://git.sr.ht/~kennylevinsen/wlsunset)|
 |**Configuration Tool**|[swaysettings](https://github.com/ErikReider/SwaySettings) + [nwg-displays](https://github.com/nwg-piotr/nwg-displays) + [nwg-look](https://github.com/nwg-piotr/nwg-look) + [kvantum](https://github.com/tsujan/Kvantum)|
-|**Wallpaper Tool**|[swaybg](https://github.com/swaywm/swaybg)| 
+
 |**Display Manager**|[ly](https://codeberg.org/fairyglade/ly) \| [gdm](https://gitlab.gnome.org/GNOME/gdm.git) \| [greetd](https://git.sr.ht/~kennylevinsen/greetd) + [regreet](https://github.com/rharish101/ReGreet)|
 |**Terminal Emulator**|[foot](https://codeberg.org/dnkl/foot)|
 |**Application Launcher**|[fuzzel](https://codeberg.org/dnkl/fuzzel)|

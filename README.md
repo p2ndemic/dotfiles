@@ -12,7 +12,7 @@
 |**Application Launcher**|[fuzzel](https://codeberg.org/dnkl/fuzzel)|
 |**Notification Daemon**|[fnott](https://codeberg.org/dnkl/fnott)|
 |**Bar**|[waybar](https://github.com/Alexays/Waybar)|
-|**network management tool**|[networkmanager](https://networkmanager.dev/) \| [network-manager-applet](https://gitlab.gnome.org/GNOME/network-manager-applet)|
+|**network management tool**|[networkmanager](https://networkmanager.dev/) \| [nm-connection-editor](https://gitlab.gnome.org/GNOME/network-manager-applet)|
 |**System resource monitor**|[btop](https://github.com/aristocratos/btop) \| [resources](https://github.com/nokyan/resources)|
 |**File Manager**|[pcmanfm-qt](https://github.com/lxqt/pcmanfm-qt) \| [nautilus](https://wiki.gnome.org/action/show/Apps/Files?action=show&redirect=Apps%2FNautilus)|
 |**Lockscreen**|[swaylock](https://github.com/swaywm/swaylock) \| [swaylock-effects](https://github.com/mortie/swaylock-effects)|

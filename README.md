@@ -11,7 +11,7 @@
 |**Power Daemon**|[tuned](https://github.com/redhat-performance/tuned) + [tuned-gui](https://github.com/redhat-performance/tuned)|
 |**Power Alert Daemon**|[poweralertd](https://sr.ht/~kennylevinsen/poweralertd/)|
 |**Gamma Adjustments Tool**|[wlsunset](https://git.sr.ht/~kennylevinsen/wlsunset)|
-|**OSD**|[swayosd](https://github.com/ErikReider/SwayOSD)|
+|**OSD**|[swayosd](https://github.com/ErikReider/SwayOSD) + [nwg-displays](https://github.com/nwg-piotr/nwg-displays) + [nwg-look](https://github.com/nwg-piotr/nwg-look) + [kvantum](https://github.com/tsujan/Kvantum)|
 |**OS Configuration Tool**|[swaysettings](https://github.com/ErikReider/SwaySettings)|
 |**Display Manager**|[ly](https://codeberg.org/fairyglade/ly) \| [gdm](https://gitlab.gnome.org/GNOME/gdm.git) \| [greetd](https://git.sr.ht/~kennylevinsen/greetd) + [regreet](https://github.com/rharish101/ReGreet)|
 |**Terminal Emulator**|[foot](https://codeberg.org/dnkl/foot)|

@@ -22,8 +22,8 @@
 |**Power Daemon**|[tuned](https://github.com/redhat-performance/tuned) + [tuned-gui](https://github.com/redhat-performance/tuned)|
 |**Audio Player**|[rmpc](https://github.com/mierak/rmpc)
 |**Audio Visualizer**|[cava](https://github.com/karlstav/cava) \| |
-|**Text Editor**|[zed](https://github.com/neovim/neovim)|
-|**Console Text Editor**|[micro](https://github.com/zyedidia/micro) \| [nano](https://cgit.git.savannah.gnu.org/cgit/nano.git)|
+|**Text Editor**|[zed](https://github.com/zed-industries/zed) |\ [vscode](https://wiki.archlinux.org/title/Visual_Studio_Code)|
+|**Console Text Editor**|[micro](https://github.com/zyedidia/micro) \| [orbiton](https://github.com/xyproto/orbiton) \| [nano](https://cgit.git.savannah.gnu.org/cgit/nano.git)|
 |**QT Theme**|[breeze](https://github.com/KDE/breeze)|
 |**GTK Theme**|[breeze-gtk](https://github.com/KDE/breeze-gtk)|
 |**Icons**|[papirus Dark](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)|
@@ -41,6 +41,8 @@
 |**Misc**|[xdg-ninja](https://github.com/b3nj5m1n/xdg-ninja) \| [arch-update](https://github.com/Antiz96/arch-update)|
 |**Notes**|[obsidian](https://obsidian.md/) + [notesnook](https://notesnook.com/)|
 |**Bookmark manager**|[raindrop](https://raindrop.io/)
+|**SQL Tools**|[usql](https://github.com/xo/usql)
+
 
 
 ### 🔨 Dependencies

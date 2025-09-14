@@ -21,7 +21,7 @@
 |**Media Player**|[mpv](https://github.com/mpv-player/mpv) + [yt-dlp](https://github.com/yt-dlp/yt-dlp)|
 |**Power Daemon**|[tuned](https://github.com/redhat-performance/tuned) + [tuned-gui](https://github.com/redhat-performance/tuned)|
 |**Audio Player**|[rmpc](https://github.com/mierak/rmpc)
-|**Audio Visualizer**|[cava](https://github.com/karlstav/cava) \| |
+|**Audio Visualizer**|[cava](https://github.com/karlstav/cava) \| [musializer](https://github.com/tsoding/musializer)|
 |**Text Editor**|[zed](https://github.com/zed-industries/zed) |\ [vscode](https://wiki.archlinux.org/title/Visual_Studio_Code)|
 |**Console Text Editor**|[micro](https://github.com/zyedidia/micro) \| [orbiton](https://github.com/xyproto/orbiton) \| [nano](https://cgit.git.savannah.gnu.org/cgit/nano.git)|
 |**QT Theme**|[breeze](https://github.com/KDE/breeze)|

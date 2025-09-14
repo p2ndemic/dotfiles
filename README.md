@@ -16,8 +16,7 @@
 |**System Monitoring**|[btop](https://github.com/aristocratos/btop) \| [glances](https://github.com/nicolargo/glances) \| [resources](https://github.com/nokyan/resources) \| [s-tui](https://github.com/amanusk/s-tui)|
 |**File Manager**|[pcmanfm-qt](https://github.com/lxqt/pcmanfm-qt) \| [nautilus](https://wiki.gnome.org/action/show/Apps/Files?action=show&redirect=Apps%2FNautilus)|
 |**Lockscreen**|[swaylock](https://github.com/swaywm/swaylock) \| [swaylock-effects](https://github.com/mortie/swaylock-effects)|
-|**Shell**|[Fish](https://github.com/fish-shell/fish-shell)|
-|**Shell Framework**|[Oh-My-Fish](https://github.com/oh-my-fish/oh-my-fish)|
+|**Shell**|[fish](https://github.com/fish-shell/fish-shell) + [oh-my-fish](https://github.com/oh-my-fish/oh-my-fish)|
 |**Media Player**|[mpv](https://github.com/mpv-player/mpv) + [yt-dlp](https://github.com/yt-dlp/yt-dlp)|
 |**Power Daemon**|[tuned](https://github.com/redhat-performance/tuned) + [tuned-gui](https://github.com/redhat-performance/tuned)|
 |**Audio Player**|[rmpc](https://github.com/mierak/rmpc)

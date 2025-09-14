@@ -6,7 +6,7 @@
 | - | - |
 |**OS**|[Arch Linux](https://archlinux.org/)|
 |**Wayland Compositor**|[sway](https://github.com/swaywm/sway)|
-|**WL Protocols**|[wayland-protocols](https://gitlab.freedesktop.org/wayland/wayland-protocols)| [wayland-protocols](https://gitlab.freedesktop.org/wayland/wayland-protocols)
+|**Wayland Protocols**|[wayland-protocols](https://gitlab.freedesktop.org/wayland/wayland-protocols)| [wayland-protocols](https://gitlab.freedesktop.org/wayland/wayland-protocols)
 |**Display Manager**|[]() \| []() | [greetd](https://git.sr.ht/~kennylevinsen/greetd) + [gtkgreet](https://git.sr.ht/~kennylevinsen/gtkgreet)|
 |**Terminal Emulator**|[foot](https://codeberg.org/dnkl/foot)|
 |**Application Launcher**|[fuzzel](https://codeberg.org/dnkl/fuzzel)|
@@ -55,7 +55,7 @@
   </tr>
 
   <tr>
-    <th rowspan="3">WL Protocols</th>
+    <th rowspan="3">Wayland Protocols</th>
     <td><a href="https://gitlab.freedesktop.org/wayland/wayland-protocols">wayland-protocols</a></td>
   </tr>
   <tr>
@@ -92,7 +92,7 @@
   </tr>
 
   <tr>
-    <th>Bar</th>
+    <th>Wayland Bar</th>
     <td><a href="https://github.com/Alexays/Waybar">waybar</a></td>
   </tr>
 

@@ -42,7 +42,7 @@
 | **Bookmark manager**         | [raindrop](https://raindrop.io/) |
 | **SQL Tools**                | [usql](https://github.com/xo/usql) |
 | **Emoji picker**             | [bemoji](https://github.com/marty-oehme/bemoji) |
-| **QT \| GTK Theme manager**  | [kvantum](https://github.com/tsujan/Kvantum) + [nwg-look](https://github.com/nwg-piotr/nwg-look)|
+| **Theme manager**            | [kvantum](https://github.com/tsujan/Kvantum) + [nwg-look](https://github.com/nwg-piotr/nwg-look)|
 | **GTK Theme**                | [breeze-gtk](https://github.com/KDE/breeze-gtk) |
 | **QT Theme**                 | [breeze](https://github.com/KDE/breeze) |
 | **Icons**                    | [papirus Dark](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme) |

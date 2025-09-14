@@ -34,6 +34,11 @@
 |**Logout menu**|[wleave](https://github.com/AMNatty/wleave)|
 |**Tool to freeze the screen**|[wayfreeze](https://github.com/Jappie3/wayfreeze)|
 |**PDF Reader**|[zathura](https://github.com/pwmt/zathura)|
+|**Clock**|[tenki](https://github.com/ckaznable/tenki)|
+|**Terminal Visuals**|[ascii-rain](https://github.com/nkleemann/ascii-rain)|
+|**Fetch**|[fastfetch](https://github.com/fastfetch-cli/fastfetch)|
+|**Misc**|[xdg-ninja](https://github.com/b3nj5m1n/xdg-ninja) \| [arch-update](https://github.com/Antiz96/arch-update)|
+
 ### 🔨 Dependencies
 #### Packages
   - sway

@@ -10,15 +10,17 @@
 |**XGD Portal**|[xdg-desktop-portal-wlr](https://github.com/emersion/xdg-desktop-portal-wlr)|
 |**Power Daemon**|[tuned](https://github.com/redhat-performance/tuned) + [tuned-gui](https://github.com/redhat-performance/tuned)|
 |**Power Alert Daemon**|[poweralertd](https://sr.ht/~kennylevinsen/poweralertd/)|
+|**Network Management Tool**|[networkmanager](https://networkmanager.dev/) + [nm-connection-editor](https://gitlab.gnome.org/GNOME/network-manager-applet)|
+
+|**OSD**|[swayosd](https://github.com/ErikReider/SwayOSD)|
 |**Gamma Adjustments Tool**|[wlsunset](https://git.sr.ht/~kennylevinsen/wlsunset)|
-|**OSD**|[swayosd](https://github.com/ErikReider/SwayOSD) + [nwg-displays](https://github.com/nwg-piotr/nwg-displays) + [nwg-look](https://github.com/nwg-piotr/nwg-look) + [kvantum](https://github.com/tsujan/Kvantum)|
-|**OS Configuration Tool**|[swaysettings](https://github.com/ErikReider/SwaySettings)|
+|**Configuration Tool**|[swaysettings](https://github.com/ErikReider/SwaySettings) + [nwg-displays](https://github.com/nwg-piotr/nwg-displays) + [nwg-look](https://github.com/nwg-piotr/nwg-look) + [kvantum](https://github.com/tsujan/Kvantum)|
+|**Wallpaper Tool**|[swaybg](https://github.com/swaywm/swaybg)| 
 |**Display Manager**|[ly](https://codeberg.org/fairyglade/ly) \| [gdm](https://gitlab.gnome.org/GNOME/gdm.git) \| [greetd](https://git.sr.ht/~kennylevinsen/greetd) + [regreet](https://github.com/rharish101/ReGreet)|
 |**Terminal Emulator**|[foot](https://codeberg.org/dnkl/foot)|
 |**Application Launcher**|[fuzzel](https://codeberg.org/dnkl/fuzzel)|
 |**Notification Daemon**|[fnott](https://codeberg.org/dnkl/fnott)|
 |**Wayland Bar**|[waybar](https://github.com/Alexays/Waybar)|
-|**Network Management Tool**|[networkmanager](https://networkmanager.dev/) + [nm-connection-editor](https://gitlab.gnome.org/GNOME/network-manager-applet)|
 |**System Monitoring**|[btop](https://github.com/aristocratos/btop) \| [glances](https://github.com/nicolargo/glances) \| [resources](https://github.com/nokyan/resources) \| [s-tui](https://github.com/amanusk/s-tui)|
 |**File Manager**|[pcmanfm-qt](https://github.com/lxqt/pcmanfm-qt) \| [nautilus](https://wiki.gnome.org/action/show/Apps/Files?action=show&redirect=Apps%2FNautilus)|
 |**Lockscreen**|[swaylock](https://github.com/swaywm/swaylock) \| [swaylock-effects](https://github.com/mortie/swaylock-effects)|

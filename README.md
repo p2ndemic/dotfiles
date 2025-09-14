@@ -73,7 +73,7 @@
     <td><a href="https://gitlab.gnome.org/GNOME/gdm">gdm</a></td>
   </tr>
   <tr>
-    <td><a href="https://git.sr.ht/~kennylevinsen/greetd">greetd</a> + <a href="https://git.sr.ht/~kennylevinsen/gtkgreet">gtkgreet</a></td>
+    <td><a href="https://git.sr.ht/~kennylevinsen/greetd">greetd</a> + <a href="https://github.com/rharish101/ReGreet">ReGreet</a></td>
   </tr>
 
   <tr>

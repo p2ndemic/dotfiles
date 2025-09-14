@@ -39,6 +39,9 @@
 |**Terminal Visuals**|[ascii-rain](https://github.com/nkleemann/ascii-rain)|
 |**Fetch**|[fastfetch](https://github.com/fastfetch-cli/fastfetch)|
 |**Misc**|[xdg-ninja](https://github.com/b3nj5m1n/xdg-ninja) \| [arch-update](https://github.com/Antiz96/arch-update)|
+|**Notes**|[obsidian](https://obsidian.md/) + [notesnook](https://notesnook.com/)|
+|**Bookmark manager**|[raindrop](https://raindrop.io/)
+
 
 ### 🔨 Dependencies
 #### Packages

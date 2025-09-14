@@ -13,14 +13,15 @@
 |**Notification Daemon**|[fnott](https://codeberg.org/dnkl/fnott)|
 |**Wayland Bar**|[waybar](https://github.com/Alexays/Waybar)|
 |**network management tool**|[networkmanager](https://networkmanager.dev/) + [nm-connection-editor](https://gitlab.gnome.org/GNOME/network-manager-applet)|
-|**System resource monitor**|[btop](https://github.com/aristocratos/btop) \| [resources](https://github.com/nokyan/resources)|
+|**System Monitoring**|[btop](https://github.com/aristocratos/btop) \| [glances](https://github.com/nicolargo/glances) \| [resources](https://github.com/nokyan/resources) \| [s-tui](https://github.com/amanusk/s-tui)|
 |**File Manager**|[pcmanfm-qt](https://github.com/lxqt/pcmanfm-qt) \| [nautilus](https://wiki.gnome.org/action/show/Apps/Files?action=show&redirect=Apps%2FNautilus)|
 |**Lockscreen**|[swaylock](https://github.com/swaywm/swaylock) \| [swaylock-effects](https://github.com/mortie/swaylock-effects)|
 |**Shell**|[Fish](https://github.com/fish-shell/fish-shell)|
 |**Shell Framework**|[Oh-My-Fish](https://github.com/oh-my-fish/oh-my-fish)|
-|**Media Player**|[mpv](https://github.com/mpv-player/mpv)|
+|**Media Player**|[mpv](https://github.com/mpv-player/mpv) + [yt-dlp](https://github.com/yt-dlp/yt-dlp)|
+|**Power Daemon**|[tuned](https://github.com/redhat-performance/tuned) + [tuned-gui](https://github.com/redhat-performance/tuned)|
 |**Audio Player**|[rmpc](https://github.com/mierak/rmpc)
-|**Audio Visualizer**|[cava](https://github.com/karlstav/cava)|
+|**Audio Visualizer**|[cava](https://github.com/karlstav/cava) \| |
 |**Text Editor**|[zed](https://github.com/neovim/neovim)|
 |**Console Text Editor**|[micro](https://github.com/zyedidia/micro) \| [nano](https://cgit.git.savannah.gnu.org/cgit/nano.git)|
 |**QT Theme**|[breeze](https://github.com/KDE/breeze)|
@@ -474,3 +475,5 @@ Waybar / Sway: ✅ Темная тема, идеальна для ночного
 Популярная тема в dev-сообществе
 Универсальная тёмная тема
 Поддержка сотен приложений
+
+https://github.com/GabePoel/KvLibadwaita

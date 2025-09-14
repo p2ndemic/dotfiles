@@ -20,7 +20,7 @@
 | **OSD**                      | [swayosd](https://github.com/ErikReider/SwayOSD) |
 | **Lockscreen**               | [swaylock](https://github.com/swaywm/swaylock) \| [swaylock-effects](https://github.com/mortie/swaylock-effects) |
 | **Logout menu**              | [wleave](https://github.com/AMNatty/wleave) |
-| **Configuration Tools**      | [swaysettings](https://github.com/ErikReider/SwaySettings) + [nwg-displays](https://github.com/nwg-piotr/nwg-displays) + [nwg-look](https://github.com/nwg-piotr/nwg-look) |
+| **Configuration Tools**      | [swaysettings](https://github.com/ErikReider/SwaySettings) + [nwg-displays](https://github.com/nwg-piotr/nwg-displays)|
 | **Logout menu**              | [wleave](https://github.com/AMNatty/wleave) |
 | **Gamma Adjustments Tool**   | [wlsunset](https://git.sr.ht/~kennylevinsen/wlsunset) |
 | **File Manager**             | [pcmanfm-qt](https://github.com/lxqt/pcmanfm-qt) \| [nautilus](https://wiki.gnome.org/Apps/Files) |
@@ -28,7 +28,7 @@
 | **Screenshot Software**      | [wayshot](https://git.sr.ht/~shinyzenith/wayshot) \| [grimshot](https://github.com/swaywm/sway/blob/master/contrib/grimshot) |
 | **Screen Recording**         | [wl-screenrec](https://github.com/russelltg/wl-screenrec) \| [gpu-screen-recorder](https://git.dec05eba.com/gpu-screen-recorder/about/) \| [obs](https://obsproject.com) |
 | **System Monitoring**        | [btop](https://github.com/aristocratos/btop) \| [glances](https://github.com/nicolargo/glances) \| [resources](https://github.com/nokyan/resources) \| [s-tui](https://github.com/amanusk/s-tui) |
-| **Text Editor**              | [zed](https://github.com/zed-industries/zed) \| [vscode](https://wiki.archlinux.org/title/Visual_Studio_Code) |
+| **GUI Text Editor**          | [zed](https://github.com/zed-industries/zed) \| [vscode](https://wiki.archlinux.org/title/Visual_Studio_Code) |
 | **Console Text Editor**      | [micro](https://github.com/zyedidia/micro) \| [orbiton](https://github.com/xyproto/orbiton) \| [nano](https://cgit.git.savannah.gnu.org/cgit/nano.git) |
 | **Media Player**             | [mpv](https://github.com/mpv-player/mpv) + [yt-dlp](https://github.com/yt-dlp/yt-dlp) |
 | **Audio Player**             | [rmpc](https://github.com/mierak/rmpc) |
@@ -42,6 +42,7 @@
 | **Bookmark manager**         | [raindrop](https://raindrop.io/) |
 | **SQL Tools**                | [usql](https://github.com/xo/usql) |
 | **Emoji picker**             | [bemoji](https://github.com/marty-oehme/bemoji) |
+| **QT \| GTK Theme manager**  | [kvantum](https://github.com/tsujan/Kvantum) + [nwg-look](https://github.com/nwg-piotr/nwg-look)|
 | **GTK Theme**                | [breeze-gtk](https://github.com/KDE/breeze-gtk) |
 | **QT Theme**                 | [breeze](https://github.com/KDE/breeze) |
 | **Icons**                    | [papirus Dark](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme) |

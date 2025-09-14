@@ -4,7 +4,9 @@
 
 |Program|Name|
 | - | :--: |
-|**Window Manager**|[sway](https://github.com/swaywm/sway)|
+|**OS**|[Arch Linux](https://archlinux.org/)|
+|**Wayland Compositor**|[sway](https://github.com/swaywm/sway)|
+|**WL Protocols**|[wayland-protocols](https://gitlab.freedesktop.org/wayland/wayland-protocols)| [wayland-protocols](https://gitlab.freedesktop.org/wayland/wayland-protocols)
 |**Display Manager**|[]() \| []() | [greetd](https://git.sr.ht/~kennylevinsen/greetd) + [gtkgreet](https://git.sr.ht/~kennylevinsen/gtkgreet)|
 |**Terminal Emulator**|[foot](https://codeberg.org/dnkl/foot)|
 |**Application Launcher**|[fuzzel](https://codeberg.org/dnkl/fuzzel)|

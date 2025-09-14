@@ -42,6 +42,8 @@
 |**Notes**|[obsidian](https://obsidian.md/) + [notesnook](https://notesnook.com/)|
 |**Bookmark manager**|[raindrop](https://raindrop.io/)
 |**SQL Tools**|[usql](https://github.com/xo/usql)
+|**Emoji picker**|[bemoji](https://github.com/marty-oehme/bemoji)
+
 
 
 

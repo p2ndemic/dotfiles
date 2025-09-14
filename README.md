@@ -8,6 +8,7 @@
 |**Wayland Compositor**|[sway](https://github.com/swaywm/sway)|
 |**Wayland Protocols**|[wayland-protocols](https://gitlab.freedesktop.org/wayland/wayland-protocols) + [wlr-protocols](https://gitlab.freedesktop.org/wlroots/wlr-protocols) + [frog-protocols](https://github.com/misyltoad/frog-protocols)
 |**XGD Portal**|[xdg-desktop-portal-wlr](https://github.com/emersion/xdg-desktop-portal-wlr)|
+|**Power Daemon**|[tuned](https://github.com/redhat-performance/tuned) + [tuned-gui](https://github.com/redhat-performance/tuned)|
 |**Power Alert Daemon**|[poweralertd](https://sr.ht/~kennylevinsen/poweralertd/)|
 |**Gamma Adjustments Tool**|[wlsunset](https://git.sr.ht/~kennylevinsen/wlsunset)|
 |**OSD**|[swayosd](https://github.com/ErikReider/SwayOSD)|
@@ -23,7 +24,7 @@
 |**Lockscreen**|[swaylock](https://github.com/swaywm/swaylock) \| [swaylock-effects](https://github.com/mortie/swaylock-effects)|
 |**Shell**|[fish](https://github.com/fish-shell/fish-shell) + [oh-my-fish](https://github.com/oh-my-fish/oh-my-fish)|
 |**Media Player**|[mpv](https://github.com/mpv-player/mpv) + [yt-dlp](https://github.com/yt-dlp/yt-dlp)|
-|**Power Daemon**|[tuned](https://github.com/redhat-performance/tuned) + [tuned-gui](https://github.com/redhat-performance/tuned)|
+
 |**Audio Player**|[rmpc](https://github.com/mierak/rmpc)
 |**Audio Visualizer**|[cava](https://github.com/karlstav/cava) \| [musializer](https://github.com/tsoding/musializer)|
 |**Text Editor**|[zed](https://github.com/zed-industries/zed) \| [vscode](https://wiki.archlinux.org/title/Visual_Studio_Code)|

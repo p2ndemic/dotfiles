@@ -25,7 +25,7 @@
 | **Logout menu**              | [wleave](https://github.com/AMNatty/wleave) |
 | **Gamma Adjustments Tool**   | [wlsunset](https://git.sr.ht/~kennylevinsen/wlsunset) |
 | **File Manager**             | [pcmanfm-qt](https://github.com/lxqt/pcmanfm-qt) \| [nautilus](https://wiki.gnome.org/Apps/Files) \| [yazi](https://github.com/sxyazi/yazi)|
-| **Clipboard**                | [wl-clipboard-rs](https://github.com/YaLTeR/wl-clipboard-rs) + [cliphist](https://github.com/sentriz/cliphist) \| [clipvault](https://github.com/rolv-apneseth/clipvault) \| [clipse](https://github.com/savedra1/clipse)|
+| **Clipboard**                | [wl-clipboard-rs](https://github.com/YaLTeR/wl-clipboard-rs) + [cliphist](https://github.com/sentriz/cliphist) \| [clipse](https://github.com/savedra1/clipse)|
 | **Screenshot Software**      | [wayshot](https://git.sr.ht/~shinyzenith/wayshot) \| [grimshot](https://github.com/swaywm/sway/blob/master/contrib/grimshot) |
 | **Screen Recording**         | [wl-screenrec](https://github.com/russelltg/wl-screenrec) \| [gpu-screen-recorder](https://git.dec05eba.com/gpu-screen-recorder/about/) \| [obs](https://obsproject.com) |
 | **System Monitoring**        | [btop](https://github.com/aristocratos/btop) \| [glances](https://github.com/nicolargo/glances) \| [resources](https://github.com/nokyan/resources) \| [s-tui](https://github.com/amanusk/s-tui) |

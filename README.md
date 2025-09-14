@@ -24,8 +24,7 @@
 |**Lockscreen**|[swaylock](https://github.com/swaywm/swaylock) \| [swaylock-effects](https://github.com/mortie/swaylock-effects)|
 |**Shell**|[fish](https://github.com/fish-shell/fish-shell) + [oh-my-fish](https://github.com/oh-my-fish/oh-my-fish)|
 |**Media Player**|[mpv](https://github.com/mpv-player/mpv) + [yt-dlp](https://github.com/yt-dlp/yt-dlp)|
-
-|**Audio Player**|[rmpc](https://github.com/mierak/rmpc)
+|**Audio Player**|[rmpc](https://github.com/mierak/rmpc)|
 |**Audio Visualizer**|[cava](https://github.com/karlstav/cava) \| [musializer](https://github.com/tsoding/musializer)|
 |**Text Editor**|[zed](https://github.com/zed-industries/zed) \| [vscode](https://wiki.archlinux.org/title/Visual_Studio_Code)|
 |**Console Text Editor**|[micro](https://github.com/zyedidia/micro) \| [orbiton](https://github.com/xyproto/orbiton) \| [nano](https://cgit.git.savannah.gnu.org/cgit/nano.git)|

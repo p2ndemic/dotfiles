@@ -8,6 +8,8 @@
 |**Wayland Compositor**|[sway](https://github.com/swaywm/sway)|
 |**Wayland Protocols**|[wayland-protocols](https://gitlab.freedesktop.org/wayland/wayland-protocols) + [wlr-protocols](https://gitlab.freedesktop.org/wlroots/wlr-protocols) + [frog-protocols](https://github.com/misyltoad/frog-protocols)
 |**XGD Portal**|[xdg-desktop-portal-wlr](https://github.com/emersion/xdg-desktop-portal-wlr)|
+|**Power Alert Daemon**|[poweralertd](https://sr.ht/~kennylevinsen/poweralertd/)|
+|**Gamma Adjustments Tool**|[wlsunset](https://git.sr.ht/~kennylevinsen/wlsunset)|
 |**OSD**|[swayosd](https://github.com/ErikReider/SwayOSD)|
 |**OS Configuration Tool**|[swaysettings](https://github.com/ErikReider/SwaySettings)|
 |**Display Manager**|[ly](https://codeberg.org/fairyglade/ly) \| [gdm](https://gitlab.gnome.org/GNOME/gdm.git) \| [greetd](https://git.sr.ht/~kennylevinsen/greetd) + [regreet](https://github.com/rharish101/ReGreet)|

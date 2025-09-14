@@ -27,11 +27,9 @@
 | **Clipboard**                | [wl-clipboard-rs](https://github.com/YaLTeR/wl-clipboard-rs) + [cliphist](https://github.com/sentriz/cliphist) |
 | **Screenshot Software**      | [wayshot](https://git.sr.ht/~shinyzenith/wayshot) \| [grimshot](https://github.com/swaywm/sway/blob/master/contrib/grimshot) |
 | **Screen Recording**         | [wl-screenrec](https://github.com/russelltg/wl-screenrec) \| [gpu-screen-recorder](https://git.dec05eba.com/gpu-screen-recorder/about/) \| [obs](https://obsproject.com) |
-
 | **System Monitoring**        | [btop](https://github.com/aristocratos/btop) \| [glances](https://github.com/nicolargo/glances) \| [resources](https://github.com/nokyan/resources) \| [s-tui](https://github.com/amanusk/s-tui) |
 | **Text Editor**              | [zed](https://github.com/zed-industries/zed) \| [vscode](https://wiki.archlinux.org/title/Visual_Studio_Code) |
 | **Console Text Editor**      | [micro](https://github.com/zyedidia/micro) \| [orbiton](https://github.com/xyproto/orbiton) \| [nano](https://cgit.git.savannah.gnu.org/cgit/nano.git) |
-
 | **Media Player**             | [mpv](https://github.com/mpv-player/mpv) + [yt-dlp](https://github.com/yt-dlp/yt-dlp) |
 | **Audio Player**             | [rmpc](https://github.com/mierak/rmpc) |
 | **Audio Visualizer**         | [cava](https://github.com/karlstav/cava) \| [musializer](https://github.com/tsoding/musializer) |
@@ -49,7 +47,6 @@
 | **Icons**                    | [papirus Dark](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme) |
 | **Fonts**                    | [nerd fonts](https://github.com/ryanoasis/nerd-fonts) |
 | **Misc**                     | [xdg-ninja](https://github.com/b3nj5m1n/xdg-ninja) \| [wayfreeze](https://github.com/Jappie3/wayfreeze) \| [arch-update](https://github.com/Antiz96/arch-update)
-
 | **Console Utils**            | [fzf](https://github.com/junegunn/fzf) \| [skim](https://github.com/skim-rs/skim) \| [dua-cli](https://github.com/Byron/dua-cli) \| [bandwhich](https://github.com/imsnif/bandwhich) \| [pik](https://github.com/jacek-kurlit/pik) \| [kmon](https://github.com/orhun/kmon) \| [iotop](https://github.com/Tomas-M/iotop) \| [nvtop](https://github.com/Syllo/nvtop) \| [systemd-manager-tui](https://github.com/matheus-git/systemd-manager-tui) \| [s-tui](https://github.com/amanusk/s-tui) \| [navi](https://github.com/denisidoro/navi) \| [powertop](https://github.com/fenrus75/powertop) \| [laptop-mode-tools](https://github.com/rickysarraf/laptop-mode-tools/) \| [thermald](https://github.com/intel/thermal_daemon) \| [eza](https://github.com/eza-community/eza) \| [bat](https://github.com/sharkdp/bat) \| [ripgrep](https://github.com/BurntSushi/ripgrep) \| [kmon](https://github.com/orhun/kmon) \| [kmon](https://github.com/orhun/kmon)
 
 |Program|Name|

@@ -98,10 +98,10 @@
 
   <tr>
     <th rowspan="2">Network Management Tool</th>
-    <td><a href="https://networkmanager.dev/">networkmanager</a></td>
+    <td><a href="https://networkmanager.dev/">networkmanager</a> + <a href="https://gitlab.gnome.org/GNOME/network-manager-applet">nm-connection-editor</a></td>
   </tr>
   <tr>
-    <td><a href="https://gitlab.gnome.org/GNOME/network-manager-applet">network-manager-applet</a></td>
+    <td><a href="https://gitlab.gnome.org/GNOME/network-manager-applet">nm-connection-editor</a></td>
   </tr>
 
   <tr>

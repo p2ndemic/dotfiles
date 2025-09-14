@@ -477,3 +477,4 @@ Waybar / Sway: ✅ Темная тема, идеальна для ночного
 Поддержка сотен приложений
 
 https://github.com/GabePoel/KvLibadwaita
+https://github.com/avtzis/awesome-linux-ricing?tab=readme-ov-file

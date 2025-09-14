@@ -7,7 +7,7 @@
 |**OS**|[Arch Linux](https://archlinux.org/)|
 |**Wayland Compositor**|[sway](https://github.com/swaywm/sway)|
 |**Wayland Protocols**|[wayland-protocols](https://gitlab.freedesktop.org/wayland/wayland-protocols) + [wlr-protocols](https://gitlab.freedesktop.org/wlroots/wlr-protocols) + [frog-protocols](https://github.com/misyltoad/frog-protocols)
-|**Display Manager**|[]() \| []() | [greetd](https://git.sr.ht/~kennylevinsen/greetd) + [regreet](https://github.com/rharish101/ReGreet)|
+|**Display Manager**|[ly](https://codeberg.org/fairyglade/ly) \| [gdm](https://gitlab.gnome.org/GNOME/gdm.git) | [greetd](https://git.sr.ht/~kennylevinsen/greetd) + [regreet](https://github.com/rharish101/ReGreet)|
 |**Terminal Emulator**|[foot](https://codeberg.org/dnkl/foot)|
 |**Application Launcher**|[fuzzel](https://codeberg.org/dnkl/fuzzel)|
 |**Notification Daemon**|[fnott](https://codeberg.org/dnkl/fnott)|

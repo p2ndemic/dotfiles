@@ -41,3 +41,14 @@
 #### Fonts
   - nerd-fonts
   - todo ...
+
+
+<table border="1">
+  <tr>
+    <td rowspan="2">Левая объединённая ячейка</td>
+    <td>Правая верхняя</td>
+  </tr>
+  <tr>
+    <td>Правая нижняя</td>
+  </tr>
+</table>

@@ -6,7 +6,7 @@
 |------------------------------|------|
 | **OS**                       | [Arch Linux](https://archlinux.org/) \| [CachyOS](https://cachyos.org/) |
 | **Display Manager**          | [ly](https://codeberg.org/fairyglade/ly) \| [gdm](https://gitlab.gnome.org/GNOME/gdm.git) \| [greetd](https://git.sr.ht/~kennylevinsen/greetd) + [regreet](https://github.com/rharish101/ReGreet) |
-| **Wayland Compositor**       | [sway](https://github.com/swaywm/sway) |
+| **Wayland Compositor**       | [sway](https://github.com/swaywm/sway) \| [niri](https://github.com/YaLTeR/niri) |
 | **Wayland Protocols**        | [wayland-protocols](https://gitlab.freedesktop.org/wayland/wayland-protocols) + [wlr-protocols](https://gitlab.freedesktop.org/wlroots/wlr-protocols) + [frog-protocols](https://github.com/misyltoad/frog-protocols) |
 | **XDG Portal**               | [xdg-desktop-portal-wlr](https://github.com/emersion/xdg-desktop-portal-wlr) |
 | **Session Access Manager**   | [polkit](https://github.com/polkit-org/polkit) |

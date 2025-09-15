@@ -14,7 +14,7 @@
 | **Power Alert Daemon**       | [poweralertd](https://sr.ht/~kennylevinsen/poweralertd/) |
 | **Network Management Tool**  | [networkmanager](https://networkmanager.dev) + [nm-connection-editor](https://gitlab.gnome.org/GNOME/network-manager-applet) |
 | **Idle Management Daemon**   | [swayidle](https://github.com/swaywm/swayidle)|
-| **Display configuration tool**| [wlr-randr[optional]](https://sr.ht/~emersion/wlr-randr) \| [kanshi[optional]](https://sr.ht/~emersion/kanshi) \| [shikane[optional]](https://gitlab.com/w0lff/shikane)|
+| **Display configuration tool**| [wlr-randr[opt]](https://sr.ht/~emersion/wlr-randr) \| [kanshi[opt]](https://sr.ht/~emersion/kanshi) \| [shikane[opt]](https://gitlab.com/w0lff/shikane)|
 | **Shell**                    | [fish](https://github.com/fish-shell/fish-shell) + [oh-my-fish](https://github.com/oh-my-fish/oh-my-fish) |
 | **Terminal Emulator**        | [foot](https://codeberg.org/dnkl/foot) |
 | **Application Launcher**     | [fuzzel](https://codeberg.org/dnkl/fuzzel) |

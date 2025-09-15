@@ -510,133 +510,141 @@ https://github.com/GabePoel/KvLibadwaita
 https://github.com/avtzis/awesome-linux-ricing?tab=readme-ov-file
 
 
+## 🖥️ Operating Systems & Core Components
+
+| Category   | Programs                                                                 |
+|------------|--------------------------------------------------------------------------|
+| **OS**     | [Arch Linux](https://archlinux.org/) \| [CachyOS](https://cachyos.org/)  |
+
+---
 
 ## 🖥️ Operating Systems & Core Components
 
-| Category        | Programs                                                                 |
-|-----------------|--------------------------------------------------------------------------|
-| **OS**          | [Arch Linux](https://archlinux.org/) \| [CachyOS](https://cachyos.org/)  |
+| Category | Programs |
+|----------|----------|
+| **OS**   | [Arch Linux](https://archlinux.org) \| [CachyOS](https://cachyos.org) |
 
 ---
 
 ## 🚪 Display & Login Managers
 
-| Category               | Programs                                                                                                                                 |
-|------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
-| **Display Managers**   | [ly](https://codeberg.org/fairyglade/ly) \| [gdm](https://gitlab.gnome.org/GNOME/gdm.git) \| [greetd](https://git.sr.ht/~kennylevinsen/greetd) + [regreet](https://github.com/rharish101/ReGreet) |
+| Category             | Programs |
+|----------------------|----------|
+| **Display Managers** | [ly](https://codeberg.org/fairyglade/ly) \| [gdm](https://gitlab.gnome.org/GNOME/gdm.git) \| [greetd](https://git.sr.ht/~kennylevinsen/greetd) + [regreet](https://github.com/rharish101/ReGreet) |
 
 ---
 
 ## 🖼️ Graphics Stack: Wayland & X11
 
-| Category                   | Programs                                                                                                                                                                                                 |
-|----------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Wayland Compositors**    | [sway](https://github.com/swaywm/sway)                                                                                                                                                                   |
-| **Wayland Protocols**      | [wayland-protocols](https://gitlab.freedesktop.org/wayland/wayland-protocols) + [wlr-protocols](https://gitlab.freedesktop.org/wlroots/wlr-protocols) + [frog-protocols](https://github.com/misyltoad/frog-protocols) |
-| **Portals**            | [xdg-desktop-portal-wlr](https://github.com/emersion/xdg-desktop-portal-wlr)                                                                                                                              |
-| **Display Configuration \n[optional]**  | [wlr-randr](https://gitlab.freedesktop.org/emersion/wlr-randr) \| [kanshi](https://sr.ht/~emersion/kanshi) \| [shikane](https://gitlab.com/w0lff/shikane)                                   |
-| **Session Access Control** | [polkit](https://github.com/polkit-org/polkit)                                                                                                                                                           |
+| Category                      | Programs |
+|-------------------------------|----------|
+| **Wayland Compositors**       | [sway](https://github.com/swaywm/sway) |
+| **Wayland Protocols**         | [wayland-protocols](https://gitlab.freedesktop.org/wayland/wayland-protocols) + [wlr-protocols](https://gitlab.freedesktop.org/wlroots/wlr-protocols) + [frog-protocols](https://github.com/misyltoad/frog-protocols) |
+| **Portals**                   | [xdg-desktop-portal-wlr](https://github.com/emersion/xdg-desktop-portal-wlr) |
+| **Display Configuration (opt)** | [wlr-randr](https://gitlab.freedesktop.org/emersion/wlr-randr) \| [kanshi](https://sr.ht/~emersion/kanshi) \| [shikane](https://gitlab.com/w0lff/shikane) |
+| **Session Access Control**    | [polkit](https://github.com/polkit-org/polkit) |
 
 ---
 
 ## ⚡ Power & System Resource Management
 
-| Category                       | Programs                                                                                                                                 |
-|--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
-| **Power Daemons**              | [tuned](https://github.com/redhat-performance/tuned) + [tuned-gui](https://github.com/redhat-performance/tuned) \| [poweralertd](https://sr.ht/~kennylevinsen/poweralertd/) |
-| **System Monitoring**          | [btop](https://github.com/aristocratos/btop) \| [glances](https://github.com/nicolargo/glances) \| [resources](https://github.com/nokyan/resources) \| [kmon](https://github.com/orhun/kmon) \| [nvtop](https://github.com/Syllo/nvtop) \| [iotop](https://github.com/Tomas-M/iotop) \| [iftop](https://code.blinkace.com/pdw/iftop) \| [bandwhich](https://github.com/imsnif/bandwhich) \| [netdata](https://github.com/netdata/netdata) |
-| **Thermal & Power Tuning**     | [s-tui](https://github.com/amanusk/s-tui) \| [powertop](https://github.com/fenrus75/powertop) \| [thermald](https://github.com/intel/thermal_daemon) \| [laptop-mode-tools](https://github.com/rickysarraf/laptop-mode-tools/) |
+| Category                  | Programs |
+|---------------------------|----------|
+| **Power Daemons**         | [tuned](https://github.com/redhat-performance/tuned) + [tuned-gui](https://github.com/redhat-performance/tuned) \| [poweralertd](https://sr.ht/~kennylevinsen/poweralertd/) |
+| **System Monitoring**     | [btop](https://github.com/aristocratos/btop) \| [glances](https://github.com/nicolargo/glances) \| [resources](https://github.com/nokyan/resources) \| [kmon](https://github.com/orhun/kmon) \| [nvtop](https://github.com/Syllo/nvtop) \| [iotop](https://github.com/Tomas-M/iotop) \| [iftop](https://code.blinkace.com/pdw/iftop) \| [bandwhich](https://github.com/imsnif/bandwhich) \| [netdata](https://github.com/netdata/netdata) |
+| **Thermal & Power Tuning**| [s-tui](https://github.com/amanusk/s-tui) \| [powertop](https://github.com/fenrus75/powertop) \| [thermald](https://github.com/intel/thermal_daemon) \| [laptop-mode-tools](https://github.com/rickysarraf/laptop-mode-tools/) |
 
 ---
 
 ## 🌐 Networking & System Utilities
 
-| Category                   | Programs                                                                                                                               |
-|----------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
-| **Network Management**     | [networkmanager](https://networkmanager.dev) + [nm-connection-editor](https://gitlab.gnome.org/GNOME/network-manager-applet)            |
-| **System Utils**           | [acpid](https://wiki.archlinux.org/title/Acpid) \| [systemd-manager-tui](https://github.com/matheus-git/systemd-manager-tui)            |
-| **System Info**            | [inxi](https://codeberg.org/smxi/inxi) \| [fastfetch](https://github.com/fastfetch-cli/fastfetch)                                      |
+| Category               | Programs |
+|------------------------|----------|
+| **Network Management** | [networkmanager](https://networkmanager.dev) + [nm-connection-editor](https://gitlab.gnome.org/GNOME/network-manager-applet) |
+| **System Utils**       | [acpid](https://wiki.archlinux.org/title/Acpid) \| [systemd-manager-tui](https://github.com/matheus-git/systemd-manager-tui) |
+| **System Info**        | [inxi](https://codeberg.org/smxi/inxi) \| [fastfetch](https://github.com/fastfetch-cli/fastfetch) |
 
 ---
 
 ## 🖱️ Shell, Terminal & Workspace Tools
 
-| Category               | Programs                                                                                                                                                                                                                                                                                                                                 |
-|------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Shell**              | [fish](https://github.com/fish-shell/fish-shell) + [oh-my-fish](https://github.com/oh-my-fish/oh-my-fish) \| [oh-my-posh](https://github.com/JanDeDobbeleer/oh-my-posh)                                                                                                                                                                      |
-| **Terminal Emulators** | [foot](https://codeberg.org/dnkl/foot)                                                                                                                                                                                                                                                                                                   |
-| **Terminal Utils** | [fzf](https://github.com/junegunn/fzf) \| [skim](https://github.com/skim-rs/skim) \| [eza](https://github.com/eza-community/eza) \| [bat](https://github.com/sharkdp/bat) \| [ripgrep](https://github.com/BurntSushi/ripgrep) \| [fd](https://github.com/sharkdp/fd) \| [dua-cli](https://github.com/Byron/dua-cli) \| [duf](https://github.com/muesli/duf) \| [broot](https://github.com/Canop/broot) \| [fselect](https://github.com/jhspetersson/fselect) \| [navi](https://github.com/denisidoro/navi) \| [jq](https://jqlang.org) \| [usql](https://github.com/xo/usql) |
-| **Launchers**  | [fuzzel](https://codeberg.org/dnkl/fuzzel) \| [walker](https://github.com/abenz1267/walker) \| [wleave](https://github.com/AMNatty/wleave)                                                                                                                                                                                                |
-| **Bars & OSD**         | [waybar](https://github.com/Alexays/Waybar) \| [ironbar](https://github.com/JakeStanger/ironbar) / [swayosd](https://github.com/ErikReider/SwayOSD) \| [wob](https://github.com/francma/wob)                                                                                                                                               |
-| **Clipboard**          | [wl-clipboard-rs](https://github.com/YaLTeR/wl-clipboard-rs) + [cliphist](https://github.com/sentriz/cliphist) \| [clipse](https://github.com/savedra1/clipse) \| [clipvault](https://github.com/rolv-apneseth/clipvault)                                                                                                                  |
-| **Lock Screen & Logout menu**        | [swaylock](https://github.com/swaywm/swaylock) \| [waylock](https://codeberg.org/ifreund/waylock)                                                                                                                                                                                                                                         |
-| **Wallpaper Tool**          | [swaybg](https://github.com/swaywm/swaybg) \| [wpaperd](https://github.com/danyspin97/wpaperd) \| [wallutils](https://github.com/xyproto/wallutils)                                                                                                                                                                                        |
-| **Configuration Tool**     | [swaysettings](https://github.com/ErikReider/SwaySettings) + [nwg-displays](https://github.com/nwg-piotr/nwg-displays) + [nwg-look](https://github.com/nwg-piotr/nwg-look)                                                                                                                                                                 |
-| **Display Adjustments**| [brightnessctl](https://github.com/Hummer12007/brightnessctl) \| [wlsunset](https://git.sr.ht/~kennylevinsen/wlsunset)                                                                                                                                                                                                                     |
-| **Idle Management**    | [swayidle](https://github.com/swaywm/swayidle)                                                                                                                                                                                                                                                                                           |
+| Category               | Programs |
+|------------------------|----------|
+| **Shell & Frameworks** | [fish](https://github.com/fish-shell/fish-shell) + [oh-my-fish](https://github.com/oh-my-fish/oh-my-fish) \| [oh-my-posh](https://github.com/JanDeDobbeleer/oh-my-posh) |
+| **Terminal Emulators** | [foot](https://codeberg.org/dnkl/foot) |
+| **Terminal Utilities** | [fzf](https://github.com/junegunn/fzf) \| [skim](https://github.com/skim-rs/skim) \| [eza](https://github.com/eza-community/eza) \| [bat](https://github.com/sharkdp/bat) \| [ripgrep](https://github.com/BurntSushi/ripgrep) \| [fd](https://github.com/sharkdp/fd) \| [dua-cli](https://github.com/Byron/dua-cli) \| [duf](https://github.com/muesli/duf) \| [broot](https://github.com/Canop/broot) \| [fselect](https://github.com/jhspetersson/fselect) \| [navi](https://github.com/denisidoro/navi) \| [jq](https://jqlang.org) \| [usql](https://github.com/xo/usql) |
+| **Launchers**          | [fuzzel](https://codeberg.org/dnkl/fuzzel) \| [walker](https://github.com/abenz1267/walker) \| [wleave](https://github.com/AMNatty/wleave) |
+| **Bars & OSD**         | [waybar](https://github.com/Alexays/Waybar) \| [ironbar](https://github.com/JakeStanger/ironbar) / [swayosd](https://github.com/ErikReider/SwayOSD) \| [wob](https://github.com/francma/wob) |
+| **Clipboard**          | [wl-clipboard-rs](https://github.com/YaLTeR/wl-clipboard-rs) + [cliphist](https://github.com/sentriz/cliphist) \| [clipse](https://github.com/savedra1/clipse) \| [clipvault](https://github.com/rolv-apneseth/clipvault) |
+| **Lock & Logout**      | [swaylock](https://github.com/swaywm/swaylock) \| [waylock](https://codeberg.org/ifreund/waylock) |
+| **Wallpaper Tools**    | [swaybg](https://github.com/swaywm/swaybg) \| [wpaperd](https://github.com/danyspin97/wpaperd) \| [wallutils](https://github.com/xyproto/wallutils) |
+| **Config Tools**       | [swaysettings](https://github.com/ErikReider/SwaySettings) + [nwg-displays](https://github.com/nwg-piotr/nwg-displays) + [nwg-look](https://github.com/nwg-piotr/nwg-look) |
+| **Display Adjustment** | [brightnessctl](https://github.com/Hummer12007/brightnessctl) \| [wlsunset](https://git.sr.ht/~kennylevinsen/wlsunset) |
+| **Idle Management**    | [swayidle](https://github.com/swaywm/swayidle) |
 
 ---
 
 ## 📸 Multimedia: Screenshots, Recording, Audio/Video
 
-| Category               | Programs                                                                                                                                                                                                 |
-|------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Screenshots**        | [wayshot](https://git.sr.ht/~shinyzenith/wayshot) \| [grimshot](https://github.com/swaywm/sway/blob/master/contrib/grimshot) \| [satty](https://github.com/gabm/satty) \| [watershot](https://github.com/Kirottu/watershot) |
-| **Screen Recording**   | [wl-screenrec](https://github.com/russelltg/wl-screenrec) \| [gpu-screen-recorder](https://git.dec05eba.com/gpu-screen-recorder/about/) \| [obs](https://obsproject.com)                                     |
-| **Media Players**      | [mpv](https://github.com/mpv-player/mpv) + [yt-dlp](https://github.com/yt-dlp/yt-dlp) \| [rmpc](https://github.com/mierak/rmpc) \| [ncspot](https://github.com/hrkfdn/ncspot)                               |
-| **Audio Control**      | [easyeffects](https://github.com/wwmm/easyeffects) \| [pwvucontrol](https://github.com/saivert/pwvucontrol) \| [playerctl](https://github.com/altdesktop/playerctl)                                          |
-| **Audio Visualizers**  | [cava](https://github.com/karlstav/cava) \| [musializer](https://github.com/tsoding/musializer)                                                                                                            |
+| Category              | Programs |
+|-----------------------|----------|
+| **Screenshots**       | [wayshot](https://git.sr.ht/~shinyzenith/wayshot) \| [grimshot](https://github.com/swaywm/sway/blob/master/contrib/grimshot) \| [satty](https://github.com/gabm/satty) \| [watershot](https://github.com/Kirottu/watershot) |
+| **Screen Recording**  | [wl-screenrec](https://github.com/russelltg/wl-screenrec) \| [gpu-screen-recorder](https://git.dec05eba.com/gpu-screen-recorder/about/) \| [obs](https://obsproject.com) |
+| **Multimedia Control**| [easyeffects](https://github.com/wwmm/easyeffects) \| [pwvucontrol](https://github.com/saivert/pwvucontrol) \| [playerctl](https://github.com/altdesktop/playerctl) |
+| **Media Players**     | [mpv](https://github.com/mpv-player/mpv) + [yt-dlp](https://github.com/yt-dlp/yt-dlp) \| [rmpc](https://github.com/mierak/rmpc) \| [ncspot](https://github.com/hrkfdn/ncspot) |
+| **Audio Visualizers** | [cava](https://github.com/karlstav/cava) \| [musializer](https://github.com/tsoding/musializer) |
 
 ---
 
 ## 📁 File Management
 
-| Category           | Programs                                                                                               |
-|--------------------|--------------------------------------------------------------------------------------------------------|
-| **GUI File Mgr**   | [pcmanfm-qt](https://github.com/lxqt/pcmanfm-qt) \| [nautilus](https://wiki.gnome.org/Apps/Files)       |
-| **Terminal File Mgr** | [yazi](https://github.com/sxyazi/yazi)                                                               |
-| **File Search**    | [fselect](https://github.com/jhspetersson/fselect)                                                     |
+| Category                   | Programs |
+|----------------------------|----------|
+| **GUI File Managers**      | [pcmanfm-qt](https://github.com/lxqt/pcmanfm-qt) \| [nautilus](https://wiki.gnome.org/Apps/Files) |
+| **Terminal File Managers** | [yazi](https://github.com/sxyazi/yazi) |
+| **File Search**            | [fselect](https://github.com/jhspetersson/fselect) |
 
 ---
 
 ## ✍️ Text Editors
 
-| Category       | Programs                                                                                                                                 |
-|----------------|------------------------------------------------------------------------------------------------------------------------------------------|
-| **GUI Editors**| [zed](https://github.com/zed-industries/zed) \| [vscode](https://wiki.archlinux.org/title/Visual_Studio_Code)                             |
+| Category          | Programs |
+|-------------------|----------|
+| **GUI Editors**   | [zed](https://github.com/zed-industries/zed) \| [vscode](https://wiki.archlinux.org/title/Visual_Studio_Code) |
 | **Terminal Editors** | [micro](https://github.com/zyedidia/micro) \| [orbiton](https://github.com/xyproto/orbiton) \| [nano](https://cgit.git.savannah.gnu.org/cgit/nano.git) |
 
 ---
 
 ## 📚 Readers & Viewers
 
-| Category       | Programs                                       |
-|----------------|------------------------------------------------|
-| **PDF Reader** | [zathura](https://github.com/pwmt/zathura)     |
+| Category         | Programs |
+|------------------|----------|
+| **PDF Reader**   | [zathura](https://github.com/pwmt/zathura) |
 | **Image Viewer** | [oculante](https://github.com/woelper/oculante) |
-| **Clock/Weather** | [tenki](https://github.com/ckaznable/tenki)   |
+| **Clock/Weather**| [tenki](https://github.com/ckaznable/tenki) |
 
 ---
 
 ## 🎨 Themes, Icons & Appearance
 
-| Category           | Programs                                                                                                                                 |
-|--------------------|------------------------------------------------------------------------------------------------------------------------------------------|
-| **Theme Managers** | [kvantum](https://github.com/tsujan/Kvantum) + [nwg-look](https://github.com/nwg-piotr/nwg-look)                                          |
-| **GTK Themes**     | [libadwaita](https://gitlab.gnome.org/GNOME/libadwaita) \| [nordic](https://github.com/EliverLara/Nordic) \| [whale](https://github.com/anufrievroman/whale) |
-| **QT Themes**      | [kvlibadwaita](https://github.com/GabePoel/KvLibadwaita) \| [nordic](https://github.com/EliverLara/Nordic) \| [whale](https://github.com/anufrievroman/whale) |
-| **Icons**          | [papirus Dark](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)                                                              |
-| **Fonts**          | [nerd fonts](https://github.com/ryanoasis/nerd-fonts)                                                                                     |
+| Category         | Programs |
+|------------------|----------|
+| **Theme Managers**| [kvantum](https://github.com/tsujan/Kvantum) + [nwg-look](https://github.com/nwg-piotr/nwg-look) |
+| **GTK Themes**   | [libadwaita](https://gitlab.gnome.org/GNOME/libadwaita) \| [nordic](https://github.com/EliverLara/Nordic) \| [whale](https://github.com/anufrievroman/whale) |
+| **QT Themes**    | [kvlibadwaita](https://github.com/GabePoel/KvLibadwaita) \| [nordic](https://github.com/EliverLara/Nordic) \| [whale](https://github.com/anufrievroman/whale) |
+| **Icons**        | [papirus Dark](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme) |
+| **Fonts**        | [nerd fonts](https://github.com/ryanoasis/nerd-fonts) |
 
 ---
 
 ## 🧩 Miscellaneous & Utilities
 
-| Category           | Programs                                                                                                                                                                                                 |
-|--------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Notes**          | [obsidian](https://obsidian.md) \| [AppFlowy](https://github.com/AppFlowy-IO/AppFlowy) + [notesnook](https://notesnook.com)                                                                                 |
-| **Bookmarks**      | [raindrop](https://raindrop.io)                                                                                                                                                                          |
-| **Emoji Picker**   | [bemoji](https://github.com/marty-oehme/bemoji)                                                                                                                                                          |
-| **Terminal Visuals** | [ascii-rain](https://github.com/nkleemann/ascii-rain)                                                                                                                                                 |
-| **System Utils**   | [arch-update](https://github.com/Antiz96/arch-update) \| [xdg-ninja](https://github.com/b3nj5m1n/xdg-ninja) \| [wluma](https://github.com/maximbaz/wluma) \| [planify](https://github.com/alainm23/planify) \| [mission-center](https://gitlab.com/mission-center-devs/mission-center) \| [wavemon](https://github.com/uoaerg/wavemon) \| [pik](https://github.com/jacek-kurlit/pik) |
-| **Freeze/Block**   | [wayfreeze](https://github.com/Jappie3/wayfreeze) \| [hyprfreeze](https://github.com/Zerodya/hyprfreeze) \| [vigiland](https://github.com/Jappie3/vigiland) \| [woomer](https://github.com/coffeeispower/woomer) |
+| Category            | Programs |
+|---------------------|----------|
+| **Notes**           | [obsidian](https://obsidian.md) \| [AppFlowy](https://github.com/AppFlowy-IO/AppFlowy) \| [notesnook](https://notesnook.com) |
+| **Bookmarks**       | [raindrop](https://raindrop.io) |
+| **Emoji Picker**    | [bemoji](https://github.com/marty-oehme/bemoji) |
+| **Terminal Visuals**| [ascii-rain](https://github.com/nkleemann/ascii-rain) |
+| **System Utils**    | [arch-update](https://github.com/Antiz96/arch-update) \| [xdg-ninja](https://github.com/b3nj5m1n/xdg-ninja) \| [wluma](https://github.com/maximbaz/wluma) \| [planify](https://github.com/alainm23/planify) \| [mission-center](https://gitlab.com/mission-center-devs/mission-center) \| [wavemon](https://github.com/uoaerg/wavemon) \| [pik](https://github.com/jacek-kurlit/pik) |
+| **Freeze/Block**    | [wayfreeze](https://github.com/Jappie3/wayfreeze) \| [hyprfreeze](https://github.com/Zerodya/hyprfreeze) \| [vigiland](https://github.com/Jappie3/vigiland) \| [woomer](https://github.com/coffeeispower/woomer) |
+

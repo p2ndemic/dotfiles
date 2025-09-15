@@ -9,6 +9,7 @@
 | **Wayland Compositor**       | [sway](https://github.com/swaywm/sway) |
 | **Wayland Protocols**        | [wayland-protocols](https://gitlab.freedesktop.org/wayland/wayland-protocols) + [wlr-protocols](https://gitlab.freedesktop.org/wlroots/wlr-protocols) + [frog-protocols](https://github.com/misyltoad/frog-protocols) |
 | **XDG Portal**               | [xdg-desktop-portal-wlr](https://github.com/emersion/xdg-desktop-portal-wlr) |
+| **Session Access Manager**   | [polkit](https://github.com/polkit-org/polkit) |
 | **Power Daemon**             | [tuned](https://github.com/redhat-performance/tuned) + [tuned-gui](https://github.com/redhat-performance/tuned) |
 | **Power Alert Daemon**       | [poweralertd](https://sr.ht/~kennylevinsen/poweralertd/) |
 | **Network Management Tool**  | [networkmanager](https://networkmanager.dev/) + [nm-connection-editor](https://gitlab.gnome.org/GNOME/network-manager-applet) |

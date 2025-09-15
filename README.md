@@ -136,7 +136,7 @@ cp -r dotfiles/.config/* ~/.config
     <td><a href="https://github.com/swaywm/swayidle">swayidle</a></td>
   </tr>
   <tr>
-    <th rowspan="3">Display configuration tool [optional]</th>
+    <th rowspan="3">Display configuration tool \n[optional]</th>
     <td><a href="https://gitlab.freedesktop.org/emersion/wlr-randr">wlr-randr</a></td>
   </tr>
   <tr>

@@ -33,8 +33,9 @@
 | **System Monitoring**        | [btop](https://github.com/aristocratos/btop)|
 | **GUI Text Editor**          | [zed](https://github.com/zed-industries/zed) \| [vscode](https://wiki.archlinux.org/title/Visual_Studio_Code) |
 | **Console Text Editor**      | [micro](https://github.com/zyedidia/micro) \| [orbiton](https://github.com/xyproto/orbiton) \| [nano](https://cgit.git.savannah.gnu.org/cgit/nano.git) |
+| **Media control daemon**     | [playerctl](https://github.com/altdesktop/playerctl) |
 | **Media Player**             | [mpv](https://github.com/mpv-player/mpv) + [yt-dlp](https://github.com/yt-dlp/yt-dlp) |
-| **Audio Player**             | [playerctl](https://github.com/altdesktop/playerctl) + [rmpc](https://github.com/mierak/rmpc) \| [ncspot](https://github.com/hrkfdn/ncspot) |
+| **Audio Player**             | [rmpc](https://github.com/mierak/rmpc) \| [ncspot](https://github.com/hrkfdn/ncspot) |
 | **Audio Visualizer**         | [cava](https://github.com/karlstav/cava) \| [musializer](https://github.com/tsoding/musializer) |
 | **PDF Reader**               | [zathura](https://github.com/pwmt/zathura) |
 | **Image Viewer**             | [oculante](https://github.com/woelper/oculante) |

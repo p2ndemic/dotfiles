@@ -13,7 +13,7 @@
 | **Power Daemon**             | [tuned](https://github.com/redhat-performance/tuned) + [tuned-gui](https://github.com/redhat-performance/tuned) |
 | **Power Alert Daemon**       | [poweralertd](https://sr.ht/~kennylevinsen/poweralertd/) |
 | **Network Management Tool**  | [networkmanager](https://networkmanager.dev) + [nm-connection-editor](https://gitlab.gnome.org/GNOME/network-manager-applet) |
-| **Idle Management Daemon**   | [swayidle](https://github.com/swaywm/swayidle)|
+| **Idle Management Daemon**   | [swayidle](https://github.com/swaywm/swayidle) \| [vigiland](https://github.com/Jappie3/vigiland)|
 | **Display configuration tool**| [wlr-randr[opt]](https://gitlab.freedesktop.org/emersion/wlr-randr) \| [kanshi[opt]](https://sr.ht/~emersion/kanshi) \| [shikane[opt]](https://gitlab.com/w0lff/shikane)|
 | **Shell**                    | [fish](https://github.com/fish-shell/fish-shell) + [oh-my-fish](https://github.com/oh-my-fish/oh-my-fish) |
 | **Terminal Emulator**        | [foot](https://codeberg.org/dnkl/foot) |

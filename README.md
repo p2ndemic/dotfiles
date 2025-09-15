@@ -541,7 +541,6 @@ https://github.com/avtzis/awesome-linux-ricing?tab=readme-ov-file
 | **Wayland Compositors**       | [sway](https://github.com/swaywm/sway) |
 | **Wayland Protocols**         | [wayland-protocols](https://gitlab.freedesktop.org/wayland/wayland-protocols) + [wlr-protocols](https://gitlab.freedesktop.org/wlroots/wlr-protocols) + [frog-protocols](https://github.com/misyltoad/frog-protocols) |
 | **Portals**                   | [xdg-desktop-portal-wlr](https://github.com/emersion/xdg-desktop-portal-wlr) |
-| **Display Configuration (opt)** | [wlr-randr](https://gitlab.freedesktop.org/emersion/wlr-randr) \| [kanshi](https://sr.ht/~emersion/kanshi) \| [shikane](https://gitlab.com/w0lff/shikane) |
 | **Session Access Control**    | [polkit](https://github.com/polkit-org/polkit) |
 
 ---
@@ -568,19 +567,20 @@ https://github.com/avtzis/awesome-linux-ricing?tab=readme-ov-file
 
 ## 🖱️ Shell, Terminal & Workspace Tools
 
-| Category               | Programs |
-|------------------------|----------|
-| **Shell & Frameworks** | [fish](https://github.com/fish-shell/fish-shell) + [oh-my-fish](https://github.com/oh-my-fish/oh-my-fish) \| [oh-my-posh](https://github.com/JanDeDobbeleer/oh-my-posh) |
-| **Terminal Emulators** | [foot](https://codeberg.org/dnkl/foot) |
-| **Terminal Utilities** | [fzf](https://github.com/junegunn/fzf) \| [skim](https://github.com/skim-rs/skim) \| [eza](https://github.com/eza-community/eza) \| [bat](https://github.com/sharkdp/bat) \| [ripgrep](https://github.com/BurntSushi/ripgrep) \| [fd](https://github.com/sharkdp/fd) \| [dua-cli](https://github.com/Byron/dua-cli) \| [duf](https://github.com/muesli/duf) \| [broot](https://github.com/Canop/broot) \| [fselect](https://github.com/jhspetersson/fselect) \| [navi](https://github.com/denisidoro/navi) \| [jq](https://jqlang.org) \| [usql](https://github.com/xo/usql) |
-| **Launchers**          | [fuzzel](https://codeberg.org/dnkl/fuzzel) \| [walker](https://github.com/abenz1267/walker) \| [wleave](https://github.com/AMNatty/wleave) |
-| **Bars & OSD**         | [waybar](https://github.com/Alexays/Waybar) \| [ironbar](https://github.com/JakeStanger/ironbar) / [swayosd](https://github.com/ErikReider/SwayOSD) \| [wob](https://github.com/francma/wob) |
-| **Clipboard**          | [wl-clipboard-rs](https://github.com/YaLTeR/wl-clipboard-rs) + [cliphist](https://github.com/sentriz/cliphist) \| [clipse](https://github.com/savedra1/clipse) \| [clipvault](https://github.com/rolv-apneseth/clipvault) |
-| **Lock & Logout**      | [swaylock](https://github.com/swaywm/swaylock) \| [waylock](https://codeberg.org/ifreund/waylock) |
-| **Wallpaper Tools**    | [swaybg](https://github.com/swaywm/swaybg) \| [wpaperd](https://github.com/danyspin97/wpaperd) \| [wallutils](https://github.com/xyproto/wallutils) |
-| **Config Tools**       | [swaysettings](https://github.com/ErikReider/SwaySettings) + [nwg-displays](https://github.com/nwg-piotr/nwg-displays) + [nwg-look](https://github.com/nwg-piotr/nwg-look) |
-| **Display Adjustment** | [brightnessctl](https://github.com/Hummer12007/brightnessctl) \| [wlsunset](https://git.sr.ht/~kennylevinsen/wlsunset) |
-| **Idle Management**    | [swayidle](https://github.com/swaywm/swayidle) |
+| Category                 | Programs |
+|--------------------------|----------|
+| **Shell & Frameworks**   | [fish](https://github.com/fish-shell/fish-shell) + [oh-my-fish](https://github.com/oh-my-fish/oh-my-fish) \| [oh-my-posh](https://github.com/JanDeDobbeleer/oh-my-posh) |
+| **Terminal Emulators**   | [foot](https://codeberg.org/dnkl/foot) |
+| **Terminal Utilities**   | [fzf](https://github.com/junegunn/fzf) \| [skim](https://github.com/skim-rs/skim) \| [eza](https://github.com/eza-community/eza) \| [bat](https://github.com/sharkdp/bat) \| [ripgrep](https://github.com/BurntSushi/ripgrep) \| [fd](https://github.com/sharkdp/fd) \| [dua-cli](https://github.com/Byron/dua-cli) \| [duf](https://github.com/muesli/duf) \| [broot](https://github.com/Canop/broot) \| [fselect](https://github.com/jhspetersson/fselect) \| [navi](https://github.com/denisidoro/navi) \| [jq](https://jqlang.org) \| [usql](https://github.com/xo/usql) \| [fselect](https://github.com/jhspetersson/fselect) |
+| **Launchers & Menus**    | [fuzzel](https://codeberg.org/dnkl/fuzzel) \| [walker](https://github.com/abenz1267/walker) \| [wleave](https://github.com/AMNatty/wleave) |
+| **Bars & OSD**           | [waybar](https://github.com/Alexays/Waybar) \| [ironbar](https://github.com/JakeStanger/ironbar) / [swayosd](https://github.com/ErikReider/SwayOSD) \| [wob](https://github.com/francma/wob) |
+| **Clipboard**            | [wl-clipboard-rs](https://github.com/YaLTeR/wl-clipboard-rs) + [cliphist](https://github.com/sentriz/cliphist) \| [clipse](https://github.com/savedra1/clipse) \| [clipvault](https://github.com/rolv-apneseth/clipvault) |
+| **Lock & Logout**        | [swaylock](https://github.com/swaywm/swaylock) \| [waylock](https://codeberg.org/ifreund/waylock) / [wleave](https://github.com/AMNatty/wleave) |
+| **Wallpaper Tools**      | [swaybg](https://github.com/swaywm/swaybg) \| [wpaperd](https://github.com/danyspin97/wpaperd) \| [wallutils](https://github.com/xyproto/wallutils) |
+| **Config Tools**         | [swaysettings](https://github.com/ErikReider/SwaySettings) + [nwg-displays](https://github.com/nwg-piotr/nwg-displays) + [nwg-look](https://github.com/nwg-piotr/nwg-look) |
+| **Output configuration** | [wlr-randr](https://gitlab.freedesktop.org/emersion/wlr-randr) \| [kanshi](https://sr.ht/~emersion/kanshi) \| [shikane](https://gitlab.com/w0lff/shikane) |
+| **Display Adjustment**   | [brightnessctl](https://github.com/Hummer12007/brightnessctl) \| [wlsunset](https://git.sr.ht/~kennylevinsen/wlsunset) |
+| **Idle Management**      | [swayidle](https://github.com/swaywm/swayidle) |
 
 ---
 
@@ -590,19 +590,19 @@ https://github.com/avtzis/awesome-linux-ricing?tab=readme-ov-file
 |-----------------------|----------|
 | **Screenshots**       | [wayshot](https://git.sr.ht/~shinyzenith/wayshot) \| [grimshot](https://github.com/swaywm/sway/blob/master/contrib/grimshot) \| [satty](https://github.com/gabm/satty) \| [watershot](https://github.com/Kirottu/watershot) |
 | **Screen Recording**  | [wl-screenrec](https://github.com/russelltg/wl-screenrec) \| [gpu-screen-recorder](https://git.dec05eba.com/gpu-screen-recorder/about/) \| [obs](https://obsproject.com) |
-| **Multimedia Control**| [easyeffects](https://github.com/wwmm/easyeffects) \| [pwvucontrol](https://github.com/saivert/pwvucontrol) \| [playerctl](https://github.com/altdesktop/playerctl) |
-| **Media Players**     | [mpv](https://github.com/mpv-player/mpv) + [yt-dlp](https://github.com/yt-dlp/yt-dlp) \| [rmpc](https://github.com/mierak/rmpc) \| [ncspot](https://github.com/hrkfdn/ncspot) |
+| **Multimedia Control**| [playerctl](https://github.com/altdesktop/playerctl) + [pwvucontrol](https://github.com/saivert/pwvucontrol) \| [easyeffects](https://github.com/wwmm/easyeffects)  |
+| **Media Players**     | [mpv](https://github.com/mpv-player/mpv) + [yt-dlp](https://github.com/yt-dlp/yt-dlp) |
+| **Audio Players**     | [rmpc](https://github.com/mierak/rmpc) \| [ncspot](https://github.com/hrkfdn/ncspot) |
 | **Audio Visualizers** | [cava](https://github.com/karlstav/cava) \| [musializer](https://github.com/tsoding/musializer) |
 
 ---
 
-## 📁 File Management
+## 📁 File Managers
 
 | Category                   | Programs |
 |----------------------------|----------|
 | **GUI File Managers**      | [pcmanfm-qt](https://github.com/lxqt/pcmanfm-qt) \| [nautilus](https://wiki.gnome.org/Apps/Files) |
 | **Terminal File Managers** | [yazi](https://github.com/sxyazi/yazi) |
-| **File Search**            | [fselect](https://github.com/jhspetersson/fselect) |
 
 ---
 

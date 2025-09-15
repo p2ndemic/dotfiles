@@ -12,7 +12,8 @@
 | **Session Access Manager**   | [polkit](https://github.com/polkit-org/polkit) |
 | **Power Daemon**             | [tuned](https://github.com/redhat-performance/tuned) + [tuned-gui](https://github.com/redhat-performance/tuned) |
 | **Power Alert Daemon**       | [poweralertd](https://sr.ht/~kennylevinsen/poweralertd/) |
-| **Network Management Tool**  | [networkmanager](https://networkmanager.dev/) + [nm-connection-editor](https://gitlab.gnome.org/GNOME/network-manager-applet) |
+| **Network Management Tool**  | [networkmanager](https://networkmanager.dev) + [nm-connection-editor](https://gitlab.gnome.org/GNOME/network-manager-applet) |
+| **Idle Management Daemon**   | [swayidle](https://github.com/swaywm/swayidle)|
 | **Shell**                    | [fish](https://github.com/fish-shell/fish-shell) + [oh-my-fish](https://github.com/oh-my-fish/oh-my-fish) |
 | **Terminal Emulator**        | [foot](https://codeberg.org/dnkl/foot) |
 | **Application Launcher**     | [fuzzel](https://codeberg.org/dnkl/fuzzel) |
@@ -39,8 +40,8 @@
 | **Clock**                    | [tenki](https://github.com/ckaznable/tenki) |
 | **Fetch**                    | [fastfetch](https://github.com/fastfetch-cli/fastfetch) |
 | **Terminal Visuals**         | [ascii-rain](https://github.com/nkleemann/ascii-rain) |
-| **Notes**                    | [obsidian](https://obsidian.md/) + [notesnook](https://notesnook.com/) |
-| **Bookmark manager**         | [raindrop](https://raindrop.io/) |
+| **Notes**                    | [obsidian](https://obsidian.md) + [notesnook](https://notesnook.com) |
+| **Bookmark manager**         | [raindrop](https://raindrop.io) |
 | **SQL Tools**                | [usql](https://github.com/xo/usql) |
 | **Emoji picker**             | [bemoji](https://github.com/marty-oehme/bemoji) |
 | **Theme manager**            | [kvantum](https://github.com/tsujan/Kvantum) + [nwg-look](https://github.com/nwg-piotr/nwg-look)|

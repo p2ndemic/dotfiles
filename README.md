@@ -70,7 +70,7 @@ There is no installation script yet, but in the meantime you can clone the repo 
 <u>Example</u>:
 
 ```
-git clone https://github.com/lvntcnylmz/dotfiles.git
+git clone https://github.com/p2ndemic/dotfiles.git
 cp -r dotfiles/.config/* ~/.config
 ```
 

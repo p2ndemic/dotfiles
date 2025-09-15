@@ -21,7 +21,6 @@
 | **OSD**                      | [swayosd](https://github.com/ErikReider/SwayOSD) \| [wob](https://github.com/francma/wob) |
 | **Wallpaper Tool**           |[swaybg](https://github.com/swaywm/swaybg) \| [wpaperd](https://github.com/danyspin97/wpaperd) \| [wallutils](https://github.com/xyproto/wallutils)| 
 | **Lockscreen & Logout menu** | [swaylock](https://github.com/swaywm/swaylock) + [wleave](https://github.com/AMNatty/wleave) |
-| **Logout menu**              | [wleave](https://github.com/AMNatty/wleave) |
 | **Configuration Tools**      | [swaysettings](https://github.com/ErikReider/SwaySettings) + [nwg-displays](https://github.com/nwg-piotr/nwg-displays)|
 | **Brightness Adjustments Tool**| [brightnessctl](https://github.com/Hummer12007/brightnessctl) |
 | **Gamma Adjustments Tool**   | [wlsunset](https://git.sr.ht/~kennylevinsen/wlsunset) |

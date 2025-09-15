@@ -17,7 +17,7 @@
 | **Terminal Emulator**        | [foot](https://codeberg.org/dnkl/foot) |
 | **Application Launcher**     | [fuzzel](https://codeberg.org/dnkl/fuzzel) |
 | **Notification Daemon**      | [fnott](https://codeberg.org/dnkl/fnott) \| [mako](https://github.com/emersion/mako)|
-| **Bar**                      | [waybar](https://github.com/Alexays/Waybar) |
+| **Bar**                      | [waybar](https://github.com/Alexays/Waybar) \| [ironbar](https://github.com/JakeStanger/ironbar)|
 | **OSD**                      | [swayosd](https://github.com/ErikReider/SwayOSD) \| [wob](https://github.com/francma/wob) |
 | **Wallpaper Tool**           |[swaybg](https://github.com/swaywm/swaybg) \| [wpaperd](https://github.com/danyspin97/wpaperd)| 
 | **Lockscreen**               | [swaylock](https://github.com/swaywm/swaylock) \| [swaylock-effects](https://github.com/mortie/swaylock-effects)|

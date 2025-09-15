@@ -42,7 +42,7 @@
 | **Clock**                    | [tenki](https://github.com/ckaznable/tenki) |
 | **Fetch**                    | [fastfetch](https://github.com/fastfetch-cli/fastfetch) |
 | **Terminal Visuals**         | [ascii-rain](https://github.com/nkleemann/ascii-rain) |
-| **Notes**                    | [obsidian](https://obsidian.md) + [notesnook](https://notesnook.com) |
+| **Notes**                    | [obsidian](https://obsidian.md) \| [AppFlowy](https://github.com/AppFlowy-IO/AppFlowy) + [notesnook](https://notesnook.com) |
 | **Bookmark manager**         | [raindrop](https://raindrop.io) |
 | **SQL Tools**                | [usql](https://github.com/xo/usql) |
 | **Emoji picker**             | [bemoji](https://github.com/marty-oehme/bemoji) |

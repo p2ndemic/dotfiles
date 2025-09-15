@@ -81,29 +81,18 @@ cp -r dotfiles/.config/* ~/.config
 
 ## Screenshots
 
-
-<table border="1">
+<table>
   <tr>
-    <th>OS</th>
+    <th>Module Type</th>
+    <th>Module Name</th>
+  </tr>
+  <tr>
+    <th rowspan="2">OS</th>
     <td><a href="https://archlinux.org/">Arch Linux</a></td>
   </tr>
-
   <tr>
-    <th>Wayland Compositor</th>
-    <td><a href="https://github.com/swaywm/sway">sway</a></td>
+    <td><a href="https://cachyos.org/">CachyOS</a></td>
   </tr>
-
-  <tr>
-    <th rowspan="3">Wayland Protocols</th>
-    <td><a href="https://gitlab.freedesktop.org/wayland/wayland-protocols">wayland-protocols</a></td>
-  </tr>
-  <tr>
-    <td><a href="https://gitlab.freedesktop.org/wlroots/wlr-protocols">wlr-protocols</a></td>
-  </tr>
-  <tr>
-    <td><a href="https://github.com/misyltoad/frog-protocols">frog-protocols</a></td>
-  </tr>
-
   <tr>
     <th rowspan="3">Display Manager</th>
     <td><a href="https://codeberg.org/fairyglade/ly">ly</a></td>
@@ -114,122 +103,134 @@ cp -r dotfiles/.config/* ~/.config
   <tr>
     <td><a href="https://git.sr.ht/~kennylevinsen/greetd">greetd</a> + <a href="https://github.com/rharish101/ReGreet">ReGreet</a></td>
   </tr>
-
+  <tr>
+    <th>Wayland Compositor</th>
+    <td><a href="https://github.com/swaywm/sway">sway</a></td>
+  </tr>
+  <tr>
+    <th>Wayland Protocols</th>
+    <td><a href="https://gitlab.freedesktop.org/wayland/wayland-protocols">wayland-protocols</a> + <a href="https://gitlab.freedesktop.org/wlroots/wlr-protocols">wlr-protocols</a> + <a href="https://github.com/misyltoad/frog-protocols">frog-protocols</a></td>
+  </tr>
+  <tr>
+    <th>XDG Portal</th>
+    <td><a href="https://github.com/emersion/xdg-desktop-portal-wlr">xdg-desktop-portal-wlr</a></td>
+  </tr>
+  <tr>
+    <th>Session Access Manager</th>
+    <td><a href="https://github.com/polkit-org/polkit">polkit</a></td>
+  </tr>
+  <tr>
+    <th>Power Daemon</th>
+    <td><a href="https://github.com/redhat-performance/tuned">tuned</a> + <a href="https://github.com/redhat-performance/tuned">tuned-gui</a></td>
+  </tr>
+  <tr>
+    <th>Power Alert Daemon</th>
+    <td><a href="https://sr.ht/~kennylevinsen/poweralertd/">poweralertd</a></td>
+  </tr>
+  <tr>
+    <th>Network Management Tool</th>
+    <td><a href="https://networkmanager.dev">networkmanager</a> + <a href="https://gitlab.gnome.org/GNOME/network-manager-applet">nm-connection-editor</a></td>
+  </tr>
+  <tr>
+    <th>Idle Management Daemon</th>
+    <td><a href="https://github.com/swaywm/swayidle">swayidle</a></td>
+  </tr>
+  <tr>
+    <th rowspan="3">Display configuration tool [optional]</th>
+    <td><a href="https://gitlab.freedesktop.org/emersion/wlr-randr">wlr-randr</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://sr.ht/~emersion/kanshi">kanshi</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://gitlab.com/w0lff/shikane">shikane</a></td>
+  </tr>
+  <tr>
+    <th>Shell</th>
+    <td><a href="https://github.com/fish-shell/fish-shell">fish</a> + <a href="https://github.com/oh-my-fish/oh-my-fish">oh-my-fish</a></td>
+  </tr>
   <tr>
     <th>Terminal Emulator</th>
     <td><a href="https://codeberg.org/dnkl/foot">foot</a></td>
   </tr>
-
   <tr>
-    <th>Application Launcher</th>
+    <th rowspan="2">Application Launcher</th>
     <td><a href="https://codeberg.org/dnkl/fuzzel">fuzzel</a></td>
   </tr>
-
   <tr>
-    <th>Notification Daemon</th>
+    <td><a href="https://github.com/abenz1267/walker">walker</a></td>
+  </tr>
+  <tr>
+    <th rowspan="2">Notification Daemon</th>
     <td><a href="https://codeberg.org/dnkl/fnott">fnott</a></td>
   </tr>
-
   <tr>
-    <th>Wayland Bar</th>
+    <td><a href="https://github.com/emersion/mako">mako</a></td>
+  </tr>
+  <tr>
+    <th rowspan="2">Bar</th>
     <td><a href="https://github.com/Alexays/Waybar">waybar</a></td>
   </tr>
-
   <tr>
-    <th rowspan="2">Network Management Tool</th>
-    <td><a href="https://networkmanager.dev/">networkmanager</a> + <a href="https://gitlab.gnome.org/GNOME/network-manager-applet">nm-connection-editor</a></td>
+    <td><a href="https://github.com/JakeStanger/ironbar">ironbar</a></td>
   </tr>
   <tr>
-    <td><a href="https://gitlab.gnome.org/GNOME/network-manager-applet">nm-connection-editor</a></td>
-  </tr>
-
-  <tr>
-    <th rowspan="2">System Resource Monitor</th>
-    <td><a href="https://github.com/aristocratos/btop">btop</a></td>
+    <th rowspan="2">OSD</th>
+    <td><a href="https://github.com/ErikReider/SwayOSD">swayosd</a></td>
   </tr>
   <tr>
-    <td><a href="https://github.com/nokyan/resources">resources</a></td>
+    <td><a href="https://github.com/francma/wob">wob</a></td>
   </tr>
-
   <tr>
-    <th rowspan="2">File Manager</th>
+    <th rowspan="3">Wallpaper Tool</th>
+    <td><a href="https://github.com/swaywm/swaybg">swaybg</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/danyspin97/wpaperd">wpaperd</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/xyproto/wallutils">wallutils</a></td>
+  </tr>
+  <tr>
+    <th rowspan="2">Lockscreen &amp; Logout menu</th>
+    <td><a href="https://github.com/swaywm/swaylock">swaylock</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://codeberg.org/ifreund/waylock">waylock</a> + <a href="https://github.com/AMNatty/wleave">wleave</a></td>
+  </tr>
+  <tr>
+    <th>Configuration Tools</th>
+    <td><a href="https://github.com/ErikReider/SwaySettings">swaysettings</a> + <a href="https://github.com/nwg-piotr/nwg-displays">nwg-displays</a></td>
+  </tr>
+  <tr>
+    <th>Brightness Adjustments Tool</th>
+    <td><a href="https://github.com/Hummer12007/brightnessctl">brightnessctl</a></td>
+  </tr>
+  <tr>
+    <th>Gamma Adjustments Tool</th>
+    <td><a href="https://git.sr.ht/~kennylevinsen/wlsunset">wlsunset</a></td>
+  </tr>
+  <tr>
+    <th rowspan="2">GUI File Manager</th>
     <td><a href="https://github.com/lxqt/pcmanfm-qt">pcmanfm-qt</a></td>
   </tr>
   <tr>
     <td><a href="https://wiki.gnome.org/Apps/Files">nautilus</a></td>
   </tr>
-
   <tr>
-    <th rowspan="2">Lockscreen</th>
-    <td><a href="https://github.com/swaywm/swaylock">swaylock</a></td>
+    <th>Terminal File Manager</th>
+    <td><a href="https://github.com/sxyazi/yazi">yazi</a></td>
   </tr>
   <tr>
-    <td><a href="https://github.com/mortie/swaylock-effects">swaylock-effects</a></td>
-  </tr>
-
-  <tr>
-    <th>Shell</th>
-    <td><a href="https://github.com/fish-shell/fish-shell">Fish</a></td>
-  </tr>
-
-  <tr>
-    <th>Shell Framework</th>
-    <td><a href="https://github.com/oh-my-fish/oh-my-fish">Oh-My-Fish</a></td>
-  </tr>
-
-  <tr>
-    <th>Media Player</th>
-    <td><a href="https://github.com/mpv-player/mpv">mpv</a></td>
-  </tr>
-
-  <tr>
-    <th>Audio Player</th>
-    <td><a href="https://github.com/mierak/rmpc">rmpc</a></td>
-  </tr>
-
-  <tr>
-    <th>Audio Visualizer</th>
-    <td><a href="https://github.com/karlstav/cava">cava</a></td>
-  </tr>
-
-  <tr>
-    <th>Text Editor</th>
-    <td><a href="https://github.com/neovim/neovim">zed</a></td>
-  </tr>
-
-  <tr>
-    <th rowspan="2">Console Text Editor</th>
-    <td><a href="https://github.com/zyedidia/micro">micro</a></td>
+    <th rowspan="3">Clipboard</th>
+    <td><a href="https://github.com/YaLTeR/wl-clipboard-rs">wl-clipboard-rs</a> + <a href="https://github.com/sentriz/cliphist">cliphist</a></td>
   </tr>
   <tr>
-    <td><a href="https://cgit.git.savannah.gnu.org/cgit/nano.git">nano</a></td>
+    <td><a href="https://github.com/savedra1/clipse">clipse</a></td>
   </tr>
-
   <tr>
-    <th>QT Theme</th>
-    <td></td>
+    <td><a href="https://github.com/rolv-apneseth/clipvault">clipvault</a></td>
   </tr>
-
-  <tr>
-    <th>GTK Theme</th>
-    <td><a href="https://github.com/catppuccin/gtk">Catppuccin</a></td>
-  </tr>
-
-  <tr>
-    <th>Icons</th>
-    <td><a href="https://github.com/PapirusDevelopmentTeam/papirus-icon-theme">papirus Dark</a></td>
-  </tr>
-
-  <tr>
-    <th>Fonts</th>
-    <td><a href="https://github.com/ryanoasis/nerd-fonts">nerd fonts</a></td>
-  </tr>
-
-  <tr>
-    <th>Image Viewer</th>
-    <td><a href="https://github.com/woelper/oculante">oculante</a></td>
-  </tr>
-
   <tr>
     <th rowspan="2">Screenshot Software</th>
     <td><a href="https://git.sr.ht/~shinyzenith/wayshot">wayshot</a></td>
@@ -237,7 +238,6 @@ cp -r dotfiles/.config/* ~/.config
   <tr>
     <td><a href="https://github.com/swaywm/sway/blob/master/contrib/grimshot">grimshot</a></td>
   </tr>
-
   <tr>
     <th rowspan="3">Screen Recording</th>
     <td><a href="https://github.com/russelltg/wl-screenrec">wl-screenrec</a></td>
@@ -248,135 +248,110 @@ cp -r dotfiles/.config/* ~/.config
   <tr>
     <td><a href="https://obsproject.com">obs</a></td>
   </tr>
-
   <tr>
-    <th rowspan="2">Clipboard</th>
-    <td><a href="https://github.com/YaLTeR/wl-clipboard-rs">wl-clipboard-rs</a></td>
+    <th>System Monitoring</th>
+    <td><a href="https://github.com/aristocratos/btop">btop</a></td>
   </tr>
   <tr>
-    <td><a href="https://github.com/sentriz/cliphist">cliphist</a></td>
+    <th rowspan="2">GUI Text Editor</th>
+    <td><a href="https://github.com/zed-industries/zed">zed</a></td>
   </tr>
-
   <tr>
-    <th>Logout Menu</th>
-    <td><a href="https://github.com/AMNatty/wleave">wleave</a></td>
+    <td><a href="https://wiki.archlinux.org/title/Visual_Studio_Code">vscode</a></td>
   </tr>
-
   <tr>
-    <th>Tool to Freeze the Screen</th>
-    <td><a href="https://github.com/Jappie3/wayfreeze">wayfreeze</a></td>
+    <th rowspan="3">Terminal Text Editor</th>
+    <td><a href="https://github.com/zyedidia/micro">micro</a></td>
   </tr>
-
+  <tr>
+    <td><a href="https://github.com/xyproto/orbiton">orbiton</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://cgit.git.savannah.gnu.org/cgit/nano.git">nano</a></td>
+  </tr>
+  <tr>
+    <th rowspan="2">Multimedia Control Tools</th>
+    <td><a href="https://github.com/altdesktop/playerctl">playerctl</a> + <a href="https://github.com/saivert/pwvucontrol">pwvucontrol</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/wwmm/easyeffects">easyeffects</a></td>
+  </tr>
+  <tr>
+    <th>Media Player</th>
+    <td><a href="https://github.com/mpv-player/mpv">mpv</a> + <a href="https://github.com/yt-dlp/yt-dlp">yt-dlp</a></td>
+  </tr>
+  <tr>
+    <th rowspan="2">Audio Player</th>
+    <td><a href="https://github.com/mierak/rmpc">rmpc</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/hrkfdn/ncspot">ncspot</a></td>
+  </tr>
+  <tr>
+    <th rowspan="2">Audio Visualizer</th>
+    <td><a href="https://github.com/karlstav/cava">cava</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/tsoding/musializer">musializer</a></td>
+  </tr>
   <tr>
     <th>PDF Reader</th>
     <td><a href="https://github.com/pwmt/zathura">zathura</a></td>
   </tr>
-</table>
-
-<table border="1">
   <tr>
-    <th>OS</th>
-    <td><a href="https://archlinux.org/">Arch Linux</a></td>
+    <th>Image Viewer</th>
+    <td><a href="https://github.com/woelper/oculante">oculante</a></td>
   </tr>
   <tr>
-    <th>Wayland Compositor</th>
-    <td><a href="https://github.com/swaywm/sway">sway</a></td>
+    <th>Clock</th>
+    <td><a href="https://github.com/ckaznable/tenki">tenki</a></td>
   </tr>
   <tr>
-    <th>WL Protocols</th>
-    <td>
-      <a href="https://gitlab.freedesktop.org/wayland/wayland-protocols">wayland-protocols</a>
-    </td>
+    <th>Fetch</th>
+    <td><a href="https://github.com/fastfetch-cli/fastfetch">fastfetch</a></td>
   </tr>
   <tr>
-    <th>Display Manager</th>
-    <td>
-      <a href="https://git.sr.ht/~kennylevinsen/greetd">greetd</a> + 
-      <a href="https://git.sr.ht/~kennylevinsen/gtkgreet">gtkgreet</a>
-    </td>
+    <th>Terminal Visuals</th>
+    <td><a href="https://github.com/nkleemann/ascii-rain">ascii-rain</a></td>
   </tr>
   <tr>
-    <th>Terminal Emulator</th>
-    <td><a href="https://codeberg.org/dnkl/foot">foot</a></td>
+    <th rowspan="2">Notes</th>
+    <td><a href="https://obsidian.md">obsidian</a></td>
   </tr>
   <tr>
-    <th>Application Launcher</th>
-    <td><a href="https://codeberg.org/dnkl/fuzzel">fuzzel</a></td>
+    <td><a href="https://github.com/AppFlowy-IO/AppFlowy">AppFlowy</a> + <a href="https://notesnook.com">notesnook</a></td>
   </tr>
   <tr>
-    <th>Notification Daemon</th>
-    <td><a href="https://codeberg.org/dnkl/fnott">fnott</a></td>
+    <th>Bookmark manager</th>
+    <td><a href="https://raindrop.io">raindrop</a></td>
   </tr>
   <tr>
-    <th>Bar</th>
-    <td><a href="https://github.com/Alexays/Waybar">waybar</a></td>
+    <th>Emoji picker</th>
+    <td><a href="https://github.com/marty-oehme/bemoji">bemoji</a></td>
   </tr>
   <tr>
-    <th>Network Management Tool</th>
-    <td>
-      <a href="https://networkmanager.dev/">networkmanager</a> | 
-      <a href="https://gitlab.gnome.org/GNOME/network-manager-applet">network-manager-applet</a>
-    </td>
+    <th>Theme manager</th>
+    <td><a href="https://github.com/tsujan/Kvantum">kvantum</a> + <a href="https://github.com/nwg-piotr/nwg-look">nwg-look</a></td>
   </tr>
   <tr>
-    <th>System Resource Monitor</th>
-    <td>
-      <a href="https://github.com/aristocratos/btop">btop</a> | 
-      <a href="https://github.com/nokyan/resources">resources</a>
-    </td>
+    <th rowspan="3">GTK Theme</th>
+    <td><a href="https://gitlab.gnome.org/GNOME/libadwaita">libadwaita</a></td>
   </tr>
   <tr>
-    <th>File Manager</th>
-    <td>
-      <a href="https://github.com/lxqt/pcmanfm-qt">pcmanfm-qt</a> | 
-      <a href="https://wiki.gnome.org/action/show/Apps/Files?action=show&redirect=Apps%2FNautilus">nautilus</a>
-    </td>
+    <td><a href="https://github.com/EliverLara/Nordic">nordic</a></td>
   </tr>
   <tr>
-    <th>Lockscreen</th>
-    <td>
-      <a href="https://github.com/swaywm/swaylock">swaylock</a> | 
-      <a href="https://github.com/mortie/swaylock-effects">swaylock-effects</a>
-    </td>
+    <td><a href="https://github.com/anufrievroman/whale">whale</a></td>
   </tr>
   <tr>
-    <th>Shell</th>
-    <td><a href="https://github.com/fish-shell/fish-shell">Fish</a></td>
+    <th rowspan="3">QT Theme</th>
+    <td><a href="https://github.com/GabePoel/KvLibadwaita">kvlibadwaita</a></td>
   </tr>
   <tr>
-    <th>Shell Framework</th>
-    <td><a href="https://github.com/oh-my-fish/oh-my-fish">Oh-My-Fish</a></td>
+    <td><a href="https://github.com/EliverLara/Nordic">nordic</a></td>
   </tr>
   <tr>
-    <th>Media Player</th>
-    <td><a href="https://github.com/mpv-player/mpv">mpv</a></td>
-  </tr>
-  <tr>
-    <th>Audio Player</th>
-    <td><a href="https://github.com/mierak/rmpc">rmpc</a></td>
-  </tr>
-  <tr>
-    <th>Audio Visualizer</th>
-    <td><a href="https://github.com/karlstav/cava">cava</a></td>
-  </tr>
-  <tr>
-    <th>Text Editor</th>
-    <td><a href="https://github.com/neovim/neovim">zed</a></td>
-  </tr>
-  <tr>
-    <th>Console Text Editor</th>
-    <td>
-      <a href="https://github.com/zyedidia/micro">micro</a> | 
-      <a href="https://cgit.git.savannah.gnu.org/cgit/nano.git">nano</a>
-    </td>
-  </tr>
-  <tr>
-    <th>QT Theme</th>
-    <td></td>
-  </tr>
-  <tr>
-    <th>GTK Theme</th>
-    <td><a href="https://github.com/catppuccin/gtk">Catppuccin</a></td>
+    <td><a href="https://github.com/anufrievroman/whale">whale</a></td>
   </tr>
   <tr>
     <th>Icons</th>
@@ -387,131 +362,150 @@ cp -r dotfiles/.config/* ~/.config
     <td><a href="https://github.com/ryanoasis/nerd-fonts">nerd fonts</a></td>
   </tr>
   <tr>
-    <th>Image Viewer</th>
-    <td><a href="https://github.com/woelper/oculante">oculante</a></td>
-  </tr>
-  <tr>
-    <th>Screenshot Software</th>
-    <td>
-      <a href="https://git.sr.ht/~shinyzenith/wayshot">wayshot</a> | 
-      <a href="https://github.com/swaywm/sway/blob/master/contrib/grimshot">grimshot</a>
-    </td>
-  </tr>
-  <tr>
-    <th>Screen Recording</th>
-    <td>
-      <a href="https://github.com/russelltg/wl-screenrec">wl-screenrec</a> | 
-      <a href="https://git.dec05eba.com/gpu-screen-recorder/about/">gpu-screen-recorder</a> | 
-      <a href="https://obsproject.com">obs</a>
-    </td>
-  </tr>
-  <tr>
-    <th>Clipboard</th>
-    <td>
-      <a href="https://github.com/YaLTeR/wl-clipboard-rs">wl-clipboard-rs</a> | 
-      <a href="https://github.com/sentriz/cliphist">cliphist</a>
-    </td>
-  </tr>
-  <tr>
-    <th>Logout Menu</th>
-    <td><a href="https://github.com/AMNatty/wleave">wleave</a></td>
-  </tr>
-  <tr>
-    <th>Tool to Freeze the Screen</th>
+    <th rowspan="2">Misc</th>
     <td><a href="https://github.com/Jappie3/wayfreeze">wayfreeze</a></td>
   </tr>
   <tr>
-    <th>PDF Reader</th>
-    <td><a href="https://github.com/pwmt/zathura">zathura</a></td>
+    <td><a href="https://github.com/Antiz96/arch-update">arch-update</a></td>
+  </tr>
+  <tr>
+    <th rowspan="49">Utils</th>
+    <td><a href="https://github.com/junegunn/fzf">fzf</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/skim-rs/skim">skim</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/Byron/dua-cli">dua-cli</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/imsnif/bandwhich">bandwhich</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/jacek-kurlit/pik">pik</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/orhun/kmon">kmon</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/Tomas-M/iotop">iotop</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/Syllo/nvtop">nvtop</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/matheus-git/systemd-manager-tui">systemd-manager-tui</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/amanusk/s-tui">s-tui</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/denisidoro/navi">navi</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/fenrus75/powertop">powertop</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/rickysarraf/laptop-mode-tools/">laptop-mode-tools</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/intel/thermal_daemon">thermald</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/eza-community/eza">eza</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/sharkdp/bat">bat</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/BurntSushi/ripgrep">ripgrep</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/sharkdp/fd">fd</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://codeberg.org/smxi/inxi">inxi</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/Canop/broot">broot</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/jhspetersson/fselect">fselect</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/starship/starship">starship</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/maximbaz/wluma">wluma</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/netdata/netdata">netdata</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/Abdenasser/neohtop">neohtop</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/alainm23/planify">planify</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/Syllo/nvtop">nvtop</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://code.blinkace.com/pdw/iftop">iftop</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/muesli/duf">duf</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://gitlab.com/mission-center-devs/mission-center">mission-center</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/uoaerg/wavemon">wavemon</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/b3nj5m1n/xdg-ninja">xdg-ninja</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/coffeeispower/woomer">woomer</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/Jappie3/vigiland">vigiland</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/JanDeDobbeleer/oh-my-posh">oh-my-posh</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/nicolargo/glances">glances</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/nokyan/resources">resources</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/amanusk/s-tui">s-tui</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/Kirottu/watershot">watershot</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://jqlang.org">jq</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/gabm/satty">satty</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/Zerodya/hyprfreeze">hyprfreeze</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://wiki.archlinux.org/title/Acpid">acpid</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/gabm/satty">satty</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/xo/usql">usql</a></td>
   </tr>
 </table>
 
-Дополнительно: иконки и курсоры
-Для полной унификации не забудь:
-
-Иконки:
-Tela / Tela-circle (современные, flat) — https://github.com/vinceliuice/Tela-icon-theme
-Papirus — классика, но всё ещё актуальна
-Colloid Icons — если используешь Colloid тему
-Catppuccin Icons — если используешь Catppuccin
-
-
-yay -S ttf-nerd-fonts-symbols-mono  # для Waybar иконок
-yay -S ttf-font-awesome             # альтернатива
-yay -S colloid-icon-theme           # или tela-icon-theme, papirus-icon-theme
-
-1. Colloid / Colloid-Dark (рекомендую как основной выбор)
-GTK: ✅ Полная поддержка GTK 3/4
-Qt: ✅ Поддержка через qt5ct / qt6ct + тема Colloid для Qt
-Waybar / Sway: ✅ Отлично смотрится, есть matching цветовые схемы
-Fuzzel: ✅ Можно настроить под цветовую палитру Colloid
-🔗 GitHub: https://github.com/vinceliuice/Colloid-gtk-theme
-🔗 Qt-версия: https://github.com/vinceliuice/Colloid-kde
-
-Плюсы:
-
-Очень современный flat-дизайн
-Много цветовых вариаций (Standard, Purple, Pink, Green и т.д.)
-Поддержка всех современных компонентов (включая libadwaita для GTK4)
-Активно обновляется
-Установка:
-
-bash
-
-
-1
-yay -S colloid-gtk-theme colloid-kde
-Или клонировать с GitHub и установить вручную.
-
-🎨 2. Catppuccin (Mocha / Macchiato / Frappé)
-GTK: ✅ GTK 3/4 через catppuccin-gtk
-Qt: ✅ Через catppuccin-qt
-Waybar / Sway: ✅ Готовые конфиги в сообществе
-Fuzzel: ✅ Легко настраивается под палитру Catppuccin
-🔗 GTK: https://github.com/catppuccin/gtk
-🔗 Qt: https://github.com/catppuccin/qt
-
-Плюсы:
-
-Пастельные, мягкие, уютные цвета
-Очень популярна в 2024–2025
-Отличная документация и сообщество
-Поддержка множества приложений (Neovim, Alacritty, Kitty, Rofi/Fuzzel и т.д.)
-Установка:
-
-bash
-
-
-1
-yay -S catppuccin-gtk catppuccin-qt
-🎨 3. Nordic
-GTK: ✅ Nordic-gtk
-Qt: ✅ Nordic-kde / Nordic-darker для Qt
-Waybar / Sway: ✅ Идеально сочетается
-Fuzzel: ✅ Легко адаптируется
-🔗 GitHub: https://github.com/EliverLara/Nordic
-
-Плюсы:
-
-Холодная, спокойная сине-серая палитра
-Минималистичный дизайн
-Отлично подходит для программистов
-🎨 4. Dracula
-GTK: ✅ Dracula GTK
-Qt: ✅ Dracula для Qt (через KDE или отдельно)
-Waybar / Sway: ✅ Темная тема, идеальна для ночного режима
-🔗 GTK: https://github.com/dracula/gtk
-🔗 Qt: https://github.com/dracula/qt5
-
-Плюсы:
-
-Популярная тема в dev-сообществе
-Универсальная тёмная тема
-Поддержка сотен приложений
-
 https://github.com/GabePoel/KvLibadwaita
 https://github.com/avtzis/awesome-linux-ricing?tab=readme-ov-file
-
-
-|
 

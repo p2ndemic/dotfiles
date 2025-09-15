@@ -643,4 +643,3 @@ https://github.com/avtzis/awesome-linux-ricing?tab=readme-ov-file
 | **Terminal Visuals**| [ascii-rain](https://github.com/nkleemann/ascii-rain) |
 | **System Utils**    | [arch-update](https://github.com/Antiz96/arch-update) \| [xdg-ninja](https://github.com/b3nj5m1n/xdg-ninja) \| [wluma](https://github.com/maximbaz/wluma) \| [planify](https://github.com/alainm23/planify) \| [mission-center](https://gitlab.com/mission-center-devs/mission-center) \| [wavemon](https://github.com/uoaerg/wavemon) \| [pik](https://github.com/jacek-kurlit/pik) |
 | **Freeze/Block**    | [wayfreeze](https://github.com/Jappie3/wayfreeze) \| [hyprfreeze](https://github.com/Zerodya/hyprfreeze) \| [vigiland](https://github.com/Jappie3/vigiland) \| [woomer](https://github.com/coffeeispower/woomer) |
-

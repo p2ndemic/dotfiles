@@ -24,6 +24,7 @@
 | **Logout menu**              | [wleave](https://github.com/AMNatty/wleave) |
 | **Configuration Tools**      | [swaysettings](https://github.com/ErikReider/SwaySettings) + [nwg-displays](https://github.com/nwg-piotr/nwg-displays)|
 | **Logout menu**              | [wleave](https://github.com/AMNatty/wleave) |
+| **Brightness Adjustments Tool**| [brightnessctl](https://github.com/Hummer12007/brightnessctl) \| [wluma](https://github.com/maximbaz/wluma) |
 | **Gamma Adjustments Tool**   | [wlsunset](https://git.sr.ht/~kennylevinsen/wlsunset) |
 | **File Manager**             | [pcmanfm-qt](https://github.com/lxqt/pcmanfm-qt) \| [nautilus](https://wiki.gnome.org/Apps/Files) \| [yazi](https://github.com/sxyazi/yazi)|
 | **Clipboard**                | [wl-clipboard-rs](https://github.com/YaLTeR/wl-clipboard-rs) + [cliphist](https://github.com/sentriz/cliphist) \| [clipse](https://github.com/savedra1/clipse) \| [clipvault](https://github.com/rolv-apneseth/clipvault)|

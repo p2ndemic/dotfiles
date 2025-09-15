@@ -33,7 +33,7 @@
 | **System Monitoring**        | [btop](https://github.com/aristocratos/btop)|
 | **GUI Text Editor**          | [zed](https://github.com/zed-industries/zed) \| [vscode](https://wiki.archlinux.org/title/Visual_Studio_Code) |
 | **Console Text Editor**      | [micro](https://github.com/zyedidia/micro) \| [orbiton](https://github.com/xyproto/orbiton) \| [nano](https://cgit.git.savannah.gnu.org/cgit/nano.git) |
-| **Multimedia Control Tools** | [playerctl](https://github.com/altdesktop/playerctl) + [easyeffects](https://github.com/wwmm/easyeffects) + [helvum](https://gitlab.freedesktop.org/pipewire/helvum)|
+| **Multimedia Control Tools** | [playerctl](https://github.com/altdesktop/playerctl) + [pwvucontrol](https://github.com/saivert/pwvucontrol) \| [easyeffects](https://github.com/wwmm/easyeffects)|
 | **Media Player**             | [mpv](https://github.com/mpv-player/mpv) + [yt-dlp](https://github.com/yt-dlp/yt-dlp) |
 | **Audio Player**             | [rmpc](https://github.com/mierak/rmpc) \| [ncspot](https://github.com/hrkfdn/ncspot) |
 | **Audio Visualizer**         | [cava](https://github.com/karlstav/cava) \| [musializer](https://github.com/tsoding/musializer) |

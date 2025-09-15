@@ -20,10 +20,9 @@
 | **Bar**                      | [waybar](https://github.com/Alexays/Waybar) \| [ironbar](https://github.com/JakeStanger/ironbar)|
 | **OSD**                      | [swayosd](https://github.com/ErikReider/SwayOSD) \| [wob](https://github.com/francma/wob) |
 | **Wallpaper Tool**           |[swaybg](https://github.com/swaywm/swaybg) \| [wpaperd](https://github.com/danyspin97/wpaperd) \| [wallutils](https://github.com/xyproto/wallutils)| 
-| **Lockscreen**               | [swaylock](https://github.com/swaywm/swaylock) \| [swaylock-effects](https://github.com/mortie/swaylock-effects)|
+| **Lockscreen**               | [swaylock](https://github.com/swaywm/swaylock) |
 | **Logout menu**              | [wleave](https://github.com/AMNatty/wleave) |
 | **Configuration Tools**      | [swaysettings](https://github.com/ErikReider/SwaySettings) + [nwg-displays](https://github.com/nwg-piotr/nwg-displays)|
-| **Logout menu**              | [wleave](https://github.com/AMNatty/wleave) |
 | **Brightness Adjustments Tool**| [brightnessctl](https://github.com/Hummer12007/brightnessctl) |
 | **Gamma Adjustments Tool**   | [wlsunset](https://git.sr.ht/~kennylevinsen/wlsunset) |
 | **File Manager**             | [pcmanfm-qt](https://github.com/lxqt/pcmanfm-qt) \| [nautilus](https://wiki.gnome.org/Apps/Files) \| [yazi](https://github.com/sxyazi/yazi)|

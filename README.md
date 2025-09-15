@@ -510,12 +510,6 @@ https://github.com/GabePoel/KvLibadwaita
 https://github.com/avtzis/awesome-linux-ricing?tab=readme-ov-file
 
 
-## 🖥️ Operating Systems & Core Components
-
-| Category   | Programs                                                                 |
-|------------|--------------------------------------------------------------------------|
-| **OS**     | [Arch Linux](https://archlinux.org/) \| [CachyOS](https://cachyos.org/)  |
-
 ---
 
 ## 🖥️ Operating Systems & Core Components

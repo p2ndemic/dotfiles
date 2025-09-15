@@ -47,8 +47,8 @@
 | **SQL Tools**                | [usql](https://github.com/xo/usql) |
 | **Emoji picker**             | [bemoji](https://github.com/marty-oehme/bemoji) |
 | **Theme manager**            | [kvantum](https://github.com/tsujan/Kvantum) + [nwg-look](https://github.com/nwg-piotr/nwg-look)|
-| **GTK Theme**                | [breeze-gtk](https://github.com/KDE/breeze-gtk) |
-| **QT Theme**                 | [breeze](https://github.com/KDE/breeze) |
+| **GTK Theme**                | [libadwaita](https://gitlab.gnome.org/GNOME/libadwaita) |
+| **QT Theme**                 | [kvlibadwaita](https://github.com/GabePoel/KvLibadwaita) |
 | **Icons**                    | [papirus Dark](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme) |
 | **Fonts**                    | [nerd fonts](https://github.com/ryanoasis/nerd-fonts) |
 | **Misc**                     | [wayfreeze](https://github.com/Jappie3/wayfreeze) \| [arch-update](https://github.com/Antiz96/arch-update)

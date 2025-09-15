@@ -1,6 +1,11 @@
-### dotfiles
+<img width=150 height=50 align=right src="https://archlinux.org/static/logos/archlinux-logo-light-1200dpi.7ccd81fd52dc.png">
 
-### 🗒️ Info
+# Arch Linux Dotfiles
+
+dotfiles are the files that starts with a . (dot). This files are generally responsible for software configurations. This repository contains my favorite and most used dotfiles in my Arch Linux setup. 
+
+[Screenshots](#screenshots) are somewhere down there.
+<img align="right" width="420" height="550" src="https://user-images.githubusercontent.com/19970595/196564215-06e48c30-46b3-4e02-afe1-c4a56c5415ce.png"/>
 
 | Program Category             | Name |
 |------------------------------|------|
@@ -60,6 +65,24 @@
 #### Fonts
   - nerd-fonts
   - todo ...
+
+## Installation
+
+There is no installation script yet, but in the meantime you can clone the repo and copy the contents of the `./config` folder into your `./config` folder.
+
+<u>Example</u>:
+
+```
+git clone https://github.com/lvntcnylmz/dotfiles.git
+cp -r dotfiles/.config/* ~/.config
+```
+
+### TODO
+
+- [ ] Add installation script
+- [ ] Better documentation
+
+## Screenshots
 
 
 <table border="1">

@@ -17,7 +17,7 @@
 | **Display configuration tool**| [wlr-randr[opt]](https://gitlab.freedesktop.org/emersion/wlr-randr) \| [kanshi[opt]](https://sr.ht/~emersion/kanshi) \| [shikane[opt]](https://gitlab.com/w0lff/shikane)|
 | **Shell**                    | [fish](https://github.com/fish-shell/fish-shell) + [oh-my-fish](https://github.com/oh-my-fish/oh-my-fish) |
 | **Terminal Emulator**        | [foot](https://codeberg.org/dnkl/foot) |
-| **Application Launcher**     | [fuzzel](https://codeberg.org/dnkl/fuzzel) |
+| **Application Launcher**     | [fuzzel](https://codeberg.org/dnkl/fuzzel) \| [walker](https://github.com/abenz1267/walker)|
 | **Notification Daemon**      | [fnott](https://codeberg.org/dnkl/fnott) \| [mako](https://github.com/emersion/mako)|
 | **Bar**                      | [waybar](https://github.com/Alexays/Waybar) \| [ironbar](https://github.com/JakeStanger/ironbar)|
 | **OSD**                      | [swayosd](https://github.com/ErikReider/SwayOSD) \| [wob](https://github.com/francma/wob) |

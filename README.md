@@ -654,11 +654,12 @@ https://github.com/avtzis/awesome-linux-ricing?tab=readme-ov-file
 
 | Module Type | Module Name |
 |-------------|-------------|
-| 🧰 Operating System        | [Arch Linux](https://archlinux.org/) \| [CachyOS](https://cachyos.org/) |
-| ⚡ Power daemon            | [tuned](https://github.com/redhat-performance/tuned) + [tuned-gui](https://github.com/redhat-performance/tuned) |
-| 🔋 Power Alert Daemon      | [poweralertd](https://sr.ht/~kennylevinsen/poweralertd/) |
-| 📶 Network Management tool | [NetworkManager](https://networkmanager.dev/) + [nm-connection-editor](https://gitlab.gnome.org/GNOME/network-manager-applet) |
-| 🧊 Idle Daemon             | [swayidle](https://github.com/swaywm/swayidle) |
+| 🧰 Operating System          | [Arch Linux](https://archlinux.org/) \| [CachyOS](https://cachyos.org/) |
+| ⚡ Power daemon              | [tuned](https://github.com/redhat-performance/tuned) + [tuned-gui](https://github.com/redhat-performance/tuned) |
+| 🔋 Power Alert Daemon        | [poweralertd](https://sr.ht/~kennylevinsen/poweralertd/) |
+| 📶 Network Management tool   | [NetworkManager](https://networkmanager.dev/) + [nm-connection-editor](https://gitlab.gnome.org/GNOME/network-manager-applet) |
+| 📡 Bluetooth Management tool | [blueman](https://github.com/blueman-project/blueman) |
+| 🧊 Idle Daemon               | [swayidle](https://github.com/swaywm/swayidle) |
 
 ---
 
@@ -671,6 +672,7 @@ https://github.com/avtzis/awesome-linux-ricing?tab=readme-ov-file
 | 📜 Wayland Protocols      | [wayland-protocols](https://gitlab.freedesktop.org/wayland/wayland-protocols) + [wlr-protocols](https://gitlab.freedesktop.org/wlroots/wlr-protocols) + [frog-protocols](https://github.com/misyltoad/frog-protocols) |
 | 🔐 Session Access Manager | [polkit](https://github.com/polkit-org/polkit) |
 | 🌀 Portal Backend         | [xdg-desktop-portal-wlr](https://github.com/emersion/xdg-desktop-portal-wlr) |
+| 🧩 Qt Wayland Modules     | [qt5-wayland](https://archlinux.org/packages/extra/x86_64/qt5-wayland) + [qt6-wayland](https://archlinux.org/packages/extra/x86_64/qt6-wayland) |
 
 ---
 

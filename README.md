@@ -672,7 +672,7 @@ https://github.com/avtzis/awesome-linux-ricing?tab=readme-ov-file
 | 📜 Wayland Protocols      | [wayland-protocols](https://gitlab.freedesktop.org/wayland/wayland-protocols) + [wlr-protocols](https://gitlab.freedesktop.org/wlroots/wlr-protocols) + [frog-protocols](https://github.com/misyltoad/frog-protocols) |
 | 🔐 Session Access Manager | [polkit](https://github.com/polkit-org/polkit) |
 | 🌀 Portal Backend         | [xdg-desktop-portal-wlr](https://github.com/emersion/xdg-desktop-portal-wlr) |
-| 🧩 Qt Wayland Modules     | [qt5-wayland](https://archlinux.org/packages/extra/x86_64/qt5-wayland) + [qt6-wayland](https://archlinux.org/packages/extra/x86_64/qt6-wayland) |
+| 🧩🐢 Qt Wayland Modules     | [qt5-wayland](https://archlinux.org/packages/extra/x86_64/qt5-wayland) + [qt6-wayland](https://archlinux.org/packages/extra/x86_64/qt6-wayland) |
 
 ---
 

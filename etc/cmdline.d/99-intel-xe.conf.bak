@@ -6,6 +6,7 @@
 # Ref: https://docs.kernel.org/next/gpu/rfc/xe.html
 # Ref: https://wiki.archlinux.org/title/Unified_kernel_image#Kernel_command_line
 # Ref: https://wiki.archlinux.org/title/Kernel_parameters#Parameter_list
+# Ref: https://wiki.archlinux.org/title/Kernel_mode_setting#Early_KMS_start
 # Ref: https://wiki.archlinux.org/title/Kernel_mode_setting#Disabling_modesetting
 # Ref: https://people.redhat.com/~iwienand/dracut-web/man/dracut.8.html#Injecting
 # Ref: https://www.phoronix.com/news/Intel-Xe-DRM-Linux-6.9-Pull
@@ -37,3 +38,7 @@
 # =============================================
 # Проверьте параметры с которыми загрузилось ядро:
 # cat /etc/kernel/cmdline
+# =============================================
+# Дополнительно добавьте модуль для иницииализации на этапе initramfs
+# sudo nano /etc/mkinitcpio.conf
+# MODULES=(xe)

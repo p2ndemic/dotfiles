@@ -9,8 +9,6 @@ exec_always systemctl --user import-environment
 
 WAYLAND_SOCKET
 
-https://github.com/emersion/xdg-desktop-portal-wlr/#running
-
 # customize workspace names
 set $WS1 "1:"
 set $WS2 "2:"

@@ -1,2 +1,4 @@
+# Ref: https://wiki.archlinux.org/title/Nano
+
 # Install package: nano-syntax-highlighting
-include /usr/share/nano-syntax-highlighting/*.nanorc
+include "/usr/share/nano-syntax-highlighting/*.nanorc"

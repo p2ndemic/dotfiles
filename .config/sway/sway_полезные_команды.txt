@@ -43,7 +43,7 @@ output "eDP-1" {
     mode 2560x1600@120.017Hz
     pos 0 0
     transform normal
-    scale 2.0
+    scale 2.00
     scale_filter nearest
     adaptive_sync off
     dpms on
@@ -154,3 +154,7 @@ B уходит обратно, A снова появляется.
 Если хочешь отправить его обратно в scratchpad, просто используй $mod+Shift+minus (move scratchpad).
 Если в конфиге нет bindsym для floating toggle, добавь его, например:
 text
+
+
+==============
+swaymsg -t get_tree | jq -r '.. | select(.scratchpad_state == "docked") | .id'

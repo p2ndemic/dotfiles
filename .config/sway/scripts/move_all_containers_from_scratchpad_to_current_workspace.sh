@@ -1,6 +1,6 @@
 #!/bin/bash
 # =============================================
-# Move all windows from scratchpad to current workspace and make them tiling
+# Move all containers (windows) from scratchpad to current workspace and make them tiling
 # =============================================
 # Важно замечание про "," vs ";"
 # Запятая vs точка с запятой: В командах sway запятая сохраняет критерии (в нашем случае [con_id=$id]) для следующих команд, а точка с запятой сбрасывает их. 

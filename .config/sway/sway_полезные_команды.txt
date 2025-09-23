@@ -85,7 +85,7 @@ bar {
 bindsym $mod+Mod1+Down focus parent; kill; workspace prev
 
 # Переместить контейнеры(окна) из текущего воркспейса в scratchpad
-focus parent; move scratchpad;
+bindsym $mod+Mod1+minus focus parent; move scratchpad;
 
 ====================================
 

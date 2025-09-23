@@ -158,3 +158,5 @@ text
 
 ==============
 swaymsg -t get_tree | jq -r '.. | select(.scratchpad_state == "docked") | .id'
+
+swaymsg -t get_tree | jq -r '.scratchpad[].id'

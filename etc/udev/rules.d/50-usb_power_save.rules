@@ -1,2 +1,5 @@
+# =============================================
 # Ref: https://wiki.archlinux.org/title/Power_management#USB_autosuspend
-ACTION=="add", SUBSYSTEM=="usb", ATTR{product}!="*Mouse", ATTR{product}!="*Keyboard", TEST=="power/control", ATTR{power/control}="auto"
+# =============================================
+# whitelist for usb autosuspend
+ACTION=="add", SUBSYSTEM=="usb", TEST=="power/control", ATTR{idVendor}=="05c6", ATTR{idProduct}=="9205", ATTR{power/control}="auto"

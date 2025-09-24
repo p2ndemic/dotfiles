@@ -3,7 +3,7 @@
 # Move all containers (windows) from current workspace to scratchpad
 # =============================================
 
-# Script body
+# Выполняем цепочку команд Sway
 swaymsg "focus parent; move scratchpad"
 
 exit 0

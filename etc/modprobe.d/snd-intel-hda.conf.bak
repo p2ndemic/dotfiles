@@ -1,9 +1,5 @@
-# Ref: https://thesofproject.github.io/latest/getting_started/intel_debug/introduction.html
 # =============================================
-# Disables power saving capabilities for snd-hda-intel when device is not
-# running on battery power. This is needed because it prevents audio cracks on
-# some hardware. If device starts working on battery power, same named udev rule
-# re-enables power saving.
+# Ref: https://thesofproject.github.io/latest/getting_started/intel_debug/introduction.html
 # =============================================
 blacklist snd_soc_avs
 blacklist snd_sof_pci_intel_tgl

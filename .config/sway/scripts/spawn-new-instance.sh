@@ -16,3 +16,5 @@ fi
 
 # Запускаем новую копию
 swaymsg exec "$app_to_run"
+
+exit 0

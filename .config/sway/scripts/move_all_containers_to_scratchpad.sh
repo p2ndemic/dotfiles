@@ -13,7 +13,9 @@ if ! command -v jq &> /dev/null; then
     exit 1
 fi
 
-swaymsg -t get_tree | jq -r '.. | select(.focused? == true) | select(.type == "workspace") | (.nodes[]?, .floating_nodes[]?) | .id' | 
+# # Get all container IDs from the current focused workspace (both tiling and floating)
+swaymsg -t get_tree | jq -r '.. | select(.focused? == true) | select(.type == "workspace") | (.nodes[]?, .floating_nodes[]?) | .id' |
+# For each container, execute a command to move it to the scratchpad using its ID (con_id)
 while read con_id; do
     [ -n "$con_id" ] && swaymsg "[con_id=$con_id] move container to scratchpad"
 done

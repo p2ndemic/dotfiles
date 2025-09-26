@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Получаем app_id focused окна
-app_to_run=$(swaymsg -t get_tree | jq -r '.. | select(.focused? == true) | select(.type == "con") | .app_id')
+# Получаем app_id или class focused окна
+app_to_run=$(swaymsg -t get_tree | jq -r '.. | select(.focused? == true) | select(.type == "con") | .app_id // .window_properties.class // empty')
 
 if [ -z "$app_to_run" ] || [ "$app_to_run" = "null" ]; then
     echo "Cannot determine application to launch"

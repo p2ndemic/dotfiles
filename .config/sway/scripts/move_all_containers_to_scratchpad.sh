@@ -6,6 +6,12 @@
 # Извлекает все tiling и floating контейнеры (окна) из этого workspace (и из .nodes, и из .floating_nodes)
 # Для каждого контейнера выполняет команду перемещения в scratchpad по его con_id
 # =============================================
+# .. - Recursively traverse all nodes in the JSON tree
+# select(.focused? == true) - Find nodes where focused is true
+# select(.type == "workspace") - Filter only workspace type nodes
+# (.nodes[]?, .floating_nodes[]?) - Get both tiling and floating containers
+# .id - Extract the ID property
+# =============================================
 
 # Check if jq is installed
 if ! command -v jq &> /dev/null; then

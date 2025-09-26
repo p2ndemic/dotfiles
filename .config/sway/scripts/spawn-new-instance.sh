@@ -9,4 +9,4 @@ if [ -z "$app_to_run" ] || [ "$app_to_run" = "null" ]; then
 fi
 
 # Запускаем новую копию
-exec "$app_to_run"
+swaymsg exec "$app_to_run"

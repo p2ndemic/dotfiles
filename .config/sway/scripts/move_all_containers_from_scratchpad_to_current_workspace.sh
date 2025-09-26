@@ -9,7 +9,7 @@
 
 # Check if jq is installed
 if ! command -v jq &> /dev/null; then
-    echo "Error: jq is required but not installed. Please install jq first."
+    echo "Error: jq is required but not installed. Please install jq first." >&2
     exit 1
 fi
 
@@ -18,5 +18,3 @@ swaymsg -t get_tree | jq -r '.. | select(.name? == "__i3_scratch")? | .floating_
     # Move each window to current workspace and disable floating mode
     swaymsg "[con_id=$id]" move container to workspace current, floating disable
 done
-
-exit 0

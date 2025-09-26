@@ -5,6 +5,7 @@
 # Скрипт находит текущий focused workspace по свойству .focused == true
 # Извлекает все контейнеры (окна) из этого workspace (и из .nodes, и из .floating_nodes)
 # Для каждого контейнера выполняет команду перемещения в scratchpad по его con_id
+# =============================================
 
 # Check if jq is installed
 if ! command -v jq &> /dev/null; then

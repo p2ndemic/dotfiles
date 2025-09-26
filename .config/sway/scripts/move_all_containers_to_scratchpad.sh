@@ -2,9 +2,16 @@
 # =============================================
 # Move all containers (windows) from current workspace to scratchpad
 # =============================================
-# Скрипт находит текущий focused workspace по свойству .focused == true
-# Извлекает все tiling и floating контейнеры (окна) из этого workspace (и из .nodes, и из .floating_nodes)
-# Для каждого контейнера выполняет команду перемещения в scratchpad по его con_id
+# swaymsg -t get_tree получает дерево контейнеров в формате JSON.
+# jq команда:
+#    .. рекурсивно обходит все узлы.
+#    select(.focused? == true) выбирает узлы, у которых установлен фокус (на самом деле, фокус может быть у нескольких узлов, но мы затем фильтруем по типу workspace).
+#    select(.type == "workspace") гарантирует, что мы работаем с workspace.
+#    (.nodes[]?, .floating_nodes[]?) выводит каждый элемент из массивов nodes (тилинговые окна) и floating_nodes (плавающие окна) в текущем workspace.
+#    .id извлекает ID каждого контейнера.
+# Цикл while read container_id читает каждое значение ID (каждое на отдельной строке) и присваивает его переменной container_id.
+# if [ -n "$container_id" ] проверяет, что строка не пустая.
+# swaymsg "[con_id=$container_id] move container to scratchpad" перемещает контейнер с указанным ID в scratchpad
 # =============================================
 # .. - Recursively traverse all nodes in the JSON tree
 # select(.focused? == true) - Find nodes where focused is true

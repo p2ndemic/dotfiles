@@ -5,5 +5,3 @@
 
 # Выполняем цепочку команд Sway
 swaymsg "focus parent; move scratchpad"
-
-exit 0

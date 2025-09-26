@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Получаем app_id или class активного окна типа "con"
+# Получаем app_id или class активного (focused) окна
 app_to_run=$(swaymsg -t get_tree | jq -r '.. | select(.focused? == true) | select(.type == "con" or .type == "floating_con") | .app_id // .window_properties.class // empty')
 
 if [ -z "$app_to_run" ]; then

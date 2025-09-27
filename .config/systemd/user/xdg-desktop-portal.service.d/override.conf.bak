@@ -1,3 +1,0 @@
-# Ref: https://wiki.archlinux.org/title/XDG_Desktop_Portal#Force_desktop_environment
-[Service]
-Environment="XDG_CURRENT_DESKTOP=sway"

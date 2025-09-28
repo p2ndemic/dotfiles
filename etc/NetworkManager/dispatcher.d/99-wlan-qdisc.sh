@@ -12,7 +12,7 @@ ACTION="$2"
 # Выполняем только для интерфейса wlan0 и только когда он поднимается ('up')
 if [ "$IFACE" = "wlan0" ] && [ "$ACTION" = "up" ]; then
     # Устанавливаем qdisc = fq
-    /sbin/tc qdisc replace dev "$IFACE" root fq_codel
+    /sbin/tc qdisc replace dev "$IFACE" root fq
 fi
 
 exit 0

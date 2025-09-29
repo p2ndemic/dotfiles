@@ -1,6 +1,6 @@
 #!/bin/bash
 # =============================================
-# Move all windows from scratchpad to current workspace and make them tiled
+# Move all containers (windows) from scratchpad to current workspace and make them tiled
 # =============================================
 # swaymsg -t get_tree получает дерево контейнеров в формате JSON.
 # jq команда:

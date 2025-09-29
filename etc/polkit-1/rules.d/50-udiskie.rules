@@ -1,4 +1,18 @@
-Ref: https://github.com/coldfix/udiskie/wiki/Permissions
+# =============================================
+# Udiskie Rules
+# =============================================
+# Ref: https://github.com/coldfix/udiskie/wiki/Permissions
+# =============================================
+# → Installation:
+# → Create a file: sudo nano /etc/polkit-1/rules.d/50-udiskie.rules
+# → Make the script executable: sudo chmod -R 644 /etc/polkit-1/rules.d/50-udiskie.rules
+# =============================================
+# → Create systemd daemon:
+# → See: 
+# =============================================
+# → Enable systemd daemon:
+# sudo systemctl enable --now intel-pstate-default.service && sudo systemctl daemon-reload
+# =============================================
 
 polkit.addRule(function(action, subject) {
   var YES = polkit.Result.YES;

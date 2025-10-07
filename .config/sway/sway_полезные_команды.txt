@@ -89,3 +89,75 @@ bindsym $mod+Mod1+minus focus parent; move scratchpad;
 
 ====================================
 
+
+
+
+
+
+# ======================= #
+# My Config 
+# ======================= #
+
+output eDP-1 {
+    mode 2560x1600@120.017Hz
+    pos 0 0
+    transform normal
+    scale 2.00
+    scale_filter nearest
+    adaptive_sync off
+    dpms on
+}
+
+# ======================= #
+
+input "type:keyboard" {
+  xkb_layout us,ru
+  repeat_delay 300
+  repeat_rate 50
+  xkb_capslock disabled
+  xkb_numlock disabled
+  xkb_options grp:alt_shift_toggle
+}
+
+# ======================= #
+
+input "type:touchpad" {
+  pointer_accel 0.0
+  natural_scroll disabled
+  scroll_factor 1.0
+  scroll_method two_finger
+  click_method button_areas
+  left_handed disabled
+  tap enabled
+  tap_button_map lrm
+  drag enabled
+  drag_lock disabled
+  dwt enabled
+  middle_emulation enabled
+}
+
+# ======================= #
+
+# ======================= #
+
+set $launcher fuzzel
+bindsym --to-code --no-repeat --release Super_L exec pkill $launcher || $launcher
+
+# ======================= #
+
+# gaps
+gaps inner 10
+gaps outer 10
+smart_gaps off
+
+# ======================= #
+
+bindsym --border button2 kill
+
+# ======================= #
+
+bar {
+  swaybar_command waybar
+}
+
+# ======================= #

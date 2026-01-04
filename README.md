@@ -760,3 +760,6 @@ https://github.com/avtzis/awesome-linux-ricing?tab=readme-ov-file
 | 🔤 Fonts         | [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts) |
 
 ---
+
+https://aur.archlinux.org/packages/wlroots-hidpi-xprop-git
+https://aur.archlinux.org/packages/xorg-xwayland-hidpi-xprop

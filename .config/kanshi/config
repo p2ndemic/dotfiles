@@ -38,13 +38,13 @@ profile laptop-only {
 }
 
 # 2️⃣ Только внешний монитор HDMI
-profile external-only {
-    output $LAPTOP disable
-    output $EXTERNAL enable
-}
+#profile external-only {
+#    output $LAPTOP disable
+#    output $EXTERNAL enable
+#}
 
 # 3️⃣ Ноутбук + внешний монитор HDMI справа
-profile dual {
-    output $LAPTOP enable
-    output $EXT enable position 2560,0
-}
+#profile dual {
+#    output $LAPTOP enable
+#    output $EXT enable position 2560,0
+#}

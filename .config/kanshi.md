@@ -302,3 +302,55 @@ profile external-only {
     output $laptop disable
     output $external enable position 0,0
 }
+
+
+
+########################################
+# OUTPUT DEFINITIONS
+########################################
+
+# Встроенный экран ноутбука
+output "AU Optronics 0x1CA7 eDP-1" {
+    enable
+    mode 2560x1600@120
+    position 0,0
+    scale 2
+    transform normal
+    adaptive_sync off
+    alias $LAPTOP
+}
+
+# Внешний монитор 2560x1440
+# ⚠️ ЕСЛИ ИМЯ ДРУГОЕ — замени строку в кавычках
+output "Dell Inc. DELL S2721DGF G52TR83" {
+    enable
+    mode 2560x1440@60
+    position 2560,0
+    scale 1
+    transform normal
+    adaptive_sync off
+    alias $EXT
+}
+
+########################################
+# PROFILES
+########################################
+
+# 1️⃣ Только ноутбук
+profile laptop {
+    output $LAPTOP enable
+    output $EXT disable
+}
+
+# 2️⃣ Только внешний монитор
+profile external {
+    output $LAPTOP disable
+    output $EXT enable
+}
+
+# 3️⃣ Ноутбук + внешний монитор
+profile dual {
+    output $LAPTOP enable
+    output $EXT enable position 2560,0
+}
+

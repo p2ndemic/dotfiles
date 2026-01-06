@@ -1,0 +1,50 @@
+# ~/.config/kanshi/config
+# Ref: https://man.archlinux.org/man/kanshi.5.en
+# Ref: https://wiki.archlinux.org/title/Kanshi
+
+########################################
+# OUTPUT DEFINITIONS
+########################################
+
+# Встроенный экран ноутбука
+output "eDP-1" {
+    mode 2560x1600@120
+    position 0,0
+    scale 2
+    transform normal
+    adaptive_sync off
+    alias $LAPTOP
+}
+
+# Внешний монитор 27" 2560x1440 HDMI
+# [Прописать "DP-1" если подключен через Display Port]
+output "HDMI-A-1" {
+    mode 2560x1440@144
+    position 2560,0
+    scale 1
+    transform normal
+    adaptive_sync off
+    alias $EXTERNAL
+}
+
+########################################
+# PROFILES
+########################################
+
+# 1️⃣ Только ноутбук
+profile laptop-only {
+    output $LAPTOP enable
+    output $EXTERNAL disable
+}
+
+# 2️⃣ Только внешний монитор HDMI
+profile external-only {
+    output $LAPTOP disable
+    output $EXTERNAL enable
+}
+
+# 3️⃣ Ноутбук + внешний монитор HDMI справа
+profile dual {
+    output $LAPTOP enable
+    output $EXT enable position 2560,0
+}

@@ -273,3 +273,32 @@ profile external-only {
     output $laptop disable
     output $external enable position 0,0
 }
+
+
+output "BOE 0x0AB1 Unknown" {
+    mode 2560x1600@60Hz
+    position 0,0
+    scale 2
+    alias $laptop
+}
+
+output "Dell Inc. DELL U2723QE *" {
+    mode --preferred
+    scale 1
+    alias $external
+}
+
+profile laptop-only {
+    output $laptop enable
+    output * disable
+}
+
+profile docked {
+    output $laptop enable
+    output $external enable position 1280,0
+}
+
+profile external-only {
+    output $laptop disable
+    output $external enable position 0,0
+}

@@ -22,4 +22,8 @@
 # Ref: https://invent.kde.org/plasma/powerdevil/-/issues/36
 # Ref: https://gitlab.freedesktop.org/upower/upower/-/merge_requests/208
 # =============================================
-echo 80 | tee /sys/class/power_supply/BAT0/charge_control_end_threshold
+# Устанавливаем порог начала зарядки (нижний)
+echo 20 | sudo tee /sys/class/power_supply/BAT0/charge_control_start_threshold
+
+# Устанавливаем порог прекращения зарядки (верхний)
+echo 80 | sudo tee /sys/class/power_supply/BAT0/charge_control_end_threshold

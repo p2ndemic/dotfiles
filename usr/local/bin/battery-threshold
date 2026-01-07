@@ -7,12 +7,12 @@
 # → Make the script executable: sudo chmod +x ~/.local/bin/battery-threshold
 # =============================================
 # → Create systemd daemon:
-# sudo nano /etc/systemd/system/battery-threshold-tuning.service
-# → See: https://github.com/p2ndemic/dotfiles/blob/main/etc/systemd/system/battery-threshold-tuning.service
+# sudo nano /etc/systemd/system/battery-threshold.service
+# → See: https://github.com/p2ndemic/dotfiles/blob/main/etc/systemd/system/battery-threshold.service
 # =============================================
 # → Reload systemd and enable/start the 'battery-threshold-tuning.service' immediately:
 # sudo systemctl daemon-reload
-# sudo systemctl enable --now battery-threshold-tuning.service
+# sudo systemctl enable --now battery-threshold.service
 # =============================================
 # На KDE Plasma 6.3.2+ есть проблема со сбросом значения ограничения уровня заряда батареи [Charge Limit threshold] выставленного в настройках управления питанием.
 # После перезагрузки значение постоянно сбрасывается до стандартного значения = 100%.

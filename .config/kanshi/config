@@ -24,7 +24,7 @@ output eDP-1 {
 # ------------------------------------------------------
 output HDMI-A-1 {
     mode 2560x1440@144
-    position 2560,0
+    position 0,0
     scale 1
     transform normal
     adaptive_sync off

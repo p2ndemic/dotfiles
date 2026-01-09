@@ -50,5 +50,5 @@ profile laptop-only {
 # 3️⃣ Ноутбук + внешний монитор HDMI справа
 #profile dual {
 #    output $LAPTOP enable
-#    output $EXT enable position 2560,0
+#    output $EXTERNAL enable position 2560,0
 #}

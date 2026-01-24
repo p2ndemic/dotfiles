@@ -92,7 +92,7 @@ show_utilities_menu() {
 
 show_power_menu() {
     echo -e " Lock" # 
-    echo -e "󰗼 Logout" 
+    echo -e "󰗼 Logout"
     echo -e "󰖔 Suspend" # 󰤄 󰒲
     echo -e "󰜉 Reboot"
     echo -e "󰐥 Shutdown"
@@ -395,21 +395,21 @@ while true; do
             "")
                 current_menu="main"
                 ;;
-            "ꗃ Lock")
+            " Lock")
                 swaylock &
                 exit 0
                 ;;
             "󰗼 Logout")
                 loginctl terminate-user $USER
                 ;;
-            "⏾ Suspend")
+            "󰖔 Suspend")
                 systemctl suspend
                 exit 0
                 ;;
-            "↺ Reboot")
+            "󰜉 Reboot")
                 systemctl reboot
                 ;;
-            "⏻ Shutdown")
+            "󰐥 Shutdown")
                 systemctl poweroff
                 ;;
         esac

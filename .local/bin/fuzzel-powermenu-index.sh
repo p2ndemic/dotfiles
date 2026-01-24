@@ -23,7 +23,8 @@ FUZZEL_OPTS="--dmenu \
     --minimal-lines \
     --width=14 \
     --horizontal-pad=160 \
-    --vertical-pad=20"
+    --vertical-pad=20 \
+    --line-height=34"
 
 # --- Источник данных ---
 

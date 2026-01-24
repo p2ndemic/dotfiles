@@ -3,10 +3,11 @@
 # --- Конфигурация интерфейса ---
 # ВНИМАНИЕ: Fuzzel может некорректно обрабатывать имена шрифтов с пробелами.
 # В качестве обходного решения (workaround) указываем прямой путь к файлу шрифта.
-FONT_PRIMARY="/usr/share/fonts/Adwaita/AdwaitaMono-Regular.ttf"
-FONT_FALLBACK="Hack"
-# Сборка строки шрифта (основной путь + fallback)
-FONT="$FONT_PRIMARY:size=24,$FONT_FALLBACK:size=24"
+#FONT_PRIMARY="/usr/share/fonts/Adwaita/AdwaitaMono-Regular.ttf"
+#FONT_FALLBACK="Hack"
+#FONT="$FONT_PRIMARY:size=24,$FONT_FALLBACK:size=24"
+
+FONT=Hack:size=24
 
 # --- Позиционирование окна на экране ---
 # Доступно: top-left, top, top-right, left, center, right, bottom-left, bottom, bottom-right

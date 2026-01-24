@@ -91,11 +91,11 @@ show_utilities_menu() {
 }
 
 show_power_menu() {
-    echo -e "ꗃ Lock"
-    echo -e "󰗼 Logout"
-    echo -e "⏾ Suspend"
-    echo -e "↺ Reboot"
-    echo -e "⏻ Shutdown"
+    echo -e " Lock"
+    echo -e "󰗼 Logout" 
+    echo -e "󰖔 Suspend" # 󰤄 󰒲
+    echo -e "󰜉 Reboot"
+    echo -e "󰐥 Shutdown"
 }
 
 # --- Логика навигации ---

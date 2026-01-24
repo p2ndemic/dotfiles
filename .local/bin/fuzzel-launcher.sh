@@ -16,7 +16,7 @@ show_main_menu() {
     echo -e "🎮 Games"
     echo -e "⚙️ System"
     echo -e "🛠️ Utilities"
-    echo -e "⚡ Power"
+    echo -e "🔌 Power"
     echo -e "❌ Exit"
 }
 
@@ -134,7 +134,7 @@ while true; do
             "🛠️ Utilities")
                 current_menu="utilities"
                 ;;
-            "⚡ Power")
+            "🔌 Power")
                 current_menu="power"
                 ;;
             "❌ Exit"|"")

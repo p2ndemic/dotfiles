@@ -37,7 +37,7 @@ get_power_options() {
 # Запускаем меню и сохраняем индекс выбранной строки в переменную CHOICE
 CHOICE=$(get_power_options | fuzzel $FUZZEL_OPTS)
 
-# Обработка выбора (Вариант 1: Вертикальный стиль)
+# Обработка выбора
 case "$CHOICE" in
     0)
         swaylock &

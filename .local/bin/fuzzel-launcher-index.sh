@@ -140,7 +140,7 @@ CURRENT_MENU="main"
 
 while true; do
     if [ "$CURRENT_MENU" = "main" ]; then
-        CHOICE=$(show_main_menu | fuzzel $FUZZEL_OPTS --prompt="Apps: ")
+        CHOICE=$(show_main_menu | fuzzel $FUZZEL_OPTS)
         case "$CHOICE" in
             0)  CURRENT_MENU="terminal"    ;; # Переход: Терминалы
             1)  CURRENT_MENU="explorer"    ;; # Переход: Проводники
@@ -156,7 +156,7 @@ while true; do
         esac
 
     elif [ "$CURRENT_MENU" = "terminal" ]; then
-        CHOICE=$(show_terminal_menu | fuzzel $FUZZEL_OPTS --prompt="Terminal: ")
+        CHOICE=$(show_terminal_menu | fuzzel $FUZZEL_OPTS)
         case "$CHOICE" in
             0)  foot & exit 0       ;;
             1)  alacritty & exit 0  ;;
@@ -167,7 +167,7 @@ while true; do
         esac
 
     elif [ "$CURRENT_MENU" = "explorer" ]; then
-        CHOICE=$(show_explorer_menu | fuzzel $FUZZEL_OPTS --prompt="Explorer: ")
+        CHOICE=$(show_explorer_menu | fuzzel $FUZZEL_OPTS)
         case "$CHOICE" in
             0)  thunar & exit 0              ;;
             1)  nautilus & exit 0            ;;
@@ -179,7 +179,7 @@ while true; do
         esac
 
     elif [ "$CURRENT_MENU" = "internet" ]; then
-        CHOICE=$(show_internet_menu | fuzzel $FUZZEL_OPTS --prompt="Internet: ")
+        CHOICE=$(show_internet_menu | fuzzel $FUZZEL_OPTS)
         case "$CHOICE" in
             0)  firefox & exit 0             ;;
             1)  chromium & exit 0            ;;
@@ -190,7 +190,7 @@ while true; do
         esac
 
     elif [ "$CURRENT_MENU" = "development" ]; then
-        CHOICE=$(show_development_menu | fuzzel $FUZZEL_OPTS --prompt="Development: ")
+        CHOICE=$(show_development_menu | fuzzel $FUZZEL_OPTS)
         case "$CHOICE" in
             0)  zed & exit 0                 ;;
             1)  meld & exit 0                ;;
@@ -203,7 +203,7 @@ while true; do
         esac
 
     elif [ "$CURRENT_MENU" = "graphics" ]; then
-        CHOICE=$(show_graphics_menu | fuzzel $FUZZEL_OPTS --prompt="Graphics: ")
+        CHOICE=$(show_graphics_menu | fuzzel $FUZZEL_OPTS)
         case "$CHOICE" in
             0)  oculante & exit 0    ;;
             1)  gimp & exit 0        ;;
@@ -214,7 +214,7 @@ while true; do
         esac
 
     elif [ "$CURRENT_MENU" = "multimedia" ]; then
-        CHOICE=$(show_multimedia_menu | fuzzel $FUZZEL_OPTS --prompt="Multimedia: ")
+        CHOICE=$(show_multimedia_menu | fuzzel $FUZZEL_OPTS)
         case "$CHOICE" in
             0)  mpv --player-operation-mode=pseudo-gui & exit 0 ;;
             1)  vlc & exit 0         ;;
@@ -225,7 +225,7 @@ while true; do
         esac
 
     elif [ "$CURRENT_MENU" = "games" ]; then
-        CHOICE=$(show_games_menu | fuzzel $FUZZEL_OPTS --prompt="Games: ")
+        CHOICE=$(show_games_menu | fuzzel $FUZZEL_OPTS)
         case "$CHOICE" in
             0)  steam & exit 0       ;;
             1)  lutris & exit 0      ;;
@@ -234,7 +234,7 @@ while true; do
         esac
 
     elif [ "$CURRENT_MENU" = "system" ]; then
-        CHOICE=$(show_system_menu | fuzzel $FUZZEL_OPTS --prompt="System: ")
+        CHOICE=$(show_system_menu | fuzzel $FUZZEL_OPTS)
         case "$CHOICE" in
             0)  gparted & exit 0               ;;
             1)  $TERMINAL -e btop & exit 0     ;;
@@ -244,7 +244,7 @@ while true; do
         esac
 
     elif [ "$CURRENT_MENU" = "utilities" ]; then
-        CHOICE=$(show_utilities_menu | fuzzel $FUZZEL_OPTS --prompt="Utilities: ")
+        CHOICE=$(show_utilities_menu | fuzzel $FUZZEL_OPTS)
         case "$CHOICE" in
             0)  gnome-calculator & exit 0      ;;
             1)  grimshot copy area & exit 0    ;;
@@ -253,7 +253,7 @@ while true; do
         esac
 
     elif [ "$CURRENT_MENU" = "power" ]; then
-        CHOICE=$(show_power_menu | fuzzel $FUZZEL_OPTS --prompt="Power: ")
+        CHOICE=$(show_power_menu | fuzzel $FUZZEL_OPTS)
         case "$CHOICE" in
             0)
                 swaylock & exit 0               # Блокировка [0]

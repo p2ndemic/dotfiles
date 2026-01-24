@@ -221,7 +221,7 @@ while true; do
             2)  celluloid & exit 0   ;;
             3)  audacious & exit 0   ;;
             4)  spotify & exit 0     ;;
-            *)  CURRENT_MENU="main"  ;;
+            *)  CURRENT_MENU="main"  ;; # Назад
         esac
 
     elif [ "$CURRENT_MENU" = "games" ]; then

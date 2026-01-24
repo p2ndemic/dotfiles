@@ -29,7 +29,8 @@ FUZZEL_OPTS="--dmenu \
     --minimal-lines \
     --width=30 \
     --horizontal-pad=10 \
-    --vertical-pad=10"
+    --vertical-pad=10 \
+    --line-height=22"
 
 # --- Функции вывода списков ---
 

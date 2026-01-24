@@ -39,13 +39,13 @@ CHOICE=$(echo -e "$MENU_LIST" | fuzzel $FUZZEL_OPTS)
 
 case "$CHOICE" in
     "$LOCK")
-        swaylock &
+        swaylock & exit 0
         ;;
     "$LOGOUT")
         loginctl terminate-user $USER
         ;;
     "$SUSPEND")
-        systemctl suspend
+        systemctl suspend & exit 0
         ;;
     "$REBOOT")
         systemctl reboot

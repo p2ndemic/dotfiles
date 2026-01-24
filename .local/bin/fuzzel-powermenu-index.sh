@@ -43,7 +43,7 @@ case "$CHOICE" in
         swaylock & exit 0
         ;;
     1)
-        loginctl terminate-user $USER
+        loginctl terminate-user $USER & exit 0
         ;;
     2)
         systemctl suspend & exit 0

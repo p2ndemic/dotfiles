@@ -40,13 +40,13 @@ CHOICE=$(get_power_options | fuzzel $FUZZEL_OPTS)
 # Обработка выбора
 case "$CHOICE" in
     0)
-        swaylock &
+        swaylock & exit 0
         ;;
     1)
         loginctl terminate-user $USER
         ;;
     2)
-        systemctl suspend
+        systemctl suspend & exit 0
         ;;
     3)
         systemctl reboot

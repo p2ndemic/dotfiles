@@ -28,11 +28,11 @@ FUZZEL_OPTS="--dmenu \
 
 # Функция выводит пункты меню. Порядок строк определяет их будущий индекс (0, 1, 2...)
 get_power_options() {
-    echo " Lock"      # Index [0]
-    echo "󰗼 Logout"    # Index [1]
-    echo "󰖔 Suspend"   # Index [2]
-    echo "󰜉 Reboot"    # Index [3]
-    echo "󰐥 Shutdown"  # Index [4]
+    echo "   Lock"      # Index [0]
+    echo "  󰗼 Logout"    # Index [1]
+    echo "  󰖔 Suspend"   # Index [2]
+    echo "  󰜉 Reboot"    # Index [3]
+    echo "  󰐥 Shutdown"  # Index [4]
 }
 
 # --- Логика работы ---

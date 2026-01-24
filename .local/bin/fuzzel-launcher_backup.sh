@@ -8,14 +8,14 @@ FUZZEL_OPTS="--dmenu --width=35 --minimal-lines"
 
 show_main_menu() {
     echo -e "🖥️ Terminal"
-    echo -e "📁 Explorer"
+    echo -e "🗃️ Explorer"
     echo -e "🌐 Internet"
     echo -e "💻 Development"
-    echo -e "🎨 Graphics"
+    echo -e "🌄 Graphics"
     echo -e "🎬 Multimedia"
     echo -e "🎮 Games"
     echo -e "⚙️ System"
-    echo -e "🛠️ Utilities"
+    echo -e "📦 Utilities"
     echo -e "🔌 Power"
     echo -e "❌ Exit"
 }
@@ -110,7 +110,7 @@ while true; do
             "🖥️ Terminal")
                 current_menu="terminal"
                 ;;
-            "📁 Explorer")
+            "🗃️ Explorer")
                 current_menu="explorer"
                 ;;
             "🌐 Internet")
@@ -119,7 +119,7 @@ while true; do
             "💻 Development")
                 current_menu="development"
                 ;;
-            "🎨 Graphics")
+            "🌄 Graphics")
                 current_menu="graphics"
                 ;;
             "🎬 Multimedia")
@@ -131,7 +131,7 @@ while true; do
             "⚙️ System")
                 current_menu="system"
                 ;;
-            "🛠️ Utilities")
+            "📦 Utilities")
                 current_menu="utilities"
                 ;;
             "🔌 Power")

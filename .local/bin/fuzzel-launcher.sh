@@ -227,6 +227,10 @@ while true; do
                 telegram-desktop &
                 exit 0
                 ;;
+            "qBittorrent")
+                qbittorrent &
+                exit 0
+                ;;
         esac
 
     elif [ "$current_menu" = "development" ]; then

@@ -91,7 +91,7 @@ show_utilities_menu() {
 }
 
 show_power_menu() {
-    echo -e " Lock"
+    echo -e " Lock" # 
     echo -e "󰗼 Logout" 
     echo -e "󰖔 Suspend" # 󰤄 󰒲
     echo -e "󰜉 Reboot"

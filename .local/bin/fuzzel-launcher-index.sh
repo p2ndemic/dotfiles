@@ -36,105 +36,105 @@ FUZZEL_OPTS="--dmenu \
 
 # Главное меню выбора категорий
 show_main_menu() {
-    echo -e "🖥️ Terminal"     # [0]
-    echo -e "🗃️ Explorer"     # [1]
-    echo -e "🌐 Internet"     # [2]
-    echo -e "💻 Development"  # [3]
-    echo -e "🌄 Graphics"     # [4]
-    echo -e "🎬 Multimedia"   # [5]
-    echo -e "🎮 Games"        # [6]
-    echo -e "⚙️ System"       # [7]
-    echo -e "📦 Utilities"    # [8]
-    echo -e "🔌 Power"        # [9]
-    echo -e "❌ Exit"         # [10]
+    echo -e "🖥️ Terminal"     # index [0]
+    echo -e "🗃️ Explorer"     # index [1]
+    echo -e "🌐 Internet"     # index [2]
+    echo -e "💻 Development"  # index [3]
+    echo -e "🌄 Graphics"     # index [4]
+    echo -e "🎬 Multimedia"   # index [5]
+    echo -e "🎮 Games"        # index [6]
+    echo -e "⚙️ System"       # index [7]
+    echo -e "📦 Utilities"    # index [8]
+    echo -e "🔌 Power"        # index [9]
+    echo -e "❌ Exit"         # index [10]
 }
 
 # Список терминалов
 show_terminal_menu() {
-    echo -en "Foot\0icon\x1ffoot\n"               # [0]
-    echo -en "Alacritty\0icon\x1falacritty\n"     # [1]
-    echo -en "Kitty\0icon\x1fkitty\n"             # [2]
-    echo -en "WezTerm\0icon\x1fwezterm\n"         # [3]
-    echo -en "Black Box\0icon\x1fblackbox\n"      # [4]
+    echo -en "Foot\0icon\x1ffoot\n"               # index [0]
+    echo -en "Alacritty\0icon\x1falacritty\n"     # index [1]
+    echo -en "Kitty\0icon\x1fkitty\n"             # index [2]
+    echo -en "WezTerm\0icon\x1fwezterm\n"         # index [3]
+    echo -en "Black Box\0icon\x1fblackbox\n"      # index [4]
 }
 
 # Файловые менеджеры
 show_explorer_menu() {
-    echo -en "Thunar\0icon\x1forg.xfce.thunar\n"      # [0]
-    echo -en "Nautilus\0icon\x1forg.gnome.Nautilus\n" # [1]
-    echo -en "Dolphin\0icon\x1forg.kde.dolphin\n"     # [2]
-    echo -en "PCManFM-QT\0icon\x1fpcmanfm-qt\n"       # [3]
-    echo -en "Yazi\0icon\x1fyazi\n"                   # [4]
-    echo -en "Ranger\0icon\x1futilities-terminal\n"   # [5]
+    echo -en "Thunar\0icon\x1forg.xfce.thunar\n"      # index [0]
+    echo -en "Nautilus\0icon\x1forg.gnome.Nautilus\n" # index [1]
+    echo -en "Dolphin\0icon\x1forg.kde.dolphin\n"     # index [2]
+    echo -en "PCManFM-QT\0icon\x1fpcmanfm-qt\n"       # index [3]
+    echo -en "Yazi\0icon\x1fyazi\n"                   # index [4]
+    echo -en "Ranger\0icon\x1futilities-terminal\n"   # index [5]
 }
 
 # Браузеры и мессенджеры
 show_internet_menu() {
-    echo -en "Firefox\0icon\x1ffirefox\n"             # [0]
-    echo -en "Chromium\0icon\x1fchromium\n"           # [1]
-    echo -en "Brave\0icon\x1fbrave-browser\n"         # [2]
-    echo -en "Telegram\0icon\x1ftelegram\n"           # [3]
-    echo -en "qBittorrent\0icon\x1fqbittorrent\n"     # [4]
+    echo -en "Firefox\0icon\x1ffirefox\n"             # index [0]
+    echo -en "Chromium\0icon\x1fchromium\n"           # index [1]
+    echo -en "Brave\0icon\x1fbrave-browser\n"         # index [2]
+    echo -en "Telegram\0icon\x1ftelegram\n"           # index [3]
+    echo -en "qBittorrent\0icon\x1fqbittorrent\n"     # index [4]
 }
 
 # Инструменты разработки
 show_development_menu() {
-    echo -en "Zed\0icon\x1fzed\n"                     # [0]
-    echo -en "Meld\0icon\x1forg.gnome.Meld\n"         # [1]
-    echo -en "Neovim\0icon\x1fnvim\n"                 # [2]
-    echo -en "VSCodium\0icon\x1fvscodium\n"           # [3]
-    echo -en "Helix\0icon\x1fhelix\n"                 # [4]
-    echo -en "Micro\0icon\x1fmicro\n"                 # [5]
-    echo -en "Kate\0icon\x1fkate\n"                   # [6]
+    echo -en "Zed\0icon\x1fzed\n"                     # index [0]
+    echo -en "Meld\0icon\x1forg.gnome.Meld\n"         # index [1]
+    echo -en "Neovim\0icon\x1fnvim\n"                 # index [2]
+    echo -en "VSCodium\0icon\x1fvscodium\n"           # index [3]
+    echo -en "Helix\0icon\x1fhelix\n"                 # index [4]
+    echo -en "Micro\0icon\x1fmicro\n"                 # index [5]
+    echo -en "Kate\0icon\x1fkate\n"                   # index [6]
 }
 
 # Графические редакторы и просмотрщики
 show_graphics_menu() {
-    echo -en "Oculante\0icon\x1foculante\n"           # [0]
-    echo -en "GIMP\0icon\x1fgimp\n"                   # [1]
-    echo -en "Inkscape\0icon\x1finkscape\n"           # [2]
-    echo -en "imv\0icon\x1fimage-viewer\n"            # [3]
-    echo -en "Feh\0icon\x1ffe\n"                      # [4]
+    echo -en "Oculante\0icon\x1foculante\n"           # index [0]
+    echo -en "GIMP\0icon\x1fgimp\n"                   # index [1]
+    echo -en "Inkscape\0icon\x1finkscape\n"           # index [2]
+    echo -en "imv\0icon\x1fimage-viewer\n"            # index [3]
+    echo -en "Feh\0icon\x1ffe\n"                      # index [4]
 }
 
 # Мультимедиа плееры
 show_multimedia_menu() {
-    echo -en "mpv\0icon\x1fmpv\n"                     # [0]
-    echo -en "VLC\0icon\x1fvlc\n"                     # [1]
-    echo -en "Celluloid\0icon\x1fcelluloid\n"         # [2]
-    echo -en "Audacious\0icon\x1faudacious\n"         # [3]
-    echo -en "Spotify\0icon\x1fspotify-client\n"      # [4]
+    echo -en "mpv\0icon\x1fmpv\n"                     # index [0]
+    echo -en "VLC\0icon\x1fvlc\n"                     # index [1]
+    echo -en "Celluloid\0icon\x1fcelluloid\n"         # index [2]
+    echo -en "Audacious\0icon\x1faudacious\n"         # index [3]
+    echo -en "Spotify\0icon\x1fspotify-client\n"      # index [4]
 }
 
 # Игровые лаунчеры
 show_games_menu() {
-    echo -en "Steam\0icon\x1fsteam\n"                 # [0]
-    echo -en "Lutris\0icon\x1flutris\n"               # [1]
-    echo -en "Heroic Games Launcher\0icon\x1fcom.heroicgameslauncher.hgl\n" # [2]
+    echo -en "Steam\0icon\x1fsteam\n"                 # index [0]
+    echo -en "Lutris\0icon\x1flutris\n"               # index [1]
+    echo -en "Heroic Games Launcher\0icon\x1fcom.heroicgameslauncher.hgl\n" # index [2]
 }
 
 # Системные утилиты
 show_system_menu() {
-    echo -en "GParted\0icon\x1fgparted\n"             # [0]
-    echo -en "Btop\0icon\x1futilities-terminal\n"     # [1]
-    echo -en "Htop\0icon\x1futilities-terminal\n"     # [2]
-    echo -en "Timeshift\0icon\x1ftimeshift\n"         # [3]
+    echo -en "GParted\0icon\x1fgparted\n"             # index [0]
+    echo -en "Btop\0icon\x1futilities-terminal\n"     # index [1]
+    echo -en "Htop\0icon\x1futilities-terminal\n"     # index [2]
+    echo -en "Timeshift\0icon\x1ftimeshift\n"         # index [3]
 }
 
 # Различные инструменты
 show_utilities_menu() {
-    echo -en "Calculator\0icon\x1forg.gnome.Calculator\n" # [0]
-    echo -en "Screenshot\0icon\x1fcamera-photo\n"         # [1]
-    echo -en "Archive Manager\0icon\x1fgnome-ark\n"       # [2]
+    echo -en "Calculator\0icon\x1forg.gnome.Calculator\n" # index [0]
+    echo -en "Screenshot\0icon\x1fcamera-photo\n"         # index [1]
+    echo -en "Archive Manager\0icon\x1fgnome-ark\n"       # index [2]
 }
 
 # Меню управления питанием
 show_power_menu() {
-    echo -e " Lock"      # [0]
-    echo -e "󰗼 Logout"    # [1]
-    echo -e "󰖔 Suspend"   # [2]
-    echo -e "󰜉 Reboot"    # [3]
-    echo -e "󰐥 Shutdown"  # [4]
+    echo -e " Lock"      # index [0]
+    echo -e "󰗼 Logout"    # index [1]
+    echo -e "󰖔 Suspend"   # index [2]
+    echo -e "󰜉 Reboot"    # index [3]
+    echo -e "󰐥 Shutdown"  # index [4]
 }
 
 # --- Логика навигации ---
@@ -160,7 +160,7 @@ while true; do
     elif [ "$CURRENT_MENU" = "terminal" ]; then
         CHOICE=$(show_terminal_menu | fuzzel $FUZZEL_OPTS)
         case "$CHOICE" in
-            0)  foot & exit 0       ;;
+            0)  foot & exit 0       ;; 
             1)  alacritty & exit 0  ;;
             2)  kitty & exit 0      ;;
             3)  wezterm & exit 0    ;;

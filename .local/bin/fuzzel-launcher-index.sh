@@ -23,11 +23,6 @@ FUZZEL_OPTS="--dmenu \
 --vertical-pad=10"
 #!/bin/bash
 
-# --- Настройки ---
-# --index: заставляет fuzzel возвращать номер выбранной строки (0, 1, 2...)
-# --minimal-lines: подстраивает высоту окна под количество пунктов
-FUZZEL_OPTS="--dmenu --index --width=35 --minimal-lines"
-
 # --- Функции вывода списков ---
 
 # Главное меню выбора категорий
@@ -56,20 +51,20 @@ show_terminal_menu() {
 
 # Файловые менеджеры
 show_explorer_menu() {
-    echo -en "Thunar\0icon\x1forg.xfce.thunar\n" # 0
+    echo -en "Thunar\0icon\x1forg.xfce.thunar\n"      # 0
     echo -en "Nautilus\0icon\x1forg.gnome.Nautilus\n" # 1
-    echo -en "Dolphin\0icon\x1forg.kde.dolphin\n"    # 2
-    echo -en "PCManFM-QT\0icon\x1fpcmanfm-qt\n"      # 3
-    echo -en "Yazi\0icon\x1fyazi\n"                  # 4
-    echo -en "Ranger\0icon\x1futilities-terminal\n"  # 5
+    echo -en "Dolphin\0icon\x1forg.kde.dolphin\n"     # 2
+    echo -en "PCManFM-QT\0icon\x1fpcmanfm-qt\n"       # 3
+    echo -en "Yazi\0icon\x1fyazi\n"                   # 4
+    echo -en "Ranger\0icon\x1futilities-terminal\n"   # 5
 }
 
 # Браузеры и мессенджеры
 show_internet_menu() {
-    echo -en "Firefox\0icon\x1ffirefox\n"      # 0
-    echo -en "Chromium\0icon\x1fchromium\n"    # 1
-    echo -en "Brave\0icon\x1fbrave-browser\n"  # 2
-    echo -en "Telegram\0icon\x1ftelegram\n"    # 3
+    echo -en "Firefox\0icon\x1ffirefox\n"         # 0
+    echo -en "Chromium\0icon\x1fchromium\n"       # 1
+    echo -en "Brave\0icon\x1fbrave-browser\n"     # 2
+    echo -en "Telegram\0icon\x1ftelegram\n"       # 3
     echo -en "qBittorrent\0icon\x1fqbittorrent\n" # 4
 }
 
@@ -86,42 +81,42 @@ show_development_menu() {
 
 # Графические редакторы и просмотрщики
 show_graphics_menu() {
-    echo -en "Oculante\0icon\x1foculante\n"      # 0
-    echo -en "GIMP\0icon\x1fgimp\n"              # 1
-    echo -en "Inkscape\0icon\x1finkscape\n"      # 2
-    echo -en "imv\0icon\x1fimage-viewer\n"       # 3
-    echo -en "Feh\0icon\x1ffe\n"                 # 4
+    echo -en "Oculante\0icon\x1foculante\n" # 0
+    echo -en "GIMP\0icon\x1fgimp\n"         # 1
+    echo -en "Inkscape\0icon\x1finkscape\n" # 2
+    echo -en "imv\0icon\x1fimage-viewer\n"  # 3
+    echo -en "Feh\0icon\x1ffe\n"             # 4
 }
 
 # Мультимедиа плееры
 show_multimedia_menu() {
-    echo -en "mpv\0icon\x1fmpv\n"           # 0
-    echo -en "VLC\0icon\x1fvlc\n"           # 1
-    echo -en "Celluloid\0icon\x1fcelluloid\n" # 2
-    echo -en "Audacious\0icon\x1faudacious\n" # 3
+    echo -en "mpv\0icon\x1fmpv\n"                # 0
+    echo -en "VLC\0icon\x1fvlc\n"                # 1
+    echo -en "Celluloid\0icon\x1fcelluloid\n"    # 2
+    echo -en "Audacious\0icon\x1faudacious\n"    # 3
     echo -en "Spotify\0icon\x1fspotify-client\n" # 4
 }
 
 # Игровые лаунчеры
 show_games_menu() {
-    echo -en "Steam\0icon\x1fsteam\n"   # 0
-    echo -en "Lutris\0icon\x1flutris\n" # 1
+    echo -en "Steam\0icon\x1fsteam\n"                                       # 0
+    echo -en "Lutris\0icon\x1flutris\n"                                     # 1
     echo -en "Heroic Games Launcher\0icon\x1fcom.heroicgameslauncher.hgl\n" # 2
 }
 
 # Системные утилиты
 show_system_menu() {
-    echo -en "GParted\0icon\x1fgparted\n"            # 0
-    echo -en "Btop\0icon\x1futilities-terminal\n"    # 1
-    echo -en "Htop\0icon\x1futilities-terminal\n"    # 2
-    echo -en "Timeshift\0icon\x1ftimeshift\n"        # 3
+    echo -en "GParted\0icon\x1fgparted\n"         # 0
+    echo -en "Btop\0icon\x1futilities-terminal\n" # 1
+    echo -en "Htop\0icon\x1futilities-terminal\n" # 2
+    echo -en "Timeshift\0icon\x1ftimeshift\n"     # 3
 }
 
 # Различные инструменты
 show_utilities_menu() {
     echo -en "Calculator\0icon\x1forg.gnome.Calculator\n" # 0
     echo -en "Screenshot\0icon\x1fcamera-photo\n"         # 1
-    echo -en "Archive Manager\0icon\x1fgnome-ark\n"        # 2
+    echo -en "Archive Manager\0icon\x1fgnome-ark\n"       # 2
 }
 
 # Меню управления питанием

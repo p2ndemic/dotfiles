@@ -17,7 +17,7 @@ FONT=Hack:size=14
 
 # --- Позиционирование окна на экране ---
 # Доступно: top-left, top, top-right, left, center, right, bottom-left, bottom, bottom-right
-ALIGN="center"
+ALIGN="bottom-left"
 
 # --- Сборка параметров Fuzzel в единую переменную ---
 # Порядок: режим dmenu, индекс, шрифт, позиция, скрыть ввод, авто-высота, ширина, отступы
@@ -26,9 +26,9 @@ FUZZEL_OPTS="--dmenu \
     --font=$FONT \
     --anchor=$ALIGN \
     --hide-prompt \
-    --minimal-lines \
-    --width=30 \
-    --horizontal-pad=10 \
+    --lines=11 \
+    --width=20 \
+    --horizontal-pad=12 \
     --vertical-pad=10 \
     --line-height=22"
 

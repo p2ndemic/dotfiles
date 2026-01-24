@@ -42,6 +42,7 @@ show_internet_menu() {
     echo -en "Chromium\0icon\x1fchromium\n"
     echo -en "Brave\0icon\x1fbrave-browser\n"
     echo -en "Telegram\0icon\x1ftelegram\n"
+    echo -en "qBittorrent\0icon\x1fqbittorrent\n"
 }
 
 show_development_menu() {

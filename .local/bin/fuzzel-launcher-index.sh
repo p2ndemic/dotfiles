@@ -256,22 +256,22 @@ while true; do
         CHOICE=$(show_power_menu | fuzzel $FUZZEL_OPTS)
         case "$CHOICE" in
             0)
-                swaylock & exit 0               # Блокировка [0]
+                swaylock & exit 0                         # Блокировка [0]
                 ;;
             1)
-                loginctl terminate-user "$USER" # Выход [1]
+                loginctl terminate-user "$USER" & exit 0  # Выход [1]
                 ;;
             2)
-                systemctl suspend && exit 0     # Сон [2]
+                systemctl suspend && exit 0               # Сон [2]
                 ;;
             3)
-                systemctl reboot                # Перезагрузка [3]
+                systemctl reboot                          # Перезагрузка [3]
                 ;;
             4)
-                systemctl poweroff              # Выключение [4]
+                systemctl poweroff                        # Выключение [4]
                 ;;
             *)
-                CURRENT_MENU="main"             # Срабатывает при нажатии Esc или закрытии окна
+                CURRENT_MENU="main"                       # Срабатывает при нажатии Esc или закрытии окна
                 ;;
         esac
     fi

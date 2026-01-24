@@ -46,7 +46,7 @@ show_internet_menu() {
 
 show_development_menu() {
     echo -en "Zed\0icon\x1fzed\n"
-    echo -en "Meld\0icon\x1fmeld\n"
+    echo -en "Meld\0icon\x1forg.gnome.Meld\n"
     echo -en "Neovim\0icon\x1fnvim\n"
     echo -en "VSCodium\0icon\x1fvscodium\n"
     echo -en "Helix\0icon\x1fhelix\n"

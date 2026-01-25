@@ -37,7 +37,7 @@ FUZZEL_OPTS="--dmenu \
 # Главное меню выбора категорий
 show_main_menu() {
     echo -e "🖥️ Terminal"     # index [0]
-    echo -e "📁 Explorer"     # index [1]
+    echo -e "📂 Explorer"     # index [1]
     echo -e "🌐 Internet"     # index [2]
     echo -e "💻 Development"  # index [3]
     echo -e "🌄 Graphics"     # index [4]

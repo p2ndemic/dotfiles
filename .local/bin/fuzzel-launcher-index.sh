@@ -40,7 +40,7 @@ show_main_menu() {
     echo -e "📂 Explorer"     # index [1]
     echo -e "🌐 Internet"     # index [2]
     echo -e "💻 Development"  # index [3]
-    echo -e "🌄 Graphics"     # index [4]
+    echo -e "🖌️ Graphics"     # index [4]
     echo -e "🎬 Multimedia"   # index [5]
     echo -e "🎮 Games"        # index [6]
     echo -e "⚙️ System"       # index [7]

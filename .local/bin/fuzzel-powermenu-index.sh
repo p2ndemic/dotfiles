@@ -45,13 +45,13 @@ CHOICE=$(get_power_options | fuzzel $FUZZEL_OPTS)
 # Обработка выбора
 case "$CHOICE" in
     0) # Index [0]
-        swaylock & exit 0                       # Блокировка [0]
+        loginctl lock-session                   # Блокировка [0]
         ;;
     1) # Index [1]
-        loginctl terminate-user $USER & exit 0  # Выход [1]
+        labwc --exit                            # Выход [1]
         ;;
     2) # Index [2]
-        systemctl suspend & exit 0              # Сон [2]
+        systemctl suspend                       # Сон [2]
         ;;
     3) # Index [3]
         systemctl reboot                        # Перезагрузка [3]

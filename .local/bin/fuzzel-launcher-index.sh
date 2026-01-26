@@ -25,6 +25,7 @@ FUZZEL_OPTS="--dmenu \
     --index \
     --font=$FONT \
     --anchor=$ALIGN \
+    --y-margin=10 \
     --hide-prompt \
     --lines=11 \
     --width=20 \

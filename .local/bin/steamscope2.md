@@ -167,6 +167,24 @@ sudo usermod -aG input $USER
 # 3. Перелогинься!
 ```
 
+Настройка прав (без пароля для chvt)
+1. Добавь себя в группу tty:
+```sudo usermod -aG input video render tty $USER```
+2. Создай файл /etc/sudoers.d/chvt-nopasswd
+```sudo visudo -f /etc/sudoers.d/chvt-nopasswd```
+```%wheel ALL=(ALL) NOPASSWD: /usr/bin/chvt```
+3. Создай .desktop файл ~/.local/share/applications/steam-gamescope.desktop:
+```ini
+[Desktop Entry]
+Name=Steam (Gamescope)
+Comment=Запуск Steam в полноэкранном режиме через Gamescope
+Exec=/home/ваш_пользователь/.local/bin/steamscope-launch
+Icon=steam
+Terminal=false
+Type=Application
+Categories=Game;
+```
+
 Рекомендуемый вариант: бинды без супер-клавиши
 Добавь в ~/.config/fish/config.fish:
 ```

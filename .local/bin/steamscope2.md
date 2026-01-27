@@ -78,10 +78,10 @@ if test -f $return_vt_file
     # Очищаем временный файл
     rm -f /tmp/steamscope-return_vt
     
-    echo "✅ Возврат выполнен."
+    echo "✅ Возврат выполнен"
 else
-    echo "⚠️  Нет активной сессии steamscope."
-    echo "   Запусти сначала: steamscope-launch"
+    echo "❕ Нет активной сессии steamscope"
+    echo "❕ Запусти сначала: steamscope-launch"
 end
 ```
 
@@ -113,13 +113,7 @@ Environment="GAMESCOPE_WAYLAND_DISPLAY=gamescope-0"
 Environment="WLR_BACKENDS=drm"
 Environment="WLR_DRM_DEVICES=/dev/dri/card0"
 
-ExecStart=/usr/bin/gamescope \
-  -W 1920 -H 1080 \
-  -r 144 \
-  -f \
-  --steam \
-  -- \
-  /usr/bin/steam -bigpicture
+ExecStart=/usr/bin/gamescope -W 1920 -H 1080 -r 144 -f --steam -- /usr/bin/steam -bigpicture
 
 # Корректное завершение
 KillMode=mixed

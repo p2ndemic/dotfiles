@@ -109,6 +109,7 @@ StandardError=journal
 Environment="XDG_SESSION_TYPE="
 Environment="WAYLAND_DISPLAY="
 Environment="DISPLAY="
+Environment="XDG_RUNTIME_DIR=/run/user/(id -u)"
 Environment="GAMESCOPE_WAYLAND_DISPLAY=gamescope-0"
 Environment="WLR_BACKENDS=drm"
 Environment="WLR_DRM_DEVICES=/dev/dri/card0"

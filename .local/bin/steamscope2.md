@@ -122,9 +122,7 @@ TimeoutStopSec=10
 Restart=no
 
 # Автоматический возврат даже при аварийном завершении
-ExecStopPost=-/bin/sh -c ' \
-  VT=$(cat /tmp/steamscope-return_vt 2>/dev/null) && \
-  [ -n "$VT" ] && /usr/bin/loginctl activate tty$VT || true'
+ExecStopPost=-/bin/sh -c 'VT=$(cat /tmp/steamscope-return_vt 2>/dev/null) && [[ -n "$VT" ]] && /usr/bin/loginctl activate tty$VT || true'
 
 [Install]
 WantedBy=default.target

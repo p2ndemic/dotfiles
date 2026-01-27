@@ -113,7 +113,7 @@ Environment="GAMESCOPE_WAYLAND_DISPLAY=gamescope-0"
 Environment="WLR_BACKENDS=drm"
 Environment="WLR_DRM_DEVICES=/dev/dri/card0"
 
-ExecStart=/usr/bin/gamescope gamescope --rt --immediate-flips -W 2560 -H 1600 -w 1680 -h 1050 -f -r 120 --force-grab-cursor --steam -- usr/bin/steam -console -bigpicture -no-cef-sandbox -fasthtml
+ExecStart=/usr/bin/gamescope --rt --immediate-flips -W 2560 -H 1600 -w 1680 -h 1050 -f -r 120 --force-grab-cursor --steam -- usr/bin/steam -console -bigpicture -no-cef-sandbox -fasthtml
 
 # Корректное завершение
 KillMode=mixed

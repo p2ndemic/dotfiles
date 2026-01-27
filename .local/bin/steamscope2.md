@@ -195,7 +195,7 @@ steamscope-return
 
 Готово! Лёгкое, честное и надёжное решение в духе Unix-философии 🐧✨
 
-ini```
+fish```
 ❯ fish_key_reader
 Press a key:
 
@@ -209,3 +209,11 @@ bind ctrl-alt-l 'do something'
 
 ~
 ```
+
+config```
+~/.config/sway/config:
+bindsym $mod+Ctrl+Alt+O exec steamscope-hotkey-launch
+bindsym $mod+Ctrl+Alt+L exec steamscope-hotkey-return
+```
+
+

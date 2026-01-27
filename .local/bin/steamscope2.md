@@ -167,6 +167,19 @@ sudo usermod -aG input $USER
 # 3. Перелогинься!
 ```
 
+Рекомендуемый вариант: бинды без супер-клавиши
+Добавь в ~/.config/fish/config.fish:
+```
+# Запуск steamscope: Ctrl+Alt+O
+bind \e\co 'steamscope-launch; commandline -f repaint'
+
+# Возврат в сессию: Ctrl+Alt+L
+bind \e\cl 'steamscope-return; commandline -f repaint'
+
+    💡 \e\c = Escape + Control (стандартная кодировка для Alt в терминалах)
+    commandline -f repaint — обновляет приглашение после выполнения
+```
+
 ---
 
 ## 🚀 Использование
@@ -180,6 +193,7 @@ steamscope-launch
 # Возврат в исходную сессию
 steamscope-return
 ```
+
 
 ---
 

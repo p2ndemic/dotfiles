@@ -1,0 +1,4 @@
+# Ref: https://github.com/Alexays/Waybar/issues/3556
+# Ref: https://github.com/basecamp/omarchy/discussions/1254
+
+# Исправление проблемы с оцентровкой иконок в Waybar

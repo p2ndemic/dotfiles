@@ -201,6 +201,30 @@
     "scroll-step": 5,
   },
 
+  "pulseaudio": {
+    "format": "{volume}% {icon}",
+    "format-bluetooth": "{volume}% ",
+    "format-bluetooth-muted": "󰂲",
+    "format-muted": "",
+    "format-source": "{volume}% ",
+    "format-source-muted": "",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", "", ""],
+    },
+    // "scroll-step": 1, // %, can be a float
+    "on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
+    "on-click-middle": "pavucontrol",
+    "on-click-right": "wpctl set-mute @DEFAULT_SOURCE@ toggle",
+    "on-scroll-up": "wpctl set-volume @DEFAULT_SINK@ 1%+ --limit 1.0",
+    "on-scroll-down": "wpctl set-volume @DEFAULT_SINK@ 1%- --limit 1.0",
+  },
+
   ////////////////////////////
   //                        //
   //  // Custom modules //  //

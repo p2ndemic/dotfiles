@@ -1,4 +1,4 @@
-//////////////////////////////////
+]//////////////////////////////////
 //                              //
 //  // Waybar configuration //  //
 //                              //
@@ -26,7 +26,7 @@
     "custom/terminal",
     "custom/editor",
     "custom/browser",
-    //"group/group-apps",
+    "group/group-apps",
   ],
   "modules-center": ["wlr/taskbar"],
   "modules-right": [
@@ -57,11 +57,16 @@
   "ext/workspaces": {
     "format": "{icon}",
     "format-icons": {
+      "Workspace 1": "1",
+      "Workspace 2": "2",
+      "Workspace 3": "3",
+      "Workspace 4": "4",
+      "Workspace 5": "5",
       "urgent": "",
       "active": "",
       "default": "",
     },
-    "sort-by-number": true,
+    "sort-by-id": true, // При "sort-by-number": true, выходит ошибка: [warning] [ext/workspaces]: Prefer sort-by-id instead of sort-by-number
     "on-click": "activate",
   },
 
@@ -85,7 +90,7 @@
     "format": "",
     "tooltip": true,
     "tooltip-format": "Editor",
-    "on-click": "zed",
+    "on-click": "zeditor",
     "on-click-middle": "foot -e nano",
     "on-click-right": "foot -e micro",
   },
@@ -97,6 +102,17 @@
     "on-click": "firefox",
     "on-click-middle": "helium",
     "on-click-right": "brave",
+  },
+
+  // group-modules
+  "group/group-apps": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 500,
+      "children-class": "drawer-child",
+      "transition-left-to-right": true,
+    },
+    "modules": ["custom/arrow-right", "custom/settings", "custom/task-manager"],
   },
 
   ///////////////////////////////////
@@ -273,6 +289,20 @@
   //                               //
   ///////////////////////////////////
 
+  // group-apps
+  // Конфигурация стрелки
+  "custom/arrow-right": {
+    "format": "", // Иконка стрелки влево (FontAwesome)
+    "tooltip": false,
+  },
+
+  "custom/settings": {
+    "format": "",
+    "tooltip": true,
+    "tooltip-format": "WC Settings",
+    "on-click": "labwc-tweaks",
+  },
+
   ///////////////////////////////////
   //                               //
   //  // Custom Modules Right //   //
@@ -287,8 +317,8 @@
     "on-click": "",
   },
 
-  "custom/taskmanager": {
-    "format": "",
+  "custom/task-manager": {
+    "format": "",
     "tooltip": true,
     "tooltip-format": "Task Manager",
     "on-click": "foot -e btop",

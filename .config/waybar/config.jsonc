@@ -1,4 +1,4 @@
-]//////////////////////////////////
+//////////////////////////////////
 //                              //
 //  // Waybar configuration //  //
 //                              //
@@ -292,7 +292,7 @@
   // group-apps
   // Конфигурация стрелки
   "custom/arrow-right": {
-    "format": "", // Иконка стрелки влево (FontAwesome)
+    "format": "", // Иконка стрелки справо (FontAwesome)
     "tooltip": false,
   },
 
@@ -343,7 +343,7 @@
   // group-modules
   // Конфигурация стрелки
   "custom/arrow-left": {
-    "format": "", // Иконка стрелки влево (FontAwesome)
+    "format": "", // Иконка стрелки влево (FontAwesome)
     "tooltip": false,
   },
 

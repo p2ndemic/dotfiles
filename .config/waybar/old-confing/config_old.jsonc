@@ -1,0 +1,243 @@
+//////////////////////////////////
+//                              //
+//  // Waybar configuration //  //
+//                              //
+//////////////////////////////////
+
+{
+  "layer": "top",
+  "position": "bottom",
+  "height": 36,
+  "spacing": 2,
+  "margin-top": 0,
+  "margin-bottom": 0,
+  "reload_style_on_change": true,
+
+  /////////////////////////////////////////////
+  //                                         //
+  //  // Choose the order of the modules //  //
+  //                                         //
+  /////////////////////////////////////////////
+
+  "modules-left": [
+    "custom/launcher",
+    "ext/workspaces",
+    "custom/explorer",
+    "custom/terminal",
+    "custom/editor",
+    "custom/browser",
+    "group/group-apps",
+  ],
+  "modules-center": ["wlr/taskbar"],
+  "modules-right": [
+    "tray",
+    "group/group-tools",
+    "pulseaudio",
+    "backlight",
+    "network",
+    "battery",
+    "clock",
+    "custom/show-desktop",
+  ],
+
+  ///////////////////////////////////
+  //                               //
+  //  // Modules Left //           //
+  //                               //
+  ///////////////////////////////////
+
+  "custom/launcher": {
+    "format": "",
+    "tooltip": true,
+    "tooltip-format": "Menu \n\nRight-click to open the power menu",
+    "on-click": "pkill fuzzel || fuzzel",
+    "on-click-right": "~/.local/bin/fuzzel-powermenu-index.sh",
+  },
+
+  "ext/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "urgent": "",
+      "active": "",
+      "default": "",
+    },
+    "sort-by-number": true,
+    "on-click": "activate",
+  },
+
+  "custom/explorer": {
+    "format": "",
+    "tooltip": true,
+    "tooltip-format": "File Manager",
+    "on-click": "pcmanfm-qt",
+  },
+
+  "custom/terminal": {
+    "format": "",
+    "tooltip": true,
+    "tooltip-format": "Terminal",
+    "on-click": "foot",
+
+    "on-click-right": "foot",
+  },
+
+  "custom/code": {
+    "format": "",
+    "tooltip": true,
+    "tooltip-format": "Editor",
+    "on-click": "zed",
+  },
+
+  "custom/browser": {
+    "format": "",
+    "tooltip": true,
+    "tooltip-format": "Browser",
+    "on-click": "firefox",
+    "on-click-right": "brave",
+    "on-click-middle": "helium",
+  },
+
+  ///////////////////////////////////
+  //                               //
+  //  // Modules Center //         //
+  //                               //
+  ///////////////////////////////////
+
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "icon-size": 20,
+    "icon-theme": "Numix-Circle",
+    "tooltip-format": "{title:.50}",
+    "on-click": "minimize-raise",
+    "on-click-middle": "close",
+    "on-click-right": "maximize",
+  },
+
+  ///////////////////////////////////
+  //                               //
+  //  // Modules Right  //         //
+  //                               //
+  ///////////////////////////////////
+
+  "tray": {
+    "icon-size": 20,
+    "spacing": 10,
+  },
+
+  "group/group-tools": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 500,
+      "children-class": "other-apps",
+      "transition-left-to-right": false,
+    },
+    "modules": [
+      "custom/clip",
+      "idle_inhibitor",
+      "custom/snip",
+      "custom/calculator",
+      "custom/task-manager",
+    ],
+  },
+
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "",
+      "deactivated": "",
+    },
+  },
+
+  "clock": {
+    "format": "{:%H:%M}",
+    "format-alt": "{:%d-%m-%Y}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n\n<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "month",
+      "mode-mon-col": 3,
+      "on-scroll": 1,
+      "format": {
+        "months": "<span color='#ffead3'><b>{}</b></span>",
+        "days": "<span color='#ecc6d9'><b>{}</b></span>",
+        "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b><u>{}</u></b></span>",
+      },
+    },
+    "actions": {
+      "on-click-right": "mode",
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down",
+    },
+  },
+
+  "backlight": {
+    //"device": "acpi_video0", // Assuming acpi_video0, adjust if needed
+    //"tooltip": false,
+    "format": "{percent}% {icon}",
+    "format-icons": ["󰃠", "󰃟", "󰃞"],
+    "on-scroll-up": "brightnessctl s +5%",
+    "on-scroll-down": "brightnessctl s 5%-",
+  },
+
+  "wireplumber#sink": {
+    "format": "{volume}% {icon}",
+    "format-muted": "",
+    "format-icons": ["", "", ""],
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "on-click-middle": "pwvucontrol",
+    "on-click-right": "pavucontrol",
+    "scroll-step": 5,
+  },
+  "wireplumber#source": {
+    "node-type": "Audio/Source",
+    "format": "{volume}% ",
+    "format-muted": "",
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
+    "on-click-middle": "pwvucontrol",
+    "on-click-right": "pavucontrol",
+    "scroll-step": 5,
+  },
+
+  ////////////////////////////
+  //                        //
+  //  // Custom modules //  //
+  //                        //
+  ////////////////////////////
+
+  ///////////////////////////
+  //                       //
+  //  // Apps section //   //
+  //                       //
+  ///////////////////////////
+
+  "custom/taskmanager": {
+    "format": "",
+    "tooltip": true,
+    "tooltip-format": "Task Manager",
+    "on-click": "foot -e btop",
+    "on-click-right": "missioncenter",
+  },
+
+  "custom/galculator": {
+    "format": "",
+    "tooltip": true,
+    "tooltip-format": "Сalculator",
+    "on-click": "gnome-calculator",
+    "on-click-right": "qalculate-gtk",
+  },
+
+  "custom/snip": {
+    "format": "",
+    "tooltip": true,
+    "tooltip-format": "Screenshot",
+    "on-click": "grim -g \"$(slurp)\" ~/Pictures/$(date +%s).png",
+  },
+
+  "custom/clip": {
+    "format": "",
+    "tooltip": true,
+    "tooltip-format": "Clipboard",
+    "on-click": "",
+  },
+}

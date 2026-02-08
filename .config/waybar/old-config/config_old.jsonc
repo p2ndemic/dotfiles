@@ -81,11 +81,13 @@
     "on-click-right": "foot",
   },
 
-  "custom/code": {
-    "format": "",
+  "custom/editor": {
+    "format": "",
     "tooltip": true,
     "tooltip-format": "Editor",
     "on-click": "zed",
+    "on-click-middle": "foot -e nano",
+    "on-click-right": "foot -e micro",
   },
 
   "custom/browser": {
@@ -93,8 +95,8 @@
     "tooltip": true,
     "tooltip-format": "Browser",
     "on-click": "firefox",
-    "on-click-right": "brave",
     "on-click-middle": "helium",
+    "on-click-right": "brave",
   },
 
   ///////////////////////////////////
@@ -205,12 +207,6 @@
   //                        //
   ////////////////////////////
 
-  ///////////////////////////
-  //                       //
-  //  // Apps section //   //
-  //                       //
-  ///////////////////////////
-
   "custom/taskmanager": {
     "format": "",
     "tooltip": true,
@@ -219,7 +215,7 @@
     "on-click-right": "missioncenter",
   },
 
-  "custom/galculator": {
+  "custom/calculator": {
     "format": "",
     "tooltip": true,
     "tooltip-format": "Сalculator",

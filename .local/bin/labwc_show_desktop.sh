@@ -1,6 +1,7 @@
 #!/bin/bash
 
-# Note: Необходимо установить wlrctl: paru -S wlrctl
+# Note: Необходимо установить wlrctl
+# paru -S wlrctl
 
 CACHE_DIR="XDG_CACHE_HOME:-$HOME/.cache"
 CACHE_FILE="$CACHE_DIR/.labwc_show_desktop"

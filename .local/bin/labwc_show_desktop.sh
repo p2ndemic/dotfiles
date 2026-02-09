@@ -3,8 +3,7 @@
 # Note: Необходимо установить wlrctl
 # paru -S wlrctl
 
-CACHE_DIR="$HOME/.cache"
-CACHE_FILE="$CACHE_DIR/.labwc_show_desktop"
+CACHE_FILE="$HOME/.cache/.labwc_show_desktop"
 
 if wlrctl toplevel find state:unminimized >/dev/null 2>&1; then
     # Сохраняем видимые окна + добавляем фокусированное в конец

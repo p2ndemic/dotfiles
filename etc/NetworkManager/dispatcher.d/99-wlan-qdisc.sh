@@ -6,13 +6,13 @@
 # Скрипт автоматически устанавливает дисциплину очереди `fq` для интерфейса `wlan0` при его активации (поднятии).
 
 # Первый аргумент ($1) - имя интерфейса, второй ($2) - действие ('up' или 'down')
-IFACE="$1"
-ACTION="$2"
+INTERFACE="$1"
+STATUS="$2"
 
 # Выполняем только для интерфейса wlan0 и только когда он поднимается ('up')
-if [ "$IFACE" = "wlan0" ] && [ "$ACTION" = "up" ]; then
+if [ "$INTERFACE" = "wlan0" ] && [ "$STATUS" = "up" ]; then
     # Устанавливаем qdisc = fq
-    /sbin/tc qdisc replace dev "$IFACE" root fq
+    /sbin/tc qdisc replace dev "$INTERFACE" root fq
 fi
 
 exit 0

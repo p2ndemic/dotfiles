@@ -33,9 +33,9 @@
     "tray",
     "group/group-tools",
     "pulseaudio",
-    "backlight",
     "network",
     "battery",
+    "group/group-modules",
     "clock",
     "custom/show-desktop",
   ],
@@ -57,11 +57,16 @@
   "ext/workspaces": {
     "format": "{icon}",
     "format-icons": {
+      "Workspace 1": "1",
+      "Workspace 2": "2",
+      "Workspace 3": "3",
+      "Workspace 4": "4",
+      "Workspace 5": "5",
       "urgent": "",
       "active": "",
       "default": "",
     },
-    "sort-by-number": true,
+    "sort-by-id": true, // При "sort-by-number": true, выходит ошибка: [warning] [ext/workspaces]: Prefer sort-by-id instead of sort-by-number
     "on-click": "activate",
   },
 
@@ -82,10 +87,10 @@
   },
 
   "custom/editor": {
-    "format": "",
+    "format": "",
     "tooltip": true,
     "tooltip-format": "Editor",
-    "on-click": "zed",
+    "on-click": "zeditor",
     "on-click-middle": "foot -e nano",
     "on-click-right": "foot -e micro",
   },
@@ -97,6 +102,17 @@
     "on-click": "firefox",
     "on-click-middle": "helium",
     "on-click-right": "brave",
+  },
+
+  // group-modules
+  "group/group-apps": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 500,
+      "children-class": "drawer-child",
+      "transition-left-to-right": true,
+    },
+    "modules": ["custom/arrow-right", "custom/settings", "custom/task-manager"],
   },
 
   ///////////////////////////////////
@@ -126,19 +142,19 @@
     "spacing": 10,
   },
 
+  // group-tools
   "group/group-tools": {
     "orientation": "inherit",
     "drawer": {
       "transition-duration": 500,
-      "children-class": "other-apps",
+      "children-class": "drawer-child",
       "transition-left-to-right": false,
     },
     "modules": [
       "custom/clip",
       "idle_inhibitor",
-      "custom/snip",
       "custom/calculator",
-      "custom/task-manager",
+      "custom/snip",
     ],
   },
 
@@ -148,6 +164,102 @@
       "activated": "",
       "deactivated": "",
     },
+  },
+
+  "backlight": {
+    //"device": "acpi_video0", // Assuming acpi_video0 | acpi_video1, adjust if needed
+    "format": "{percent}% {icon}",
+    "format-icons": ["󰃠", "󰃟", "󰃞"],
+    "on-scroll-up": "brightnessctl s +5%",
+    "on-scroll-down": "brightnessctl s 5%-",
+  },
+
+  "wireplumber#sink": {
+    "format": "{volume}% {icon}",
+    "format-muted": "",
+    "format-icons": ["", "", ""],
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "on-click-middle": "pwvucontrol",
+    "on-click-right": "pavucontrol",
+    "scroll-step": 5,
+  },
+
+  "bluetooth": {
+    // "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
+    "format": " {status}",
+    "format-disabled": "󰂲", // an empty format will hide the module
+    "format-off": "󰂲",
+    "format-connected": "󰂱 {num_connections} connected",
+    "format-no-controller": "",
+    "tooltip-format": "{controller_alias}\t{controller_address}",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "on-click": "",
+    "on-click-right": "blueman-manager",
+  },
+
+  // Modules
+  "pulseaudio": {
+    "format": "{volume}% {icon}",
+    "format-bluetooth": "{volume}% ",
+    "format-bluetooth-muted": "󰂲",
+    "format-muted": "",
+    "format-source": "{volume}% ",
+    "format-source-muted": "",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", "", ""],
+    },
+    // "scroll-step": 1, // %, can be a float
+    "on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
+    "on-click-middle": "pavucontrol",
+    "on-click-right": "wpctl set-mute @DEFAULT_SOURCE@ toggle",
+    "on-scroll-up": "wpctl set-volume @DEFAULT_SINK@ 1%+ --limit 1.0",
+    "on-scroll-down": "wpctl set-volume @DEFAULT_SINK@ 1%- --limit 1.0",
+    "ignored-sinks": ["Easy Effects Sink"],
+  },
+
+  "battery": {
+    "interval": 60,
+    "states": {
+      "warning": 20,
+      "critical": 10,
+    },
+    "format": "{capacity}% {icon}",
+    "format-charging": "{icon}",
+    "format-discharging": "{icon}",
+    "format-plugged": "",
+    "format-full": "󰂅",
+    "format-icons": {
+      "charging": ["󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"],
+      "default": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    },
+    "tooltip-format-charging": "{power:>1.0f}W↑ {capacity}%",
+    "tooltip-format-discharging": "{power:>1.0f}W↓ {capacity}%",
+    "on-click": "",
+    "on-click-middle": "falcond-gui",
+    "on-click-right": "tuned-gui",
+  },
+
+  // group-modules
+  "group/group-modules": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 500,
+      "children-class": "drawer-child",
+      "transition-left-to-right": false,
+    },
+    "modules": [
+      "custom/arrow-left",
+      "bluetooth",
+      "wireplumber#sink",
+      "backlight",
+    ],
   },
 
   "clock": {
@@ -173,70 +285,53 @@
     },
   },
 
-  "backlight": {
-    //"device": "acpi_video0", // Assuming acpi_video0, adjust if needed
-    //"tooltip": false,
-    "format": "{percent}% {icon}",
-    "format-icons": ["󰃠", "󰃟", "󰃞"],
-    "on-scroll-up": "brightnessctl s +5%",
-    "on-scroll-down": "brightnessctl s 5%-",
+  ///////////////////////////////////
+  //                               //
+  //  // Custom Modules Left //    //
+  //                               //
+  ///////////////////////////////////
+
+  // group-apps
+  // Конфигурация стрелки
+  "custom/arrow-right": {
+    "format": "", // Иконка стрелки справо (FontAwesome)
+    "tooltip": false,
   },
 
-  "wireplumber#sink": {
-    "format": "{volume}% {icon}",
-    "format-muted": "",
-    "format-icons": ["", "", ""],
-    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
-    "on-click-middle": "pwvucontrol",
-    "on-click-right": "pavucontrol",
-    "scroll-step": 5,
-  },
-  "wireplumber#source": {
-    "node-type": "Audio/Source",
-    "format": "{volume}% ",
-    "format-muted": "",
-    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
-    "on-click-middle": "pwvucontrol",
-    "on-click-right": "pavucontrol",
-    "scroll-step": 5,
+  "custom/settings": {
+    "format": "",
+    "tooltip": true,
+    "tooltip-format": "WC Settings",
+    "on-click": "labwc-tweaks",
   },
 
-  "pulseaudio": {
-    "format": "{volume}% {icon}",
-    "format-bluetooth": "{volume}% ",
-    "format-bluetooth-muted": "󰂲",
-    "format-muted": "",
-    "format-source": "{volume}% ",
-    "format-source-muted": "",
-    "format-icons": {
-      "headphone": "",
-      "hands-free": "",
-      "headset": "",
-      "phone": "",
-      "portable": "",
-      "car": "",
-      "default": ["", "", ""],
-    },
-    // "scroll-step": 1, // %, can be a float
-    "on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
-    "on-click-middle": "pavucontrol",
-    "on-click-right": "wpctl set-mute @DEFAULT_SOURCE@ toggle",
-    "on-scroll-up": "wpctl set-volume @DEFAULT_SINK@ 1%+ --limit 1.0",
-    "on-scroll-down": "wpctl set-volume @DEFAULT_SINK@ 1%- --limit 1.0",
-  },
-
-  ////////////////////////////
-  //                        //
-  //  // Custom modules //  //
-  //                        //
-  ////////////////////////////
-
-  "custom/taskmanager": {
-    "format": "",
+  "custom/task-manager": {
+    "format": "",
     "tooltip": true,
     "tooltip-format": "Task Manager",
     "on-click": "foot -e btop",
     "on-click-right": "missioncenter",
+  },
+
+  ///////////////////////////////////
+  //                               //
+  //  // Custom Modules Right //   //
+  //                               //
+  ///////////////////////////////////
+
+  // group-tools
+  "custom/clip": {
+    "format": "",
+    "tooltip": true,
+    "tooltip-format": "Clipboard",
+    "on-click": "",
+  },
+
+  "custom/snip": {
+    "format": "",
+    "tooltip": true,
+    "tooltip-format": "Screenshot",
+    "on-click": "grim -g \"$(slurp)\" ~/Pictures/$(date +%s).png",
   },
 
   "custom/calculator": {
@@ -247,17 +342,17 @@
     "on-click-right": "qalculate-gtk",
   },
 
-  "custom/snip": {
-    "format": "",
-    "tooltip": true,
-    "tooltip-format": "Screenshot",
-    "on-click": "grim -g \"$(slurp)\" ~/Pictures/$(date +%s).png",
+  // group-modules
+  // Конфигурация стрелки
+  "custom/arrow-left": {
+    "format": "", // Иконка стрелки влево (FontAwesome)
+    "tooltip": false,
   },
 
-  "custom/clip": {
-    "format": "",
+  "custom/show-desktop": {
+    "format": "", // Иконка стрелки влево (FontAwesome)
     "tooltip": true,
-    "tooltip-format": "Clipboard",
+    "tooltip-format": "Show Desktop",
     "on-click": "",
   },
 }

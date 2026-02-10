@@ -10,7 +10,7 @@ INTERFACE="$1"
 STATUS="$2"
 
 # Выполняем только для интерфейса wlan0 и только когда он поднимается ('up')
-if [ "$INTERFACE" = "wlan0" ] && [ "$STATUS" = "up" ]; then
+if [[ "$INTERFACE" = "wlan0" ]] && [[ "$STATUS" = "up" ]]; then
     # Устанавливаем qdisc = fq
     /sbin/tc qdisc replace dev "$INTERFACE" root fq
 fi

@@ -32,7 +32,7 @@
   "modules-right": [
     "tray",
     "group/group-tools",
-    "pulseaudio",
+    "pulseaudio#output",
     "network",
     "battery",
     "group/group-modules",
@@ -47,7 +47,7 @@
   ///////////////////////////////////
 
   "custom/launcher": {
-    "format": "",
+    "format": "", // "" "󰣇" ""
     "tooltip": true,
     "tooltip-format": "Menu \n\nRight-click to open the power menu",
     "on-click": "pkill fuzzel || fuzzel",
@@ -87,7 +87,7 @@
   },
 
   "custom/editor": {
-    "format": "",
+    "format": "󰈮", // "" "󰈮"  "" ""
     "tooltip": true,
     "tooltip-format": "Editor",
     "on-click": "zeditor",
@@ -108,7 +108,7 @@
   "group/group-apps": {
     "orientation": "inherit",
     "drawer": {
-      "transition-duration": 500,
+      "transition-duration": 0, // Default: 500
       "children-class": "drawer-child",
       "transition-left-to-right": true,
     },
@@ -146,7 +146,7 @@
   "group/group-tools": {
     "orientation": "inherit",
     "drawer": {
-      "transition-duration": 500,
+      "transition-duration": 0, //Default: 500
       "children-class": "drawer-child",
       "transition-left-to-right": false,
     },
@@ -166,6 +166,86 @@
     },
   },
 
+  // Pulseaudio Speaker/Headphone
+  "pulseaudio#output": {
+    "format": "{volume}% {icon}",
+    "format-muted": "",
+    "format-bluetooth": "{volume}% ",
+    "format-bluetooth-muted": "󰂲",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", "", ""],
+    },
+    //"tooltip": false,
+    // "scroll-step": 1, // %, can be a float
+    "on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
+    "on-click-middle": "pavucontrol",
+    "on-click-right": "pavucontrol",
+    "on-scroll-up": "wpctl set-volume @DEFAULT_SINK@ 1%+ --limit 1.0",
+    "on-scroll-down": "wpctl set-volume @DEFAULT_SINK@ 1%- --limit 1.0",
+    "ignored-sinks": ["Easy Effects Sink"],
+  },
+
+  "network": {
+    "interval": 60,
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+    "format": "{icon}",
+    "format-wifi": "{icon}",
+    "format-ethernet": "󱘖", // "" ""
+    "format-disconnected": "󰤮",
+    "tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "tooltip-format-disconnected": "Disconnected",
+    //"spacing": 1,
+    "on-click": "~/.local/bin/wifi-scan-exec-nmtui-toggle.sh",
+    "on-click-right": "iwgtk",
+  },
+
+  "battery": {
+    "interval": 60,
+    "states": {
+      // "good": 95,
+      "warning": 20,
+      "critical": 10,
+    },
+    "format": "{capacity}% {icon}",
+    "format-full": "{capacity}% {icon}",
+    "format-charging": "{capacity}% {icon}", // "󰂄" ""
+    "format-plugged": "{capacity}% ",
+    "format-alt": "{time} {icon}",
+    // "format-good": "", // An empty format will hide the module
+    // "format-full": "",
+    "format-icons": {
+      "default": ["", "", "", "", ""],
+      "charging": ["󰢟", "󱊤", "󱊥", "󱊦"],
+    },
+    // "format-icons": ["", "", "", "", ""]
+    "on-click": "",
+    "on-click-middle": "falcond-gui",
+    "on-click-right": "tuned-gui",
+  },
+
+  // group-modules
+  "group/group-modules": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 0, // Default: 500
+      "children-class": "drawer-child",
+      "transition-left-to-right": false,
+    },
+    "modules": [
+      "custom/arrow-left",
+      "bluetooth",
+      "pulseaudio#input",
+      "backlight",
+    ],
+  },
+
   "backlight": {
     //"device": "acpi_video0", // Assuming acpi_video0 | acpi_video1, adjust if needed
     "format": "{percent}% {icon}",
@@ -174,14 +254,19 @@
     "on-scroll-down": "brightnessctl s 5%-",
   },
 
-  "wireplumber#sink": {
-    "format": "{volume}% {icon}",
-    "format-muted": "",
-    "format-icons": ["", "", ""],
-    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
-    "on-click-middle": "pwvucontrol",
+  // Pulseaudio Mic
+  // Установить дефолтное устройство ввода (микрофон) через pavucontrol. По умолчанию не задан
+  "pulseaudio#input": {
+    "format": "{format_source}",
+    "format-source": "{volume}% ",
+    "format-source-muted": "",
+    "tooltip": false,
+    // "scroll-step": 1, // %, can be a float
+    "on-click": "wpctl set-mute @DEFAULT_SOURCE@ toggle",
+    "on-click-middle": "pavucontrol",
     "on-click-right": "pavucontrol",
-    "scroll-step": 5,
+    "on-scroll-up": "wpctl set-volume @DEFAULT_SOURCE@ 1%+ --limit 1.0",
+    "on-scroll-down": "wpctl set-volume @DEFAULT_SOURCE@ 1%- --limit 1.0",
   },
 
   "bluetooth": {
@@ -194,72 +279,8 @@
     "tooltip-format": "{controller_alias}\t{controller_address}",
     "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-    "on-click": "",
+    "on-click": "~/.local/bin/bluetooth-toggle.sh",
     "on-click-right": "blueman-manager",
-  },
-
-  // Modules
-  "pulseaudio": {
-    "format": "{volume}% {icon}",
-    "format-bluetooth": "{volume}% ",
-    "format-bluetooth-muted": "󰂲",
-    "format-muted": "",
-    "format-source": "{volume}% ",
-    "format-source-muted": "",
-    "format-icons": {
-      "headphone": "",
-      "hands-free": "",
-      "headset": "",
-      "phone": "",
-      "portable": "",
-      "car": "",
-      "default": ["", "", ""],
-    },
-    // "scroll-step": 1, // %, can be a float
-    "on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
-    "on-click-middle": "pavucontrol",
-    "on-click-right": "wpctl set-mute @DEFAULT_SOURCE@ toggle",
-    "on-scroll-up": "wpctl set-volume @DEFAULT_SINK@ 1%+ --limit 1.0",
-    "on-scroll-down": "wpctl set-volume @DEFAULT_SINK@ 1%- --limit 1.0",
-    "ignored-sinks": ["Easy Effects Sink"],
-  },
-
-  "battery": {
-    "interval": 60,
-    "states": {
-      "warning": 20,
-      "critical": 10,
-    },
-    "format": "{capacity}% {icon}",
-    "format-charging": "{icon}",
-    "format-discharging": "{icon}",
-    "format-plugged": "",
-    "format-full": "󰂅",
-    "format-icons": {
-      "charging": ["󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"],
-      "default": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
-    },
-    "tooltip-format-charging": "{power:>1.0f}W↑ {capacity}%",
-    "tooltip-format-discharging": "{power:>1.0f}W↓ {capacity}%",
-    "on-click": "",
-    "on-click-middle": "falcond-gui",
-    "on-click-right": "tuned-gui",
-  },
-
-  // group-modules
-  "group/group-modules": {
-    "orientation": "inherit",
-    "drawer": {
-      "transition-duration": 500,
-      "children-class": "drawer-child",
-      "transition-left-to-right": false,
-    },
-    "modules": [
-      "custom/arrow-left",
-      "bluetooth",
-      "wireplumber#sink",
-      "backlight",
-    ],
   },
 
   "clock": {
@@ -299,7 +320,7 @@
   },
 
   "custom/settings": {
-    "format": "",
+    "format": " ",
     "tooltip": true,
     "tooltip-format": "WC Settings",
     "on-click": "labwc-tweaks",
@@ -350,9 +371,9 @@
   },
 
   "custom/show-desktop": {
-    "format": "", // Иконка стрелки влево (FontAwesome)
+    "format": "", // Иконка стрелки влево (FontAwesome)
     "tooltip": true,
     "tooltip-format": "Show Desktop",
-    "on-click": "",
+    "on-click": "~/.local/bin/labwc-show-desktop.sh",
   },
 }

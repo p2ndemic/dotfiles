@@ -1,0 +1,16 @@
+# =============================================
+# Check: ls -l /usr/share/kbd/keymaps/i386/qwerty && ls -l /usr/share/kbd/consolefonts/
+# Можно установить шрифт через /etc/vconsole.conf для поддержки кириллицы в tty
+# sudo pacman -S terminus-font
+# sudo nano /etc/vconsole.conf
+# =============================================
+#
+# =============================================
+# Или использовать использовать самый большой шрифт (для HiDPI) который встроен в ядро Linux: 
+# Проверка: zgrep "CONFIG_FONT_" /proc/config.gz
+# =============================================
+# Добавить параметр ядра (kernel cmdline) в загрузчик:
+# fbcon=font:TER16x32
+# =============================================
+KEYMAP=us
+FONT=ter-v32n

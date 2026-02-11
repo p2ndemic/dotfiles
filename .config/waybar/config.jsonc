@@ -108,7 +108,7 @@
   "group/group-apps": {
     "orientation": "inherit",
     "drawer": {
-      "transition-duration": 500,
+      "transition-duration": 0, // Default: 500
       "children-class": "drawer-child",
       "transition-left-to-right": true,
     },
@@ -146,7 +146,7 @@
   "group/group-tools": {
     "orientation": "inherit",
     "drawer": {
-      "transition-duration": 500,
+      "transition-duration": 0, //Default: 500
       "children-class": "drawer-child",
       "transition-left-to-right": false,
     },
@@ -201,7 +201,7 @@
     "tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
     "tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
     "tooltip-format-disconnected": "Disconnected",
-    "spacing": 1,
+    //"spacing": 1,
     "on-click": "~/.local/bin/wifi-scan-exec-nmtui-toggle.sh",
     "on-click-right": "iwgtk",
   },
@@ -234,7 +234,7 @@
   "group/group-modules": {
     "orientation": "inherit",
     "drawer": {
-      "transition-duration": 500,
+      "transition-duration": 0, // Default: 500
       "children-class": "drawer-child",
       "transition-left-to-right": false,
     },
@@ -320,7 +320,7 @@
   },
 
   "custom/settings": {
-    "format": "",
+    "format": " ",
     "tooltip": true,
     "tooltip-format": "WC Settings",
     "on-click": "labwc-tweaks",

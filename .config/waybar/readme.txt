@@ -21,3 +21,9 @@
 =====================================================
 # https://github.com/topics/waybar-theme
 # https://github.com/topics/waybar-themes?l=css
+
+# Посмотреть конфиг, в частности в по wf-recorder и wireplumber
+# https://github.com/Kuru-Saka/dotfiles/tree/main/config/waybar
+
+# Посмореть темы catppuccin для waybar
+# https://github.com/catppuccin/waybar

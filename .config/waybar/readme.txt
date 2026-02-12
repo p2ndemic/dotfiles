@@ -27,3 +27,6 @@
 
 # Посмореть темы catppuccin для waybar
 # https://github.com/catppuccin/waybar
+
+# Множество настроек Sway от контрибьютера Mesa и других проектов. Также можно посмотреть как реализована фукнция статуса начала записи в Waybar
+# https://github.com/llyyr/dotfiles

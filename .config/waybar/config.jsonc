@@ -294,7 +294,7 @@
     "format": " ",
     "tooltip": true,
     "tooltip-format": "WC Settings",
-    "on-click": "systemd-run --user --scope --collect --no-block --labwc-tweaks",
+    "on-click": "systemd-run --user --scope --collect --no-block -- labwc-tweaks",
     "on-click-right": "systemd-run --user --scope --collect --no-block -- dconf-editor",
   },
 

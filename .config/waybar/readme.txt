@@ -16,3 +16,8 @@
 # Разделение модуля PulseAudio на два отдельных - Выход и Микрофон
 =====================================================
 # https://github.com/Alexays/Waybar/issues/925
+
+# Примеры конфигов:
+=====================================================
+# https://github.com/topics/waybar-theme
+# https://github.com/topics/waybar-themes?l=css

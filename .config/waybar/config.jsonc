@@ -19,8 +19,13 @@
   //                                         //
   /////////////////////////////////////////////
 
-  "modules-left": ["custom/launcher", "ext/workspaces", "group/group-apps"],
-  "modules-center": ["wlr/taskbar"],
+  "modules-left": [
+    "custom/launcher",
+    "ext/workspaces",
+    "group/group-apps",
+    "wlr/taskbar",
+  ],
+  //"modules-center": [""],
   "modules-right": [
     "tray",
     "group/group-tools",
@@ -42,7 +47,7 @@
     "format": "", // "" "󰣇" "" ""
     "tooltip": true,
     "tooltip-format": "Menu \n\nRight-click to open the power menu",
-    "on-click": "pkill fuzzel || fuzzel",
+    "on-click": "pkill fuzzel || systemd-run --user --scope --collect --no-block -- fuzzel",
     "on-click-right": "~/.local/bin/fuzzel-powermenu-index.sh",
   },
 
@@ -50,45 +55,11 @@
     "format": "{icon}",
     "format-icons": {
       "urgent": "",
-      "active": "",
-      "default": "",
+      "active": "󰀚", // ""
+      "default": "", // ""
     },
     "sort-by-id": true, // При "sort-by-number": true, выходит ошибка: [warning] [ext/workspaces]: Prefer sort-by-id instead of sort-by-number
     "on-click": "activate",
-  },
-
-  "custom/explorer": {
-    "format": "",
-    "tooltip": true,
-    "tooltip-format": "File Manager",
-    "on-click": "pcmanfm-qt",
-  },
-
-  "custom/terminal": {
-    "format": "",
-    "tooltip": true,
-    "tooltip-format": "Terminal",
-    "on-click": "foot",
-
-    "on-click-right": "foot",
-  },
-
-  "custom/editor": {
-    "format": "󰈮", // "" "󰈮"  "" ""
-    "tooltip": true,
-    "tooltip-format": "Editor",
-    "on-click": "zeditor",
-    "on-click-middle": "foot -e nano",
-    "on-click-right": "foot -e micro",
-  },
-
-  "custom/browser": {
-    "format": "",
-    "tooltip": true,
-    "tooltip-format": "Browser",
-    "on-click": "firefox",
-    "on-click-middle": "helium",
-    "on-click-right": "brave",
   },
 
   // group-modules
@@ -112,11 +83,11 @@
     ],
   },
 
-  ///////////////////////////////////
-  //                               //
-  //  // Modules Center //         //
-  //                               //
-  ///////////////////////////////////
+  // Custom modules left ...
+  // ⇢
+  // custom/settings ⇢ custom/task-manager ⇢ custom/package-manager ⇢
+  // custom/explorer ⇢ custom/terminal ⇢ custom/editor ⇢
+  // custom/browser ⇢ custom/steam
 
   "wlr/taskbar": {
     "format": "{icon}",
@@ -127,6 +98,12 @@
     "on-click-middle": "close",
     "on-click-right": "maximize",
   },
+
+  ///////////////////////////////////
+  //                               //
+  //  // Modules Center //         //
+  //                               //
+  ///////////////////////////////////
 
   ///////////////////////////////////
   //                               //
@@ -182,8 +159,8 @@
     "tooltip-format": "{volume}%",
     // "scroll-step": 1, // %, can be a float
     "on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
-    "on-click-middle": "pavucontrol",
-    "on-click-right": "pavucontrol",
+    "on-click-middle": "systemd-run --user --scope --collect --no-block -- pavucontrol",
+    "on-click-right": "systemd-run --user --scope --collect --no-block -- pavucontrol",
     "on-scroll-up": "wpctl set-volume @DEFAULT_SINK@ 1%+ --limit 1.0",
     "on-scroll-down": "wpctl set-volume @DEFAULT_SINK@ 1%- --limit 1.0",
     "ignored-sinks": ["Easy Effects Sink"],
@@ -200,8 +177,8 @@
     "tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
     "tooltip-format-disconnected": "Disconnected",
     //"spacing": 1,
-    "on-click": "~/.local/bin/wifi-scan-exec-nmtui-toggle.sh",
-    "on-click-right": "iwgtk",
+    "on-click": "systemd-run --user --scope --collect --no-block -- ~/.local/bin/wifi-scan-exec-nmtui-toggle.sh",
+    "on-click-right": "systemd-run --user --scope --collect --no-block -- iwgtk",
   },
 
   "battery": {
@@ -221,8 +198,8 @@
     },
     // "format-icons": ["", "", "", "", ""]
     "on-click": "",
-    "on-click-middle": "falcond-gui",
-    "on-click-right": "tuned-gui",
+    "on-click-middle": "systemd-run --user --scope --collect --no-block -- falcond-gui",
+    "on-click-right": "systemd-run --user --scope --collect --no-block -- tuned-gui",
   },
 
   // group-modules
@@ -258,8 +235,8 @@
     "tooltip": false,
     // "scroll-step": 1, // %, can be a float
     "on-click": "wpctl set-mute @DEFAULT_SOURCE@ toggle",
-    "on-click-middle": "pavucontrol",
-    "on-click-right": "pavucontrol",
+    "on-click-middle": "systemd-run --user --scope --collect --no-block -- pavucontrol",
+    "on-click-right": "systemd-run --user --scope --collect --no-block -- pavucontrol",
     "on-scroll-up": "wpctl set-volume @DEFAULT_SOURCE@ 1%+ --limit 1.0",
     "on-scroll-down": "wpctl set-volume @DEFAULT_SOURCE@ 1%- --limit 1.0",
   },
@@ -273,8 +250,8 @@
     "tooltip-format": "{controller_alias}\t{controller_address}",
     "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-    "on-click": "~/.local/bin/bluetooth-toggle.sh",
-    "on-click-right": "blueman-manager",
+    "on-click": "systemd-run --user --scope --collect --no-block -- ~/.local/bin/bluetooth-toggle.sh",
+    "on-click-right": "systemd-run --user --scope --collect --no-block -- blueman-manager",
   },
 
   "clock": {
@@ -317,15 +294,65 @@
     "format": " ",
     "tooltip": true,
     "tooltip-format": "WC Settings",
-    "on-click": "labwc-tweaks",
+    "on-click": "systemd-run --user --scope --collect --no-block --labwc-tweaks",
+    "on-click-right": "systemd-run --user --scope --collect --no-block -- dconf-editor",
   },
 
   "custom/task-manager": {
     "format": "",
     "tooltip": true,
     "tooltip-format": "Task Manager",
-    "on-click": "foot -e btop",
-    "on-click-right": "missioncenter",
+    "on-click": "systemd-run --user --scope --collect --no-block -- foot -e btop",
+    "on-click-right": "systemd-run --user --scope --collect --no-block -- missioncenter",
+  },
+
+  "custom/package-manager": {
+    "format": "", // "󰮯" ""
+    "tooltip": true,
+    "tooltip-format": "Package Manager",
+    "on-click": "systemd-run --user --scope --collect --no-block -- octopi",
+    //"on-click-right": "",
+  },
+
+  "custom/explorer": {
+    "format": "",
+    "tooltip": true,
+    "tooltip-format": "File Manager",
+    "on-click": "systemd-run --user --scope --collect --no-block -- pcmanfm-qt",
+  },
+
+  "custom/terminal": {
+    "format": "",
+    "tooltip": true,
+    "tooltip-format": "Terminal",
+    "on-click": "systemd-run --user --scope --collect --no-block -- foot",
+    //"on-click-middle": "",
+    //"on-click-right": "",
+  },
+
+  "custom/editor": {
+    "format": "󰈮", // "" "󰈮"  "" ""
+    "tooltip": true,
+    "tooltip-format": "Editor",
+    "on-click": "zeditor",
+    "on-click-middle": "systemd-run --user --scope --collect --no-block -- foot -e nano",
+    "on-click-right": "systemd-run --user --scope --collect --no-block -- foot -e micro",
+  },
+
+  "custom/browser": {
+    "format": "",
+    "tooltip": true,
+    "tooltip-format": "Browser",
+    "on-click": "systemd-run --user --scope --collect --no-block -- firefox",
+    "on-click-middle": "systemd-run --user --scope --collect --no-block -- helium",
+    "on-click-right": "systemd-run --user --scope --collect --no-block -- brave",
+  },
+
+  "custom/steam": {
+    "format": "",
+    "tooltip": true,
+    "tooltip-format": "File Manager",
+    "on-click": "systemd-run --user --scope --collect --no-block -- steam -pipewire-dmabuf -no-cef-sandbox",
   },
 
   ///////////////////////////////////
@@ -339,22 +366,22 @@
     "format": "",
     "tooltip": true,
     "tooltip-format": "Clipboard",
-    "on-click": "",
+    //"on-click": "",
   },
 
   "custom/snip": {
     "format": "",
     "tooltip": true,
     "tooltip-format": "Screenshot",
-    "on-click": "grim -g \"$(slurp)\" ~/Pictures/$(date +%s).png",
+    //"on-click": "", // grim -g \"$(slurp)\" ~/Pictures/$(date +%s).png
   },
 
   "custom/calculator": {
     "format": "",
     "tooltip": true,
     "tooltip-format": "Сalculator",
-    "on-click": "gnome-calculator",
-    "on-click-right": "qalculate-gtk",
+    "on-click": "systemd-run --user --scope --collect --no-block -- gnome-calculator",
+    "on-click-right": "systemd-run --user --scope --collect --no-block -- qalculate-gtk",
   },
 
   // group-modules
@@ -368,6 +395,6 @@
     "format": "", // Иконка стрелки влево (FontAwesome)
     "tooltip": true,
     "tooltip-format": "Show Desktop",
-    "on-click": "~/.local/bin/labwc-show-desktop.sh",
+    "on-click": "systemd-run --user --scope --collect --no-block -- ~/.local/bin/labwc-show-desktop.sh",
   },
 }

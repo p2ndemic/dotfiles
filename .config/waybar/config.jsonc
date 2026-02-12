@@ -19,15 +19,7 @@
   //                                         //
   /////////////////////////////////////////////
 
-  "modules-left": [
-    "custom/launcher",
-    "ext/workspaces",
-    "custom/explorer",
-    "custom/terminal",
-    "custom/editor",
-    "custom/browser",
-    "group/group-apps",
-  ],
+  "modules-left": ["custom/launcher", "ext/workspaces", "group/group-apps"],
   "modules-center": ["wlr/taskbar"],
   "modules-right": [
     "tray",
@@ -47,7 +39,7 @@
   ///////////////////////////////////
 
   "custom/launcher": {
-    "format": "", // "" "󰣇" ""
+    "format": "", // "" "󰣇" "" ""
     "tooltip": true,
     "tooltip-format": "Menu \n\nRight-click to open the power menu",
     "on-click": "pkill fuzzel || fuzzel",
@@ -57,11 +49,6 @@
   "ext/workspaces": {
     "format": "{icon}",
     "format-icons": {
-      "Workspace 1": "1",
-      "Workspace 2": "2",
-      "Workspace 3": "3",
-      "Workspace 4": "4",
-      "Workspace 5": "5",
       "urgent": "",
       "active": "",
       "default": "",
@@ -112,7 +99,17 @@
       "children-class": "drawer-child",
       "transition-left-to-right": true,
     },
-    "modules": ["custom/arrow-right", "custom/settings", "custom/task-manager"],
+    "modules": [
+      "custom/arrow-right",
+      "custom/settings",
+      "custom/task-manager",
+      "custom/package-manager",
+      "custom/explorer",
+      "custom/terminal",
+      "custom/editor",
+      "custom/browser",
+      "custom/steam",
+    ],
   },
 
   ///////////////////////////////////
@@ -124,7 +121,7 @@
   "wlr/taskbar": {
     "format": "{icon}",
     "icon-size": 20,
-    "icon-theme": "Numix-Circle",
+    "icon-theme": "Papirus-Dark", // Papirus
     "tooltip-format": "{title:.50}",
     "on-click": "minimize-raise",
     "on-click-middle": "close",
@@ -182,6 +179,7 @@
       "default": ["", "", ""],
     },
     //"tooltip": false,
+    "tooltip-format": "{volume}%",
     // "scroll-step": 1, // %, can be a float
     "on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
     "on-click-middle": "pavucontrol",
@@ -196,7 +194,7 @@
     "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
     "format": "{icon}",
     "format-wifi": "{icon}",
-    "format-ethernet": "󱘖", // "" ""
+    "format-ethernet": "󰡁", // "" "" "󱘖"
     "format-disconnected": "󰤮",
     "tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
     "tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
@@ -214,15 +212,12 @@
       "critical": 10,
     },
     "format": "{capacity}% {icon}",
-    "format-full": "{capacity}% {icon}",
     "format-charging": "{capacity}% {icon}", // "󰂄" ""
     "format-plugged": "{capacity}% ",
     "format-alt": "{time} {icon}",
-    // "format-good": "", // An empty format will hide the module
-    // "format-full": "",
     "format-icons": {
-      "default": ["", "", "", "", ""],
       "charging": ["󰢟", "󱊤", "󱊥", "󱊦"],
+      "default": ["", "", "", "", ""],
     },
     // "format-icons": ["", "", "", "", ""]
     "on-click": "",
@@ -270,7 +265,6 @@
   },
 
   "bluetooth": {
-    // "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
     "format": " {status}",
     "format-disabled": "󰂲", // an empty format will hide the module
     "format-off": "󰂲",
@@ -284,9 +278,9 @@
   },
 
   "clock": {
-    "format": "{:%H:%M}",
+    "format": "{:%H:%M}", // %R - Equivalent to %H:%M, e.g. "11:07"
     "format-alt": "{:%d-%m-%Y}",
-    "tooltip-format": "<big>{:%Y %B}</big>\n\n<tt><small>{calendar}</small></tt>",
+    "tooltip-format": "<big>{:%b %d %Y}</big>\n\n<tt><small>{calendar}</small></tt>", // %Y - year | %B full month name, e.g. "November" | %b - short month name, e.g. "Nov" | %d - day of month
     "calendar": {
       "mode": "month",
       "mode-mon-col": 3,

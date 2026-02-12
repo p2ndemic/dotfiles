@@ -340,7 +340,7 @@
   },
 
   "custom/browser": {
-    "format": "",
+    "format": "", // "" ""
     "tooltip": true,
     "tooltip-format": "Browser",
     "on-click": "systemd-run --user --scope --collect --no-block -- firefox",
@@ -349,9 +349,9 @@
   },
 
   "custom/steam": {
-    "format": "",
+    "format": "", // "" "" ""
     "tooltip": true,
-    "tooltip-format": "File Manager",
+    "tooltip-format": "Steam",
     "on-click": "systemd-run --user --scope --collect --no-block -- steam -pipewire-dmabuf -no-cef-sandbox",
   },
 

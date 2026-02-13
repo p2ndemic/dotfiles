@@ -30,6 +30,7 @@ XF86AudioMicMute - Этой клавиши нет в моем Chrombook, но м
 https://wiki.linuxquestions.org/wiki/XF86_keyboard_symbols - тут описаны все multimedia key symbols поддерживаемые XF86
 https://support.google.com/chromebook/answer/1047364?hl=en - тут описаны быстрые клавиши Chromebook
 https://support.google.com/chromebook/answer/183101 - тут описаны сочетания клавиш Chromebook
+https://www.youtube.com/watch?v=NIYTOXty5cE - видео обзор по клавишам
 --------------------------------------------------
   
 localectl status - посмотриеть текущий статус (Local, Layout, xkboptions)

@@ -29,7 +29,7 @@ sink_vol() { wpctl get-volume @DEFAULT_SINK@ | gawk '{print int($2 * 100)}'; }
 # Get current source volume (percentage)
 source_vol() { wpctl get-volume @DEFAULT_SOURCE@ | gawk '{print int($2 * 100)}'; }
 
-# Check mute status
+# Check mute status (sink|source)
 sink_muted()   { wpctl get-volume @DEFAULT_SINK@   | grep -q "MUTED"; }
 source_muted() { wpctl get-volume @DEFAULT_SOURCE@ | grep -q "MUTED"; }
 

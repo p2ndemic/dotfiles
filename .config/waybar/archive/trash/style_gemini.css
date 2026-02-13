@@ -1,0 +1,121 @@
+/*
+ * Catppuccin Mocha theme for Waybar
+ * Font: CaskaydiaMono Nerd Font Propo
+ */
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "CaskaydiaMono Nerd Font Propo", "Roboto", "Helvetica", sans-serif;
+    font-size: 14px;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: rgba(30, 30, 46, 0.9); /* Mocha Base with opacity */
+    border-top: 2px solid #89b4fa; /* Blue accent border */
+    color: #cdd6f4; /* Mocha Text */
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+/* Common module styling */
+#custom-launcher,
+#workspaces,
+#custom-explorer,
+#custom-terminal,
+#custom-editor,
+#custom-browser,
+#taskbar,
+#tray,
+#pulseaudio,
+#network,
+#battery,
+#clock,
+#custom-show-desktop,
+#custom-settings,
+#custom-task-manager,
+#custom-clip,
+#idle_inhibitor,
+#custom-calculator,
+#custom-snip,
+#backlight,
+#bluetooth,
+#wireplumber {
+    padding: 0 10px;
+    margin: 4px 2px;
+    background-color: #313244; /* Mocha Surface0 */
+    border-radius: 8px;
+    color: #cdd6f4;
+}
+
+/* Left Modules Specific */
+#custom-launcher {
+    color: #89b4fa; /* Blue */
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    color: #bac2de;
+}
+
+#workspaces button.active {
+    color: #fab387; /* Peach */
+    background-color: #45475a;
+}
+
+#workspaces button.urgent {
+    color: #f38ba8; /* Red */
+}
+
+/* Center - Taskbar */
+#taskbar button {
+    padding: 0 8px;
+    border-bottom: 2px solid transparent;
+}
+
+#taskbar button.active {
+    background-color: #45475a;
+    border-bottom: 2px solid #89b4fa;
+}
+
+/* Right Modules Specific */
+#pulseaudio { color: #f9e2af; /* Yellow */ }
+#network { color: #a6e3a1; /* Green */ }
+#battery { color: #94e2d5; /* Teal */ }
+#battery.charging { color: #a6e3a1; }
+#battery.warning { color: #fab387; }
+#battery.critical { color: #f38ba8; }
+
+#clock {
+    color: #cba6f7; /* Mauve */
+    font-weight: bold;
+}
+
+/* Drawers & Groups Styling */
+.drawer-child {
+    background-color: #45475a; /* Surface1 */
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+#custom-arrow-right, #custom-arrow-left {
+    color: #9399b2; /* Overlay0 */
+    padding: 0 5px;
+}
+
+/* Bluetooth & Audio Details in Group */
+#bluetooth.connected { color: #89b4fa; }
+#backlight { color: #f9e2af; }
+
+/* Special Buttons */
+#custom-show-desktop {
+    background-color: transparent;
+    color: #89dceb; /* Sky */
+}
+
+#tray {
+    background-color: transparent;
+}

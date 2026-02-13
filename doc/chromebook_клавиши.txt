@@ -1,0 +1,38 @@
+--------------------------------------------------
+                      XF86Back
+                      XF86Reload
+                      XF86FullScreen
+                      XF86LaunchA
+                      Print
+                      XF86MonBrightnessDown
+                      XF86MonBrightnessUp
+                      XF86AudioMute
+                      XF86AudioLowerVolume
+                      XF86AudioRaiseVolume
+                      XF86PowerOff
+
+- Это все клавиши доступные для моего Acer Chromebook 516 GE. По порядку в ряд
+-------------------------------------------------
+
+Super_L - Meta клавиша 
+Multi_key - правый Alt
+
+- Дополнительные
+--------------------------------------------------
+
+XF86LaunchA - Show all open windows» (часто обозначается как прямоугольник с двумя линиями справа или просто значок «Overview») на Chromebook
+
+- Sway/i3: Часто используют для переключения в режим Tabbed или Stacking для окон.
+--------------------------------------------------
+XF86AudioMicMute - Этой клавиши нет в моем Chrombook, но можно настроить в композиторе как быструю клавишу
+--------------------------------------------------
+
+https://wiki.linuxquestions.org/wiki/XF86_keyboard_symbols - тут описаны все multimedia key symbols поддерживаемые XF86
+https://support.google.com/chromebook/answer/1047364?hl=en - тут описаны быстрые клавиши Chromebook
+https://support.google.com/chromebook/answer/183101 - тут описаны сочетания клавиш Chromebook
+--------------------------------------------------
+  
+localectl status - посмотриеть текущий статус (Local, Layout, xkboptions)
+localectl list-x11-keymap-options - посмотреть все доступные xkboptions
+
+--------------------------------------------------

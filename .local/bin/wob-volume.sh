@@ -1,5 +1,5 @@
 #!/bin/bash
-# Volume control (PipeWire) with wob overlay
+# Volume control with wob overlay
 # -------------------------------------------------------------------
 # Installation:
 #   sudo pacman -S --needed pipewire wireplumber wob

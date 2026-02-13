@@ -2,7 +2,14 @@
 # Управление громкостью (PipeWire) + wob + systemd-socket
 # Использование: wob-volume --sink-up|--sink-down|--sink-mute|--source-up|--source-down|--source-mute
 
+# Установка:
+# sudo pacman -S --needed wob
+# systemctl --user daemon-reload
+# systemctl --user enable --now wob.socket
+# [[ -z "$WAYLAND_DISPLAY" ]] && systemctl --user import-environment WAYLAND_DISPLAY
+
 WOBSOCK="${WOBSOCK:-$XDG_RUNTIME_DIR/wob.sock}"   # systemd-сокет по умолчанию
+#[[ ! -S "$WOBSOCK" ]] && [[ -p "/tmp/wobpipe" ]] && WOBSOCK="/tmp/wobpipe" # раскоментируйте для ручного варианта через mkfifo, вместо systemd-socket
 
 wob_send() { echo "$1" > "$WOBSOCK" 2>/dev/null || true; }
 # Текущая громкость sink (динамики|наушники)

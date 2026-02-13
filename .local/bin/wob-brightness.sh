@@ -17,11 +17,11 @@ get_brightness() { brightnessctl -m | cut -d, -f4 | tr -d '%'; }
 
 case "$1" in
     --up)
-        brightnessctl set +5% >/dev/null
+        brightnessctl set +5% >/dev/null 2>&1
         wob_send "$(get_brightness)"
         ;;
     --down)
-        brightnessctl set 5%- >/dev/null
+        brightnessctl set 5%- >/dev/null 2>&1
         wob_send "$(get_brightness)"
         ;;
     *)

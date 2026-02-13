@@ -1,7 +1,8 @@
 #!/bin/bash
+# Ref: https://github.com/labwc/labwc/issues/2293
 
 # Note: Необходимо установить wlrctl
-# paru -S wlrctl
+# yay -S wlrctl
 
 CACHE_DIR="$HOME/.cache"
 CACHE_FILE="$CACHE_DIR/.labwc_show_desktop"

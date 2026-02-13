@@ -43,7 +43,7 @@ case "$1" in
         wob_send "$(sink_vol)"
         ;;
     sink-mute|--sink-mute)
-        wpctl set-mute @DEFAULT_SINK@ toggle
+        wpctl set-mute @DEFAULT_SINK@ toggle >/dev/null 2>&1
         sink_muted && wob_send 0 || wob_send "$(sink_vol)"
         ;;
     source-up|--source-up)
@@ -55,7 +55,7 @@ case "$1" in
         wob_send "$(source_vol)"
         ;;
     source-mute|--source-mute)
-        wpctl set-mute @DEFAULT_SOURCE@ toggle
+        wpctl set-mute @DEFAULT_SOURCE@ toggle >/dev/null 2>&1
         source_muted && wob_send 0 || wob_send "$(source_vol)"
         ;;
     *)

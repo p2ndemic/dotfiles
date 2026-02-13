@@ -1,0 +1,15 @@
+[Unit]
+Description=Wayland clipboard manager with support for multimedia
+# Убираем Requisite, оставляем мягкое ожидание
+After=graphical-session.target
+
+[Service]
+Type=simple
+# Добавляем импорт переменных, чтобы сервис "видел" Wayland
+ExecStartPre=/usr/bin/systemctl --user import-environment WAYLAND_DISPLAY XDG_RUNTIME_DIR
+ExecStart=/usr/bin/wl-paste --watch cliphist store
+Restart=on-failure
+
+[Install]
+# Если graphical-session.target не заводится, можно сменить на default.target
+WantedBy=default.target

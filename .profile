@@ -10,3 +10,7 @@ if [ -n "$XDG_SESSION_TYPE" ] || [ -z "$DISPLAY" ]; then
         uwsm start default
     fi
 fi
+
+# if [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
+#    uwsm check may-start && uwsm select && exec uwsm start default
+# fi

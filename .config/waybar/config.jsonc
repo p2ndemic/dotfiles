@@ -113,12 +113,12 @@
   ///////////////////////////////////
 
   "custom/recorder": {
-    "format": "󰑋", // "" "󰑋" "" "󰻂" "󰭩"
+    "format": "󰻂", // "" "󰑋" "" "󰻂" "󰭩"
     "return-type": "json",
     "interval": 1,
     //"tooltip": true,
     "exec": "echo '{\"class\": \"recording\"}'",
-    "exec-if": "pgrep wf-recorder",
+    "exec-if": "pgrep wf-recorder >/dev/null 2>&1",
   },
 
   "tray": {

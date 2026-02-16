@@ -25,9 +25,9 @@ WOBSOCK="${WOBSOCK:-$XDG_RUNTIME_DIR/wob.sock}"
 wob_send() { echo "$1" > "$WOBSOCK" 2>/dev/null || true; }
 
 # Get current sink volume (percentage)
-sink_vol() { wpctl get-volume @DEFAULT_SINK@ | gawk '{print int($2 * 100)}'; }
+sink_vol() { wpctl get-volume @DEFAULT_SINK@ | gawk '{print int($2 * 100)}'; } # Alternative: sed 's/[^0-9]//g'
 # Get current source volume (percentage)
-source_vol() { wpctl get-volume @DEFAULT_SOURCE@ | gawk '{print int($2 * 100)}'; }
+source_vol() { wpctl get-volume @DEFAULT_SOURCE@ | gawk '{print int($2 * 100)}'; } # Alternative: sed 's/[^0-9]//g'
 
 # Check mute status (sink|source)
 sink_muted()   { wpctl get-volume @DEFAULT_SINK@   | grep -q "MUTED"; }

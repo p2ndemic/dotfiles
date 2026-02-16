@@ -24,7 +24,7 @@ WOBSOCK="${WOBSOCK:-$XDG_RUNTIME_DIR/wob.sock}"
 wob_send() { echo "$1" > "$WOBSOCK" 2>/dev/null || true; }
 
 # Get current brightness percentage (brightnessctl auto-selects the device)
-get_brightness() { brightnessctl -m | gawk -F'[,%]' '{print $4}'; } # Alternative: cut -d, -f4 | tr -d '%';
+get_brightness() { brightnessctl -m | gawk -F'[,%]' '{print $4}'; } # Alternative: cut -d, -f4 | tr -d '%'
 
 case "$1" in
     up|--up)

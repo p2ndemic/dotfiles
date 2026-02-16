@@ -161,7 +161,7 @@
   // custom/clipboard ⇠
   // idle_inhibitor ⇠ custom/screencast ⇠ custom/calculator ⇠ custom/screenshot
 
-  // Pulseaudio Speaker/Headphone
+  // Pulseaudio Speaker | Headphone
   "pulseaudio#output": {
     "format": "{volume}% {icon}",
     "format-muted": "",

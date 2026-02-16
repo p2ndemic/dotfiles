@@ -17,8 +17,8 @@
 
 WOBSOCK="${WOBSOCK:-$XDG_RUNTIME_DIR/wob.sock}"
 
-# Fallback to legacy FIFO (tail -f /tmp/wobpipe | wob) if socket not found
-[[ ! -S "$WOBSOCK" ]] && [[ -p "/tmp/wobpipe" ]] && WOBSOCK="/tmp/wobpipe"
+# Fallback to legacy FIFO (tail -f /tmp/wobpipe | wob) if socket not found:
+#[[ ! -S "$WOBSOCK" ]] && [[ -p "/tmp/wobpipe" ]] && WOBSOCK="/tmp/wobpipe"
 
 # Send integer value to wob, ignore failures (no wob running, broken pipe, etc.)
 wob_send() { echo "$1" > "$WOBSOCK" 2>/dev/null || true; }

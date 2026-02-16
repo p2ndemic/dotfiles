@@ -116,7 +116,7 @@
     "format": "󰻂", // "" "󰑋" "" "󰻂" "󰭩"
     "return-type": "json",
     "interval": 1,
-    //"tooltip": true,
+    "tooltip": false,
     "exec": "echo '{\"class\": \"recording\"}'",
     "exec-if": "pgrep wf-recorder",
   },
@@ -127,8 +127,9 @@
   },
 
   "custom/keyboard-layout": {
-    "exec": "systemd-run --user --scope --collect --no-block --quiet -- xkb-monitor -n",
     "format": " {} ",
+    "tooltip": false,
+    "exec": "systemd-run --user --scope --collect --no-block --quiet -- xkb-monitor -n",
   },
 
   // group-tools

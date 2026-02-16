@@ -49,7 +49,7 @@
     "format": "", // "" "󰣇" "" ""
     "tooltip-format": "Menu \n\nRight-click to open the power menu",
     "on-click": "pkill fuzzel || systemd-run --user --scope --collect --no-block --quiet --quiet -- fuzzel",
-    "on-click-right": "~/.local/bin/fuzzel-powermenu-index.sh",
+    "on-click-right": "systemd-run --user --scope --collect --no-block --quiet --quiet -- ~/.local/bin/fuzzel-powermenu-index.sh",
   },
 
   "ext/workspaces": {
@@ -84,7 +84,7 @@
     ],
   },
 
-  // Custom modules left ...
+  // Custom modules left [group/group-apps] ...
   // ⇢
   // custom/settings ⇢ custom/task-manager ⇢ custom/package-manager ⇢
   // custom/explorer ⇢ custom/terminal ⇢ custom/editor ⇢
@@ -118,7 +118,7 @@
     "interval": 1,
     "tooltip": false,
     "exec": "echo '{\"class\": \"recording\"}'",
-    "exec-if": "pgrep wf-recorder",
+    "exec-if": "pgrep wf-recorder >/dev/null 2>&1",
   },
 
   "tray": {
@@ -157,6 +157,10 @@
     },
   },
 
+  // Custom modules right [group/group-tools]...
+  // custom/clipboard ⇠
+  // idle_inhibitor ⇠ custom/screencast ⇠ custom/calculator ⇠ custom/screenshot
+
   // Pulseaudio Speaker/Headphone
   "pulseaudio#output": {
     "format": "{volume}% {icon}",
@@ -172,7 +176,7 @@
       "car": "",
       "default": ["", "", ""],
     },
-    //"tooltip": false,
+    "tooltip": false,
     "tooltip-format": "{volume}%",
     // "scroll-step": 1, // %, can be a float
     "on-click": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/wob-volume.sh --sink-mute",
@@ -210,16 +214,19 @@
     "format-plugged": "{capacity}% ",
     "format-alt": "{time} {icon}",
     "format-icons": {
-      "charging": ["󰢟", "󱊤", "󱊥", "󱊦"],
       "default": ["", "", "", "", ""],
+      "charging": ["󰢟", "󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"],
     },
     // "format-icons": ["", "", "", "", ""]
-    "on-click": "",
+    // "charging": ["󰢟", "󱊤", "󱊥", "󱊦"]
+    "tooltip-format": "⇡ {timeTo}",
+    "tooltip-format-charging": "⇣ {timeTo}",
+    //"on-click": "",
     "on-click-middle": "systemd-run --user --scope --collect --no-block --quiet -- falcond-gui",
     "on-click-right": "systemd-run --user --scope --collect --no-block --quiet -- tuned-gui",
   },
 
-  // group-modules
+  //* group-modules
   "group/group-modules": {
     "orientation": "inherit",
     "drawer": {
@@ -235,10 +242,14 @@
     ],
   },
 
+  // Group modules right ...
+  // ⇠
+  // backlight ⇠ pulseaudio#input ⇠ backlight
+
   "backlight": {
-    //"device": "acpi_video0", // Assuming acpi_video0 | acpi_video1, adjust if needed
     "format": "{percent}% {icon}",
     "format-icons": ["󰃠", "󰃟", "󰃞"],
+    "tooltip": false,
     "on-scroll-up": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/wob-brightness.sh --up",
     "on-scroll-down": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/wob-brightness.sh --down",
   },
@@ -270,6 +281,7 @@
     "on-click": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/bluetooth-toggle.sh",
     "on-click-right": "systemd-run --user --scope --collect --no-block --quiet -- blueman-manager",
   },
+  //* group-modules
 
   "clock": {
     "format": "{:%H:%M}", // %R - Equivalent to %H:%M, e.g. "11:07"

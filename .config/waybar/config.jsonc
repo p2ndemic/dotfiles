@@ -175,7 +175,7 @@
     "tooltip-format": "{volume}%",
     // "scroll-step": 1, // %, can be a float
     "on-click": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/wob-volume.sh --sink-mute",
-    "on-click-middle": "systemd-run --user --scope --collect --no-block --quiet -- pavucontrol",
+    "on-click-middle": "systemd-run --user --scope --collect --no-block --quiet -- pwvucontrol",
     "on-click-right": "systemd-run --user --scope --collect --no-block --quiet -- pavucontrol",
     "on-scroll-up": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/wob-volume.sh --sink-up",
     "on-scroll-down": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/wob-volume.sh --sink-down",
@@ -251,7 +251,7 @@
     "tooltip": false,
     // "scroll-step": 1, // %, can be a float
     "on-click": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/wob-volume.sh --source-mute",
-    "on-click-middle": "systemd-run --user --scope --collect --no-block --quiet -- pavucontrol",
+    "on-click-middle": "systemd-run --user --scope --collect --no-block --quiet -- pwvucontrol",
     "on-click-right": "systemd-run --user --scope --collect --no-block --quiet -- pavucontrol",
     "on-scroll-up": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/wob-volume.sh --source-up",
     "on-scroll-down": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/wob-volume.sh --source-down",

@@ -8,9 +8,9 @@
   "layer": "top",
   "position": "bottom",
   "height": 36,
-  "spacing": 2,
-  "margin-top": 0,
-  "margin-bottom": 0,
+  //"spacing": 2,
+  //"margin-top": 0,
+  //"margin-bottom": 0,
   "reload_style_on_change": true,
 
   /////////////////////////////////////////////
@@ -27,7 +27,9 @@
   ],
   //"modules-center": [""],
   "modules-right": [
+    "custom/recorder",
     "tray",
+    "custom/keyboard-layout",
     "group/group-tools",
     "pulseaudio#output",
     "network",
@@ -45,9 +47,8 @@
 
   "custom/launcher": {
     "format": "", // "" "󰣇" "" ""
-    "tooltip": true,
     "tooltip-format": "Menu \n\nRight-click to open the power menu",
-    "on-click": "pkill fuzzel || systemd-run --user --scope --collect --no-block -- fuzzel",
+    "on-click": "pkill fuzzel || systemd-run --user --scope --collect --no-block --quiet --quiet -- fuzzel",
     "on-click-right": "~/.local/bin/fuzzel-powermenu-index.sh",
   },
 
@@ -91,8 +92,8 @@
 
   "wlr/taskbar": {
     "format": "{icon}",
-    "icon-size": 20,
-    "icon-theme": "Papirus-Dark", // Papirus
+    "icon-size": 18,
+    //"icon-theme": "Adwaita", // Papirus-Dark | Papirus-Light
     "tooltip-format": "{title:.50}",
     "on-click": "minimize-raise",
     "on-click-middle": "close",
@@ -111,9 +112,23 @@
   //                               //
   ///////////////////////////////////
 
+  "custom/recorder": {
+    "format": "󰑋", // "" "󰑋" "" "󰻂" "󰭩"
+    "return-type": "json",
+    "interval": 1,
+    //"tooltip": true,
+    "exec": "echo '{\"class\": \"recording\"}'",
+    "exec-if": "pgrep wf-recorder",
+  },
+
   "tray": {
-    "icon-size": 20,
-    "spacing": 10,
+    "icon-size": 18,
+    //"spacing": 8,
+  },
+
+  "custom/keyboard-layout": {
+    "exec": "systemd-run --user --scope --collect --no-block --quiet -- xkb-monitor -n",
+    "format": " {} ",
   },
 
   // group-tools
@@ -125,10 +140,11 @@
       "transition-left-to-right": false,
     },
     "modules": [
-      "custom/clip",
+      "custom/clipboard",
       "idle_inhibitor",
+      "custom/screencast",
       "custom/calculator",
-      "custom/snip",
+      "custom/screenshot",
     ],
   },
 
@@ -158,11 +174,11 @@
     //"tooltip": false,
     "tooltip-format": "{volume}%",
     // "scroll-step": 1, // %, can be a float
-    "on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
-    "on-click-middle": "systemd-run --user --scope --collect --no-block -- pavucontrol",
-    "on-click-right": "systemd-run --user --scope --collect --no-block -- pavucontrol",
-    "on-scroll-up": "wpctl set-volume @DEFAULT_SINK@ 1%+ --limit 1.0",
-    "on-scroll-down": "wpctl set-volume @DEFAULT_SINK@ 1%- --limit 1.0",
+    "on-click": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/wob-volume.sh --sink-mute",
+    "on-click-middle": "systemd-run --user --scope --collect --no-block --quiet -- pavucontrol",
+    "on-click-right": "systemd-run --user --scope --collect --no-block --quiet -- pavucontrol",
+    "on-scroll-up": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/wob-volume.sh --sink-up",
+    "on-scroll-down": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/wob-volume.sh --sink-down",
     "ignored-sinks": ["Easy Effects Sink"],
   },
 
@@ -177,8 +193,8 @@
     "tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
     "tooltip-format-disconnected": "Disconnected",
     //"spacing": 1,
-    "on-click": "systemd-run --user --scope --collect --no-block -- ~/.local/bin/wifi-scan-exec-nmtui-toggle.sh",
-    "on-click-right": "systemd-run --user --scope --collect --no-block -- iwgtk",
+    "on-click": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/nmtui-plus-scan-toggle.sh",
+    "on-click-right": "systemd-run --user --scope --collect --no-block --quiet -- iwgtk",
   },
 
   "battery": {
@@ -198,8 +214,8 @@
     },
     // "format-icons": ["", "", "", "", ""]
     "on-click": "",
-    "on-click-middle": "systemd-run --user --scope --collect --no-block -- falcond-gui",
-    "on-click-right": "systemd-run --user --scope --collect --no-block -- tuned-gui",
+    "on-click-middle": "systemd-run --user --scope --collect --no-block --quiet -- falcond-gui",
+    "on-click-right": "systemd-run --user --scope --collect --no-block --quiet -- tuned-gui",
   },
 
   // group-modules
@@ -222,8 +238,8 @@
     //"device": "acpi_video0", // Assuming acpi_video0 | acpi_video1, adjust if needed
     "format": "{percent}% {icon}",
     "format-icons": ["󰃠", "󰃟", "󰃞"],
-    "on-scroll-up": "brightnessctl s +5%",
-    "on-scroll-down": "brightnessctl s 5%-",
+    "on-scroll-up": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/wob-brightness.sh --up",
+    "on-scroll-down": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/wob-brightness.sh --down",
   },
 
   // Pulseaudio Mic
@@ -234,11 +250,11 @@
     "format-source-muted": "",
     "tooltip": false,
     // "scroll-step": 1, // %, can be a float
-    "on-click": "wpctl set-mute @DEFAULT_SOURCE@ toggle",
-    "on-click-middle": "systemd-run --user --scope --collect --no-block -- pavucontrol",
-    "on-click-right": "systemd-run --user --scope --collect --no-block -- pavucontrol",
-    "on-scroll-up": "wpctl set-volume @DEFAULT_SOURCE@ 1%+ --limit 1.0",
-    "on-scroll-down": "wpctl set-volume @DEFAULT_SOURCE@ 1%- --limit 1.0",
+    "on-click": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/wob-volume.sh --source-mute",
+    "on-click-middle": "systemd-run --user --scope --collect --no-block --quiet -- pavucontrol",
+    "on-click-right": "systemd-run --user --scope --collect --no-block --quiet -- pavucontrol",
+    "on-scroll-up": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/wob-volume.sh --source-up",
+    "on-scroll-down": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/wob-volume.sh --source-down",
   },
 
   "bluetooth": {
@@ -250,8 +266,8 @@
     "tooltip-format": "{controller_alias}\t{controller_address}",
     "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-    "on-click": "systemd-run --user --scope --collect --no-block -- ~/.local/bin/bluetooth-toggle.sh",
-    "on-click-right": "systemd-run --user --scope --collect --no-block -- blueman-manager",
+    "on-click": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/bluetooth-toggle.sh",
+    "on-click-right": "systemd-run --user --scope --collect --no-block --quiet -- blueman-manager",
   },
 
   "clock": {
@@ -279,14 +295,13 @@
 
   ///////////////////////////////////
   //                               //
-  //  // Custom Modules Left //    //
+  //  // Group Modules Left //    //
   //                               //
   ///////////////////////////////////
 
   // group-apps
-  // Конфигурация стрелки
   "custom/arrow-right": {
-    "format": "", // Иконка стрелки справо (FontAwesome)
+    "format": "",
     "tooltip": false,
   },
 
@@ -294,23 +309,23 @@
     "format": " ",
     "tooltip": true,
     "tooltip-format": "WC Settings",
-    "on-click": "systemd-run --user --scope --collect --no-block -- labwc-tweaks",
-    "on-click-right": "systemd-run --user --scope --collect --no-block -- dconf-editor",
+    "on-click": "systemd-run --user --scope --collect --no-block --quiet -- labwc-tweaks",
+    "on-click-right": "systemd-run --user --scope --collect --no-block --quiet -- dconf-editor",
   },
 
   "custom/task-manager": {
     "format": "",
     "tooltip": true,
     "tooltip-format": "Task Manager",
-    "on-click": "systemd-run --user --scope --collect --no-block -- foot -e btop",
-    "on-click-right": "systemd-run --user --scope --collect --no-block -- missioncenter",
+    "on-click": "systemd-run --user --scope --collect --no-block --quiet -- foot -e btop",
+    "on-click-right": "systemd-run --user --scope --collect --no-block --quiet -- missioncenter",
   },
 
   "custom/package-manager": {
     "format": "", // "󰮯" ""
     "tooltip": true,
     "tooltip-format": "Package Manager",
-    "on-click": "systemd-run --user --scope --collect --no-block -- octopi",
+    "on-click": "systemd-run --user --scope --collect --no-block --quiet -- octopi",
     //"on-click-right": "",
   },
 
@@ -318,14 +333,14 @@
     "format": "",
     "tooltip": true,
     "tooltip-format": "File Manager",
-    "on-click": "systemd-run --user --scope --collect --no-block -- pcmanfm-qt",
+    "on-click": "systemd-run --user --scope --collect --no-block --quiet -- pcmanfm-qt",
   },
 
   "custom/terminal": {
     "format": "",
     "tooltip": true,
     "tooltip-format": "Terminal",
-    "on-click": "systemd-run --user --scope --collect --no-block -- foot",
+    "on-click": "systemd-run --user --scope --collect --no-block --quiet -- foot",
     //"on-click-middle": "",
     //"on-click-right": "",
   },
@@ -335,41 +350,41 @@
     "tooltip": true,
     "tooltip-format": "Editor",
     "on-click": "zeditor",
-    "on-click-middle": "systemd-run --user --scope --collect --no-block -- foot -e nano",
-    "on-click-right": "systemd-run --user --scope --collect --no-block -- foot -e micro",
+    "on-click-middle": "systemd-run --user --scope --collect --no-block --quiet -- foot -e nano",
+    "on-click-right": "systemd-run --user --scope --collect --no-block --quiet -- foot -e micro",
   },
 
   "custom/browser": {
     "format": "", // "" ""
     "tooltip": true,
     "tooltip-format": "Browser",
-    "on-click": "systemd-run --user --scope --collect --no-block -- firefox",
-    "on-click-middle": "systemd-run --user --scope --collect --no-block -- helium",
-    "on-click-right": "systemd-run --user --scope --collect --no-block -- brave",
+    "on-click": "systemd-run --user --scope --collect --no-block --quiet -- firefox",
+    "on-click-middle": "systemd-run --user --scope --collect --no-block --quiet -- helium",
+    "on-click-right": "systemd-run --user --scope --collect --no-block --quiet -- brave",
   },
 
   "custom/steam": {
     "format": "", // "" "" ""
     "tooltip": true,
     "tooltip-format": "Steam",
-    "on-click": "systemd-run --user --scope --collect --no-block -- steam -pipewire-dmabuf -no-cef-sandbox",
+    "on-click": "systemd-run --user --scope --collect --no-block --quiet -- steam -pipewire-dmabuf -no-cef-sandbox",
   },
 
   ///////////////////////////////////
   //                               //
-  //  // Custom Modules Right //   //
+  //  // Group Modules Right //    //
   //                               //
   ///////////////////////////////////
 
   // group-tools
-  "custom/clip": {
+  "custom/clipboard": {
     "format": "",
     "tooltip": true,
     "tooltip-format": "Clipboard",
     //"on-click": "",
   },
 
-  "custom/snip": {
+  "custom/screenshot": {
     "format": "",
     "tooltip": true,
     "tooltip-format": "Screenshot",
@@ -380,21 +395,27 @@
     "format": "",
     "tooltip": true,
     "tooltip-format": "Сalculator",
-    "on-click": "systemd-run --user --scope --collect --no-block -- gnome-calculator",
-    "on-click-right": "systemd-run --user --scope --collect --no-block -- qalculate-gtk",
+    "on-click": "systemd-run --user --scope --collect --no-block --quiet -- gnome-calculator",
+    "on-click-right": "systemd-run --user --scope --collect --no-block --quiet -- qalculate-gtk",
+  },
+
+  "custom/screencast": {
+    "format": "", // "" "" "󰞡"
+    "tooltip": true,
+    "tooltip-format": "Screencast",
+    //"on-click": "", // grim -g \"$(slurp)\" ~/Pictures/$(date +%s).png
   },
 
   // group-modules
-  // Конфигурация стрелки
   "custom/arrow-left": {
-    "format": "", // Иконка стрелки влево (FontAwesome)
+    "format": "",
     "tooltip": false,
   },
 
   "custom/show-desktop": {
-    "format": "", // Иконка стрелки влево (FontAwesome)
+    "format": "",
     "tooltip": true,
     "tooltip-format": "Show Desktop",
-    "on-click": "systemd-run --user --scope --collect --no-block -- ~/.local/bin/labwc-show-desktop.sh",
+    "on-click": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/labwc-show-desktop.sh",
   },
 }

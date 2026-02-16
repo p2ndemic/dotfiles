@@ -118,7 +118,7 @@
     "interval": 1,
     //"tooltip": true,
     "exec": "echo '{\"class\": \"recording\"}'",
-    "exec-if": "pgrep wf-recorder >/dev/null 2>&1",
+    "exec-if": "pgrep wf-recorder",
   },
 
   "tray": {

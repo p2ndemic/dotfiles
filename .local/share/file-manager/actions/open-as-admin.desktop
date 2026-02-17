@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Action
+Icon=system-file-manager-root
+Name=Открыть в режиме администратора
+Name[ru]=Открыть в режиме администратора
+Profiles=profile-zero;
+
+[X-Action-Profile profile-zero]
+MimeTypes=inode/directory;
+SelectionCount==1
+Exec=pcmanfm-qt admin://%f
+Name=Default profile

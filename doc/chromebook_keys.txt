@@ -1,6 +1,3 @@
-
-
-
                       XF86Back
                       XF86Reload
                       XF86FullScreen
@@ -12,7 +9,6 @@
                       XF86AudioLowerVolume
                       XF86AudioRaiseVolume
                       XF86PowerOff
-
 
 - Это все клавиши доступные для моего Acer Chromebook 516 GE. По порядку в ряд
 -------------------------------------------------

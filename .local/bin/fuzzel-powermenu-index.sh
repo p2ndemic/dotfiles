@@ -3,23 +3,55 @@
 # --- Конфигурация интерфейса ---
 # ВНИМАНИЕ: Fuzzel может некорректно обрабатывать имена шрифтов с пробелами.
 # В качестве обходного решения (workaround) указываем прямой путь к файлу шрифта.
-#FONT_PRIMARY="/usr/share/fonts/Adwaita/AdwaitaMono-Regular.ttf"
-#FONT_FALLBACK="Hack"
-#FONT="$FONT_PRIMARY:size=24,$FONT_FALLBACK:size=24"
 
-# Основные шрифты = Hack || JetBrainsMono Nerd Font Propo - с поддержкой пропорций Nerd Fonts
-FONT=Hack:size=24
+# JetBrainsMono Nerd Font Propo - Основной шрифт с поддержкой пропорций Nerd Fonts || Hack - запасной
+FONT_PRIMARY="/usr/share/fonts/TTF/JetBrainsMonoNerdFontPropo-Medium.ttf"
+FONT_FALLBACK="Hack"
+FONT="$FONT_PRIMARY:size=24,$FONT_FALLBACK:size=24"
+
+#Указать вот так если шрифт не имеет пробелов в имени:
+#FONT=Hack:size=24
 
 # --- Позиционирование окна на экране ---
 # Доступно: top-left, top, top-right, left, center, right, bottom-left, bottom, bottom-right
-ALIGN="center"
+ANCHOR="center" # Значение по умолчанию
+
+# --- Обработка аргументов ---
+# Проходимся по всем переданным аргументам
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        -a=*|--anchor=*)
+            ANCHOR="${1#*=}"   # Извлекаем значение после знака "="
+            shift              # Переходим к следующему аргументу
+            ;;
+
+        -a|--anchor)
+            # Проверяем, что следующий аргумент существует и не начинается с дефиса
+            # (чтобы отличить значение от другого флага)
+            if [[ -n "$2" && "$2" != -* ]]; then
+                ANCHOR="$2"     # Берем следующий аргумент как значение
+                shift 2         # Пропускаем флаг и само значение
+            else
+                # Если после флага нет значения или идёт другой флаг — ошибка
+                echo "Error: $1 requires an argument" >&2
+                exit 1
+            fi
+            ;;
+
+        *)
+            echo "Warning: unknown option $1 ignored" >&2
+            echo "Usage: $0 [-a POSITION | --anchor POSITION]" >&2
+            shift
+            ;;
+    esac
+done
 
 # --- Сборка параметров Fuzzel в единую переменную ---
 # Порядок: режим dmenu, индекс, шрифт, позиция, скрыть ввод, авто-высота, ширина, отступы
 FUZZEL_OPTS="--dmenu \
     --index \
     --font=$FONT \
-    --anchor=$ALIGN \
+    --anchor=$ANCHOR \
     --hide-prompt \
     --minimal-lines \
     --width=14 \

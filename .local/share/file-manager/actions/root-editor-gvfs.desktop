@@ -16,5 +16,5 @@ Profiles=profile-zero;
 [X-Action-Profile profile-zero]
 SelectionCount==1
 MimeTypes=text/plain;
-Exec=pkexec featherpad %f
+Exec=featherpad admin://%f
 Name=Default profile

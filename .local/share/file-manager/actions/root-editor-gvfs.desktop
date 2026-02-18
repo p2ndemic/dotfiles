@@ -1,12 +1,8 @@
 [Desktop Entry]
 Type=Action
-Name[cz]=Upravit jako root
 Name[de]=Oeffnen mit Root-Rechten
 Name[es]=Editar como root
 Name[fr]=Modifier en tant que root
-Name[it]=Modifica come root
-Name[nl]=Bewerken als root
-Name[pl]=Edytuj jako root
 Name[pt]=Editar como root
 Name[ru]=Редактировать как root
 Icon=dialog-password

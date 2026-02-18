@@ -2,7 +2,7 @@
 
 TERMINAL_CMD="${TERMINAL:-foot}"
 
-if pgrep nmtui > /dev/null 2>&1; then
+if pgrep nmtui >/dev/null 2>&1; then
     pkill nmtui
 else
     nmcli device wifi rescan

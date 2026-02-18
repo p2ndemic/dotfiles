@@ -236,8 +236,8 @@
     },
     "modules": [
       "custom/arrow-left",
-      "bluetooth",
       "pulseaudio#input",
+      "bluetooth",
       "backlight",
     ],
   },
@@ -254,6 +254,19 @@
     "on-scroll-down": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/wob-brightness.sh --down",
   },
 
+  "bluetooth": {
+    "format": " {status}",
+    "format-disabled": "󰂲", // an empty format will hide the module
+    "format-off": "󰂲",
+    "format-connected": "󰂱 {num_connections} connected",
+    "format-no-controller": "",
+    "tooltip-format": "{controller_alias}\t{controller_address}",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "on-click": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/bluetooth-toggle.sh",
+    "on-click-right": "systemd-run --user --scope --collect --no-block --quiet -- blueman-manager",
+  },
+
   // Pulseaudio Mic
   // Установить дефолтное устройство ввода (микрофон) через pavucontrol. По умолчанию не задан
   "pulseaudio#input": {
@@ -267,19 +280,6 @@
     "on-click-right": "systemd-run --user --scope --collect --no-block --quiet -- pavucontrol",
     "on-scroll-up": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/wob-volume.sh --source-up",
     "on-scroll-down": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/wob-volume.sh --source-down",
-  },
-
-  "bluetooth": {
-    "format": " {status}",
-    "format-disabled": "󰂲", // an empty format will hide the module
-    "format-off": "󰂲",
-    "format-connected": "󰂱 {num_connections} connected",
-    "format-no-controller": "",
-    "tooltip-format": "{controller_alias}\t{controller_address}",
-    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
-    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-    "on-click": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/bluetooth-toggle.sh",
-    "on-click-right": "systemd-run --user --scope --collect --no-block --quiet -- blueman-manager",
   },
   //* group-modules
 

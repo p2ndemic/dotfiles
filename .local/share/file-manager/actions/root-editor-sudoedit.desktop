@@ -1,0 +1,16 @@
+[Desktop Entry]
+Type=Action
+Icon=text-editor
+Name=Edit as root (sudoedit)
+Name[de]=Als Root bearbeiten (sudoedit)
+Name[es]=Editar como root (sudoedit)
+Name[fr]=Éditer en tant que root (sudoedit)
+Name[pt]=Editar como root (sudoedit)
+Name[ru]=Редактировать от root (sudoedit)
+Profiles=profile-zero;
+
+[X-Action-Profile profile-zero]
+SelectionCount==1
+MimeTypes=text/plain;
+Exec=SUDO_EDITOR="zed --wait" SUDO_ASKPASS=~/.local/bin/fuzzel-askpass.sh sudoedit -A %f
+Name=Default profile

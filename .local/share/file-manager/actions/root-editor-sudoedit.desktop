@@ -1,3 +1,18 @@
+# =============================================
+# ❯ man sudoedit
+# =============================================
+# Задать переменные окружения для sudoedit | sudo -e;
+# Определяет редактор: сначала из ENV (SUDO_EDITOR, VISUAL, EDITOR);
+# Иначе — первый из списка 'editor' в настройках sudoers, если они не заданы — берётся editor из sudoers;
+# =============================================
+# Для GUI-приложений обязательно указывать флаг ожидания --wait (напр. SUDO_EDITOR="zeditor --wait" | SUDO_EDITOR="code --wait");
+# Иначе sudo удалит временный файл до сохранения правок;
+# =============================================
+# Флаг -A (askpass): использует внешнюю программу для запроса пароля (напр. SUDO_ASKPASS="${HOME}/.local/bin/fuzzel-askpass.sh");
+# 1. Если задано SUDO_ASKPASS — берем путь из переменной;
+# 2. Иначе — ищем строку 'Path askpass' в sudo.conf;
+# 3. Если программа не найдена — ошибка;
+# =============================================
 [Desktop Entry]
 Type=Action
 Icon=text-editor
@@ -12,5 +27,5 @@ Profiles=profile-zero;
 [X-Action-Profile profile-zero]
 SelectionCount==1
 MimeTypes=text/plain;
-Exec=SUDO_EDITOR="zed --wait" SUDO_ASKPASS=~/.local/bin/fuzzel-askpass.sh sudoedit -A %f
+Exec=sudoedit -A %f
 Name=Default profile

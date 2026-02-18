@@ -119,6 +119,7 @@
     "tooltip": false,
     "exec": "echo '{\"class\": \"recording\"}'",
     "exec-if": "pgrep wf-recorder >/dev/null 2>&1",
+    //"exec-if": "pgrep -f "^gpu-screen-recorder" >/dev/null 2>&1",
   },
 
   "tray": {
@@ -244,7 +245,7 @@
 
   // Group modules right ...
   // ⇠
-  // backlight ⇠ pulseaudio#input ⇠ backlight
+  // pulseaudio#input ⇠ bluetooth ⇠ backlight
 
   "backlight": {
     "format": "{percent}% {icon}",
@@ -394,7 +395,7 @@
     "format": "",
     "tooltip": true,
     "tooltip-format": "Clipboard",
-    //"on-click": "",
+    "on-click": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/cliphist-fuzzel-img.sh",
   },
 
   "custom/screenshot": {
@@ -416,7 +417,7 @@
     "format": "", // "" "" "󰞡"
     "tooltip": true,
     "tooltip-format": "Screencast",
-    //"on-click": "", // grim -g \"$(slurp)\" ~/Pictures/$(date +%s).png
+    //"on-click": "",
   },
 
   // group-modules

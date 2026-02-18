@@ -78,7 +78,7 @@ CHOICE=$(get_power_options | fuzzel $FUZZEL_OPTS)
 # Обработка выбора
 case "$CHOICE" in
     0) # Index [0]
-        loginctl lock-session                         # Блокировка [0]
+        loginctl lock-session "$XDG_SESSION_ID"       # Блокировка [0]
         ;;
     1) # Index [1] (Рекомендовано при работе с UWSM)
         loginctl terminate-session "$XDG_SESSION_ID"  # Выход [1]

@@ -12,5 +12,5 @@ Profiles=profile-zero;
 [X-Action-Profile profile-zero]
 SelectionCount==1
 MimeTypes=inode/directory;
-Exec=pcmanfm-qt admin://%f
+Exec=pcmanfm-qt --new-window admin://%f
 Name=Default profile

@@ -1,0 +1,31 @@
+/* Catppuccin Mocha Pallete */
+
+* {
+    /* Шрифт и текст */
+    font-family: "JetBrainsMono Nerd Font Propo"; /* основной шрифт с поддержкой иконок Nerd Fonts */
+    font-size: 14px; /* размер шрифта */
+    font-weight: normal; /* bold - жирное начертание (по умолчанию normal — обычная толщина) */
+
+    /* Отключение визуальных эффектов и рамок */
+    border: none; /* убираем любые границы */
+    border-radius: 0; /* без скругления углов */
+    box-shadow: none; /* без теней от элементов */
+    text-shadow: none; /* без теней от текста */
+    min-height: 0;
+
+    /* Padding */
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+
+    /* Margin */
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-right: 0;
+    margin-left: 0;
+
+    /* Отключение анимаций и переходов */
+    animation: none;
+    transition: none;
+}

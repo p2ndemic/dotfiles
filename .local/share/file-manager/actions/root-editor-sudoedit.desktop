@@ -16,12 +16,12 @@
 [Desktop Entry]
 Type=Action
 Icon=text-editor
-Name=Edit as root (sudoedit)
-Name[de]=Als Root bearbeiten (sudoedit)
-Name[es]=Editar como root (sudoedit)
-Name[fr]=Éditer en tant que root (sudoedit)
-Name[pt]=Editar como root (sudoedit)
-Name[ru]=Редактировать от root (sudoedit)
+Name=Edit with sudoedit (GUI)
+Name[de]=Mit sudoedit bearbeiten (GUI)
+Name[es]=Editar con sudoedit (GUI)
+Name[fr]=Éditer avec sudoedit (GUI)
+Name[pt]=Editar com sudoedit (GUI)
+Name[ru]=Редактировать через sudoedit (GUI)
 Profiles=profile-zero;
 
 [X-Action-Profile profile-zero]

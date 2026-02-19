@@ -29,3 +29,16 @@ Icon=/home/твой_логин/Pictures/icons/my-cool-filemanager.svg
 
 4. Обновляем базу .desktop-файлов (локальные и системные)
 sudo update-desktop-database /usr/share/applications && update-desktop-database ~/.local/share/applications
+
+5. Где можно посмотреть иконки:
+  5.1 Базовая/стандартная тема (fallback для всего): /usr/share/icons/hicolor/
+  Здесь находятся иконки в папках по размерам: 16x16, 24x24, 32x32, 48x48, 64x64, 128x128, scalable и т.д., подкаталог apps/,     places/, actions/, devices/ и т.п.)
+
+Тема Adwaita (стандарт GNOME, часто используется как fallback):
+/usr/share/icons/Adwaita/
+
+Тема Papirus (самая популярная цветная тема):
+/usr/share/icons/Papirus//usr/share/icons/Papirus-Dark//usr/share/icons/Papirus-Light/
+
+Тема Numix (Numix-Circle, Numix-Square):
+/usr/share/icons/Numix//usr/share/icons/Numix-Circle//usr/share/icons/Numix-Circle-Light/

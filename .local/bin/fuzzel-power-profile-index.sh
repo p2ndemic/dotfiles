@@ -47,13 +47,15 @@ esac
 MESG="
 ┌─────────────────────────────────────┐
 │ |${STATE_ICON}| State     | ⤍ | ${STATUS} |${STATE_ICON}| │
-│ |󱟠| Percent   | ⤍ | ${PERCENT}         || │
+│ || Percent   | ⤍ | ${PERCENT}         || │
 │ |󰁫| Remaining | ⤍ | ${TIME_TO}   |󰁫| │
 │ || Capacity  | ⤍ | ${ENERGY} Wh     || │
 │ || Health    | ⤍ | ${HEALTH}%         || │
 │ || Profile   | ⤍ | ${CURRENT_PROFILE}    || │
 └─────────────────────────────────────┘
-  || Select power profile:"
+┌─────────────────────────────────────┐
+│ ||    Select power profile     || │
+└─────────────────────────────────────┘" 
 
 # К сожалению при вставке эмодзи типа ⚙️ ❤️ в блок --mesg fuzzel падает: https://codeberg.org/dnkl/fuzzel/issues/736
 #  State ➟ ⤍ ⭬ 🢒
@@ -69,9 +71,9 @@ MESG="
 # Формируем список (индекс 0 = Power Saver, индекс 1 = Balanced)
 # Функция выводит пункты меню. Порядок строк определяет их будущий индекс (0, 1, 2...)
 FN_ENTRIES() {
-    echo -e "   Power Save\0icon"      # Index [0]
-    echo -e "   Balanced\0icon"    # Index [1]
-    echo -e "   Performance\0icon"   # Index [2]
+    echo -e "  |1| Power Save\0icon"      # Index [0]
+    echo -e "  |2| Balanced\0icon"    # Index [1]
+    echo -e "  |3| Performance\0icon"   # Index [2]
 }
 
 

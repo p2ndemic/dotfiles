@@ -14,14 +14,14 @@ HEALTH=$(LC_ALL=C upower -i /org/freedesktop/UPower/devices/battery_BAT0 | gawk 
 ENERGY=$(LC_ALL=C upower -i /org/freedesktop/UPower/devices/battery_BAT0 | gawk '/energy-full:/ {printf "%.1f\n", $2}')
 
 if [[ "$STATE" == "discharging" ]]; then
-    STATE_ICON="🔋"
+    STATE_ICON=""
     STATE_ARROW="⇣"
     STATUS="Discharging"
     TIME_LABEL="Time remaining"
 else
-    STATE_ICON="🔌"
+    STATE_ICON=""
     STATE_ARROW="⇡"
-    STATUS="Charging"
+    STATUS="Charging   "
     TIME_LABEL="Time until full"
 fi
 
@@ -44,30 +44,34 @@ case "$CURRENT_PROFILE" in
 esac
 
 # Сообщение (точно как на твоей картинке)
-MESG="${STATE_ICON} State ⤍ $PERCENT [${STATUS}]
-🕒 Remaining ⤍ ${TIME_TO} ${STATE_ARROW}
-⚡ Capacity ⭬ ${ENERGY} Wh
-🧬 Health ⤏ ${HEALTH}%
-🚀 Profile 🢒 [${CURRENT_PROFILE}]
-
-🚀 Select power profile:"
+MESG="
+┌─────────────────────────────────────┐
+│ |${STATE_ICON}| State     | ⤍ | ${STATUS} |${STATE_ICON}| │
+│ |󱟠| Percent   | ⤍ | ${PERCENT}         || │
+│ |󰁫| Remaining | ⤍ | ${TIME_TO}   |󰁫| │
+│ || Capacity  | ⤍ | ${ENERGY} Wh     || │
+│ || Health    | ⤍ | ${HEALTH}%         || │
+│ || Profile   | ⤍ | ${CURRENT_PROFILE}    || │
+└─────────────────────────────────────┘
+  || Select power profile:"
 
 # К сожалению при вставке эмодзи типа ⚙️ ❤️ в блок --mesg fuzzel падает: https://codeberg.org/dnkl/fuzzel/issues/736
-#  State ➟
+#  State ➟ ⤍ ⭬ 🢒
 # 󰁫 Remaining  
 #  Health
 #  Capacity
 #  Profile
 #  Select power profile:
+# ${STATE_ARROW}
 
 
 
 # Формируем список (индекс 0 = Power Saver, индекс 1 = Balanced)
 # Функция выводит пункты меню. Порядок строк определяет их будущий индекс (0, 1, 2...)
 FN_ENTRIES() {
-    echo -e "Power Save\0icon\x1fbattery-caution-symbolic"      # Index [0]
-    echo -e "Balanced\0icon\x1fpreferences-system-power-management"    # Index [1]
-    echo -e "Performance\0icon\x1fspeedometer"   # Index [2]
+    echo -e "   Power Save\0icon"      # Index [0]
+    echo -e "   Balanced\0icon"    # Index [1]
+    echo -e "   Performance\0icon"   # Index [2]
 }
 
 
@@ -77,8 +81,9 @@ CHOICE=$(FN_ENTRIES | fuzzel --dmenu \
     --hide-prompt \
     --select-index=$SELECT \
     --mesg="$MESG" \
+    --mesg-mode=expand \
     --icon-theme="Papirus-Dark" \
-    --font="JetBrainsMono Nerd Font Mono:size=13" \
+    --font="JetBrainsMono Nerd Font Mono:size=18" \
     --minimal-lines
     )
 

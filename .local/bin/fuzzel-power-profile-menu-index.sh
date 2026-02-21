@@ -11,17 +11,19 @@ TIME_TO=$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | gawk '/time t
 # 4. Здоровье аккумулятора (capacity) — округлено до целых
 HEALTH=$(LC_ALL=C upower -i /org/freedesktop/UPower/devices/battery_BAT0 | gawk '/capacity:/ {printf "%.0f\n", $2}')
 # 5. Полная емкость (energy-full) — округлено до десятых
-ENERGY=$(LC_ALL=C upower -i /org/freedesktop/UPower/devices/battery_BAT0 | gawk '/energy-full:/ {printf "%.1f\n", $2}')
+ENERGY_FULL=$(LC_ALL=C upower -i /org/freedesktop/UPower/devices/battery_BAT0 | gawk '/energy-full:/ {printf "%.1f\n", $2}')
+# 6. Кол-во циклов зарядки
+CHARGE_CYCLES=$(LC_ALL=C upower -i /org/freedesktop/UPower/devices/battery_BAT0 | gawk '/charge-cycles:/ {print $2}')
 
 if [[ "$STATE" == "discharging" ]]; then
     STATE_ICON=""
-    STATE_ARROW="⇣"
-    STATUS="Discharging"
+    STATE_ARROW="↓"
+    STATUS="[discharging]"
     TIME_LABEL="Time remaining"
 else
     STATE_ICON=""
-    STATE_ARROW="⇡"
-    STATUS="Charging   "
+    STATE_ARROW="↑"
+    STATUS="[charging]   "
     TIME_LABEL="Time until full"
 fi
 
@@ -45,10 +47,10 @@ esac
 
 # Сообщение (точно как на твоей картинке)
 MESG="┌─────────────────────────────────────┐
-│ |${STATE_ICON}| State     | ⤍ | ${STATUS} |${STATE_ICON}| │
-│ || Percent   | ⤍ | ${PERCENT}         || │
-│ || Remaining | ⤍ | ${TIME_TO} h       || │
-│ || Capacity  | ⤍ | ${ENERGY} Wh     || │
+│ |${STATE_ICON}| State     | ⤍ | ${PERCENT} [${STATE_ARROW}]     |${STATE_ICON}| │
+│ || Remaining | ⤍ | ${TIME_TO} hours   || │
+│ || Capacity  | ⤍ | ${ENERGY_FULL} Wh     || │
+│ || Cycles    | ⤍ | ${CHARGE_CYCLES}         || │
 │ || Health    | ⤍ | ${HEALTH}%         || │
 │ || Profile   | ⤍ | ${CURRENT_PROFILE}    || │
 └─────────────────────────────────────┘
@@ -70,9 +72,10 @@ MESG="┌───────────────────────�
 # Формируем список (индекс 0 = Power Saver, индекс 1 = Balanced)
 # Функция выводит пункты меню. Порядок строк определяет их будущий индекс (0, 1, 2...)
 FN_ENTRIES() {
-    echo -e "  |1| Power Save\0icon"      # Index [0]
-    echo -e "  |2| Balanced\0icon"    # Index [1]
-    echo -e "  |3| Performance\0icon"   # Index [2]
+    echo -e "  |1| Power Save"      # Index [0]
+    echo -e "  |2| Balanced"    # Index [1]
+    echo -e "  |3| Performance"   # Index [2]
+    echo -e "  |3| Max Performance"   # Index [3]
 }
 
 

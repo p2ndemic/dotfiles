@@ -41,7 +41,7 @@ case "$CURRENT_PROFILE" in
         SELECT=2
         ;;
     *)
-        SELECT=0
+        SELECT=1
         ;;
 esac
 

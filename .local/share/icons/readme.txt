@@ -11,7 +11,7 @@
 # Лучшие темы иконок для Linux
 # =============================================
 
-# MoreWaita = https://github.com/somepaulo/MoreWaita
+# Тема MoreWaita = https://github.com/somepaulo/MoreWaita
 
 # Тема Numix = https://github.com/numixproject/numix-icon-theme-circle
 # Папки Numix = https://github.com/numixproject/numix-folders

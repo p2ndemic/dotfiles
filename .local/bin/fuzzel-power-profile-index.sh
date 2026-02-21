@@ -7,19 +7,19 @@ STATE=$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | gawk '/state:/ 
 # 2. Процент заряда (percentage
 PERCENT=$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | gawk '/percentage:/ {print $2}')
 # 3. Время до разряда/заряда
-TIME_TO=$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | gawk '/time to (empty|full):/ {print $4 " " $5}')
+TIME_TO=$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | gawk '/time to (empty|full):/ {print $4}')
 # 4. Здоровье аккумулятора (capacity) — округлено до целых
 HEALTH=$(LC_ALL=C upower -i /org/freedesktop/UPower/devices/battery_BAT0 | gawk '/capacity:/ {printf "%.0f\n", $2}')
 # 5. Полная емкость (energy-full) — округлено до десятых
 ENERGY=$(LC_ALL=C upower -i /org/freedesktop/UPower/devices/battery_BAT0 | gawk '/energy-full:/ {printf "%.1f\n", $2}')
 
 if [[ "$STATE" == "discharging" ]]; then
-    STATE_ICON=""
+    STATE_ICON=""
     STATE_ARROW="⇣"
     STATUS="Discharging"
     TIME_LABEL="Time remaining"
 else
-    STATE_ICON=""
+    STATE_ICON=""
     STATE_ARROW="⇡"
     STATUS="Charging   "
     TIME_LABEL="Time until full"
@@ -44,11 +44,10 @@ case "$CURRENT_PROFILE" in
 esac
 
 # Сообщение (точно как на твоей картинке)
-MESG="
-┌─────────────────────────────────────┐
+MESG="┌─────────────────────────────────────┐
 │ |${STATE_ICON}| State     | ⤍ | ${STATUS} |${STATE_ICON}| │
 │ || Percent   | ⤍ | ${PERCENT}         || │
-│ |󰁫| Remaining | ⤍ | ${TIME_TO}   |󰁫| │
+│ || Remaining | ⤍ | ${TIME_TO} h       || │
 │ || Capacity  | ⤍ | ${ENERGY} Wh     || │
 │ || Health    | ⤍ | ${HEALTH}%         || │
 │ || Profile   | ⤍ | ${CURRENT_PROFILE}    || │

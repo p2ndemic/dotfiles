@@ -1,3 +1,16 @@
+# =============================================
+#    Networkd ethernet config
+# =============================================
+# Ref: https://wiki.archlinux.org/title/Systemd-networkd
+# Ref: https://www.freedesktop.org/software/systemd/man/latest/systemd.network.html
+# Ref: https://man.archlinux.org/man/systemd.network.5
+# =============================================
+# Настройка:
+# Отключаем NM и wpa_supplicant, далее включаем iwd, networkd и resolved:
+# sudo systemctl disable --now NetworkManager wpa_supplicant && sudo systemctl enable --now iwd systemd-networkd systemd-resolved
+# Настраиваем /etc/resolv.conf для systemd-resolved
+# sudo ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
+# =============================================
 [Match]
 Name=en*
 Type=ether
@@ -23,15 +36,13 @@ DNSSEC=false
 [DHCPv4]
 # Более низкая/приоритетная метрика, чем у Wifi
 RouteMetric=100
+# UseDNS=false - не использовать DNS от DHCPv4 (использовать static dns). Указать при установке кастомных DNS серверов (напр. Cloudflare)
+# По умолчанию UseDNS=true | Т.е использовать DNS полученные от DHCP
 
 [IPv6AcceptRA]
+#UseDNS=true
 RouteMetric=100
 
 [DHCPv6]
+#UseDNS=true
 RouteMetric=100
-#
-# Настройка:
-# Отключаем NM и wpa_supplicant, далее включаем iwd, networkd и resolved:
-# sudo systemctl disable --now NetworkManager wpa_supplicant && sudo systemctl enable --now iwd systemd-networkd systemd-resolved
-# Настраиваем /etc/resolv.conf для systemd-resolved
-# sudo ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf

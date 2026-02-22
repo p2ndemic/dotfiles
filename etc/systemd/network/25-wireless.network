@@ -63,11 +63,11 @@ UseDNS=true
 # Более высокая метрика, чем у Ethernet
 RouteMetric=600
 
-[IPv6AcceptRA]
+[DHCPv6]
 UseDNS=true
 RouteMetric=600
 
-[DHCPv6]
+[IPv6AcceptRA]
 UseDNS=true
 RouteMetric=600
 

@@ -7,10 +7,10 @@
 # Ref: https://wiki.archlinux.org/title/Iwd
 # Ref: https://man.archlinux.org/man/extra/iwd/iwd.config.5.en
 # =============================================
-# Настройка:
-# Отключаем NM и wpa_supplicant, далее включаем iwd, networkd и resolved:
+# → Настройка:
+# → 1. Отключаем NM и wpa_supplicant, далее включаем iwd, networkd и resolved:
+# → 2. Настраиваем /etc/resolv.conf для systemd-resolved:
 # sudo systemctl disable --now NetworkManager wpa_supplicant && sudo systemctl enable --now iwd systemd-networkd systemd-resolved
-# Настраиваем /etc/resolv.conf для systemd-resolved
 # sudo ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
 # =============================================
 [Match]

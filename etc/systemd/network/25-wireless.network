@@ -47,13 +47,20 @@ DNSSEC=false
 IgnoreCarrierLoss=3s
 
 [DHCPv4]
+# =============================================
+# [UseDNS=false] = не использовать DNS от DHCPv4 (т.е использовать dns указанные выше). Указать при установке кастомных DNS серверов (напр. Cloudflare)
+# [UseDNS=true] = значение по умолчанию | Т.е использовать DNS полученные от DHCP
+# =============================================
+#UseDNS=true
 # Более высокая метрика, чем у Ethernet
 RouteMetric=600
 
 [IPv6AcceptRA]
+#UseDNS=true
 RouteMetric=600
 
 [DHCPv6]
+#UseDNS=true
 RouteMetric=600
 
 # Включение планировщика FQ для Wifi интерфейса. По умолчанию не включен. Проверить через: ❯ ip a 

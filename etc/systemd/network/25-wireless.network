@@ -42,6 +42,7 @@ IPv6LinkLocalAddressGenerationMode=stable-privacy
 # Отключаем ненужные службы разрешения имён
 LLMNR=false
 MulticastDNS=false
+DNSOverTLS=false
 DNSSEC=false
 # Игнорировать кратковременную потерю связи
 IgnoreCarrierLoss=3s

@@ -34,10 +34,13 @@ MulticastDNS=false
 DNSSEC=false
 
 [DHCPv4]
+# =============================================
+# [UseDNS=false] = не использовать DNS от DHCPv4 (т.е использовать dns указанные выше). Указать при установке кастомных DNS серверов (напр. Cloudflare)
+# [UseDNS=true] = значение по умолчанию | Т.е использовать DNS полученные от DHCP
+# =============================================
+#UseDNS=true
 # Более низкая/приоритетная метрика, чем у Wifi
 RouteMetric=100
-# UseDNS=false - не использовать DNS от DHCPv4 (использовать static dns). Указать при установке кастомных DNS серверов (напр. Cloudflare)
-# По умолчанию UseDNS=true | Т.е использовать DNS полученные от DHCP
 
 [IPv6AcceptRA]
 #UseDNS=true

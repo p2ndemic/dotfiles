@@ -37,8 +37,8 @@ DNSSEC=false
 # → DNS Cloudflare с Malware Blocking IPv4|IPv6 (primary → secondary)
 # =============================================
 #DNS=1.1.1.2
-#DNS=2606:4700:4700::1112
 #DNS=1.0.0.2
+#DNS=2606:4700:4700::1112
 #DNS=2606:4700:4700::1002
 
 [DHCPv4]

@@ -50,10 +50,10 @@ UseDNS=true
 # Более низкая/приоритетная метрика, чем у Wifi
 RouteMetric=100
 
-[IPv6AcceptRA]
+[DHCPv6]
 UseDNS=true
 RouteMetric=100
 
-[DHCPv6]
+[IPv6AcceptRA]
 UseDNS=true
 RouteMetric=100

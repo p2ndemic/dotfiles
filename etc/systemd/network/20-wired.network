@@ -34,7 +34,7 @@ MulticastDNS=false
 DNSOverTLS=false
 DNSSEC=false
 # =============================================
-# DNS Cloudflare с Malware Blocking IPv4|IPv6 (primary → secondary)
+# → DNS Cloudflare с Malware Blocking IPv4|IPv6 (primary → secondary)
 # =============================================
 #DNS=1.1.1.2
 #DNS=2606:4700:4700::1112
@@ -43,8 +43,8 @@ DNSSEC=false
 
 [DHCPv4]
 # =============================================
-# [UseDNS=false] = не использовать DNS от DHCPv4 (т.е использовать dns указанные выше). Указать при установке кастомных DNS серверов (напр. Cloudflare)
-# [UseDNS=true] = значение по умолчанию | Т.е использовать DNS полученные от DHCP
+# → [UseDNS=false] = Отключить использование DNS от DHCPv4. | Т.е использовать DNS указанные выше в [Network]. Указать это при установке кастомных DNS серверов (напр. Cloudflare)
+# → [UseDNS=true] = Значение по умолчанию. | Т.е использовать DNS полученные от DHCPv4
 # =============================================
 #UseDNS=true
 # Более низкая/приоритетная метрика, чем у Wifi

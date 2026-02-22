@@ -1,3 +1,18 @@
+# =============================================
+#    Networkd ethernet config
+# =============================================
+# Ref: https://wiki.archlinux.org/title/Systemd-networkd
+# Ref: https://www.freedesktop.org/software/systemd/man/latest/systemd.network.html
+# Ref: https://man.archlinux.org/man/systemd.network.5
+# Ref: https://wiki.archlinux.org/title/Iwd
+# Ref: https://man.archlinux.org/man/extra/iwd/iwd.config.5.en
+# =============================================
+# Настройка:
+# Отключаем NM и wpa_supplicant, далее включаем iwd, networkd и resolved:
+# sudo systemctl disable --now NetworkManager wpa_supplicant && sudo systemctl enable --now iwd systemd-networkd systemd-resolved
+# Настраиваем /etc/resolv.conf для systemd-resolved
+# sudo ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
+# =============================================
 [Match]
 Name=wl*
 Type=wlan
@@ -47,9 +62,3 @@ RouteMetric=600
 # Пустая секция – будут использованы значения ядра по умолчанию
 # Можно добавить Pacing:
 Pacing=true
-#
-# Настройка:
-# Отключаем NM и wpa_supplicant, далее включаем iwd, networkd и resolved:
-# sudo systemctl disable --now NetworkManager wpa_supplicant && sudo systemctl enable --now iwd systemd-networkd systemd-resolved
-# Настраиваем /etc/resolv.conf для systemd-resolved
-# sudo ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf

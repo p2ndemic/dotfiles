@@ -47,7 +47,7 @@ DNSSEC=false
 # Игнорировать кратковременную потерю связи
 IgnoreCarrierLoss=3s
 # =============================================
-#    DNS Cloudflare с Malware Blocking IPv4|IPv6 (primary → secondary)
+# DNS Cloudflare с Malware Blocking IPv4|IPv6 (primary → secondary)
 # =============================================
 #DNS=1.1.1.2
 #DNS=2606:4700:4700::1112

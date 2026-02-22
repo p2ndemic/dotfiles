@@ -1,0 +1,31 @@
+[Match]
+Name=en*
+Type=ether
+
+[Link]
+# Уменьшаем MTU для L2TP/PPPoE (можно использовать 1460)
+MTUBytes=1460
+
+[Network]
+# Включаем DHCPv4 и разрешаем DHCPv6
+DHCP=yes
+# Включаем приём Router Advertisements (нужно для IPv6 SLAAC)
+IPv6AcceptRA=yes
+# Включаем временные IPv6-адреса (для приватности)
+IPv6PrivacyExtensions=true
+# Режим генерации IPv6 link-local адреса
+IPv6LinkLocalAddressGenerationMode=stable-privacy
+# Отключаем ненужные службы разрешения имён
+LLMNR=false
+MulticastDNS=false
+DNSSEC=false
+
+[DHCPv4]
+# Более низкая/приоритетная метрика, чем у Wifi
+RouteMetric=100
+
+[IPv6AcceptRA]
+RouteMetric=100
+
+[DHCPv6]
+RouteMetric=100

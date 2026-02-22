@@ -1,0 +1,43 @@
+[Match]
+Name=wl*
+Type=wlan
+
+[Link]
+# Уменьшаем MTU для L2TP/PPPoE (можно использовать 1460)
+MTUBytes=1460
+# Примечание для IWD. iwd содержит встроенный DHCP-клиент и может управлять маршрутизацией и разрешением DNS-запросов.
+# Раскоментируйте строку ниже
+# Unmanaged=yes
+# В таком случае networkd не будет вмешиваться в этот интерфейс.
+# Далее:
+# Cоздайте или отредактируйте /etc/iwd/main.conf:
+# [General]
+# EnableNetworkConfiguration=true
+# Тогда iwd будет самостоятельно назначать IP-адреса и маршруты.
+
+[Network]
+# Включаем DHCPv4 и разрешаем DHCPv6
+DHCP=yes
+# Включаем приём Router Advertisements (нужно для IPv6 SLAAC)
+IPv6AcceptRA=yes
+# Включаем временные IPv6-адреса (для приватности)
+IPv6PrivacyExtensions=true
+# Режим генерации IPv6 link-local адреса
+IPv6LinkLocalAddressGenerationMode=stable-privacy
+# Отключаем ненужные службы разрешения имён
+LLMNR=false
+MulticastDNS=false
+DNSSEC=false
+# Игнорировать кратковременную потерю связи
+IgnoreCarrierLoss=3s
+
+
+[DHCPv4]
+# Более высокая метрика, чем у Ethernet
+RouteMetric=600
+
+[IPv6AcceptRA]
+RouteMetric=600
+
+[DHCPv6]
+RouteMetric=600

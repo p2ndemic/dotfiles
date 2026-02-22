@@ -46,14 +46,14 @@ DNSSEC=false
 # → [UseDNS=false] = Отключить использование DNS от DHCPv4. | Т.е использовать DNS указанные выше в [Network]. Указать это при установке кастомных DNS серверов (напр. Cloudflare)
 # → [UseDNS=true] = Значение по умолчанию. | Т.е использовать DNS полученные от DHCPv4
 # =============================================
-#UseDNS=true
+UseDNS=true
 # Более низкая/приоритетная метрика, чем у Wifi
 RouteMetric=100
 
 [IPv6AcceptRA]
-#UseDNS=true
+UseDNS=true
 RouteMetric=100
 
 [DHCPv6]
-#UseDNS=true
+UseDNS=true
 RouteMetric=100

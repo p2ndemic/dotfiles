@@ -31,7 +31,6 @@ DNSSEC=false
 # Игнорировать кратковременную потерю связи
 IgnoreCarrierLoss=3s
 
-
 [DHCPv4]
 # Более высокая метрика, чем у Ethernet
 RouteMetric=600
@@ -41,3 +40,9 @@ RouteMetric=600
 
 [DHCPv6]
 RouteMetric=600
+
+# Включение планировщика FQ для Wifi. По умолчанию не включен. Проверить через: ❯ ip a
+[FairQueueing]
+# Пустая секция – будут использованы значения ядра по умолчанию
+# Можно добавить Pacing:
+Pacing=true

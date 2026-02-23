@@ -1,0 +1,23 @@
+[Unit]
+Description=Keep Wayland clipboard even after programs close
+Documentation=https://github.com/Linus789/wl-clip-persist
+# Start only when specific Wayland session targets are active
+After=wayland-session@sway.desktop.target
+After=wayland-session@labwc.desktop.target
+After=wayland-session@mangowc.desktop.target
+After=wayland-session@niri.desktop.target
+
+[Service]
+Type=exec
+ExecStart=/usr/bin/wl-clip-persist --clipboard regular
+# Для поддержки обеих режимов клипборда regular и primary использовать команду ниже:
+# ExecStart=/usr/bin/wl-clip-persist --clipboard both
+Restart=on-failure
+Slice=background-graphical.slice
+
+[Install]
+# Start service when any of these Wayland sessions are active
+WantedBy=wayland-session@sway.desktop.target
+WantedBy=wayland-session@labwc.desktop.target
+WantedBy=wayland-session@mangowc.desktop.target
+WantedBy=wayland-session@niri.desktop.target

@@ -1,18 +1,11 @@
 [Unit]
 Description=Sway idle and locking handler
 Documentation=man:swayidle(1)
-
 # Start only when specific Wayland session targets are active
 After=wayland-session@sway.desktop.target
 After=wayland-session@labwc.desktop.target
 After=wayland-session@mangowc.desktop.target
 After=wayland-session@niri.desktop.target
-
-# Stop together with the compositor session
-BindsTo=wayland-session@sway.desktop.target
-BindsTo=wayland-session@labwc.desktop.target
-BindsTo=wayland-session@mangowc.desktop.target
-BindsTo=wayland-session@niri.desktop.target
 
 [Service]
 Type=exec

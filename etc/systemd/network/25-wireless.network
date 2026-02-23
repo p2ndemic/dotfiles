@@ -6,6 +6,7 @@
 # Ref: https://man.archlinux.org/man/systemd.network.5
 # Ref: https://wiki.archlinux.org/title/Iwd
 # Ref: https://man.archlinux.org/man/extra/iwd/iwd.config.5.en
+# Ref: https://man.archlinux.org/man/extra/iwd/iwd.network.5.en
 # =============================================
 # → Настройка:
 # → 1. Отключаем NM и wpa_supplicant, далее включаем iwd, networkd и resolved:

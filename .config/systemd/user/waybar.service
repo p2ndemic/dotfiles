@@ -9,7 +9,7 @@ After=wayland-session@niri.desktop.target
 
 [Service]
 Type=exec
-ExecStart=waybar --log-level
+ExecStart=waybar --log-level off
 ExecReload=kill -SIGUSR2 $MAINPID
 Restart=on-failure
 Slice=app-graphical.slice

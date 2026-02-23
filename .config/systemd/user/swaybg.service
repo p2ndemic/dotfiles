@@ -1,3 +1,4 @@
+# Пример: https://github.com/niri-wm/niri/wiki/Example-systemd-Setup
 [Unit]
 Description=Wallpaper tool for Wayland compositors
 Documentation=man:swaybg(1)

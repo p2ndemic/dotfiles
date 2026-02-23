@@ -1,7 +1,7 @@
 [Unit]
 Description=Highly customizable Wayland bar for Sway and Wlroots based compositors.
 Documentation=man:waybar(5)
-
+# Start only when specific Wayland session targets are active
 After=wayland-session@sway.desktop.target
 After=wayland-session@labwc.desktop.target
 After=wayland-session@mangowc.desktop.target

@@ -1,0 +1,21 @@
+[Unit]
+Description=The LXQt policykit authentication agent
+Documentation=man:lxqt-policykit-agent(1)
+# Start only when specific Wayland session targets are active
+After=wayland-session@sway.desktop.target
+After=wayland-session@labwc.desktop.target
+After=wayland-session@mangowc.desktop.target
+After=wayland-session@niri.desktop.target
+
+[Service]
+Type=exec
+ExecStart=/usr/bin/lxqt-policykit-agent
+Restart=on-failure
+Slice=background-graphical.slice
+
+[Install]
+# Start service when any of these Wayland sessions are active
+WantedBy=wayland-session@sway.desktop.target
+WantedBy=wayland-session@labwc.desktop.target
+WantedBy=wayland-session@mangowc.desktop.target
+WantedBy=wayland-session@niri.desktop.target

@@ -4,6 +4,8 @@
 # Требует bluetoothctl (BlueZ)
 # Необходимо разблокировка модуля через rfkill
 # sudo rfkill unblock bluetooth или sudo rfkill unblock all
+# Добавить текущего пользователя в группу rfkill чтобы не вводить sudo:
+# sudo usermod -aG rfkill $USER
 
 # Проверяем текущее состояние
 if bluetoothctl show | grep -q "Powered: yes"; then

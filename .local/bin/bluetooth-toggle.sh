@@ -9,5 +9,5 @@
 if bluetoothctl show | grep -q "Powered: yes"; then
     bluetoothctl power off
 else
-    bluetoothctl power on
+    rfkill unblock bluetooth && bluetoothctl power on
 fi

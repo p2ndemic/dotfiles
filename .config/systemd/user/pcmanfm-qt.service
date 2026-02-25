@@ -11,7 +11,7 @@ After=wayland-session@niri.desktop.target
 Type=exec
 ExecStart=/usr/bin/pcmanfm-qt --desktop
 Restart=on-failure
-Slice=background-graphical.slice
+Slice=app-graphical.slice
 
 [Install]
 # Start service when any of these Wayland sessions are active

@@ -1,17 +1,15 @@
 [Unit]
 Description=Lightweight notification daemon for Wayland
 Documentation=man:mako(1) man:makoctl(1)
-
 # Stop and restart the service whenever the specific graphical session stops or restarts
 PartOf=wayland-session@sway.desktop.target
 PartOf=wayland-session@labwc.desktop.target
-PartOf=wayland-session@mangowc.desktop.target
+PartOf=wayland-session@mango.desktop.target
 PartOf=wayland-session@niri.desktop.target
-
 # Start the service strictly after the specific session has fully initialized
 After=wayland-session@sway.desktop.target
 After=wayland-session@labwc.desktop.target
-After=wayland-session@mangowc.desktop.target
+After=wayland-session@mango.desktop.target
 After=wayland-session@niri.desktop.target
 
 [Service]
@@ -24,5 +22,5 @@ Slice=background-graphical.slice
 # Enable auto-start by creating symlinks in the .wants/ directory of these specific targets
 WantedBy=wayland-session@sway.desktop.target
 WantedBy=wayland-session@labwc.desktop.target
-WantedBy=wayland-session@mangowc.desktop.target
+WantedBy=wayland-session@mango.desktop.target
 WantedBy=wayland-session@niri.desktop.target

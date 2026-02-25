@@ -136,7 +136,31 @@ TimeoutSec=180
 WantedBy=default.target
 
 
-6. Системные сервисы с WantedBy=multi-user.target и CapabilityBoundingSet=CAP_SYS_NICE AmbientCapabilities=CAP_SYS_NICE
+6. Пользовательские oneshot сервисы
+
+[Unit]
+Description=Auto Wi-Fi network scan using iwctl
+# Note: User services can't strictly depend on system services via After=
+# but iwd usually starts much earlier, so this is generally safe.
+After=network.target
+
+[Service]
+Type=oneshot
+# Use the full path to your script in ~/.local/bin
+ExecStart=%h/.local/bin/iwctl-auto-scan.sh
+
+[Install]
+WantedBy=default.target
+
+
+
+7. Системные oneshot сервисы, расскажи про них с примерами
+
+
+8. Пользовательские сервисы где разрешаем приложению изменять приоритет. Например чтобы gamescope мог сам себе повышать права.
+
+
+9. Системные сервисы с WantedBy=multi-user.target и CapabilityBoundingSet=CAP_SYS_NICE AmbientCapabilities=CAP_SYS_NICE
 
 
 Задача, создай текстовый readme.txt и опиши все это, с комментами и примерами чтобы было понятно. Красово оформи все.

@@ -1,0 +1,13 @@
+[Unit]
+Description=Auto Wi-Fi network scan using iwctl
+# Note: User services can't strictly depend on system services via After=
+# but iwd usually starts much earlier, so this is generally safe.
+After=network.target
+
+[Service]
+Type=oneshot
+# Use the full path to your script in ~/.local/bin
+ExecStart=%h/.local/bin/iwctl-auto-scan.sh
+
+[Install]
+WantedBy=default.target

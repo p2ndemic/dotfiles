@@ -45,24 +45,38 @@
 
 КАК УСТАНОВИТЬ:
 1. Создайте структуру папок:
-   mkdir -p ~/.local/share/icons/Numix-Hybrid-Folders/scalable/places
 
+mkdir -p ~/.local/share/icons/Numix-Hybrid-Folders/scalable/places
+====================================================
 2. Создайте символические ссылки на иконки папок:
-   ln -s /usr/share/icons/Adwaita/scalable/places/* ~/.local/share/icons/Numix-Hybrid-Folders/scalable/places/
-   ln -sf /usr/share/icons/MoreWaita/scalable/places/* ~/.local/share/icons/Numix-Hybrid-Folders/scalable/places/
 
+ln -s /usr/share/icons/Adwaita/scalable/places/* ~/.local/share/icons/Numix-Hybrid-Folders/scalable/places/
+ln -sf /usr/share/icons/MoreWaita/scalable/places/* ~/.local/share/icons/Numix-Hybrid-Folders/scalable/places/
+====================================================
 3. Создайте index.theme (содержимое):
-   [Icon Theme]
-   Name=Numix Hybrid Folders
-   Inherits=Numix-Circle,Numix,Adwaita,hicolor
-   Directories=scalable/places
 
-   [scalable/places]
-   Size=96
-   Context=Places
-   MinSize=16
-   MaxSize=512
-   Type=Scalable
+[Icon Theme]
+Name=Numix Hybrid Folders
+Comment=Numix Circle with Adwaita & MoreWaita folders
+Inherits=Numix-Circle,Numix,Adwaita,hicolor
+Example=folder
+
+# Оставляем только то, что реально описывает структуру
+Directories=scalable/places
+
+[scalable/places]
+Size=96
+Context=Places
+MinSize=16
+MaxSize=512
+Type=Scalable
+====================================================
+ 4. Удалите лишние иконки:
+
+rm ~/.local/share/icons/Numix-Hybrid-Folders/scalable/places/network-server.svg
+rm ~/.local/share/icons/Numix-Hybrid-Folders/scalable/places/network-workgroup.svg
+rm ~/.local/share/icons/Numix-Hybrid-Folders/scalable/places/user-trash.svg
+====================================================
 
 АКТИВАЦИЯ В SWAY / GTK:
 Так как в Sway нет графического конфигуратора, пропишите тему в 

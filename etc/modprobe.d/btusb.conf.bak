@@ -1,0 +1,3 @@
+# Отключить энергосберегающий режим драйвера Bluetooth
+# ❯ modinfo -p btusb
+options btusb enable_autosuspend=0

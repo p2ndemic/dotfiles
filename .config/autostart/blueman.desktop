@@ -1,15 +1,5 @@
 [Desktop Entry]
-Name[de]=Blueman Applet
-Name[es]=Miniaplicación Blueman
-Name[fr]=Applet Blueman
-Name[pt]=Applet Blueman
-Name[ru]=Апплет Blueman
 Name=Blueman Applet
-Comment[de]=Blueman Bluetooth Manager
-Comment[es]=Gestor de conexiones Bluetooth Blueman
-Comment[fr]=Gestionnaire Bluetooth Blueman
-Comment[pt]=Gestor de Bluetooth Blueman
-Comment[ru]=Менеджер Bluetooth Blueman
 Comment=Blueman Bluetooth Manager
 Icon=blueman
 Exec=blueman-applet

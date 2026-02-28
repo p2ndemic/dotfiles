@@ -144,6 +144,7 @@
     "modules": [
       "custom/clipboard",
       "idle_inhibitor",
+      "custom/dnd",
       "custom/screencast",
       "custom/calculator",
       "custom/screenshot",
@@ -160,7 +161,7 @@
 
   // Custom modules right [group/group-tools]...
   // custom/clipboard ⇠
-  // idle_inhibitor ⇠ custom/screencast ⇠ custom/calculator ⇠ custom/screenshot
+  // idle_inhibitor ⇠ custom/dnd ⇠ custom/screencast ⇠ custom/calculator ⇠ custom/screenshot
 
   // Pulseaudio Speaker | Headphone
   "pulseaudio#output": {
@@ -418,6 +419,20 @@
     "tooltip": true,
     "tooltip-format": "Screencast",
     //"on-click": "",
+  },
+
+  "custom/dnd": {
+    "interval": "once",
+    "return-type": "json",
+    "format": "{}{icon}",
+    "format-icons": {
+      "default": "",
+      "dnd": "",
+    },
+    "on-click": "makoctl mode | grep 'dnd' && makoctl mode -r dnd || makoctl mode -a dnd; pkill -RTMIN+11 waybar",
+    "on-click-right": "makoctl restore",
+    "exec": "printf '{\"alt\":\"%s\",\"tooltip\":\"mode: %s\"}' $(makoctl mode | grep -q 'dnd' && echo dnd || echo default) $(makoctl mode | tail -1)",
+    "signal": 11,
   },
 
   // group-modules

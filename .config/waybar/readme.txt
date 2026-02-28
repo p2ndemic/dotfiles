@@ -34,3 +34,8 @@
 # Войти в режим дебаггинга и посмотреть все параметры GTK CSS:
 =====================================================
 ❯ env GTK_DEBUG=interactive waybar
+
+# Color Palettes
+=====================================================
+# https://catppuccin.com/
+# https://wixdaq.github.io/Tokyo-Night-Website/

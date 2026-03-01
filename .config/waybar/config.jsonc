@@ -22,21 +22,21 @@
   "modules-left": [
     "custom/launcher",
     "ext/workspaces",
-    "group/group-apps",
+    "group/group_apps",
     "wlr/taskbar",
   ],
   //"modules-center": [""],
   "modules-right": [
     "custom/recorder",
     "tray",
-    "custom/keyboard-layout",
-    "group/group-tools",
+    "custom/keyboard_layout",
+    "group/group_tools",
     "pulseaudio#output",
     "network",
     "battery",
-    "group/group-modules",
+    "group/group_modules",
     "clock",
-    "custom/show-desktop",
+    "custom/show_desktop",
   ],
 
   ///////////////////////////////////
@@ -48,8 +48,8 @@
   "custom/launcher": {
     "format": "", // "" "󰣇" "" ""
     "tooltip-format": "Menu \n\nRight-click to open the power menu",
-    "on-click": "pkill fuzzel || systemd-run --user --scope --collect --no-block --quiet --quiet -- fuzzel",
-    "on-click-right": "systemd-run --user --scope --collect --no-block --quiet --quiet -- ~/.local/bin/fuzzel-powermenu-index.sh",
+    "on-click": "pgrep fuzzel >/dev/null 2>&1 && pkill fuzzel || systemd-run --user --scope --collect --no-block --quiet -- fuzzel",
+    "on-click-right": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/fuzzel-powermenu-index.sh",
   },
 
   "ext/workspaces": {
@@ -63,8 +63,8 @@
     "on-click": "activate",
   },
 
-  // group-modules
-  "group/group-apps": {
+  // group_modules
+  "group/group_apps": {
     "orientation": "inherit",
     "drawer": {
       "transition-duration": 0, // Default: 500
@@ -72,10 +72,10 @@
       "transition-left-to-right": true,
     },
     "modules": [
-      "custom/arrow-right",
+      "custom/arrow_right",
       "custom/settings",
-      "custom/task-manager",
-      "custom/package-manager",
+      "custom/task_manager",
+      "custom/package_manager",
       "custom/explorer",
       "custom/terminal",
       "custom/editor",
@@ -84,9 +84,9 @@
     ],
   },
 
-  // Custom modules left [group/group-apps] ...
+  // Custom modules left [group/group_apps] ...
   // ⇢
-  // custom/settings ⇢ custom/task-manager ⇢ custom/package-manager ⇢
+  // custom/settings ⇢ custom/task_manager ⇢ custom/package_manager ⇢
   // custom/explorer ⇢ custom/terminal ⇢ custom/editor ⇢
   // custom/browser ⇢ custom/steam
 
@@ -127,14 +127,14 @@
     //"spacing": 8,
   },
 
-  "custom/keyboard-layout": {
+  "custom/keyboard_layout": {
     "format": " {} ",
     "tooltip": false,
     "exec": "systemd-run --user --scope --collect --no-block --quiet -- xkb-monitor -n",
   },
 
-  // group-tools
-  "group/group-tools": {
+  // group_tools
+  "group/group_tools": {
     "orientation": "inherit",
     "drawer": {
       "transition-duration": 0, //Default: 500
@@ -159,7 +159,7 @@
     },
   },
 
-  // Custom modules right [group/group-tools]...
+  // Custom modules right [group/group_tools]...
   // custom/clipboard ⇠
   // idle_inhibitor ⇠ custom/dnd ⇠ custom/screencast ⇠ custom/calculator ⇠ custom/screenshot
 
@@ -200,8 +200,8 @@
     "tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
     "tooltip-format-disconnected": "Disconnected",
     //"spacing": 1,
-    "on-click": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/nmtui-plus-scan-toggle.sh",
-    "on-click-right": "systemd-run --user --scope --collect --no-block --quiet -- iwgtk",
+    "on-click": "systemd-run --user --scope --collect --no-block --quiet -- iwgtk",
+    "on-click-right": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/nmtui-toggle.sh",
   },
 
   "battery": {
@@ -223,13 +223,13 @@
     // "charging": ["󰢟", "󱊤", "󱊥", "󱊦"]
     "tooltip-format": "⇡ {timeTo}",
     "tooltip-format-charging": "⇣ {timeTo}",
-    //"on-click": "",
+    "on-click": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/fuzzel-power-profile-menu.sh",
     "on-click-middle": "systemd-run --user --scope --collect --no-block --quiet -- falcond-gui",
     "on-click-right": "systemd-run --user --scope --collect --no-block --quiet -- tuned-gui",
   },
 
-  //* group-modules
-  "group/group-modules": {
+  //* group_modules
+  "group/group_modules": {
     "orientation": "inherit",
     "drawer": {
       "transition-duration": 0, // Default: 500
@@ -265,8 +265,8 @@
     "tooltip-format": "{controller_alias}\t{controller_address}",
     "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-    "on-click": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/bluetooth-toggle.sh",
-    "on-click-right": "systemd-run --user --scope --collect --no-block --quiet -- blueman-manager",
+    "on-click": "systemd-run --user --scope --collect --no-block --quiet -- blueman-manager",
+    "on-click-right": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/bluetooth-toggle.sh",
   },
 
   // Pulseaudio Mic
@@ -283,7 +283,7 @@
     "on-scroll-up": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/wob-volume.sh --source-up",
     "on-scroll-down": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/wob-volume.sh --source-down",
   },
-  //* group-modules
+  //* group_modules
 
   "clock": {
     "format": "{:%H:%M}", // %R - Equivalent to %H:%M, e.g. "11:07"
@@ -314,8 +314,8 @@
   //                               //
   ///////////////////////////////////
 
-  // group-apps
-  "custom/arrow-right": {
+  // group_apps
+  "custom/arrow_right": {
     "format": "",
     "tooltip": false,
   },
@@ -324,11 +324,11 @@
     "format": " ",
     "tooltip": true,
     "tooltip-format": "WC Settings",
-    "on-click": "systemd-run --user --scope --collect --no-block --quiet -- labwc-tweaks",
+    "on-click": "systemd-run --user --scope --collect --no-block --quiet -- /usr/bin/labwc-tweaks",
     "on-click-right": "systemd-run --user --scope --collect --no-block --quiet -- dconf-editor",
   },
 
-  "custom/task-manager": {
+  "custom/task_manager": {
     "format": "",
     "tooltip": true,
     "tooltip-format": "Task Manager",
@@ -336,7 +336,7 @@
     "on-click-right": "systemd-run --user --scope --collect --no-block --quiet -- missioncenter",
   },
 
-  "custom/package-manager": {
+  "custom/package_manager": {
     "format": "", // "󰮯" ""
     "tooltip": true,
     "tooltip-format": "Package Manager",
@@ -391,7 +391,7 @@
   //                               //
   ///////////////////////////////////
 
-  // group-tools
+  // group_tools
   "custom/clipboard": {
     "format": "",
     "tooltip": true,
@@ -435,16 +435,16 @@
     "signal": 11,
   },
 
-  // group-modules
+  // group_modules
   "custom/arrow-left": {
     "format": "",
     "tooltip": false,
   },
 
-  "custom/show-desktop": {
+  "custom/show_desktop": {
     "format": "",
     "tooltip": true,
     "tooltip-format": "Show Desktop",
-    "on-click": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/labwc-show-desktop.sh",
+    "on-click": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/labwc-show_desktop.sh",
   },
 }

@@ -237,7 +237,7 @@
       "transition-left-to-right": false,
     },
     "modules": [
-      "custom/arrow-left",
+      "custom/arrow_left",
       "pulseaudio#input",
       "bluetooth",
       "backlight",
@@ -436,7 +436,7 @@
   },
 
   // group_modules
-  "custom/arrow-left": {
+  "custom/arrow_left": {
     "format": "",
     "tooltip": false,
   },

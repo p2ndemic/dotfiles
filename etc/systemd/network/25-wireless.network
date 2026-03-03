@@ -84,6 +84,7 @@ RouteMetric=600
 [IPv6AcceptRA]
 UseDNS=true
 RouteMetric=600
+UseMTU=false
 # ───────────────────────────────────────────────────────────────────────
 # UseMTU= — управляет тем, будет ли systemd-networkd применять значение MTU,
 # которое приходит в Router Advertisement (RA) от вашего роутера/точки доступа.

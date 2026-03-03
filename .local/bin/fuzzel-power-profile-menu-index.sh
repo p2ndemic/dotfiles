@@ -181,3 +181,28 @@ case "$FUZZEL_CHOICE" in
         #fn_notify "Max Performance profile activated 🚀"
         ;;
 esac
+
+# === Парсинг батареи (старая логика) ===
+# ───────────────────────────────────────────── #
+# 1. Состояние (state)
+#STATE=$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | gawk '/state:/ {print $2}')
+# 2. Процент заряда (percentage
+#PERCENT=$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | gawk '/percentage:/ {printf "%-3s", $2}')
+# 3. Время до разряда/заряда
+#TIME_TO=$(
+#  LC_ALL=C upower -i /org/freedesktop/UPower/devices/battery_BAT0 |
+#  gawk '/time to (empty|full):/ {
+#   unit = ($5 == "hours") ? "h" : ($5 == "minutes") ? "min" : $5
+#    printf "%-8s", $4 " " unit
+#  }'
+#)
+# LC_ALL=C позволяет корректно производить округление и также заменяет запятую (,) на точку (.) в выводах с десятичными числами
+# 4. Полная емкость (energy-full) — округлено до десятых
+#ENERGY_FULL=$(LC_ALL=C upower -i /org/freedesktop/UPower/devices/battery_BAT0 | gawk '/energy-full:/ {printf "%.1f %s", $2, $3}') # Благодаря LC_ALL=C десятичная точка гарантированно будет точкой, и awk корректно обработает число
+# 5. Кол-во циклов зарядки
+#CHARGE_CYCLES=$(LC_ALL=C upower -i /org/freedesktop/UPower/devices/battery_BAT0 | gawk '/charge-cycles:/ {print $2}')
+# 6. Здоровье аккумулятора (capacity) — округлено до целых
+#HEALTH=$(LC_ALL=C upower -i /org/freedesktop/UPower/devices/battery_BAT0 | gawk '/capacity:/ {printf "%.0f", $2}')
+# 7. Текущий профиль tuned
+#CURRENT_PROFILE=$(tuned-adm active 2>/dev/null | gawk '{print $NF}' || echo "balanced")
+# ───────────────────────────────────────────── #

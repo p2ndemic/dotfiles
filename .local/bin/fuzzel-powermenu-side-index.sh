@@ -55,7 +55,8 @@ done
 
 # --- Сборка параметров Fuzzel в единую переменную ---
 # Порядок: режим dmenu, индекс, шрифт, позиция, скрыть ввод, авто-высота, ширина, отступы
-FUZZEL_OPTS="--dmenu \
+FUZZEL_OPTS=(
+    --dmenu \
     --index \
     --font=$FONT \
     --anchor=$ANCHOR \
@@ -64,7 +65,8 @@ FUZZEL_OPTS="--dmenu \
     --width=14 \
     --horizontal-pad=160 \
     --vertical-pad=20 \
-    --line-height=34"
+    --line-height=34
+)
 
 # --- Источник данных ---
 
@@ -80,7 +82,7 @@ get_power_options() {
 # --- Логика работы ---
 
 # Запускаем меню и сохраняем индекс выбранной строки в переменную CHOICE
-CHOICE=$(get_power_options | fuzzel $FUZZEL_OPTS)
+CHOICE=$(get_power_options | fuzzel "${FUZZEL_OPTS[@]}")
 
 # Обработка выбора
 case "$CHOICE" in

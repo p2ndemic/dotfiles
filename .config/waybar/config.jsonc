@@ -130,7 +130,7 @@
   "custom/keyboard_layout": {
     "format": " {} ",
     "tooltip": false,
-    "exec": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- xkb-monitor -n",
+    "exec": "systemd-run --user --scope --slice=background-graphical.slice --collect --no-block --quiet -- xkb-monitor -n",
   },
 
   // group_tools

@@ -447,5 +447,6 @@
     "tooltip": true,
     "tooltip-format": "Show Desktop",
     "on-click": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/labwc-show-desktop.sh",
+    "on-click-right": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/fuzzel-powermenu-index.sh",
   },
 }

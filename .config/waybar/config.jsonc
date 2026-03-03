@@ -48,8 +48,8 @@
   "custom/launcher": {
     "format": "", // "" "󰣇" "" ""
     "tooltip-format": "Menu \n\nRight-click to open the power menu",
-    "on-click": "pgrep fuzzel >/dev/null 2>&1 && pkill fuzzel || systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/fuzzel-launch-menu-index.sh",
-    "on-click-right": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/fuzzel-powermenu-index.sh",
+    "on-click": "pkill -x fuzzel || systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- ~/.local/bin/fuzzel-launch-menu-index.sh",
+    "on-click-right": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- ~/.local/bin/fuzzel-powermenu-index.sh",
   },
 
   "ext/workspaces": {
@@ -130,7 +130,7 @@
   "custom/keyboard_layout": {
     "format": " {} ",
     "tooltip": false,
-    "exec": "systemd-run --user --scope --collect --no-block --quiet -- xkb-monitor -n",
+    "exec": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- xkb-monitor -n",
   },
 
   // group_tools
@@ -181,11 +181,11 @@
     "tooltip": false,
     "tooltip-format": "{volume}%",
     // "scroll-step": 1, // %, can be a float
-    "on-click": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/wob-volume.sh --sink-mute",
-    "on-click-middle": "systemd-run --user --scope --collect --no-block --quiet -- pwvucontrol",
-    "on-click-right": "systemd-run --user --scope --collect --no-block --quiet -- pavucontrol",
-    "on-scroll-up": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/wob-volume.sh --sink-up",
-    "on-scroll-down": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/wob-volume.sh --sink-down",
+    "on-click": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- ~/.local/bin/wob-volume.sh --sink-mute",
+    "on-click-middle": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- pwvucontrol",
+    "on-click-right": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- pavucontrol",
+    "on-scroll-up": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- ~/.local/bin/wob-volume.sh --sink-up",
+    "on-scroll-down": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- ~/.local/bin/wob-volume.sh --sink-down",
     "ignored-sinks": ["Easy Effects Sink"],
   },
 
@@ -200,8 +200,8 @@
     "tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
     "tooltip-format-disconnected": "Disconnected",
     //"spacing": 1,
-    "on-click": "pgrep iwgtk >/dev/null 2>&1 && pkill iwgtk || systemd-run --user --scope --collect --no-block --quiet -- iwgtk",
-    "on-click-right": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/nmtui-toggle.sh",
+    "on-click": "pkill -x iwgtk || systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- iwgtk",
+    "on-click-right": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- ~/.local/bin/nmtui-toggle.sh",
   },
 
   "battery": {
@@ -224,9 +224,9 @@
     // "charging": ["󰢟", "󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"],
     "tooltip-format": "⇡ {timeTo}",
     "tooltip-format-charging": "⇣ {timeTo}",
-    "on-click": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/fuzzel-power-profile-menu-index.sh",
-    "on-click-middle": "systemd-run --user --scope --collect --no-block --quiet -- falcond-gui",
-    "on-click-right": "systemd-run --user --scope --collect --no-block --quiet -- tuned-gui",
+    "on-click": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- ~/.local/bin/fuzzel-power-profile-menu-index.sh",
+    "on-click-middle": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- falcond-gui",
+    "on-click-right": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- tuned-gui",
   },
 
   //* group_modules
@@ -253,8 +253,8 @@
     "format": "{percent}% {icon}",
     "format-icons": ["󰃠", "󰃟", "󰃞"],
     "tooltip": false,
-    "on-scroll-up": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/wob-brightness.sh --up",
-    "on-scroll-down": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/wob-brightness.sh --down",
+    "on-scroll-up": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- ~/.local/bin/wob-brightness.sh --up",
+    "on-scroll-down": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- ~/.local/bin/wob-brightness.sh --down",
   },
 
   "bluetooth": {
@@ -266,8 +266,8 @@
     "tooltip-format": "{controller_alias}\t{controller_address}",
     "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-    "on-click": "pgrep blueman-manager >/dev/null 2>&1 && pkill blueman-manager || systemd-run --user --scope --collect --no-block --quiet -- blueman-manager",
-    "on-click-right": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/bluetooth-toggle.sh",
+    "on-click": "pkill -x iwgtk || systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- blueman-manager",
+    "on-click-right": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- ~/.local/bin/bluetooth-toggle.sh",
   },
 
   // Pulseaudio Mic
@@ -278,11 +278,11 @@
     "format-source-muted": "",
     "tooltip": false,
     // "scroll-step": 1, // %, can be a float
-    "on-click": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/wob-volume.sh --source-mute",
-    "on-click-middle": "systemd-run --user --scope --collect --no-block --quiet -- pwvucontrol",
-    "on-click-right": "systemd-run --user --scope --collect --no-block --quiet -- pavucontrol",
-    "on-scroll-up": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/wob-volume.sh --source-up",
-    "on-scroll-down": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/wob-volume.sh --source-down",
+    "on-click": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- ~/.local/bin/wob-volume.sh --source-mute",
+    "on-click-middle": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- pwvucontrol",
+    "on-click-right": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- pavucontrol",
+    "on-scroll-up": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- ~/.local/bin/wob-volume.sh --source-up",
+    "on-scroll-down": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- ~/.local/bin/wob-volume.sh --source-down",
   },
   //* group_modules
 
@@ -325,23 +325,23 @@
     "format": " ",
     "tooltip": true,
     "tooltip-format": "WC Settings",
-    "on-click": "systemd-run --user --scope --collect --no-block --quiet -- /usr/bin/labwc-tweaks",
-    "on-click-right": "systemd-run --user --scope --collect --no-block --quiet -- dconf-editor",
+    "on-click": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- /usr/bin/labwc-tweaks",
+    "on-click-right": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- dconf-editor",
   },
 
   "custom/task_manager": {
     "format": "",
     "tooltip": true,
     "tooltip-format": "Task Manager",
-    "on-click": "systemd-run --user --scope --collect --no-block --quiet -- foot -e btop",
-    "on-click-right": "systemd-run --user --scope --collect --no-block --quiet -- missioncenter",
+    "on-click": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- foot -e btop",
+    "on-click-right": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- missioncenter",
   },
 
   "custom/package_manager": {
     "format": "", // "󰮯" ""
     "tooltip": true,
     "tooltip-format": "Package Manager",
-    "on-click": "systemd-run --user --scope --collect --no-block --quiet -- octopi",
+    "on-click": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- octopi",
     //"on-click-right": "",
   },
 
@@ -349,14 +349,14 @@
     "format": "",
     "tooltip": true,
     "tooltip-format": "File Manager",
-    "on-click": "systemd-run --user --scope --collect --no-block --quiet -- pcmanfm-qt",
+    "on-click": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- pcmanfm-qt",
   },
 
   "custom/terminal": {
     "format": "",
     "tooltip": true,
     "tooltip-format": "Terminal",
-    "on-click": "systemd-run --user --scope --collect --no-block --quiet -- foot",
+    "on-click": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- foot",
     //"on-click-middle": "",
     //"on-click-right": "",
   },
@@ -366,24 +366,24 @@
     "tooltip": true,
     "tooltip-format": "Editor",
     "on-click": "zeditor",
-    "on-click-middle": "systemd-run --user --scope --collect --no-block --quiet -- foot -e micro",
-    "on-click-right": "systemd-run --user --scope --collect --no-block --quiet -- foot -e code",
+    "on-click-middle": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- foot -e micro",
+    "on-click-right": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- foot -e code",
   },
 
   "custom/browser": {
     "format": "", // "" ""
     "tooltip": true,
     "tooltip-format": "Browser",
-    "on-click": "systemd-run --user --scope --collect --no-block --quiet -- firefox",
-    "on-click-middle": "systemd-run --user --scope --collect --no-block --quiet -- helium",
-    "on-click-right": "systemd-run --user --scope --collect --no-block --quiet -- brave",
+    "on-click": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- firefox",
+    "on-click-middle": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- helium",
+    "on-click-right": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- brave",
   },
 
   "custom/steam": {
     "format": "", // "" "" ""
     "tooltip": true,
     "tooltip-format": "Steam",
-    "on-click": "systemd-run --user --scope --collect --no-block --quiet -- steam -pipewire-dmabuf -no-cef-sandbox",
+    "on-click": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- steam -pipewire-dmabuf -no-cef-sandbox",
   },
 
   ///////////////////////////////////
@@ -397,7 +397,7 @@
     "format": "",
     "tooltip": true,
     "tooltip-format": "Clipboard",
-    "on-click": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/cliphist-fuzzel-img.sh",
+    "on-click": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- ~/.local/bin/cliphist-fuzzel-img.sh",
   },
 
   "custom/screenshot": {
@@ -411,8 +411,8 @@
     "format": "",
     "tooltip": true,
     "tooltip-format": "Сalculator",
-    "on-click": "systemd-run --user --scope --collect --no-block --quiet -- gnome-calculator",
-    "on-click-right": "systemd-run --user --scope --collect --no-block --quiet -- qalculate-gtk",
+    "on-click": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- gnome-calculator",
+    "on-click-right": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- qalculate-gtk",
   },
 
   "custom/screencast": {
@@ -446,7 +446,7 @@
     "format": "",
     "tooltip": true,
     "tooltip-format": "Show Desktop",
-    "on-click": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/labwc-show-desktop.sh",
-    "on-click-right": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/fuzzel-powermenu-index.sh",
+    "on-click": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- ~/.local/bin/labwc-show-desktop.sh",
+    "on-click-right": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- ~/.local/bin/fuzzel-powermenu-index.sh",
   },
 }

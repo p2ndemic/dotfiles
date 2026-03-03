@@ -53,10 +53,6 @@ IPv6MTUBytes=1460
 #DNS=2606:4700:4700::1112
 #DNS=2606:4700:4700::1002
 
-[Route]
-QuickAck=yes
-TCPCongestionControlAlgorithm=bbr
-
 [DHCPv4]
 # ─────────────────────────────────────────────
 # → [UseDNS=false] = Отключить использование DNS от DHCPv4/v6. | Т.е использовать DNS указанные выше в [Network]. Указать это при установке кастомных DNS серверов (напр. Cloudflare)

@@ -7,7 +7,7 @@
 {
   "layer": "top",
   "position": "bottom",
-  "height": 36,
+  "height": 38,
   //"spacing": 2,
   //"margin-top": 0,
   //"margin-bottom": 0,
@@ -48,7 +48,7 @@
   "custom/launcher": {
     "format": "", // "" "󰣇" "" ""
     "tooltip-format": "Menu \n\nRight-click to open the power menu",
-    "on-click": "pgrep fuzzel >/dev/null 2>&1 && pkill fuzzel || systemd-run --user --scope --collect --no-block --quiet -- fuzzel",
+    "on-click": "pgrep fuzzel >/dev/null 2>&1 && pkill fuzzel || systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/fuzzel-launch-menu-index.sh",
     "on-click-right": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/fuzzel-powermenu-index.sh",
   },
 
@@ -93,7 +93,7 @@
   "wlr/taskbar": {
     "format": "{icon}",
     "icon-size": 18,
-    //"icon-theme": "Adwaita", // Papirus-Dark | Papirus-Light
+    "icon-theme": "MoreWaita", // Numix | Numix Cirle
     "tooltip-format": "{title:.50}",
     "on-click": "minimize-raise",
     "on-click-middle": "close",
@@ -143,7 +143,7 @@
     },
     "modules": [
       "custom/clipboard",
-      "idle_inhibitor",
+      //"idle_inhibitor",
       "custom/dnd",
       "custom/screencast",
       "custom/calculator",
@@ -151,13 +151,13 @@
     ],
   },
 
-  "idle_inhibitor": {
-    "format": "{icon}",
-    "format-icons": {
-      "activated": "",
-      "deactivated": "",
-    },
-  },
+  //"idle_inhibitor": {
+  //  "format": "{icon}",
+  //  "format-icons": {
+  //    "activated": "",
+  //    "deactivated": "",
+  //  },
+  //},
 
   // Custom modules right [group/group_tools]...
   // custom/clipboard ⇠
@@ -200,7 +200,7 @@
     "tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
     "tooltip-format-disconnected": "Disconnected",
     //"spacing": 1,
-    "on-click": "systemd-run --user --scope --collect --no-block --quiet -- iwgtk",
+    "on-click": "pgrep iwgtk >/dev/null 2>&1 && pkill iwgtk || systemd-run --user --scope --collect --no-block --quiet -- iwgtk",
     "on-click-right": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/nmtui-toggle.sh",
   },
 
@@ -214,16 +214,17 @@
     "format": "{capacity}% {icon}",
     "format-charging": "{capacity}% {icon}", // "󰂄" ""
     "format-plugged": "{capacity}% ",
-    "format-alt": "{time} {icon}",
+    //"format-alt": "{time} {icon}",
     "format-icons": {
       "default": ["", "", "", "", ""],
-      "charging": ["󰢟", "󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"],
+      "charging": ["󰢟", "󱊤", "󱊥", "󱊦"],
     },
-    // "format-icons": ["", "", "", "", ""]
-    // "charging": ["󰢟", "󱊤", "󱊥", "󱊦"]
+    // "format-icons": ["", "", "", "", ""],
+    // "charging": ["󰢟", "󱊤", "󱊥", "󱊦"],
+    // "charging": ["󰢟", "󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"],
     "tooltip-format": "⇡ {timeTo}",
     "tooltip-format-charging": "⇣ {timeTo}",
-    "on-click": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/fuzzel-power-profile-menu.sh",
+    "on-click": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/fuzzel-power-profile-menu-index.sh",
     "on-click-middle": "systemd-run --user --scope --collect --no-block --quiet -- falcond-gui",
     "on-click-right": "systemd-run --user --scope --collect --no-block --quiet -- tuned-gui",
   },
@@ -265,7 +266,7 @@
     "tooltip-format": "{controller_alias}\t{controller_address}",
     "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-    "on-click": "systemd-run --user --scope --collect --no-block --quiet -- blueman-manager",
+    "on-click": "pgrep blueman-manager >/dev/null 2>&1 && pkill blueman-manager || systemd-run --user --scope --collect --no-block --quiet -- blueman-manager",
     "on-click-right": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/bluetooth-toggle.sh",
   },
 
@@ -365,8 +366,8 @@
     "tooltip": true,
     "tooltip-format": "Editor",
     "on-click": "zeditor",
-    "on-click-middle": "systemd-run --user --scope --collect --no-block --quiet -- foot -e nano",
-    "on-click-right": "systemd-run --user --scope --collect --no-block --quiet -- foot -e micro",
+    "on-click-middle": "systemd-run --user --scope --collect --no-block --quiet -- foot -e micro",
+    "on-click-right": "systemd-run --user --scope --collect --no-block --quiet -- foot -e code",
   },
 
   "custom/browser": {
@@ -445,6 +446,6 @@
     "format": "",
     "tooltip": true,
     "tooltip-format": "Show Desktop",
-    "on-click": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/labwc-show_desktop.sh",
+    "on-click": "systemd-run --user --scope --collect --no-block --quiet -- ~/.local/bin/labwc-show-desktop.sh",
   },
 }

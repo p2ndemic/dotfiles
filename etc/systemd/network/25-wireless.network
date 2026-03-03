@@ -40,7 +40,7 @@ MTUBytes=1460
 # ──────────────────────────────────
 # Включаем клиент DHCP (v4 и v6)
 DHCP=yes
-# Отключаем LLMNR (разрешение имен в локальной сети)
+# Отключаем LLMNR
 LLMNR=false
 # Отключаем MulticastDNS
 MulticastDNS=false

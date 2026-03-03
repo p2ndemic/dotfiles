@@ -1,56 +1,62 @@
-# =============================================
+# ─────────────────────────────────────────────
 #    Networkd ethernet config
-# =============================================
+# ─────────────────────────────────────────────
 # Ref: https://wiki.archlinux.org/title/Systemd-networkd
 # Ref: https://www.freedesktop.org/software/systemd/man/latest/systemd.network.html
 # Ref: https://man.archlinux.org/man/systemd.network.5
-# =============================================
+# ─────────────────────────────────────────────
 # → Настройка:
 # → 1. Отключаем NM и wpa_supplicant, далее включаем iwd, networkd и resolved:
 # → 2. Настраиваем /etc/resolv.conf для systemd-resolved:
 # sudo systemctl disable --now NetworkManager wpa_supplicant && sudo systemctl enable --now iwd systemd-networkd systemd-resolved
 # sudo ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
-# =============================================
+# ─────────────────────────────────────────────
 [Match]
 Name=en*
 Type=ether
 
 [Link]
-# Уменьшаем MTU для L2TP/PPPoE (можно использовать 1460)
+# ──────────────────────────────────
+# Уменьшаем MTU для физического уровня (L2) | Для L2TP/PPPoE рекомендуется снизить MTU на 40 байтов для избежания фрагментации пакетов
+# ──────────────────────────────────
 MTUBytes=1460
 
 [Network]
-# Включаем DHCPv4 и разрешаем DHCPv6
+# ──────────────────────────────────
+# Опции секции [Network] в порядке документации networkd:
+# ──────────────────────────────────
+# Включаем клиент DHCP (v4 и v6)
 DHCP=yes
-# Включаем приём Router Advertisements (нужно для IPv6 SLAAC)
-IPv6AcceptRA=yes
-# Включаем временные IPv6-адреса (для приватности)
-IPv6PrivacyExtensions=true
-# Режим генерации IPv6 link-local адреса
+# Режим генерации IPv6 link-local адреса (используем стабильный приватный адрес)
 IPv6LinkLocalAddressGenerationMode=stable-privacy
-# Отключаем ненужные службы разрешения имён
+# Отключаем LLMNR (разрешение имен в локальной сети)
 LLMNR=false
+# Отключаем MulticastDNS
 MulticastDNS=false
+# Отключаем DNS-over-TLS (используется глобальная настройка resolved)
 DNSOverTLS=false
+# Отключаем DNSSEC (проверка подписей DNS)
 DNSSEC=false
-# =============================================
+# Включаем временные IPv6-адреса (Privacy Extensions) для защиты приватности
+IPv6PrivacyExtensions=true
+# Включаем прием Router Advertisements (RA) для настройки IPv6 через роутер
+IPv6AcceptRA=yes
+# Явно ограничиваем IPv6 MTU, чтобы избежать конфликта с лимитом 1460 в [Link]
+IPv6MTUBytes=1460
+# ─────────────────────────────────────────────
 # → DNS Cloudflare с Malware Blocking IPv4|IPv6 (primary → secondary)
-# =============================================
-# IPv4 DNS
+# ─────────────────────────────────────────────
 #DNS=1.1.1.2
-#DNS=1.0.0.2
-# IPv6 DNS
 #DNS=2606:4700:4700::1112
+#DNS=1.0.0.2
 #DNS=2606:4700:4700::1002
 
 [DHCPv4]
-# =============================================
-# → [UseDNS=false] = Отключить использование DNS от DHCPv4. | Т.е использовать DNS указанные выше в [Network]. Указать это при установке кастомных DNS серверов (напр. Cloudflare)
-# → [UseDNS=true] = Значение по умолчанию. | Т.е использовать DNS полученные от DHCPv4
-# → ❯ resolvectl status
-# =============================================
+# ─────────────────────────────────────────────
+# → [UseDNS=false] = Отключить использование DNS от DHCPv4/v6. | Т.е использовать DNS указанные выше в [Network]. Указать это при установке кастомных DNS серверов (напр. Cloudflare)
+# → [UseDNS=true] = Значение по умолчанию. | Т.е использовать DNS полученные от DHCPv4/v6 переданные от роутера
+# ─────────────────────────────────────────────
 UseDNS=true
-# Более низкая/приоритетная метрика, чем у Wifi
 RouteMetric=100
 
 [DHCPv6]
@@ -60,3 +66,29 @@ RouteMetric=100
 [IPv6AcceptRA]
 UseDNS=true
 RouteMetric=100
+# ───────────────────────────────────────────────────────────────────────
+# UseMTU= — управляет тем, будет ли systemd-networkd применять значение MTU,
+# которое приходит в Router Advertisement (RA) от вашего роутера/точки доступа.
+#
+# По умолчанию: UseMTU=yes (true)
+# Что происходит при yes:
+#   • роутер в RA шлёт опцию MTU (чаще всего 1500)
+#   • networkd пытается установить это значение в net.ipv6.conf.wlan0.mtu (Проверка: ip a / sysctl net.ipv6.conf.wlan0.mtu)
+#   • на многих Wi-Fi драйверах (Intel, Realtek, MediaTek, Broadcom и др.)
+#     ядро в этот момент отвечает EINVAL («Недопустимый аргумент»)
+#     → появляется ваша ошибка: "Failed to set IPv6 MTU to 1500"
+#
+# Что даёт UseMTU=false:
+#   • networkd полностью игнорирует MTU из RA
+#   • IPv6 MTU остаётся равен MTU самого интерфейса (link MTU)
+#   • ошибка исчезает, потому что мы больше не пытаемся «переустанавливать» 1500
+#
+# Когда это безопасно и рекомендуется:
+#   • На всех Wi-Fi интерфейсах (wlan0 / wl*)
+#   • Обычный домашний/офисный роутер (он почти всегда шлёт 1500)
+#   • Не используете Jumbo-frames или специальные туннели на Wi-Fi
+#
+# Когда лучше оставить =true:
+#   • если роутер специально рекламирует меньший MTU (например 1280 или 1400)
+#     и вы хотите его применять автоматически
+# ───────────────────────────────────────────────────────────────────────

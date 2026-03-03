@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# --- Логика Toggle ---
+# Проверяем, запущен ли fuzzel;
+# Используем pkill: если процесс найден, он будет убит, и скрипт завершится;
+if pkill -x fuzzel; then
+    exit 0
+fi
+
 # --- Настройки ---
 
 # --- Инициализация терминала ---
@@ -9,29 +16,33 @@
 # --- Конфигурация интерфейса ---
 # ВНИМАНИЕ: Fuzzel может некорректно обрабатывать имена шрифтов с пробелами.
 # В качестве обходного решения (workaround) указываем прямой путь к файлу шрифта.
-#FONT_PRIMARY="/usr/share/fonts/Adwaita/AdwaitaMono-Regular.ttf"
+# Неактуально при передачи опций в массив FUZZEL_OPTS=() вместо переменной
+#FONT_PRIMARY="/usr/share/fonts/TTF/JetBrainsMonoNerdFontPropo-Regular.ttf"
 #FONT_FALLBACK="Hack"
 #FONT="$FONT_PRIMARY:size=16,$FONT_FALLBACK:size=16"
 
-FONT=Hack:size=14
+FONT="Hack:size=14"
+#FONT="JetBrainsMono Nerd Font Mono:size=18"
 
 # --- Позиционирование окна на экране ---
 # Доступно: top-left, top, top-right, left, center, right, bottom-left, bottom, bottom-right
 ALIGN="bottom-left"
 
-# --- Сборка параметров Fuzzel в единую переменную ---
+# --- Сборка параметров Fuzzel в единый массив ---
 # Порядок: режим dmenu, индекс, шрифт, позиция, скрыть ввод, авто-высота, ширина, отступы
-FUZZEL_OPTS="--dmenu \
-    --index \
-    --font=$FONT \
-    --anchor=$ALIGN \
-    --y-margin=10 \
-    --hide-prompt \
-    --lines=11 \
-    --width=20 \
-    --horizontal-pad=12 \
-    --vertical-pad=10 \
-    --line-height=24"
+FUZZEL_OPTS=(
+    --dmenu
+    --index
+    --font=$FONT
+    --anchor=$ALIGN
+    --y-margin=10
+    --hide-prompt
+    --lines=11
+    --width=20
+    --horizontal-pad=12
+    --vertical-pad=10
+    --line-height=24
+)
 
 # --- Функции вывода списков ---
 
@@ -143,7 +154,7 @@ CURRENT_MENU="main"
 
 while true; do
     if [ "$CURRENT_MENU" = "main" ]; then
-        CHOICE=$(show_main_menu | fuzzel $FUZZEL_OPTS)
+        CHOICE=$(show_main_menu | fuzzel "${FUZZEL_OPTS[@]}")
         case "$CHOICE" in
             0)  CURRENT_MENU="terminal"    ;; # Переход: Терминалы
             1)  CURRENT_MENU="explorer"    ;; # Переход: Проводники
@@ -159,9 +170,9 @@ while true; do
         esac
 
     elif [ "$CURRENT_MENU" = "terminal" ]; then
-        CHOICE=$(show_terminal_menu | fuzzel $FUZZEL_OPTS)
+        CHOICE=$(show_terminal_menu | fuzzel "${FUZZEL_OPTS[@]}")
         case "$CHOICE" in
-            0)  foot & exit 0       ;; 
+            0)  foot & exit 0       ;;
             1)  alacritty & exit 0  ;;
             2)  kitty & exit 0      ;;
             3)  wezterm & exit 0    ;;
@@ -170,7 +181,7 @@ while true; do
         esac
 
     elif [ "$CURRENT_MENU" = "explorer" ]; then
-        CHOICE=$(show_explorer_menu | fuzzel $FUZZEL_OPTS)
+        CHOICE=$(show_explorer_menu | fuzzel "${FUZZEL_OPTS[@]}")
         case "$CHOICE" in
             0)  thunar & exit 0              ;;
             1)  nautilus & exit 0            ;;
@@ -182,7 +193,7 @@ while true; do
         esac
 
     elif [ "$CURRENT_MENU" = "internet" ]; then
-        CHOICE=$(show_internet_menu | fuzzel $FUZZEL_OPTS)
+        CHOICE=$(show_internet_menu | fuzzel "${FUZZEL_OPTS[@]}")
         case "$CHOICE" in
             0)  firefox & exit 0             ;;
             1)  chromium & exit 0            ;;
@@ -193,7 +204,7 @@ while true; do
         esac
 
     elif [ "$CURRENT_MENU" = "development" ]; then
-        CHOICE=$(show_development_menu | fuzzel $FUZZEL_OPTS)
+        CHOICE=$(show_development_menu | fuzzel "${FUZZEL_OPTS[@]}")
         case "$CHOICE" in
             0)  zed & exit 0                 ;;
             1)  meld & exit 0                ;;
@@ -206,7 +217,7 @@ while true; do
         esac
 
     elif [ "$CURRENT_MENU" = "graphics" ]; then
-        CHOICE=$(show_graphics_menu | fuzzel $FUZZEL_OPTS)
+        CHOICE=$(show_graphics_menu | fuzzel "${FUZZEL_OPTS[@]}")
         case "$CHOICE" in
             0)  oculante & exit 0    ;;
             1)  gimp & exit 0        ;;
@@ -217,7 +228,7 @@ while true; do
         esac
 
     elif [ "$CURRENT_MENU" = "multimedia" ]; then
-        CHOICE=$(show_multimedia_menu | fuzzel $FUZZEL_OPTS)
+        CHOICE=$(show_multimedia_menu | fuzzel "${FUZZEL_OPTS[@]}")
         case "$CHOICE" in
             0)  mpv --player-operation-mode=pseudo-gui & exit 0 ;;
             1)  vlc & exit 0         ;;
@@ -228,7 +239,7 @@ while true; do
         esac
 
     elif [ "$CURRENT_MENU" = "games" ]; then
-        CHOICE=$(show_games_menu | fuzzel $FUZZEL_OPTS)
+        CHOICE=$(show_games_menu | fuzzel "${FUZZEL_OPTS[@]}")
         case "$CHOICE" in
             0)  steam & exit 0       ;;
             1)  lutris & exit 0      ;;
@@ -237,7 +248,7 @@ while true; do
         esac
 
     elif [ "$CURRENT_MENU" = "system" ]; then
-        CHOICE=$(show_system_menu | fuzzel $FUZZEL_OPTS)
+        CHOICE=$(show_system_menu | fuzzel "${FUZZEL_OPTS[@]}")
         case "$CHOICE" in
             0)  gparted & exit 0               ;;
             1)  $TERMINAL -e btop & exit 0     ;;
@@ -247,7 +258,7 @@ while true; do
         esac
 
     elif [ "$CURRENT_MENU" = "utilities" ]; then
-        CHOICE=$(show_utilities_menu | fuzzel $FUZZEL_OPTS)
+        CHOICE=$(show_utilities_menu | fuzzel "${FUZZEL_OPTS[@]}")
         case "$CHOICE" in
             0)  gnome-calculator & exit 0      ;;
             1)  grimshot copy area & exit 0    ;;
@@ -256,25 +267,25 @@ while true; do
         esac
 
     elif [ "$CURRENT_MENU" = "power" ]; then
-        CHOICE=$(show_power_menu | fuzzel $FUZZEL_OPTS)
+        CHOICE=$(show_power_menu | fuzzel "${FUZZEL_OPTS[@]}")
         case "$CHOICE" in
             0)
-                loginctl lock-session                     # Блокировка [0]
+                loginctl lock-session "$XDG_SESSION_ID"       # Блокировка [0]
                 ;;
             1)
-                labwc --exit                              # Выход [1]
+                loginctl terminate-session "$XDG_SESSION_ID"  # Выход [1]
                 ;;
             2)
-                systemctl suspend                         # Сон [2]
+                systemctl suspend                             # Сон [2]
                 ;;
             3)
-                systemctl reboot                          # Перезагрузка [3]
+                systemctl reboot                              # Перезагрузка [3]
                 ;;
             4)
-                systemctl poweroff                        # Выключение [4]
+                systemctl poweroff                            # Выключение [4]
                 ;;
             *)
-                CURRENT_MENU="main"                       # Срабатывает при нажатии Esc или закрытии окна
+                CURRENT_MENU="main"                           # Срабатывает при нажатии Esc или закрытии окна
                 ;;
         esac
     fi

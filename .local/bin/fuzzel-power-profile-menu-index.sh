@@ -59,7 +59,7 @@ fn_notify() {
     notify-send \
         --urgency=low \
         --expire-time=2000 \
-        --app-name=Tuned \
+        --app-name="Tuned" \
         --icon="/usr/share/icons/hicolor/scalable/apps/tuned.svg" \
         --transient \
         "Tuned" \

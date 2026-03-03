@@ -40,16 +40,16 @@ MTUBytes=1460
 # ──────────────────────────────────
 # Включаем клиент DHCP (v4 и v6)
 DHCP=yes
-# Режим генерации IPv6 link-local адреса (используем стабильный приватный адрес)
-IPv6LinkLocalAddressGenerationMode=stable-privacy
 # Отключаем LLMNR (разрешение имен в локальной сети)
 LLMNR=false
 # Отключаем MulticastDNS
 MulticastDNS=false
-# Отключаем DNS-over-TLS (используется глобальная настройка resolved)
+# Отключаем DNS-over-TLS
 DNSOverTLS=false
-# Отключаем DNSSEC (проверка подписей DNS)
+# Отключаем DNSSEC
 DNSSEC=false
+# Режим генерации IPv6 link-local адреса (используем стабильный приватный адрес)
+IPv6LinkLocalAddressGenerationMode=stable-privacy
 # Включаем временные IPv6-адреса (Privacy Extensions) для защиты приватности
 IPv6PrivacyExtensions=true
 # Включаем прием Router Advertisements (RA) для настройки IPv6 через роутер

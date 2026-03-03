@@ -57,6 +57,7 @@ IPv6MTUBytes=1460
 # → [UseDNS=true] = Значение по умолчанию. | Т.е использовать DNS полученные от DHCPv4/v6 переданные от роутера
 # ─────────────────────────────────────────────
 UseDNS=true
+# Более низкая/приоритетная метрика чем Wifi
 RouteMetric=100
 
 [DHCPv6]
@@ -73,7 +74,7 @@ RouteMetric=100
 # По умолчанию: UseMTU=yes (true)
 # Что происходит при yes:
 #   • роутер в RA шлёт опцию MTU (чаще всего 1500)
-#   • networkd пытается установить это значение в net.ipv6.conf.wlan0.mtu (Проверка: ip a / sysctl net.ipv6.conf.wlan0.mtu)
+#   • networkd пытается установить это значение в net.ipv6.conf.wlan0.mtu (Проверка: ❯ ip a / ❯ sysctl net.ipv6.conf.wlan0.mtu)
 #   • на многих Wi-Fi драйверах (Intel, Realtek, MediaTek, Broadcom и др.)
 #     ядро в этот момент отвечает EINVAL («Недопустимый аргумент»)
 #     → появляется ваша ошибка: "Failed to set IPv6 MTU to 1500"

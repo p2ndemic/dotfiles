@@ -77,7 +77,7 @@ RouteMetric=100
 #   • networkd пытается установить это значение в net.ipv6.conf.wlan0.mtu (Проверка: ❯ ip a / ❯ sysctl net.ipv6.conf.wlan0.mtu)
 #   • на многих Wi-Fi драйверах (Intel, Realtek, MediaTek, Broadcom и др.)
 #     ядро в этот момент отвечает EINVAL («Недопустимый аргумент»)
-#     → появляется ваша ошибка: "Failed to set IPv6 MTU to 1500"
+#     → появляется ошибка: "Failed to set IPv6 MTU to 1500"
 #
 # Что даёт UseMTU=false:
 #   • networkd полностью игнорирует MTU из RA

@@ -53,18 +53,18 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
-# --- Сборка параметров Fuzzel в единую переменную ---
+# --- Сборка параметров Fuzzel в единый массив ---
 # Порядок: режим dmenu, индекс, шрифт, позиция, скрыть ввод, авто-высота, ширина, отступы
 FUZZEL_OPTS=(
-    --dmenu \
-    --index \
-    --font=$FONT \
-    --anchor=$ANCHOR \
-    --hide-prompt \
-    --minimal-lines \
-    --width=14 \
-    --horizontal-pad=160 \
-    --vertical-pad=20 \
+    --dmenu
+    --index
+    --font=$FONT
+    --anchor=$ANCHOR
+    --hide-prompt
+    --minimal-lines
+    --width=14
+    --horizontal-pad=160
+    --vertical-pad=20
     --line-height=34
 )
 

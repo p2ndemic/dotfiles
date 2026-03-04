@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Action
-# Icon=changes-allow | Icon=emblem-system
+# Icon=changes-allow | Icon=emblem-system | Icon=plasmavault
 Icon=object-unlocked
 Name=Open as Administrator
 Name[de]=Als Administrator öffnen

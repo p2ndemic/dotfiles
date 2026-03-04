@@ -1,6 +1,7 @@
 [Desktop Entry]
 Type=Action
-Icon=system-file-manager-root
+# Icon=changes-allow | Icon=emblem-system
+Icon=object-unlocked
 Name=Open as Administrator
 Name[de]=Als Administrator öffnen
 Name[es]=Abrir como administrador

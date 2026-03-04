@@ -59,6 +59,7 @@ for theme in "$TARGET_THEME" "$TARGET_THEME_LIGHT"; do
     ln -sf /usr/share/icons/Adwaita/scalable/places/folder.svg "$places_path/gtk-directory.svg" 2>/dev/null || true
     ln -sf /usr/share/icons/Adwaita/scalable/places/folder.svg "$places_path/gnome-folder.svg" 2>/dev/null || true
     ln -sf /usr/share/icons/Adwaita/scalable/mimetypes/inode-directory.svg "$places_path/inode-directory.svg" 2>/dev/null || true
+    ln -sf /usr/share/icons/Adwaita/scalable/status/folder-open.svg "$places_path/folder-open.svg" 2>/dev/null || true
 
     # Чистка ненужных/проблемных иконок
     rm -f "$places_path/network-server.svg" \

@@ -15,7 +15,7 @@
 # =============================================
 [Desktop Entry]
 Type=Action
-Icon=text-editor
+Icon=dialog-password
 Name=Edit with sudoedit (GUI)
 Name[de]=Mit sudoedit bearbeiten (GUI)
 Name[es]=Editar con sudoedit (GUI)

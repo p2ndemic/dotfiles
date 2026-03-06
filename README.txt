@@ -2,7 +2,7 @@ https://aur.archlinux.org/packages/wlroots-hidpi-xprop-git
 https://aur.archlinux.org/packages/xorg-xwayland-hidpi-xprop
 
 
-3. Другие похожие символы из той же категории Box Drawing:
+1. Cимволы из категории Box Drawing:
 https://symbl.cc/en/unicode/blocks/box-drawing/
 
 Это обычные Unicode символы для рисования линий:

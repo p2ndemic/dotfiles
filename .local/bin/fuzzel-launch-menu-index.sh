@@ -13,6 +13,9 @@ fi
 # Используем foot, если системная переменная $TERMINAL не определена
 : "${TERMINAL:=foot}"
 
+# --- Fuzzel lauch prefix ---
+LAUNCH_PREFIX="uwsm app --"
+
 # --- Конфигурация интерфейса ---
 # ВНИМАНИЕ: Fuzzel может некорректно обрабатывать имена шрифтов с пробелами.
 # В качестве обходного решения (workaround) указываем прямой путь к файлу шрифта.
@@ -48,6 +51,7 @@ fuzzel_run() {
     fuzzel \
         --dmenu \
         --index \
+        --launch-prefix="$LAUNCH_PREFIX"
         --font="$FONT" \
         --anchor="$ALIGN" \
         --y-margin=10 \

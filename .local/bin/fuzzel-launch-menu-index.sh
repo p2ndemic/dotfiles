@@ -67,9 +67,9 @@ show_main_menu() {
     echo -e "📂 Explorer"     # index [1] Alt_icon = 🗃️
     echo -e "🌐 Internet"     # index [2]
     echo -e "💻 Development"  # index [3]
-    echo -e "🎨 Graphics"     # index [4] | Alt_icon = 🖌️ | 🌄
+    echo -e "🎨 Graphics"     # index [4] Alt_icon = 🖌️ | 🌄
     echo -e "🎬 Multimedia"   # index [5]
-    echo -e "🎮 Games"        # index [6]
+    echo -e "🎮 Games"        # index [6] Alt_icon = 🕹️
     echo -e "⚙️ System"       # index [7]
     echo -e "📦 Utilities"    # index [8]
     echo -e "🔌 Power"        # index [9]

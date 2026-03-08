@@ -1,5 +1,5 @@
 #!/bin/bash
-# Brightness control (brightnessctl) with wob overlay
+# Brightness control with wob overlay
 # -------------------------------------------------------------------
 # Installation:
 #   sudo pacman -S --needed brightnessctl wob

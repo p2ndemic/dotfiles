@@ -5,7 +5,6 @@
 #   sudo pacman -S --needed brightnessctl wob
 #   systemctl --user daemon-reload
 #   systemctl --user enable --now wob.socket
-#   [[ -z "$WAYLAND_DISPLAY" ]] && systemctl --user import-environment WAYLAND_DISPLAY
 #
 # Usage:
 #   wob-brightness [up|--up|down|--down]

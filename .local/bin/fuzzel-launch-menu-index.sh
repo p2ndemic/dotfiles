@@ -44,6 +44,21 @@ FUZZEL_OPTS=(
     --line-height=24
 )
 
+fuzzel_run() {
+    fuzzel \
+        --dmenu \
+        --index \
+        --font="$FONT" \
+        --anchor="$ALIGN" \
+        --y-margin=10 \
+        --hide-prompt \
+        --lines=11 \
+        --width=20 \
+        --horizontal-pad=12 \
+        --vertical-pad=10 \
+        --line-height=24
+}
+
 # --- Функции вывода списков ---
 
 # Главное меню выбора категорий

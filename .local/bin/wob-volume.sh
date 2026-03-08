@@ -5,7 +5,6 @@
 #   sudo pacman -S --needed pipewire wireplumber wob
 #   systemctl --user daemon-reload
 #   systemctl --user enable --now wob.socket
-#   [[ -z "$WAYLAND_DISPLAY" ]] && systemctl --user import-environment WAYLAND_DISPLAY
 #
 # Usage:
 #   wob-volume [sink-up|--sink-up|sink-down|--sink-down|sink-mute|--sink-mute]

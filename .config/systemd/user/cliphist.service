@@ -1,10 +1,15 @@
 [Unit]
 Description=Wayland clipboard manager
 Documentation=https://github.com/sentriz/cliphist
-# Start only when specific Wayland session targets are active
+# Stop and restart the service whenever the specific graphical session stops or restarts
+PartOf=wayland-session@sway.desktop.target
+PartOf=wayland-session@labwc.desktop.target
+PartOf=wayland-session@mango.desktop.target
+PartOf=wayland-session@niri.desktop.target
+# Start the service strictly after the specific session has fully initialized
 After=wayland-session@sway.desktop.target
 After=wayland-session@labwc.desktop.target
-After=wayland-session@mangowc.desktop.target
+After=wayland-session@mango.desktop.target
 After=wayland-session@niri.desktop.target
 
 [Service]
@@ -14,8 +19,8 @@ Restart=on-failure
 Slice=background-graphical.slice
 
 [Install]
-# Start service when any of these Wayland sessions are active
+# Enable auto-start by creating symlinks in the .wants/ directory of these specific targets
 WantedBy=wayland-session@sway.desktop.target
 WantedBy=wayland-session@labwc.desktop.target
-WantedBy=wayland-session@mangowc.desktop.target
+WantedBy=wayland-session@mango.desktop.target
 WantedBy=wayland-session@niri.desktop.target

@@ -14,7 +14,7 @@ After=wayland-session@niri.desktop.target
 
 [Service]
 Type=exec
-ExecStart=wl-paste --watch cliphist -max-items 10 store
+ExecStart=/usr/bin/wl-paste --watch cliphist -max-items 10 store
 Restart=on-failure
 Slice=background-graphical.slice
 

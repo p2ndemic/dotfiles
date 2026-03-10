@@ -1,11 +1,12 @@
 [Unit]
 Description=The LXQt file manager, Qt port of PCManFM (desktop icons)
 Documentation=man:pcmanfm-qt(1)
-# Start only when specific Wayland session targets are active
-After=wayland-session@sway.desktop.target
+# Stop and restart the service whenever the specific graphical session stops or restarts
+# Enable only on Labwc
+PartOf=wayland-session@labwc.desktop.target
+# Start the service strictly after the specific session has fully initialized
+# Enable only on Labwc
 After=wayland-session@labwc.desktop.target
-After=wayland-session@mangowc.desktop.target
-After=wayland-session@niri.desktop.target
 
 [Service]
 Type=exec
@@ -14,8 +15,6 @@ Restart=on-failure
 Slice=app-graphical.slice
 
 [Install]
-# Start service when any of these Wayland sessions are active
-WantedBy=wayland-session@sway.desktop.target
+# Enable auto-start by creating symlinks in the .wants/ directory of these specific targets
+# Enable only on Labwc
 WantedBy=wayland-session@labwc.desktop.target
-WantedBy=wayland-session@mangowc.desktop.target
-WantedBy=wayland-session@niri.desktop.target

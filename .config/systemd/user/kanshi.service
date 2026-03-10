@@ -14,7 +14,7 @@ After=wayland-session@niri.desktop.target
 
 [Service]
 Type=exec
-ExecStart=kanshi
+ExecStart=/usr/bin/kanshi
 ExecReload=kill -SIGHUP $MAINPID
 Restart=on-failure
 Slice=background-graphical.slice

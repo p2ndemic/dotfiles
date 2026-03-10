@@ -29,7 +29,7 @@ sink_vol() { wpctl get-volume @DEFAULT_SINK@ | awk '{print int($2 * 100)}'; } # 
 source_vol() { wpctl get-volume @DEFAULT_SOURCE@ | awk '{print int($2 * 100)}'; } # Alternative: sed 's/[^0-9]//g'
 
 # Check mute status (sink|source)
-sink_muted()   { wpctl get-volume @DEFAULT_SINK@   | grep -q "MUTED"; }
+sink_muted() { wpctl get-volume @DEFAULT_SINK@ | grep -q "MUTED"; }
 source_muted() { wpctl get-volume @DEFAULT_SOURCE@ | grep -q "MUTED"; }
 
 case "$1" in

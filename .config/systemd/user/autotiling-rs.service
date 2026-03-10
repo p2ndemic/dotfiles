@@ -1,0 +1,20 @@
+[Unit]
+Description=Autotiling for SwayWM
+Documentation=https://github.com/ammgws/autotiling-rs
+# Stop and restart the service whenever the specific graphical session stops or restarts
+# Enable only on Sway
+PartOf=wayland-session@sway.desktop.target
+# Start the service strictly after the specific session has fully initialized
+# Enable only on Sway
+After=wayland-session@sway.desktop.target
+
+[Service]
+Type=exec
+ExecStart=/usr/bin/autotiling-rs
+Restart=on-failure
+Slice=background-graphical.slice
+
+[Install]
+# Enable auto-start by creating symlinks in the .wants/ directory of these specific targets
+# Enable only on Sway
+WantedBy=wayland-session@sway.desktop.target

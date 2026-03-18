@@ -24,9 +24,9 @@ WOBSOCK="${WOBSOCK:-$XDG_RUNTIME_DIR/wob.sock}"
 wob_send() { echo "$1" > "$WOBSOCK" 2>/dev/null || true; }
 
 # Get current sink volume (percentage)
-sink_vol() { wpctl get-volume @DEFAULT_SINK@ | awk '{print int($2 * 100)}'; } # Alternative: sed 's/[^0-9]//g'
+sink_vol() { wpctl get-volume @DEFAULT_SINK@ | sed 's/[^0-9]//g'; } # Alternative: awk '{print int($2 * 100)}'
 # Get current source volume (percentage)
-source_vol() { wpctl get-volume @DEFAULT_SOURCE@ | awk '{print int($2 * 100)}'; } # Alternative: sed 's/[^0-9]//g'
+source_vol() { wpctl get-volume @DEFAULT_SOURCE@ | sed 's/[^0-9]//g'; } # Alternative: awk '{print int($2 * 100)}'
 
 # Check mute status (sink|source)
 sink_muted() { wpctl get-volume @DEFAULT_SINK@ | grep -q "MUTED"; }
@@ -58,7 +58,7 @@ case "$1" in
         source_muted && wob_send 0 || wob_send "$(source_vol)"
         ;;
     *)
-        echo "Usage: $0 {sink-up|--sink-up|sink-down|--sink-down|sink-mute|--sink-mute|source-up|--source-up|source-down|--source-down|source-mute|--source-mute}"
+        echo "Usage: $0 {sink-up|sink-down|sink-mute|source-up|source-down|source-mute} (also supports -- variants)"
         exit 1
         ;;
 esac

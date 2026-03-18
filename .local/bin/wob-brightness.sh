@@ -14,6 +14,7 @@
 #   - legacy FIFO:    /tmp/wobpipe (if socket absent and FIFO exists)
 # -------------------------------------------------------------------
 
+# Define WOB socket
 WOBSOCK="${WOBSOCK:-$XDG_RUNTIME_DIR/wob.sock}"
 
 # Fallback to legacy FIFO (tail -f /tmp/wobpipe | wob) if socket not found:

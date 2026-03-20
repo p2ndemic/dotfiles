@@ -59,6 +59,8 @@
       FONT ALIASES
       ════════════════════════ -->
 
+<!--
+
  <alias>
   <family>sans</family>
   <prefer>
@@ -82,6 +84,8 @@
    <family>Twitter Color Emoji</family>
   </prefer>
  </alias>
+
+-->
 
  <alias>
   <family>monospace</family>

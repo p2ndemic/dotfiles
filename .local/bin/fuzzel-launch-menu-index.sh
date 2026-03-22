@@ -1,57 +1,41 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# --- Логика Toggle ---
-# Проверяем, запущен ли fuzzel;
-# Используем pkill: если процесс найден, он будет убит, и скрипт завершится;
-if pkill -x fuzzel; then
-    exit 0
-fi
+# ══════════════════════════════════════════════════════════════════════════════
+# fuzzel-launch-menu-index.sh — Categorized application launcher using Fuzzel (dmenu mode)
+# ══════════════════════════════════════════════════════════════════════════════
 
-# --- Настройки ---
+# ── Toggle: kill fuzzel if already running ────────────────────────────────────
+pkill -x fuzzel && exit 0
 
-# --- Инициализация терминала ---
-# Используем foot, если системная переменная $TERMINAL не определена
-: "${TERMINAL:=foot}"
+# ══════════════════════════════════════════════════════════════════════════════
+# Configuration
+# ══════════════════════════════════════════════════════════════════════════════
 
-# --- Fuzzel lauch prefix ---
-LAUNCH_PREFIX="uwsm app --"
+# Launch prefix — wraps app execution inside a systemd transient scope
+# LAUNCH_PREFIX="uwsm app --"
+LAUNCH_PREFIX="systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet --"
 
-# --- Конфигурация интерфейса ---
-# ВНИМАНИЕ: Fuzzel может некорректно обрабатывать имена шрифтов с пробелами.
-# В качестве обходного решения (workaround) указываем прямой путь к файлу шрифта.
-# Неактуально при передачи опций в массив FUZZEL_OPTS=() вместо переменной
-#FONT_PRIMARY="/usr/share/fonts/TTF/JetBrainsMonoNerdFontPropo-Regular.ttf"
-#FONT_FALLBACK="Hack"
-#FONT="$FONT_PRIMARY:size=16,$FONT_FALLBACK:size=16"
+# Terminal command
+# : "${TERMINAL:=foot}"
+TERMINAL_CMD="foot -a '{cmd}' -T '{cmd}' {cmd}"
 
-FONT="Hack:size=14"
-#FONT="JetBrainsMono Nerd Font Mono:size=18"
+# Font used in the fuzzel window (FontConfig format)
+FONT="BlexMono Nerd Font Mono:size=14"
 
-# --- Позиционирование окна на экране ---
-# Доступно: top-left, top, top-right, left, center, right, bottom-left, bottom, bottom-right
+# Window anchor position on screen
+# Options: top-left | top | top-right | left | center | right | bottom-left | bottom | bottom-right
 ALIGN="bottom-left"
 
-# --- Сборка параметров Fuzzel в единый массив ---
-# Порядок: режим dmenu, индекс, шрифт, позиция, скрыть ввод, авто-высота, ширина, отступы
-FUZZEL_OPTS=(
-    --dmenu
-    --index
-    --font=$FONT
-    --anchor=$ALIGN
-    --y-margin=10
-    --hide-prompt
-    --lines=11
-    --width=20
-    --horizontal-pad=12
-    --vertical-pad=10
-    --line-height=24
-)
+# ══════════════════════════════════════════════════════════════════════════════
+# Fuzzel runner — shared options for all menus
+# ══════════════════════════════════════════════════════════════════════════════
 
 fuzzel_run() {
     fuzzel \
         --dmenu \
         --index \
-        --launch-prefix="$LAUNCH_PREFIX"
+        --launch-prefix="$LAUNCH_PREFIX" \
+        --terminal="$TERMINAL_CMD" \
         --font="$FONT" \
         --anchor="$ALIGN" \
         --y-margin=10 \
@@ -63,249 +47,224 @@ fuzzel_run() {
         --line-height=24
 }
 
-# --- Функции вывода списков ---
+# Форматирование строки меню с иконкой (fuzzel icon protocol)
+fuzzel_item() { printf '%s\0icon\x1f%s\n' "$1" "$2"; }
 
-# Главное меню выбора категорий
+# ══════════════════════════════════════════════════════════════════════════════
+# Menu definitions
+# ══════════════════════════════════════════════════════════════════════════════
+
+# ── Main category selector ────────────────────────────────────────────────────
 show_main_menu() {
-    echo -e "🖥️ Terminal"     # index [0]
-    echo -e "📂 Explorer"     # index [1] Alt_icon = 🗃️
-    echo -e "🌐 Internet"     # index [2]
-    echo -e "💻 Development"  # index [3]
-    echo -e "🎨 Graphics"     # index [4] Alt_icon = 🖌️ | 🌄
-    echo -e "🎬 Multimedia"   # index [5]
-    echo -e "🎮 Games"        # index [6] Alt_icon = 🕹️
-    echo -e "⚙️ System"       # index [7]
-    echo -e "📦 Utilities"    # index [8]
-    echo -e "🔌 Power"        # index [9]
-    echo -e "❌ Exit"         # index [10]
+    echo -e "🖥️  Terminal"    # Index [0]
+    echo -e "📂  Explorer"    # Index [1] | Alt_icon = 🗃️
+    echo -e "🌐  Internet"    # Index [2] | Alt_icon = 🖌️
+    echo -e "💻  Development" # Index [3] | Alt_icon = 🕹️
+    echo -e "🎨  Graphics"    # Index [4]
+    echo -e "🎬  Multimedia"  # Index [5]
+    echo -e "🎮  Games"       # Index [6]
+    echo -e "⚙️   System"      # Index [7]
+    echo -e "📦  Utilities"   # Index [8]
+    echo -e "🔌  Power"       # Index [9]
+    echo -e "❌  Exit"        # Index [10]
 }
 
-# Список терминалов
+# ── Terminal emulators ────────────────────────────────────────────────────────
 show_terminal_menu() {
-    echo -en "Foot\0icon\x1ffoot\n"               # index [0]
-    echo -en "Alacritty\0icon\x1falacritty\n"     # index [1]
-    echo -en "Kitty\0icon\x1fkitty\n"             # index [2]
-    echo -en "WezTerm\0icon\x1fwezterm\n"         # index [3]
-    echo -en "Black Box\0icon\x1fblackbox\n"      # index [4]
+    echo -en "Foot\0icon\x1ffoot\n"               # Index [0]
+    echo -en "Foot-Server\0icon\x1ffoot\n"        # Index [1]
+    echo -en "Foot-Client\0icon\x1ffoot\n"        # Index [2]
 }
 
-# Файловые менеджеры
+# ── File managers ─────────────────────────────────────────────────────────────
 show_explorer_menu() {
-    echo -en "Thunar\0icon\x1forg.xfce.thunar\n"      # index [0]
-    echo -en "Nautilus\0icon\x1forg.gnome.Nautilus\n" # index [1]
-    echo -en "Dolphin\0icon\x1forg.kde.dolphin\n"     # index [2]
-    echo -en "PCManFM-QT\0icon\x1fpcmanfm-qt\n"       # index [3]
-    echo -en "Yazi\0icon\x1fyazi\n"                   # index [4]
-    echo -en "Ranger\0icon\x1futilities-terminal\n"   # index [5]
+    echo -en "PCManFM-QT\0icon\x1fpcmanfm-qt\n"   # Index [0]
+    echo -en "Yazi\0icon\x1fyazi\n"               # Index [1]
 }
 
-# Браузеры и мессенджеры
+# ── Browsers and messengers ───────────────────────────────────────────────────
 show_internet_menu() {
-    echo -en "Firefox\0icon\x1ffirefox\n"             # index [0]
-    echo -en "Chromium\0icon\x1fchromium\n"           # index [1]
-    echo -en "Brave\0icon\x1fbrave-browser\n"         # index [2]
-    echo -en "Telegram\0icon\x1ftelegram\n"           # index [3]
-    echo -en "qBittorrent\0icon\x1fqbittorrent\n"     # index [4]
+    echo -en "Firefox\0icon\x1ffirefox\n"         # Index [0]
+    echo -en "Brave\0icon\x1fbrave-desktop\n"     # Index [1]
+    echo -en "Helium\0icon\x1fhelium\n"           # Index [2]
+    echo -en "qBittorrent\0icon\x1fqbittorrent\n" # Index [3]
+    echo -en "Telegram\0icon\x1ftelegram\n"       # Index [4]
 }
 
-# Инструменты разработки
+# ── Development tools ─────────────────────────────────────────────────────────
 show_development_menu() {
-    echo -en "Zed\0icon\x1fzed\n"                     # index [0]
-    echo -en "Meld\0icon\x1forg.gnome.Meld\n"         # index [1]
-    echo -en "Neovim\0icon\x1fnvim\n"                 # index [2]
-    echo -en "VSCodium\0icon\x1fvscodium\n"           # index [3]
-    echo -en "Helix\0icon\x1fhelix\n"                 # index [4]
-    echo -en "Micro\0icon\x1fmicro\n"                 # index [5]
-    echo -en "Kate\0icon\x1fkate\n"                   # index [6]
+    echo -en "Zed\0icon\x1fzed\n"                            # Index [0]
+    echo -en "Code-OSS\0icon\x1fcom.visualstudio.code.oss\n" # Index [1]
+    echo -en "Featherpad\0icon\x1ffeatherpad\n"              # Index [2]
+    echo -en "Micro\0icon\x1fmicro\n"                        # Index [3]
+    echo -en "Meld\0icon\x1forg.gnome.Meld\n"                # Index [4]
 }
 
-# Графические редакторы и просмотрщики
+# ── Image viewers and document readers ───────────────────────────────────────
 show_graphics_menu() {
-    echo -en "Oculante\0icon\x1foculante\n"           # index [0]
-    echo -en "GIMP\0icon\x1fgimp\n"                   # index [1]
-    echo -en "Inkscape\0icon\x1finkscape\n"           # index [2]
-    echo -en "imv\0icon\x1fimage-viewer\n"            # index [3]
-    echo -en "Feh\0icon\x1ffe\n"                      # index [4]
+    echo -en "Oculante\0icon\x1foculante\n"        # Index [0]
+    echo -en "Zathura\0icon\x1forg.pwmt.zathura\n" # Index [1]
 }
 
-# Мультимедиа плееры
+# ── Media players ─────────────────────────────────────────────────────────────
 show_multimedia_menu() {
-    echo -en "mpv\0icon\x1fmpv\n"                     # index [0]
-    echo -en "VLC\0icon\x1fvlc\n"                     # index [1]
-    echo -en "Celluloid\0icon\x1fcelluloid\n"         # index [2]
-    echo -en "Audacious\0icon\x1faudacious\n"         # index [3]
-    echo -en "Spotify\0icon\x1fspotify-client\n"      # index [4]
+    echo -en "mpv\0icon\x1fmpv\n"                  # Index [0]
 }
 
-# Игровые лаунчеры
+# ── Game launchers ────────────────────────────────────────────────────────────
 show_games_menu() {
-    echo -en "Steam\0icon\x1fsteam\n"                 # index [0]
-    echo -en "Lutris\0icon\x1flutris\n"               # index [1]
-    echo -en "Heroic Games Launcher\0icon\x1fcom.heroicgameslauncher.hgl\n" # index [2]
+    echo -en "Steam\0icon\x1fsteam\n"              # Index [0]
+    echo -en "Faugus\0icon\x1ffaugus-launcher\n"   # Index [1]
+    echo -en "Heroic\0icon\x1fheroic\n"            # Index [2]
 }
 
-# Системные утилиты
+# ── System utilities ──────────────────────────────────────────────────────────
 show_system_menu() {
-    echo -en "GParted\0icon\x1fgparted\n"             # index [0]
-    echo -en "Btop\0icon\x1futilities-terminal\n"     # index [1]
-    echo -en "Htop\0icon\x1futilities-terminal\n"     # index [2]
-    echo -en "Timeshift\0icon\x1ftimeshift\n"         # index [3]
+    echo -en "Btop\0icon\x1futilities-terminal\n"  # Index [0]
+    echo -en "GParted\0icon\x1fgparted\n"          # Index [1]
 }
 
-# Различные инструменты
+# ── Miscellaneous tools ───────────────────────────────────────────────────────
 show_utilities_menu() {
-    echo -en "Calculator\0icon\x1forg.gnome.Calculator\n" # index [0]
-    echo -en "Screenshot\0icon\x1fcamera-photo\n"         # index [1]
-    echo -en "Archive Manager\0icon\x1fgnome-ark\n"       # index [2]
+    echo -en "Qalculate\0icon\x1fqalculate\n"      # Index [0]
+    echo -en "Screenshot\0icon\x1fcamera-photo\n"  # Index [1]
+    echo -en "Arqiver\0icon\x1farqiver\n"          # Index [2]
 }
 
-# Меню управления питанием
+# ── Power management ──────────────────────────────────────────────────────────
 show_power_menu() {
-    echo -e " Lock"      # index [0]
-    echo -e "󰗼 Logout"    # index [1]
-    echo -e "󰖔 Suspend"   # index [2]
-    echo -e "󰜉 Reboot"    # index [3]
-    echo -e "󰐥 Shutdown"  # index [4]
+    echo -e " Lock"     # Index [0] | Alt_icon = 󰌾
+    echo -e "󰗽 Logout"   # Index [1] | Alt_icon = 󰗼
+    echo -e "󰖔 Suspend"  # Index [2]
+    echo -e "󰜉 Reboot"   # Index [3]
+    echo -e "󰐥 Shutdown" # Index [4]
 }
 
-# --- Логика навигации ---
+# ══════════════════════════════════════════════════════════════════════════════
+# Navigation loop
+# ══════════════════════════════════════════════════════════════════════════════
+
 CURRENT_MENU="main"
 
 while true; do
+
+    # ── Main menu: category selection ─────────────────────────────────────────
     if [ "$CURRENT_MENU" = "main" ]; then
-        CHOICE=$(show_main_menu | fuzzel "${FUZZEL_OPTS[@]}")
+        CHOICE=$(show_main_menu | fuzzel_run)
         case "$CHOICE" in
-            0)  CURRENT_MENU="terminal"    ;; # Переход: Терминалы
-            1)  CURRENT_MENU="explorer"    ;; # Переход: Проводники
-            2)  CURRENT_MENU="internet"    ;; # Переход: Интернет
-            3)  CURRENT_MENU="development" ;; # Переход: Разработка
-            4)  CURRENT_MENU="graphics"    ;; # Переход: Графика
-            5)  CURRENT_MENU="multimedia"  ;; # Переход: Мультимедиа
-            6)  CURRENT_MENU="games"       ;; # Переход: Игры
-            7)  CURRENT_MENU="system"      ;; # Переход: Система
-            8)  CURRENT_MENU="utilities"   ;; # Переход: Утилиты
-            9)  CURRENT_MENU="power"       ;; # Переход: Питание
-            *)  exit 0                     ;; # Выход
+            0)  CURRENT_MENU="terminal"    ;;  # → Terminal
+            1)  CURRENT_MENU="explorer"    ;;  # → Explorer
+            2)  CURRENT_MENU="internet"    ;;  # → Internet
+            3)  CURRENT_MENU="development" ;;  # → Development
+            4)  CURRENT_MENU="graphics"    ;;  # → Graphics
+            5)  CURRENT_MENU="multimedia"  ;;  # → Multimedia
+            6)  CURRENT_MENU="games"       ;;  # → Games
+            7)  CURRENT_MENU="system"      ;;  # → System
+            8)  CURRENT_MENU="utilities"   ;;  # → Utilities
+            9)  CURRENT_MENU="power"       ;;  # → Power
+            *)  exit 0                     ;;  # Exit | Esc
         esac
 
+    # ── Terminal emulators ────────────────────────────────────────────────────
     elif [ "$CURRENT_MENU" = "terminal" ]; then
-        CHOICE=$(show_terminal_menu | fuzzel "${FUZZEL_OPTS[@]}")
+        CHOICE=$(show_terminal_menu | fuzzel_run)
         case "$CHOICE" in
-            0)  foot & exit 0       ;;
-            1)  alacritty & exit 0  ;;
-            2)  kitty & exit 0      ;;
-            3)  wezterm & exit 0    ;;
-            4)  blackbox & exit 0   ;;
-            *)  CURRENT_MENU="main" ;; # Назад
+            0)  foot          ; exit 0 ;;  # Index [0]
+            1)  foot --server ; exit 0 ;;  # Index [1]
+            2)  footclient    ; exit 0 ;;  # Index [2]
+            *)  CURRENT_MENU="main"    ;;  # ← Back
         esac
 
+    # ── File managers ─────────────────────────────────────────────────────────
     elif [ "$CURRENT_MENU" = "explorer" ]; then
-        CHOICE=$(show_explorer_menu | fuzzel "${FUZZEL_OPTS[@]}")
+        CHOICE=$(show_explorer_menu | fuzzel_run)
         case "$CHOICE" in
-            0)  thunar & exit 0              ;;
-            1)  nautilus & exit 0            ;;
-            2)  dolphin & exit 0             ;;
-            3)  pcmanfm-qt & exit 0          ;;
-            4)  $TERMINAL -e yazi & exit 0   ;;
-            5)  $TERMINAL -e ranger & exit 0 ;;
-            *)  CURRENT_MENU="main"          ;; # Назад
+            0)  pcmanfm-qt ; exit 0 ;;  # Index [0]
+            1)  yazi       ; exit 0 ;;  # Index [1]
+            *)  CURRENT_MENU="main" ;;  # ← Back
         esac
 
+    # ── Browsers and messengers ───────────────────────────────────────────────
     elif [ "$CURRENT_MENU" = "internet" ]; then
-        CHOICE=$(show_internet_menu | fuzzel "${FUZZEL_OPTS[@]}")
+        CHOICE=$(show_internet_menu | fuzzel_run)
         case "$CHOICE" in
-            0)  firefox & exit 0             ;;
-            1)  chromium & exit 0            ;;
-            2)  brave-browser & exit 0       ;;
-            3)  telegram-desktop & exit 0    ;;
-            4)  qbittorrent & exit 0         ;;
-            *)  CURRENT_MENU="main"          ;; # Назад
+            0)  firefox          ; exit 0 ;;  # Index [0]
+            1)  brave            ; exit 0 ;;  # Index [1]
+            2)  helium-browser   ; exit 0 ;;  # Index [2]
+            3)  qbittorrent      ; exit 0 ;;  # Index [3]
+            4)  telegram-desktop ; exit 0 ;;  # Index [4]
+            *)  CURRENT_MENU="main"       ;;  # ← Back
         esac
 
+    # ── Development tools ─────────────────────────────────────────────────────
     elif [ "$CURRENT_MENU" = "development" ]; then
-        CHOICE=$(show_development_menu | fuzzel "${FUZZEL_OPTS[@]}")
+        CHOICE=$(show_development_menu | fuzzel_run)
         case "$CHOICE" in
-            0)  zed & exit 0                 ;;
-            1)  meld & exit 0                ;;
-            2)  $TERMINAL -e nvim & exit 0   ;;
-            3)  codium & exit 0              ;;
-            4)  $TERMINAL -e hx & exit 0     ;;
-            5)  $TERMINAL -e micro & exit 0  ;;
-            6)  kate & exit 0                ;;
-            *)  CURRENT_MENU="main"          ;; # Назад
+            0)  zed        ; exit 0 ;;  # Index [0]
+            1)  code-oss   ; exit 0 ;;  # Index [1]
+            2)  featherpad ; exit 0 ;;  # Index [2]
+            3)  micro      ; exit 0 ;;  # Index [3]
+            4)  meld       ; exit 0 ;;  # Index [4]
+            *)  CURRENT_MENU="main" ;;  # ← Back
         esac
 
+    # ── Image viewers and document readers ───────────────────────────────────
     elif [ "$CURRENT_MENU" = "graphics" ]; then
-        CHOICE=$(show_graphics_menu | fuzzel "${FUZZEL_OPTS[@]}")
+        CHOICE=$(show_graphics_menu | fuzzel_run)
         case "$CHOICE" in
-            0)  oculante & exit 0    ;;
-            1)  gimp & exit 0        ;;
-            2)  inkscape & exit 0    ;;
-            3)  imv & exit 0         ;;
-            4)  feh & exit 0         ;;
-            *)  CURRENT_MENU="main"  ;; # Назад
+            0)  oculante ; exit 0   ;;  # Index [0]
+            1)  zathura  ; exit 0   ;;  # Index [1]
+            *)  CURRENT_MENU="main" ;;  # ← Back
         esac
 
+    # ── Media players ─────────────────────────────────────────────────────────
     elif [ "$CURRENT_MENU" = "multimedia" ]; then
-        CHOICE=$(show_multimedia_menu | fuzzel "${FUZZEL_OPTS[@]}")
+        CHOICE=$(show_multimedia_menu | fuzzel_run)
         case "$CHOICE" in
-            0)  mpv --player-operation-mode=pseudo-gui & exit 0 ;;
-            1)  vlc & exit 0         ;;
-            2)  celluloid & exit 0   ;;
-            3)  audacious & exit 0   ;;
-            4)  spotify & exit 0     ;;
-            *)  CURRENT_MENU="main"  ;; # Назад
+            0)  mpv ; exit 0        ;;  # Index [0]
+            *)  CURRENT_MENU="main" ;;  # ← Back
         esac
 
+    # ── Game launchers ────────────────────────────────────────────────────────
     elif [ "$CURRENT_MENU" = "games" ]; then
-        CHOICE=$(show_games_menu | fuzzel "${FUZZEL_OPTS[@]}")
+        CHOICE=$(show_games_menu | fuzzel_run)
         case "$CHOICE" in
-            0)  steam & exit 0       ;;
-            1)  lutris & exit 0      ;;
-            2)  heroic & exit 0      ;;
-            *)  CURRENT_MENU="main"  ;; # Назад
+            0)  steam           ; exit 0 ;;  # Index [0]
+            1)  faugus-launcher ; exit 0 ;;  # Index [1]
+            2)  heroic          ; exit 0 ;;  # Index [2]
+            *)  CURRENT_MENU="main"      ;;  # ← Back
         esac
 
+    # ── System utilities ──────────────────────────────────────────────────────
     elif [ "$CURRENT_MENU" = "system" ]; then
-        CHOICE=$(show_system_menu | fuzzel "${FUZZEL_OPTS[@]}")
+        CHOICE=$(show_system_menu | fuzzel_run)
         case "$CHOICE" in
-            0)  gparted & exit 0               ;;
-            1)  $TERMINAL -e btop & exit 0     ;;
-            2)  $TERMINAL -e htop & exit 0     ;;
-            3)  timeshift-launcher & exit 0    ;;
-            *)  CURRENT_MENU="main"            ;; # Назад
+            0)  btop    ; exit 0    ;;  # Index [0]
+            1)  gparted ; exit 0    ;;  # Index [1]
+            *)  CURRENT_MENU="main" ;;  # ← Back
         esac
 
+    # ── Miscellaneous tools ───────────────────────────────────────────────────
     elif [ "$CURRENT_MENU" = "utilities" ]; then
-        CHOICE=$(show_utilities_menu | fuzzel "${FUZZEL_OPTS[@]}")
+        CHOICE=$(show_utilities_menu | fuzzel_run)
         case "$CHOICE" in
-            0)  gnome-calculator & exit 0      ;;
-            1)  grimshot copy area & exit 0    ;;
-            2)  file-roller & exit 0           ;;
-            *)  CURRENT_MENU="main"            ;; # Назад
+            0)  qalculate-gtk ; exit 0 ;;  # Index [0]
+            1)  grimshot      ; exit 0 ;;  # Index [1]
+            2)  arqiver       ; exit 0 ;;  # Index [2]
+            *)  CURRENT_MENU="main"    ;;  # ← Back
         esac
 
+    # ── Power management ──────────────────────────────────────────────────────
     elif [ "$CURRENT_MENU" = "power" ]; then
-        CHOICE=$(show_power_menu | fuzzel "${FUZZEL_OPTS[@]}")
+        CHOICE=$(show_power_menu | fuzzel_run)
         case "$CHOICE" in
-            0)
-                loginctl lock-session "$XDG_SESSION_ID"       # Блокировка [0]
-                ;;
-            1)
-                loginctl terminate-session "$XDG_SESSION_ID"  # Выход [1]
-                ;;
-            2)
-                systemctl suspend                             # Сон [2]
-                ;;
-            3)
-                systemctl reboot                              # Перезагрузка [3]
-                ;;
-            4)
-                systemctl poweroff                            # Выключение [4]
-                ;;
-            *)
-                CURRENT_MENU="main"                           # Срабатывает при нажатии Esc или закрытии окна
-                ;;
+            0)  loginctl lock-session "$XDG_SESSION_ID"      ;;  # Lock     [0]
+            1)  loginctl terminate-session "$XDG_SESSION_ID" ;;  # Logout   [1]
+            2)  systemctl suspend                            ;;  # Suspend  [2]
+            3)  systemctl reboot                             ;;  # Reboot   [3]
+            4)  systemctl poweroff                           ;;  # Shutdown [4]
+            *)  CURRENT_MENU="main"                          ;;  # ← Back
         esac
     fi
+
 done

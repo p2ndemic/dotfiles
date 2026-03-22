@@ -12,11 +12,10 @@ pkill -x fuzzel && exit 0
 # ══════════════════════════════════════════════════════════════════════════════
 
 # Launch prefix — wraps app execution inside a systemd transient scope
-# LAUNCH_PREFIX="uwsm app --"
 LAUNCH_PREFIX="systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet --"
+# LAUNCH_PREFIX="uwsm app --"
 
 # Terminal command
-# : "${TERMINAL:=foot}"
 TERMINAL_CMD="foot -a '{cmd}' -T '{cmd}' {cmd}"
 
 # Font used in the fuzzel window (FontConfig format)
@@ -27,9 +26,10 @@ FONT="BlexMono Nerd Font Mono:size=14"
 ALIGN="bottom-left"
 
 # ══════════════════════════════════════════════════════════════════════════════
-# Fuzzel runner — shared options for all menus
+# Helpers
 # ══════════════════════════════════════════════════════════════════════════════
 
+# ── Fuzzel runner — shared options for all menus ──────────────────────────────
 fuzzel_run() {
     fuzzel \
         --dmenu \
@@ -47,8 +47,11 @@ fuzzel_run() {
         --line-height=24
 }
 
-# Форматирование строки меню с иконкой (fuzzel icon protocol)
-fuzzel_item() { printf '%s\0icon\x1f%s\n' "$1" "$2"; }
+# ── Build a dmenu entry with an icon (Rofi/Fuzzel extended dmenu protocol) ───────────
+# ── Usage: fuzzel_item "Label" "icon-name" ──
+fuzzel_item() {
+    printf '%s\0icon\x1f%s\n' "$1" "$2"
+}
 
 # ══════════════════════════════════════════════════════════════════════════════
 # Menu definitions
@@ -56,88 +59,88 @@ fuzzel_item() { printf '%s\0icon\x1f%s\n' "$1" "$2"; }
 
 # ── Main category selector ────────────────────────────────────────────────────
 show_main_menu() {
-    echo -e "🖥️  Terminal"    # Index [0]
-    echo -e "📂  Explorer"    # Index [1] | Alt_icon = 🗃️
-    echo -e "🌐  Internet"    # Index [2] | Alt_icon = 🖌️
-    echo -e "💻  Development" # Index [3] | Alt_icon = 🕹️
-    echo -e "🎨  Graphics"    # Index [4]
-    echo -e "🎬  Multimedia"  # Index [5]
-    echo -e "🎮  Games"       # Index [6]
-    echo -e "⚙️   System"      # Index [7]
-    echo -e "📦  Utilities"   # Index [8]
-    echo -e "🔌  Power"       # Index [9]
-    echo -e "❌  Exit"        # Index [10]
+    echo -e "🖥️ Terminal"    # Index [0]
+    echo -e "📂 Explorer"    # Index [1] | Alt_icon = 🗃️
+    echo -e "🌐 Internet"    # Index [2] | Alt_icon = 🖌️
+    echo -e "💻 Development" # Index [3] | Alt_icon = 🕹️
+    echo -e "🎨 Graphics"    # Index [4]
+    echo -e "🎬 Multimedia"  # Index [5]
+    echo -e "🎮 Games"       # Index [6]
+    echo -e "⚙️ System"      # Index [7]
+    echo -e "📦 Utilities"   # Index [8]
+    echo -e "🔌 Power"       # Index [9]
+    echo -e "❌ Exit"        # Index [10]
 }
 
 # ── Terminal emulators ────────────────────────────────────────────────────────
 show_terminal_menu() {
-    echo -en "Foot\0icon\x1ffoot\n"               # Index [0]
-    echo -en "Foot-Server\0icon\x1ffoot\n"        # Index [1]
-    echo -en "Foot-Client\0icon\x1ffoot\n"        # Index [2]
+    fuzzel_item "Foot"        "foot"  # Index [0]
+    fuzzel_item "Foot-Server" "foot"  # Index [1]
+    fuzzel_item "Foot-Client" "foot"  # Index [2]
 }
 
 # ── File managers ─────────────────────────────────────────────────────────────
 show_explorer_menu() {
-    echo -en "PCManFM-QT\0icon\x1fpcmanfm-qt\n"   # Index [0]
-    echo -en "Yazi\0icon\x1fyazi\n"               # Index [1]
+    fuzzel_item "PCManFM-QT" "pcmanfm-qt"  # Index [0]
+    fuzzel_item "Yazi"       "yazi"        # Index [1]
 }
 
 # ── Browsers and messengers ───────────────────────────────────────────────────
 show_internet_menu() {
-    echo -en "Firefox\0icon\x1ffirefox\n"         # Index [0]
-    echo -en "Brave\0icon\x1fbrave-desktop\n"     # Index [1]
-    echo -en "Helium\0icon\x1fhelium\n"           # Index [2]
-    echo -en "qBittorrent\0icon\x1fqbittorrent\n" # Index [3]
-    echo -en "Telegram\0icon\x1ftelegram\n"       # Index [4]
+    fuzzel_item "Firefox"     "firefox"        # Index [0]
+    fuzzel_item "Brave"       "brave-desktop"  # Index [1]
+    fuzzel_item "Helium"      "helium"         # Index [2]
+    fuzzel_item "qBittorrent" "qbittorrent"    # Index [3]
+    fuzzel_item "Telegram"    "telegram"       # Index [4]
 }
 
 # ── Development tools ─────────────────────────────────────────────────────────
 show_development_menu() {
-    echo -en "Zed\0icon\x1fzed\n"                            # Index [0]
-    echo -en "Code-OSS\0icon\x1fcom.visualstudio.code.oss\n" # Index [1]
-    echo -en "Featherpad\0icon\x1ffeatherpad\n"              # Index [2]
-    echo -en "Micro\0icon\x1fmicro\n"                        # Index [3]
-    echo -en "Meld\0icon\x1forg.gnome.Meld\n"                # Index [4]
+    fuzzel_item "Zed"        "zed"                        # Index [0]
+    fuzzel_item "Code-OSS"   "com.visualstudio.code.oss"  # Index [1]
+    fuzzel_item "Featherpad" "featherpad"                 # Index [2]
+    fuzzel_item "Micro"      "micro"                      # Index [3]
+    fuzzel_item "Meld"       "org.gnome.Meld"             # Index [4]
 }
 
 # ── Image viewers and document readers ───────────────────────────────────────
 show_graphics_menu() {
-    echo -en "Oculante\0icon\x1foculante\n"        # Index [0]
-    echo -en "Zathura\0icon\x1forg.pwmt.zathura\n" # Index [1]
+    fuzzel_item "Oculante" "oculante"          # Index [0]
+    fuzzel_item "Zathura"  "org.pwmt.zathura"  # Index [1]
 }
 
 # ── Media players ─────────────────────────────────────────────────────────────
 show_multimedia_menu() {
-    echo -en "mpv\0icon\x1fmpv\n"                  # Index [0]
+    fuzzel_item "mpv" "mpv"  # Index [0]
 }
 
 # ── Game launchers ────────────────────────────────────────────────────────────
 show_games_menu() {
-    echo -en "Steam\0icon\x1fsteam\n"              # Index [0]
-    echo -en "Faugus\0icon\x1ffaugus-launcher\n"   # Index [1]
-    echo -en "Heroic\0icon\x1fheroic\n"            # Index [2]
+    fuzzel_item "Steam"  "steam"            # Index [0]
+    fuzzel_item "Faugus" "faugus-launcher"  # Index [1]
+    fuzzel_item "Heroic" "heroic"           # Index [2]
 }
 
 # ── System utilities ──────────────────────────────────────────────────────────
 show_system_menu() {
-    echo -en "Btop\0icon\x1futilities-terminal\n"  # Index [0]
-    echo -en "GParted\0icon\x1fgparted\n"          # Index [1]
+    fuzzel_item "Btop"    "utilities-terminal"  # Index [0]
+    fuzzel_item "GParted" "gparted"             # Index [1]
 }
 
 # ── Miscellaneous tools ───────────────────────────────────────────────────────
 show_utilities_menu() {
-    echo -en "Qalculate\0icon\x1fqalculate\n"      # Index [0]
-    echo -en "Screenshot\0icon\x1fcamera-photo\n"  # Index [1]
-    echo -en "Arqiver\0icon\x1farqiver\n"          # Index [2]
+    fuzzel_item "Qalculate"  "qalculate"     # Index [0]
+    fuzzel_item "Screenshot" "camera-photo"  # Index [1]
+    fuzzel_item "Arqiver"    "arqiver"       # Index [2]
 }
 
 # ── Power management ──────────────────────────────────────────────────────────
 show_power_menu() {
-    echo -e " Lock"     # Index [0] | Alt_icon = 󰌾
-    echo -e "󰗽 Logout"   # Index [1] | Alt_icon = 󰗼
-    echo -e "󰖔 Suspend"  # Index [2]
-    echo -e "󰜉 Reboot"   # Index [3]
-    echo -e "󰐥 Shutdown" # Index [4]
+    echo -e " Lock"      # Index [0] | Alt_icon = 󰌾
+    echo -e "󰗽 Logout"    # Index [1] | Alt_icon = 󰗼
+    echo -e "󰖔 Suspend"   # Index [2]
+    echo -e "󰜉 Reboot"    # Index [3]
+    echo -e "󰐥 Shutdown"  # Index [4]
 }
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -258,11 +261,11 @@ while true; do
     elif [ "$CURRENT_MENU" = "power" ]; then
         CHOICE=$(show_power_menu | fuzzel_run)
         case "$CHOICE" in
-            0)  loginctl lock-session "$XDG_SESSION_ID"      ;;  # Lock     [0]
-            1)  loginctl terminate-session "$XDG_SESSION_ID" ;;  # Logout   [1]
-            2)  systemctl suspend                            ;;  # Suspend  [2]
-            3)  systemctl reboot                             ;;  # Reboot   [3]
-            4)  systemctl poweroff                           ;;  # Shutdown [4]
+            0)  loginctl lock-session      "$XDG_SESSION_ID" ;;  # Lock     Index [0]
+            1)  loginctl terminate-session "$XDG_SESSION_ID" ;;  # Logout   Index [1]
+            2)  systemctl suspend                            ;;  # Suspend  Index [2]
+            3)  systemctl reboot                             ;;  # Reboot   Index [3]
+            4)  systemctl poweroff                           ;;  # Shutdown Index [4]
             *)  CURRENT_MENU="main"                          ;;  # ← Back
         esac
     fi

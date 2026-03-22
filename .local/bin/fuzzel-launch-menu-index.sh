@@ -232,10 +232,10 @@ while true; do
     elif [ "$CURRENT_MENU" = "games" ]; then
         CHOICE=$(show_games_menu | fuzzel_run)
         case "$CHOICE" in
-            0)  steam           ; exit 0 ;;  # Index [0]
-            1)  faugus-launcher ; exit 0 ;;  # Index [1]
-            2)  heroic          ; exit 0 ;;  # Index [2]
-            *)  CURRENT_MENU="main"      ;;  # ← Back
+            0)  steam -no-cef-sandbox ; exit 0 ;;  # Index [0]
+            1)  faugus-launcher       ; exit 0 ;;  # Index [1]
+            2)  heroic                ; exit 0 ;;  # Index [2]
+            *)  CURRENT_MENU="main"            ;;  # ← Back
         esac
 
     # ── System utilities ──────────────────────────────────────────────────────

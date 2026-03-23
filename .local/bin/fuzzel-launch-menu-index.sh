@@ -11,12 +11,43 @@ pkill -x fuzzel && exit 0
 # Configuration
 # ══════════════════════════════════════════════════════════════════════════════
 
-# Launch prefix — wraps app execution inside a systemd transient scope
-LAUNCH_PREFIX="systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet --"
-# LAUNCH_PREFIX="uwsm app --"
-
-# Terminal command
-TERMINAL_CMD="foot -a '{cmd}' -T '{cmd}' {cmd}"
+# Launch prefix — wraps app execution inside a systemd transient scope.
+#
+# Defined as a bash ARRAY instead of a plain STRING. Here is why:
+#
+#   When a command is stored as a STRING, bash applies word splitting on spaces
+#   before passing it to the shell — quoting it breaks things in the opposite way:
+#
+#     STRING="systemd-run --user --"
+#     "$STRING" firefox     # WRONG — the entire string becomes ONE argument:
+#                           #   ["systemd-run --user --"]  instead of
+#                           #   ["systemd-run", "--user", "--"]
+#
+#   An array preserves each element as a separate argument, always correctly:
+#
+#     ARRAY=(systemd-run --user --)
+#     "${PREFIX[@]}" firefox  # CORRECT — expands to individual tokens:
+#                             #   ["systemd-run", "--user", "--", "firefox"]
+#
+#   This also handles arguments that intentionally contain spaces, e.g.:
+#
+#     ARRAY=(systemd-run --setenv="MY_VAR=hello world" --)
+#     # A plain string would split "hello world" into two separate arguments.
+#     # An array keeps it as one.
+#
+# Note: --launch-prefix and --terminal fuzzel flags only work in XDG app mode,
+#       not in --dmenu mode. Apps are launched directly by this script instead.
+LAUNCH_PREFIX=(
+    systemd-run
+        --user
+        --scope
+        --slice=app-graphical.slice
+        --collect
+        --no-block
+        --quiet
+        --
+)
+# LAUNCH_PREFIX=(uwsm app --)
 
 # Font used in the fuzzel window (FontConfig format)
 FONT="BlexMono Nerd Font Mono:size=14"
@@ -34,8 +65,6 @@ fuzzel_run() {
     fuzzel \
         --dmenu \
         --index \
-        --launch-prefix="$LAUNCH_PREFIX" \
-        --terminal="$TERMINAL_CMD" \
         --font="$FONT" \
         --anchor="$ALIGN" \
         --y-margin=10 \
@@ -47,10 +76,25 @@ fuzzel_run() {
         --line-height=24
 }
 
-# ── Build a dmenu entry with an icon (Rofi/Fuzzel extended dmenu protocol) ───────────
-# ── Usage: fuzzel_item "Label" "icon-name" ──
+# ── Build a dmenu entry with an icon (Rofi/Fuzzel extended dmenu protocol) ────
+# ── Usage: fuzzel_item "Label" "icon-name" ────────────────────────────────────
 fuzzel_item() {
     printf '%s\0icon\x1f%s\n' "$1" "$2"
+}
+
+# ── Launch a GUI application via the launch prefix, then exit ─────────────────
+# ── Usage: run_app firefox ────────────────────────────────────────────────────
+run_app() {
+    "${LAUNCH_PREFIX[@]}" "$@"
+    exit 0
+}
+
+# ── Launch a TUI application inside a foot terminal window, then exit ─────────
+# ── Sets app-id and title to the command name for compositor rules ────────────
+# ── Usage: run_term btop ──────────────────────────────────────────────────────
+run_term() {
+    "${LAUNCH_PREFIX[@]}" foot --app-id="$1" --title="$1" "$@"
+    exit 0
 }
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -136,7 +180,7 @@ show_utilities_menu() {
 
 # ── Power management ──────────────────────────────────────────────────────────
 show_power_menu() {
-    echo -e " Lock"      # Index [0] | Alt_icon = 󰌾
+    echo -e " Lock"      # Index [0] | Alt_icon = 󰌾
     echo -e "󰗽 Logout"    # Index [1] | Alt_icon = 󰗼
     echo -e "󰖔 Suspend"   # Index [2]
     echo -e "󰜉 Reboot"    # Index [3]
@@ -172,18 +216,18 @@ while true; do
     elif [ "$CURRENT_MENU" = "terminal" ]; then
         CHOICE=$(show_terminal_menu | fuzzel_run)
         case "$CHOICE" in
-            0)  foot          ; exit 0 ;;  # Index [0]
-            1)  foot --server ; exit 0 ;;  # Index [1]
-            2)  footclient    ; exit 0 ;;  # Index [2]
-            *)  CURRENT_MENU="main"    ;;  # ← Back
+            0)  run_app foot          ;;  # Index [0]
+            1)  run_app foot --server ;;  # Index [1]
+            2)  run_app footclient    ;;  # Index [2]
+            *)  CURRENT_MENU="main"   ;;  # ← Back
         esac
 
     # ── File managers ─────────────────────────────────────────────────────────
     elif [ "$CURRENT_MENU" = "explorer" ]; then
         CHOICE=$(show_explorer_menu | fuzzel_run)
         case "$CHOICE" in
-            0)  pcmanfm-qt ; exit 0 ;;  # Index [0]
-            1)  yazi       ; exit 0 ;;  # Index [1]
+            0)  run_app  pcmanfm-qt ;;  # Index [0]
+            1)  run_term yazi       ;;  # Index [1]
             *)  CURRENT_MENU="main" ;;  # ← Back
         esac
 
@@ -191,23 +235,23 @@ while true; do
     elif [ "$CURRENT_MENU" = "internet" ]; then
         CHOICE=$(show_internet_menu | fuzzel_run)
         case "$CHOICE" in
-            0)  firefox          ; exit 0 ;;  # Index [0]
-            1)  brave            ; exit 0 ;;  # Index [1]
-            2)  helium-browser   ; exit 0 ;;  # Index [2]
-            3)  qbittorrent      ; exit 0 ;;  # Index [3]
-            4)  telegram-desktop ; exit 0 ;;  # Index [4]
-            *)  CURRENT_MENU="main"       ;;  # ← Back
+            0)  run_app firefox          ;;  # Index [0]
+            1)  run_app brave            ;;  # Index [1]
+            2)  run_app helium-browser   ;;  # Index [2]
+            3)  run_app qbittorrent      ;;  # Index [3]
+            4)  run_app telegram-desktop ;;  # Index [4]
+            *)  CURRENT_MENU="main"      ;;  # ← Back
         esac
 
     # ── Development tools ─────────────────────────────────────────────────────
     elif [ "$CURRENT_MENU" = "development" ]; then
         CHOICE=$(show_development_menu | fuzzel_run)
         case "$CHOICE" in
-            0)  zed        ; exit 0 ;;  # Index [0]
-            1)  code-oss   ; exit 0 ;;  # Index [1]
-            2)  featherpad ; exit 0 ;;  # Index [2]
-            3)  micro      ; exit 0 ;;  # Index [3]
-            4)  meld       ; exit 0 ;;  # Index [4]
+            0)  run_app  zed        ;;  # Index [0]
+            1)  run_app  code-oss   ;;  # Index [1]
+            2)  run_app  featherpad ;;  # Index [2]
+            3)  run_term micro      ;;  # Index [3]
+            4)  run_app  meld       ;;  # Index [4]
             *)  CURRENT_MENU="main" ;;  # ← Back
         esac
 
@@ -215,8 +259,8 @@ while true; do
     elif [ "$CURRENT_MENU" = "graphics" ]; then
         CHOICE=$(show_graphics_menu | fuzzel_run)
         case "$CHOICE" in
-            0)  oculante ; exit 0   ;;  # Index [0]
-            1)  zathura  ; exit 0   ;;  # Index [1]
+            0)  run_app oculante    ;;  # Index [0]
+            1)  run_app zathura     ;;  # Index [1]
             *)  CURRENT_MENU="main" ;;  # ← Back
         esac
 
@@ -224,7 +268,7 @@ while true; do
     elif [ "$CURRENT_MENU" = "multimedia" ]; then
         CHOICE=$(show_multimedia_menu | fuzzel_run)
         case "$CHOICE" in
-            0)  mpv ; exit 0        ;;  # Index [0]
+            0)  run_app mpv         ;;  # Index [0]
             *)  CURRENT_MENU="main" ;;  # ← Back
         esac
 
@@ -232,18 +276,18 @@ while true; do
     elif [ "$CURRENT_MENU" = "games" ]; then
         CHOICE=$(show_games_menu | fuzzel_run)
         case "$CHOICE" in
-            0)  steam -no-cef-sandbox ; exit 0 ;;  # Index [0]
-            1)  faugus-launcher       ; exit 0 ;;  # Index [1]
-            2)  heroic                ; exit 0 ;;  # Index [2]
-            *)  CURRENT_MENU="main"            ;;  # ← Back
+            0)  run_app steam -no-cef-sandbox ;;  # Index [0]
+            1)  run_app faugus-launcher       ;;  # Index [1]
+            2)  run_app heroic                ;;  # Index [2]
+            *)  CURRENT_MENU="main"           ;;  # ← Back
         esac
 
     # ── System utilities ──────────────────────────────────────────────────────
     elif [ "$CURRENT_MENU" = "system" ]; then
         CHOICE=$(show_system_menu | fuzzel_run)
         case "$CHOICE" in
-            0)  btop    ; exit 0    ;;  # Index [0]
-            1)  gparted ; exit 0    ;;  # Index [1]
+            0)  run_term btop       ;;  # Index [0]
+            1)  run_app  gparted    ;;  # Index [1]
             *)  CURRENT_MENU="main" ;;  # ← Back
         esac
 
@@ -251,21 +295,21 @@ while true; do
     elif [ "$CURRENT_MENU" = "utilities" ]; then
         CHOICE=$(show_utilities_menu | fuzzel_run)
         case "$CHOICE" in
-            0)  qalculate-gtk ; exit 0 ;;  # Index [0]
-            1)  grimshot      ; exit 0 ;;  # Index [1]
-            2)  arqiver       ; exit 0 ;;  # Index [2]
-            *)  CURRENT_MENU="main"    ;;  # ← Back
+            0)  run_app qalculate-gtk ;;  # Index [0]
+            1)  run_app grimshot      ;;  # Index [1]
+            2)  run_app arqiver       ;;  # Index [2]
+            *)  CURRENT_MENU="main"   ;;  # ← Back
         esac
 
     # ── Power management ──────────────────────────────────────────────────────
     elif [ "$CURRENT_MENU" = "power" ]; then
         CHOICE=$(show_power_menu | fuzzel_run)
         case "$CHOICE" in
-            0)  loginctl lock-session      "$XDG_SESSION_ID" ;;  # Lock     Index [0]
-            1)  loginctl terminate-session "$XDG_SESSION_ID" ;;  # Logout   Index [1]
-            2)  systemctl suspend                            ;;  # Suspend  Index [2]
-            3)  systemctl reboot                             ;;  # Reboot   Index [3]
-            4)  systemctl poweroff                           ;;  # Shutdown Index [4]
+            0)  loginctl lock-session      "$XDG_SESSION_ID" ;;  # Lock     [0]
+            1)  loginctl terminate-session "$XDG_SESSION_ID" ;;  # Logout   [1]
+            2)  systemctl suspend                            ;;  # Suspend  [2]
+            3)  systemctl reboot                             ;;  # Reboot   [3]
+            4)  systemctl poweroff                           ;;  # Shutdown [4]
             *)  CURRENT_MENU="main"                          ;;  # ← Back
         esac
     fi

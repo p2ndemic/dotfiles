@@ -20,12 +20,6 @@
 # .id - Extract the ID property
 # =============================================
 
-# Check if jq is installed
-if ! command -v jq &> /dev/null; then
-    echo "Error: jq is required but not installed. Please install jq first." >&2
-    exit 1
-fi
-
 # Get all container IDs from the current focused workspace (both tiling and floating)
 swaymsg -t get_tree | jq -r '.. | select(.focused? == true) | select(.type == "workspace") | (.nodes[]?, .floating_nodes[]?) | .id' |
 while read container_id; do

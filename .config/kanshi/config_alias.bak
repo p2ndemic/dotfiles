@@ -1,0 +1,39 @@
+# ══════════════════════════════════════════════════════════════
+#  kanshi — display output configuration
+# ══════════════════════════════════════════════════════════════
+
+# ── Output defaults & aliases (global scope) ─────────────────
+output eDP-1 {
+    alias $internal
+    mode 2560x1600@120.016998Hz
+    position 0,0
+    scale 2
+    transform normal
+    adaptive_sync off
+}
+
+output HDMI-A-1 {
+    alias $hdmi
+    mode 2560x1440@144Hz
+    position 0,0
+    scale 1
+    transform normal
+    adaptive_sync off
+}
+
+# ── Profile 1: Laptop only (default) ─────────────────────────
+profile laptop {
+    output $internal enable
+}
+
+# ── Profile 2: Dual display (auto on HDMI connect) ───────────
+profile dual {
+    output $internal enable position 0,0
+    output $hdmi enable position 1280,0
+}
+
+# ── Profile 3: External only (manual switch) ─────────────────
+profile external-only {
+    output $internal disable
+    output $hdmi enable
+}

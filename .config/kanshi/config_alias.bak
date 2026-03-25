@@ -1,6 +1,10 @@
 # ══════════════════════════════════════════════════════════════
 #  kanshi — display output configuration
 # ══════════════════════════════════════════════════════════════
+#  ~/.config/kanshi/config
+#  Ref: https://man.archlinux.org/man/kanshi.5.en
+#  Ref: https://wiki.archlinux.org/title/Kanshi
+# ══════════════════════════════════════════════════════════════
 
 # ── Output defaults & aliases (global scope) ─────────────────
 output eDP-1 {
@@ -26,13 +30,14 @@ profile laptop {
     output $internal enable
 }
 
-# ── Profile 2: Dual display (auto on HDMI connect) ───────────
+# ── Profile 2 — Dual: Laptop (left) + External HDMI (right) ─────
+# ── (auto on HDMI connect) ──
 profile dual {
     output $internal enable position 0,0
     output $hdmi enable position 1280,0
 }
 
-# ── Profile 3: External only (manual switch) ─────────────────
+# ── Profile 3: External only (manual switch) ──────────────────
 profile external-only {
     output $internal disable
     output $hdmi enable

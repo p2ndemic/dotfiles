@@ -40,6 +40,7 @@ profile dual {
 }
 
 # ── Profile 3 — External HDMI only (manual switch) ─────────────────
+# ── kanshictl switch external-only ──
 profile external-only {
     output eDP-1 disable
     output HDMI-A-1 {

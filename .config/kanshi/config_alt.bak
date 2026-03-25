@@ -8,21 +8,21 @@
 
 # ── Output defaults & aliases (global scope) ─────────────────
 output eDP-1 {
-    alias $internal
     mode 2560x1600@120.016998Hz
     position 0,0
     scale 2
     transform normal
     adaptive_sync off
+    alias $internal
 }
 
 output HDMI-A-1 {
-    alias $hdmi
     mode 2560x1440@144Hz
     position 0,0
     scale 1
     transform normal
     adaptive_sync off
+    alias $hdmi
 }
 
 # ── Profile 1: Laptop only (default) ─────────────────────────

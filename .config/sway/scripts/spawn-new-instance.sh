@@ -19,12 +19,6 @@
 # .app_id // .window_properties.class // empty - Extract app_id or window class
 # =============================================
 
-# Check if jq is installed / Проверяем, установлен ли jq
-if ! command -v jq &> /dev/null; then
-    echo "Error: jq is required but not installed. Please install jq first." >&2
-    exit 1
-fi
-
 # Get app_id or class of focused window / Получаем app_id или class активного окна
 # jq извлекает идентификатор приложения из focused окна:
 # - Для Wayland окон использует .app_id

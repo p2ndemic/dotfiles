@@ -22,12 +22,6 @@
 # Мы хотим применить обе команды к одному и тому же окну, поэтому используем запятую.
 # =============================================
 
-# Check if jq is installed / Проверяем, установлен ли jq
-if ! command -v jq &> /dev/null; then
-    echo "Error: jq is required but not installed. Please install jq first." >&2
-    exit 1
-fi
-
 # Get all window IDs from scratchpad workspace / Получаем все ID окон из скретчпада
 # swaymsg -t get_tree получает JSON-представление дерева контейнеров Sway
 # jq фильтрует и извлекает ID всех окон в скретчпаде

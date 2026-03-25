@@ -38,6 +38,7 @@ profile dual {
 }
 
 # ── Profile 3: External only (manual switch) ──────────────────
+# ── kanshictl switch external-only ──
 profile external-only {
     output $internal disable
     output $hdmi enable

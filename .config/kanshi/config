@@ -19,6 +19,7 @@ profile laptop {
 }
 
 # ── Profile 2 — Dual: Laptop (left) + External HDMI (right) ────────
+# ── (auto on HDMI connect) ──
 profile dual {
     output eDP-1 {
         enable

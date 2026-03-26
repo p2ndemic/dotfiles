@@ -40,7 +40,6 @@ pkill -x fuzzel && exit 0
 LAUNCH_PREFIX=(
     systemd-run
         --user
-        --scope
         --slice=app-graphical.slice
         --collect
         --no-block
@@ -67,7 +66,7 @@ fuzzel_run() {
         --index \
         --font="$FONT" \
         --anchor="$ALIGN" \
-        --y-margin=10 \
+        --y-margin=2 \
         --hide-prompt \
         --lines=11 \
         --width=20 \
@@ -180,7 +179,7 @@ show_utilities_menu() {
 
 # ── Power management ──────────────────────────────────────────────────────────
 show_power_menu() {
-    echo -e " Lock"      # Index [0] | Alt_icon = 󰌾
+    echo -e " Lock"      # Index [0] | Alt_icon = 󰌾
     echo -e "󰗽 Logout"    # Index [1] | Alt_icon = 󰗼
     echo -e "󰖔 Suspend"   # Index [2]
     echo -e "󰜉 Reboot"    # Index [3]

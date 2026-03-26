@@ -354,7 +354,7 @@
   },
 
   "custom/editor": {
-    "format": "󰈮", // "" "󰈮"  "" ""
+    "format": "󰈮", // "" "󰈮" "" "" ""
     "tooltip": true,
     "tooltip-format": "Editor",
     "on-click": "zeditor",

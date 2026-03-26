@@ -37,15 +37,8 @@ pkill -x fuzzel && exit 0
 #
 # Note: --launch-prefix and --terminal fuzzel flags only work in XDG app mode,
 #       not in --dmenu mode. Apps are launched directly by this script instead.
-LAUNCH_PREFIX=(
-    systemd-run
-        --user
-        --slice=app-graphical.slice
-        --collect
-        --no-block
-        --quiet
-        --
-)
+# systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet --
+LAUNCH_PREFIX=(systemd-run --user --slice=app-graphical.slice --collect --no-block --quiet --)
 # LAUNCH_PREFIX=(uwsm app --)
 
 # Font used in the fuzzel window (FontConfig format)

@@ -165,7 +165,7 @@
   // Pulseaudio Speaker | Headphone
   "pulseaudio#output": {
     "format": "{volume}% {icon}",
-    "format-muted": "",
+    "format-muted": "",
     "format-bluetooth": "{volume}% ",
     "format-bluetooth-muted": "󰂲",
     "format-icons": {

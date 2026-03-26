@@ -7,7 +7,7 @@
 {
   "layer": "top",
   "position": "bottom",
-  "height": 36,
+  "height": 38,
   //"spacing": 2,
   //"margin-top": 0,
   //"margin-bottom": 0,
@@ -47,7 +47,7 @@
 
   "custom/launcher": {
     "format": "", // "" "󰣇" "" ""
-    "tooltip-format": "Menu \n\nRight-click to open the power menu",
+    //"tooltip-format": "Menu \n\nRight-click to open the power menu",
     "on-click": "pkill -x fuzzel || systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- ~/.local/bin/fuzzel-launch-menu-index.sh",
     "on-click-right": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- ~/.local/bin/fuzzel-powermenu-index.sh",
   },
@@ -146,7 +146,6 @@
       //"idle_inhibitor",
       "custom/dnd",
       "custom/screencast",
-      "custom/calculator",
       "custom/screenshot",
     ],
   },
@@ -161,7 +160,7 @@
 
   // Custom modules right [group/group_tools]...
   // custom/clipboard ⇠
-  // idle_inhibitor ⇠ custom/dnd ⇠ custom/screencast ⇠ custom/calculator ⇠ custom/screenshot
+  // idle_inhibitor ⇠ custom/dnd ⇠ custom/screencast ⇠ custom/screenshot
 
   // Pulseaudio Speaker | Headphone
   "pulseaudio#output": {
@@ -199,7 +198,6 @@
     "tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
     "tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
     "tooltip-format-disconnected": "Disconnected",
-    //"spacing": 1,
     "on-click": "pkill -x iwgtk || systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- iwgtk",
     "on-click-right": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- ~/.local/bin/nmtui-toggle.sh",
   },
@@ -212,18 +210,12 @@
       "critical": 10,
     },
     "format": "{capacity}% {icon}",
-    "format-charging": "{capacity}% {icon}", // "󰂄" ""
+    "format-charging": "{capacity}% 󰂄", // "󰂄" ""
     "format-plugged": "{capacity}% ",
     //"format-alt": "{time} {icon}",
-    "format-icons": {
-      "default": ["", "", "", "", ""],
-      "charging": ["󰢟", "󱊤", "󱊥", "󱊦"],
-    },
-    // "format-icons": ["", "", "", "", ""],
-    // "charging": ["󰢟", "󱊤", "󱊥", "󱊦"],
-    // "charging": ["󰢟", "󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"],
-    "tooltip-format": "⇡ {timeTo}",
-    "tooltip-format-charging": "⇣ {timeTo}",
+    "format-icons": ["", "", "", "", ""],
+    "tooltip-format": "⇣ {timeTo}",
+    "tooltip-format-charging": "⇡ {timeTo}",
     "on-click": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- ~/.local/bin/fuzzel-power-profile-menu-index.sh",
     "on-click-middle": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- falcond-gui",
     "on-click-right": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- tuned-gui",
@@ -338,7 +330,7 @@
   },
 
   "custom/package_manager": {
-    "format": "", // "󰮯" ""
+    "format": "", // "󰮯" ""
     "tooltip": true,
     "tooltip-format": "Package Manager",
     "on-click": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- octopi",
@@ -371,7 +363,7 @@
   },
 
   "custom/browser": {
-    "format": "", // "" ""
+    "format": "󰈹", // "" ""
     "tooltip": true,
     "tooltip-format": "Browser",
     "on-click": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- firefox",
@@ -380,7 +372,7 @@
   },
 
   "custom/steam": {
-    "format": "", // "" "" ""
+    "format": "󰓓", // "" "󰓓" "" ""
     "tooltip": true,
     "tooltip-format": "Steam",
     "on-click": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- steam -pipewire-dmabuf -no-cef-sandbox",
@@ -405,14 +397,6 @@
     "tooltip": true,
     "tooltip-format": "Screenshot",
     //"on-click": "", // grim -g \"$(slurp)\" ~/Pictures/$(date +%s).png
-  },
-
-  "custom/calculator": {
-    "format": "",
-    "tooltip": true,
-    "tooltip-format": "Сalculator",
-    "on-click": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- gnome-calculator",
-    "on-click-right": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- qalculate-gtk",
   },
 
   "custom/screencast": {

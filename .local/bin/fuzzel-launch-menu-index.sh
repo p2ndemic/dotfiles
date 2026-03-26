@@ -109,20 +109,20 @@ show_main_menu() {
     printf '%s\n' "${items[@]}"
 }
 
-# ── 🖥️ Terminal emulators ─────────────────────────────────────────────────────
+# ── Terminal emulators ────────────────────────────────────────────────────────
 show_terminal_menu() {
     fuzzel_item "Foot"        "foot"  # Index [0]
     fuzzel_item "Foot-Server" "foot"  # Index [1]
     fuzzel_item "Foot-Client" "foot"  # Index [2]
 }
 
-# ── 📂 File managers ──────────────────────────────────────────────────────────
+# ── File managers ─────────────────────────────────────────────────────────────
 show_explorer_menu() {
     fuzzel_item "PCManFM-QT" "pcmanfm-qt"  # Index [0]
     fuzzel_item "Yazi"       "yazi"        # Index [1]
 }
 
-# ── 🌐 Browsers and messengers ────────────────────────────────────────────────
+# ── Browsers and messengers ───────────────────────────────────────────────────
 show_internet_menu() {
     fuzzel_item "Firefox"     "firefox"        # Index [0]
     fuzzel_item "Brave"       "brave-desktop"  # Index [1]
@@ -131,7 +131,7 @@ show_internet_menu() {
     fuzzel_item "Telegram"    "telegram"       # Index [4]
 }
 
-# ── 💻 Development tools ──────────────────────────────────────────────────────
+# ── Development tools ─────────────────────────────────────────────────────────
 show_development_menu() {
     fuzzel_item "Zed"        "zed"                        # Index [0]
     fuzzel_item "Code-OSS"   "com.visualstudio.code.oss"  # Index [1]
@@ -140,38 +140,38 @@ show_development_menu() {
     fuzzel_item "Meld"       "org.gnome.Meld"             # Index [4]
 }
 
-# ── 🎨 Image viewers and document readers ─────────────────────────────────────
+# ── Image viewers and document readers ───────────────────────────────────────
 show_graphics_menu() {
     fuzzel_item "Oculante" "oculante"          # Index [0]
     fuzzel_item "Zathura"  "org.pwmt.zathura"  # Index [1]
 }
 
-# ── 🎬 Media players ──────────────────────────────────────────────────────────
+# ── Media players ─────────────────────────────────────────────────────────────
 show_multimedia_menu() {
     fuzzel_item "mpv" "mpv"  # Index [0]
 }
 
-# ── 🎮 Game launchers ───────────────────────────────────────────────────────────
+# ── Game launchers ────────────────────────────────────────────────────────────
 show_games_menu() {
     fuzzel_item "Steam"  "steam"            # Index [0]
     fuzzel_item "Faugus" "faugus-launcher"  # Index [1]
     fuzzel_item "Heroic" "heroic"           # Index [2]
 }
 
-# ── ⚙️ System utilities ────────────────────────────────────────────────────────
+# ── System utilities ──────────────────────────────────────────────────────────
 show_system_menu() {
     fuzzel_item "Btop"    "utilities-terminal"  # Index [0]
     fuzzel_item "GParted" "gparted"             # Index [1]
 }
 
-# ── 📦 Miscellaneous tools ─────────────────────────────────────────────────────
+# ── Miscellaneous tools ───────────────────────────────────────────────────────
 show_utilities_menu() {
     fuzzel_item "Qalculate"  "qalculate"     # Index [0]
     fuzzel_item "Screenshot" "camera-photo"  # Index [1]
     fuzzel_item "Arqiver"    "arqiver"       # Index [2]
 }
 
-# ── 🔌 Power management ────────────────────────────────────────────────────────
+# ── Power management ──────────────────────────────────────────────────────────
 show_power_menu() {
     local items=(
         " Lock"      # Index [0] | Alt_icon = 󰌾

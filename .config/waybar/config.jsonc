@@ -47,6 +47,7 @@
 
   "custom/launcher": {
     "format": "", // "" "󰣇" "" ""
+    "tooltip": false,
     //"tooltip-format": "Menu \n\nRight-click to open the power menu",
     "on-click": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- ~/.local/bin/fuzzel-launch-menu-index.sh",
     "on-click-right": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- ~/.local/bin/fuzzel-powermenu-index.sh",

@@ -77,16 +77,14 @@ fuzzel_item() {
 # ── Launch a GUI application via the launch prefix, then exit ─────────────────
 # ── Usage: run_app firefox ────────────────────────────────────────────────────
 run_app() {
-    "${LAUNCH_PREFIX[@]}" "$@"
-    exit 0
+    exec "${LAUNCH_PREFIX[@]}" "$@"
 }
 
 # ── Launch a TUI application inside a foot terminal window, then exit ─────────
 # ── Sets app-id and title to the command name for compositor rules ────────────
 # ── Usage: run_term btop ──────────────────────────────────────────────────────
 run_term() {
-    "${LAUNCH_PREFIX[@]}" foot --app-id="$1" --title="$1" "$@"
-    exit 0
+    exec "${LAUNCH_PREFIX[@]}" foot --app-id="$1" --title="$1" "$@"
 }
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -95,33 +93,36 @@ run_term() {
 
 # ── Main category selector ────────────────────────────────────────────────────
 show_main_menu() {
-    echo -e "🖥️ Terminal"    # Index [0]
-    echo -e "📂 Explorer"    # Index [1] | Alt_icon = 🗃️
-    echo -e "🌐 Internet"    # Index [2] | Alt_icon = 🖌️
-    echo -e "💻 Development" # Index [3] | Alt_icon = 🕹️
-    echo -e "🎨 Graphics"    # Index [4]
-    echo -e "🎬 Multimedia"  # Index [5]
-    echo -e "🎮 Games"       # Index [6]
-    echo -e "⚙️ System"      # Index [7]
-    echo -e "📦 Utilities"   # Index [8]
-    echo -e "🔌 Power"       # Index [9]
-    echo -e "❌ Exit"        # Index [10]
+    local items=(
+        "🖥️ Terminal"     # Index [0]
+        "📂 Explorer"     # Index [1] | Alt_icon = 🗃️
+        "🌐 Internet"     # Index [2]
+        "💻 Development"  # Index [3]
+        "🎨 Graphics"     # Index [4] | Alt_icon = 🖌️
+        "🎬 Multimedia"   # Index [5]
+        "🎮 Games"        # Index [6] | Alt_icon = 🕹️
+        "⚙️ System"        # Index [7]
+        "📦 Utilities"    # Index [8]
+        "🔌 Power"        # Index [9]
+        "❌ Exit"         # Index [9]
+    )
+    printf '%s\n' "${items[@]}"
 }
 
-# ── Terminal emulators ────────────────────────────────────────────────────────
+# ── 🖥️ Terminal emulators ─────────────────────────────────────────────────────
 show_terminal_menu() {
     fuzzel_item "Foot"        "foot"  # Index [0]
     fuzzel_item "Foot-Server" "foot"  # Index [1]
     fuzzel_item "Foot-Client" "foot"  # Index [2]
 }
 
-# ── File managers ─────────────────────────────────────────────────────────────
+# ── 📂 File managers ──────────────────────────────────────────────────────────
 show_explorer_menu() {
     fuzzel_item "PCManFM-QT" "pcmanfm-qt"  # Index [0]
     fuzzel_item "Yazi"       "yazi"        # Index [1]
 }
 
-# ── Browsers and messengers ───────────────────────────────────────────────────
+# ── 🌐 Browsers and messengers ────────────────────────────────────────────────
 show_internet_menu() {
     fuzzel_item "Firefox"     "firefox"        # Index [0]
     fuzzel_item "Brave"       "brave-desktop"  # Index [1]
@@ -130,7 +131,7 @@ show_internet_menu() {
     fuzzel_item "Telegram"    "telegram"       # Index [4]
 }
 
-# ── Development tools ─────────────────────────────────────────────────────────
+# ── 💻 Development tools ──────────────────────────────────────────────────────
 show_development_menu() {
     fuzzel_item "Zed"        "zed"                        # Index [0]
     fuzzel_item "Code-OSS"   "com.visualstudio.code.oss"  # Index [1]
@@ -139,44 +140,47 @@ show_development_menu() {
     fuzzel_item "Meld"       "org.gnome.Meld"             # Index [4]
 }
 
-# ── Image viewers and document readers ───────────────────────────────────────
+# ── 🎨 Image viewers and document readers ─────────────────────────────────────
 show_graphics_menu() {
     fuzzel_item "Oculante" "oculante"          # Index [0]
     fuzzel_item "Zathura"  "org.pwmt.zathura"  # Index [1]
 }
 
-# ── Media players ─────────────────────────────────────────────────────────────
+# ── 🎬 Media players ──────────────────────────────────────────────────────────
 show_multimedia_menu() {
     fuzzel_item "mpv" "mpv"  # Index [0]
 }
 
-# ── Game launchers ────────────────────────────────────────────────────────────
+# ── 🎮 Game launchers ───────────────────────────────────────────────────────────
 show_games_menu() {
     fuzzel_item "Steam"  "steam"            # Index [0]
     fuzzel_item "Faugus" "faugus-launcher"  # Index [1]
     fuzzel_item "Heroic" "heroic"           # Index [2]
 }
 
-# ── System utilities ──────────────────────────────────────────────────────────
+# ── ⚙️ System utilities ────────────────────────────────────────────────────────
 show_system_menu() {
     fuzzel_item "Btop"    "utilities-terminal"  # Index [0]
     fuzzel_item "GParted" "gparted"             # Index [1]
 }
 
-# ── Miscellaneous tools ───────────────────────────────────────────────────────
+# ── 📦 Miscellaneous tools ─────────────────────────────────────────────────────
 show_utilities_menu() {
     fuzzel_item "Qalculate"  "qalculate"     # Index [0]
     fuzzel_item "Screenshot" "camera-photo"  # Index [1]
     fuzzel_item "Arqiver"    "arqiver"       # Index [2]
 }
 
-# ── Power management ──────────────────────────────────────────────────────────
+# ── 🔌 Power management ────────────────────────────────────────────────────────
 show_power_menu() {
-    echo -e " Lock"      # Index [0] | Alt_icon = 󰌾
-    echo -e "󰗽 Logout"    # Index [1] | Alt_icon = 󰗼
-    echo -e "󰖔 Suspend"   # Index [2]
-    echo -e "󰜉 Reboot"    # Index [3]
-    echo -e "󰐥 Shutdown"  # Index [4]
+    local items=(
+        " Lock"      # Index [0] | Alt_icon = 󰌾
+        "󰗽 Logout"    # Index [1] | Alt_icon = 󰗼
+        "󰖔 Suspend"   # Index [2]
+        "󰜉 Reboot"    # Index [3]
+        "󰐥 Shutdown"  # Index [4]
+    )
+    printf '%s\n' "${items[@]}"
 }
 
 # ══════════════════════════════════════════════════════════════════════════════

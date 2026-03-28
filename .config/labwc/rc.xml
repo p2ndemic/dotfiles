@@ -149,7 +149,7 @@
     <layoutScope>global</layoutScope>
     <repeatRate>50</repeatRate>
     <repeatDelay>300</repeatDelay>
-    <!-- Load default mousebinds -->
+    <!-- Load default keybinds -->
     <default />
 
     <!-- Window switching -->

@@ -35,7 +35,7 @@ fuzzel_run() {
         --minimal-lines \
         --width=19 \
         --horizontal-pad=38 \
-        --vertical-pad=24 \
+        --vertical-pad=20 \
         --line-height=38 \
         --selection-radius=8
 }

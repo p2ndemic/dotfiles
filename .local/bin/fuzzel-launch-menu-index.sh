@@ -65,7 +65,8 @@ fuzzel_run() {
         --width=20 \
         --horizontal-pad=12 \
         --vertical-pad=10 \
-        --line-height=24
+        --line-height=24 \
+        --exit-on-keyboard-focus-loss=no
 }
 
 # ── Build a dmenu entry with an icon (Rofi/Fuzzel extended dmenu protocol) ────

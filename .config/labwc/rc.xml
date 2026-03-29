@@ -22,7 +22,7 @@
   <!-- PLACEMENT -->
   <!-- ══════════════════════════════════════════════════════════════ -->
   <placement>
-    <!-- [ center | automatic | cursor | cascade ] -->
+    <!-- [center | automatic | cursor | cascade] -->
     <policy>cascade</policy>
   </placement>
 

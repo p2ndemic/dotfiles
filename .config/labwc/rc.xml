@@ -181,7 +181,7 @@
       </action>
     </keybind>
 
-    <!-- ─── Application Launchers ─── -->
+    <!-- ─── Applications ─── -->
     <keybind key="W-Escape">
       <action name="Execute">
         <command>uwsm app -S both -- foot -T btop -a btop btop</command>

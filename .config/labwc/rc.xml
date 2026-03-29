@@ -1,0 +1,440 @@
+<?xml version="1.0" ?>
+<labwc_config>
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- CORE -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+  <core>
+    <decoration>server</decoration>
+    <gap>8</gap>
+    <!-- [yes|no|fullscreen] -->
+    <adaptiveSync>no</adaptiveSync>
+    <!-- [yes|no|fullscreen|fullscreenForced] -->
+    <allowTearing>fullscreen</allowTearing>
+    <!-- Automatically enable new outputs when connected -->
+    <autoEnableOutputs>yes</autoEnableOutputs>
+    <reuseOutputMode>no</reuseOutputMode>
+    <xwaylandPersistence>no</xwaylandPersistence>
+    <!-- Enable/disable primary selection clipboard (affects middle-click paste) -->
+    <primarySelection>yes</primarySelection>
+  </core>
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- PLACEMENT -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <placement>
+    <!-- [ center | automatic | cursor | cascade ] -->
+    <policy>cascade</policy>
+  </placement>
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- THEME -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <theme>
+    <name>Adwaita-dark</name>
+    <icon>Numix</icon>
+    <fallbackAppIcon>labwc</fallbackAppIcon>
+    <titlebar>
+      <layout>icon:iconify,max,close</layout>
+      <showTitle>yes</showTitle>
+    </titlebar>
+    <cornerRadius>8</cornerRadius>
+    <keepBorder>yes</keepBorder>
+    <maximizedDecoration>titlebar</maximizedDecoration>
+    <dropShadows>no</dropShadows>
+    <dropShadowsOnTiled>no</dropShadowsOnTiled>
+    <!-- Font settings for various UI elements -->
+    <font place="ActiveWindow">
+      <name>IBM Plex Sans</name>
+      <size>10</size>
+      <slant>normal</slant>
+      <weight>normal</weight>
+    </font>
+    <font place="InactiveWindow">
+      <name>IBM Plex Sans</name>
+      <size>10</size>
+      <slant>normal</slant>
+      <weight>normal</weight>
+    </font>
+    <font place="MenuHeader">
+      <name>IBM Plex Sans</name>
+      <size>10</size>
+      <slant>normal</slant>
+      <weight>normal</weight>
+    </font>
+    <font place="MenuItem">
+      <name>IBM Plex Sans</name>
+      <size>10</size>
+      <slant>normal</slant>
+      <weight>normal</weight>
+    </font>
+    <font place="OnScreenDisplay">
+      <name>IBM Plex Sans</name>
+      <size>10</size>
+      <slant>normal</slant>
+      <weight>normal</weight>
+    </font>
+  </theme>
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- WINDOW SWITCHER -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <windowSwitcher preview="yes" outlines="yes" unshade="yes" order="focus">
+    <!-- OSD style: [ classic | thumbnail ] -->
+    <!-- output: [ all | focused | cursor ] -->
+    <osd show="yes" style="classic" output="all" thumbnailLabelFormat="%T" />
+    <fields>
+      <!-- field content: [ icon | type_short | desktop_entry_name | title ] -->
+      <field content="icon" width="5%" />
+      <field content="type_short" width="5%" />
+      <field content="desktop_entry_name" width="20%" />
+      <field content="title" width="70%" />
+    </fields>
+  </windowSwitcher>
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- RESIZE -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <resize>
+    <popupShow>Never</popupShow>
+    <drawContents>yes</drawContents>
+    <minimumArea>8</minimumArea>
+    <cornerRange>8</cornerRange>
+  </resize>
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- FOCUS -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <focus>
+    <followMouse>no</followMouse>
+    <followMouseRequiresMovement>yes</followMouseRequiresMovement>
+    <raiseOnFocus>yes</raiseOnFocus>
+  </focus>
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- SNAPPING -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <snapping>
+    <!-- inner = between monitors, outer = screen edge (0 = disable) -->
+    <range inner="5" outer="5" />
+    <!-- Corner snap radius in pixels -->
+    <cornerRange>50</cornerRange>
+    <!-- Snap overlay (highlight) -->
+    <overlay enabled="yes">
+      <delay inner="200" outer="200" />
+    </overlay>
+    <topMaximize>yes</topMaximize>
+    <!-- Notify client about snapping [always|region|edge|never] -->
+    <notifyClient>always</notifyClient>
+  </snapping>
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- DESKTOPS -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <desktops number="4">
+    <popupTime>500</popupTime>
+    <names>
+      <name>1</name>
+      <name>2</name>
+      <name>3</name>
+      <name>4</name>
+    </names>
+  </desktops>
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- KEYBOARD -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <keyboard>
+    <!-- NumLock при подключении клавиатуры [on|off] -->
+    <!-- <numlock>on</numlock> -->
+    <layoutScope>global</layoutScope>
+    <repeatRate>50</repeatRate>
+    <repeatDelay>300</repeatDelay>
+    <!-- Load default keybinds -->
+    <default />
+
+    <!-- Window cycling -->
+    <keybind key="A-Tab">
+      <action name="NextWindow" />
+    </keybind>
+    <keybind key="A-S-Tab">
+      <action name="PreviousWindow" />
+    </keybind>
+
+    <!-- Terminal -->
+    <keybind key="W-Return">
+      <action name="Execute">
+        <command>foot</command>
+      </action>
+    </keybind>
+
+    <!-- Super (release) — Fuzzel launcher -->
+    <keybind key="Super_L" onRelease="yes">
+      <action name="Execute">
+        <command>sh -c 'pkill -x fuzzel || exec uwsm app -S both -- fuzzel'</command>
+      </action>
+    </keybind>
+    <!-- Super+D — Fuzzel launcher -->
+    <keybind key="W-d">
+      <action name="Execute">
+        <command>sh -c 'pkill -x fuzzel || exec uwsm app -S both -- fuzzel'</command>
+      </action>
+    </keybind>
+
+    <!-- Window management -->
+    <keybind key="W-q">
+      <action name="Close" />
+    </keybind>
+    <keybind key="A-q">
+      <action name="Close" />
+    </keybind>
+    <keybind key="W-F4">
+      <action name="Close" />
+    </keybind>
+    <keybind key="W-A-q">
+      <action name="Kill" />
+    </keybind>
+    <keybind key="W-A-F4">
+      <action name="Kill" />
+    </keybind>
+    <keybind key="W-a">
+      <action name="ToggleMaximize" />
+    </keybind>
+    <keybind key="W-f">
+      <action name="ToggleFullscreen" />
+    </keybind>
+    <keybind key="W-m">
+      <action name="Iconify" />
+    </keybind>
+    <keybind key="W-h">
+      <action name="ToggleShade" />
+    </keybind>
+    <keybind key="W-k">
+      <action name="ToggleDecorations" />
+    </keybind>
+    <keybind key="W-t">
+      <action name="ToggleAlwaysOnTop" />
+    </keybind>
+    <keybind key="W-o">
+      <action name="ToggleOmnipresent" />
+    </keybind>
+    <keybind key="A-Space">
+      <action name="ShowMenu" menu="client-menu" atCursor="no" />
+    </keybind>
+
+    <!-- Snap / Tiling -->
+    <keybind key="W-KP_4">
+      <action name="SnapToEdge" direction="left" combine="yes" />
+    </keybind>
+    <keybind key="W-KP_6">
+      <action name="SnapToEdge" direction="right" combine="yes" />
+    </keybind>
+    <keybind key="W-KP_8">
+      <action name="SnapToEdge" direction="up" combine="yes" />
+    </keybind>
+    <keybind key="W-KP_2">
+      <action name="SnapToEdge" direction="down" combine="yes" />
+    </keybind>
+    <keybind key="W-KP_7">
+      <action name="ToggleSnapToEdge" direction="up-left" />
+    </keybind>
+    <keybind key="W-KP_9">
+      <action name="ToggleSnapToEdge" direction="up-right" />
+    </keybind>
+    <keybind key="W-KP_1">
+      <action name="ToggleSnapToEdge" direction="down-left" />
+    </keybind>
+    <keybind key="W-KP_3">
+      <action name="ToggleSnapToEdge" direction="down-right" />
+    </keybind>
+    <keybind key="W-KP_5">
+      <action name="ToggleSnapToEdge" direction="center" />
+    </keybind>
+    <keybind key="W-KP_0">
+      <action name="UnSnap" />
+    </keybind>
+
+    <!-- Workspace navigation -->
+    <keybind key="W-1">
+      <action name="GoToDesktop" to="1" />
+    </keybind>
+    <keybind key="W-2">
+      <action name="GoToDesktop" to="2" />
+    </keybind>
+    <keybind key="W-3">
+      <action name="GoToDesktop" to="3" />
+    </keybind>
+    <keybind key="W-4">
+      <action name="GoToDesktop" to="4" />
+    </keybind>
+    <keybind key="W-S-1">
+      <action name="SendToDesktop" to="1" follow="no" />
+    </keybind>
+    <keybind key="W-S-2">
+      <action name="SendToDesktop" to="2" follow="no" />
+    </keybind>
+    <keybind key="W-S-3">
+      <action name="SendToDesktop" to="3" follow="no" />
+    </keybind>
+    <keybind key="W-S-4">
+      <action name="SendToDesktop" to="4" follow="no" />
+    </keybind>
+    <keybind key="W-Left">
+      <action name="GoToDesktop" to="left" wrap="yes" />
+    </keybind>
+    <keybind key="W-Right">
+      <action name="GoToDesktop" to="right" wrap="yes" />
+    </keybind>
+    <keybind key="W-Down">
+      <action name="GoToDesktop" to="last" toggle="yes" />
+    </keybind>
+
+    <!-- System / Media keys -->
+    <keybind key="XF86_AudioLowerVolume">
+      <action name="Execute">
+        <command>~/.local/bin/wob-volume.sh --sink-down</command>
+      </action>
+    </keybind>
+    <keybind key="XF86_AudioRaiseVolume">
+      <action name="Execute">
+        <command>~/.local/bin/wob-volume.sh --sink-up</command>
+      </action>
+    </keybind>
+    <keybind key="XF86_AudioMute">
+      <action name="Execute">
+        <command>~/.local/bin/wob-volume.sh --sink-mute</command>
+      </action>
+    </keybind>
+    <keybind key="XF86AudioMicMute">
+      <action name="Execute">
+        <command>~/.local/bin/wob-volume.sh --source-mute</command>
+      </action>
+    </keybind>
+    <keybind key="XF86_MonBrightnessDown">
+      <action name="Execute">
+        <command>~/.local/bin/wob-brightness.sh --down</command>
+      </action>
+    </keybind>
+    <keybind key="XF86_MonBrightnessUp">
+      <action name="Execute">
+        <command>~/.local/bin/wob-brightness.sh --up</command>
+      </action>
+    </keybind>
+
+    <!-- Screenshots -->
+    <keybind key="Print">
+      <action name="Execute">
+        <command>sh -c 'grim -g "$(slurp)" ~/Pictures/screenshot-$(date +%s).png'</command>
+      </action>
+    </keybind>
+    <keybind key="W-Print">
+      <action name="Execute">
+        <command>sh -c 'grim ~/Pictures/screenshot-$(date +%s).png'</command>
+      </action>
+    </keybind>
+
+    <!-- Magnifier -->
+    <keybind key="W-F9">
+      <action name="ToggleMagnify" />
+    </keybind>
+    <keybind key="W-F10">
+      <action name="ZoomIn" />
+    </keybind>
+    <keybind key="W-F11">
+      <action name="ZoomOut" />
+    </keybind>
+
+    <!-- System -->
+    <keybind key="W-S-r">
+      <action name="Reconfigure" />
+    </keybind>
+    <keybind key="W-F12">
+      <action name="ToggleKeybinds" />
+    </keybind>
+    <keybind key="W-S-Backspace">
+      <action name="If">
+        <prompt message="Leave LabWC?" />
+        <then>
+          <action name="Exit" />
+        </then>
+      </action>
+    </keybind>
+  </keyboard>
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- MOUSE -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <mouse>
+    <doubleClickTime>500</doubleClickTime>
+    <!-- Load default mousebinds -->
+    <default />
+
+    <!-- Frame: Super + mouse for move/resize -->
+    <context name="Frame">
+      <mousebind button="W-Left" action="Press">
+        <action name="Focus" />
+        <action name="Raise" />
+      </mousebind>
+      <mousebind button="W-Left" action="Drag">
+        <action name="Move" />
+      </mousebind>
+      <mousebind button="W-Right" action="Press">
+        <action name="Focus" />
+        <action name="Raise" />
+      </mousebind>
+      <mousebind button="W-Right" action="Drag">
+        <action name="Resize" />
+      </mousebind>
+    </context>
+
+    <!-- Root (desktop) context -->
+    <context name="Root">
+      <mousebind button="Left" action="Press">
+        <action name="None" />
+      </mousebind>
+      <mousebind button="Right" action="Press">
+        <action name="ShowMenu" menu="root-menu" />
+      </mousebind>
+      <mousebind button="Middle" action="Press">
+        <action name="None" />
+      </mousebind>
+    </context>
+
+    <!-- AllDesktops button -->
+    <context name="AllDesktops">
+      <mousebind button="Left" action="Click">
+        <action name="ToggleOmnipresent" />
+      </mousebind>
+    </context>
+  </mouse>
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- LIBINPUT -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <libinput>
+    <!-- Default category applies to all devices not matched by specific categories -->
+    <device category="default">
+      <naturalScroll>no</naturalScroll>
+      <leftHanded>no</leftHanded>
+      <!-- Pointer speed: -1.0 to 1.0 (0.0 = normal) -->
+      <pointerSpeed>0.0</pointerSpeed>
+      <!-- Acceleration profile: flat (no accel) or adaptive -->
+      <accelProfile>flat</accelProfile>
+      <tap>yes</tap>
+      <!-- Tap button map: lrm = left, right, middle for 1,2,3 fingers -->
+      <tapButtonMap>lrm</tapButtonMap>
+      <tapAndDrag>yes</tapAndDrag>
+      <!-- Drag lock: disabled by default (use 'timeout' for timed lock) -->
+      <dragLock>no</dragLock>
+      <threeFingerDrag>yes</threeFingerDrag>
+      <middleEmulation>no</middleEmulation>
+      <disableWhileTyping>yes</disableWhileTyping>
+      <!-- Click method: clickfinger (1/2/3 fingers) or buttonAreas (zones) -->
+      <clickMethod>clickfinger</clickMethod>
+      <scrollMethod>twofinger</scrollMethod>
+      <sendEventsMode>disabledOnExternalMouse</sendEventsMode>
+      <calibrationMatrix>1 0 0 0 1 0</calibrationMatrix>
+      <scrollFactor>1.0</scrollFactor>
+    </device>
+  </libinput>
+
+</labwc_config>

@@ -131,13 +131,12 @@
   <!-- ══════════════════════════════════════════════════════════════ -->
   <!-- DESKTOPS -->
   <!-- ══════════════════════════════════════════════════════════════ -->
-  <desktops number="4">
+  <desktops number="3">
     <popupTime>500</popupTime>
     <names>
       <name>1</name>
       <name>2</name>
       <name>3</name>
-      <name>4</name>
     </names>
   </desktops>
 
@@ -164,7 +163,7 @@
     <!-- ─── Terminal ─── -->
     <keybind key="W-Return">
       <action name="Execute">
-        <command>foot</command>
+        <command>exec uwsm app -S both -- foot</command>
       </action>
     </keybind>
 
@@ -185,31 +184,28 @@
     <!-- ─── Application Launchers ─── -->
     <keybind key="W-Esc">
       <action name="Execute">
-        <command>btop</command>
+        <command>exec uwsm app -S both -T -- btop</command>
       </action>
     </keybind>
     <keybind key="W-e">
       <action name="Execute">
-        <command>pcmanfm-qt</command>
+        <command>exec uwsm app -S both -- pcmanfm-qt</command>
       </action>
     </keybind>
     <keybind key="W-b">
       <action name="Execute">
-        <command>firefox</command>
+        <command>exec uwsm app -S both -- firefox</command>
       </action>
     </keybind>
     <keybind key="W-y">
       <action name="Execute">
-        <command>kate</command>
+        <command>exec uwsm app -S both -- featherpad</command>
       </action>
     </keybind>
 
     <!-- ─── Window Management ─── -->
     <!-- Close window -->
     <keybind key="W-q">
-      <action name="Close" />
-    </keybind>
-    <keybind key="A-q">
       <action name="Close" />
     </keybind>
     <keybind key="W-F4">
@@ -256,7 +252,7 @@
     </keybind>
 
     <!-- ─── Snap / Tiling ─── -->
-    <!-- Snap to edge with arrow keys (Super + arrow) -->
+    <!-- Snap to edge with Arrow keys (Super + Arrow) -->
     <keybind key="W-Left">
       <action name="SnapToEdge" direction="left" combine="yes" />
     </keybind>
@@ -270,7 +266,7 @@
       <action name="SnapToEdge" direction="down" combine="yes" />
     </keybind>
 
-    <!-- Numpad bindings for tiling -->
+    <!-- Snap to edge with Numpad keys (Super + KP) -->
     <keybind key="W-KP_4">
       <action name="SnapToEdge" direction="left" combine="yes" />
     </keybind>
@@ -312,9 +308,6 @@
     <keybind key="W-3">
       <action name="GoToDesktop" to="3" />
     </keybind>
-    <keybind key="W-4">
-      <action name="GoToDesktop" to="4" />
-    </keybind>
     <keybind key="W-S-1">
       <action name="SendToDesktop" to="1" follow="no" />
     </keybind>
@@ -323,9 +316,6 @@
     </keybind>
     <keybind key="W-S-3">
       <action name="SendToDesktop" to="3" follow="no" />
-    </keybind>
-    <keybind key="W-S-4">
-      <action name="SendToDesktop" to="4" follow="no" />
     </keybind>
     <keybind key="W-A-Left">
       <action name="GoToDesktop" to="left" wrap="yes" />
@@ -429,7 +419,7 @@
       <action name="ZoomOut" />
     </keybind>
 
-    <!-- ─── System ─── -->
+    <!-- ─── Labwc specific ─── -->
     <keybind key="W-S-r">
       <action name="Reconfigure" />
     </keybind>

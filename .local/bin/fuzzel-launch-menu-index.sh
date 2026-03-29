@@ -46,7 +46,7 @@ FONT="BlexMono Nerd Font Mono:size=14"
 
 # Window anchor position on screen
 # Options: top-left | top | top-right | left | center | right | bottom-left | bottom | bottom-right
-ALIGN="bottom-left"
+ANCHOR="bottom-left"
 
 # ══════════════════════════════════════════════════════════════════════════════
 # Helpers
@@ -58,7 +58,7 @@ fuzzel_run() {
         --dmenu \
         --index \
         --font="$FONT" \
-        --anchor="$ALIGN" \
+        --anchor="$ANCHOR" \
         --y-margin=2 \
         --hide-prompt \
         --lines=11 \

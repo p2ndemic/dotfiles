@@ -182,7 +182,7 @@
     </keybind>
 
     <!-- ─── Application Launchers ─── -->
-    <keybind key="W-Esc">
+    <keybind key="W-Escape">
       <action name="Execute">
         <command>exec uwsm app -S both -T -- btop</command>
       </action>

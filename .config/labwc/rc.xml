@@ -95,6 +95,7 @@
   <!-- RESIZE -->
   <!-- ══════════════════════════════════════════════════════════════ -->
   <resize>
+    <!-- [Never|Always|Nonpixel] -->
     <popupShow>Never</popupShow>
     <drawContents>yes</drawContents>
     <minimumArea>8</minimumArea>
@@ -152,7 +153,7 @@
     <!-- Load default keybinds -->
     <default />
 
-    <!-- Window cycling -->
+    <!-- ─── Window Cycling ─── -->
     <keybind key="A-Tab">
       <action name="NextWindow" />
     </keybind>
@@ -160,13 +161,14 @@
       <action name="PreviousWindow" />
     </keybind>
 
-    <!-- Terminal -->
+    <!-- ─── Terminal ─── -->
     <keybind key="W-Return">
       <action name="Execute">
         <command>foot</command>
       </action>
     </keybind>
 
+    <!-- ─── Launcher ─── -->
     <!-- Super (release) — Fuzzel launcher -->
     <keybind key="Super_L" onRelease="yes">
       <action name="Execute">
@@ -180,7 +182,7 @@
       </action>
     </keybind>
 
-    <!-- Window management -->
+    <!-- ─── Window Management ─── -->
     <keybind key="W-q">
       <action name="Close" />
     </keybind>
@@ -221,7 +223,22 @@
       <action name="ShowMenu" menu="client-menu" atCursor="no" />
     </keybind>
 
-    <!-- Snap / Tiling -->
+    <!-- ─── Snap / Tiling ─── -->
+    <!-- Snap to edge with arrow keys (Super + arrow) -->
+    <keybind key="W-Left">
+      <action name="SnapToEdge" direction="left" combine="yes" />
+    </keybind>
+    <keybind key="W-Right">
+      <action name="SnapToEdge" direction="right" combine="yes" />
+    </keybind>
+    <keybind key="W-Up">
+      <action name="SnapToEdge" direction="up" combine="yes" />
+    </keybind>
+    <keybind key="W-Down">
+      <action name="SnapToEdge" direction="down" combine="yes" />
+    </keybind>
+
+    <!-- Numpad bindings for tiling -->
     <keybind key="W-KP_4">
       <action name="SnapToEdge" direction="left" combine="yes" />
     </keybind>
@@ -253,7 +270,7 @@
       <action name="UnSnap" />
     </keybind>
 
-    <!-- Workspace navigation -->
+    <!-- ─── Workspace Navigation ─── -->
     <keybind key="W-1">
       <action name="GoToDesktop" to="1" />
     </keybind>
@@ -278,17 +295,30 @@
     <keybind key="W-S-4">
       <action name="SendToDesktop" to="4" follow="no" />
     </keybind>
-    <keybind key="W-Left">
+    <keybind key="W-A-Left">
       <action name="GoToDesktop" to="left" wrap="yes" />
     </keybind>
-    <keybind key="W-Right">
+    <keybind key="W-A-Right">
       <action name="GoToDesktop" to="right" wrap="yes" />
     </keybind>
-    <keybind key="W-Down">
+    <keybind key="W-A-Down">
       <action name="GoToDesktop" to="last" toggle="yes" />
     </keybind>
 
-    <!-- System / Media keys -->
+    <!-- ─── System / Media Keys ─── -->
+    <!-- Brightness -->
+    <keybind key="XF86_MonBrightnessDown">
+      <action name="Execute">
+        <command>~/.local/bin/wob-brightness.sh --down</command>
+      </action>
+    </keybind>
+    <keybind key="XF86_MonBrightnessUp">
+      <action name="Execute">
+        <command>~/.local/bin/wob-brightness.sh --up</command>
+      </action>
+    </keybind>
+
+    <!-- Volume -->
     <keybind key="XF86_AudioLowerVolume">
       <action name="Execute">
         <command>~/.local/bin/wob-volume.sh --sink-down</command>
@@ -309,18 +339,42 @@
         <command>~/.local/bin/wob-volume.sh --source-mute</command>
       </action>
     </keybind>
-    <keybind key="XF86_MonBrightnessDown">
+
+    <!-- Media Playback -->
+    <keybind key="XF86AudioNext">
       <action name="Execute">
-        <command>~/.local/bin/wob-brightness.sh --down</command>
+        <command>playerctl next</command>
       </action>
     </keybind>
-    <keybind key="XF86_MonBrightnessUp">
+    <keybind key="XF86AudioPrev">
       <action name="Execute">
-        <command>~/.local/bin/wob-brightness.sh --up</command>
+        <command>playerctl previous</command>
+      </action>
+    </keybind>
+    <keybind key="XF86AudioPlay">
+      <action name="Execute">
+        <command>playerctl play-pause</command>
       </action>
     </keybind>
 
-    <!-- Screenshots -->
+    <!-- Power Off -->
+    <keybind key="XF86PowerOff">
+      <action name="Execute">
+        <command>~/.local/bin/poweroff.sh</command>
+      </action>
+    </keybind>
+
+    <!-- ─── Screenshots ─── -->
+    <keybind key="XF86FullScreen">
+      <action name="Execute">
+        <command>~/.local/bin/full_screenshot.sh</command>
+      </action>
+    </keybind>
+    <keybind key="XF86LaunchA">
+      <action name="Execute">
+        <command>~/.local/bin/screenshot_area.sh</command>
+      </action>
+    </keybind>
     <keybind key="Print">
       <action name="Execute">
         <command>sh -c 'grim -g "$(slurp)" ~/Pictures/screenshot-$(date +%s).png'</command>
@@ -332,7 +386,7 @@
       </action>
     </keybind>
 
-    <!-- Magnifier -->
+    <!-- ─── Magnifier ─── -->
     <keybind key="W-F9">
       <action name="ToggleMagnify" />
     </keybind>
@@ -343,7 +397,7 @@
       <action name="ZoomOut" />
     </keybind>
 
-    <!-- System -->
+    <!-- ─── System ─── -->
     <keybind key="W-S-r">
       <action name="Reconfigure" />
     </keybind>

@@ -163,7 +163,7 @@
     <!-- ─── Terminal ─── -->
     <keybind key="W-Return">
       <action name="Execute">
-        <command>exec uwsm app -S both -- foot</command>
+        <command>uwsm app -S both -- foot</command>
       </action>
     </keybind>
 
@@ -184,22 +184,22 @@
     <!-- ─── Application Launchers ─── -->
     <keybind key="W-Escape">
       <action name="Execute">
-        <command>exec uwsm app -S both -T -- btop</command>
+        <command>uwsm app -S both -T -- btop</command>
       </action>
     </keybind>
     <keybind key="W-e">
       <action name="Execute">
-        <command>exec uwsm app -S both -- pcmanfm-qt</command>
+        <command>uwsm app -S both -- pcmanfm-qt</command>
       </action>
     </keybind>
     <keybind key="W-b">
       <action name="Execute">
-        <command>exec uwsm app -S both -- firefox</command>
+        <command>uwsm app -S both -- firefox</command>
       </action>
     </keybind>
     <keybind key="W-y">
       <action name="Execute">
-        <command>exec uwsm app -S both -- featherpad</command>
+        <command>uwsm app -S both -- featherpad</command>
       </action>
     </keybind>
 

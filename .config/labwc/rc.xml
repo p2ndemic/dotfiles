@@ -182,7 +182,30 @@
       </action>
     </keybind>
 
+    <!-- ─── Application Launchers ─── -->
+    <keybind key="W-Esc">
+      <action name="Execute">
+        <command>btop</command>
+      </action>
+    </keybind>
+    <keybind key="W-e">
+      <action name="Execute">
+        <command>pcmanfm-qt</command>
+      </action>
+    </keybind>
+    <keybind key="W-b">
+      <action name="Execute">
+        <command>firefox</command>
+      </action>
+    </keybind>
+    <keybind key="W-y">
+      <action name="Execute">
+        <command>kate</command>
+      </action>
+    </keybind>
+
     <!-- ─── Window Management ─── -->
+    <!-- Close window -->
     <keybind key="W-q">
       <action name="Close" />
     </keybind>
@@ -192,33 +215,42 @@
     <keybind key="W-F4">
       <action name="Close" />
     </keybind>
+    <!-- Force kill window -->
     <keybind key="W-A-q">
       <action name="Kill" />
     </keybind>
     <keybind key="W-A-F4">
       <action name="Kill" />
     </keybind>
+    <!-- Toggle maximize -->
     <keybind key="W-a">
       <action name="ToggleMaximize" />
     </keybind>
+    <!-- Toggle fullscreen -->
     <keybind key="W-f">
       <action name="ToggleFullscreen" />
     </keybind>
+    <!-- Minimize -->
     <keybind key="W-m">
       <action name="Iconify" />
     </keybind>
+    <!-- Toggle shade (roll up) -->
     <keybind key="W-h">
       <action name="ToggleShade" />
     </keybind>
+    <!-- Toggle decorations -->
     <keybind key="W-k">
       <action name="ToggleDecorations" />
     </keybind>
+    <!-- Toggle always on top -->
     <keybind key="W-t">
       <action name="ToggleAlwaysOnTop" />
     </keybind>
+    <!-- Toggle sticky (all workspaces) -->
     <keybind key="W-o">
       <action name="ToggleOmnipresent" />
     </keybind>
+    <!-- Show window menu -->
     <keybind key="A-Space">
       <action name="ShowMenu" menu="client-menu" atCursor="no" />
     </keybind>

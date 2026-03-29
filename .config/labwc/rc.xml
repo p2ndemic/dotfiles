@@ -198,7 +198,7 @@
         <command>uwsm app -S both -- firefox</command>
       </action>
     </keybind>
-    <keybind key="W-y">
+    <keybind key="W-t">
       <action name="Execute">
         <command>uwsm app -S both -- featherpad</command>
       </action>
@@ -240,7 +240,7 @@
       <action name="ToggleDecorations" />
     </keybind>
     <!-- Toggle always on top -->
-    <keybind key="W-t">
+    <keybind key="W-j">
       <action name="ToggleAlwaysOnTop" />
     </keybind>
     <!-- Toggle sticky (all workspaces) -->

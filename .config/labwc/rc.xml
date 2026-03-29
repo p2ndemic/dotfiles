@@ -365,31 +365,31 @@
     <!-- Media Playback -->
     <keybind key="XF86AudioNext">
       <action name="Execute">
-        <command>playerctl next</command>
+        <command>mpv-ctl.sh next</command>
       </action>
     </keybind>
     <keybind key="XF86AudioPrev">
       <action name="Execute">
-        <command>playerctl previous</command>
+        <command>mpv-ctl.sh previous</command>
       </action>
     </keybind>
     <keybind key="XF86AudioPlay">
       <action name="Execute">
-        <command>playerctl play-pause</command>
+        <command>mpv-ctl.sh play-pause</command>
       </action>
     </keybind>
 
     <!-- Power Off -->
     <keybind key="XF86PowerOff">
       <action name="Execute">
-        <command>~/.local/bin/poweroff.sh</command>
+        <command>~/.local/bin/fuzzel-powermenu-index.sh</command>
       </action>
     </keybind>
 
     <!-- ─── Screenshots ─── -->
     <keybind key="XF86FullScreen">
       <action name="Execute">
-        <command>~/.local/bin/full_screenshot.sh</command>
+        <command>~/.local/bin/fuzzel-launch-menu-index.sh</command>
       </action>
     </keybind>
     <keybind key="XF86LaunchA">

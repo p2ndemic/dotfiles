@@ -185,7 +185,7 @@
     <!-- ─── Applications ─── -->
     <keybind key="W-Escape">
       <action name="Execute">
-        <command>uwsm app -S both -- foot -a btop -T btop btop</command>
+        <command>uwsm app -S both -- foot --app-id="btop" --title="btop" btop</command>
       </action>
     </keybind>
     <keybind key="W-e">

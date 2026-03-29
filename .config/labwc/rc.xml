@@ -83,7 +83,7 @@
     <!-- output: [ all | focused | cursor ] -->
     <osd show="yes" style="classic" output="all" thumbnailLabelFormat="%T" />
     <fields>
-      <!-- field content: [ icon | type_short | desktop_entry_name | title ] -->
+      <!-- field content: [ icon | type_short (W=Wayland, X=Xwayland) | identifier | title ] -->
       <field content="icon" width="5%" />
       <field content="type_short" width="5%" />
       <field content="desktop_entry_name" width="20%" />

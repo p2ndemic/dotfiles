@@ -89,7 +89,7 @@ fuzzel_run() {
         --anchor="$ANCHOR" \
         --select-index=0 \
         --minimal-lines \
-        --width=11 \
+        --width=13 \
         --horizontal-pad=17 \
         --vertical-pad=11 \
         --line-height=24

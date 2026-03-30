@@ -92,8 +92,7 @@ fuzzel_run() {
         --width=11 \
         --horizontal-pad=17 \
         --vertical-pad=11 \
-        --line-height=24 \
-        --selection-radius=0
+        --line-height=24
 }
 
 # ══════════════════════════════════════════════════════════════════════════════

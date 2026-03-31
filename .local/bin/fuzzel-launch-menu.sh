@@ -59,7 +59,6 @@ fuzzel_run() {
         --index \
         --font="$FONT" \
         --anchor="$ANCHOR" \
-        --y-margin=2 \
         --hide-prompt \
         --lines=11 \
         --width=20 \
@@ -68,6 +67,7 @@ fuzzel_run() {
         --line-height=24 \
         --no-exit-on-keyboard-focus-loss
 }
+# --y-margin=2 \
 
 # ── Build a dmenu entry with an icon (Rofi/Fuzzel extended dmenu protocol) ────
 # ── Usage: fuzzel_item "Label" "icon-name" ────────────────────────────────────

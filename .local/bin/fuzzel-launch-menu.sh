@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # ══════════════════════════════════════════════════════════════════════════════
-# fuzzel-launch-menu-index.sh — Categorized application launcher using Fuzzel (dmenu mode)
+# fuzzel-launch-menu.sh — Categorized application launcher using Fuzzel (dmenu mode)
 # ══════════════════════════════════════════════════════════════════════════════
 
 # ── Toggle: kill fuzzel if already running ────────────────────────────────────

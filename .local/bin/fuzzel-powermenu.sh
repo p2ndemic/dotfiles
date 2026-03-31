@@ -60,9 +60,9 @@ show_power_menu() {
 # ══════════════════════════════════════════════════════════════════════════════
 
 # ── Capture selection and execute action ──────────────────────────────────────
-FUZZEL_CHOICE=$(show_power_menu | fuzzel_run)
+CHOICE=$(show_power_menu | fuzzel_run)
 
-case "$FUZZEL_CHOICE" in
+case "$CHOICE" in
     0)  loginctl lock-session "$XDG_SESSION_ID"      ;;  # [0] Lock
     1)  loginctl terminate-session "$XDG_SESSION_ID" ;;  # [1] Logout
     2)  systemctl reboot                             ;;  # [2] Reboot

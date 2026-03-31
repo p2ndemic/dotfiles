@@ -91,7 +91,7 @@ fuzzel_run() {
         --minimal-lines \
         --width=13 \
         --horizontal-pad=17 \
-        --vertical-pad=11 \
+        --vertical-pad=10 \
         --line-height=24
 }
 

@@ -7,7 +7,7 @@ After=network.target
 [Service]
 Type=oneshot
 # Use the full path to your script in ~/.local/bin
-ExecStart=%h/.local/bin/iwctl-auto-scan.sh
+ExecStart=/usr/local/bin/iwctl-auto-scan
 
 [Install]
 WantedBy=default.target

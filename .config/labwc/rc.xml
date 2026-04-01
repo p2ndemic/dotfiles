@@ -299,7 +299,7 @@
       <action name="SnapToEdge" direction="down" combine="yes" />
     </keybind>
 
-    <!-- Snap to edge with Numpad keys (Super + KP) -->
+    <!-- Snap to edge with Numpad keys (Super + KP_n) -->
     <keybind key="W-KP_4">
       <action name="SnapToEdge" direction="left" combine="yes" />
     </keybind>

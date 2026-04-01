@@ -1,6 +1,15 @@
 # Ref: https://github.com/llyyr/dotfiles/blob/main/.config/mako/config
+
+# Position
 anchor=bottom-right
 sort=-time
 
-[mode=dnd]
+## Icons
+icons=1
+icon-location=left
+max-icon-size=64
+icon-path=/usr/share/icons/breeze
+
+# Modes
+[mode=do-not-disturb]
 invisible=1

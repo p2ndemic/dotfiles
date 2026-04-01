@@ -212,7 +212,7 @@
     <!-- Lock screen (swaylock) -->
     <keybind key="W-l">
       <action name="Execute">
-        <command>uwsm app -- swayidle -w timeout 300 'swaylock -f -c 000000' timeout 600 'wlopm --off \*' resume 'wlopm --on \*' before-sleep 'swaylock -f -c 000000' &gt;/dev/null 2&gt;&amp;1</command>
+        <command>uwsm app -s b -- swayidle -w timeout 300 'swaylock -f -c 000000' timeout 600 'wlopm --off \*' resume 'wlopm --on \*' before-sleep 'swaylock -f -c 000000' &gt;/dev/null 2&gt;&amp;1</command>
       </action>
     </keybind>
     <!-- Clipboard history (cliphist + fuzzel) -->
@@ -226,13 +226,13 @@
     <!-- Delete file (ydotool Delete) -->
     <keybind key="W-BackSpace">
       <action name="Execute">
-        <command>uwsm app -- ydotool key 111:1 111:0</command>
+        <command>uwsm app -s b -- ydotool key 111:1 111:0</command>
       </action>
     </keybind>
     <!-- Force Delete file (ydotool Shift+Delete) -->
     <keybind key="W-S-BackSpace">
       <action name="Execute">
-        <command>uwsm app -- ydotool key 42:1 111:1 111:0 42:0</command>
+        <command>uwsm app -s b -- ydotool key 42:1 111:1 111:0 42:0</command>
       </action>
     </keybind>
 

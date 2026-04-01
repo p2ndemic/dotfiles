@@ -22,7 +22,7 @@
   <!-- PLACEMENT -->
   <!-- ══════════════════════════════════════════════════════════════ -->
   <placement>
-    <!-- [ center | automatic | cursor | cascade ] -->
+    <!-- [center | automatic | cursor | cascade] -->
     <policy>cascade</policy>
   </placement>
 
@@ -79,11 +79,11 @@
   <!-- WINDOW SWITCHER -->
   <!-- ══════════════════════════════════════════════════════════════ -->
   <windowSwitcher preview="yes" outlines="yes" unshade="yes" order="focus">
-    <!-- OSD style: [ classic | thumbnail ] -->
-    <!-- output: [ all | focused | cursor ] -->
+    <!-- OSD style: [classic | thumbnail] -->
+    <!-- output: [all | focused | cursor] -->
     <osd show="yes" style="classic" output="all" thumbnailLabelFormat="%T" />
     <fields>
-      <!-- field content: [ icon | type_short (W=Wayland, X=Xwayland) | identifier | title ] -->
+      <!-- field content: [icon | type_short (W=Wayland, X=Xwayland) | identifier | title] -->
       <field content="icon" width="5%" />
       <field content="type_short" width="5%" />
       <field content="desktop_entry_name" width="20%" />
@@ -95,7 +95,7 @@
   <!-- RESIZE -->
   <!-- ══════════════════════════════════════════════════════════════ -->
   <resize>
-    <!-- [Never|Always|Nonpixel] -->
+    <!-- [Never | Always | Nonpixel] -->
     <popupShow>Never</popupShow>
     <drawContents>yes</drawContents>
     <minimumArea>8</minimumArea>
@@ -133,6 +133,7 @@
   <!-- ══════════════════════════════════════════════════════════════ -->
   <desktops number="3">
     <popupTime>500</popupTime>
+    <initial>1</initial>
     <names>
       <name>1</name>
       <name>2</name>
@@ -144,7 +145,7 @@
   <!-- KEYBOARD -->
   <!-- ══════════════════════════════════════════════════════════════ -->
   <keyboard>
-    <!-- NumLock при подключении клавиатуры [on|off] -->
+    <!-- Numlock [on|off] is not set by default -->
     <!-- <numlock>on</numlock> -->
     <layoutScope>global</layoutScope>
     <repeatRate>50</repeatRate>
@@ -163,7 +164,7 @@
     <!-- ─── Terminal ─── -->
     <keybind key="W-Return">
       <action name="Execute">
-        <command>uwsm app -S both -- foot</command>
+        <command>uwsm app -- foot</command>
       </action>
     </keybind>
 
@@ -171,35 +172,35 @@
     <!-- Super (release) — Fuzzel launcher -->
     <keybind key="Super_L" onRelease="yes">
       <action name="Execute">
-        <command>sh -c 'pkill -x fuzzel || exec uwsm app -S both -- fuzzel'</command>
+        <command>sh -c 'pkill -x fuzzel || exec uwsm app -- fuzzel'</command>
       </action>
     </keybind>
     <!-- Super+D — Fuzzel launcher -->
     <keybind key="W-d">
       <action name="Execute">
-        <command>sh -c 'pkill -x fuzzel || exec uwsm app -S both -- fuzzel'</command>
+        <command>sh -c 'pkill -x fuzzel || exec uwsm app -- fuzzel'</command>
       </action>
     </keybind>
 
     <!-- ─── Applications ─── -->
     <keybind key="W-Escape">
       <action name="Execute">
-        <command>uwsm app -S both -- foot -T btop -a btop btop</command>
+        <command>uwsm app -- foot --app-id="btop" --title="btop" btop</command>
       </action>
     </keybind>
     <keybind key="W-e">
       <action name="Execute">
-        <command>uwsm app -S both -- pcmanfm-qt</command>
+        <command>uwsm app -- pcmanfm-qt</command>
       </action>
     </keybind>
     <keybind key="W-b">
       <action name="Execute">
-        <command>uwsm app -S both -- firefox</command>
+        <command>uwsm app -- firefox</command>
       </action>
     </keybind>
-    <keybind key="W-y">
+    <keybind key="W-t">
       <action name="Execute">
-        <command>uwsm app -S both -- featherpad</command>
+        <command>uwsm app -- featherpad</command>
       </action>
     </keybind>
 
@@ -208,7 +209,7 @@
     <keybind key="W-q">
       <action name="Close" />
     </keybind>
-    <keybind key="W-F4">
+    <keybind key="A-F4">
       <action name="Close" />
     </keybind>
     <!-- Force kill window -->
@@ -239,7 +240,7 @@
       <action name="ToggleDecorations" />
     </keybind>
     <!-- Toggle always on top -->
-    <keybind key="W-t">
+    <keybind key="W-j">
       <action name="ToggleAlwaysOnTop" />
     </keybind>
     <!-- Toggle sticky (all workspaces) -->
@@ -365,17 +366,17 @@
     <!-- Media Playback -->
     <keybind key="XF86AudioNext">
       <action name="Execute">
-        <command>mpv-ctl.sh next</command>
+        <command>mpv-ctl.sh --next</command>
       </action>
     </keybind>
     <keybind key="XF86AudioPrev">
       <action name="Execute">
-        <command>mpv-ctl.sh previous</command>
+        <command>mpv-ctl.sh --previous</command>
       </action>
     </keybind>
     <keybind key="XF86AudioPlay">
       <action name="Execute">
-        <command>mpv-ctl.sh play-pause</command>
+        <command>mpv-ctl.sh --play-pause</command>
       </action>
     </keybind>
 

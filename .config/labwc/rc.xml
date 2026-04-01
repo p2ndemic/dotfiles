@@ -415,14 +415,14 @@
     <!-- Power Off -->
     <keybind key="XF86PowerOff">
       <action name="Execute">
-        <command>~/.local/bin/fuzzel-powermenu-index.sh</command>
+        <command>~/.local/bin/fuzzel-powermenu.sh</command>
       </action>
     </keybind>
 
     <!-- ─── Screenshots ─── -->
     <keybind key="XF86FullScreen">
       <action name="Execute">
-        <command>~/.local/bin/fuzzel-launch-menu-index.sh</command>
+        <command>~/.local/bin/fuzzel-launch-menu.sh</command>
       </action>
     </keybind>
     <keybind key="XF86LaunchA">

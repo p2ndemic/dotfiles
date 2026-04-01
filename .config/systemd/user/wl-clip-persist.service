@@ -16,7 +16,7 @@ After=wayland-session@niri.desktop.target
 Type=exec
 ExecStart=/usr/bin/wl-clip-persist --clipboard regular --disable-timestamps
 # Для поддержки обеих режимов клипборда regular и primary использовать команду ниже:
-# ExecStart=/usr/bin/wl-clip-persist --clipboard both
+# ExecStart=/usr/bin/wl-clip-persist --clipboard both --disable-timestamps
 Restart=on-failure
 Slice=background-graphical.slice
 

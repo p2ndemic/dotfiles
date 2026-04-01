@@ -229,7 +229,7 @@
         <command>uwsm app -s b -- ydotool key 111:1 111:0</command>
       </action>
     </keybind>
-    <!-- Force Delete file (ydotool Shift+Delete) -->
+    <!-- Force delete file (ydotool Shift+Delete) -->
     <keybind key="W-S-BackSpace">
       <action name="Execute">
         <command>uwsm app -s b -- ydotool key 42:1 111:1 111:0 42:0</command>

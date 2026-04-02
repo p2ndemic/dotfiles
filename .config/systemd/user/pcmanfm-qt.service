@@ -1,6 +1,5 @@
 [Unit]
-Description=The LXQt file manager, Qt port of PCManFM (desktop icons)
-Documentation=man:pcmanfm-qt(1)
+Description=The LXQt file manager, Qt port of PCManFM
 # Stop and restart the service whenever the specific graphical session stops or restarts
 # Enable only on Labwc
 PartOf=wayland-session@labwc.desktop.target

@@ -5,6 +5,7 @@ After=pcmanfm-qt-desktop.service
 [Service]
 Type=oneshot
 ExecStart=/bin/sh -c 'exec /usr/bin/pcmanfm-qt --set-wallpaper "$(find %h/Pictures/Wallpapers -type f | shuf -n 1)" --wallpaper-mode fit'
+Restart=on-failure
 Slice=app-graphical.slice
 
 [Install]

@@ -5,7 +5,7 @@ Requires=pcmanfm-qt-desktop.service
 
 [Service]
 Type=oneshot
-ExecStart=/bin/bash -c 'exec /usr/bin/pcmanfm-qt --set-wallpaper "$(find %h/Pictures/Wallpapers -type f | shuf -n 1)" --wallpaper-mode fit'
+ExecStart=/bin/sh -c 'exec /usr/bin/pcmanfm-qt --set-wallpaper "$(find %h/Pictures/Wallpapers -type f | shuf -n 1)" --wallpaper-mode fit'
 
 [Install]
 WantedBy=default.target

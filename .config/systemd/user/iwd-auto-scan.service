@@ -1,11 +1,13 @@
 [Unit]
-Description=Set random wallpaper via pcmanfm-qt
-After=pcmanfm-qt-desktop.service
-Requires=pcmanfm-qt-desktop.service
+Description=Auto Wi-Fi network scan using iwctl
+# Note: User services can't strictly depend on system services via After=
+# but iwd usually starts much earlier, so this is generally safe.
+After=network.target
 
 [Service]
 Type=oneshot
-ExecStart=/bin/bash -c 'exec /usr/bin/pcmanfm-qt --set-wallpaper "$(find %h/Pictures/Wallpapers -type f | shuf -n 1)" --wallpaper-mode fit'
+# Use the full path to your script in /usr/local/bin
+ExecStart=/usr/local/bin/iwd-auto-scan
 
 [Install]
 WantedBy=default.target

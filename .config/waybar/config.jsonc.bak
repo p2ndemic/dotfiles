@@ -1,0 +1,437 @@
+//////////////////////////////////
+//                              //
+//  // Waybar configuration //  //
+//                              //
+//////////////////////////////////
+
+{
+  "layer": "top",
+  "position": "bottom",
+  "height": 38,
+  //"spacing": 2,
+  //"margin-top": 0,
+  //"margin-bottom": 0,
+  "reload_style_on_change": true,
+
+  /////////////////////////////////////////////
+  //                                         //
+  //  // Choose the order of the modules //  //
+  //                                         //
+  /////////////////////////////////////////////
+
+  "modules-left": [
+    "custom/launcher",
+    "ext/workspaces",
+    "group/group_apps",
+    "wlr/taskbar",
+  ],
+  //"modules-center": [""],
+  "modules-right": [
+    "custom/recorder",
+    "tray",
+    "custom/keyboard_layout",
+    "group/group_tools",
+    "pulseaudio#output",
+    "network",
+    "battery",
+    "group/group_modules",
+    "clock",
+    "custom/show_desktop",
+  ],
+
+  ///////////////////////////////////
+  //                               //
+  //  // Modules Left //           //
+  //                               //
+  ///////////////////////////////////
+
+  "custom/launcher": {
+    "format": "", // "" "󰣇" "" ""
+    "tooltip": false,
+    //"tooltip-format": "Menu \n\nRight-click to open the power menu",
+    "on-click": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- ~/.local/bin/fuzzel-launch-menu-index.sh",
+    "on-click-right": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- ~/.local/bin/fuzzel-powermenu-index.sh",
+  },
+
+  "ext/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "urgent": "",
+      "active": "󰀚", // ""
+      "default": "", // ""
+    },
+    "sort-by-id": true, // При "sort-by-number": true, выходит ошибка: [warning] [ext/workspaces]: Prefer sort-by-id instead of sort-by-number
+    "on-click": "activate",
+  },
+
+  // group_modules
+  "group/group_apps": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 0, // Default: 500
+      "children-class": "drawer-child",
+      "transition-left-to-right": true,
+    },
+    "modules": [
+      "custom/arrow_right",
+      "custom/settings",
+      "custom/task_manager",
+      "custom/package_manager",
+      "custom/explorer",
+      "custom/terminal",
+      "custom/editor",
+      "custom/browser",
+      "custom/steam",
+    ],
+  },
+
+  // Custom modules left [group/group_apps] ...
+  // ⇢
+  // custom/settings ⇢ custom/task_manager ⇢ custom/package_manager ⇢
+  // custom/explorer ⇢ custom/terminal ⇢ custom/editor ⇢
+  // custom/browser ⇢ custom/steam
+
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "icon-size": 18,
+    "icon-theme": "MoreWaita", // Numix | Numix Cirle
+    "tooltip-format": "{title:.50}",
+    "on-click": "minimize-raise",
+    "on-click-middle": "close",
+    "on-click-right": "maximize",
+  },
+
+  ///////////////////////////////////
+  //                               //
+  //  // Modules Center //         //
+  //                               //
+  ///////////////////////////////////
+
+  ///////////////////////////////////
+  //                               //
+  //  // Modules Right  //         //
+  //                               //
+  ///////////////////////////////////
+
+  "custom/recorder": {
+    "format": "󰻂", // "" "󰑋" "" "󰻂" "󰭩"
+    "return-type": "json",
+    "interval": 1,
+    "tooltip": false,
+    "exec": "echo '{\"class\": \"recording\"}'",
+    "exec-if": "pgrep wf-recorder >/dev/null 2>&1",
+    //"exec-if": "pgrep -f "^gpu-screen-recorder" >/dev/null 2>&1",
+  },
+
+  "tray": {
+    "icon-size": 18,
+    //"spacing": 8,
+  },
+
+  "custom/keyboard_layout": {
+    "format": " {} ",
+    "tooltip": false,
+    "exec": "systemd-run --user --scope --slice=background-graphical.slice --collect --no-block --quiet -- xkb-monitor -n",
+  },
+
+  // group_tools
+  "group/group_tools": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 0, //Default: 500
+      "children-class": "drawer-child",
+      "transition-left-to-right": false,
+    },
+    "modules": [
+      "custom/clipboard",
+      //"idle_inhibitor",
+      "custom/dnd",
+      "custom/screencast",
+      "custom/screenshot",
+    ],
+  },
+
+  //"idle_inhibitor": {
+  //  "format": "{icon}",
+  //  "format-icons": {
+  //    "activated": "",
+  //    "deactivated": "",
+  //  },
+  //},
+
+  // Custom modules right [group/group_tools]...
+  // custom/clipboard ⇠
+  // idle_inhibitor ⇠ custom/dnd ⇠ custom/screencast ⇠ custom/screenshot
+
+  // Pulseaudio Speaker | Headphone
+  "pulseaudio#output": {
+    "format": "{volume}% {icon}",
+    "format-muted": "",
+    "format-bluetooth": "{volume}% ",
+    "format-bluetooth-muted": "󰂲",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", "", ""],
+    },
+    "tooltip": false,
+    "tooltip-format": "{volume}%",
+    // "scroll-step": 1, // %, can be a float
+    "on-click": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- ~/.local/bin/wob-volume.sh --sink-mute",
+    "on-click-middle": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- pwvucontrol",
+    "on-click-right": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- pavucontrol",
+    "on-scroll-up": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- ~/.local/bin/wob-volume.sh --sink-up",
+    "on-scroll-down": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- ~/.local/bin/wob-volume.sh --sink-down",
+    "ignored-sinks": ["Easy Effects Sink"],
+  },
+
+  "network": {
+    "interval": 60,
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+    "format": "{icon}",
+    "format-wifi": "{icon}",
+    "format-ethernet": "󰡁", // "" "" "󱘖"
+    "format-disconnected": "󰤮",
+    "tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "tooltip-format-disconnected": "Disconnected",
+    "on-click": "pkill -x iwgtk || systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- iwgtk",
+    "on-click-right": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- ~/.local/bin/nmtui-toggle.sh",
+  },
+
+  "battery": {
+    "interval": 60,
+    "states": {
+      // "good": 95,
+      "warning": 20,
+      "critical": 10,
+    },
+    "format": "{capacity}% {icon}",
+    "format-charging": "{capacity}% 󰂄", // "󰂄" ""
+    "format-plugged": "{capacity}% ",
+    //"format-alt": "{time} {icon}",
+    "format-icons": ["", "", "", "", ""],
+    "tooltip-format": "⇣ {timeTo}",
+    "tooltip-format-charging": "⇡ {timeTo}",
+    "on-click": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- ~/.local/bin/fuzzel-power-profile-menu-index.sh",
+    "on-click-middle": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- falcond-gui",
+    "on-click-right": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- tuned-gui",
+  },
+
+  //* group_modules
+  "group/group_modules": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 0, // Default: 500
+      "children-class": "drawer-child",
+      "transition-left-to-right": false,
+    },
+    "modules": [
+      "custom/arrow_left",
+      "pulseaudio#input",
+      "bluetooth",
+      "backlight",
+    ],
+  },
+
+  // Group modules right ...
+  // ⇠
+  // pulseaudio#input ⇠ bluetooth ⇠ backlight
+
+  "backlight": {
+    "format": "{percent}% {icon}",
+    "format-icons": ["󰃠", "󰃟", "󰃞"],
+    "tooltip": false,
+    "on-scroll-up": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- ~/.local/bin/wob-brightness.sh --up",
+    "on-scroll-down": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- ~/.local/bin/wob-brightness.sh --down",
+  },
+
+  "bluetooth": {
+    "format": " {status}",
+    "format-disabled": "󰂲", // an empty format will hide the module
+    "format-off": "󰂲",
+    "format-connected": "󰂱 {num_connections} connected",
+    "format-no-controller": "",
+    "tooltip-format": "{controller_alias}\t{controller_address}",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "on-click": "pkill -x iwgtk || systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- blueman-manager",
+    "on-click-right": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- ~/.local/bin/bluetooth-toggle.sh",
+  },
+
+  // Pulseaudio Mic
+  // Установить дефолтное устройство ввода (микрофон) через pavucontrol. По умолчанию не задан
+  "pulseaudio#input": {
+    "format": "{format_source}",
+    "format-source": "{volume}% ",
+    "format-source-muted": "",
+    "tooltip": false,
+    // "scroll-step": 1, // %, can be a float
+    "on-click": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- ~/.local/bin/wob-volume.sh --source-mute",
+    "on-click-middle": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- pwvucontrol",
+    "on-click-right": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- pavucontrol",
+    "on-scroll-up": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- ~/.local/bin/wob-volume.sh --source-up",
+    "on-scroll-down": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- ~/.local/bin/wob-volume.sh --source-down",
+  },
+  //* group_modules
+
+  "clock": {
+    "format": "{:%H:%M}", // %R - Equivalent to %H:%M, e.g. "11:07"
+    "format-alt": "{:%d-%m-%Y}",
+    "tooltip-format": "<big>{:%b %d %Y}</big>\n\n<tt><small>{calendar}</small></tt>", // %Y - year | %B full month name, e.g. "November" | %b - short month name, e.g. "Nov" | %d - day of month
+    "calendar": {
+      "mode": "month",
+      "mode-mon-col": 3,
+      "on-scroll": 1,
+      "format": {
+        "months": "<span color='#ffead3'><b>{}</b></span>",
+        "days": "<span color='#ecc6d9'><b>{}</b></span>",
+        "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b><u>{}</u></b></span>",
+      },
+    },
+    "actions": {
+      "on-click-right": "mode",
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down",
+    },
+  },
+
+  ///////////////////////////////////
+  //                               //
+  //  // Group Modules Left //    //
+  //                               //
+  ///////////////////////////////////
+
+  // group_apps
+  "custom/arrow_right": {
+    "format": "",
+    "tooltip": false,
+  },
+
+  "custom/settings": {
+    "format": " ",
+    "tooltip": true,
+    "tooltip-format": "WC Settings",
+    "on-click": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- /usr/bin/labwc-tweaks",
+    "on-click-right": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- dconf-editor",
+  },
+
+  "custom/task_manager": {
+    "format": "",
+    "tooltip": true,
+    "tooltip-format": "Task Manager",
+    "on-click": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- foot -e btop",
+    "on-click-right": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- missioncenter",
+  },
+
+  "custom/package_manager": {
+    "format": "", // "󰮯" ""
+    "tooltip": true,
+    "tooltip-format": "Package Manager",
+    "on-click": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- octopi",
+    //"on-click-right": "",
+  },
+
+  "custom/explorer": {
+    "format": "",
+    "tooltip": true,
+    "tooltip-format": "File Manager",
+    "on-click": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- pcmanfm-qt",
+  },
+
+  "custom/terminal": {
+    "format": "",
+    "tooltip": true,
+    "tooltip-format": "Terminal",
+    "on-click": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- foot",
+    //"on-click-middle": "",
+    //"on-click-right": "",
+  },
+
+  "custom/editor": {
+    "format": "󰈮", // "" "󰈮" "" "" ""
+    "tooltip": true,
+    "tooltip-format": "Editor",
+    "on-click": "zeditor",
+    "on-click-middle": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- foot -e micro",
+    "on-click-right": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- foot -e code",
+  },
+
+  "custom/browser": {
+    "format": "󰈹", // "" ""
+    "tooltip": true,
+    "tooltip-format": "Browser",
+    "on-click": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- firefox",
+    "on-click-middle": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- helium",
+    "on-click-right": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- brave",
+  },
+
+  "custom/steam": {
+    "format": "󰓓", // "" "󰓓" "" ""
+    "tooltip": true,
+    "tooltip-format": "Steam",
+    "on-click": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- steam -pipewire-dmabuf -no-cef-sandbox",
+  },
+
+  ///////////////////////////////////
+  //                               //
+  //  // Group Modules Right //    //
+  //                               //
+  ///////////////////////////////////
+
+  // group_tools
+  "custom/clipboard": {
+    "format": "",
+    "tooltip": true,
+    "tooltip-format": "Clipboard",
+    "on-click": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- ~/.local/bin/cliphist-fuzzel-img.sh",
+  },
+
+  "custom/screenshot": {
+    "format": "",
+    "tooltip": true,
+    "tooltip-format": "Screenshot",
+    //"on-click": "", // grim -g \"$(slurp)\" ~/Pictures/$(date +%s).png
+  },
+
+  "custom/screencast": {
+    "format": "", // "" "" "󰞡"
+    "tooltip": true,
+    "tooltip-format": "Screencast",
+    //"on-click": "",
+  },
+
+  "custom/dnd": {
+    "interval": "once",
+    "return-type": "json",
+    "format": "{}{icon}",
+    "format-icons": {
+      "default": "",
+      "dnd": "",
+    },
+    "on-click": "makoctl mode | grep 'dnd' && makoctl mode -r dnd || makoctl mode -a dnd; pkill -RTMIN+11 waybar",
+    "on-click-right": "makoctl restore",
+    "exec": "printf '{\"alt\":\"%s\",\"tooltip\":\"mode: %s\"}' $(makoctl mode | grep -q 'dnd' && echo dnd || echo default) $(makoctl mode | tail -1)",
+    "signal": 11,
+  },
+
+  // group_modules
+  "custom/arrow_left": {
+    "format": "",
+    "tooltip": false,
+  },
+
+  "custom/show_desktop": {
+    "format": "",
+    "tooltip": true,
+    "tooltip-format": "Show Desktop",
+    "on-click": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- ~/.local/bin/labwc-show-desktop.sh",
+    "on-click-right": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- ~/.local/bin/fuzzel-powermenu-index.sh",
+  },
+}

@@ -32,7 +32,7 @@ fuzzel_run() {
         --font="$FONT" \
         --hide-prompt \
         --anchor="$ANCHOR" \
-        --width=42 \
+        --width=40 \
         --vertical-pad=12 \
         --line-height=18 \
         --selection-radius=6

@@ -212,7 +212,7 @@
     <!-- Lock screen (swaylock) -->
     <keybind key="W-l">
       <action name="Execute">
-        <command>uwsm app -s b -- swayidle -w timeout 300 'swaylock -f -c 000000' timeout 600 'wlopm --off \*' resume 'wlopm --on \*' before-sleep 'swaylock -f -c 000000' &gt;/dev/null 2&gt;&amp;1</command>
+        <command>uwsm app -- swaylock</command>
       </action>
     </keybind>
     <!-- Clipboard history (cliphist + fuzzel) -->

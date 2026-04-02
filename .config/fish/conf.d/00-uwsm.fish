@@ -1,5 +1,5 @@
 # Вариант 1: через and и not set -q (рекомендуемый fish-стиль, очень читаемо)
-#if status is-login
+#if status --is-login
 #    and test "$XDG_SESSION_TYPE" = tty
 #    and not set -q WAYLAND_DISPLAY
 #    if uwsm check may-start; and uwsm select
@@ -8,7 +8,7 @@
 #end
 
 # Вариант 2: через and и test -z (более POSIX-подобный стиль)
-#if status is-login
+#if status --is-login
 #    and test "$XDG_SESSION_TYPE" = tty
 #    and test -z "$WAYLAND_DISPLAY"
 #    if uwsm check may-start; and uwsm select

@@ -15,7 +15,7 @@ After=wayland-session@niri.desktop.target
 
 [Service]
 Type=exec
-ExecStart=/bin/sh -c 'exec swaybg -i "$(find %h/Pictures/Wallpapers -type f | shuf -n 1)" -m fill'
+ExecStart=/bin/sh -c 'exec swaybg --image "$(find %h/Pictures/Wallpapers -type f | shuf -n 1)" --mode fill'
 Restart=on-failure
 Slice=background-graphical.slice
 

@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
 # ══════════════════════════════════════════════════════════════════════════════
-# fuzzel-cliphist.sh — Clipboard history picker using cliphist and Fuzzel
+#  fuzzel-cliphist.sh — Clipboard history picker using cliphist and Fuzzel
 # ══════════════════════════════════════════════════════════════════════════════
 
 # ── Toggle: kill fuzzel if already running ────────────────────────────────────
 pkill -x fuzzel && exit 0
 
 # ══════════════════════════════════════════════════════════════════════════════
-# Configuration
+#  Configuration
 # ══════════════════════════════════════════════════════════════════════════════
 
 # Font used in the fuzzel window (FontConfig format)
@@ -19,7 +19,7 @@ FONT="BlexMono Nerd Font Mono:size=12"
 ANCHOR="bottom-right"
 
 # ══════════════════════════════════════════════════════════════════════════════
-# Functions: Fuzzel Wrapper
+#  Functions: Fuzzel Wrapper
 # ══════════════════════════════════════════════════════════════════════════════
 
 # ── Run fuzzel with predefined arguments ──────────────────────────────────────
@@ -39,7 +39,7 @@ fuzzel_run() {
 }
 
 # ══════════════════════════════════════════════════════════════════════════════
-# Main Execution
+#  Main Execution
 # ══════════════════════════════════════════════════════════════════════════════
 
 # ── Pipeline: list → pick → decode → copy to clipboard ────────────────────────

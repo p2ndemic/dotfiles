@@ -1,7 +1,6 @@
 [Unit]
 Description=Set random wallpaper via pcmanfm-qt
 After=pcmanfm-qt-desktop.service
-Requires=pcmanfm-qt-desktop.service
 
 [Service]
 Type=oneshot

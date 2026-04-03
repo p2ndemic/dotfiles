@@ -218,7 +218,7 @@
     <!-- Clipboard history (cliphist + fuzzel) -->
     <keybind key="W-c">
       <action name="Execute">
-        <command>sh -c 'pkill -x fuzzel || exec uwsm app -- cliphist list | fuzzel --dmenu --with-nth 2 --font="BlexMono Nerd Font Mono:size=12" --hide-prompt --width=42 --vertical-pad=12 --line-height=18 --selection-radius=6 | cliphist decode | wl-copy'</command>
+        <command>~/.local/bin/fuzzel-cliphist.sh</command>
       </action>
     </keybind>
 
@@ -415,14 +415,14 @@
     <!-- Power Off -->
     <keybind key="XF86PowerOff">
       <action name="Execute">
-        <command>~/.local/bin/fuzzel-powermenu.sh</command>
+        <command>~/.local/bin/fuzzel-power-menu_index.sh</command>
       </action>
     </keybind>
 
     <!-- ─── Screenshots ─── -->
     <keybind key="XF86FullScreen">
       <action name="Execute">
-        <command>~/.local/bin/fuzzel-launch-menu.sh</command>
+        <command>~/.local/bin/fuzzel-launch-menu_index.sh</command>
       </action>
     </keybind>
     <keybind key="XF86LaunchA">

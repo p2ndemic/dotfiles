@@ -30,7 +30,8 @@
     "custom/recorder",
     "tray",
     "custom/keyboard_layout",
-    "group/group_tools",
+    "group/group_tools1",
+    "group/group_tools2",
     "pulseaudio#output",
     "network",
     "battery",
@@ -134,34 +135,35 @@
     "exec": "systemd-run --user --scope --slice=background-graphical.slice --collect --no-block --quiet -- xkb-monitor -n",
   },
 
-  // group_tools
-  "group/group_tools": {
+  // group_tools1
+  "group/group_tools1": {
     "orientation": "inherit",
     "drawer": {
       "transition-duration": 0, //Default: 500
       "children-class": "drawer-child",
       "transition-left-to-right": false,
     },
-    "modules": [
-      "custom/clipboard",
-      //"idle_inhibitor",
-      "custom/dnd",
-      "custom/screencast",
-      "custom/screenshot",
-    ],
+    "modules": ["custom/dnd", "idle_inhibitor"],
   },
 
-  //"idle_inhibitor": {
-  //  "format": "{icon}",
-  //  "format-icons": {
-  //    "activated": "",
-  //    "deactivated": "",
-  //  },
-  //},
+  // group_tools2
+  "group/group_tools2": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 0, //Default: 500
+      "children-class": "drawer-child",
+      "transition-left-to-right": false,
+    },
+    "modules": ["custom/clipboard", "custom/screencast", "custom/screenshot"],
+  },
 
-  // Custom modules right [group/group_tools]...
+  // Custom modules right [group/group_tools1]...
+  // custom/dnd ⇠
+  // idle_inhibitor
+
+  // Custom modules right [group/group_tools2]...
   // custom/clipboard ⇠
-  // idle_inhibitor ⇠ custom/dnd ⇠ custom/screencast ⇠ custom/screenshot
+  // custom/screencast ⇠ custom/screenshot
 
   // Pulseaudio Speaker | Headphone
   "pulseaudio#output": {
@@ -270,7 +272,6 @@
     "format-source": "{volume}% ",
     "format-source-muted": "",
     "tooltip": false,
-    // "scroll-step": 1, // %, can be a float
     "on-click": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- ~/.local/bin/wob-volume.sh --source-mute",
     "on-click-middle": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- pwvucontrol",
     "on-click-right": "systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet -- pavucontrol",
@@ -385,7 +386,30 @@
   //                               //
   ///////////////////////////////////
 
-  // group_tools
+  // group_tools1
+  "custom/dnd": {
+    "interval": "once",
+    "return-type": "json",
+    "format": "{}{icon}",
+    "format-icons": {
+      "default": "",
+      "dnd": "",
+    },
+    "on-click": "makoctl mode | grep 'dnd' && makoctl mode -r dnd || makoctl mode -a dnd; pkill -RTMIN+11 waybar",
+    "on-click-right": "makoctl restore",
+    "exec": "printf '{\"alt\":\"%s\",\"tooltip\":\"mode: %s\"}' $(makoctl mode | grep -q 'dnd' && echo dnd || echo default) $(makoctl mode | tail -1)",
+    "signal": 11,
+  },
+
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "",
+      "deactivated": "",
+    },
+  },
+
+  // group_tools2
   "custom/clipboard": {
     "format": "",
     "tooltip": true,
@@ -405,20 +429,6 @@
     "tooltip": true,
     "tooltip-format": "Screencast",
     //"on-click": "",
-  },
-
-  "custom/dnd": {
-    "interval": "once",
-    "return-type": "json",
-    "format": "{}{icon}",
-    "format-icons": {
-      "default": "",
-      "dnd": "",
-    },
-    "on-click": "makoctl mode | grep 'dnd' && makoctl mode -r dnd || makoctl mode -a dnd; pkill -RTMIN+11 waybar",
-    "on-click-right": "makoctl restore",
-    "exec": "printf '{\"alt\":\"%s\",\"tooltip\":\"mode: %s\"}' $(makoctl mode | grep -q 'dnd' && echo dnd || echo default) $(makoctl mode | tail -1)",
-    "signal": 11,
   },
 
   // group_modules

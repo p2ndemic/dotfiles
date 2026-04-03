@@ -182,7 +182,6 @@
     },
     "tooltip": false,
     "tooltip-format": "{volume}%",
-    // "scroll-step": 1, // %, can be a float
     "on-click": "~/.local/bin/wob-volume.sh --sink-mute",
     "on-click-middle": "uwsm-app -t service -- pwvucontrol",
     "on-click-right": "uwsm-app -t service -- pavucontrol",

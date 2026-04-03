@@ -12,7 +12,7 @@ pkill -x fuzzel && exit 0
 # ══════════════════════════════════════════════════════════════════════════════
 
 # ── Font used in the fuzzel window (FontConfig format) ────────────────────────
-FONT="BlexMono Nerd Font Mono:size=14"
+FONT="BlexMono Nerd Font Mono:size=12"
 
 # ── Window anchor position on screen ──────────────────────────────────────────
 # Options: top-left | top | top-right | left | center | right | bottom-left | bottom | bottom-right

@@ -33,7 +33,8 @@ is_valid_anchor() {
     return 1
 }
 
-# Default anchor
+# ── Default window anchor position on screen ──────────────────────────────────
+# Options: top-left | top | top-right | left | center | right | bottom-left | bottom | bottom-right
 ANCHOR="center"
 
 while [[ $# -gt 0 ]]; do
@@ -71,8 +72,7 @@ pkill -x fuzzel && exit 0
 #  Configuration
 # ══════════════════════════════════════════════════════════════════════════════
 
-# Font used in the fuzzel window (FontConfig format)
-#FONT="JetBrainsMono Nerd Font Mono:size=24"
+# ── Font used in the fuzzel window (FontConfig format) ────────────────────────
 FONT="BlexMono Nerd Font Mono:size=16"
 
 # ══════════════════════════════════════════════════════════════════════════════

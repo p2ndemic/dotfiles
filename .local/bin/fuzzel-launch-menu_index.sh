@@ -11,40 +11,24 @@ pkill -x fuzzel && exit 0
 # Configuration
 # ══════════════════════════════════════════════════════════════════════════════
 
-# Launch prefix — wraps app execution inside a systemd transient scope.
-#
-# Defined as a bash ARRAY instead of a plain STRING. Here is why:
-#
-#   When a command is stored as a STRING, bash applies word splitting on spaces
-#   before passing it to the shell — quoting it breaks things in the opposite way:
-#
-#     STRING="systemd-run --user --"
-#     "$STRING" firefox     # WRONG — the entire string becomes ONE argument:
-#                           #   ["systemd-run --user --"]  instead of
-#                           #   ["systemd-run", "--user", "--"]
-#
-#   An array preserves each element as a separate argument, always correctly:
-#
-#     ARRAY=(systemd-run --user --)
-#     "${PREFIX[@]}" firefox  # CORRECT — expands to individual tokens:
-#                             #   ["systemd-run", "--user", "--", "firefox"]
-#
-#   This also handles arguments that intentionally contain spaces, e.g.:
-#
-#     ARRAY=(systemd-run --setenv="MY_VAR=hello world" --)
-#     # A plain string would split "hello world" into two separate arguments.
-#     # An array keeps it as one.
-#
-# Note: --launch-prefix and --terminal fuzzel flags only work in XDG app mode,
-#       not in --dmenu mode. Apps are launched directly by this script instead.
-# systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet --
-LAUNCH_PREFIX=(systemd-run --user --slice=app-graphical.slice --collect --no-block --quiet --)
-# LAUNCH_PREFIX=(uwsm app --)
 
-# Font used in the fuzzel window (FontConfig format)
+# ── Launch prefix - wraps app execution inside a systemd transient scope ──────
+#
+# Defined as a bash array (not a plain string) to prevent word splitting issues.
+# A string would either merge everything into one argument or split incorrectly
+# on spaces, while an array preserves each element as a separate argument.
+#
+# Note: --launch-prefix and --terminal flags work only in XDG app mode
+# (not in --dmenu mode). Apps are launched directly by this script
+# ───────────────────────────────────────────────────────────────────────────────
+
+#LAUNCH_PREFIX=(systemd-run --user --slice=app-graphical.slice --collect --no-block --quiet --)
+
+
+# ── Font used in the fuzzel window (FontConfig format) ────────────────────────
 FONT="BlexMono Nerd Font Mono:size=14"
 
-# Window anchor position on screen
+# ── Window anchor position on screen ──────────────────────────────────────────
 # Options: top-left | top | top-right | left | center | right | bottom-left | bottom | bottom-right
 ANCHOR="bottom-left"
 
@@ -67,25 +51,33 @@ fuzzel_run() {
         --line-height=24 \
         --no-exit-on-keyboard-focus-loss
 }
-# --y-margin=2 \
 
 # ── Build a dmenu entry with an icon (Rofi/Fuzzel extended dmenu protocol) ────
-# ── Usage: fuzzel_item "Label" "icon-name" ────────────────────────────────────
+# ── Usage: [fuzzel_item "Label" "icon-name"] ──────────────────────────────────
 fuzzel_item() {
     printf '%s\0icon\x1f%s\n' "$1" "$2"
 }
 
-# ── Launch a GUI application via the launch prefix, then exit ─────────────────
-# ── Usage: run_app firefox ────────────────────────────────────────────────────
+# ── Launch a GUI application via «uwsm-app» daemon ────────────────────────────
+#                                                                           
+# ── «uwsm-app» is preferred over «systemd-run» because:                      ──
+# ──   - The app daemon starts once and stays running                         ──
+# ──   - Each launch is just a pipe write + eval of returned shell code       ──
+# ──   - No Python startup overhead on every call (unlike «uwsm app»)         ──
+# ──   - Single commands are automatically prepended with exec by the daemon  ──
+# 
+# ── Usage: [run_app firefox] ──────────────────────────────────────────────────
 run_app() {
-    exec "${LAUNCH_PREFIX[@]}" "$@"
+    exec uwsm-app -t service -S both -- "$@"
+    #exec "${LAUNCH_PREFIX[@]}" "$@"
 }
 
-# ── Launch a TUI application inside a foot terminal window, then exit ─────────
-# ── Sets app-id and title to the command name for compositor rules ────────────
-# ── Usage: run_term btop ──────────────────────────────────────────────────────
+# ── Launch a TUI application in a terminal via «uwsm-app -T» flag ─────────────
+# ── «-T» tells the daemon to wrap the command in the configured terminal     ──
+# ── Usage: [run_term btop] ────────────────────────────────────────────────────
 run_term() {
-    exec "${LAUNCH_PREFIX[@]}" foot --app-id="$1" --title="$1" "$@"
+    exec uwsm-app -t service -S both -T -- "$@"
+    #exec "${LAUNCH_PREFIX[@]}" foot --app-id="$1" --title="$1" "$@"
 }
 
 # ══════════════════════════════════════════════════════════════════════════════

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # ══════════════════════════════════════════════════════════════════════════════
-# fuzzel-launch-menu.sh — Categorized application launcher using Fuzzel (dmenu mode)
+# fuzzel-launch-menu_index.sh — Categorized application launcher using Fuzzel (dmenu mode)
 # ══════════════════════════════════════════════════════════════════════════════
 
 # ── Toggle: kill fuzzel if already running ────────────────────────────────────
@@ -76,7 +76,7 @@ run_app() {
 # ── «-T» tells the daemon to wrap the command in the configured terminal     ──
 # ── Usage: [run_term btop] ────────────────────────────────────────────────────
 run_term() {
-    exec uwsm-app -t service -S both -T -- "$@"
+    exec uwsm-app -t service -S both -- foot --app-id="$1" --title="$1" "$@"
     #exec "${LAUNCH_PREFIX[@]}" foot --app-id="$1" --title="$1" "$@"
 }
 
@@ -294,12 +294,12 @@ while true; do
     elif [ "$CURRENT_MENU" = "power" ]; then
         CHOICE=$(show_power_menu | fuzzel_run)
         case "$CHOICE" in
-            0)  exec loginctl lock-session "$XDG_SESSION_ID"      ;;  # Lock     [0]
-            1)  exec loginctl terminate-session "$XDG_SESSION_ID" ;;  # Logout   [1]
-            2)  exec systemctl suspend                            ;;  # Suspend  [2]
-            3)  exec systemctl reboot                             ;;  # Reboot   [3]
-            4)  exec systemctl poweroff                           ;;  # Shutdown [4]
-            *)  CURRENT_MENU="main"                               ;;  # ← Back
+            0)  loginctl lock-session "$XDG_SESSION_ID"      ;;  # Lock     [0]
+            1)  loginctl terminate-session "$XDG_SESSION_ID" ;;  # Logout   [1]
+            2)  systemctl suspend                            ;;  # Suspend  [2]
+            3)  systemctl reboot                             ;;  # Reboot   [3]
+            4)  systemctl poweroff                           ;;  # Shutdown [4]
+            *)  CURRENT_MENU="main"                          ;;  # ← Back
         esac
     fi
 

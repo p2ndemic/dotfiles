@@ -294,12 +294,12 @@ while true; do
     elif [ "$CURRENT_MENU" = "power" ]; then
         CHOICE=$(show_power_menu | fuzzel_run)
         case "$CHOICE" in
-            0)  loginctl lock-session "$XDG_SESSION_ID"      ;;  # Lock     [0]
-            1)  loginctl terminate-session "$XDG_SESSION_ID" ;;  # Logout   [1]
-            2)  systemctl suspend                            ;;  # Suspend  [2]
-            3)  systemctl reboot                             ;;  # Reboot   [3]
-            4)  systemctl poweroff                           ;;  # Shutdown [4]
-            *)  CURRENT_MENU="main"                          ;;  # ← Back
+            0)  exec loginctl lock-session "$XDG_SESSION_ID"      ;;  # Lock     [0]
+            1)  exec loginctl terminate-session "$XDG_SESSION_ID" ;;  # Logout   [1]
+            2)  exec systemctl suspend                            ;;  # Suspend  [2]
+            3)  exec systemctl reboot                             ;;  # Reboot   [3]
+            4)  exec systemctl poweroff                           ;;  # Shutdown [4]
+            *)  CURRENT_MENU="main"                               ;;  # ← Back
         esac
     fi
 

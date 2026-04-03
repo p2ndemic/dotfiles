@@ -35,11 +35,11 @@ source_muted() { wpctl get-volume @DEFAULT_SOURCE@ | grep -q "MUTED"; }
 
 case "$1" in
     sink-up|--sink-up)
-        wpctl set-volume @DEFAULT_SINK@ 1%+ --limit 1.0
+        wpctl set-volume @DEFAULT_SINK@ 2%+ --limit 1.0
         wob_send "$(sink_vol)"
         ;;
     sink-down|--sink-down)
-        wpctl set-volume @DEFAULT_SINK@ 1%- --limit 1.0
+        wpctl set-volume @DEFAULT_SINK@ 2%- --limit 1.0
         wob_send "$(sink_vol)"
         ;;
     sink-mute|--sink-mute)
@@ -47,11 +47,11 @@ case "$1" in
         sink_muted && wob_send 0 || wob_send "$(sink_vol)"
         ;;
     source-up|--source-up)
-        wpctl set-volume @DEFAULT_SOURCE@ 1%+ --limit 1.0
+        wpctl set-volume @DEFAULT_SOURCE@ 2%+ --limit 1.0
         wob_send "$(source_vol)"
         ;;
     source-down|--source-down)
-        wpctl set-volume @DEFAULT_SOURCE@ 1%- --limit 1.0
+        wpctl set-volume @DEFAULT_SOURCE@ 2%- --limit 1.0
         wob_send "$(source_vol)"
         ;;
     source-mute|--source-mute)

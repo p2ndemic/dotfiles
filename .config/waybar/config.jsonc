@@ -1,281 +1,446 @@
-# ╔════════════════════════════════════════════════════════════════════╗
-# ║                        fuzzel configuration                        ║
-# ║                     ~/.config/fuzzel/fuzzel.ini                    ║
-# ╚════════════════════════════════════════════════════════════════════╝
-# ──────────────────────────────────
-# Ref: https://mark.stosberg.com/fuzzel-1-13-adds-new-features-for-menu-building-and-usability/
-# Ref: https://mark.stosberg.com/fuzzel-a-great-dmenu-and-rofi-altenrative-for-wayland/
-# Ref: https://codeberg.org/dnkl/fuzzel/pulls/645?ref=mark.stosberg.com
-# Ref: https://github.com/catppuccin/fuzzel
-# ──────────────────────────────────
+//////////////////////////////////
+//                              //
+//  // Waybar configuration //  //
+//                              //
+//////////////////////////////////
 
+{
+  "layer": "top",
+  "position": "bottom",
+  "height": 38,
+  //"spacing": 2,
+  //"margin-top": 0,
+  //"margin-bottom": 0,
+  "reload_style_on_change": true,
 
-# ══════════════════════════════════════════════════════════════════════
-#  MAIN
-# ══════════════════════════════════════════════════════════════════════
-[main]
+  /////////////////////////////////////////////
+  //                                         //
+  //  // Choose the order of the modules //  //
+  //                                         //
+  /////////////////////////////////////////////
 
-# ── Imports ───────────────────────────────────────────────────────────
-# include=~/.config/fuzzel/colors.ini   # Подключить внешний конфиг (абсолютный путь или ~/)
+  "modules-left": [
+    "custom/launcher",
+    "ext/workspaces",
+    "group/group_apps",
+    "wlr/taskbar",
+  ],
+  //"modules-center": [""],
+  "modules-right": [
+    "custom/recorder",
+    "tray",
+    "custom/keyboard_layout",
+    "group/group_tools1",
+    "group/group_tools2",
+    "pulseaudio#output",
+    "network",
+    "battery",
+    "group/group_modules",
+    "clock",
+    "custom/show_desktop",
+  ],
 
-# ── Display ───────────────────────────────────────────────────────────
-# namespace=launcher          # Имя layer-shell поверхности (для блокировки в скринкастах)
-# output=                     # Монитор для отображения, например DP-1 (по умолчанию выбирает compositor)
+  ///////////////////////////////////
+  //                               //
+  //  // Modules Left //           //
+  //                               //
+  ///////////////////////////////////
 
-# ── Font ──────────────────────────────────────────────────────────────
-# Шрифт в формате fontconfig: "Имя:свойство=значение".
-# Несколько шрифтов через запятую — используются как fallback цепочка.
-# Примеры (fc-match -s | sort):
-#   font=IBM Plex Mono:size=14
-#   font=Dina:weight=bold:slant=italic
-#   font=Noto Sans, DejaVu Sans:weight=bold, sans-serif
-font=BlexMono Nerd Font Mono:size=14
-# use-bold=no                 # Разрешить жирный шрифт для выделенных элементов
+  "custom/launcher": {
+    "format": "", // "" "󰣇" "" ""
+    "tooltip": false,
+    //"tooltip-format": "Menu \n\nRight-click to open the power menu",
+    "on-click": "~/.local/bin/fuzzel-launch-menu_index.sh",
+    "on-click-right": "~/.local/bin/fuzzel-power-menu-side_index.sh",
+  },
 
-# Масштабирование шрифта по DPI / scaling factor монитора.
-# yes  — по DPI монитора (физический размер одинаков на всех мониторах)
-# no   — по scaling factor (удвоение scale = удвоение размера)
-# auto — по DPI если все мониторы имеют scale=1, иначе по scaling factor
-dpi-aware=auto
+  "ext/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "urgent": "",
+      "active": "󰀚", // ""
+      "default": "", // ""
+    },
+    "sort-by-id": true, // При "sort-by-number": true, выходит ошибка: [warning] [ext/workspaces]: Prefer sort-by-id instead of sort-by-number
+    "on-click": "activate",
+  },
 
-# Гамма-корректный рендеринг в линейном цветовом пространстве.
-# Светлые глифы на тёмном фоне выглядят толще, тёмные на светлом — тоньше.
-# Использует 16-битные буферы. Недоступно в Cairo-сборках fuzzel.
-# gamma-correct=no            # Гамма-коррекция в линейном цветовом пространстве (16-бит буфер)
-# gamma-correct-blending=no
+  // group_modules
+  "group/group_apps": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 0, // Default: 500
+      "children-class": "drawer-child",
+      "transition-left-to-right": true,
+    },
+    "modules": [
+      "custom/arrow_right",
+      "custom/settings",
+      "custom/task_manager",
+      "custom/package_manager",
+      "custom/explorer",
+      "custom/terminal",
+      "custom/editor",
+      "custom/browser",
+      "custom/steam",
+    ],
+  },
 
-# ── Prompt ────────────────────────────────────────────────────────────
-# placeholder=                # Текст-подсказка в пустом поле ввода
-prompt="❯ "
-# mesg=                       # Сообщение над строкой ввода, поддерживает переносы строк
+  // Custom modules left [group/group_apps] ...
+  // ⇢
+  // custom/settings ⇢ custom/task_manager ⇢ custom/package_manager ⇢
+  // custom/explorer ⇢ custom/terminal ⇢ custom/editor ⇢
+  // custom/browser ⇢ custom/steam
 
-# Поведение длинных строк в mesg.
-# wrap   — перенос на следующую строку по границе слов
-# expand — расширить окно по ширине самой длинной строки
-#mesg-mode=expand
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "icon-size": 18,
+    "icon-theme": "Numix-Circle", // Numix | Numix-Circle | MoreWaita
+    "tooltip-format": "{title:.50}",
+    "on-click": "minimize-raise",
+    "on-click-middle": "close",
+    "on-click-right": "maximize",
+  },
 
-# ── Icons ─────────────────────────────────────────────────────────────
-# icon-theme=default
-# icon-theme=MoreWaita | icon-theme=Numix | icon-theme=Numix-Circle | icon-theme=Numix-Adwaita | icon-theme=Numix-Adwaita-Light
-# icons-enabled=yes
+  ///////////////////////////////////
+  //                               //
+  //  // Modules Center //         //
+  //                               //
+  ///////////////////////////////////
 
-# ── Search & Matching ─────────────────────────────────────────────────
-# hide-before-typing=no         # Скрыть список до первого символа ввода
+  ///////////////////////////////////
+  //                               //
+  //  // Modules Right  //         //
+  //                               //
+  ///////////////////////////////////
 
-# Поля .desktop-файлов для поиска (через запятую).
-# Доступные: filename, name, generic, exec, categories, keywords, comment
-# Default: #fields=filename,name,generic
-fields=filename,name,generic,categories
-# match-mode=fzf                # Режим поиска: fzf | exact (точное совпадение) | fuzzy (Левенштейн)
-# sort-result=yes               # Сортировать результаты по частоте запуска и качеству совпадения
-match-counter=yes
+  "custom/recorder": {
+    "format": "󰻂", // "" "󰑋" "" "󰻂" "󰭩"
+    "return-type": "json",
+    "interval": 1,
+    "tooltip": false,
+    "exec": "echo '{\"class\": \"recording\"}'",
+    "exec-if": "pgrep wf-recorder >/dev/null 2>&1",
+    //"exec-if": "pgrep -f "^gpu-screen-recorder" >/dev/null 2>&1",
+  },
 
-# Фильтровать .desktop-файлы по значению XDG_CURRENT_DESKTOP.
-filter-desktop=yes
-# show-actions=no               # Показывать действия из .desktop (например, "Новое окно")
+  "tray": {
+    "icon-size": 18,
+    //"spacing": 8,
+  },
 
-# ── Applications ──────────────────────────────────────────────────────
-# Команда для запуска терминальных приложений.
-# {cmd} — плейсхолдер для подставляемой команды.
-# Примеры:
-#   terminal=foot -a '{cmd}' -T '{cmd}' {cmd}
-#   terminal=foot -e {cmd}
-terminal=foot -a '{cmd}' -T '{cmd}' {cmd}
+  "custom/keyboard_layout": {
+    "format": " {} ",
+    "tooltip": false,
+    "exec": "uwsm-app -s b -S both -- xkb-monitor -n",
+  },
 
-# list-executables-in-path=no   # Добавить в список все исполняемые файлы из PATH
+  // group_tools1
+  "group/group_tools1": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 0, //Default: 500
+      "children-class": "drawer-child",
+      "transition-left-to-right": false,
+    },
+    "modules": ["custom/dnd", "idle_inhibitor"],
+  },
 
-# ── Launch Prefix ───────────────────────────────────────────────:
-# launch-prefix=systemd-run --user --scope --slice=app-graphical.slice --collect --no-block --quiet --
-launch-prefix=uwsm app --
+  // group_tools2
+  "group/group_tools2": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 0, //Default: 500
+      "children-class": "drawer-child",
+      "transition-left-to-right": false,
+    },
+    "modules": ["custom/clipboard", "custom/screencast", "custom/screenshot"],
+  },
 
-# password-character=*          # Символ маскировки при запуске с флагом --password
+  // Custom modules right [group/group_tools1]...
+  // custom/dnd ⇠
+  // idle_inhibitor
 
-# ── Window Position ───────────────────────────────────────────────────
-# anchor=center               # Позиция окна: center | top | bottom | left | right | top-left | top-right | bottom-left | bottom-right
-# x-margin=0                  # Горизонтальный отступ от точки якоря в px (не работает с center/top/bottom)
-# y-margin=0                  # Вертикальный отступ от точки якоря в px (не работает с center/left/right)
+  // Custom modules right [group/group_tools2]...
+  // custom/clipboard ⇠
+  // custom/screencast ⇠ custom/screenshot
 
-# ── Window Size ───────────────────────────────────────────────────────
-# lines=15                    # Количество отображаемых строк совпадений
-# hide-prompt=no              # Скрыть строку ввода (ввод всё равно работает)
-# minimal-lines=no            # В dmenu-режиме: подстраивать высоту под реальное количество строк
-# width=30                    # Ширина окна в символах (приблизительно для переменных шрифтов)
+  // Pulseaudio Speaker | Headphone
+  "pulseaudio#output": {
+    "format": "{volume}% {icon}",
+    "format-muted": "",
+    "format-bluetooth": "{volume}% ",
+    "format-bluetooth-muted": "󰂲",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", "", ""],
+    },
+    "tooltip": false,
+    "tooltip-format": "{volume}%",
+    "on-click": "~/.local/bin/wob-volume.sh --sink-mute",
+    "on-click-middle": "uwsm-app -t service -- pwvucontrol",
+    "on-click-right": "uwsm-app -t service -- pavucontrol",
+    "on-scroll-up": "~/.local/bin/wob-volume.sh --sink-up",
+    "on-scroll-down": "~/.local/bin/wob-volume.sh --sink-down",
+    "ignored-sinks": ["Easy Effects Sink"],
+  },
 
-# ── Padding & Spacing ─────────────────────────────────────────────────
-# tabs=8                      # Ширина таба в пробелах
-# horizontal-pad=40           # Горизонтальный отступ между рамкой и контентом (px)
-# vertical-pad=8              # Вертикальный отступ между рамкой и контентом (px)
-# inner-pad=0                 # Отступ между строкой ввода и списком совпадений (px)
-# line-height=                # Высота строки в px (по умолчанию берётся из метрик шрифта)
-# letter-spacing=0            # Дополнительный межбуквенный интервал в px (допустимы отрицательные значения)
+  "network": {
+    "interval": 60,
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+    "format": "{icon}",
+    "format-wifi": "{icon}",
+    "format-ethernet": "󰡁", // "" "" "󱘖"
+    "format-disconnected": "󰤮",
+    "tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "tooltip-format-disconnected": "Disconnected",
+    "on-click": "pkill -x iwgtk || uwsm-app -t service -- iwgtk",
+    "on-click-right": "~/.local/bin/nmtui-toggle.sh",
+  },
 
-# ── Layer & Focus ─────────────────────────────────────────────────────
-# layer=overlay               # Слой отрисовки: overlay (поверх fullscreen) | top (поверх обычных окон)
-# keyboard-focus=exclusive    # Фокус клавиатуры: exclusive (захватить весь ввод) | on-demand (как обычное окно)
-# exit-on-keyboard-focus-loss=yes # Закрыть fuzzel при потере фокуса клавиатуры
+  "battery": {
+    "interval": 60,
+    "states": {
+      // "good": 95,
+      "warning": 20,
+      "critical": 10,
+    },
+    "format": "{capacity}% {icon}",
+    "format-charging": "{capacity}% 󰂄", // "󰂄" ""
+    "format-plugged": "{capacity}% ",
+    //"format-alt": "{time} {icon}",
+    "format-icons": ["", "", "", "", ""],
+    "tooltip-format": "⇣ {timeTo}",
+    "tooltip-format-charging": "⇡ {timeTo}",
+    "on-click": "~/.local/bin/fuzzel-power-profile-menu_index.sh",
+    "on-click-middle": "uwsm-app -t service -- falcond-gui",
+    "on-click-right": "uwsm-app -t service -- tuned-gui",
+  },
 
-# ── Performance ───────────────────────────────────────────────────────
-# render-workers=             # Потоков для рендеринга (по умолчанию = число логических CPU; 0 = без многопоточности)
-# match-workers=              # Потоков для поиска (по умолчанию = число логических CPU; 0 = без многопоточности)
+  //* group_modules
+  "group/group_modules": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 0, // Default: 500
+      "children-class": "drawer-child",
+      "transition-left-to-right": false,
+    },
+    "modules": [
+      "custom/arrow_left",
+      "pulseaudio#input",
+      "bluetooth",
+      "backlight",
+    ],
+  },
 
-# Задержка перефильтрации (мс) при числе совпадений выше delayed-filter-limit.
-# Реализует debounce: фильтрация запускается через N мс после последнего нажатия.
-# Default: #delayed-filter-ms=300
-delayed-filter-ms=200
+  // Group modules right ...
+  // ⇠
+  // pulseaudio#input ⇠ bluetooth ⇠ backlight
 
-# Порог переключения в режим отложенной фильтрации.
-# При превышении — вместо мгновенной фильтрации используется debounce.
-# Default: delayed-filter-limit=20000
-delayed-filter-limit=5000
+  "backlight": {
+    "format": "{percent}% {icon}",
+    "format-icons": ["󰃠", "󰃟", "󰃞"],
+    "tooltip": false,
+    "on-scroll-up": "uwsm-app -t service -- ~/.local/bin/wob-brightness.sh --up",
+    "on-scroll-down": "uwsm-app -t service -- ~/.local/bin/wob-brightness.sh --down",
+  },
 
-# Размер увеличенного превью иконки при малом числе совпадений.
-# Доля от ширины окна (0.0–1.0). Значение 1 отключает превью.
-# Default: #image-size-ratio=0.5
-image-size-ratio=0.3
+  "bluetooth": {
+    "format": " {status}",
+    "format-disabled": "󰂲", // an empty format will hide the module
+    "format-off": "󰂲",
+    "format-connected": "󰂱 {num_connections} connected",
+    "format-no-controller": "",
+    "tooltip-format": "{controller_alias}\t{controller_address}",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "on-click": "pkill -x iwgtk || uwsm-app -t service -- blueman-manager",
+    "on-click-right": "uwsm-app -t service -- ~/.local/bin/bluetooth-toggle.sh",
+  },
 
-# Алгоритм масштабирования PNG-иконок при уменьшении.
-# Скорость (убывает): none, nearest, bilinear → box, linear → cubic, lanczos2, lanczos3
-# Качество (убывает): lanczos3-stretched, lanczos3, lanczos2, cubic → box, linear → ...
-#scaling-filter=box
+  // Pulseaudio Mic
+  // Установить дефолтное устройство ввода (микрофон) через pavucontrol. По умолчанию не задан
+  "pulseaudio#input": {
+    "format": "{format_source}",
+    "format-source": "{volume}% ",
+    "format-source-muted": "",
+    "tooltip": false,
+    "on-click": "~/.local/bin/wob-volume.sh --source-mute",
+    "on-click-middle": "uwsm-app -t service -- pwvucontrol",
+    "on-click-right": "uwsm-app -t service -- pavucontrol",
+    "on-scroll-up": "~/.local/bin/wob-volume.sh --source-up",
+    "on-scroll-down": "~/.local/bin/wob-volume.sh --source-down",
+  },
+  //* group_modules
 
-# ── Misc ──────────────────────────────────────────────────────────────
-# cache=                      # Путь к кешу запусков (по умолчанию $XDG_CACHE_HOME/fuzzel; /dev/null = отключить)
-# auto-select=no              # Автоматически выбрать единственный оставшийся вариант
-# enable-mouse=yes            # Включить поддержку мыши
+  "clock": {
+    "format": "{:%H:%M}", // %R - Equivalent to %H:%M, e.g. "11:07"
+    "format-alt": "{:%d-%m-%Y}",
+    "tooltip-format": "<big>{:%b %d %Y}</big>\n\n<tt><small>{calendar}</small></tt>", // %Y - year | %B full month name, e.g. "November" | %b - short month name, e.g. "Nov" | %d - day of month
+    "calendar": {
+      "mode": "month",
+      "mode-mon-col": 3,
+      "on-scroll": 1,
+      "format": {
+        "months": "<span color='#ffead3'><b>{}</b></span>",
+        "days": "<span color='#ecc6d9'><b>{}</b></span>",
+        "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b><u>{}</u></b></span>",
+      },
+    },
+    "actions": {
+      "on-click-right": "mode",
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down",
+    },
+  },
 
+  ///////////////////////////////////
+  //                               //
+  //  // Group Modules Left //    //
+  //                               //
+  ///////////////////////////////////
 
-# ══════════════════════════════════════════════════════════════════════
-#  COLORS  (формат RGBA hex, 8 символов, например fdf6e3ff)
-# ══════════════════════════════════════════════════════════════════════
-# [colors]
+  // group_apps
+  "custom/arrow_right": {
+    "format": "",
+    "tooltip": false,
+  },
 
-# ── Background ────────────────────────────────────────────────────────
-# background=fdf6e3ff         # Фон окна
+  "custom/settings": {
+    "format": " ",
+    "tooltip": true,
+    "tooltip-format": "WC Settings",
+    "on-click": "uwsm-app -t service -- /usr/bin/labwc-tweaks",
+    "on-click-right": "uwsm-app -t service -- dconf-editor",
+  },
 
-# ── Text ──────────────────────────────────────────────────────────────
-# text=657b83ff               # Цвет обычного текста в списке
-# message=657b83ff            # Цвет текста сообщения (mesg)
-# prompt=586e75ff             # Цвет символа-промпта
-# placeholder=93a1a1ff        # Цвет текста-подсказки в пустом поле
-# input=657b83ff              # Цвет вводимого текста
+  "custom/task_manager": {
+    "format": "",
+    "tooltip": true,
+    "tooltip-format": "Task Manager",
+    "on-click": "uwsm-app -t service -S both -- foot --app-id=btop --title=btop btop",
+    "on-click-right": "uwsm-app -t service -- missioncenter",
+  },
 
-# ── Match Highlight ───────────────────────────────────────────────────
-# match=cb4b16ff              # Цвет совпадающей подстроки в невыделенной строке
+  "custom/package_manager": {
+    "format": "", // "󰮯" ""
+    "tooltip": true,
+    "tooltip-format": "Package Manager",
+    "on-click": "uwsm-app -t service -- octopi",
+    //"on-click-right": "",
+  },
 
-# ── Selection ─────────────────────────────────────────────────────────
-# selection=eee8d5ff          # Фон выделенной строки
-# selection-text=586e75ff     # Цвет текста выделенной строки
-# selection-match=cb4b16ff    # Цвет совпадающей подстроки в выделенной строке
+  "custom/explorer": {
+    "format": "",
+    "tooltip": true,
+    "tooltip-format": "File Manager",
+    "on-click": "uwsm-app -t service -- pcmanfm-qt",
+  },
 
-# ── Misc ──────────────────────────────────────────────────────────────
-# counter=93a1a1ff            # Цвет счётчика совпадений
-# border=002b36ff             # Цвет рамки окна
+  "custom/terminal": {
+    "format": "",
+    "tooltip": true,
+    "tooltip-format": "Terminal",
+    "on-click": "uwsm-app -t service -- foot",
+    //"on-click-middle": "",
+    //"on-click-right": "",
+  },
 
+  "custom/editor": {
+    "format": "󰈮", // "" "󰈮" "" "" ""
+    "tooltip": true,
+    "tooltip-format": "Editor",
+    "on-click": "zeditor",
+    "on-click-middle": "uwsm-app -t service -S both -- foot --app-id=micro --title=micro micro",
+    "on-click-right": "uwsm-app -t service -- code",
+  },
 
-# ──────────────────────────────────
-# Сatppuccin Sky theme with background alpha 95% (f2) and Nord Frost (Dark) border color (#5e81acff)
-# Alpha: [ f2 = 95% | f5 = 96% | f7 = 97% ]
-# ──────────────────────────────────
-[colors]
-background=1e1e2ef5
-text=cdd6f4ff
-message=cdd6f4ff
-prompt=bac2deff
-placeholder=7f849cff
-input=cdd6f4ff
-match=89dcebff
-selection=585b70ff
-selection-text=cdd6f4ff
-selection-match=89dcebff
-counter=7f849cff
-border=5e81acff
+  "custom/browser": {
+    "format": "󰈹", // "" ""
+    "tooltip": true,
+    "tooltip-format": "Browser",
+    "on-click": "uwsm-app -t service -- firefox",
+    "on-click-middle": "uwsm-app -t service -- helium",
+    "on-click-right": "uwsm-app -t service -- brave",
+  },
 
+  "custom/steam": {
+    "format": "󰓓", // "" "󰓓" "" ""
+    "tooltip": true,
+    "tooltip-format": "Steam",
+    "on-click": "uwsm-app -t service -- steam -pipewire-dmabuf -no-cef-sandbox",
+  },
 
-# ══════════════════════════════════════════════════════════════════════
-#  BORDER
-# ══════════════════════════════════════════════════════════════════════
-# [border]
-# width=1                     # Толщина рамки в пикселях
-# radius=10                   # Скруглённость углов окна
-# selection-radius=0          # Скруглённость углов выделенного элемента
+  ///////////////////////////////////
+  //                               //
+  //  // Group Modules Right //    //
+  //                               //
+  ///////////////////////////////////
 
+  // group_tools1
+  "custom/dnd": {
+    "interval": "once",
+    "return-type": "json",
+    "format": "{}{icon}",
+    "format-icons": {
+      "default": "",
+      "dnd": "",
+    },
+    "on-click": "makoctl mode | grep 'dnd' && makoctl mode -r dnd || makoctl mode -a dnd; pkill -RTMIN+11 waybar",
+    "on-click-right": "makoctl restore",
+    "exec": "printf '{\"alt\":\"%s\",\"tooltip\":\"mode: %s\"}' $(makoctl mode | grep -q 'dnd' && echo dnd || echo default) $(makoctl mode | tail -1)",
+    "signal": 11,
+  },
 
-# ══════════════════════════════════════════════════════════════════════
-#  DMENU
-# ══════════════════════════════════════════════════════════════════════
-[dmenu]
-# mode:  [text | index]
-mode=text
-exit-immediately-if-empty=yes
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "",
+      "deactivated": "",
+    },
+  },
 
+  // group_tools2
+  "custom/clipboard": {
+    "format": "",
+    "tooltip": true,
+    "tooltip-format": "Clipboard",
+    "on-click": "~/.local/bin/fuzzel-cliphist.sh",
+  },
 
-# ══════════════════════════════════════════════════════════════════════
-#  KEY BINDINGS
-#  Формат:  action=Mod1+Mod2+key  (несколько комбинаций через пробел)
-#  Shift:   клавиша должна быть строчной — Control+Shift+v, не Control+Shift+V
-#  Alt:     обычно называется Mod1
-#  Сброс:   action=none
-# ══════════════════════════════════════════════════════════════════════
-[key-bindings]
+  "custom/screenshot": {
+    "format": "",
+    "tooltip": true,
+    "tooltip-format": "Screenshot",
+    //"on-click": "", // grim -g \"$(slurp)\" ~/Pictures/$(date +%s).png
+  },
 
-# ── App Control ───────────────────────────────────────────────────────
-# cancel=Control+g Control+c Control+bracketleft Escape  # Выйти без запуска
-# execute=Return KP_Enter Control+y                      # Запустить выбранное
-# execute-or-next=Tab                                    # Запустить если одно совпадение, иначе — следующий
-# execute-input=Shift+Return Shift+KP_Enter              # Запустить введённое как есть (игнорируя список)
+  "custom/screencast": {
+    "format": "", // "" "" "󰞡"
+    "tooltip": true,
+    "tooltip-format": "Screencast",
+    //"on-click": "",
+  },
 
-# ── Cursor Movement ───────────────────────────────────────────────────
-# cursor-left=Left Control+b                             # Курсор на символ влево
-# cursor-left-word=Control+Left Mod1+b                   # Курсор на слово влево
-# cursor-right=Right Control+f                           # Курсор на символ вправо
-# cursor-right-word=Control+Right Mod1+f                 # Курсор на слово вправо
-# cursor-home=Home Control+a                             # В начало строки ввода
-# cursor-end=End Control+e                               # В конец строки ввода
+  // group_modules
+  "custom/arrow_left": {
+    "format": "",
+    "tooltip": false,
+  },
 
-# ── Deletion ──────────────────────────────────────────────────────────
-# delete-line-backward=Control+u                         # Удалить всё до курсора
-# delete-line-forward=Control+k                          # Удалить всё после курсора
-# delete-line=Control+Shift+BackSpace                    # Очистить всё поле ввода
-# delete-prev=BackSpace Control+h                        # Удалить символ до курсора
-# delete-prev-word=Mod1+BackSpace Control+BackSpace Control+w  # Удалить слово до курсора
-# delete-next=Delete                                     # Удалить символ после курсора
-# delete-next-word=Mod1+d Control+Delete                 # Удалить слово после курсора
-
-# ── Selection & Clipboard ─────────────────────────────────────────────
-# insert-selected=Control+Tab                            # Вставить выбранный элемент в строку ввода
-# expunge=Shift+Delete                                   # Удалить выбранный элемент из кеша запусков
-# clipboard-paste=Control+v XF86Paste                    # Вставить из буфера обмена
-# primary-paste=Shift+Insert Shift+KP_Insert             # Вставить из primary selection (средняя кнопка мыши)
-
-# ── Navigation ────────────────────────────────────────────────────────
-prev=Control+p
-prev-with-wrap=Up ISO_Left_Tab
-# prev-page=PageUp KP_PageUp                             # Предыдущая страница
-next=Control+n
-next-with-wrap=Down
-# next-page=Page_Down KP_Page_Down                       # Следующая страница
-# first=Control+Home                                     # Перейти к первому элементу
-# last=Control+End                                       # Перейти к последнему элементу
-
-# ── Custom Actions ────────────────────────────────────────────────────
-# Запускают выбранный элемент и завершают fuzzel с кодом выхода 10–28.
-# Используются в скриптах для определения, какое действие выбрал пользователь.
-# custom-1=Mod1+1             # exit code 10
-# custom-2=Mod1+2             # exit code 11
-# custom-3=Mod1+3             # exit code 12
-# custom-4=Mod1+4             # exit code 13
-# custom-5=Mod1+5             # exit code 14
-# custom-6=Mod1+6             # exit code 15
-# custom-7=Mod1+7             # exit code 16
-# custom-8=Mod1+8             # exit code 17
-# custom-9=Mod1+9             # exit code 18
-# custom-10=Mod1+10           # exit code 19
-# custom-11=Mod1+11           # exit code 20
-# custom-12=Mod1+12           # exit code 21
-# custom-13=Mod1+13           # exit code 22
-# custom-14=Mod1+14           # exit code 23
-# custom-15=Mod1+15           # exit code 24
-# custom-16=Mod1+16           # exit code 25
-# custom-17=Mod1+17           # exit code 26
-# custom-18=Mod1+18           # exit code 27
-# custom-19=Mod1+19           # exit code 28
+  "custom/show_desktop": {
+    "format": "",
+    "tooltip": true,
+    "tooltip-format": "Show Desktop",
+    "on-click": "~/.config/labwc/scripts/labwc-show-desktop.sh",
+    "on-click-right": "~/.local/bin/fuzzel-power-menu_index.sh",
+  },
+}

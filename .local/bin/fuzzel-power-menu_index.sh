@@ -62,9 +62,9 @@ show_power_menu() {
 CHOICE=$(show_power_menu | fuzzel_run)
 
 case "$CHOICE" in
-    0)  loginctl lock-session "$XDG_SESSION_ID"      ;;  # [0] Lock
-    1)  loginctl terminate-session "$XDG_SESSION_ID" ;;  # [1] Logout
-    2)  systemctl reboot                             ;;  # [2] Reboot
-    3)  systemctl poweroff                           ;;  # [3] Shutdown
-    *)  exit 0                                       ;;  # Cancel / Close
+    0)  exec loginctl lock-session "$XDG_SESSION_ID"      ;;  # [0] Lock
+    1)  exec loginctl terminate-session "$XDG_SESSION_ID" ;;  # [1] Logout
+    2)  exec systemctl reboot                             ;;  # [2] Reboot
+    3)  exec systemctl poweroff                           ;;  # [3] Shutdown
+    *)  exit 0                                            ;;  # Cancel / Close
 esac

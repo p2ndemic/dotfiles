@@ -1,77 +1,77 @@
-//////////////////////////////////
-//                              //
-//  // Waybar configuration //  //
-//                              //
-//////////////////////////////////
+// ╔════════════════════════════════════════════════════════════════════════════╗
+// ║                          WAYBAR CONFIGURATION                              ║
+// ╚════════════════════════════════════════════════════════════════════════════╝
 
 {
   "layer": "top",
   "position": "bottom",
   "height": 38,
-  //"spacing": 2,
-  //"margin-top": 0,
-  //"margin-bottom": 0,
   "reload_style_on_change": true,
 
-  /////////////////////////////////////////////
-  //                                         //
-  //  // Choose the order of the modules //  //
-  //                                         //
-  /////////////////////////////////////////////
-
+  // ════════════════════════════════════════════════════════════════════════════
+  // Module Order
+  // ════════════════════════════════════════════════════════════════════════════
+  
   "modules-left": [
     "custom/launcher",
     "ext/workspaces",
-    "group/group_apps",
-    "wlr/taskbar",
+    "group/apps",
+    "wlr/taskbar"
   ],
-  //"modules-center": [""],
+
+  //"modules-center": [],
+
   "modules-right": [
     "custom/recorder",
     "tray",
     "custom/keyboard_layout",
-    "group/group_tools1",
-    "group/group_tools2",
+    "group/toggles",
+    "group/utilities",
     "pulseaudio#output",
     "network",
     "battery",
-    "group/group_modules",
+    "group/system",
     "clock",
-    "custom/show_desktop",
+    "custom/show_desktop"
   ],
 
-  ///////////////////////////////////
-  //                               //
-  //  // Modules Left //           //
-  //                               //
-  ///////////////////////////////////
+  // ════════════════════════════════════════════════════════════════════════════
+  // Left Modules
+  // ════════════════════════════════════════════════════════════════════════════
 
+  // ─── Launcher / Power Menu ──────────────────────────────────────────────────
   "custom/launcher": {
-    "format": "", // "" "󰣇" "" ""
+    "format": "", // Alternatives: "󰣇" "" ""
     "tooltip": false,
-    //"tooltip-format": "Menu \n\nRight-click to open the power menu",
+    // "tooltip-format": "Menu \n\nRight-click to open the power menu",
     "on-click": "~/.local/bin/fuzzel-launch-menu_index.sh",
-    "on-click-right": "~/.local/bin/fuzzel-power-menu-side_index.sh",
+    "on-click-right": "~/.local/bin/fuzzel-power-menu-side_index.sh"
   },
 
+  // ─── Workspaces ─────────────────────────────────────────────────────────────
   "ext/workspaces": {
     "format": "{icon}",
     "format-icons": {
       "urgent": "",
-      "active": "󰀚", // ""
-      "default": "", // ""
+      "active": "󰀚", // Alternatives: ""
+      "default": "" // Alternatives: ""
     },
-    "sort-by-id": true, // При "sort-by-number": true, выходит ошибка: [warning] [ext/workspaces]: Prefer sort-by-id instead of sort-by-number
-    "on-click": "activate",
+    // Note: using "sort-by-number": true causes a warning: 
+    // [warning] [ext/workspaces]: Prefer sort-by-id instead of sort-by-number
+    "sort-by-id": true,
+    "on-click": "activate"
   },
 
-  // group_modules
-  "group/group_apps": {
+  // ─── Applications Drawer ────────────────────────────────────────────────────
+  // ⇢ Settings · Task Manager · Package Manager · File Manager · Terminal
+  //   · Editor · Browser · Steam
+  // ────────────────────────────────────────────────────────────────────────────
+  "group/apps": {
     "orientation": "inherit",
     "drawer": {
-      "transition-duration": 0, // Default: 500
+      "transition-duration": 0,
       "children-class": "drawer-child",
-      "transition-left-to-right": true,
+      "transition-left-to-right": true
     },
     "modules": [
       "custom/arrow_right",
@@ -82,90 +82,207 @@
       "custom/terminal",
       "custom/editor",
       "custom/browser",
-      "custom/steam",
-    ],
+      "custom/steam"
+    ]
   },
 
-  // Custom modules left [group/group_apps] ...
-  // ⇢
-  // custom/settings ⇢ custom/task_manager ⇢ custom/package_manager ⇢
-  // custom/explorer ⇢ custom/terminal ⇢ custom/editor ⇢
-  // custom/browser ⇢ custom/steam
+  // ─── Arrow Right (Apps drawer) ──────────────────────────────────────────────
+  "custom/arrow_right": {
+    "format": "",
+    "tooltip": false
+  },
 
+  // ─── Settings ───────────────────────────────────────────────────────────────
+  "custom/settings": {
+    "format": " ",
+    "tooltip": true,
+    "tooltip-format": "WC Settings",
+    "on-click": "uwsm-app -t service -- /usr/bin/labwc-tweaks",
+    "on-click-right": "uwsm-app -t service -- dconf-editor"
+  },
+
+  // ─── Task Manager ───────────────────────────────────────────────────────────
+  "custom/task_manager": {
+    "format": "",
+    "tooltip": true,
+    "tooltip-format": "Task Manager",
+    "on-click": "uwsm-app -t service -S both -- foot --app-id=btop --title=btop btop",
+    "on-click-right": "uwsm-app -t service -- missioncenter"
+  },
+
+  // ─── Package Manager ────────────────────────────────────────────────────────
+  "custom/package_manager": {
+    "format": "", // Alternatives: "󰮯" ""
+    "tooltip": true,
+    "tooltip-format": "Package Manager",
+    "on-click": "uwsm-app -t service -- octopi"
+  },
+
+  // ─── File Explorer ──────────────────────────────────────────────────────────
+  "custom/explorer": {
+    "format": "",
+    "tooltip": true,
+    "tooltip-format": "File Manager",
+    "on-click": "uwsm-app -t service -- pcmanfm-qt"
+  },
+
+  // ─── Terminal ───────────────────────────────────────────────────────────────
+  "custom/terminal": {
+    "format": "",
+    "tooltip": true,
+    "tooltip-format": "Terminal",
+    "on-click": "uwsm-app -t service -- foot"
+  },
+
+  // ─── Editor ─────────────────────────────────────────────────────────────────
+  "custom/editor": {
+    "format": "󰈮", // Alternatives: "" "󰈮" "" "" ""
+    "tooltip": true,
+    "tooltip-format": "Editor",
+    "on-click": "zeditor",
+    "on-click-middle": "uwsm-app -t service -S both -- foot --app-id=micro --title=micro micro",
+    "on-click-right": "uwsm-app -t service -- code"
+  },
+
+  // ─── Browser ────────────────────────────────────────────────────────────────
+  "custom/browser": {
+    "format": "󰈹", // Alternatives: "" ""
+    "tooltip": true,
+    "tooltip-format": "Browser",
+    "on-click": "uwsm-app -t service -- firefox",
+    "on-click-middle": "uwsm-app -t service -- helium",
+    "on-click-right": "uwsm-app -t service -- brave"
+  },
+
+  // ─── Steam ──────────────────────────────────────────────────────────────────
+  "custom/steam": {
+    "format": "󰓓", // Alternatives: "" "" ""
+    "tooltip": true,
+    "tooltip-format": "Steam",
+    "on-click": "uwsm-app -t service -- steam -pipewire-dmabuf -no-cef-sandbox"
+  },
+
+  // ─── Taskbar ────────────────────────────────────────────────────────────────
   "wlr/taskbar": {
     "format": "{icon}",
     "icon-size": 18,
-    "icon-theme": "Numix-Circle", // Numix | Numix-Circle | MoreWaita
+    "icon-theme": "Numix-Circle", // Alternatives: Numix | Numix-Circle | MoreWaita
     "tooltip-format": "{title:.50}",
     "on-click": "minimize-raise",
     "on-click-middle": "close",
-    "on-click-right": "maximize",
+    "on-click-right": "maximize"
   },
 
-  ///////////////////////////////////
-  //                               //
-  //  // Modules Center //         //
-  //                               //
-  ///////////////////////////////////
+  // ════════════════════════════════════════════════════════════════════════════
+  // RIGHT SIDE MODULES
+  // ════════════════════════════════════════════════════════════════════════════
 
-  ///////////////////////////////////
-  //                               //
-  //  // Modules Right  //         //
-  //                               //
-  ///////////////////////////////////
-
+  // ─── Recording Indicator ────────────────────────────────────────────────────
+  // Visible only while wf-recorder is running
   "custom/recorder": {
-    "format": "󰻂", // "" "󰑋" "" "󰻂" "󰭩"
+    "format": "󰻂", // Alternatives: "" "󰑋" "" "󰭩"
     "return-type": "json",
     "interval": 1,
     "tooltip": false,
     "exec": "echo '{\"class\": \"recording\"}'",
-    "exec-if": "pgrep wf-recorder >/dev/null 2>&1",
-    //"exec-if": "pgrep -f "^gpu-screen-recorder" >/dev/null 2>&1",
+    "exec-if": "pgrep wf-recorder >/dev/null 2>&1"
   },
 
+  // ─── System Tray ────────────────────────────────────────────────────────────
   "tray": {
-    "icon-size": 18,
-    //"spacing": 8,
+    "icon-size": 18
   },
 
+  // ─── Keyboard Layout ────────────────────────────────────────────────────────
   "custom/keyboard_layout": {
     "format": " {} ",
     "tooltip": false,
-    "exec": "uwsm-app -s b -S both -- xkb-monitor -n",
+    "exec": "uwsm-app -s b -- xkb-monitor -n"
   },
 
-  // group_tools1
-  "group/group_tools1": {
+  // ─── Toggles Drawer ────────────────────────────────────────────────────────
+  // ⇠ Do Not Disturb · Idle Inhibitor
+  // ────────────────────────────────────────────────────────────────────────────
+  "group/toggles": {
     "orientation": "inherit",
     "drawer": {
-      "transition-duration": 0, //Default: 500
+      "transition-duration": 0,
       "children-class": "drawer-child",
-      "transition-left-to-right": false,
+      "transition-left-to-right": false
     },
-    "modules": ["custom/dnd", "idle_inhibitor"],
+    "modules": [
+      "custom/dnd",
+      "idle_inhibitor"
+    ]
   },
 
-  // group_tools2
-  "group/group_tools2": {
+  // ─── Do Not Disturb ─────────────────────────────────────────────────────────
+  "custom/dnd": {
+    "interval": "once",
+    "return-type": "json",
+    "format": "{}{icon}",
+    "format-icons": {
+      "default": "",
+      "dnd": ""
+    },
+    "on-click": "makoctl mode | grep 'dnd' && makoctl mode -r dnd || makoctl mode -a dnd; pkill -RTMIN+11 waybar",
+    "on-click-right": "makoctl restore",
+    "exec": "printf '{\"alt\":\"%s\",\"tooltip\":\"mode: %s\"}' $(makoctl mode | grep -q 'dnd' && echo dnd || echo default) $(makoctl mode | tail -1)",
+    "signal": 11
+  },
+
+  // ─── Idle Inhibitor ─────────────────────────────────────────────────────────
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "",
+      "deactivated": ""
+    }
+  },
+
+  // ─── Utilities Drawer ───────────────────────────────────────────────────────
+  // ⇠ Clipboard · Screencast · Screenshot
+  // ────────────────────────────────────────────────────────────────────────────
+  "group/utilities": {
     "orientation": "inherit",
     "drawer": {
-      "transition-duration": 0, //Default: 500
+      "transition-duration": 0,
       "children-class": "drawer-child",
-      "transition-left-to-right": false,
+      "transition-left-to-right": false
     },
-    "modules": ["custom/clipboard", "custom/screencast", "custom/screenshot"],
+    "modules": [
+      "custom/clipboard",
+      "custom/screencast",
+      "custom/screenshot"
+    ]
   },
 
-  // Custom modules right [group/group_tools1]...
-  // custom/dnd ⇠
-  // idle_inhibitor
+  // ─── Clipboard ──────────────────────────────────────────────────────────────
+  "custom/clipboard": {
+    "format": "",
+    "tooltip": true,
+    "tooltip-format": "Clipboard",
+    "on-click": "~/.local/bin/fuzzel-cliphist.sh"
+  },
 
-  // Custom modules right [group/group_tools2]...
-  // custom/clipboard ⇠
-  // custom/screencast ⇠ custom/screenshot
+  // ─── Screencast ─────────────────────────────────────────────────────────────
+  "custom/screencast": {
+    "format": "",
+    "tooltip": true,
+    "tooltip-format": "Screencast",
+    "on-click": ""
 
-  // Pulseaudio Speaker | Headphone
+  },
+
+  // ─── Screenshot ─────────────────────────────────────────────────────────────
+  "custom/screenshot": {
+    "format": "",
+    "tooltip": true,
+    "tooltip-format": "Screenshot",
+    "on-click": ""
+  },
+
+  // ─── Audio Output (Speakers / Headphones) ───────────────────────────────────
   "pulseaudio#output": {
     "format": "{volume}% {icon}",
     "format-muted": "",
@@ -178,94 +295,77 @@
       "phone": "",
       "portable": "",
       "car": "",
-      "default": ["", "", ""],
+      "default": ["", "", ""]
     },
-    "tooltip": false,
+    "tooltip": true,
     "tooltip-format": "{volume}%",
     "on-click": "~/.local/bin/wob-volume.sh --sink-mute",
     "on-click-middle": "uwsm-app -t service -- pwvucontrol",
     "on-click-right": "uwsm-app -t service -- pavucontrol",
     "on-scroll-up": "~/.local/bin/wob-volume.sh --sink-up",
     "on-scroll-down": "~/.local/bin/wob-volume.sh --sink-down",
-    "ignored-sinks": ["Easy Effects Sink"],
+    "ignored-sinks": ["Easy Effects Sink"]
   },
 
+  // ─── Network ────────────────────────────────────────────────────────────────
   "network": {
     "interval": 60,
     "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
     "format": "{icon}",
     "format-wifi": "{icon}",
-    "format-ethernet": "󰡁", // "" "" "󱘖"
+    "format-ethernet": "󰡁",
     "format-disconnected": "󰤮",
-    "tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
-    "tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes} ⇡{bandwidthUpBytes}",
+    "tooltip-format-ethernet": "⇣{bandwidthDownBytes} ⇡{bandwidthUpBytes}",
     "tooltip-format-disconnected": "Disconnected",
     "on-click": "pkill -x iwgtk || uwsm-app -t service -- iwgtk",
-    "on-click-right": "~/.local/bin/nmtui-toggle.sh",
+    "on-click-right": "~/.local/bin/nmtui-toggle.sh"
   },
 
+  // ─── Battery ────────────────────────────────────────────────────────────────
   "battery": {
     "interval": 60,
     "states": {
-      // "good": 95,
+      // "good": 90,
       "warning": 20,
-      "critical": 10,
+      "critical": 10
     },
     "format": "{capacity}% {icon}",
-    "format-charging": "{capacity}% 󰂄", // "󰂄" ""
+    "format-charging": "{capacity}% 󰂄", // Alternatives: ""
     "format-plugged": "{capacity}% ",
-    //"format-alt": "{time} {icon}",
     "format-icons": ["", "", "", "", ""],
     "tooltip-format": "⇣ {timeTo}",
     "tooltip-format-charging": "⇡ {timeTo}",
     "on-click": "~/.local/bin/fuzzel-power-profile-menu_index.sh",
     "on-click-middle": "uwsm-app -t service -- falcond-gui",
-    "on-click-right": "uwsm-app -t service -- tuned-gui",
+    "on-click-right": "uwsm-app -t service -- tuned-gui"
   },
 
-  //* group_modules
-  "group/group_modules": {
+  // ─── System Drawer ────────────────────────────────────────────────────────
+  // ⇠ Microphone · Bluetooth · Backlight
+  "group/system": {
     "orientation": "inherit",
     "drawer": {
-      "transition-duration": 0, // Default: 500
+      "transition-duration": 0,
       "children-class": "drawer-child",
-      "transition-left-to-right": false,
+      "transition-left-to-right": false
     },
     "modules": [
       "custom/arrow_left",
       "pulseaudio#input",
       "bluetooth",
-      "backlight",
-    ],
+      "backlight"
+    ]
   },
 
-  // Group modules right ...
-  // ⇠
-  // pulseaudio#input ⇠ bluetooth ⇠ backlight
-
-  "backlight": {
-    "format": "{percent}% {icon}",
-    "format-icons": ["󰃠", "󰃟", "󰃞"],
-    "tooltip": false,
-    "on-scroll-up": "uwsm-app -t service -- ~/.local/bin/wob-brightness.sh --up",
-    "on-scroll-down": "uwsm-app -t service -- ~/.local/bin/wob-brightness.sh --down",
+  // ─── Arrow Left (System drawer) ───────────────────────────────────────────
+  "custom/arrow_left": {
+    "format": "",
+    "tooltip": false
   },
 
-  "bluetooth": {
-    "format": " {status}",
-    "format-disabled": "󰂲", // an empty format will hide the module
-    "format-off": "󰂲",
-    "format-connected": "󰂱 {num_connections} connected",
-    "format-no-controller": "",
-    "tooltip-format": "{controller_alias}\t{controller_address}",
-    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
-    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-    "on-click": "pkill -x iwgtk || uwsm-app -t service -- blueman-manager",
-    "on-click-right": "uwsm-app -t service -- ~/.local/bin/bluetooth-toggle.sh",
-  },
-
-  // Pulseaudio Mic
-  // Установить дефолтное устройство ввода (микрофон) через pavucontrol. По умолчанию не задан
+  // ─── Audio Input (Microphone) ───────────────────────────────────────────────
+  // Set default source device via pavucontrol first
   "pulseaudio#input": {
     "format": "{format_source}",
     "format-source": "{volume}% ",
@@ -275,14 +375,39 @@
     "on-click-middle": "uwsm-app -t service -- pwvucontrol",
     "on-click-right": "uwsm-app -t service -- pavucontrol",
     "on-scroll-up": "~/.local/bin/wob-volume.sh --source-up",
-    "on-scroll-down": "~/.local/bin/wob-volume.sh --source-down",
+    "on-scroll-down": "~/.local/bin/wob-volume.sh --source-down"
   },
-  //* group_modules
 
+  // ─── Bluetooth ──────────────────────────────────────────────────────────────
+  "bluetooth": {
+    "format": " {status}",
+    "format-disabled": "󰂲", // an empty format will hide the module
+    "format-off": "󰂲",
+    "format-connected": "󰂱 {num_connections} connected",
+    "format-no-controller": "",
+    "tooltip-format": "{controller_alias}\t{controller_address}",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "on-click": "pkill -x blueman-manager || uwsm-app -t service -- blueman-manager",
+    "on-click-right": "uwsm-app -t service -- ~/.local/bin/bluetooth-toggle.sh"
+  },
+
+  // ─── Backlight ──────────────────────────────────────────────────────────────
+  "backlight": {
+    "format": "{percent}% {icon}",
+    "format-icons": ["󰃠", "󰃟", "󰃞"],
+    "tooltip": true,
+    "tooltip-format": "{percent}%",
+    "on-scroll-up": "uwsm-app -t service -- ~/.local/bin/wob-brightness.sh --up",
+    "on-scroll-down": "uwsm-app -t service -- ~/.local/bin/wob-brightness.sh --down"
+  },
+
+  // ─── Clock & Calendar ───────────────────────────────────────────────────────
+  // Left-click: toggle date format · right-click: switch calendar mode · scroll: navigate months
   "clock": {
-    "format": "{:%H:%M}", // %R - Equivalent to %H:%M, e.g. "11:07"
+    "format": "{:%H:%M}", // %R - Equivalent to %H:%M
     "format-alt": "{:%d-%m-%Y}",
-    "tooltip-format": "<big>{:%b %d %Y}</big>\n\n<tt><small>{calendar}</small></tt>", // %Y - year | %B full month name, e.g. "November" | %b - short month name, e.g. "Nov" | %d - day of month
+    "tooltip-format": "<big>{:%b %d %Y}</big>\n\n<tt><small>{calendar}</small></tt>",
     "calendar": {
       "mode": "month",
       "mode-mon-col": 3,
@@ -292,155 +417,22 @@
         "days": "<span color='#ecc6d9'><b>{}</b></span>",
         "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
         "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
-        "today": "<span color='#ff6699'><b><u>{}</u></b></span>",
-      },
+        "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+      }
     },
     "actions": {
       "on-click-right": "mode",
       "on-scroll-up": "shift_up",
-      "on-scroll-down": "shift_down",
-    },
+      "on-scroll-down": "shift_down"
+    }
   },
 
-  ///////////////////////////////////
-  //                               //
-  //  // Group Modules Left //    //
-  //                               //
-  ///////////////////////////////////
-
-  // group_apps
-  "custom/arrow_right": {
-    "format": "",
-    "tooltip": false,
-  },
-
-  "custom/settings": {
-    "format": " ",
-    "tooltip": true,
-    "tooltip-format": "WC Settings",
-    "on-click": "uwsm-app -t service -- /usr/bin/labwc-tweaks",
-    "on-click-right": "uwsm-app -t service -- dconf-editor",
-  },
-
-  "custom/task_manager": {
-    "format": "",
-    "tooltip": true,
-    "tooltip-format": "Task Manager",
-    "on-click": "uwsm-app -t service -S both -- foot --app-id=btop --title=btop btop",
-    "on-click-right": "uwsm-app -t service -- missioncenter",
-  },
-
-  "custom/package_manager": {
-    "format": "", // "󰮯" ""
-    "tooltip": true,
-    "tooltip-format": "Package Manager",
-    "on-click": "uwsm-app -t service -- octopi",
-    //"on-click-right": "",
-  },
-
-  "custom/explorer": {
-    "format": "",
-    "tooltip": true,
-    "tooltip-format": "File Manager",
-    "on-click": "uwsm-app -t service -- pcmanfm-qt",
-  },
-
-  "custom/terminal": {
-    "format": "",
-    "tooltip": true,
-    "tooltip-format": "Terminal",
-    "on-click": "uwsm-app -t service -- foot",
-    //"on-click-middle": "",
-    //"on-click-right": "",
-  },
-
-  "custom/editor": {
-    "format": "󰈮", // "" "󰈮" "" "" ""
-    "tooltip": true,
-    "tooltip-format": "Editor",
-    "on-click": "zeditor",
-    "on-click-middle": "uwsm-app -t service -S both -- foot --app-id=micro --title=micro micro",
-    "on-click-right": "uwsm-app -t service -- code",
-  },
-
-  "custom/browser": {
-    "format": "󰈹", // "" ""
-    "tooltip": true,
-    "tooltip-format": "Browser",
-    "on-click": "uwsm-app -t service -- firefox",
-    "on-click-middle": "uwsm-app -t service -- helium",
-    "on-click-right": "uwsm-app -t service -- brave",
-  },
-
-  "custom/steam": {
-    "format": "󰓓", // "" "󰓓" "" ""
-    "tooltip": true,
-    "tooltip-format": "Steam",
-    "on-click": "uwsm-app -t service -- steam -pipewire-dmabuf -no-cef-sandbox",
-  },
-
-  ///////////////////////////////////
-  //                               //
-  //  // Group Modules Right //    //
-  //                               //
-  ///////////////////////////////////
-
-  // group_tools1
-  "custom/dnd": {
-    "interval": "once",
-    "return-type": "json",
-    "format": "{}{icon}",
-    "format-icons": {
-      "default": "",
-      "dnd": "",
-    },
-    "on-click": "makoctl mode | grep 'dnd' && makoctl mode -r dnd || makoctl mode -a dnd; pkill -RTMIN+11 waybar",
-    "on-click-right": "makoctl restore",
-    "exec": "printf '{\"alt\":\"%s\",\"tooltip\":\"mode: %s\"}' $(makoctl mode | grep -q 'dnd' && echo dnd || echo default) $(makoctl mode | tail -1)",
-    "signal": 11,
-  },
-
-  "idle_inhibitor": {
-    "format": "{icon}",
-    "format-icons": {
-      "activated": "",
-      "deactivated": "",
-    },
-  },
-
-  // group_tools2
-  "custom/clipboard": {
-    "format": "",
-    "tooltip": true,
-    "tooltip-format": "Clipboard",
-    "on-click": "~/.local/bin/fuzzel-cliphist.sh",
-  },
-
-  "custom/screenshot": {
-    "format": "",
-    "tooltip": true,
-    "tooltip-format": "Screenshot",
-    //"on-click": "", // grim -g \"$(slurp)\" ~/Pictures/$(date +%s).png
-  },
-
-  "custom/screencast": {
-    "format": "", // "" "" "󰞡"
-    "tooltip": true,
-    "tooltip-format": "Screencast",
-    //"on-click": "",
-  },
-
-  // group_modules
-  "custom/arrow_left": {
-    "format": "",
-    "tooltip": false,
-  },
-
+  // ─── Show Desktop / Power Menu ───────────────────────────────────────────────
   "custom/show_desktop": {
     "format": "",
     "tooltip": true,
     "tooltip-format": "Show Desktop",
     "on-click": "~/.config/labwc/scripts/labwc-show-desktop.sh",
-    "on-click-right": "~/.local/bin/fuzzel-power-menu_index.sh",
-  },
+    "on-click-right": "~/.local/bin/fuzzel-power-menu_index.sh"
+  }
 }

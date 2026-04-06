@@ -36,16 +36,15 @@
   ],
 
   // ════════════════════════════════════════════════════════════════════════════
-  // Left Modules
+  // Modules Left
   // ════════════════════════════════════════════════════════════════════════════
 
   // ─── Launcher / Power Menu ──────────────────────────────────────────────────
   "custom/launcher": {
     "format": "", // Alternatives: "󰣇" "" ""
     "tooltip": false,
-    // "tooltip-format": "Menu \n\nRight-click to open the power menu",
     "on-click": "~/.local/bin/fuzzel-launch-menu_index.sh",
-    "on-click-right": "~/.local/bin/fuzzel-power-menu-side_index.sh"
+    "on-click-right": "~/.local/bin/fuzzel-power-menu-side_index.sh --anchor bottom-left"
   },
 
   // ─── Workspaces ─────────────────────────────────────────────────────────────
@@ -166,7 +165,7 @@
   "wlr/taskbar": {
     "format": "{icon}",
     "icon-size": 18,
-    "icon-theme": "Numix-Circle", // Alternatives: Numix | Numix-Circle | MoreWaita
+    "icon-theme": "MoreWaita", // Alternatives: Numix | Numix-Circle | MoreWaita | Numix-Adwaita
     "tooltip-format": "{title:.50}",
     "on-click": "minimize-raise",
     "on-click-middle": "close",
@@ -174,7 +173,7 @@
   },
 
   // ════════════════════════════════════════════════════════════════════════════
-  // RIGHT SIDE MODULES
+  // Modules Right
   // ════════════════════════════════════════════════════════════════════════════
 
   // ─── Recording Indicator ────────────────────────────────────────────────────
@@ -315,6 +314,7 @@
     "format-wifi": "{icon}",
     "format-ethernet": "󰡁",
     "format-disconnected": "󰤮",
+    "tooltip": true,
     "tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes} ⇡{bandwidthUpBytes}",
     "tooltip-format-ethernet": "⇣{bandwidthDownBytes} ⇡{bandwidthUpBytes}",
     "tooltip-format-disconnected": "Disconnected",
@@ -334,6 +334,7 @@
     "format-charging": "{capacity}% 󰂄", // Alternatives: ""
     "format-plugged": "{capacity}% ",
     "format-icons": ["", "", "", "", ""],
+    "tooltip": true,
     "tooltip-format": "⇣ {timeTo}",
     "tooltip-format-charging": "⇡ {timeTo}",
     "on-click": "~/.local/bin/fuzzel-power-profile-menu_index.sh",
@@ -385,6 +386,7 @@
     "format-off": "󰂲",
     "format-connected": "󰂱 {num_connections} connected",
     "format-no-controller": "",
+    "tooltip": true,
     "tooltip-format": "{controller_alias}\t{controller_address}",
     "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
@@ -407,6 +409,7 @@
   "clock": {
     "format": "{:%H:%M}", // %R - Equivalent to %H:%M
     "format-alt": "{:%d-%m-%Y}",
+    "tooltip": true,
     "tooltip-format": "<big>{:%b %d %Y}</big>\n\n<tt><small>{calendar}</small></tt>",
     "calendar": {
       "mode": "month",

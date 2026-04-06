@@ -39,3 +39,9 @@
 =====================================================
 # https://catppuccin.com/
 # https://wixdaq.github.io/Tokyo-Night-Website/
+
+# GTK3 documentation
+=====================================================
+https://docs.gtk.org/gtk3/css-overview.html
+https://docs.gtk.org/gtk3/css-properties.html
+https://developer.gnome.org/documentation/tools/inspector.html

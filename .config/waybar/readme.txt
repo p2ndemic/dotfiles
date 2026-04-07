@@ -45,3 +45,7 @@
 https://docs.gtk.org/gtk3/css-overview.html
 https://docs.gtk.org/gtk3/css-properties.html
 https://developer.gnome.org/documentation/tools/inspector.html
+
+# Visual Waybar editor
+=====================================================
+https://github.com/victorsosaMx/vsWaybar-Studio

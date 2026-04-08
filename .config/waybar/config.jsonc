@@ -6,6 +6,8 @@
   "layer": "top",
   "position": "bottom",
   "height": 38,
+  //"margin-top": 0,
+  //"margin-bottom": 0,
   "reload_style_on_change": true,
 
   // ════════════════════════════════════════════════════════════════════════════

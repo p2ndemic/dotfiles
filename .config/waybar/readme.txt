@@ -49,3 +49,7 @@ https://developer.gnome.org/documentation/tools/inspector.html
 # Visual Waybar editor
 =====================================================
 https://github.com/victorsosaMx/vsWaybar-Studio
+
+# Доп. утилиты
+=====================================================
+https://github.com/better-ecosystem/better-control

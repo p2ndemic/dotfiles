@@ -93,7 +93,7 @@
 
   // ─── Settings ───────────────────────────────────────────────────────────────
   "custom/settings": {
-    "format": " ",
+    "format": "",
     "tooltip": true,
     "tooltip-format": "WC Settings",
     "on-click": "uwsm-app -t service -- /usr/bin/labwc-tweaks",
@@ -194,7 +194,7 @@
 
   // ─── Keyboard Layout ────────────────────────────────────────────────────────
   "custom/keyboard_layout": {
-    "format": " {} ",
+    "format": "{}",
     "tooltip": false,
     "exec": "uwsm-app -s b -- xkb-monitor -n"
   },

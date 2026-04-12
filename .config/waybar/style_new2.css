@@ -1,0 +1,281 @@
+/* ═════════════════════════════════════════════════════════════════════ */
+/* Catppuccin Mocha + Ayu Dark Mix Color Palette                         */
+/* ═════════════════════════════════════════════════════════════════════ */
+
+@define-color bg            #181926;
+@define-color module_bg     #262C36;
+@define-color text_color    #CDD6F4;
+
+
+@define-color accent_color  #E6B450;
+@define-color border_color  #1F2430;
+
+
+@define-color orange        #F29668;
+@define-color red           #F07178;
+@define-color green         #B8CC52;
+@define-color blue          #59C2FF;
+
+
+/* ═════════════════════════════════════════════════════════════════════ */
+/* Global Settings                                                       */
+/* ═════════════════════════════════════════════════════════════════════ */
+
+* {
+    /* Borders */
+    border: none;
+    border-radius: 0;
+
+    /* Font and Text */
+    font-family: "JetBrainsMono Nerd Font Propo";
+    font-size: 14px;
+    font-weight: 500; /* normal = 400 */
+
+    /* Height */
+    min-height: 0;
+
+    /* Disable visual effects */
+    box-shadow: none;
+    text-shadow: none;
+
+    /* Disable animations */
+    animation: none;
+    transition: none;
+}
+
+
+/* ═════════════════════════════════════════════════════════════════════ */
+/* Window & Bar Settings                                                 */
+/* ═════════════════════════════════════════════════════════════════════ */
+
+window#waybar {
+    background: rgba(24, 25, 38, 0.98);
+    color: @text_color;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+/* ── Button ── */
+
+#waybar button {
+    /* Reset all builtin styles */
+    all: unset;
+
+    /* Restore some properties */
+    min-height: 24px;
+    min-width: 16px;
+    padding: 0 10px;
+
+    /* Avoid rounded borders under each button name */
+    border: none;
+    border-radius: 0;
+
+    /* Use box-shadow instead of border so the text isn't offset */
+    box-shadow: inset 0 -2px transparent;
+}
+
+#waybar button:hover {
+    background: inherit;
+    box-shadow: inset 0 -2px @accent_color;
+}
+
+
+/* ── Tooltip ── */
+tooltip {
+    /* background: #0B0E14; */
+    border: 1px solid @border_color;
+}
+
+tooltip label {
+    color: @text_color;
+}
+
+/* ═════════════════════════════════════════════════════════════════════ */
+/* Modules Layout                                                        */
+/* ═════════════════════════════════════════════════════════════════════ */
+
+.modules-left,
+.modules-right {
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+/* ═════════════════════════════════════════════════════════════════════ */
+/* Workspaces (ext/workspaces)                                           */
+/* ═════════════════════════════════════════════════════════════════════ */
+
+
+/* ═════════════════════════════════════════════════════════════════════ */
+/* Taskbar (wlr/taskbar)                                                 */
+/* ═════════════════════════════════════════════════════════════════════ */
+
+
+/* ═════════════════════════════════════════════════════════════════════ */
+/* Modules Left                                                          */
+/* ═════════════════════════════════════════════════════════════════════ */
+
+/* ── Launcher / Power Menu ── ───────────────────────────────────────── */
+#custom-launcher {
+    font-size: 16px;
+    background-color: @module_bg;
+    border-radius: 4;
+    margin-left: 6px;
+    margin-right: 2px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+/* ── Group: Apps [outside settings] ── ──────────────────────────────── */
+#apps {
+    margin-left: 2px;
+    margin-right: 2px;
+}
+/* ── Group: Apps [inside settings] ── ───────────────────────────────── */
+#apps label {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+/* ═════════════════════════════════════════════════════════════════════ */
+/* Modules Right                                                         */
+/* ═════════════════════════════════════════════════════════════════════ */
+
+/* ── Recording Indicator ── ──────────────────────────────────────────  */
+#custom-recorder {
+    margin-left: 2px;
+    margin-right: 2px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+/* ── System Tray ── ──────────────────────────────────────────────────  */
+#tray {
+    margin-left: 2px;
+    margin-right: 2px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+/* ── Keyboard Layout ── */
+#custom-keyboard_layout {
+    margin-left: 2px;
+    margin-right: 2px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+/* ── Group: Toggles | Utilities [outside settings] ── ─────────────── */
+#toggles,
+#utilities {
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+/* ── Group: Toggles | Utilities [inside settings] ── ─────────────── */
+#toggles label,
+#utilities label {
+    background-color: @module_bg;
+    border-radius: 4;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+
+/* ── Audio Output (Speakers / Headphones) ── ────────────────────── */
+#pulseaudio.output {
+    background-color: @module_bg;
+    border-radius: 4;
+    margin-left: 2px;
+    margin-right: 2px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+/* ── Network (Connected / Disconnected) ── ──────────────────────── */
+#network {
+    background-color: @module_bg;
+    color: @blue;
+    border-radius: 4;
+    margin-left: 2px;
+    margin-right: 2px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+#network.disconnected {
+    color: @red;
+}
+
+
+/* ── Battery (Idle / Warning / Critical) ── ────────────────────── */
+#battery {
+    background-color: @module_bg;
+    color: @green;
+    border-radius: 4;
+    margin-left: 2px;
+    margin-right: 2px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+#battery.warning {
+    color: @orange;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
+
+/* Using steps() instead of linear as a timing function to limit cpu usage */
+#battery.critical:not(.charging) {
+    color: @red;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+/* ── Clock ── ───────────────────────────────────────────────────── */
+#clock {
+    background-color: @module_bg;
+    border-radius: 4;
+    margin-left: 2px;
+    margin-right: 2px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+/* ── Group: System [outside settings] ── ────────────────────────── */
+#system {
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+/* ── Group: [inside settings] ── ────────────────────────────────── */
+#system label {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+/* ── Show Desktop  ── ──────────────────────────────────────────── */
+#custom-show_desktop {
+    font-size: 16px;
+    background-color: @module_bg;
+    border-radius: 4;
+    margin-left: 2px;
+    margin-right: 6px;
+    padding-left: 8px;
+    padding-right: 8px;
+}

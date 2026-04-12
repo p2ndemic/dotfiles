@@ -137,7 +137,7 @@
 
   // ─── Editor ─────────────────────────────────────────────────────────────────
   "custom/editor": {
-    "format": "󰈮", // Alternatives: "" "󰈮" "" "" ""
+    "format": "", // Alternatives: "" "󰈮" "" "" ""
     "tooltip": true,
     "tooltip-format": "Editor",
     "on-click": "zeditor",
@@ -147,7 +147,7 @@
 
   // ─── Browser ────────────────────────────────────────────────────────────────
   "custom/browser": {
-    "format": "󰈹", // Alternatives: "" ""
+    "format": "", // Alternatives: "󰈹" "" ""
     "tooltip": true,
     "tooltip-format": "Browser",
     "on-click": "uwsm-app -t service -- firefox",
@@ -157,7 +157,7 @@
 
   // ─── Steam ──────────────────────────────────────────────────────────────────
   "custom/steam": {
-    "format": "󰓓", // Alternatives: "" "" ""
+    "format": "", // Alternatives: "" "" ""
     "tooltip": true,
     "tooltip-format": "Steam",
     "on-click": "uwsm-app -t service -- steam -pipewire-dmabuf -no-cef-sandbox"
@@ -166,7 +166,7 @@
   // ─── Taskbar ────────────────────────────────────────────────────────────────
   "wlr/taskbar": {
     "format": "{icon}",
-    "icon-size": 18,
+    "icon-size": 20,
     "icon-theme": "MoreWaita", // Alternatives: Numix | Numix-Circle | MoreWaita | Numix-Adwaita
     "tooltip-format": "{title:.50}",
     "on-click": "minimize-raise",
@@ -191,14 +191,14 @@
 
   // ─── System Tray ────────────────────────────────────────────────────────────
   "tray": {
-    "icon-size": 18
+    "icon-size": 20
   },
 
   // ─── Keyboard Layout ────────────────────────────────────────────────────────
   "custom/keyboard_layout": {
     "format": "{}",
     "tooltip": false,
-    "exec": "uwsm-app -s b -- xkb-monitor -n"
+    "exec": "xkb-monitor -n"
   },
 
   // ─── Toggles Drawer ────────────────────────────────────────────────────────
@@ -223,8 +223,8 @@
     "return-type": "json",
     "format": "{}{icon}",
     "format-icons": {
-      "default": "",
-      "dnd": ""
+      "default": "󰂚", // Alternatives: ""
+      "dnd": "󰂛" // Alternatives: ""
     },
     "on-click": "makoctl mode | grep 'dnd' && makoctl mode -r dnd || makoctl mode -a dnd; pkill -RTMIN+11 waybar",
     "on-click-right": "makoctl restore",
@@ -328,7 +328,7 @@
   "battery": {
     "interval": 60,
     "states": {
-      // "good": 90,
+      // "good": 80,
       "warning": 20,
       "critical": 10
     },
@@ -354,16 +354,16 @@
       "transition-left-to-right": false
     },
     "modules": [
-      "custom/arrow_left",
+      "custom/arrow_up",
       "pulseaudio#input",
       "bluetooth",
       "backlight"
     ]
   },
 
-  // ─── Arrow Left (System drawer) ───────────────────────────────────────────
-  "custom/arrow_left": {
-    "format": "",
+  // ─── Arrow Up (System drawer) ───────────────────────────────────────────
+  "custom/arrow_up": {
+    "format": "", // Alternatives: ""
     "tooltip": false
   },
 

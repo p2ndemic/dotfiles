@@ -131,13 +131,15 @@
   <!-- ══════════════════════════════════════════════════════════════ -->
   <!-- DESKTOPS -->
   <!-- ══════════════════════════════════════════════════════════════ -->
-  <desktops number="3">
+  <desktops number="1">
     <popupTime>500</popupTime>
     <initial>1</initial>
     <names>
       <name>1</name>
-      <name>2</name>
-      <name>3</name>
+      <!-- <name>2</name> -->
+      <!-- <name>3</name> -->
+      <!-- <name>4</name> -->
+      <!-- <name>5</name> -->
     </names>
   </desktops>
 
@@ -263,6 +265,9 @@
     <keybind key="W-m">
       <action name="Iconify" />
     </keybind>
+    <keybind key="W-z">
+      <action name="Iconify" />
+    </keybind>
     <!-- Toggle shade (roll up) -->
     <keybind key="W-h">
       <action name="ToggleShade" />
@@ -335,21 +340,37 @@
     <keybind key="W-1">
       <action name="GoToDesktop" to="1" />
     </keybind>
+    <!--
     <keybind key="W-2">
       <action name="GoToDesktop" to="2" />
     </keybind>
     <keybind key="W-3">
       <action name="GoToDesktop" to="3" />
     </keybind>
+    <keybind key="W-4">
+      <action name="GoToDesktop" to="4" />
+    </keybind>
+    <keybind key="W-5">
+      <action name="GoToDesktop" to="5" />
+    </keybind>
+    -->
     <keybind key="W-S-1">
       <action name="SendToDesktop" to="1" follow="no" />
     </keybind>
+    <!--
     <keybind key="W-S-2">
       <action name="SendToDesktop" to="2" follow="no" />
     </keybind>
     <keybind key="W-S-3">
       <action name="SendToDesktop" to="3" follow="no" />
     </keybind>
+    <keybind key="W-S-4">
+      <action name="SendToDesktop" to="4" follow="no" />
+    </keybind>
+    <keybind key="W-S-5">
+      <action name="SendToDesktop" to="5" follow="no" />
+    </keybind>
+    -->
     <keybind key="W-A-Left">
       <action name="GoToDesktop" to="left" wrap="yes" />
     </keybind>

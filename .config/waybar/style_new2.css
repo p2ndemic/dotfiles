@@ -1,6 +1,9 @@
 /* ═════════════════════════════════════════════════════════════════════ */
 /* Catppuccin Mocha + Ayu Dark Mix Color Palette                         */
 /* ═════════════════════════════════════════════════════════════════════ */
+/* https://ayutheme.com/                                                 */
+/* https://github.com/ayu-theme/ayu-colors/blob/HEAD/palette.svg         */
+/* ═════════════════════════════════════════════════════════════════════ */
 
 @define-color bg            #181926;
 @define-color module_bg     #262C36;
@@ -15,7 +18,7 @@
 @define-color red           #F07178;
 @define-color green         #B8CC52;
 @define-color blue          #59C2FF;
-
+@define-color purple        #D2A6FF;
 
 /* ═════════════════════════════════════════════════════════════════════ */
 /* Global Settings                                                       */
@@ -98,19 +101,52 @@ tooltip label {
 
 .modules-left,
 .modules-right {
-    margin-top: 2px;
-    margin-bottom: 2px;
+    margin-top: 4px;
+    margin-bottom: 4px;
 }
 
 /* ═════════════════════════════════════════════════════════════════════ */
 /* Workspaces (ext/workspaces)                                           */
 /* ═════════════════════════════════════════════════════════════════════ */
 
+#workspaces button {
+    background-color: @module_bg;
+    border-radius: 4px;
+}
+
+#workspaces button.focused, #workspaces button.active {
+    background-color: @module_bg;
+}
+
+#workspaces button.urgent {
+    background-color: @red;
+}
+
+#workspaces button:hover {
+    background: transparent;
+}
 
 /* ═════════════════════════════════════════════════════════════════════ */
 /* Taskbar (wlr/taskbar)                                                 */
 /* ═════════════════════════════════════════════════════════════════════ */
 
+#taskbar {
+    background-color: @module_bg;
+    border-radius: 4px;
+}
+
+#taskbar button {
+    background: transparent;
+}
+
+#taskbar button.active {
+    box-shadow: inset 0 -2px @accent_color; 
+}
+
+#taskbar button:hover {
+    background: transparent;
+    box-shadow: inset 0 -2px @accent_color; 
+}
 
 /* ═════════════════════════════════════════════════════════════════════ */
 /* Modules Left                                                          */
@@ -122,7 +158,7 @@ tooltip label {
     background-color: @module_bg;
     border-radius: 4;
     margin-left: 6px;
-    margin-right: 2px;
+    margin-right: 4px;
     padding-left: 8px;
     padding-right: 8px;
 }
@@ -154,14 +190,30 @@ tooltip label {
 
 /* ── System Tray ── ──────────────────────────────────────────────────  */
 #tray {
+    background-color: transparent;
     margin-left: 2px;
     margin-right: 2px;
     padding-left: 8px;
     padding-right: 8px;
 }
 
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: @red;
+}
+
+#tray:hover {
+    box-shadow: inset 0 -2px @accent_color;
+}
+
 /* ── Keyboard Layout ── */
 #custom-keyboard_layout {
+    background-color: @module_bg;
+    border-radius: 4;
     margin-left: 2px;
     margin-right: 2px;
     padding-left: 8px;
@@ -190,6 +242,7 @@ tooltip label {
 /* ── Audio Output (Speakers / Headphones) ── ────────────────────── */
 #pulseaudio.output {
     background-color: @module_bg;
+    color: @purple;
     border-radius: 4;
     margin-left: 2px;
     margin-right: 2px;
@@ -253,6 +306,7 @@ tooltip label {
     margin-right: 2px;
     padding-left: 8px;
     padding-right: 8px;
+    font-weight: 600;
 }
 
 /* ── Group: System [outside settings] ── ────────────────────────── */
@@ -263,6 +317,8 @@ tooltip label {
 
 /* ── Group: [inside settings] ── ────────────────────────────────── */
 #system label {
+    background-color: @module_bg;
+    border-radius: 4;
     margin-left: 0;
     margin-right: 0;
     padding-left: 8px;

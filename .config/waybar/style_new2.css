@@ -88,7 +88,7 @@ window#waybar.hidden {
 /* ── Tooltip ── */
 tooltip {
     /* background: #0B0E14; */
-    border: 1px solid @border_color;
+    border: 2px solid @border_color;
 }
 
 tooltip label {
@@ -122,9 +122,12 @@ tooltip label {
     background-color: @red;
 }
 
+/*
 #workspaces button:hover {
     background: transparent;
+    box-shadow: inset 0 -2px @accent_color;
 }
+*/
 
 /* ═════════════════════════════════════════════════════════════════════ */
 /* Taskbar (wlr/taskbar)                                                 */
@@ -143,10 +146,12 @@ tooltip label {
     box-shadow: inset 0 -2px @accent_color; 
 }
 
+/*
 #taskbar button:hover {
     background: transparent;
     box-shadow: inset 0 -2px @accent_color; 
 }
+*/
 
 /* ═════════════════════════════════════════════════════════════════════ */
 /* Modules Left                                                          */
@@ -191,10 +196,15 @@ tooltip label {
 /* ── System Tray ── ──────────────────────────────────────────────────  */
 #tray {
     background-color: transparent;
-    margin-left: 2px;
-    margin-right: 2px;
-    padding-left: 8px;
-    padding-right: 8px;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+#tray menu {
+    font-family: inherit;
+    background: @theme_base_color;
+    border-radius: 4px;
+    color: @theme_text_color;
 }
 
 #tray > .passive {
@@ -279,6 +289,10 @@ tooltip label {
 
 #battery.warning {
     color: @orange;
+}
+
+#battery.critical {
+    color: @red;
 }
 
 @keyframes blink {

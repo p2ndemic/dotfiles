@@ -1,9 +1,9 @@
-/* ═════════════════════════════════════════════════════════════════════ */
-/* Catppuccin Mocha + Ayu Dark Mix Color Palette                         */
-/* ═════════════════════════════════════════════════════════════════════ */
-/* https://ayutheme.com/                                                 */
-/* https://github.com/ayu-theme/ayu-colors/blob/HEAD/palette.svg         */
-/* ═════════════════════════════════════════════════════════════════════ */
+/* ══════════════════════════════════════════════════════════════ */
+/* Catppuccin Mocha + Ayu Dark Mix Color Palette                  */
+/* ══════════════════════════════════════════════════════════════ */
+/* https://ayutheme.com/                                          */
+/* https://github.com/ayu-theme/ayu-colors/blob/HEAD/palette.svg  */
+/* ══════════════════════════════════════════════════════════════ */
 
 @define-color bg            #181926;
 @define-color module_bg     #262C36;
@@ -48,7 +48,7 @@
 
 
 /* ═════════════════════════════════════════════════════════════════════ */
-/* Window & Bar Settings                                                 */
+/* Waybar Settings                                                       */
 /* ═════════════════════════════════════════════════════════════════════ */
 
 window#waybar {
@@ -62,7 +62,7 @@ window#waybar.hidden {
 
 /* ── Button ── */
 
-#waybar button {
+button {
     /* Reset all builtin styles */
     all: unset;
 
@@ -79,7 +79,7 @@ window#waybar.hidden {
     box-shadow: inset 0 -2px transparent;
 }
 
-#waybar button:hover {
+button:hover {
     background: inherit;
     box-shadow: inset 0 -2px @accent_color;
 }
@@ -160,7 +160,7 @@ tooltip label {
 /* ── Launcher / Power Menu ── ───────────────────────────────────────── */
 #custom-launcher {
     font-size: 16px;
-    background-color: @module_bg;
+    /* background-color: @module_bg; */
     border-radius: 4;
     margin-left: 6px;
     margin-right: 4px;

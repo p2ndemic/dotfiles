@@ -160,7 +160,7 @@ tooltip label {
 /* ── Launcher / Power Menu ── ───────────────────────────────────────── */
 #custom-launcher {
     font-size: 16px;
-    /* background-color: @module_bg; */
+    background-color: @module_bg;
     border-radius: 4;
     margin-left: 6px;
     margin-right: 4px;

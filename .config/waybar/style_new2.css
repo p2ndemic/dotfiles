@@ -69,7 +69,6 @@ button {
     /* Restore some properties */
     min-height: 24px;
     min-width: 16px;
-    padding: 0 10px;
 
     /* Avoid rounded borders under each button name */
     border: none;
@@ -109,13 +108,23 @@ tooltip label {
 /* Workspaces (ext/workspaces)                                           */
 /* ═════════════════════════════════════════════════════════════════════ */
 
-#workspaces button {
+#workspaces {
     background-color: @module_bg;
     border-radius: 4px;
+    margin-left: 2px;
+    padding-left: 2px;
+    padding-right: 2px;
 }
 
-#workspaces button.focused, #workspaces button.active {
-    background-color: @module_bg;
+#workspaces button {
+    background-color: transparent;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#workspaces button.focused,
+#workspaces button.active {
+    background-color: transparent;
 }
 
 #workspaces button.urgent {
@@ -136,10 +145,15 @@ tooltip label {
 #taskbar {
     background-color: @module_bg;
     border-radius: 4px;
+    margin-right: 2px;
+    padding-left: 2px;
+    padding-right: 2px;
 }
 
 #taskbar button {
     background: transparent;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 #taskbar button.active {
@@ -162,10 +176,10 @@ tooltip label {
     font-size: 16px;
     background-color: @module_bg;
     border-radius: 4;
-    margin-left: 6px;
-    margin-right: 4px;
-    padding-left: 8px;
-    padding-right: 8px;
+    margin-left: 4px;
+    margin-right: 2px;
+    padding-left: 12px;
+    padding-right: 12px;
 }
 
 /* ── Group: Apps [outside settings] ── ──────────────────────────────── */
@@ -175,10 +189,11 @@ tooltip label {
 }
 /* ── Group: Apps [inside settings] ── ───────────────────────────────── */
 #apps label {
+    background-color: transparent;
     margin-left: 0;
     margin-right: 0;
-    padding-left: 8px;
-    padding-right: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 /* ═════════════════════════════════════════════════════════════════════ */
@@ -187,10 +202,11 @@ tooltip label {
 
 /* ── Recording Indicator ── ──────────────────────────────────────────  */
 #custom-recorder {
+    background-color: transparent;
     margin-left: 2px;
     margin-right: 2px;
-    padding-left: 8px;
-    padding-right: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 /* ── System Tray ── ──────────────────────────────────────────────────  */
@@ -216,23 +232,21 @@ tooltip label {
     background-color: @red;
 }
 
-#tray:hover {
-    box-shadow: inset 0 -2px @accent_color;
-}
-
 /* ── Keyboard Layout ── */
 #custom-keyboard_layout {
     background-color: @module_bg;
     border-radius: 4;
     margin-left: 2px;
     margin-right: 2px;
-    padding-left: 8px;
-    padding-right: 8px;
+    padding-left: 12px;
+    padding-right: 12px;
 }
 
 /* ── Group: Toggles | Utilities [outside settings] ── ─────────────── */
 #toggles,
 #utilities {
+    background-color: @module_bg;
+    border-radius: 4px;
     margin-left: 2px;
     margin-right: 2px;
 }
@@ -240,12 +254,11 @@ tooltip label {
 /* ── Group: Toggles | Utilities [inside settings] ── ─────────────── */
 #toggles label,
 #utilities label {
-    background-color: @module_bg;
-    border-radius: 4;
+    background-color: transparent;
     margin-left: 0;
     margin-right: 0;
-    padding-left: 8px;
-    padding-right: 8px;
+    padding-left: 12px;
+    padding-right: 12px;
 }
 
 
@@ -256,8 +269,8 @@ tooltip label {
     border-radius: 4;
     margin-left: 2px;
     margin-right: 2px;
-    padding-left: 8px;
-    padding-right: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 /* ── Network (Connected / Disconnected) ── ──────────────────────── */
@@ -267,8 +280,8 @@ tooltip label {
     border-radius: 4;
     margin-left: 2px;
     margin-right: 2px;
-    padding-left: 8px;
-    padding-right: 8px;
+    padding-left: 12px;
+    padding-right: 12px;
 }
 
 #network.disconnected {
@@ -283,8 +296,8 @@ tooltip label {
     border-radius: 4;
     margin-left: 2px;
     margin-right: 2px;
-    padding-left: 8px;
-    padding-right: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 #battery.warning {
@@ -318,25 +331,27 @@ tooltip label {
     border-radius: 4;
     margin-left: 2px;
     margin-right: 2px;
-    padding-left: 8px;
-    padding-right: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
     font-weight: 600;
 }
 
 /* ── Group: System [outside settings] ── ────────────────────────── */
 #system {
+    background-color: @module_bg;
+    border-radius: 4px;
     margin-left: 2px;
     margin-right: 2px;
+    
 }
 
 /* ── Group: [inside settings] ── ────────────────────────────────── */
 #system label {
-    background-color: @module_bg;
-    border-radius: 4;
+    background-color: transparent;
     margin-left: 0;
     margin-right: 0;
-    padding-left: 8px;
-    padding-right: 8px;
+    padding-left: 12px;
+    padding-right: 12px;
 }
 
 /* ── Show Desktop  ── ──────────────────────────────────────────── */
@@ -345,7 +360,7 @@ tooltip label {
     background-color: @module_bg;
     border-radius: 4;
     margin-left: 2px;
-    margin-right: 6px;
-    padding-left: 8px;
-    padding-right: 8px;
+    margin-right: 4px;
+    padding-left: 12px;
+    padding-right: 12px;
 }

@@ -17,21 +17,21 @@
   "modules-left": [
     "custom/launcher",
     "ext/workspaces",
-    "group/apps",
-    "wlr/taskbar"
+    "group/apps_drawer",
+    "wlr/taskbar",
+    "custom/recorder"
   ],
 
   //"modules-center": [],
 
   "modules-right": [
-    "custom/recorder",
     "tray",
     "custom/keyboard_layout",
-    "group/toggles",
-    "group/utilities",
-    "pulseaudio#output",
-    "network",
-    "battery",
+    "group/toggles_drawer",
+    "group/utilities_drawer",
+    "group/pulseaudio_drawer",
+    "group/network_bluetooth_drawer",
+    "group/battery_backlight_drawer",
     "group/system",
     "clock",
     "custom/show_desktop"
@@ -63,11 +63,11 @@
     "on-click": "activate"
   },
 
-  // ─── Applications Drawer ────────────────────────────────────────────────────
+  // ─── Group: Apps Drawer ─────────────────────────────────────────────────────
   // ⇢ Settings · Task Manager · Package Manager · File Manager · Terminal
   //   · Editor · Browser · Steam
   // ────────────────────────────────────────────────────────────────────────────
-  "group/apps": {
+  "group/apps_drawer": {
     "orientation": "inherit",
     "drawer": {
       "transition-duration": 0,
@@ -137,7 +137,7 @@
 
   // ─── Editor ─────────────────────────────────────────────────────────────────
   "custom/editor": {
-    "format": "", // Alternatives: "" "󰈮" "" "" ""
+    "format": "󰈮", // Alternatives: "" "󰈮" "" "" ""
     "tooltip": true,
     "tooltip-format": "Editor",
     "on-click": "zeditor",
@@ -147,7 +147,7 @@
 
   // ─── Browser ────────────────────────────────────────────────────────────────
   "custom/browser": {
-    "format": "", // Alternatives: "󰈹" "" ""
+    "format": "󰈹", // Alternatives: "󰈹" ""
     "tooltip": true,
     "tooltip-format": "Browser",
     "on-click": "uwsm-app -t service -- firefox",
@@ -157,7 +157,7 @@
 
   // ─── Steam ──────────────────────────────────────────────────────────────────
   "custom/steam": {
-    "format": "", // Alternatives: "" "" ""
+    "format": "󰓓", // Alternatives: fa = "" | "" | "" / md = "󰓓" 
     "tooltip": true,
     "tooltip-format": "Steam",
     "on-click": "uwsm-app -t service -- steam -pipewire-dmabuf -no-cef-sandbox"
@@ -174,20 +174,21 @@
     "on-click-right": "maximize"
   },
 
-  // ════════════════════════════════════════════════════════════════════════════
-  // Modules Right
-  // ════════════════════════════════════════════════════════════════════════════
-
   // ─── Recording Indicator ────────────────────────────────────────────────────
   // Visible only while wf-recorder is running
   "custom/recorder": {
-    "format": "󰻂", // Alternatives: "" "󰑋" "" "󰭩"
+    "format": "󰻂", // Alternatives: "󰑋" "󰻂"
     "return-type": "json",
     "interval": 1,
     "tooltip": false,
     "exec": "echo '{\"class\": \"recording\"}'",
     "exec-if": "pgrep wf-recorder >/dev/null 2>&1"
   },
+
+
+  // ════════════════════════════════════════════════════════════════════════════
+  // Modules Right
+  // ════════════════════════════════════════════════════════════════════════════
 
   // ─── System Tray ────────────────────────────────────────────────────────────
   "tray": {
@@ -202,10 +203,10 @@
     "exec": "xkb-monitor -n"
   },
 
-  // ─── Toggles Drawer ────────────────────────────────────────────────────────
+  // ─── Group: Toggles Drawer ──────────────────────────────────────────────────
   // ⇠ Do Not Disturb · Idle Inhibitor
   // ────────────────────────────────────────────────────────────────────────────
-  "group/toggles": {
+  "group/toggles_drawer": {
     "orientation": "inherit",
     "drawer": {
       "transition-duration": 0,
@@ -242,10 +243,10 @@
     }
   },
 
-  // ─── Utilities Drawer ───────────────────────────────────────────────────────
+  // ─── Group: Utilities Drawer ────────────────────────────────────────────────
   // ⇠ Clipboard · Screencast · Screenshot
   // ────────────────────────────────────────────────────────────────────────────
-  "group/utilities": {
+  "group/utilities_drawer": {
     "orientation": "inherit",
     "drawer": {
       "transition-duration": 0,
@@ -284,6 +285,22 @@
     "on-click": ""
   },
 
+  // ─── Group: Pulseaudio Drawer ───────────────────────────────────────────────
+  // ⇠ pulseaudio#output · pulseaudio#input
+  // ────────────────────────────────────────────────────────────────────────────
+  "group/pulseaudio_drawer": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 0,
+      "children-class": "drawer-child",
+      "transition-left-to-right": false
+    },
+    "modules": [
+      "pulseaudio#output",
+      "pulseaudio#input"
+    ]
+  },
+
   // ─── Audio Output (Speakers / Headphones) ───────────────────────────────────
   "pulseaudio#output": {
     "format": "{volume}% {icon}",
@@ -309,6 +326,36 @@
     "ignored-sinks": ["Easy Effects Sink"]
   },
 
+  // ─── Audio Input (Microphone) ───────────────────────────────────────────────
+  // Set default source device via pavucontrol first
+  "pulseaudio#input": {
+    "format": "{format_source}",
+    "format-source": "{volume}% ",
+    "format-source-muted": "",
+    "tooltip": false,
+    "on-click": "~/.local/bin/wob-volume.sh --source-mute",
+    "on-click-middle": "uwsm-app -t service -- pwvucontrol",
+    "on-click-right": "uwsm-app -t service -- pavucontrol",
+    "on-scroll-up": "~/.local/bin/wob-volume.sh --source-up",
+    "on-scroll-down": "~/.local/bin/wob-volume.sh --source-down"
+  },
+
+  // ─── Group: Network/Bluetooth Drawer ────────────────────────────────────────
+  // ⇠ Network · Bluetooth
+  // ────────────────────────────────────────────────────────────────────────────
+  "group/network_bluetooth_drawer": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 0,
+      "children-class": "drawer-child",
+      "transition-left-to-right": false
+    },
+    "modules": [
+      "network",
+      "bluetooth"
+    ]
+  },
+
   // ─── Network ────────────────────────────────────────────────────────────────
   "network": {
     "interval": 60,
@@ -323,6 +370,37 @@
     "tooltip-format-disconnected": "Disconnected",
     "on-click": "pkill -x iwgtk || uwsm-app -t service -- iwgtk",
     "on-click-right": "~/.local/bin/nmtui-toggle.sh"
+  },
+
+  // ─── Bluetooth ──────────────────────────────────────────────────────────────
+  "bluetooth": {
+    "format": " {status}",
+    "format-disabled": "󰂲", // an empty format will hide the module
+    "format-off": "󰂲",
+    "format-connected": "󰂱 {num_connections} connected",
+    "format-no-controller": "",
+    "tooltip": true,
+    "tooltip-format": "{controller_alias}\t{controller_address}",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "on-click": "pkill -x blueman-manager || uwsm-app -t service -- blueman-manager",
+    "on-click-right": "uwsm-app -t service -- ~/.local/bin/bluetooth-toggle.sh"
+  },
+
+  // ─── Group: Battery/Backlight Drawer ────────────────────────────────────────
+  // ⇠ Battery · Backlight
+  // ────────────────────────────────────────────────────────────────────────────
+  "group/battery_backlight_drawer": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 0,
+      "children-class": "drawer-child",
+      "transition-left-to-right": false
+    },
+    "modules": [
+      "battery",
+      "backlight"
+    ]
   },
 
   // ─── Battery ────────────────────────────────────────────────────────────────
@@ -343,58 +421,6 @@
     "on-click": "~/.local/bin/fuzzel-power-profile-menu_index.sh",
     "on-click-middle": "uwsm-app -t service -- falcond-gui",
     "on-click-right": "uwsm-app -t service -- tuned-gui"
-  },
-
-  // ─── System Drawer ────────────────────────────────────────────────────────
-  // ⇠ Microphone · Bluetooth · Backlight
-  "group/system": {
-    "orientation": "inherit",
-    "drawer": {
-      "transition-duration": 0,
-      "children-class": "drawer-child",
-      "transition-left-to-right": false
-    },
-    "modules": [
-      "custom/arrow_up",
-      "pulseaudio#input",
-      "bluetooth",
-      "backlight"
-    ]
-  },
-
-  // ─── Arrow Up (System drawer) ───────────────────────────────────────────
-  "custom/arrow_up": {
-    "format": "", // Alternatives: ""
-    "tooltip": false
-  },
-
-  // ─── Audio Input (Microphone) ───────────────────────────────────────────────
-  // Set default source device via pavucontrol first
-  "pulseaudio#input": {
-    "format": "{format_source}",
-    "format-source": "{volume}% ",
-    "format-source-muted": "",
-    "tooltip": false,
-    "on-click": "~/.local/bin/wob-volume.sh --source-mute",
-    "on-click-middle": "uwsm-app -t service -- pwvucontrol",
-    "on-click-right": "uwsm-app -t service -- pavucontrol",
-    "on-scroll-up": "~/.local/bin/wob-volume.sh --source-up",
-    "on-scroll-down": "~/.local/bin/wob-volume.sh --source-down"
-  },
-
-  // ─── Bluetooth ──────────────────────────────────────────────────────────────
-  "bluetooth": {
-    "format": " {status}",
-    "format-disabled": "󰂲", // an empty format will hide the module
-    "format-off": "󰂲",
-    "format-connected": "󰂱 {num_connections} connected",
-    "format-no-controller": "",
-    "tooltip": true,
-    "tooltip-format": "{controller_alias}\t{controller_address}",
-    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
-    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-    "on-click": "pkill -x blueman-manager || uwsm-app -t service -- blueman-manager",
-    "on-click-right": "uwsm-app -t service -- ~/.local/bin/bluetooth-toggle.sh"
   },
 
   // ─── Backlight ──────────────────────────────────────────────────────────────

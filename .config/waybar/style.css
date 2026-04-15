@@ -209,6 +209,7 @@ tooltip label {
 /* ── Recording Indicator ── ──────────────────────────────────────────  */
 #custom-recorder {
     background-color: transparent;
+    color: @red;
     margin-left: 8px;
     margin-right: 8px;
 }

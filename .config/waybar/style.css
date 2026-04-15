@@ -221,8 +221,8 @@ tooltip label {
 /* ── System Tray ── ──────────────────────────────────────────────────  */
 #tray {
     background-color: transparent;
-    margin-left: 4px;
-    margin-right: 4px;
+    margin-left: 2px;
+    margin-right: 2px;
 }
 
 #tray menu {

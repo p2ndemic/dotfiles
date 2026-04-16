@@ -32,7 +32,6 @@
     "group/pulseaudio_drawer",
     "group/network_bluetooth_drawer",
     "group/battery_backlight_drawer",
-    "group/system",
     "clock",
     "custom/show_desktop"
   ],
@@ -273,7 +272,7 @@
     "format": "",
     "tooltip": true,
     "tooltip-format": "Screencast",
-    "on-click": ""
+    //"on-click": ""
 
   },
 
@@ -282,7 +281,7 @@
     "format": "",
     "tooltip": true,
     "tooltip-format": "Screenshot",
-    "on-click": ""
+    //"on-click": ""
   },
 
   // ─── Group: Pulseaudio Drawer ───────────────────────────────────────────────
@@ -359,11 +358,11 @@
   // ─── Network ────────────────────────────────────────────────────────────────
   "network": {
     "interval": 60,
-    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
     "format": "{icon}",
     "format-wifi": "{icon}",
     "format-ethernet": "󰡁",
     "format-disconnected": "󰤮",
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
     "tooltip": true,
     "tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes} ⇡{bandwidthUpBytes}",
     "tooltip-format-ethernet": "⇣{bandwidthDownBytes} ⇡{bandwidthUpBytes}",

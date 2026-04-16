@@ -177,6 +177,10 @@ tooltip label {
     padding-right: 12px;
 }
 
+#custom-launcher:hover {
+    color: @accent_color;
+}
+
 /* ── Group: Apps Drawer [outside settings] ── ──────────────────────────────── */
 #apps_drawer {
     margin-left: 2px;
@@ -189,6 +193,10 @@ tooltip label {
     margin-right: 0;
     padding-left: 10px;
     padding-right: 10px;
+}
+
+#apps_drawer label:hover {
+    color: @accent_color;
 }
 
 /* ── Editor (Increase icon size) ── */

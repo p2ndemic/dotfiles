@@ -1,5 +1,5 @@
 /* ══════════════════════════════════════════════════════════════ */
-/* Catppuccin Mocha + Ayu Dark Mix Color Palette                  */
+/* Ayu Dark Mix Color Palette                                     */
 /* ══════════════════════════════════════════════════════════════ */
 /* https://ayutheme.com/                                          */
 /* https://github.com/ayu-theme/ayu-colors/blob/HEAD/palette.svg  */
@@ -61,7 +61,6 @@ window#waybar.hidden {
 }
 
 /* ── Button ── */
-
 button {
     /* Reset all builtin styles */
     all: unset;
@@ -69,10 +68,6 @@ button {
     /* Restore some properties */
     min-height: 24px;
     min-width: 16px;
-
-    /* Avoid rounded borders under each button name */
-    border: none;
-    border-radius: 0;
 
     /* Use box-shadow instead of border so the text isn't offset */
     box-shadow: inset 0 -2px transparent;
@@ -182,13 +177,17 @@ tooltip label {
     padding-right: 12px;
 }
 
-/* ── Group: Apps [outside settings] ── ──────────────────────────────── */
-#apps {
+#custom-launcher:hover {
+    color: @accent_color;
+}
+
+/* ── Group: Apps Drawer [outside settings] ── ──────────────────────────────── */
+#apps_drawer {
     margin-left: 2px;
     margin-right: 2px;
 }
-/* ── Group: Apps [inside settings] ── ───────────────────────────────── */
-#apps label {
+/* ── Group: Apps Drawer [inside settings] ── ───────────────────────────────── */
+#apps_drawer label {
     background-color: transparent;
     margin-left: 0;
     margin-right: 0;
@@ -196,24 +195,42 @@ tooltip label {
     padding-right: 10px;
 }
 
-/* ═════════════════════════════════════════════════════════════════════ */
-/* Modules Right                                                         */
-/* ═════════════════════════════════════════════════════════════════════ */
+#apps_drawer label:hover {
+    color: @accent_color;
+}
+
+/* ── Editor (Increase icon size) ── */
+#custom-editor {
+    font-size: 16px;
+}
+
+/* ── Browser (Increase icon size) ── */
+#custom-browser {
+    font-size: 16px;
+}
+
+/* ── Steam (Increase icon size) ── */
+#custom-steam {
+    font-size: 16px;
+}
 
 /* ── Recording Indicator ── ──────────────────────────────────────────  */
 #custom-recorder {
     background-color: transparent;
-    margin-left: 2px;
-    margin-right: 2px;
-    padding-left: 10px;
-    padding-right: 10px;
+    color: @red;
+    margin-left: 8px;
+    margin-right: 8px;
 }
+
+/* ═════════════════════════════════════════════════════════════════════ */
+/* Modules Right                                                         */
+/* ═════════════════════════════════════════════════════════════════════ */
 
 /* ── System Tray ── ──────────────────────────────────────────────────  */
 #tray {
     background-color: transparent;
-    margin-left: 4px;
-    margin-right: 4px;
+    margin-left: 2px;
+    margin-right: 2px;
 }
 
 #tray menu {
@@ -234,26 +251,23 @@ tooltip label {
 
 /* ── Keyboard Layout ── */
 #custom-keyboard_layout {
-    background-color: @module_bg;
-    border-radius: 4;
-    margin-left: 2px;
-    margin-right: 2px;
-    padding-left: 12px;
-    padding-right: 12px;
+    background-color: transparent;
+    margin-left: 8px;
+    margin-right: 8px;
 }
 
-/* ── Group: Toggles | Utilities [outside settings] ── ─────────────── */
-#toggles,
-#utilities {
+/* ── Group: Toggles | Utilities Drawer [outside settings] ── ─────────────── */
+#toggles_drawer,
+#utilities_drawer {
     background-color: @module_bg;
     border-radius: 4px;
     margin-left: 2px;
     margin-right: 2px;
 }
 
-/* ── Group: Toggles | Utilities [inside settings] ── ─────────────── */
-#toggles label,
-#utilities label {
+/* ── Group: Toggles | Utilities Drawer [inside settings] ── ─────────────── */
+#toggles_drawer label,
+#utilities_drawer label {
     background-color: transparent;
     margin-left: 0;
     margin-right: 0;
@@ -261,43 +275,96 @@ tooltip label {
     padding-right: 12px;
 }
 
-
-/* ── Audio Output (Speakers / Headphones) ── ────────────────────── */
-#pulseaudio.output {
+/* ── Group: Pulseaudio Drawer [outside settings] ── ─────────────── */
+#pulseaudio_drawer {
     background-color: @module_bg;
-    color: @purple;
-    border-radius: 4;
+    border-radius: 4px;
     margin-left: 2px;
     margin-right: 2px;
+}
+
+/* ── Group: Pulseaudio Drawer [inside settings] ── ─────────────── */
+#pulseaudio_drawer label {
+    background-color: transparent;
+    margin-left: 0;
+    margin-right: 0;
     padding-left: 10px;
     padding-right: 10px;
 }
 
-/* ── Network (Connected / Disconnected) ── ──────────────────────── */
-#network {
+/* ── Audio Output (Speakers / Headphones) ── ────────────────────── */
+#pulseaudio.output {
+    color: @purple;
+}
+
+#pulseaudio.output.muted {
+    color: @red;
+}
+/* ── Audio Input (Microphone) ── ────────────────────────────────── */
+#pulseaudio.input {
+    color: @purple;
+}
+
+#pulseaudio.input.source-muted {
+    color: @red;
+}
+
+/* ── Group: Network/Bluetooth Drawer [outside settings] ── ─────────────── */
+#network_bluetooth_drawer {
     background-color: @module_bg;
-    color: @blue;
-    border-radius: 4;
+    border-radius: 4px;
     margin-left: 2px;
     margin-right: 2px;
+}
+
+/* ── Group: Network/Bluetooth Drawer [inside settings] ── ─────────────── */
+#network_bluetooth_drawer label {
+    background-color: transparent;
+    margin-left: 0;
+    margin-right: 0;
     padding-left: 12px;
     padding-right: 12px;
+}
+
+/* ── Network (Connected / Disconnected) ── */
+#network {
+    color: @blue;
 }
 
 #network.disconnected {
     color: @red;
 }
 
+/* ── Bluetooth (Connected / Disabled) ── */
+#bluetooth {
+    color: @blue;
+}
 
-/* ── Battery (Idle / Warning / Critical) ── ────────────────────── */
-#battery {
+#bluetooth.disabled,
+#bluetooth.off {
+    color: @red;
+}
+
+/* ── Group: Battery/Backlight Drawer [outside settings] ── ─────────────── */
+#battery_backlight_drawer {
     background-color: @module_bg;
-    color: @green;
-    border-radius: 4;
+    border-radius: 4px;
     margin-left: 2px;
     margin-right: 2px;
+}
+
+/* ── Group: Battery/Backlight Drawer [inside settings] ── ─────────────── */
+#battery_backlight_drawer label {
+    background-color: transparent;
+    margin-left: 0;
+    margin-right: 0;
     padding-left: 10px;
     padding-right: 10px;
+}
+
+/* ── Battery (Idle / Warning / Critical) ── */
+#battery {
+    color: @green;
 }
 
 #battery.warning {
@@ -325,6 +392,11 @@ tooltip label {
     animation-direction: alternate;
 }
 
+/* ── Backlight ── */
+#backlight {
+    color: @green;
+}
+
 /* ── Clock ── ───────────────────────────────────────────────────── */
 #clock {
     background-color: @module_bg;
@@ -334,24 +406,6 @@ tooltip label {
     padding-left: 10px;
     padding-right: 10px;
     font-weight: 600;
-}
-
-/* ── Group: System [outside settings] ── ────────────────────────── */
-#system {
-    background-color: @module_bg;
-    border-radius: 4px;
-    margin-left: 2px;
-    margin-right: 2px;
-    
-}
-
-/* ── Group: [inside settings] ── ────────────────────────────────── */
-#system label {
-    background-color: transparent;
-    margin-left: 0;
-    margin-right: 0;
-    padding-left: 12px;
-    padding-right: 12px;
 }
 
 /* ── Show Desktop  ── ──────────────────────────────────────────── */

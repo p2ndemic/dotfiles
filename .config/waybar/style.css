@@ -37,11 +37,11 @@
     /* Height */
     min-height: 0;
 
-    /* Disable visual effects */
+    /* Visual */
     box-shadow: none;
     text-shadow: none;
 
-    /* Disable animations */
+    /* Animations */
     animation: none;
     transition: none;
 }

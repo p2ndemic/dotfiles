@@ -251,14 +251,14 @@ tooltip label {
     padding: 0 12px;
 }
 
-/* ── Group: Pulseaudio Drawer [outside settings] ─────────────────────── */
+/* ── Group: PulseAudio Drawer [outside settings] ─────────────────────── */
 #pulseaudio_drawer {
     background-color: @module_bg;
     border-radius: 4px;
     margin: 0 2px;
 }
 
-/* ── Group: Pulseaudio Drawer [inside settings] ──────────────────────── */
+/* ── Group: PulseAudio Drawer [inside settings] ──────────────────────── */
 #pulseaudio_drawer label {
     background-color: transparent;
     margin: 0;

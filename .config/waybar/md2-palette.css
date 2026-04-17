@@ -1,0 +1,301 @@
+/* ============================================================
+   Material Design 2 — Full Color Palette
+   Usage: @import "md2-palette.css";
+   Naming: md-{color}-{shade}  /  md-{color}-a{shade} for accents
+   ============================================================ */
+
+/* ── Red ─────────────────────────────────────────────────── */
+@define-color md-red-50   #FFEBEE;
+@define-color md-red-100  #FFCDD2;
+@define-color md-red-200  #EF9A9A;
+@define-color md-red-300  #E57373;
+@define-color md-red-400  #EF5350;
+@define-color md-red-500  #F44336;
+@define-color md-red-600  #E53935;
+@define-color md-red-700  #D32F2F;
+@define-color md-red-800  #C62828;
+@define-color md-red-900  #B71C1C;
+@define-color md-red-a100 #FF8A80;
+@define-color md-red-a200 #FF5252;
+@define-color md-red-a400 #FF1744;
+@define-color md-red-a700 #D50000;
+
+/* ── Pink ────────────────────────────────────────────────── */
+@define-color md-pink-50   #FCE4EC;
+@define-color md-pink-100  #F8BBD0;
+@define-color md-pink-200  #F48FB1;
+@define-color md-pink-300  #F06292;
+@define-color md-pink-400  #EC407A;
+@define-color md-pink-500  #E91E63;
+@define-color md-pink-600  #D81B60;
+@define-color md-pink-700  #C2185B;
+@define-color md-pink-800  #AD1457;
+@define-color md-pink-900  #880E4F;
+@define-color md-pink-a100 #FF80AB;
+@define-color md-pink-a200 #FF4081;
+@define-color md-pink-a400 #F50057;
+@define-color md-pink-a700 #C51162;
+
+/* ── Purple ──────────────────────────────────────────────── */
+@define-color md-purple-50   #F3E5F5;
+@define-color md-purple-100  #E1BEE7;
+@define-color md-purple-200  #CE93D8;
+@define-color md-purple-300  #BA68C8;
+@define-color md-purple-400  #AB47BC;
+@define-color md-purple-500  #9C27B0;
+@define-color md-purple-600  #8E24AA;
+@define-color md-purple-700  #7B1FA2;
+@define-color md-purple-800  #6A1B9A;
+@define-color md-purple-900  #4A148C;
+@define-color md-purple-a100 #EA80FC;
+@define-color md-purple-a200 #E040FB;
+@define-color md-purple-a400 #D500F9;
+@define-color md-purple-a700 #AA00FF;
+
+/* ── Deep Purple ─────────────────────────────────────────── */
+@define-color md-deep-purple-50   #EDE7F6;
+@define-color md-deep-purple-100  #D1C4E9;
+@define-color md-deep-purple-200  #B39DDB;
+@define-color md-deep-purple-300  #9575CD;
+@define-color md-deep-purple-400  #7E57C2;
+@define-color md-deep-purple-500  #673AB7;
+@define-color md-deep-purple-600  #5E35B1;
+@define-color md-deep-purple-700  #512DA8;
+@define-color md-deep-purple-800  #4527A0;
+@define-color md-deep-purple-900  #311B92;
+@define-color md-deep-purple-a100 #B388FF;
+@define-color md-deep-purple-a200 #7C4DFF;
+@define-color md-deep-purple-a400 #651FFF;
+@define-color md-deep-purple-a700 #6200EA;
+
+/* ── Indigo ──────────────────────────────────────────────── */
+@define-color md-indigo-50   #E8EAF6;
+@define-color md-indigo-100  #C5CAE9;
+@define-color md-indigo-200  #9FA8DA;
+@define-color md-indigo-300  #7986CB;
+@define-color md-indigo-400  #5C6BC0;
+@define-color md-indigo-500  #3F51B5;
+@define-color md-indigo-600  #3949AB;
+@define-color md-indigo-700  #303F9F;
+@define-color md-indigo-800  #283593;
+@define-color md-indigo-900  #1A237E;
+@define-color md-indigo-a100 #8C9EFF;
+@define-color md-indigo-a200 #536DFE;
+@define-color md-indigo-a400 #3D5AFE;
+@define-color md-indigo-a700 #304FFE;
+
+/* ── Blue ────────────────────────────────────────────────── */
+@define-color md-blue-50   #E3F2FD;
+@define-color md-blue-100  #BBDEFB;
+@define-color md-blue-200  #90CAF9;
+@define-color md-blue-300  #64B5F6;
+@define-color md-blue-400  #42A5F5;
+@define-color md-blue-500  #2196F3;
+@define-color md-blue-600  #1E88E5;
+@define-color md-blue-700  #1976D2;
+@define-color md-blue-800  #1565C0;
+@define-color md-blue-900  #0D47A1;
+@define-color md-blue-a100 #82B1FF;
+@define-color md-blue-a200 #448AFF;
+@define-color md-blue-a400 #2979FF;
+@define-color md-blue-a700 #2962FF;
+
+/* ── Light Blue ──────────────────────────────────────────── */
+@define-color md-light-blue-50   #E1F5FE;
+@define-color md-light-blue-100  #B3E5FC;
+@define-color md-light-blue-200  #81D4FA;
+@define-color md-light-blue-300  #4FC3F7;
+@define-color md-light-blue-400  #29B6F6;
+@define-color md-light-blue-500  #03A9F4;
+@define-color md-light-blue-600  #039BE5;
+@define-color md-light-blue-700  #0288D1;
+@define-color md-light-blue-800  #0277BD;
+@define-color md-light-blue-900  #01579B;
+@define-color md-light-blue-a100 #80D8FF;
+@define-color md-light-blue-a200 #40C4FF;
+@define-color md-light-blue-a400 #00B0FF;
+@define-color md-light-blue-a700 #0091EA;
+
+/* ── Cyan ────────────────────────────────────────────────── */
+@define-color md-cyan-50   #E0F7FA;
+@define-color md-cyan-100  #B2EBF2;
+@define-color md-cyan-200  #80DEEA;
+@define-color md-cyan-300  #4DD0E1;
+@define-color md-cyan-400  #26C6DA;
+@define-color md-cyan-500  #00BCD4;
+@define-color md-cyan-600  #00ACC1;
+@define-color md-cyan-700  #0097A7;
+@define-color md-cyan-800  #00838F;
+@define-color md-cyan-900  #006064;
+@define-color md-cyan-a100 #84FFFF;
+@define-color md-cyan-a200 #18FFFF;
+@define-color md-cyan-a400 #00E5FF;
+@define-color md-cyan-a700 #00B8D4;
+
+/* ── Teal ────────────────────────────────────────────────── */
+@define-color md-teal-50   #E0F2F1;
+@define-color md-teal-100  #B2DFDB;
+@define-color md-teal-200  #80CBC4;
+@define-color md-teal-300  #4DB6AC;
+@define-color md-teal-400  #26A69A;
+@define-color md-teal-500  #009688;
+@define-color md-teal-600  #00897B;
+@define-color md-teal-700  #00796B;
+@define-color md-teal-800  #00695C;
+@define-color md-teal-900  #004D40;
+@define-color md-teal-a100 #A7FFEB;
+@define-color md-teal-a200 #64FFDA;
+@define-color md-teal-a400 #1DE9B6;
+@define-color md-teal-a700 #00BFA5;
+
+/* ── Green ───────────────────────────────────────────────── */
+@define-color md-green-50   #E8F5E9;
+@define-color md-green-100  #C8E6C9;
+@define-color md-green-200  #A5D6A7;
+@define-color md-green-300  #81C784;
+@define-color md-green-400  #66BB6A;
+@define-color md-green-500  #4CAF50;
+@define-color md-green-600  #43A047;
+@define-color md-green-700  #388E3C;
+@define-color md-green-800  #2E7D32;
+@define-color md-green-900  #1B5E20;
+@define-color md-green-a100 #CCFF90;
+@define-color md-green-a200 #69F0AE;
+@define-color md-green-a400 #00E676;
+@define-color md-green-a700 #00C853;
+
+/* ── Light Green ─────────────────────────────────────────── */
+@define-color md-light-green-50   #F1F8E9;
+@define-color md-light-green-100  #DCEDC8;
+@define-color md-light-green-200  #C5E1A5;
+@define-color md-light-green-300  #AED581;
+@define-color md-light-green-400  #9CCC65;
+@define-color md-light-green-500  #8BC34A;
+@define-color md-light-green-600  #7CB342;
+@define-color md-light-green-700  #689F38;
+@define-color md-light-green-800  #558B2F;
+@define-color md-light-green-900  #33691E;
+@define-color md-light-green-a100 #CCFF90;
+@define-color md-light-green-a200 #B2FF59;
+@define-color md-light-green-a400 #76FF03;
+@define-color md-light-green-a700 #64DD17;
+
+/* ── Lime ────────────────────────────────────────────────── */
+@define-color md-lime-50   #F9FBE7;
+@define-color md-lime-100  #F0F4C3;
+@define-color md-lime-200  #E6EE9C;
+@define-color md-lime-300  #DCE775;
+@define-color md-lime-400  #D4E157;
+@define-color md-lime-500  #CDDC39;
+@define-color md-lime-600  #C0CA33;
+@define-color md-lime-700  #AFB42B;
+@define-color md-lime-800  #9E9D24;
+@define-color md-lime-900  #827717;
+@define-color md-lime-a100 #F4FF81;
+@define-color md-lime-a200 #EEFF41;
+@define-color md-lime-a400 #C6FF00;
+@define-color md-lime-a700 #AEEA00;
+
+/* ── Yellow ──────────────────────────────────────────────── */
+@define-color md-yellow-50   #FFFDE7;
+@define-color md-yellow-100  #FFF9C4;
+@define-color md-yellow-200  #FFF59D;
+@define-color md-yellow-300  #FFF176;
+@define-color md-yellow-400  #FFEE58;
+@define-color md-yellow-500  #FFEB3B;
+@define-color md-yellow-600  #FDD835;
+@define-color md-yellow-700  #FBC02D;
+@define-color md-yellow-800  #F9A825;
+@define-color md-yellow-900  #F57F17;
+@define-color md-yellow-a100 #FFFF8D;
+@define-color md-yellow-a200 #FFFF00;
+@define-color md-yellow-a400 #FFEA00;
+@define-color md-yellow-a700 #FFD600;
+
+/* ── Amber ───────────────────────────────────────────────── */
+@define-color md-amber-50   #FFF8E1;
+@define-color md-amber-100  #FFECB3;
+@define-color md-amber-200  #FFE082;
+@define-color md-amber-300  #FFD54F;
+@define-color md-amber-400  #FFCA28;
+@define-color md-amber-500  #FFC107;
+@define-color md-amber-600  #FFB300;
+@define-color md-amber-700  #FFA000;
+@define-color md-amber-800  #FF8F00;
+@define-color md-amber-900  #FF6F00;
+@define-color md-amber-a100 #FFE57F;
+@define-color md-amber-a200 #FFD740;
+@define-color md-amber-a400 #FFC400;
+@define-color md-amber-a700 #FFAB00;
+
+/* ── Orange ──────────────────────────────────────────────── */
+@define-color md-orange-50   #FFF3E0;
+@define-color md-orange-100  #FFE0B2;
+@define-color md-orange-200  #FFCC80;
+@define-color md-orange-300  #FFB74D;
+@define-color md-orange-400  #FFA726;
+@define-color md-orange-500  #FF9800;
+@define-color md-orange-600  #FB8C00;
+@define-color md-orange-700  #F57C00;
+@define-color md-orange-800  #EF6C00;
+@define-color md-orange-900  #E65100;
+@define-color md-orange-a100 #FFD180;
+@define-color md-orange-a200 #FFAB40;
+@define-color md-orange-a400 #FF9100;
+@define-color md-orange-a700 #FF6D00;
+
+/* ── Deep Orange ─────────────────────────────────────────── */
+@define-color md-deep-orange-50   #FBE9E7;
+@define-color md-deep-orange-100  #FFCCBC;
+@define-color md-deep-orange-200  #FFAB91;
+@define-color md-deep-orange-300  #FF8A65;
+@define-color md-deep-orange-400  #FF7043;
+@define-color md-deep-orange-500  #FF5722;
+@define-color md-deep-orange-600  #F4511E;
+@define-color md-deep-orange-700  #E64A19;
+@define-color md-deep-orange-800  #D84315;
+@define-color md-deep-orange-900  #BF360C;
+@define-color md-deep-orange-a100 #FF9E80;
+@define-color md-deep-orange-a200 #FF6E40;
+@define-color md-deep-orange-a400 #FF3D00;
+@define-color md-deep-orange-a700 #DD2C00;
+
+/* ── Brown (no accent shades) ────────────────────────────── */
+@define-color md-brown-50  #EFEBE9;
+@define-color md-brown-100 #D7CCC8;
+@define-color md-brown-200 #BCAAA4;
+@define-color md-brown-300 #A1887F;
+@define-color md-brown-400 #8D6E63;
+@define-color md-brown-500 #795548;
+@define-color md-brown-600 #6D4C41;
+@define-color md-brown-700 #5D4037;
+@define-color md-brown-800 #4E342E;
+@define-color md-brown-900 #3E2723;
+
+/* ── Grey (no accent shades) ─────────────────────────────── */
+@define-color md-grey-50  #FAFAFA;
+@define-color md-grey-100 #F5F5F5;
+@define-color md-grey-200 #EEEEEE;
+@define-color md-grey-300 #E0E0E0;
+@define-color md-grey-400 #BDBDBD;
+@define-color md-grey-500 #9E9E9E;
+@define-color md-grey-600 #757575;
+@define-color md-grey-700 #616161;
+@define-color md-grey-800 #424242;
+@define-color md-grey-900 #212121;
+
+/* ── Blue Grey (no accent shades) ────────────────────────── */
+@define-color md-blue-grey-50  #ECEFF1;
+@define-color md-blue-grey-100 #CFD8DC;
+@define-color md-blue-grey-200 #B0BEC5;
+@define-color md-blue-grey-300 #90A4AE;
+@define-color md-blue-grey-400 #78909C;
+@define-color md-blue-grey-500 #607D8B;
+@define-color md-blue-grey-600 #546E7A;
+@define-color md-blue-grey-700 #455A64;
+@define-color md-blue-grey-800 #37474F;
+@define-color md-blue-grey-900 #263238;
+
+/* ── Black & White ───────────────────────────────────────── */
+@define-color md-black #000000;
+@define-color md-white #FFFFFF;

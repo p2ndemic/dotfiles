@@ -283,7 +283,6 @@
     "tooltip": true,
     "tooltip-format": "Screencast",
     //"on-click": ""
-
   },
 
   // ─── Group: PulseAudio Drawer ───────────────────────────────────────────────

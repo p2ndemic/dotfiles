@@ -156,17 +156,19 @@
 
   // ─── Steam ──────────────────────────────────────────────────────────────────
   "custom/steam": {
-    "format": "󰓓", // Alternatives: fa = "" | "" | "" / md = "󰓓" 
+    "format": "󰓓", // Alternatives: FA = "", "", "" | MD = "󰓓"
     "tooltip": true,
     "tooltip-format": "Steam",
-    "on-click": "uwsm-app -t service -- steam -pipewire-dmabuf -no-cef-sandbox"
+    "on-click": "uwsm-app -t service -- steam -no-cef-sandbox", // -pipewire-dmabuf
+    "on-click-middle": "uwsm-app -t service -- heroic",
+    "on-click-right": "uwsm-app -t service -- faugus-launcher"
   },
 
   // ─── Taskbar ────────────────────────────────────────────────────────────────
   "wlr/taskbar": {
     "format": "{icon}",
     "icon-size": 20,
-    "icon-theme": "MoreWaita", // Alternatives: Numix | Numix-Circle | MoreWaita | Numix-Adwaita
+    "icon-theme": "Numix", // Alternatives: Numix | Numix-Circle | MoreWaita | Numix-Adwaita
     "tooltip-format": "{title:.50}",
     "on-click": "minimize-raise",
     "on-click-middle": "close",
@@ -267,6 +269,14 @@
     "on-click": "~/.local/bin/fuzzel-cliphist.sh"
   },
 
+  // ─── Screenshot ─────────────────────────────────────────────────────────────
+  "custom/screenshot": {
+    "format": "",
+    "tooltip": true,
+    "tooltip-format": "Screenshot",
+    //"on-click": ""
+  },
+
   // ─── Screencast ─────────────────────────────────────────────────────────────
   "custom/screencast": {
     "format": "",
@@ -274,14 +284,6 @@
     "tooltip-format": "Screencast",
     //"on-click": ""
 
-  },
-
-  // ─── Screenshot ─────────────────────────────────────────────────────────────
-  "custom/screenshot": {
-    "format": "",
-    "tooltip": true,
-    "tooltip-format": "Screenshot",
-    //"on-click": ""
   },
 
   // ─── Group: PulseAudio Drawer ───────────────────────────────────────────────
@@ -383,7 +385,7 @@
     "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
     "on-click": "pkill -x blueman-manager || uwsm-app -t service -- blueman-manager",
-    "on-click-right": "uwsm-app -t service -- ~/.local/bin/bluetooth-toggle.sh"
+    "on-click-right": "~/.local/bin/bluetooth-toggle.sh"
   },
 
   // ─── Group: Battery/Backlight Drawer ────────────────────────────────────────

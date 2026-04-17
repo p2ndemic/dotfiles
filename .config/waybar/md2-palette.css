@@ -299,3 +299,26 @@
 /* ── Black & White ───────────────────────────────────────── */
 @define-color md-black #000000;
 @define-color md-white #FFFFFF;
+
+/* ── Системные цвета (тёмная тема) ──────────────────────── */
+@define-color md-sys-bg-dark    #121212;
+@define-color md-sys-surface    #1E1E1E;
+@define-color md-sys-card       #252525;
+@define-color md-sys-border     #2C2C2C;
+
+@define-color md-sys-text-primary  #FFFFFF;
+@define-color md-sys-text-secondary #B3B3B3;
+@define-color md-sys-text-disabled  #4D4D4D;
+@define-color md-sys-text-hint      #808080;
+
+/* ── Waybar — Focused ────────────────────────────────────── */
+@define-color md-waybar-focused-bg     #1E1E2E;
+@define-color md-waybar-focused-border #89B4FA;
+@define-color md-waybar-focused-text   #CDD6F4;
+@define-color md-waybar-focused-accent #89DCEB;
+
+/* ── Waybar — Состояния ──────────────────────────────────── */
+@define-color md-waybar-normal   #F38BA8;
+@define-color md-waybar-warning  #FAB387;
+@define-color md-waybar-critical #FF5555;
+@define-color md-waybar-success  #A6E3A1;

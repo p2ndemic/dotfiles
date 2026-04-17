@@ -245,7 +245,7 @@
   },
 
   // ─── Group: Utilities Drawer ──────────────────────────────────────────
-  // ⇠ Clipboard · Screencast · Screenshot · Color Picker
+  // ⇠ Clipboard · Screenshot · Screencast · Color Picker
   // ──────────────────────────────────────────────────────────────────────
   "group/utilities_drawer": {
     "orientation": "inherit",

@@ -240,10 +240,11 @@ if [[ "$MODE" == "area" ]]; then
 fi
 
 # ══════════════════════════════════════════════════════════════════════════════
-# Capture + Action
+# Capture + Action 
 # ══════════════════════════════════════════════════════════════════════════════
 GRIM_ARGS=(-t png -l 0)
 [[ "$OPT_CURSOR" == true ]] && GRIM_ARGS+=("-c")
+# [[ "$MODE" == "area" ]] && GRIM_OPTS+=(-g "$GEOM")
 
 case "$MODE" in
     screen)

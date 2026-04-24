@@ -419,17 +419,17 @@
     <!-- Media Playback -->
     <keybind key="XF86AudioNext">
       <action name="Execute">
-        <command>mpv-ctl.sh --next</command>
+        <command>~/.local/bin/mpv-ctl --next</command>
       </action>
     </keybind>
     <keybind key="XF86AudioPrev">
       <action name="Execute">
-        <command>mpv-ctl.sh --previous</command>
+        <command>~/.local/bin/mpv-ctl --previous</command>
       </action>
     </keybind>
     <keybind key="XF86AudioPlay">
       <action name="Execute">
-        <command>mpv-ctl.sh --play-pause</command>
+        <command>~/.local/bin/mpv-ctl --play-pause</command>
       </action>
     </keybind>
 
@@ -448,17 +448,22 @@
     </keybind>
     <keybind key="XF86LaunchA">
       <action name="Execute">
-        <command>~/.local/bin/screenshot_area.sh</command>
+        <command>~/.local/bin/labshot --freeze copysave area</command>
+      </action>
+    </keybind>
+    <keybind key="W-XF86LaunchA">
+      <action name="Execute">
+        <command>~/.local/bin/labshot --freeze edit area</command>
       </action>
     </keybind>
     <keybind key="Print">
       <action name="Execute">
-        <command>sh -c 'grim -g "$(slurp)" ~/Pictures/screenshot-$(date +%s).png'</command>
+        <command>~/.local/bin/labshot copysave screen</command>
       </action>
     </keybind>
     <keybind key="W-Print">
       <action name="Execute">
-        <command>sh -c 'grim ~/Pictures/screenshot-$(date +%s).png'</command>
+        <command>~/.local/bin/labshot edit screen</command>
       </action>
     </keybind>
 

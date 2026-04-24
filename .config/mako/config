@@ -1,15 +1,18 @@
-# Ref: https://github.com/llyyr/dotfiles/blob/main/.config/mako/config
-
 # Position
 anchor=bottom-right
 sort=-time
 
-## Icons
-icons=1
-icon-location=left
-max-icon-size=64
-icon-path=/usr/share/icons/breeze
+[app-name=grimshot actionable]
+on-button-left=invoke-action show
+on-button-right=dismiss
 
-# Modes
-[mode=do-not-disturb]
+[app-name=swayshot actionable]
+on-button-left=invoke-action show
+on-button-right=dismiss
+
+[app-name=labshot actionable]
+on-button-left=invoke-action show
+on-button-right=dismiss
+
+[mode=dnd]
 invisible=1

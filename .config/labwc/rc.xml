@@ -340,7 +340,6 @@
     <keybind key="W-1">
       <action name="GoToDesktop" to="1" />
     </keybind>
-    <!--
     <keybind key="W-2">
       <action name="GoToDesktop" to="2" />
     </keybind>
@@ -353,11 +352,9 @@
     <keybind key="W-5">
       <action name="GoToDesktop" to="5" />
     </keybind>
-    -->
     <keybind key="W-S-1">
       <action name="SendToDesktop" to="1" follow="no" />
     </keybind>
-    <!--
     <keybind key="W-S-2">
       <action name="SendToDesktop" to="2" follow="no" />
     </keybind>
@@ -370,7 +367,6 @@
     <keybind key="W-S-5">
       <action name="SendToDesktop" to="5" follow="no" />
     </keybind>
-    -->
     <keybind key="W-A-Left">
       <action name="GoToDesktop" to="left" wrap="yes" />
     </keybind>

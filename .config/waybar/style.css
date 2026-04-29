@@ -1,24 +1,51 @@
 /* ══════════════════════════════════════════════════════════════════════ */
-/* Ayu Dark Mix Color Palette                                             */
+/* Custom Color Palette (MD2 + Ayu Dark)                                  */
 /* ══════════════════════════════════════════════════════════════════════ */
 /* https://ayutheme.com/                                                  */
 /* https://github.com/ayu-theme/ayu-colors/blob/HEAD/palette.svg          */
 /* ══════════════════════════════════════════════════════════════════════ */
 
-@define-color bg            #181926;
-@define-color module_bg     #262C36;
-@define-color text_color    #CDD6F4;
+/* rgba(24, 25, 38, 0.98) */
+@define-color bg_color_1 #181926;
+/* rgba(11, 20, 22, 0.98) */
+@define-color bg_color_2 #0B1416;
 
 
-@define-color accent_color  #E6B450;
-@define-color border_color  #1F2430;
+@define-color module_bg_color_1 #252B3A;
+@define-color module_bg_color_2 #262C36;
+
+@define-color text_color #CDD6F4;
+
+@define-color accent_color_1 #89B4FA;
+@define-color accent_color_2 #E6B450;
+
+@define-color border_color #1F2430;
 
 
-@define-color orange        #F29668;
-@define-color red           #F07178;
-@define-color green         #B8CC52;
-@define-color blue          #59C2FF;
-@define-color purple        #D2A6FF;
+/* Material Design 2 Color Palette */
+@define-color md-yellow-500  #FFEB3B;
+@define-color md-yellow-700  #FBC02D;
+
+/* Ayu Dark Color Palette */
+@define-color black #0A0000;
+@define-color red #E6495A;
+@define-color red2 #F26D78;
+@define-color green #97C142;
+@define-color green2 #70BF56;
+@define-color yellow #E89D37;
+@define-color blue #17ACF2;
+@define-color blue2 #73B8FF;
+@define-color magenta #C385FE;
+@define-color cyan #84CEB5;
+@define-color white #FFFFFF;
+@define-color brightBlack #0A0000;
+@define-color brightRed #F07178;
+@define-color brightGreen #AAD94C;
+@define-color brightYellow #FFB454;
+@define-color brightBlue #59C2FF;
+@define-color brightMagenta #D2A6FF;
+@define-color brightCyan #95E6CB;
+@define-color brightWhite #FFFFFF;
 
 /* ══════════════════════════════════════════════════════════════════════ */
 /* Global Settings */
@@ -74,13 +101,13 @@ button {
 
 button:hover {
     background: inherit;
-    box-shadow: inset 0 -2px @accent_color;
+    box-shadow: inset 0 -2px @accent_color_1;
 }
 
 
 /* ── Tooltip ── */
 tooltip {
-    /* background: #0B0E14; */
+    /* background: @bg_color_1; */
     border: 2px solid @border_color;
 }
 
@@ -102,7 +129,7 @@ tooltip label {
 /* ══════════════════════════════════════════════════════════════════════ */
 
 #workspaces {
-    background-color: @module_bg;
+    background-color: @module_bg_color_1;
     border-radius: 4px;
     margin: 0 0 0 2px;
     padding: 0 2px;
@@ -119,13 +146,13 @@ tooltip label {
 }
 
 #workspaces button.urgent {
-    background-color: @red;
+    background-color: @brightRed;
 }
 
 /*
 #workspaces button:hover {
     background: transparent;
-    box-shadow: inset 0 -2px @accent_color;
+    box-shadow: inset 0 -2px @accent_color_1;
 }
 */
 
@@ -134,7 +161,7 @@ tooltip label {
 /* ══════════════════════════════════════════════════════════════════════ */
 
 #taskbar {
-    background-color: @module_bg;
+    background-color: @module_bg_color_1;
     border-radius: 4px;
     margin: 0 2px 0 0;
     /* padding: 0 2px; */
@@ -146,13 +173,13 @@ tooltip label {
 }
 
 #taskbar button.active {
-    box-shadow: inset 0 -2px @accent_color;
+    box-shadow: inset 0 -2px @accent_color_1;
 }
 
 /*
 #taskbar button:hover {
     background: transparent;
-    box-shadow: inset 0 -2px @accent_color;
+    box-shadow: inset 0 -2px @accent_color_1;
 }
 */
 
@@ -162,18 +189,16 @@ tooltip label {
 
 /* ── Launcher / Power Menu ───────────────────────────────────────────── */
 #custom-launcher {
-    background-color: @module_bg;
+    background-color: @module_bg_color_1;
     border-radius: 4px;
     font-size: 16px;
     margin: 0 2px 0 4px;
     padding: 0 12px;
 }
 
-/*
 #custom-launcher:hover {
-    color: @accent_color;
+    color: @accent_color_1;
 }
-*/
 
 /* ── Group: Apps Drawer [outside settings] ───────────────────────────── */
 #apps_drawer {
@@ -194,16 +219,14 @@ tooltip label {
     font-size: 16px;
 }
 
-/*
 #apps_drawer label:hover {
-    color: @accent_color;
+    color: @accent_color_1;
 }
-*/
 
 /* ── Recording Indicator ─────────────────────────────────────────────── */
 #custom-recorder {
     background-color: transparent;
-    color: @red;
+    color: @brightRed;
     margin: 0 8px;
 }
 
@@ -214,7 +237,7 @@ tooltip label {
 /* ── System Tray ─────────────────────────────────────────────────────── */
 #tray {
     background-color: transparent;
-    margin: 0 2px;
+    margin: 0 4px;
 }
 
 #tray menu {
@@ -230,7 +253,7 @@ tooltip label {
 
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
-    background-color: @red;
+    background-color: @brightRed;
 }
 
 /* ── Keyboard Layout ─────────────────────────────────────────────────── */
@@ -242,7 +265,7 @@ tooltip label {
 /* ── Group: Toggles | Utilities Drawer [outside settings] ────────────── */
 #toggles_drawer,
 #utilities_drawer {
-    background-color: @module_bg;
+    background-color: @module_bg_color_1;
     border-radius: 4px;
     margin: 0 2px;
 }
@@ -255,16 +278,14 @@ tooltip label {
     padding: 0 12px;
 }
 
-/*
 #toggles_drawer label:hover,
 #utilities_drawer label:hover {
-    color: @accent_color;
+    color: @accent_color_1;
 }
-*/
 
 /* ── Group: PulseAudio Drawer [outside settings] ─────────────────────── */
 #pulseaudio_drawer {
-    background-color: @module_bg;
+    background-color: @module_bg_color_1;
     border-radius: 4px;
     margin: 0 2px;
 }
@@ -278,31 +299,29 @@ tooltip label {
 
 /* ── PulseAudio Output (Speakers / Headphones) ── */
 #pulseaudio.output {
-    color: @purple;
+    color: @brightMagenta;
 }
 
 #pulseaudio.output.muted {
-    color: @red;
+    color: @brightRed;
 }
 
 /* ── PulseAudio Input (Microphone) ── */
 #pulseaudio.input {
-    color: @purple;
+    color: @brightMagenta;
 }
 
 #pulseaudio.input.source-muted {
-    color: @red;
+    color: @brightRed;
 }
 
-/*
 #pulseaudio_drawer label:hover {
-    box-shadow: inset 0 -2px alpha(currentColor, 0.7);
+    box-shadow: inset 0 -1px currentColor; /*  alpha(currentColor, 0.7); */
 }
-*/
 
 /* ── Group: Network/Bluetooth Drawer [outside settings] ──────────────── */
 #network_bluetooth_drawer {
-    background-color: @module_bg;
+    background-color: @module_bg_color_1;
     border-radius: 4px;
     margin: 0 2px;
 }
@@ -316,32 +335,30 @@ tooltip label {
 
 /* ── Network (Connected / Disconnected) ── */
 #network {
-    color: @blue;
+    color: @brightBlue;
 }
 
 #network.disconnected {
-    color: @red;
+    color: @brightRed;
 }
 
 /* ── Bluetooth (Connected / Disabled) ── */
 #bluetooth {
-    color: @blue;
+    color: @brightBlue;
 }
 
 #bluetooth.disabled,
 #bluetooth.off {
-    color: @red;
+    color: @brightRed;
 }
 
-/*
 #network_bluetooth_drawer label:hover {
-    box-shadow: inset 0 -2px alpha(currentColor, 0.7);
+    box-shadow: inset 0 -1px currentColor;
 }
-*/
 
 /* ── Group: Battery/Backlight Drawer [outside settings] ──────────────── */
 #battery_backlight_drawer {
-    background-color: @module_bg;
+    background-color: @module_bg_color_1;
     border-radius: 4px;
     margin: 0 2px;
 }
@@ -355,15 +372,15 @@ tooltip label {
 
 /* ── Battery (Idle / Warning / Critical) ── */
 #battery {
-    color: @green;
+    color: @brightGreen;
 }
 
 #battery.warning {
-    color: @orange;
+    color: @brightYellow;
 }
 
 #battery.critical {
-    color: @red;
+    color: @brightRed;
 }
 
 @keyframes blink {
@@ -380,46 +397,40 @@ tooltip label {
     animation-iteration-count: infinite;
     animation-name: blink;
     animation-timing-function: steps(12);
-    color: @red;
+    color: @brightRed;
 }
 
 /* ── Backlight ── */
 #backlight {
-    color: @green;
+    color: @md-yellow-700;
 }
 
-/*
 #battery_backlight_drawer label:hover {
-    box-shadow: inset 0 -2px alpha(currentColor, 0.7);
+    box-shadow: inset 0 -1px currentColor;
 }
-*/
 
 /* ── Clock ───────────────────────────────────────────────────────────── */
 #clock {
-    background-color: @module_bg;
+    background-color: @module_bg_color_1;
     border-radius: 4px;
     font-weight: 600;
     margin: 0 2px;
     padding: 0 10px;
 }
 
-/*
 #clock:hover {
-    color: @accent_color;
+    color: @accent_color_1;
 }
-*/
 
 /* ── Show Desktop ────────────────────────────────────────────────────── */
 #custom-show_desktop {
-    background-color: @module_bg;
+    background-color: @module_bg_color_1;
     border-radius: 4px;
     font-size: 16px;
     margin: 0 4px 0 2px;
     padding: 0 12px;
 }
 
-/*
 #custom-show_desktop:hover {
-    color: @accent_color;
+    color: @accent_color_1;
 }
-*/

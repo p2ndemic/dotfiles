@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-TERMINAL_CMD="${TERMINAL:-foot}"
+TERMINAL_CMD="${TERM:-foot}"
 
 if pgrep nmtui >/dev/null 2>&1; then
     pkill nmtui

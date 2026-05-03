@@ -91,8 +91,8 @@ fuzzel_run() {
         --anchor="$ANCHOR" \
         --select-index=0 \
         --minimal-lines \
-        --width=12 \
-        --horizontal-pad=17 \
+        --width=14 \
+        --horizontal-pad=5 \
         --vertical-pad=10 \
         --line-height=24
 }
@@ -104,10 +104,10 @@ fuzzel_run() {
 # ── Generate power menu items ─────────────────────────────────────────────────
 show_power_menu() {
     local items=(
-        " Lock"      # Index [0] | Alt_icon = 󰌾
-        "󰗼 Logout"    # Index [1] | Alt_icon = 󰗼 | 󰗽
-        "󰜉 Reboot"    # Index [2]
-        "󰐥 Shutdown"  # Index [3] | Additional option: [ 󰖔 Suspend | systemctl suspend | Index 2 ]
+        "  Lock"      # Index [0] | Alt_icon = 󰌾
+        " 󰗼 Logout"    # Index [1] | Alt_icon = 󰗼 | 󰗽
+        " 󰜉 Reboot"    # Index [2]
+        " 󰐥 Shutdown"  # Index [3] | Additional option: [ 󰖔 Suspend | systemctl suspend | Index 2 ]
     )
     printf '%s\n' "${items[@]}"
 }

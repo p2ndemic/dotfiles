@@ -55,6 +55,7 @@ IPv6MTUBytes=1460
 #DNS=2606:4700:4700::1002
 
 [DHCPv4]
+SendHostname=false
 # ─────────────────────────────────────────────
 # → [UseDNS=false] = Отключить использование DNS от DHCPv4/v6. | Т.е использовать DNS указанные выше в [Network]. Указать это при установке кастомных DNS серверов (напр. Cloudflare)
 # → [UseDNS=true] = Значение по умолчанию. | Т.е использовать DNS полученные от DHCPv4/v6 переданные от роутера
@@ -64,6 +65,7 @@ UseDNS=true
 RouteMetric=100
 
 [DHCPv6]
+SendHostname=false
 UseDNS=true
 RouteMetric=100
 

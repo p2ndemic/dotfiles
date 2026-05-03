@@ -1,14 +1,10 @@
 #!/usr/bin/env bash
 
 # ══════════════════════════════════════════════════════════════════════════════
-#  fuzzel-powermenu-side.sh
+#  fuzzel-powermenu-side_index.sh
 # ══════════════════════════════════════════════════════════════════════════════
 
-# ══════════════════════════════════════════════════════════════════════════════
-#  Argument Parsing
-# ══════════════════════════════════════════════════════════════════════════════
-
-VALID_ANCHORS=(top-left top top-right left center right bottom-left bottom bottom-right)
+# ── Usage ─────────────────────────────────────────────────────────────────────
 
 usage() {
     cat <<EOF
@@ -24,6 +20,12 @@ Options:
   -h, --help            Show this help message and exit
 EOF
 }
+
+# ══════════════════════════════════════════════════════════════════════════════
+#  Argument Parsing
+# ══════════════════════════════════════════════════════════════════════════════
+
+VALID_ANCHORS=(top-left top top-right left center right bottom-left bottom bottom-right)
 
 is_valid_anchor() {
     local value="$1"
@@ -89,7 +91,7 @@ fuzzel_run() {
         --anchor="$ANCHOR" \
         --select-index=0 \
         --minimal-lines \
-        --width=13 \
+        --width=12 \
         --horizontal-pad=17 \
         --vertical-pad=10 \
         --line-height=24
@@ -104,7 +106,7 @@ show_power_menu() {
     local items=(
         " Lock"      # Index [0] | Alt_icon = 󰌾
         "󰗼 Logout"    # Index [1] | Alt_icon = 󰗼 | 󰗽
-        "󰜉 Reboot"    # Index [2]  
+        "󰜉 Reboot"    # Index [2]
         "󰐥 Shutdown"  # Index [3] | Additional option: [ 󰖔 Suspend | systemctl suspend | Index 2 ]
     )
     printf '%s\n' "${items[@]}"

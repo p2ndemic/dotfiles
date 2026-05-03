@@ -37,7 +37,7 @@ is_valid_anchor() {
 
 # ── Default window anchor position on screen ──────────────────────────────────
 # Options: top-left | top | top-right | left | center | right | bottom-left | bottom | bottom-right
-ANCHOR="center"
+ANCHOR="bottom-left"
 
 while [[ $# -gt 0 ]]; do
     case "$1" in

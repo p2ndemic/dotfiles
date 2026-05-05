@@ -26,7 +26,5 @@
   "SyncDisabled": true,
   "TranslateEnabled": false,
   "UrlKeyedAnonymizedDataCollectionEnabled": false,
-  "UserSecurityAuthenticatedReporting": false,
-  "UserSecuritySignalsReporting": false,
   "WebRtcIPHandling": "disable_non_proxied_udp"
 }

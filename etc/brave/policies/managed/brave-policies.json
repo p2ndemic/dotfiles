@@ -30,7 +30,6 @@
   "ReportExtensionsAndPluginsData": false,
   "ReportMachineIDData": false,
   "ReportPolicyData": false,
-  "ReportSafeBrowsingData": false,
   "ReportUserIDData": false,
   "ReportVersionData": false,
   "SafeBrowsingExtendedReportingEnabled": false,

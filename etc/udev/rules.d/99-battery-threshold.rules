@@ -26,7 +26,7 @@
 # ══════════════════════════════════════════════════════════════════════
 # Но через udev rules надежнее, т.к мы используем событийный подход
 # ──────────────────────────────────────────────────────────────────────
-ACTION=="add", SUBSYSTEM=="power_supply", ATTR{type}=="Battery", ATTR{charge_control_end_threshold}="80"
+SUBSYSTEM=="power_supply", ATTR{type}=="Battery", ATTR{charge_control_end_threshold}="80"
 # ──────────────────────────────────────────────────────────────────────
 #
 # ══════════════════════════════════════════════════════════════════════
@@ -48,5 +48,15 @@ ACTION=="add", SUBSYSTEM=="power_supply", ATTR{type}=="Battery", ATTR{charge_con
 # ══════════════════════════════════════════════════════════════════════
 # Также дополнительно можно задать нижний порог заряда батареи: 
 # ──────────────────────────────────────────────────────────────────────
-# ACTION=="add", SUBSYSTEM=="power_supply", ATTR{type}=="Battery", ATTR{charge_control_start_threshold}="40", ATTR{charge_control_end_threshold}="80"
+# ACTION=="add|change", SUBSYSTEM=="power_supply", ATTR{type}=="Battery", ATTR{charge_control_start_threshold}="40", ATTR{charge_control_end_threshold}="80"
+# SUBSYSTEM=="power_supply", ATTR{type}=="Battery", ATTR{charge_control_start_threshold}="40", ATTR{charge_control_end_threshold}="80"
+# ══════════════════════════════════════════════════════════════════════
+# Применение правил без перезагрузки:
+# ──────────────────────────────────────────────────────────────────────
+# sudo udevadm control --reload-rules
+# sudo udevadm trigger --subsystem-match=power_supply
+# ──────────────────────────────────────────────────────────────────────
+# Проверка:
+# cat /sys/class/power_supply/BAT0/charge_control_start_threshold
+# cat /sys/class/power_supply/BAT0/charge_control_end_threshold
 # ══════════════════════════════════════════════════════════════════════

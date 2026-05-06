@@ -57,6 +57,7 @@ SUBSYSTEM=="power_supply", ATTR{type}=="Battery", ATTR{charge_control_end_thresh
 # sudo udevadm trigger --subsystem-match=power_supply
 # ──────────────────────────────────────────────────────────────────────
 # Проверка:
+# ──────────────────────────────────────────────────────────────────────
 # cat /sys/class/power_supply/BAT0/charge_control_start_threshold
 # cat /sys/class/power_supply/BAT0/charge_control_end_threshold
 # sudo udevadm test /sys/class/power_supply/BAT0 2>&1 | grep -i "threshold\|error\|warning"

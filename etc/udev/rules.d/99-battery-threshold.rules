@@ -1,7 +1,7 @@
 # /etc/udev/rules.d/99-battery-threshold.rules
 # ══════════════════════════════════════════════════════════════════════
 # Устанавливаем порог начала зарядки (нижний):
-# ❯ echo 40 | sudo tee /sys/class/power_supply/BAT0/charge_control_start_threshold
+# ❯ echo 60 | sudo tee /sys/class/power_supply/BAT0/charge_control_start_threshold
 #
 # Устанавливаем порог прекращения зарядки (верхний):
 # ❯ echo 80 | sudo tee /sys/class/power_supply/BAT0/charge_control_end_threshold
@@ -24,7 +24,7 @@
 # ══════════════════════════════════════════════════════════════════════
 #
 # ══════════════════════════════════════════════════════════════════════
-# Но через udev rules надежнее, т.к мы используем событийный подход
+# Но через udev rules надежнее, т.к мы используем событийный подход [можно добавить ACTION=="add|change" в самомо начале, но не обязательно]
 # ──────────────────────────────────────────────────────────────────────
 SUBSYSTEM=="power_supply", ATTR{type}=="Battery", ATTR{charge_control_start_threshold}="60", ATTR{charge_control_end_threshold}="80"
 # ──────────────────────────────────────────────────────────────────────
@@ -35,20 +35,17 @@ SUBSYSTEM=="power_supply", ATTR{type}=="Battery", ATTR{charge_control_start_thre
 # ──────────────────────────────────────────────────────────────────────
 # Он покажет все атрибуты устройства и его родителей в готовом для udev-правил формате:
 # ──────────────────────────────────────────────────────────────────────
-# looking at device '/devices/LNXSYSTM:00/.../BAT0':
+#  looking at device '/devices/LNXSYSTM:00/.../po>
 #    KERNEL=="BAT0"
 #    SUBSYSTEM=="power_supply"
-#    ATTR{type}=="Battery"
-#    ATTR{charge_control_start_threshold}=="60"
+#    ATTR{capacity}=="39"
+#    ATTR{charge_behaviour}=="[auto] inhibit-charge force-discharge"
 #    ATTR{charge_control_end_threshold}=="80"
-#    ATTR{capacity}=="75"
+#    ATTR{charge_control_start_threshold}=="60"
+#    ATTR{type}=="Battery"
 #    ...
 # ══════════════════════════════════════════════════════════════════════
 #
-# ══════════════════════════════════════════════════════════════════════
-# Также дополнительно можно задать нижний порог заряда батареи: 
-# ──────────────────────────────────────────────────────────────────────
-# ACTION=="add|change", SUBSYSTEM=="power_supply", ATTR{type}=="Battery", ATTR{charge_control_start_threshold}="60", ATTR{charge_control_end_threshold}="80"
 # ══════════════════════════════════════════════════════════════════════
 # Применение правил без перезагрузки:
 # ──────────────────────────────────────────────────────────────────────

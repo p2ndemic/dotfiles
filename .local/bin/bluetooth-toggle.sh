@@ -11,7 +11,7 @@
 export SUDO_ASKPASS="$HOME/.local/bin/fuzzel-askpass.sh"
 
 if systemctl is-active --quiet bluetooth.service; then
-    if bluetoothctl show | grep -q "Powered: yes"; then
+    if bluetoothctl show | grep -q "PowerState: on"; then
         bluetoothctl power off
     else
         rfkill unblock bluetooth && bluetoothctl power on

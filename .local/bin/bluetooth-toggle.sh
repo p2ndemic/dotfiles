@@ -8,7 +8,7 @@
 # sudo usermod -aG rfkill $USER
 # ══════════════════════════════════════════════════════════════════════
 
-export SUDO_ASKPASS=/home/admin/.local/bin/fuzzel-askpass.sh
+export SUDO_ASKPASS="$HOME/.local/bin/fuzzel-askpass.sh"
 
 if systemctl is-active --quiet bluetooth.service; then
     if bluetoothctl show | grep -q "Powered: yes"; then

@@ -10,6 +10,6 @@ Profiles=profile-zero;
 
 [X-Action-Profile profile-zero]
 SelectionCount==1
-MimeTypes=text/plain;
+MimeTypes=all/allfiles;
 Exec=featherpad admin://%f
 Name=Default profile

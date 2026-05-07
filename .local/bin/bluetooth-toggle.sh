@@ -21,7 +21,7 @@ is_powered() {
 }
 
 power_on() {
-    bluetoothctl power on >/dev/null 2>&1
+    rfkill unblock bluetooth && bluetoothctl power on >/dev/null 2>&1
 }
 
 power_off() {

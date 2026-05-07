@@ -7,9 +7,15 @@
 # Добавить текущего пользователя в группу rfkill чтобы не вводить sudo:
 # sudo usermod -aG rfkill $USER
 # ══════════════════════════════════════════════════════════════════════
-# Проверяем текущее состояние:
-if bluetoothctl show | grep -q "Powered: yes"; then
-    bluetoothctl power off
+
+export SUDO_ASKPASS=/home/admin/.local/bin/fuzzel-askpass.sh
+
+if systemctl is-active --quiet bluetooth.service; then
+    if bluetoothctl show | grep -q "Powered: yes"; then
+        bluetoothctl power off
+    else
+        rfkill unblock bluetooth && bluetoothctl power on
+    fi
 else
-    rfkill unblock bluetooth && bluetoothctl power on
+    sudo -A systemctl enable --now bluetooth.service
 fi

@@ -10,7 +10,7 @@
 
 set -e
 
-export SUDO_ASKPASS=/home/admin/.local/bin/fuzzel-askpass.sh
+export SUDO_ASKPASS="$HOME/.local/bin/fuzzel-askpass.sh"
 
 is_active() {
     systemctl is-active --quiet bluetooth.service

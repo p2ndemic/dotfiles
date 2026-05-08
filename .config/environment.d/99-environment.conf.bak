@@ -60,6 +60,17 @@ XDG_PICTURES_DIR=${HOME}/Pictures
 XDG_VIDEOS_DIR=${HOME}/Videos
 XDG_GAMES_DIR=${HOME}/Games
 
+# Ref: https://github.com/basecamp/omarchy/blob/dev/config/uwsm/default
+# Install other terminals via Install > Terminal
+TERMINAL=xdg-terminal-exec
+
+
+# Use a custom directory for screenshots (remember to make the directory!)
+# export SCREENSHOT_DIR=${HOME}/Pictures/Screenshots
+
+# Use a custom directory for screenrecordings (remember to make the directory!)
+# export SCREENRECORD_DIR=${HOME}/Videos/Screencasts
+
 
 # =============================================
 #    PATH Environment Variable

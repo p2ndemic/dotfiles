@@ -236,8 +236,10 @@ tooltip label {
 
 /* ── System Tray ─────────────────────────────────────────────────────── */
 #tray {
-    background-color: transparent;
+    background-color: @module_bg_color_1;
+    border-radius: 4px;
     margin: 0 4px;
+    padding: 0 10px;
 }
 
 #tray menu {
@@ -316,7 +318,7 @@ tooltip label {
 }
 
 #pulseaudio_drawer label:hover {
-    box-shadow: inset 0 -1px currentColor; /*  alpha(currentColor, 0.7); */
+    text-shadow: 0 0 1px currentColor; /*  alpha(currentColor, 0.7); */
 }
 
 /* ── Group: Network/Bluetooth Drawer [outside settings] ──────────────── */
@@ -348,12 +350,13 @@ tooltip label {
 }
 
 #bluetooth.disabled,
-#bluetooth.off {
+#bluetooth.off,
+#bluetooth.no-controller {
     color: @brightRed;
 }
 
 #network_bluetooth_drawer label:hover {
-    box-shadow: inset 0 -1px currentColor;
+    text-shadow: 0 0 1px currentColor;
 }
 
 /* ── Group: Battery/Backlight Drawer [outside settings] ──────────────── */
@@ -406,7 +409,7 @@ tooltip label {
 }
 
 #battery_backlight_drawer label:hover {
-    box-shadow: inset 0 -1px currentColor;
+    text-shadow: 0 0 1px currentColor;
 }
 
 /* ── Clock ───────────────────────────────────────────────────────────── */

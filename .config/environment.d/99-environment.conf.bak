@@ -8,6 +8,8 @@
 # Ref: https://wiki.archlinux.org/title/General_recommendations
 # =============================================
 
+#https://fedoraproject.org/wiki/Hardware_Video_Acceleration
+
 # https://www.phoronix.com/news/Intel-ANV-Descriptor-Heap-Merge
 ANV_DEBUG=experimental
 

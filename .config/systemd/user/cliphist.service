@@ -14,7 +14,7 @@ After=wayland-session@niri.desktop.target
 
 [Service]
 Type=exec
-ExecStartPre=/usr/bin/cliphist wipe
+#ExecStartPre=/usr/bin/cliphist wipe
 ExecStart=/usr/bin/wl-paste --watch /usr/bin/cliphist store
 Restart=on-failure
 Slice=background-graphical.slice

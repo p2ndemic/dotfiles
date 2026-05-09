@@ -25,6 +25,8 @@
 #
 # ══════════════════════════════════════════════════════════════════════
 # Но через udev rules надежнее, т.к мы используем событийный подход [добавление ACTION=="add|change" обязательно из-за race condition, когда устройство еще готово, а udev уже пытается присвоть значения параметрам]
+# (udev-worker)[707]: BAT0: /etc/udev/rules.d/99-battery-threshold.rules:29 ATTR{charge_control_start_threshold}="60": Could not chase sysfs attribute "/sys/devices/LNXSYSTM:00/.../power_supply/BAT0/charge_control_start_threshold", ignoring: No such file or directory
+# (udev-worker)[707]: BAT0: /etc/udev/rules.d/99-battery-threshold.rules:29 ATTR{charge_control_end_threshold}="80": Could not chase sysfs attribute "/sys/devices/LNXSYSTM:00/.../power_supply/BAT0/charge_control_end_threshold", ignoring: No such file or directory
 # ──────────────────────────────────────────────────────────────────────
 ACTION=="add|change", SUBSYSTEM=="power_supply", ATTR{type}=="Battery", ATTR{charge_control_start_threshold}="60", ATTR{charge_control_end_threshold}="80"
 # ──────────────────────────────────────────────────────────────────────

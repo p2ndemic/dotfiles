@@ -1,0 +1,31 @@
+# =============================================
+#    XDG Desktop Portal
+# =============================================
+# Ref: https://wiki.archlinux.org/title/XDG_Desktop_Portal
+# Ref: https://github.com/emersion/xdg-desktop-portal-wlr?tab=readme-ov-file#running
+# Ref: https://github.com/emersion/xdg-desktop-portal-wlr/wiki/FAQ
+# Ref: https://github.com/emersion/xdg-desktop-portal-wlr/wiki/Screencast-Compatibility
+# Ref: https://docs.voidlinux.org/config/graphical-session/portals.html
+# Ref: https://wiki.gentoo.org/wiki/XDG/xdg-desktop-portal
+# Ref: https://flatpak.github.io/xdg-desktop-portal/
+# Ref: https://man.archlinux.org/man/xdg-desktop-portal-wlr.5
+# Ref: https://man.archlinux.org/man/portals.conf.5
+# Ref: https://github.com/labwc/labwc/tree/master/data
+# =============================================
+[preferred]
+# Use xdg-desktop-portal-gtk for every portal interface...
+default=gtk;wlr;
+# ... except for the Screencast, Screenshot and Settings (dark/light mode) interface
+org.freedesktop.impl.portal.Screencast=wlr
+org.freedesktop.impl.portal.Screenshot=wlr
+org.freedesktop.impl.portal.Inhibit=none
+#org.freedesktop.impl.portal.FileChooser=lxqt
+#org.freedesktop.impl.portal.Settings=darkman
+
+[screencast]
+#output_name=eDP-1
+max_fps=60
+#exec_before=disable_notifications.sh
+#exec_after=enable_notifications.sh
+#chooser_type=simple
+#chooser_cmd=slurp -f %o -or

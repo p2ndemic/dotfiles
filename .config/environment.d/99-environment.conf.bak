@@ -13,6 +13,7 @@ ANV_DEBUG=experimental
 
 # gio [default] | gvfs-trash | trash-cli | kioclient5 | kioclient
 ELECTRON_TRASH=gvfs-trash
+GVFS_DISABLE_FUSE=1
 
 # =============================================
 #    Настройки клавиатуры

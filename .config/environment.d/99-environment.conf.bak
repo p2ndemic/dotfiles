@@ -10,6 +10,7 @@
 
 # https://www.phoronix.com/news/Intel-ANV-Descriptor-Heap-Merge
 ANV_DEBUG=experimental
+RADV_EXPERIMENTAL=heap
 
 # gio [default] | gvfs-trash | trash-cli | kioclient5 | kioclient
 ELECTRON_TRASH=gvfs-trash

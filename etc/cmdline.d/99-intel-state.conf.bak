@@ -1,18 +1,18 @@
+# ══════════════════════════════════════════════════
 # Ref: https://docs.kernel.org/admin-guide/kernel-parameters.html
 # Ref: https://docs.kernel.org/admin-guide/pm/intel_idle.html
 # Ref: https://access.redhat.com/solutions/2895271
 # Ref: https://gist.github.com/Brainiarc7/8dfd6bb189b8e6769bb5817421aec6d1
 # Ref: https://www.clearlinux.org/clear-linux-documentation/guides/maintenance/cpu-performance.html
 # Ref: https://docs.kernel.org/admin-guide/pm/intel_idle.html
-# =============================================
+# ══════════════════════════════════════════════════
 # ... TODO ...
-# =============================================
+# ══════════════════════════════════════════════════
 # intel_pstate=active intel_idle.max_cstate=3
-
-# ===========================================
+# ══════════════════════════════════════════════════
 # → Install thermald: sudo pacman -S tuned
-# ===========================================
+# ══════════════════════════════════════════════════
 #
-# =============================================
+# ══════════════════════════════════════════════════
 # → Install thermald: sudo pacman -S thermald && sudo systemctl enable --now thermald
-# ===============================================
+# ══════════════════════════════════════════════════

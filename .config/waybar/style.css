@@ -389,8 +389,8 @@ tooltip label {
 
 @keyframes blink {
     to {
-        background-color: #ffffff;
-        color: #000000;
+        background-color: @white;
+        color: @black;
     }
 }
 

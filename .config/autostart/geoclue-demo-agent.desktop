@@ -1,11 +1,11 @@
 [Desktop Entry]
+Type=Application
 Name=Geoclue Demo agent
 GenericName=Demo geoclue agent
-Keywords=geolocation;
-Exec=/usr/lib/geoclue-2.0/demos/agent
+NoDisplay=true
 Icon=mark-location-symbolic
 NotShowIn=GNOME;
-NoDisplay=true
+Exec=/usr/lib/geoclue-2.0/demos/agent
 Terminal=false
-Type=Application
+Keywords=geolocation;
 Hidden=true

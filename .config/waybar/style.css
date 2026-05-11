@@ -36,6 +36,7 @@
 @define-color blue #17ACF2;
 @define-color blue2 #73B8FF;
 @define-color magenta #C385FE;
+@define-color magenta2 #D09FFD;
 @define-color cyan #84CEB5;
 @define-color white #FFFFFF;
 @define-color brightBlack #0A0000;
@@ -301,7 +302,7 @@ tooltip label {
 
 /* ── PulseAudio Output (Speakers / Headphones) ── */
 #pulseaudio.output {
-    color: @brightMagenta;
+    color: @magenta2;
 }
 
 #pulseaudio.output.muted {
@@ -310,7 +311,7 @@ tooltip label {
 
 /* ── PulseAudio Input (Microphone) ── */
 #pulseaudio.input {
-    color: @brightMagenta;
+    color: @magenta2;
 }
 
 #pulseaudio.input.source-muted {

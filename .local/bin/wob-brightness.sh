@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Brightness control with wob overlay
 # -------------------------------------------------------------------
 # Installation:

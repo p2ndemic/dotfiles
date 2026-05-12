@@ -6,8 +6,7 @@ After=network.target
 
 [Service]
 Type=oneshot
-# Use the full path to your script in /usr/local/bin
-ExecStart=/usr/local/bin/iwd-auto-scan
+ExecStart=%h/.local/bin/toggle-iwd-scan.sh
 
 [Install]
 WantedBy=default.target

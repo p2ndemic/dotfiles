@@ -378,7 +378,7 @@
     "tooltip-format-ethernet": "⇣{bandwidthDownBytes} ⇡{bandwidthUpBytes}",
     "tooltip-format-disconnected": "Disconnected",
     "on-click": "pkill -x iwgtk || uwsm-app -t service -- iwgtk",
-    "on-click-right": "~/.local/bin/nmtui-toggle.sh"
+    "on-click-right": "~/.local/bin/toggle-iwd-scan.sh"
   },
 
   // ─── Bluetooth ────────────────────────────────────────────────────────

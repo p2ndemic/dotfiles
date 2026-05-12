@@ -42,7 +42,7 @@ play_volume_sound() {
     pw-play "$1" 2>/dev/null &
 }
 
-# Main logic: handle volume/mute actions for sink and source
+# Main logic
 case "$1" in
     sink-up|--sink-up)
         wpctl set-volume @DEFAULT_SINK@ 2%+ --limit 1.0

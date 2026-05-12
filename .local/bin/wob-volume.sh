@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Volume control with wob overlay
+# https://github.com/francma/wob
 # -------------------------------------------------------------------
 # Installation:
 #   sudo pacman -S --needed pipewire wireplumber wob

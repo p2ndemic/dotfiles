@@ -29,9 +29,9 @@ SOUND_VOLUME="/usr/share/sounds/freedesktop/stereo/audio-volume-change.oga"
 wob_send() { echo "$1" > "$WOBSOCK" 2>/dev/null || true; }
 
 # Get current sink volume (percentage)
-sink_vol() { wpctl get-volume @DEFAULT_SINK@ | sed 's/[^0-9]//g'; } # Alternative: awk '{print int($2 * 100)}'
+sink_vol() { wpctl get-volume @DEFAULT_SINK@ | sed 's/[^0-9]//g'; } #Alternative: awk '{print int($2 * 100)}'
 # Get current source volume (percentage)
-source_vol() { wpctl get-volume @DEFAULT_SOURCE@ | sed 's/[^0-9]//g'; } # Alternative: awk '{print int($2 * 100)}'
+source_vol() { wpctl get-volume @DEFAULT_SOURCE@ | sed 's/[^0-9]//g'; } #Alternative: awk '{print int($2 * 100)}'
 
 # Check mute status (sink|source)
 sink_muted() { wpctl get-volume @DEFAULT_SINK@ | grep -q "MUTED"; }

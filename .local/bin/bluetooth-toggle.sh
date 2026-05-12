@@ -51,7 +51,7 @@ if is_active; then
     if is_powered; then
         echo "Bluetooth ON -> turning OFF + stopping service"
         power_off
-        sleep 0.1
+        sleep 0.2
         stop_service
     else
         # If Bluetooth is OFF -> turn it ON

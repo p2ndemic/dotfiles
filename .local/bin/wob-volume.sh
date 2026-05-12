@@ -3,7 +3,6 @@
 # -------------------------------------------------------------------
 # Installation:
 #   sudo pacman -S --needed pipewire wireplumber wob
-#   systemctl --user daemon-reload
 #   systemctl --user enable --now wob.socket
 #
 # Usage:

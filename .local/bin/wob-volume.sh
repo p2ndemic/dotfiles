@@ -17,6 +17,7 @@
 
 # Define WOB socket
 WOBSOCK="${WOBSOCK:-$XDG_RUNTIME_DIR/wob.sock}"
+
 # Fallback to legacy FIFO (tail -f /tmp/wobpipe | wob) if socket not found:
 # [[ ! -S "$WOBSOCK" ]] && [[ -p "/tmp/wobpipe" ]] && WOBSOCK="/tmp/wobpipe"
 

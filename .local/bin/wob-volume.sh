@@ -18,11 +18,11 @@
 # Define WOB socket
 WOBSOCK="${WOBSOCK:-$XDG_RUNTIME_DIR/wob.sock}"
 # Fallback to legacy FIFO (tail -f /tmp/wobpipe | wob) if socket not found:
-# [[ ! -S "$WOBSOCK" ]] && [[ -p "/tmp/wobpipe" ]] && WOBSOCK="/tmp/wobpipe"
+#[[ ! -S "$WOBSOCK" ]] && [[ -p "/tmp/wobpipe" ]] && WOBSOCK="/tmp/wobpipe"
 
 # Sound file (freedesktop theme)
 SOUND_VOLUME="/usr/share/sounds/freedesktop/stereo/audio-volume-change.oga"
-# SOUND_MUTE="/path/to/file"
+#SOUND_MUTE="/path/to/file"
 
 # Send integer value to wob, ignore failures (no wob running, broken pipe, etc.)
 wob_send() { echo "$1" > "$WOBSOCK" 2>/dev/null || true; }

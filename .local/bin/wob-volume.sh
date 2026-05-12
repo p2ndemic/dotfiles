@@ -23,7 +23,7 @@ WOBSOCK="${WOBSOCK:-$XDG_RUNTIME_DIR/wob.sock}"
 SOUND_VOLUME="/usr/share/sounds/freedesktop/stereo/audio-volume-change.oga"
 # SOUND_MUTE="/path/to/file"
 
-# Send integer value to wob, ignore failures (no wob running, broken pipe, etc.)
+# Send integer value to wob
 wob_send() { echo "$1" > "$WOBSOCK" 2>/dev/null || true; }
 
 # Get current sink volume (percentage)

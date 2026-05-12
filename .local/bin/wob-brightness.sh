@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # https://github.com/francma/wob
-# -------------------------------------------------------------------
+# ══════════════════════════════════════════════════════════════════════
 # Installation:
 #   sudo pacman -S --needed brightnessctl wob
 #   systemctl --user enable --now wob.socket
@@ -11,7 +11,7 @@
 # Sends current brightness percentage to wob via:
 #   - systemd socket: $XDG_RUNTIME_DIR/wob.sock (default, recommended)
 #   - legacy FIFO:    /tmp/wobpipe (if socket absent and FIFO exists)
-# -------------------------------------------------------------------
+# ══════════════════════════════════════════════════════════════════════
 
 # Define WOB socket
 WOBSOCK="${WOBSOCK:-$XDG_RUNTIME_DIR/wob.sock}"
@@ -19,12 +19,13 @@ WOBSOCK="${WOBSOCK:-$XDG_RUNTIME_DIR/wob.sock}"
 # Fallback to legacy FIFO (tail -f /tmp/wobpipe | wob) if socket not found:
 # [[ ! -S "$WOBSOCK" ]] && [[ -p "/tmp/wobpipe" ]] && WOBSOCK="/tmp/wobpipe"
 
-# Send integer value to wob, ignore failures (no wob running, broken pipe, etc.)
+# Send integer value to wob
 wob_send() { echo "$1" > "$WOBSOCK" 2>/dev/null || true; }
 
 # Get current brightness percentage (brightnessctl auto-selects the device)
-get_brightness() { brightnessctl -m | awk -F'[,%]' '{print $4}'; } # Alternative: cut -d, -f4 | tr -d '%'
+get_brightness() { brightnessctl -m | awk -F'[,%]' '{print $4}'; }
 
+# Main logic
 case "$1" in
     up|--up)
         brightnessctl set +5% >/dev/null 2>&1

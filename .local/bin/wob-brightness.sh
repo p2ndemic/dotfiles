@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Brightness control with wob overlay
+# https://github.com/francma/wob
 # -------------------------------------------------------------------
 # Installation:
 #   sudo pacman -S --needed brightnessctl wob

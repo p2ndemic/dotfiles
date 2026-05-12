@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Volume control with wob overlay
 # -------------------------------------------------------------------
 # Installation:
@@ -17,9 +17,12 @@
 
 # Define WOB socket
 WOBSOCK="${WOBSOCK:-$XDG_RUNTIME_DIR/wob.sock}"
-
 # Fallback to legacy FIFO (tail -f /tmp/wobpipe | wob) if socket not found:
 # [[ ! -S "$WOBSOCK" ]] && [[ -p "/tmp/wobpipe" ]] && WOBSOCK="/tmp/wobpipe"
+
+# Sound file (freedesktop theme)
+SOUND_VOLUME="/usr/share/sounds/freedesktop/stereo/audio-volume-change.oga"
+# SOUND_MUTE="/path/to/file"
 
 # Send integer value to wob, ignore failures (no wob running, broken pipe, etc.)
 wob_send() { echo "$1" > "$WOBSOCK" 2>/dev/null || true; }
@@ -33,14 +36,24 @@ source_vol() { wpctl get-volume @DEFAULT_SOURCE@ | sed 's/[^0-9]//g'; } # Altern
 sink_muted() { wpctl get-volume @DEFAULT_SINK@ | grep -q "MUTED"; }
 source_muted() { wpctl get-volume @DEFAULT_SOURCE@ | grep -q "MUTED"; }
 
+# Play volume sound: kill previous pw-play process to avoid overlapping audio
+play_volume_sound() {
+    [[ -f "$1" ]] || return
+    pkill -x pw-play 2>/dev/null
+    pw-play "$1" 2>/dev/null &
+}
+
+# Main logic: handle volume/mute actions for sink and source
 case "$1" in
     sink-up|--sink-up)
         wpctl set-volume @DEFAULT_SINK@ 2%+ --limit 1.0
         wob_send "$(sink_vol)"
+        play_volume_sound "$SOUND_VOLUME"
         ;;
     sink-down|--sink-down)
         wpctl set-volume @DEFAULT_SINK@ 2%- --limit 1.0
         wob_send "$(sink_vol)"
+        play_volume_sound "$SOUND_VOLUME"
         ;;
     sink-mute|--sink-mute)
         wpctl set-mute @DEFAULT_SINK@ toggle
@@ -49,10 +62,12 @@ case "$1" in
     source-up|--source-up)
         wpctl set-volume @DEFAULT_SOURCE@ 2%+ --limit 1.0
         wob_send "$(source_vol)"
+        play_volume_sound "$SOUND_VOLUME"
         ;;
     source-down|--source-down)
         wpctl set-volume @DEFAULT_SOURCE@ 2%- --limit 1.0
         wob_send "$(source_vol)"
+        play_volume_sound "$SOUND_VOLUME"
         ;;
     source-mute|--source-mute)
         wpctl set-mute @DEFAULT_SOURCE@ toggle

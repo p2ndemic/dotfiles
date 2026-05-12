@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # https://github.com/francma/wob
-# -------------------------------------------------------------------
+# ══════════════════════════════════════════════════════════════════════
 # Installation:
 #   sudo pacman -S --needed pipewire wireplumber wob
 #   systemctl --user enable --now wob.socket
@@ -12,7 +12,7 @@
 # Sends current volume percentage (0 when muted) to wob via:
 #   - systemd socket: $XDG_RUNTIME_DIR/wob.sock (default, recommended)
 #   - legacy FIFO:    /tmp/wobpipe (if socket absent and FIFO exists)
-# -------------------------------------------------------------------
+# ══════════════════════════════════════════════════════════════════════
 
 # Define WOB socket
 WOBSOCK="${WOBSOCK:-$XDG_RUNTIME_DIR/wob.sock}"

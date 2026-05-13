@@ -4,7 +4,7 @@
 # ══════════════════════════════════════════════════════════════════════
 # Installation:
 #   sudo pacman -S --needed brightnessctl wob
-#   systemctl --user enable --now wob.socket
+#   systemctl daemon-reload && systemctl --user enable --now wob.socket
 #
 # Usage:
 #   wob-brightness [up|--up|down|--down]

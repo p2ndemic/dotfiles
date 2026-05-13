@@ -3,8 +3,8 @@
 # https://github.com/francma/wob
 # ══════════════════════════════════════════════════════════════════════
 # Installation:
-#   sudo pacman -S --needed pipewire wireplumber wob
-#   systemctl --user enable --now wob.socket
+#   sudo pacman -S --needed wob sound-theme-freedesktop
+#   systemctl daemon-reload && systemctl --user enable --now wob.socket
 #
 # Usage:
 #   wob-volume [sink-up|--sink-up|sink-down|--sink-down|sink-mute|--sink-mute]

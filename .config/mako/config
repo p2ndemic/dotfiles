@@ -1,18 +1,137 @@
-# Position
-anchor=bottom-right
+# ~/.config/mako/config
+# Theme: Сatppuccin Sky custom theme
+
+# ─────────────────────────────────────────────
+# GLOBAL OPTIONS
+# ─────────────────────────────────────────────
+
+max-history=5
 sort=-time
+
+# Include an additional config file (must be absolute path or start with ~/)
+# include=~/.config/mako/extra.conf
+
+# ─────────────────────────────────────────────
+# BINDING OPTIONS
+# ─────────────────────────────────────────────
+
+# Left click - invoke the app's default action (e.g. open the window)
+on-button-left=invoke-default-action
+
+# Middle click - show action menu via fuzzel
+on-button-middle=exec makoctl menu -n "$id" -- fuzzel --dmenu -p "Action: "
+
+# Right click
+on-button-right=dismiss
+
+# Tap (touchscreen)
+on-touch=invoke-default-action
+
+# Triggered when a notification appears
+on-notify=none
+# on-notify=exec pw-play /usr/share/sounds/freedesktop/stereo/message.oga
+
+# ─────────────────────────────────────────────
+# STYLE (catppuccin-macchiato-sky)
+# ─────────────────────────────────────────────
+
+font=monospace 11
+
+# Сatppuccin Sky theme with background alpha 95% (f2) and Nord Frost (Dark) border color (#5e81acff)
+background-color=#1e1e2ef5
+text-color=#cdd6f4ff
+border-color=#5e81acff
+progress-color=over #363a4fff
+
+# Popup dimensions
+width=320
+height=160
+
+# Distance from screen edges [top, right, bottom, left]
+outer-margin=0,6,0,0
+
+# Gap between notifications [top, right, bottom, left]
+margin=0,0,10,0
+
+# Inner padding: [vertical, horizontal] or [top, right, bottom, left]
+padding=12,16
+
+# Border
+border-size=1
+border-radius=4
+
+# Icons
+icons=1
+max-icon-size=48
+icon-path=/usr/share/icons/Numix-Circle:/usr/share/icons/Numix:/usr/share/icons/Adwaita
+icon-location=left
+#icon-border-radius=0
+
+# Notifications disappear after 5 seconds
+default-timeout=5000
+
+# Always use our timeout, ignore the app-provided one
+ignore-timeout=0
+
+# Group notifications by field(s), e.g.: group-by=app-name,summary,body
+# group-by=
+
+# Maximum number of visible notifications at once (-1 = unlimited)
+max-visible=5
+
+# Wayland layer: [ background | bottom | top | overlay ]
+layer=top
+
+# Position on screen:
+# [ top-right | top-center | top-left | bottom-right | bottom-center | bottom-left | center-right | center-left | center ]
+anchor=bottom-right
+
+# ─────────────────────────────────────────────
+# CRITERIA — urgency levels
+# ─────────────────────────────────────────────
+
+[urgency=low]
+on-notify=none
+
+[urgency=critical]
+border-color=#e6495aff
+default-timeout=0
+ignore-timeout=1
+on-notify=exec pw-play /usr/share/sounds/freedesktop/stereo/dialog-warning.oga
+
+# ─────────────────────────────────────────────
+# CRITERIA — screenshot tools
+# ─────────────────────────────────────────────
+# Left click  — invoke "show" action (opens file in file manager)
+# Right click — dismiss without saving to history
+# "actionable" ensures the criteria only matches when the action is available
 
 [app-name=grimshot actionable]
 on-button-left=invoke-action show
-on-button-right=dismiss
+on-button-right=dismiss --no-history
 
 [app-name=swayshot actionable]
 on-button-left=invoke-action show
-on-button-right=dismiss
+on-button-right=dismiss --no-history
 
 [app-name=labshot actionable]
 on-button-left=invoke-action show
-on-button-right=dismiss
+on-button-right=dismiss --no-history
 
+# ─────────────────────────────────────────────
+# CRITERIA — grouping
+# ─────────────────────────────────────────────
+
+# ─────────────────────────────────────────────
+# CRITERIA — do not disturb mode [DND]
+# ─────────────────────────────────────────────
+# Enable:  makoctl mode -a dnd
+# Disable: makoctl mode -r dnd
+
+# Hide all notifications in DND mode
 [mode=dnd]
 invisible=1
+
+# Critical notifications still break through DND
+[mode=dnd urgency=critical]
+invisible=0

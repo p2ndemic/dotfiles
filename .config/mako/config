@@ -32,7 +32,7 @@ on-notify=none
 # on-notify=exec pw-play /usr/share/sounds/freedesktop/stereo/message.oga
 
 # ─────────────────────────────────────────────
-# STYLE (catppuccin-macchiato-sky)
+# STYLE
 # ─────────────────────────────────────────────
 
 font=monospace 11

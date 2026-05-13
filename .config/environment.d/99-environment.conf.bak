@@ -26,6 +26,9 @@ XKB_DEFAULT_LAYOUT=us,ru
 #XKB_DEFAULT_VARIANT=,
 XKB_DEFAULT_OPTIONS=grp:alt_shift_toggle,compose:ralt,terminate:ctrl_alt_bksp
 
+XCURSOR_THEME=Adwaita
+XCURSOR_SIZE=24
+
 # =============================================
 #    XDG Base Directory Specification
 # =============================================

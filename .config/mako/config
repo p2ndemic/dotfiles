@@ -19,7 +19,7 @@ sort=-time
 on-button-left=invoke-default-action
 
 # Middle click - show action menu via fuzzel
-on-button-middle=exec makoctl menu -- fuzzel --dmenu --hide-prompt --mesg="Action:" --lines 4 --vertical-pad=10 --line-height=26 --selection-radius=4
+on-button-middle=exec makoctl menu -n "$id" -- fuzzel --dmenu --hide-prompt --mesg="Action:" --lines 4 --vertical-pad=10 --line-height=26 --selection-radius=4
 
 # Right click
 on-button-right=dismiss

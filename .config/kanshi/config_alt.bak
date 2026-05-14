@@ -6,40 +6,49 @@
 #  Ref: https://wiki.archlinux.org/title/Kanshi
 # ══════════════════════════════════════════════════════════════
 
-# ── Output defaults & aliases (global scope) ─────────────────
-output eDP-1 {
-    mode 2560x1600@120.016998Hz
-    position 0,0
-    scale 2
-    transform normal
-    adaptive_sync off
-    alias $internal
-}
-
-output HDMI-A-1 {
-    mode 2560x1440@144Hz
-    position 0,0
-    scale 1
-    transform normal
-    adaptive_sync off
-    alias $hdmi
-}
-
-# ── Profile 1: Laptop only (default) ─────────────────────────
+# ── Profile 1 — Laptop only (default) ─────────────────────────
 profile laptop {
-    output $internal enable
+    output eDP-1 {
+        enable
+        mode 2560x1600@120.016998Hz
+        position 0,0
+        scale 2
+        transform normal
+        adaptive_sync off
+    }
 }
 
-# ── Profile 2 — Dual: Laptop (left) + External HDMI (right) ─────
+# ── Profile 2 — Dual: Laptop (left) + External HDMI (right) ────────
 # ── (auto on HDMI connect) ──
 profile dual {
-    output $internal enable position 0,0
-    output $hdmi enable position 1280,0
+    output eDP-1 {
+        enable
+        mode 2560x1600@120.016998Hz
+        position 0,0
+        scale 2
+        transform normal
+        adaptive_sync off
+    }
+    output HDMI-A-1 {
+        enable
+        mode 2560x1440@144Hz
+        position 1280,0
+        scale 1
+        transform normal
+        adaptive_sync off
+    }
 }
 
-# ── Profile 3: External only (manual switch) ──────────────────
+# ── Profile 3 — External HDMI only (manual switch) ─────────────────
 # ── kanshictl switch external-only ──
 profile external-only {
-    output $internal disable
-    output $hdmi enable
+    output eDP-1 disable
+    output HDMI-A-1 {
+        enable
+        mode 2560x1440@144Hz
+        position 0,0
+        scale 1
+        transform normal
+        adaptive_sync off
+    }
 }

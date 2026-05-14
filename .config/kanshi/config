@@ -9,7 +9,7 @@
 # ── Output defaults & aliases (global scope) ────────────────
 output eDP-1 {
     # [mode preferred] uses the display's recommended mode automatically
-    # To set a specific mode instead, replace the line below with:
+    # To set a specific mode instead, replace with:
     # [mode 2560x1600@120.016998Hz]
     mode preferred
     position 0,0
@@ -21,7 +21,7 @@ output eDP-1 {
 
 output DP-1 {
     # [mode preferred] uses the display's recommended mode automatically
-    # To set a specific mode instead, replace the line below with:
+    # To set a specific mode instead, replace with:
     # [mode 2560x1440@144Hz]
     mode preferred
     position 0,0
@@ -33,7 +33,7 @@ output DP-1 {
 
 output HDMI-A-1 {
     # [mode preferred] uses the display's recommended mode automatically
-    # To set a specific mode instead, replace the line below with:
+    # To set a specific mode instead, replace with:
     # [mode 2560x1440@144Hz]
     mode preferred
     position 0,0

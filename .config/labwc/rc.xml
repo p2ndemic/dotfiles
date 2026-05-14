@@ -214,7 +214,7 @@
     <!-- System update (sudo pacman -Syu) -->
     <keybind key="W-u">
       <action name="Execute">
-        <command>uwsm app -- foot sudo pacman -Syu</command>
+        <command>uwsm app -- foot --hold sudo pacman -Syu</command>
       </action>
     </keybind>
 

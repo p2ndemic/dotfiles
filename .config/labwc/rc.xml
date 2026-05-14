@@ -30,8 +30,8 @@
   <!-- THEME -->
   <!-- ══════════════════════════════════════════════════════════════ -->
   <theme>
-    <name>Adwaita-dark</name>
-    <icon>Numix</icon>
+    <name>labTeallach</name>
+    <icon>Adwaita</icon>
     <fallbackAppIcon>labwc</fallbackAppIcon>
     <titlebar>
       <layout>icon:iconify,max,close</layout>
@@ -172,12 +172,14 @@
 
     <!-- ─── Launcher ─── -->
     <!-- Super (release) — Fuzzel launcher -->
+    <!--
     <keybind key="Super_L" onRelease="yes">
       <action name="Execute">
-        <command>sh -c 'pkill -x fuzzel || exec uwsm app -- fuzzel'</command>
+        <command></command>
       </action>
     </keybind>
-    <!-- Super+D — Fuzzel launcher -->
+    -->
+    <!-- Super + D — Fuzzel launcher -->
     <keybind key="W-d">
       <action name="Execute">
         <command>sh -c 'pkill -x fuzzel || exec uwsm app -- fuzzel'</command>
@@ -207,6 +209,12 @@
     <keybind key="W-t">
       <action name="Execute">
         <command>uwsm app -- featherpad</command>
+      </action>
+    </keybind>
+    <!-- System update (sudo pacman -Syu) -->
+    <keybind key="W-u">
+      <action name="Execute">
+        <command>uwsm app -- foot sudo pacman -Syu</command>
       </action>
     </keybind>
 
@@ -287,6 +295,10 @@
     <!-- Show window menu -->
     <keybind key="A-Space">
       <action name="ShowMenu" menu="client-menu" atCursor="no" />
+    </keybind>
+    <!-- Toggle show desktop (minimize all / restore) -->
+    <keybind key="W-S-d">
+      <action name="ToggleShowDesktop" />
     </keybind>
 
     <!-- ─── Snap / Tiling ─── -->
@@ -435,6 +447,12 @@
         <command>~/.local/bin/fuzzel-power-menu_index.sh</command>
       </action>
     </keybind>
+    <!-- Power menu (Super + P) -->
+    <keybind key="W-p">
+      <action name="Execute">
+        <command>~/.local/bin/fuzzel-power-menu_index.sh</command>
+      </action>
+    </keybind>
 
     <!-- ─── Screenshots ─── -->
     <keybind key="XF86FullScreen">
@@ -544,30 +562,83 @@
   <!-- LIBINPUT -->
   <!-- ══════════════════════════════════════════════════════════════ -->
   <libinput>
-    <!-- Default category applies to all devices not matched by specific categories -->
-    <device category="default">
+
+    <!-- non‑touch: mouse and other pointer devices -->
+    <device category="non-touch">
+      <!-- [yes|no] -->
+      <naturalScroll>no</naturalScroll>
+      <!-- [yes|no] -->
+      <leftHanded>no</leftHanded>
+      <!-- [-1.0 to 1.0] -->
+      <pointerSpeed>0.0</pointerSpeed>
+      <!-- [flat|adaptive] -->
+      <accelProfile>flat</accelProfile>
+      <!-- [yes|no] -->
+      <tap>no</tap>
+      <!-- [lrm|lmr] -->
+      <tapButtonMap>lrm</tapButtonMap>
+      <!-- [yes|no] -->
+      <tapAndDrag>no</tapAndDrag>
+      <!-- [yes|no|timeout] -->
+      <dragLock>no</dragLock>
+      <!-- [yes|no|3|4] -->
+      <threeFingerDrag>no</threeFingerDrag>
+      <!-- [yes|no] -->
+      <middleEmulation>no</middleEmulation>
+      <!-- [yes|no] -->
+      <disableWhileTyping>yes</disableWhileTyping>
+      <!-- [none|buttonAreas|clickfinger] -->
+      <clickMethod>none</clickMethod>
+      <!-- [none|twofinger|edge] -->
+      <scrollMethod>none</scrollMethod>
+      <!-- [yes|no|disabledOnExternalMouse] -->
+      <sendEventsMode>disabledOnExternalMouse</sendEventsMode>
+      <!-- [six float values split by space] -->
+      <!-- <calibrationMatrix>1 0 0 0 1 0</calibrationMatrix> -->
+      <!-- [Set scroll factor] -->
+      <scrollFactor>1.0</scrollFactor>
+    </device>
+
+    <!-- touchpad: laptop touchpads and trackpads -->
+    <device category="touchpad">
       <naturalScroll>no</naturalScroll>
       <leftHanded>no</leftHanded>
-      <!-- Pointer speed: -1.0 to 1.0 (0.0 = normal) -->
       <pointerSpeed>0.0</pointerSpeed>
-      <!-- Acceleration profile: flat (no accel) or adaptive -->
-      <accelProfile>flat</accelProfile>
+      <accelProfile>adaptive</accelProfile>
       <tap>yes</tap>
-      <!-- Tap button map: lrm = left, right, middle for 1,2,3 fingers -->
       <tapButtonMap>lrm</tapButtonMap>
       <tapAndDrag>yes</tapAndDrag>
-      <!-- Drag lock: disabled by default (use 'timeout' for timed lock) -->
       <dragLock>no</dragLock>
-      <threeFingerDrag>yes</threeFingerDrag>
+      <threeFingerDrag>4</threeFingerDrag>
       <middleEmulation>no</middleEmulation>
       <disableWhileTyping>yes</disableWhileTyping>
-      <!-- Click method: clickfinger (1/2/3 fingers) or buttonAreas (zones) -->
       <clickMethod>clickfinger</clickMethod>
       <scrollMethod>twofinger</scrollMethod>
       <sendEventsMode>disabledOnExternalMouse</sendEventsMode>
-      <calibrationMatrix>1 0 0 0 1 0</calibrationMatrix>
+      <!-- <calibrationMatrix>1 0 0 0 1 0</calibrationMatrix> -->
       <scrollFactor>1.0</scrollFactor>
     </device>
+
+    <!-- touch: touchscreens and drawing-tablets -->
+    <device category="touch">
+      <naturalScroll>yes</naturalScroll>
+      <leftHanded>no</leftHanded>
+      <pointerSpeed>0.0</pointerSpeed>
+      <accelProfile>flat</accelProfile>
+      <tap>yes</tap>
+      <tapButtonMap>lrm</tapButtonMap>
+      <tapAndDrag>yes</tapAndDrag>
+      <dragLock>no</dragLock>
+      <threeFingerDrag>no</threeFingerDrag>
+      <middleEmulation>no</middleEmulation>
+      <disableWhileTyping>yes</disableWhileTyping>
+      <clickMethod>clickfinger</clickMethod>
+      <scrollMethod>none</scrollMethod>
+      <sendEventsMode>disabledOnExternalMouse</sendEventsMode>
+      <!-- <calibrationMatrix>1 0 0 0 1 0</calibrationMatrix> -->
+      <scrollFactor>1.0</scrollFactor>
+    </device>
+
   </libinput>
 
 </labwc_config>

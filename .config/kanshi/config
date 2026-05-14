@@ -1,54 +1,75 @@
-# ══════════════════════════════════════════════════════════════
+# ════════════════════════════════════════════════════════════
 #  kanshi — display output configuration
-# ══════════════════════════════════════════════════════════════
+# ════════════════════════════════════════════════════════════
 #  ~/.config/kanshi/config
 #  Ref: https://man.archlinux.org/man/kanshi.5.en
 #  Ref: https://wiki.archlinux.org/title/Kanshi
-# ══════════════════════════════════════════════════════════════
+# ════════════════════════════════════════════════════════════
 
-# ── Profile 1 — Laptop only (default) ─────────────────────────
+# ── Output defaults & aliases (global scope) ────────────────
+output eDP-1 {
+    # [mode preferred] uses the display's recommended mode automatically
+    # To set a specific mode instead, replace the line below with:
+    # [mode 2560x1600@120Hz]
+    mode preferred
+    position 0,0
+    scale 2
+    transform normal
+    adaptive_sync off
+    alias $internal
+}
+
+output DP-1 {
+    # [mode preferred] uses the display's recommended mode automatically
+    # To set a specific mode instead, replace the line below with:
+    # [mode 2560x1440@144Hz]
+    mode preferred
+    position 0,0
+    scale 1
+    transform normal
+    adaptive_sync off
+    alias $dp
+}
+
+output HDMI-A-1 {
+    # [mode preferred] uses the display's recommended mode automatically
+    # To set a specific mode instead, replace the line below with:
+    # [mode 2560x1440@144Hz]
+    mode preferred
+    position 0,0
+    scale 1
+    transform normal
+    adaptive_sync off
+    alias $hdmi
+}
+
+# ── Profile 1: Laptop only (default) ────────────────────────
 profile laptop {
-    output eDP-1 {
-        enable
-        mode 2560x1600@120.016998Hz
-        position 0,0
-        scale 2
-        transform normal
-        adaptive_sync off
-    }
+    output $internal enable
 }
 
-# ── Profile 2 — Dual: Laptop (left) + External HDMI (right) ────────
-# ── (auto on HDMI connect) ──
-profile dual {
-    output eDP-1 {
-        enable
-        mode 2560x1600@120.016998Hz
-        position 0,0
-        scale 2
-        transform normal
-        adaptive_sync off
-    }
-    output HDMI-A-1 {
-        enable
-        mode 2560x1440@144Hz
-        position 1280,0
-        scale 1
-        transform normal
-        adaptive_sync off
-    }
+# ── Profile 2: Dual display — DP (auto on DP connect) ───────
+profile dual-dp {
+    output $internal enable
+    output $dp enable position 1280,0
 }
 
-# ── Profile 3 — External HDMI only (manual switch) ─────────────────
-# ── kanshictl switch external-only ──
-profile external-only {
-    output eDP-1 disable
-    output HDMI-A-1 {
-        enable
-        mode 2560x1440@144Hz
-        position 0,0
-        scale 1
-        transform normal
-        adaptive_sync off
-    }
+# ── Profile 3: External only — DP (manual switch) ───────────
+# ── kanshictl switch external-dp ────────────────────────────
+profile external-dp {
+    output $internal disable
+    output $dp enable
+}
+
+# ── Profile 4: Dual display — HDMI (auto on HDMI connect) ───
+profile dual-hdmi {
+    output $internal enable
+    output $hdmi enable position 1280,0
+}
+
+# ── Profile 5: External only — HDMI (manual switch) ─────────
+# ── kanshictl switch external-hdmi ──────────────────────────
+profile external-hdmi {
+    output $internal disable
+    output $hdmi enable
 }

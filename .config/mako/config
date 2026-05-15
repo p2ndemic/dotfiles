@@ -91,11 +91,11 @@ anchor=bottom-right
 # ─────────────────────────────────────────────
 
 [urgency=critical]
+on-notify=exec pw-play /usr/share/sounds/freedesktop/stereo/dialog-warning.oga
 border-color=#ce93d8cc
 default-timeout=0
 ignore-timeout=1
 layer=overlay
-on-notify=exec pw-play /usr/share/sounds/freedesktop/stereo/dialog-warning.oga
 
 # ─────────────────────────────────────────────
 # CRITERIA — screenshot tools
@@ -103,10 +103,6 @@ on-notify=exec pw-play /usr/share/sounds/freedesktop/stereo/dialog-warning.oga
 # Left click  — invoke "show" action (opens file in file manager)
 # Right click — dismiss without saving to history
 # "actionable" ensures the criteria only matches when the action is available
-
-[app-name=grimshot actionable]
-on-button-left=invoke-action show
-on-button-right=dismiss --no-history
 
 [app-name=swayshot actionable]
 on-button-left=invoke-action show

@@ -92,7 +92,7 @@ anchor=bottom-right
 
 [urgency=critical]
 on-notify=exec pw-play /usr/share/sounds/freedesktop/stereo/dialog-warning.oga
-border-color=#ce93d8cc
+border-color=#fa6781b3
 default-timeout=0
 ignore-timeout=1
 layer=overlay

@@ -20,7 +20,7 @@ DEFAULT_PROFILE="balanced"
 FONT="JetBrainsMono Nerd Font Mono:size=18"
 
 # ══════════════════════════════════════════════════════════════════════
-#  Functions: Notifications
+#  Notifications
 # ══════════════════════════════════════════════════════════════════════
 
 # ── Send desktop notification ─────────────────────────────────────────
@@ -64,7 +64,7 @@ get_battery_info() {
                  -v cycle_count="$cycle_count" \
     'BEGIN {
         # 1. State
-        bat_status = status
+        bat_status = (status == "Charging" ? status "   " : status)
 
         # 2. Percentage
         bat_percent = capacity
@@ -74,30 +74,28 @@ get_battery_info() {
 
         if (current_now > 0) {
             if (status == "Discharging") {
-                time_h = charge_now / current_now
-                time_m = time_h * 60
-
-                if (time_m < 60) {
-                    bat_time = sprintf("%.0f m", time_m)
-                } else {
-                    bat_time = sprintf("%.1f h", time_h)
-                }
+                time_minutes = (charge_now / current_now) * 60
             } else if (status == "Charging") {
-                time_h = (charge_full - charge_now) / current_now
-                time_m = time_h * 60
+                time_minutes = ((charge_full - charge_now) / current_now) * 60
+            }
 
-                if (time_m < 60) {
-                    bat_time = sprintf("%.0f m", time_m)
-                } else {
-                    bat_time = sprintf("%.1f h", time_h)
-                }
+            # Округляем до целых
+            time_minutes_str = sprintf("%.0f", time_minutes)
+
+            # Добавляем пробелы в зависимости от кол-ва знаков
+            if (length(time_minutes_str) == 1) {
+                bat_time = time_minutes_str " min  "
+            } else if (length(time_minutes_str) == 2) {
+                bat_time = time_minutes_str " min "
+            } else {
+                bat_time = time_minutes_str " min"
             }
         } else {
             bat_time = "...     "
         }
 
-        # 4. Energy-full [Wh]: charge_full [µAh] * voltage_min_design [µV] / 1e12
-        bat_energy_full = sprintf("%.1f", charge_full * voltage_min_design / 1e12)
+        # 4. Energy-full [Wh]: charge_full [µAh] * voltage_min_design [µV] / 1000000000000
+        bat_energy_full = sprintf("%.1f", (charge_full * voltage_min_design) / 1e12)
 
         # 5. Charge cycles
         bat_charge_cycles = cycle_count
@@ -120,7 +118,6 @@ if [[ "$BAT_STATUS" == "Discharging" ]]; then
 else
     BAT_STATUS_ICON=""
     BAT_STATUS_ARROW="↑"
-    BAT_STATUS_LABEL="$BAT_STATUS   "
 fi
 
 # ══════════════════════════════════════════════════════════════════════
@@ -163,9 +160,9 @@ esac
 
 # ── Fuzzel Message ────────────────────────────────────────────────────
 MESG=" ┌─────────────────────────────────────┐
- │ |${BAT_STATUS_ICON}| State     | ⤍ | ${BAT_STATUS_LABEL} |${BAT_STATUS_ICON}| │
+ │ |${BAT_STATUS_ICON}| State     | ⤍ | ${BAT_STATUS} |${BAT_STATUS_ICON}| │
  │ |%| Percent   | ⤍ | ${BAT_PERCENT} %        |%| │
- │ || Remaining | ⤍ | ${BAT_TIME}       || │
+ │ || Remaining | ⤍ | ${BAT_TIME}     || │
  │ || Capacity  | ⤍ | ${BAT_ENERGY_FULL} Wh     || │
  │ || Cycles    | ⤍ | ${BAT_CHARGE_CYCLES}         || │
  │ || Health    | ⤍ | ${BAT_HEALTH} %        || │

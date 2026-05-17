@@ -23,7 +23,6 @@ FONT="JetBrainsMono Nerd Font Mono:size=18"
 #  Notifications
 # ══════════════════════════════════════════════════════════════════════
 
-# ── Send desktop notification ─────────────────────────────────────────
 send_notification() {
     local body="$1"
     notify-send \
@@ -108,10 +107,10 @@ get_battery_info() {
     }'
 }
 
-# ── Parse battery and profile info ────────────────────────────────────
+# ── Parse battery info ────────────────────────────────────────────────
 IFS='|' read -r BAT_STATUS BAT_PERCENT BAT_TIME BAT_ENERGY_FULL BAT_CHARGE_CYCLES BAT_HEALTH <<< "$(get_battery_info)"
 
-# ── Set icons and status label based on charging state ────────────────
+# ── Set icons based on charging state ─────────────────────────────────
 if [[ "$BAT_STATUS" == "Discharging" ]]; then
     BAT_STATUS_ICON=""
     BAT_STATUS_ARROW="↓"

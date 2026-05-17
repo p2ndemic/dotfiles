@@ -10,10 +10,9 @@ readonly LOCK_FILE="${XDG_RUNTIME_DIR:-/tmp}/labshot.lock"
 readonly SCREENSHOT_DIR="${XDG_SCREENSHOTS_DIR:-${XDG_PICTURES_DIR:-$HOME/Pictures}/Screenshots}"
 readonly SCREENSHOT_DATEFMT="%d%m%Y_%H%M%S"
 readonly SCREENSHOT_TIMESTAMP="$(date +"$SCREENSHOT_DATEFMT")"
-readonly SCREENSHOT_EXT="png"
-readonly SCREENSHOT_FULLNAME="$SCREENSHOT_DIR/screenshot_$SCREENSHOT_TIMESTAMP.$SCREENSHOT_EXT"
+readonly SCREENSHOT_FULLNAME="$SCREENSHOT_DIR/screenshot_$SCREENSHOT_TIMESTAMP.png"
 
-readonly EDITOR_BIN="${LABSHOT_EDITOR:-satty}"
+readonly LABSHOT_EDITOR="satty"
 
 # ══════════════════════════════════════════════════════════════════════════════
 # Option defaults
@@ -240,52 +239,27 @@ if [[ "$MODE" == "area" ]]; then
 fi
 
 # ══════════════════════════════════════════════════════════════════════════════
-# Capture + Action 
+# Capture + Action
 # ══════════════════════════════════════════════════════════════════════════════
 GRIM_ARGS=(-t png)
 [[ "$OPT_CURSOR" == true ]] && GRIM_ARGS+=("-c")
-# [[ "$MODE" == "area" ]] && GRIM_OPTS+=(-g "$GEOM")
+[[ "$MODE" == "area" ]] && GRIM_ARGS+=(-g "$GEOM")
 
-case "$MODE" in
-    screen)
-        case "$ACTION" in
-            copy)
-                grim "${GRIM_ARGS[@]}" - | wl-copy --type image/png
-                notify_simple "Copied to clipboard"
-                ;;
-            save)
-                grim "${GRIM_ARGS[@]}" "$OUTPUT_FILE"
-                notify_save
-                ;;
-            copysave)
-                grim "${GRIM_ARGS[@]}" "$OUTPUT_FILE"
-                wl-copy --type image/png < "$OUTPUT_FILE"
-                notify_save
-                ;;
-            edit)
-                grim "${GRIM_ARGS[@]}" - | "$EDITOR_BIN" --output-filename "$OUTPUT_FILE" --filename -
-                ;;
-        esac
+case "$ACTION" in
+    copy)
+        grim "${GRIM_ARGS[@]}" - | wl-copy --type image/png
+        notify_simple "Copied to clipboard"
         ;;
-
-    area)
-        case "$ACTION" in
-            copy)
-                grim "${GRIM_ARGS[@]}" -g "$GEOM" - | wl-copy --type image/png
-                notify_simple "Copied to clipboard"
-                ;;
-            save)
-                grim "${GRIM_ARGS[@]}" -g "$GEOM" "$OUTPUT_FILE"
-                notify_save
-                ;;
-            copysave)
-                grim "${GRIM_ARGS[@]}" -g "$GEOM" "$OUTPUT_FILE"
-                wl-copy --type image/png < "$OUTPUT_FILE"
-                notify_save
-                ;;
-            edit)
-                grim "${GRIM_ARGS[@]}" -g "$GEOM" - | "$EDITOR_BIN" --output-filename "$OUTPUT_FILE" --filename -
-                ;;
-        esac
+    save)
+        grim "${GRIM_ARGS[@]}" "$OUTPUT_FILE"
+        notify_save
+        ;;
+    copysave)
+        grim "${GRIM_ARGS[@]}" "$OUTPUT_FILE"
+        wl-copy --type image/png < "$OUTPUT_FILE"
+        notify_save
+        ;;
+    edit)
+        grim "${GRIM_ARGS[@]}" - | "$LABSHOT_EDITOR" --output-filename "$OUTPUT_FILE" --filename -
         ;;
 esac

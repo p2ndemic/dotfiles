@@ -117,7 +117,8 @@ start_freeze() {
     # --no-fractional:   disable fractional scaling support
     hyprpicker --render-inactive --no-zoom --no-fractional &
     HYPRPICKER_PID=$!
-    sleep 0.2  # allow hyprpicker to render before slurp opens
+    # allow hyprpicker to render before slurp opens
+    sleep 0.2
 }
 
 # ══════════════════════════════════════════════════════════════════════════════

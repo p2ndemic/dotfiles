@@ -50,7 +50,6 @@ File (3rd positional argument):
   -             Write to stdout (only for copy/edit)
 
 Environment:
-  LABSHOT_EDITOR          Override annotation editor (default: satty)
   XDG_SCREENSHOTS_DIR     Override screenshot save directory
 
 Options:

@@ -5,3 +5,4 @@
 
 # Nice wallpapers:
 # https://archimg.cc/
+# https://wallhaven.cc/

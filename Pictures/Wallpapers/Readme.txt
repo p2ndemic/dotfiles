@@ -6,3 +6,4 @@
 # Nice wallpapers:
 # https://archimg.cc/
 # https://wallhaven.cc/
+# https://github.com/fr0st-xyz/wallz

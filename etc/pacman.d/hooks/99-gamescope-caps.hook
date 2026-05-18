@@ -7,4 +7,4 @@ Target = gamescope
 [Action]
 Description = Setting realtime capabilities for gamescope binaries...
 When = PostTransaction
-Exec = /bin/sh -c 'setcap "CAP_SYS_NICE=eip" /usr/bin/gamescope && setcap "CAP_SYS_NICE=eip" /usr/bin/gamescope-wl && setcap "CAP_SYS_NICE=eip" /usr/bin/gamescopereaper'
+Exec = /bin/sh -c 'setcap "CAP_SYS_NICE=eip" /usr/bin/gamescope && setcap "CAP_SYS_NICE=eip" /usr/bin/gamescopereaper'

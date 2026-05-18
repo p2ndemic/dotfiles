@@ -1,0 +1,56 @@
+# ══════════════════════════════════════════════════════════════════════
+# Ref: https://github.com/ValveSoftware/gamescope
+# Ref: https://man.archlinux.org/man/alpm-hooks.5
+# ══════════════════════════════════════════════════════════════════════
+#
+# README: Gamescope Realtime Capabilities Hook
+#
+# ─── WHY IS THIS NEEDED? ───────────────────────────────────────────────
+# Gamescope uses the --rt flag to enable realtime scheduling. This allows
+# Gamescope and the games running under it to get priority access to the
+# CPU, which is crucial for preventing micro-stutters and frame drops,
+# especially under heavy system load.
+#
+# Elevating priority to realtime requires the CAP_SYS_NICE capability.
+# However, every time the package is updated via pacman, the binary files
+# are overwritten and their extended attributes (including capabilities)
+# are reset. This hook automatically restores the required capabilities
+# immediately after Gamescope is updated.
+#
+# ─── WHAT DOES eip MEAN IN cap_sys_nice+eip? ───────────────────────────
+# Linux capabilities consist of three sets (flags):
+#   e (Effective)   - The capability is ACTIVE right now. The process can
+#                     perform actions requiring this capability.
+#   i (Inheritable) - The capability is PRESERVED when spawning child
+#                     processes. This is critical for Gamescope, so that
+#                     gamescopereaper can elevate the priority of the
+#                     actual game being launched.
+#   p (Permitted)   - The capability is ALLOWED. The process can move it
+#                     into the Effective set if needed.
+# Therefore, "+eip" means: permit it, make it active, and allow it to be
+# inherited by child processes.
+#
+# ─── HOW TO MANAGE CAPABILITIES MANUALLY ─────────────────────────────
+# Check capabilities:
+#   getcap /usr/bin/gamescope /usr/bin/gamescopereaper
+#
+# Remove capabilities:
+#   sudo setcap -r /usr/bin/gamescope /usr/bin/gamescopereaper
+#
+# Set capabilities:
+#   sudo setcap cap_sys_nice+eip /usr/bin/gamescope cap_sys_nice+eip /usr/bin/gamescopereaper
+#
+# ══════════════════════════════════════════════════════════════════════
+
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = gamescope
+Target = gamescope-git
+
+[Action]
+Description = Setting realtime capabilities for gamescope binaries...
+When = PostTransaction
+Depends = libcap
+Exec = /usr/bin/setcap cap_sys_nice+eip /usr/bin/gamescope cap_sys_nice+eip /usr/bin/gamescopereaper

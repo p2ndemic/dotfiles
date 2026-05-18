@@ -606,51 +606,6 @@ PROTON_FORCE_LARGE_ADDRESS_AWARE=1
 # MESA_VK_ENABLE_SUBMIT_THREAD=true
 
 
-
-
-
-# =============================================
-# → Gamescope Priority
-# =============================================
-# Ref: https://wiki.archlinux.org/title/Gamescope#Setting_Gamescopes_priority
-# Ref: https://bbs.archlinux.org/viewtopic.php?id=300744
-# =============================================
-
-# → Problem:
-# The 'gamescope' binary requires the 'CAP_SYS_NICE' capability to manage thread priorities effectively, preventing performance degradation and input lag.
-# When the 'gamescope' package is updated via pacman, the binary is overwritten, and causing the warning to reappear.
-# ...
-# ❯ gamescope -f -- glxgears
-# ❯ [gamescope] [Info] console: gamescope version 3.16.15 (gcc 15.1.1)
-# ❯ No CAP_SYS_NICE, falling back to regular-priority compute and threads.
-# ❯ Performance will be affected.
-# ...
-
-# → Solution 1️⃣: [Quick Fix]
-# To fix the error immediately (until the next gamescope update), run the following command in your terminal:
-# ▶ sudo setcap 'cap_sys_nice=eip' $(which gamescope)
-
-# → Solution 2️⃣: [Permanent Fix] 
-# [Pacman Hook to Persistently Grant 'CAP_SYS_NICE' to Gamescope]
-# This pacman hook automates the process of reapplying the necessary capability.
-# It is triggered automatically every time the 'gamescope' package is installed or upgraded, ensuring the permission is always correctly set.
-
-# → Implementation:
-# The following code should be placed in a file like: '/etc/pacman.d/hooks/gamescope-caps.hook'
-
-# =============================================
-# ▶️ [Trigger]
-# ▶️ Operation = Install
-# ▶️ Operation = Upgrade
-# ▶️ Type = Package
-# ▶️ Target = gamescope
-#
-# ▶️ [Action]
-# ▶️ Description = Granting CAP_SYS_NICE to gamescope to fix performance warnings...
-# ▶️ When = PostTransaction
-# ▶️ Exec = /usr/bin/setcap 'cap_sys_nice=eip' /usr/bin/gamescope
-# =============================================
-
 # → Testing:
 # 1️⃣: ❯ gamescope -- glxgears
 # 2️⃣: ❯ gamescope --expose-wayland -- vkcube
@@ -665,7 +620,7 @@ PROTON_FORCE_LARGE_ADDRESS_AWARE=1
 # https://linux-gaming.kwindu.eu/index.php?title=Main_Page
 # https://forum.manjaro.org/t/howto-troubleshoot-crackling-in-pipewire/82442/20
 
-https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/8/html/managing_storage_devices/setting-the-disk-scheduler_managing-storage-devices
+# https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/8/html/managing_storage_devices/setting-the-disk-scheduler_managing-storage-devices
 
 # =============================================
 #    Deployment Instructions

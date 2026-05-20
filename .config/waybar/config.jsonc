@@ -13,7 +13,7 @@
   // ══════════════════════════════════════════════════════════════════════
   //  Module Order
   // ══════════════════════════════════════════════════════════════════════
-  
+
   "modules-left": [
     "custom/launcher",
     "ext/workspaces",
@@ -56,7 +56,7 @@
       "active": "󰀚", // Alternatives: ""
       "default": "" // Alternatives: ""
     },
-    // Note: using "sort-by-number": true causes a warning: 
+    // Note: using "sort-by-number": true causes a warning:
     // [warning] [ext/workspaces]: Prefer sort-by-id instead of sort-by-number
     "sort-by-id": true,
     "on-click": "activate"
@@ -438,8 +438,9 @@
     "format-icons": ["󰃠", "󰃟", "󰃞"],
     "tooltip": true,
     "tooltip-format": "{percent}%",
-    "on-scroll-up": "uwsm-app -t service -- ~/.local/bin/wob-brightness.sh --up",
-    "on-scroll-down": "uwsm-app -t service -- ~/.local/bin/wob-brightness.sh --down"
+    "on-click": "pkill -f '^foot --app-id=kanshi_config' || foot --app-id=kanshi_config --title=micro -- micro ~/.config/kanshi/config",
+    "on-scroll-up": "~/.local/bin/wob-brightness.sh --up",
+    "on-scroll-down": "~/.local/bin/wob-brightness.sh --down"
   },
 
   // ─── Clock & Calendar ─────────────────────────────────────────────────

@@ -465,7 +465,11 @@ XDG_SESSION_TYPE=wayland
 # ── QT Tunning ──
 QT_QPA_PLATFORM=wayland
 #QSG_RHI_BACKEND=vulkan
+
+# https://wiki.archlinux.org/title/Fcitx5#Wayfire
 #QT_WAYLAND_TEXT_INPUT_PROTOCOL=zwp_text_input_v3
+
+
 QT_WAYLAND_FORCE_DPI=physical
 #QT_SCALE_FACTOR=1
 #QT_WAYLAND_DECORATION=adwaita

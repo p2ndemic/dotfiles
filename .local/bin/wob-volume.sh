@@ -39,7 +39,7 @@ source_muted() { wpctl get-volume @DEFAULT_SOURCE@ | grep -q "MUTED"; }
 
 # Play volume sound: kill previous pw-play process to avoid overlapping audio
 play_volume_sound() {
-    [[ -f "$1" ]] || return
+    #[[ -f "$1" ]] || return
     pkill -x pw-play 2>/dev/null
     pw-play "$1" 2>/dev/null &
 }

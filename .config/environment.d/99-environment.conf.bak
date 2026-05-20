@@ -467,6 +467,7 @@ QT_QPA_PLATFORM=wayland
 #QSG_RHI_BACKEND=vulkan
 
 # https://wiki.archlinux.org/title/Fcitx5#Wayfire
+# https://fcitx-im.org/wiki/Using_Fcitx_5_on_Wayland
 #QT_WAYLAND_TEXT_INPUT_PROTOCOL=zwp_text_input_v3
 
 

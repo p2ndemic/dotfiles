@@ -542,6 +542,9 @@ ELECTRON_OZONE_PLATFORM_HINT=wayland
 
 # ... TODO ...
 
+#Steam
+#STEAM_FORCE_DESKTOPUI_SCALING=2 # Alternative: steam -forcedesktopscaling 2
+
 # =============================================
 #    Proton & Wine Configuration
 # =============================================

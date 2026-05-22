@@ -1,3 +1,26 @@
+# ══════════════════════════════════════════════════════════════════════
+# Ref: https://wiki.archlinux.org/title/Uniform_look_for_Qt_and_GTK_applications
+# Ref: https://wiki.archlinux.org/title/Dark_mode_switching
+# Ref: https://wiki.archlinux.org/title/Qt
+# Ref: https://wiki.archlinux.org/title/GTK
+# Ref: https://wiki.archlinux.org/title/HiDPI
+# ══════════════════════════════════════════════════════════════════════
+# Ref: https://docs.gtk.org/gtk3/class.Settings.html
+# Ref: https://docs.gtk.org/gtk4/class.Settings.html
+# ══════════════════════════════════════════════════════════════════════
+# To find all similar keys on schema type following command:
+# ❯ gsettings list-recursively org.gnome.desktop.interface
+# ──────────────────────────────────────────────────────────────────────
+# To reset all valuses of keys run following command in terminal:
+# ❯ gsettings reset-recursively org.gnome.desktop.interface
+#  ──────────────────────────────────────────────────────────────────────
+# To get a description and allowed values for a specific key:
+# ❯ gsettings describe org.gnome.desktop.interface color-scheme
+# ──────────────────────────────────────────────────────────────────────
+# To change the value of a specific key (e.g., changing the GTK theme):
+# ❯ gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3-dark'
+# ══════════════════════════════════════════════════════════════════════
+# QT_QPA_PLATFORMTHEME=gtk3
 [Unit]
 Description=Apply GTK/dconf settings (first run only)
 After=graphical-session.target

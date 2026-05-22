@@ -1,0 +1,32 @@
+[Unit]
+Description=Apply GTK/dconf settings (first run only)
+After=graphical-session.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita'
+ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface icon-theme 'Adwaita'
+ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface font-name 'Adwaita Sans 11'
+ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface document-font-name 'Adwaita Sans 12'
+ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface monospace-font-name 'Adwaita Mono 11'
+ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface font-antialiasing 'grayscale'
+ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface font-hinting 'slight'
+ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface font-rendering 'automatic'
+ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface font-rgba-order 'rgba'
+ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface enable-animations false
+ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface gtk-enable-primary-paste false
+ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface overlay-scrolling true
+ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface scaling-factor uint32 0
+ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface text-scaling-factor 1.0
+ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface toolbar-icons-size 'small'
+ExecStart=/usr/bin/gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,maximize,close'
+ExecStart=/usr/bin/gsettings set org.gnome.desktop.wm.preferences disable-workarounds true
+ExecStart=/usr/bin/gsettings set org.gnome.desktop.input-sources xkb-model 'chromebook'
+ExecStart=/usr/bin/gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'us'), ('xkb', 'ru')]"
+ExecStart=/usr/bin/gsettings set org.gnome.desktop.input-sources xkb-options "['grp:alt_shift_toggle', 'compose:ralt']"
+ExecStartPost=/usr/bin/systemctl --user disable %n
+RemainAfterExit=yes
+
+[Install]
+WantedBy=graphical-session.target

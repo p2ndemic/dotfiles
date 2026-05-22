@@ -54,9 +54,11 @@ ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface icon-theme 'Adwaita
 ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface font-name 'Adwaita Sans 11'
 #ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface document-font-name 'Adwaita Sans 12'
 ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface monospace-font-name 'Adwaita Mono 11'
+# ──────────────────────────────────────────────────────────────────────
 # [manual | automatic]
 # manual - соблюдение низкоуровневых настроек
 # automatic - предоставление инструментарию принимать собственные решения
+# ──────────────────────────────────────────────────────────────────────
 ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface font-rendering 'automatic'
 # [none | grayscale | rgba]
 ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface font-antialiasing 'grayscale'
@@ -71,13 +73,17 @@ ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface enable-animations f
 ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface gtk-enable-primary-paste false
 # [true | false]
 ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface overlay-scrolling true
+# ──────────────────────────────────────────────────────────────────────
 # Целое число (Int 32), используемое как коэффициент масштабирования окон для экранов с высоким разрешением. «0» — выбрать автоматически, в зависимости от монитора.
 # То же самое что переменная - GDK_SCALE
 # [0 | 1 | 2 | 3 ...]
+# ──────────────────────────────────────────────────────────────────────
 ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface scaling-factor uint32 0
+# ──────────────────────────────────────────────────────────────────────
 # Коэффициент масштабирования текста (при изменении коэффициента размер шрифта не изменяется).
 # То же самое что переменная - GDK_DPI_SCALE
 # [Минимально = 0.5 | По умолчанию = 1.0 | Максимально = 3.0]
+# ──────────────────────────────────────────────────────────────────────
 ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface text-scaling-factor 1.0
 # [small | large]
 ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface toolbar-icons-size 'small'

@@ -1,5 +1,5 @@
 [Unit]
-Description=XWayland HiDPI setup (first run only)
+Description=XWayland HiDPI tweaks (first run only)
 After=graphical-session.target
 Requires=graphical-session.target
 ConditionEnvironment=DISPLAY

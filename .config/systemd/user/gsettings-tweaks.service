@@ -20,31 +20,70 @@
 # To change the value of a specific key (e.g., changing the GTK theme):
 # ❯ gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3-dark'
 # ══════════════════════════════════════════════════════════════════════
-# QT_QPA_PLATFORMTHEME=gtk3
 [Unit]
 Description=Apply GTK/dconf settings (first run only)
 After=graphical-session.target
 
 [Service]
 Type=oneshot
+# ══════════════════════════════════════════════════════════════════════
+# GLOBAL COLOR SCHEME (For GTK4 / Libadwaita applications)
+# ──────────────────────────────────────────────────────────────────────
+# Available values: 'default' (Light), 'prefer-dark' (Dark), 'prefer-light'
+#
+# NOTE: Modern GNOME apps built with GTK4 and Libadwaita ignore the 'gtk-theme' 
+# key entirely. They rely solely on this 'color-scheme' switch to toggle 
+# their built-in light or dark styles.
+# ══════════════════════════════════════════════════════════════════════
 ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+# ══════════════════════════════════════════════════════════════════════
+# GTK THEME (For older GTK3 applications)
+# ──────────────────────────────────────────────────────────────────────
+# Available values: 'Adwaita', 'Adwaita-dark', 'adw-gtk3', 'adw-gtk3-dark', etc.
+#
+# NOTE: Legacy GTK3 applications still require a specific theme specified here. 
+# Using 'adw-gtk3-dark' is highly recommended as it perfectly mimics the modern 
+# Libadwaita (GTK4) look, ensuring visual consistency across the entire system.
+# ──────────────────────────────────────────────────────────────────────
+# [QT] Additional: QT_QPA_PLATFORMTHEME=gtk3
+# ══════════════════════════════════════════════════════════════════════
 ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita'
+# [Adwaita | MoreWaita | Numix | Numix-Light | Numix-Circle | Numix-Circle-Light | ...  ]
+# [Numix-Adwaita | Numix-Adwaita-Light] - моя кастомная тема
 ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface icon-theme 'Adwaita'
 ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface font-name 'Adwaita Sans 11'
-ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface document-font-name 'Adwaita Sans 12'
+#ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface document-font-name 'Adwaita Sans 12'
 ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface monospace-font-name 'Adwaita Mono 11'
+# [none | grayscale | rgba]
 ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface font-antialiasing 'grayscale'
+# [none | slight | medium | full]
 ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface font-hinting 'slight'
+# [manual | automatic]
+# manual - соблюдение низкоуровневых настроек
+# automatic - предоставление инструментарию принимать собственные решения
 ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface font-rendering 'automatic'
+# Порядок субпиксельных элементов на ЖК-экране; только если установлен тип сглаживания «rgba»
+# [rgba | rgb | bgr | vrgb | vbgr]
 ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface font-rgba-order 'rgba'
+# [true | false]
 ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface enable-animations false
+# [true | false]
 ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface gtk-enable-primary-paste false
+# [true | false]
 ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface overlay-scrolling true
+# Целое число (Int 32), используемое как коэффициент масштабирования окон для экранов с высоким разрешением. «0» — выбрать автоматически, в зависимости от монитора.
+# То же самое что переменная - GDK_SCALE
+# [0 | 1 | 2 | 3 ...]
 ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface scaling-factor uint32 0
+# Коэффициент масштабирования текста (при изменении коэффициента размер шрифта не изменяется).
+# То же самое что переменная - GDK_DPI_SCALE
+# [Минимально = 0.5 | По умолчанию = 1.0 | Максимально = 3.0]
 ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface text-scaling-factor 1.0
+# [small | large]
 ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface toolbar-icons-size 'small'
+# [default: appmenu:close]
 ExecStart=/usr/bin/gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,maximize,close'
-ExecStart=/usr/bin/gsettings set org.gnome.desktop.wm.preferences disable-workarounds true
+# [default: pc105+inet]
 ExecStart=/usr/bin/gsettings set org.gnome.desktop.input-sources xkb-model 'chromebook'
 ExecStart=/usr/bin/gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'us'), ('xkb', 'ru')]"
 ExecStart=/usr/bin/gsettings set org.gnome.desktop.input-sources xkb-options "['grp:alt_shift_toggle', 'compose:ralt']"

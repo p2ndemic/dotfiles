@@ -55,12 +55,16 @@ ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface font-name 'Adwaita 
 #ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface document-font-name 'Adwaita Sans 12'
 ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface monospace-font-name 'Adwaita Mono 11'
 # ──────────────────────────────────────────────────────────────────────
+# Предпочтение, указывающее, должен ли рендеринг шрифтов следовать низкоуровневым настройкам 
+# «font-hinting», «font-antialiasing» и «font-rgba-order», или учитывать факторы окружения, такие как разрешение и масштаб экрана.
+# Возможные значения:
 # [manual] - соблюдение низкоуровневых настроек
 # [automatic] - предоставление инструментарию принимать собственные решения
 # ──────────────────────────────────────────────────────────────────────
 ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface font-rendering 'automatic'
 # ──────────────────────────────────────────────────────────────────────
-# Тип сглаживания, используемый для отрисовки шрифтов. Возможные значения:
+# Тип сглаживания, используемый для отрисовки шрифтов.
+# Возможные значения:
 # [none] — без сглаживания; 
 # [grayscale] — стандартное чёрно-белое сглаживание;
 # [rgba] — субпиксельное сглаживание (только для ЖК-экранов).

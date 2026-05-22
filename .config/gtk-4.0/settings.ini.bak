@@ -1,3 +1,4 @@
 [Settings]
+gtk-application-prefer-dark-theme=true
 gtk-hint-font-metrics=false
 gtk-interface-reduced-motion=true

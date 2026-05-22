@@ -1,0 +1,15 @@
+[Unit]
+Description=XWayland HiDPI setup (first run only)
+After=graphical-session.target
+Requires=graphical-session.target
+ConditionEnvironment=DISPLAY
+ConditionEnvironment=WAYLAND_DISPLAY
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2
+#ExecStart=/usr/bin/xrdb -merge %h/.Xresources
+ExecStartPost=/usr/bin/systemctl --user disable %n
+
+[Install]
+WantedBy=graphical-session.target

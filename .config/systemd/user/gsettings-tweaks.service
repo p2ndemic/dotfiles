@@ -55,17 +55,23 @@ ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface font-name 'Adwaita 
 #ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface document-font-name 'Adwaita Sans 12'
 ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface monospace-font-name 'Adwaita Mono 11'
 # ──────────────────────────────────────────────────────────────────────
-# [manual | automatic]
-# manual - соблюдение низкоуровневых настроек
-# automatic - предоставление инструментарию принимать собственные решения
+# [manual] - соблюдение низкоуровневых настроек
+# [automatic] - предоставление инструментарию принимать собственные решения
 # ──────────────────────────────────────────────────────────────────────
 ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface font-rendering 'automatic'
-# [none | grayscale | rgba]
+# ──────────────────────────────────────────────────────────────────────
+# Тип сглаживания, используемый для отрисовки шрифтов. Возможные значения:
+# [none] — без сглаживания; 
+# [grayscale] — стандартное чёрно-белое сглаживание;
+# [rgba] — субпиксельное сглаживание (только для ЖК-экранов).
+# ──────────────────────────────────────────────────────────────────────
 ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface font-antialiasing 'grayscale'
 # [none | slight | medium | full]
 ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface font-hinting 'slight'
+# ──────────────────────────────────────────────────────────────────────
 # Порядок субпиксельных элементов на ЖК-экране; только если установлен тип сглаживания «rgba»
 # [rgba | rgb | bgr | vrgb | vbgr]
+# ──────────────────────────────────────────────────────────────────────
 ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface font-rgba-order 'rgba'
 # [true | false]
 ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface enable-animations false

@@ -87,13 +87,13 @@ ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface overlay-scrolling t
 # То же самое что переменная - GDK_SCALE
 # [0 | 1 | 2 | 3 ...]
 # ──────────────────────────────────────────────────────────────────────
-ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface scaling-factor uint32 0
+#ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface scaling-factor 0
 # ──────────────────────────────────────────────────────────────────────
 # Коэффициент масштабирования текста (при изменении коэффициента размер шрифта не изменяется).
 # То же самое что переменная - GDK_DPI_SCALE
 # [Минимально = 0.5 | По умолчанию = 1.0 | Максимально = 3.0]
 # ──────────────────────────────────────────────────────────────────────
-ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface text-scaling-factor 1.0
+#ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface text-scaling-factor 1.0
 # [small | large]
 ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface toolbar-icons-size 'small'
 # [default: appmenu:close]

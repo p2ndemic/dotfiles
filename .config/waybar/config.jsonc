@@ -438,7 +438,7 @@
     "format-icons": ["󰃠", "󰃟", "󰃞"],
     "tooltip": true,
     "tooltip-format": "{percent}%",
-    "on-click": "pkill -f '^foot --app-id=kanshi_config' || foot --app-id=kanshi_config --title=micro -- micro ~/.config/kanshi/config",
+    "on-click": "pkill -f '^(/usr/bin/)?foot --app-id=kanshi_config' || foot --app-id=kanshi_config --title=micro -- micro ~/.config/kanshi/config",
     "on-scroll-up": "~/.local/bin/wob-brightness.sh --up",
     "on-scroll-down": "~/.local/bin/wob-brightness.sh --down"
   },

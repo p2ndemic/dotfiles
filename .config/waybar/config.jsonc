@@ -106,7 +106,7 @@
     "format": "",
     "tooltip": true,
     "tooltip-format": "Task Manager",
-    "on-click": "uwsm-app -t service -S both -- foot --app-id=btop --title=btop btop",
+    "on-click": "uwsm-app -t service -- foot --app-id=btop --title=btop btop",
     "on-click-right": "uwsm-app -t service -- missioncenter"
   },
 

@@ -102,6 +102,9 @@ ExecStart=/usr/bin/gsettings set org.gnome.desktop.wm.preferences button-layout 
 ExecStart=/usr/bin/gsettings set org.gnome.desktop.input-sources xkb-model 'chromebook'
 ExecStart=/usr/bin/gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'us'), ('xkb', 'ru')]"
 ExecStart=/usr/bin/gsettings set org.gnome.desktop.input-sources xkb-options "['grp:alt_shift_toggle', 'compose:ralt']"
+ExecReload=/usr/bin/gsettings reset-recursively org.gnome.desktop.interface
+ExecReload=/usr/bin/gsettings reset-recursively org.gnome.desktop.wm.preferences
+ExecReload=/usr/bin/gsettings reset-recursively org.gnome.desktop.input-sources
 ExecStartPost=/usr/bin/systemctl --user disable %n
 RemainAfterExit=yes
 

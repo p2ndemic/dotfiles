@@ -392,7 +392,7 @@
     "tooltip-format": "{controller_alias}\t{controller_address}",
     "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-    "on-click": "pkill -x bluetuith || uwsm-app -t service -S both -- foot --app-id=bluetuith --title=bluetuith bluetuith",
+    "on-click": "pkill -x bluetuith || uwsm-app -t service -- foot --app-id=bluetuith --title=bluetuith -- bluetuith",
     "on-click-right": "~/.local/bin/toggle-bluetooth.sh"
   },
 

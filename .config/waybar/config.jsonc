@@ -438,7 +438,7 @@
     "format-icons": ["󰃠", "󰃟", "󰃞"],
     "tooltip": true,
     "tooltip-format": "{percent}%",
-    "on-click": "pkill -f '^(/usr/bin/)?foot --app-id=kanshi_config' || foot --app-id=kanshi_config --title=micro -o main.initial-window-size-pixels=750x550 -o colors-dark.background=1e1e2e -o colors-dark.alpha=0.98 -- micro -filetype shell ~/.config/kanshi/config",
+    "on-click": "pkill -f '^(/usr/bin/)?foot --app-id=kanshi_config' || foot --app-id=kanshi_config --title=micro -o main.initial-window-size-pixels=750x550 -o colors-dark.background=1e1e2e -o colors-dark.alpha=0.98 -- micro -colorscheme simple -filetype shell -- ~/.config/kanshi/config",
     "on-scroll-up": "~/.local/bin/wob-brightness.sh --up",
     "on-scroll-down": "~/.local/bin/wob-brightness.sh --down"
   },
@@ -474,7 +474,7 @@
     "format": "",
     "tooltip": true,
     "tooltip-format": "Show Desktop",
-    "on-click": "~/.config/labwc/scripts/labwc-show-desktop.sh",
+    "on-click": "wtype -M win -M alt d -m win -m alt",
     "on-click-right": "~/.local/bin/fuzzel-power-menu_index.sh"
   }
 }

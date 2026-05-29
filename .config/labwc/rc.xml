@@ -265,6 +265,10 @@
     <keybind key="W-a">
       <action name="ToggleMaximize" />
     </keybind>
+    <!-- Toggle show desktop (Super+Alt+D) -->
+    <keybind key="W-A-d">
+      <action name="ToggleShowDesktop" />
+    </keybind>
     <!-- Toggle fullscreen -->
     <keybind key="W-f">
       <action name="ToggleFullscreen" />

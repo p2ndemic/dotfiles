@@ -474,7 +474,7 @@
     "format": "",
     "tooltip": true,
     "tooltip-format": "Show Desktop",
-    "on-click": "wtype -M win -M alt d -m win -m alt",
+    "on-click": "wtype -M win -M alt -k d -m win -m alt",
     "on-click-right": "~/.local/bin/fuzzel-power-menu_index.sh"
   }
 }

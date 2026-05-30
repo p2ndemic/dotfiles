@@ -13,6 +13,13 @@
 # Sends current volume percentage (0 when muted) to wob via:
 #   - systemd socket: $XDG_RUNTIME_DIR/wob.sock (default, recommended)
 #   - legacy FIFO:    /tmp/wobpipe (if socket absent and FIFO exists)
+# Alsa:
+# amixer sget Master | awk -F'[^0-9]+' '/Front Left:/ {print $3}'
+# amixer sget Capture | awk -F'[^0-9]+' '/Front Left:/ {print $3}'
+# amixer -q sset Master 5%+
+# amixer -q sset Capture 5%+
+# amixer -q sset Master toggle
+# amixer -q sset Capture toggle
 # ══════════════════════════════════════════════════════════════════════
 
 # Define WOB socket

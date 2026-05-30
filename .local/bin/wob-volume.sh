@@ -13,11 +13,21 @@
 # Sends current volume percentage (0 when muted) to wob via:
 #   - systemd socket: $XDG_RUNTIME_DIR/wob.sock (default, recommended)
 #   - legacy FIFO:    /tmp/wobpipe (if socket absent and FIFO exists)
+#
 # Alsa:
+# Получить текущий уровень громкости с процентами:
+# amixer sget Master | awk -F'[][]' '/Front Left:/{print $2}'
+# amixer sget Capture | awk -F'[][]' '/Front Left:/{print $2}'
+# Получить текущий уровень громкости с без процентов:
 # amixer sget Master | awk -F'[^0-9]+' '/Front Left:/ {print $3}'
 # amixer sget Capture | awk -F'[^0-9]+' '/Front Left:/ {print $3}'
+# Увеличить громкость:
 # amixer -q sset Master 5%+
 # amixer -q sset Capture 5%+
+# Уменьшить громкость:
+# amixer -q sset Master 5%-
+# amixer -q sset Capture 5%-
+# Отключение/включение устройства:
 # amixer -q sset Master toggle
 # amixer -q sset Capture toggle
 # ══════════════════════════════════════════════════════════════════════

@@ -16,11 +16,14 @@
 #
 # Alsa:
 # Получить текущий уровень громкости с процентами:
-# amixer sget Master | awk -F'[][]' '/Front Left:/{print $2; exit}'
-# amixer sget Capture | awk -F'[][]' '/Front Left:/{print $2; exit}'
+# amixer sget Master | awk -F'[][]' '/Front Left:/ { print $2; exit }'
+# amixer sget Capture | awk -F'[][]' '/Front Left:/ { print $2; exit }'
 # Получить текущий уровень громкости без процентов:
-# amixer sget Master | awk -F'[^0-9]+' '/Front Left:/{print $3; exit}'
-# amixer sget Capture | awk -F'[^0-9]+' '/Front Left:/{print $3; exit}'
+# amixer sget Master | awk -F'[^0-9]+' '/Front Left:/ { print $3; exit }'
+# amixer sget Capture | awk -F'[^0-9]+' '/Front Left:/ { print $3; exit }'
+# Получить статус mute (on/off):
+# amixer sget Master | awk -F'[][]' '/Front Left:/ { print $4; exit }'
+# amixer sget Capture | awk -F'[][]' '/Front Left:/ { print $4; exit }'
 # Увеличить громкость:
 # amixer -q sset Master 5%+
 # amixer -q sset Capture 5%+

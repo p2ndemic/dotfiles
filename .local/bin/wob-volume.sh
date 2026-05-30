@@ -66,13 +66,13 @@ SOUND_VOLUME="/usr/share/sounds/freedesktop/stereo/audio-volume-change.oga"
 wob_send() { echo "$1" > "$WOBSOCK" 2>/dev/null || true; }
 
 # Get current sink volume (percentage)
-sink_vol() { wpctl get-volume @DEFAULT_SINK@ | sed 's/[^0-9]//g'; } #Alternative: awk '{print int($2 * 100)}'
+sink_vol() { wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed 's/[^0-9]//g'; } #Alternative: awk '{print int($2 * 100)}'
 # Get current source volume (percentage)
-source_vol() { wpctl get-volume @DEFAULT_SOURCE@ | sed 's/[^0-9]//g'; } #Alternative: awk '{print int($2 * 100)}'
+source_vol() { wpctl get-volume @DEFAULT_AUDIO_SOURCE@ | sed 's/[^0-9]//g'; } #Alternative: awk '{print int($2 * 100)}'
 
 # Check mute status (sink|source)
-sink_muted() { wpctl get-volume @DEFAULT_SINK@ | grep -q "MUTED"; }
-source_muted() { wpctl get-volume @DEFAULT_SOURCE@ | grep -q "MUTED"; }
+sink_muted() { wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q "MUTED"; }
+source_muted() { wpctl get-volume @DEFAULT_AUDIO_SOURCE@ | grep -q "MUTED"; }
 
 # Play volume sound: kill previous pw-play process to avoid overlapping audio
 play_volume_sound() {
@@ -84,31 +84,31 @@ play_volume_sound() {
 # Main logic
 case "$1" in
     sink-up|--sink-up)
-        wpctl set-volume @DEFAULT_SINK@ 2%+ --limit 1.0
+        wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+ --limit 1.0
         wob_send "$(sink_vol)"
         play_volume_sound "$SOUND_VOLUME"
         ;;
     sink-down|--sink-down)
-        wpctl set-volume @DEFAULT_SINK@ 2%- --limit 1.0
+        wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%- --limit 1.0
         wob_send "$(sink_vol)"
         play_volume_sound "$SOUND_VOLUME"
         ;;
     sink-mute|--sink-mute)
-        wpctl set-mute @DEFAULT_SINK@ toggle
+        wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
         sink_muted && wob_send 0 || wob_send "$(sink_vol)"
         ;;
     source-up|--source-up)
-        wpctl set-volume @DEFAULT_SOURCE@ 2%+ --limit 1.0
+        wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 2%+ --limit 1.0
         wob_send "$(source_vol)"
         play_volume_sound "$SOUND_VOLUME"
         ;;
     source-down|--source-down)
-        wpctl set-volume @DEFAULT_SOURCE@ 2%- --limit 1.0
+        wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 2%- --limit 1.0
         wob_send "$(source_vol)"
         play_volume_sound "$SOUND_VOLUME"
         ;;
     source-mute|--source-mute)
-        wpctl set-mute @DEFAULT_SOURCE@ toggle
+        wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
         source_muted && wob_send 0 || wob_send "$(source_vol)"
         ;;
     *)

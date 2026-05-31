@@ -48,7 +48,7 @@
 # ──────────────────────────────────────────────────
 # Замеры скорости amixer vs wpctl [awk vs sed]:
 # ──────────────────────────────────────────────────
-#hyperfine --warmup 10 --runs 250 \
+#hyperfine --warmup 15 --runs 300 \
 #  'amixer sget Master | gawk -F"[^0-9]+" "/Front Left:/ { print \$3; exit }"' \
 #  'wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed "s/[^0-9]//g"' \
 #  'wpctl get-volume @DEFAULT_AUDIO_SINK@ | gawk "{print int(\$2 * 100); exit}"' \

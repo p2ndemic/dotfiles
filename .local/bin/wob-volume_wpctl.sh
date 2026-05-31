@@ -9,6 +9,10 @@
 #   systemctl daemon-reload && systemctl --user enable --now wob.socket
 #   install -Dm755 wob-volume_wpctl.sh ~/.local/bin/wob-volume_wpctl.sh
 # ══════════════════════════════════════════════════════════════════════
+# Additional:
+# Fallback to legacy FIFO (tail -f /tmp/wobpipe | wob) if socket not found:
+# [[ ! -S "$WOBSOCK" ]] && [[ -p "/tmp/wobpipe" ]] && WOBSOCK="/tmp/wobpipe"
+# ══════════════════════════════════════════════════════════════════════
 
 set -uo pipefail
 

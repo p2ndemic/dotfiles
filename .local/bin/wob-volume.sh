@@ -9,7 +9,7 @@
 #   systemctl daemon-reload && systemctl --user enable --now wob.socket
 #   install -Dm755 wob-volume_wpctl.sh ~/.local/bin/wob-volume_wpctl.sh
 # ══════════════════════════════════════════════════════════════════════
-# Hyperfine test [awk vs sed] = (awk won):
+# Hyperfine test [awk vs sed] == (awk won):
 # ──────────────────────────────────────────────────────────────────────
 # hyperfine --warmup 15 --runs 300 \
 # 'wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed "s/[^0-9]//g"' \

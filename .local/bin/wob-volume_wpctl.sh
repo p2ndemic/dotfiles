@@ -10,10 +10,11 @@
 #   install -Dm755 wob-volume_wpctl.sh ~/.local/bin/wob-volume_wpctl.sh
 # ══════════════════════════════════════════════════════════════════════
 # Hyperfine test [awk vs sed] = (awk won):
-#hyperfine --warmup 15 --runs 300 \
-#'wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed "s/[^0-9]//g"' \
-#'wpctl get-volume @DEFAULT_AUDIO_SINK@ | gawk "{print int(\$2 * 100); exit}"' \
-#'wpctl get-volume @DEFAULT_AUDIO_SINK@ | mawk "{print int(\$2 * 100); exit}"'
+# ──────────────────────────────────────────────────────────────────────
+# hyperfine --warmup 15 --runs 300 \
+# 'wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed "s/[^0-9]//g"' \
+# 'wpctl get-volume @DEFAULT_AUDIO_SINK@ | gawk "{print int(\$2 * 100); exit}"' \
+# 'wpctl get-volume @DEFAULT_AUDIO_SINK@ | mawk "{print int(\$2 * 100); exit}"'
 # ══════════════════════════════════════════════════════════════════════
 
 set -uo pipefail

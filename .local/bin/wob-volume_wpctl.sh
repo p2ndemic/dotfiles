@@ -60,12 +60,12 @@ _get_source_volume() {
 
 # Alt: wpctl get-volume "${SINK}" | grep -q "MUTED"
 _is_sink_muted() {
-    [[ $(wpctl get-volume "${SINK}") == *MUTED* ]]
+    [[ $(wpctl get-volume "${SINK}") == *"[MUTED]"* ]]
 }
 
 # Alt: wpctl get-volume "${SOURCE}" | grep -q "MUTED"
 _is_source_muted() {
-    [[ $(wpctl get-volume "${SOURCE}") == *MUTED* ]]
+    [[ $(wpctl get-volume "${SOURCE}") == *"[MUTED]"* ]]
 }
 
 _play_sound() {

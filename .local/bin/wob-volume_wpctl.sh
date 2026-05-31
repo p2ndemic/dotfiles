@@ -48,20 +48,24 @@ HELP
 
 # ─── Helpers ─────────────────────────────────────────────────────────
 
+# Alternative: wpctl get-volume "${SINK}" | sed 's/[^0-9]//g'
 _get_sink_volume() {
     wpctl get-volume "${SINK}" | awk '{print int($2 * 100); exit}'
 }
 
+# Alternative: wpctl get-volume "${SINK}" | sed 's/[^0-9]//g'
 _get_source_volume() {
     wpctl get-volume "${SOURCE}" | awk '{print int($2 * 100); exit}'
 }
 
+# Alternative: wpctl get-volume "${SINK}" | grep -q "MUTED"
 _is_sink_muted() {
-    wpctl get-volume "${SINK}" | grep -q "MUTED"
+    [[ $(wpctl get-volume "${SINK}") == *MUTED* ]]
 }
 
+# Alternative: wpctl get-volume "${SOURCE}" | grep -q "MUTED"
 _is_source_muted() {
-    wpctl get-volume "${SOURCE}" | grep -q "MUTED"
+    [[ $(wpctl get-volume "${SOURCE}") == *MUTED* ]]
 }
 
 _play_sound() {

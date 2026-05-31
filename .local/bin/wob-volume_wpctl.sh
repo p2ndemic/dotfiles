@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 # ══════════════════════════════════════════════════════════════════════
-# wob-volume.sh — Volume control script
+# wob-volume_wpctl.sh — Volume control script
 # ══════════════════════════════════════════════════════════════════════
 # Stack: systemd · pipewire · wireplumber · wob · sound-theme-freedesktop
 #
 # Installation:
 #   sudo pacman -S --needed pipewire wob sound-theme-freedesktop
 #   systemctl daemon-reload && systemctl --user enable --now wob.socket
-#   install -Dm755 wob-volume.sh ~/.local/bin/wob-volume.sh
+#   install -Dm755 wob-volume_wpctl.sh ~/.local/bin/wob-volume_wpctl.sh
 # ══════════════════════════════════════════════════════════════════════
 # Hyperfine test [awk vs sed] == (awk won):
 # ──────────────────────────────────────────────────────────────────────

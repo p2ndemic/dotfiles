@@ -66,7 +66,7 @@ _is_source_muted() {
 _play_sound() {
     [[ -f "${SOUND_FILE}" ]] || return 0
     #pkill -x pw-play 2>/dev/null
-    pw-play "${SOUND_FILE}" &>/dev/null &
+    pw-play "${SOUND_FILE}" 2>/dev/null &
     disown "$!"
 }
 

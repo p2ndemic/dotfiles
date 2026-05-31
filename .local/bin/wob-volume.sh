@@ -45,11 +45,13 @@
 # amixer -q sset Master toggle
 # amixer -q sset Capture toggle
 # ──────────────────────────────────────────────────
-# Замеры скорости amixer vs wpctl:
+# Замеры скорости amixer vs wpctl [awk vs sed]:
 # ──────────────────────────────────────────────────
-# hyperfine 'amixer sget Master' 'wpctl get-volume @DEFAULT_AUDIO_SINK@'
-# ❯ Summary: 
-# ❯ amixer "sget Master" ran 2.20 ± 0.48 times faster than "wpctl get-volume @DEFAULT_AUDIO_SINK@"
+#hyperfine --warmup 10 --runs 250 \
+#  'amixer sget Master | gawk -F"[^0-9]+" "/Front Left:/ { print \$3; exit }"' \
+#  'wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed "s/[^0-9]//g"' \
+#  'wpctl get-volume @DEFAULT_AUDIO_SINK@ | gawk "{print int(\$2 * 100); exit}"' \
+#  'wpctl get-volume @DEFAULT_AUDIO_SINK@ | mawk "{print int(\$2 * 100); exit}"'
 # ══════════════════════════════════════════════════════════════════════
 
 # Define WOB socket

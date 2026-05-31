@@ -23,6 +23,7 @@
 # Получить текущий уровень громкости без процентов:
 # ──────────────────────────────────────────────────
 # amixer sget Master | awk -F'[^0-9]+' '/Front Left:/ { print $3; exit }'
+# amixer sget Master | awk -F'[^0-9]+' '/Front Left:/ {print $3; exit}'
 # amixer sget Capture | awk -F'[^0-9]+' '/Front Left:/ { print $3; exit }'
 # ──────────────────────────────────────────────────
 # Получить статус mute (on/off):

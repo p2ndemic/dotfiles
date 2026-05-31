@@ -10,7 +10,7 @@
 #   install -Dm755 wob-volume_wpctl.sh ~/.local/bin/wob-volume_wpctl.sh
 # ══════════════════════════════════════════════════════════════════════
 
-set -euo pipefail
+set -uo pipefail
 
 # ─── Constants ───────────────────────────────────────────────────────────────
 
@@ -45,30 +45,30 @@ HELP
 # ─── Helpers ─────────────────────────────────────────────────────────────────
 
 _get_sink_volume() {
-    wpctl get-volume "${SINK}" | awk '{print int($2 * 100); exit}' || true
+    wpctl get-volume "${SINK}" | awk '{print int($2 * 100); exit}'
 }
 
 _get_source_volume() {
-    wpctl get-volume "${SOURCE}" | awk '{print int($2 * 100); exit}' || true
+    wpctl get-volume "${SOURCE}" | awk '{print int($2 * 100); exit}'
 }
 
 _is_sink_muted() {
-    wpctl get-volume "${SINK}" | grep -q "MUTED" || true
+    wpctl get-volume "${SINK}" | grep -q "MUTED"
 }
 
 _is_source_muted() {
-    wpctl get-volume "${SOURCE}" | grep -q "MUTED" || true
+    wpctl get-volume "${SOURCE}" | grep -q "MUTED"
 }
 
 _play_sound() {
-    [[ -f "${SOUND_FILE}" ]] || return 0
-    #pkill -x pw-play 2>/dev/null
+    #[[ -f "${SOUND_FILE}" ]] || return 0
+    #pkill -x pw-play 2>/dev/null || true
     pw-play "${SOUND_FILE}" 2>/dev/null &
     disown "$!"
 }
 
 _wob_send() {
-    [[ -e "${WOBSOCK}" ]] && echo "${1}" > "${WOBSOCK}" 2>/dev/null || true
+    echo "${1}" > "${WOBSOCK}" 2>/dev/null || true
 }
 
 # ─── Sink (Speaker) ──────────────────────────────────────────────────────────
@@ -91,6 +91,7 @@ _sink_mute() {
         _wob_send 0
     else
         _wob_send "$(_get_sink_volume)"
+        _play_sound
     fi
 }
 
@@ -113,6 +114,7 @@ _source_mute() {
     if _is_source_muted; then
         _wob_send 0
     else
+        _wob_send "$(_get_sink_volume)"
         _play_sound
     fi
 }

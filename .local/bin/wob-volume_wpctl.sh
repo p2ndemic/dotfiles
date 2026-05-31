@@ -5,13 +5,9 @@
 # Stack: systemd · pipewire · wireplumber · wob · sound-theme-freedesktop
 #
 # Installation:
-#   sudo pacman -S --needed wob sound-theme-freedesktop
+#   sudo pacman -S --needed pipewire wob sound-theme-freedesktop
 #   systemctl daemon-reload && systemctl --user enable --now wob.socket
 #   install -Dm755 wob-volume_wpctl.sh ~/.local/bin/wob-volume_wpctl.sh
-# ══════════════════════════════════════════════════════════════════════
-# Additional:
-# Fallback to legacy FIFO (tail -f /tmp/wobpipe | wob) if socket not found:
-# [[ ! -S "$WOBSOCK" ]] && [[ -p "/tmp/wobpipe" ]] && WOBSOCK="/tmp/wobpipe"
 # ══════════════════════════════════════════════════════════════════════
 
 set -uo pipefail
@@ -68,12 +64,10 @@ _play_sound() {
     #[[ -f "${SOUND_FILE}" ]] || return 0
     #pkill -x pw-play 2>/dev/null || true
     pw-play "${SOUND_FILE}" 2>/dev/null &
-    disown "$!"
 }
 
-# Send integer value to wob
 _wob_send() {
-    #[[ -e "${WOBSOCK}" ]] && return 0
+    #[[ -e "${WOBSOCK}" ]] || return 0
     echo "${1}" > "${WOBSOCK}" 2>/dev/null &
 }
 

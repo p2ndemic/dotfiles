@@ -1,120 +1,164 @@
 #!/usr/bin/env bash
 # ══════════════════════════════════════════════════════════════════════
-# https://github.com/francma/wob
+# wob-volume_wpctl.sh — Volume control script
 # ══════════════════════════════════════════════════════════════════════
+# Stack: systemd · pipewire · wireplumber · wob · sound-theme-freedesktop
+#
 # Installation:
-#   sudo pacman -S --needed wob sound-theme-freedesktop
+#   sudo pacman -S --needed pipewire wob sound-theme-freedesktop
 #   systemctl daemon-reload && systemctl --user enable --now wob.socket
-#
-# Usage:
-#   wob-volume [sink-up|--sink-up|sink-down|--sink-down|sink-mute|--sink-mute]
-#              [source-up|--source-up|source-down|--source-down|source-mute|--source-mute]
-#
-# Sends current volume percentage (0 when muted) to wob via:
-#   - systemd socket: $XDG_RUNTIME_DIR/wob.sock (default, recommended)
-#   - legacy FIFO:    /tmp/wobpipe (if socket absent and FIFO exists)
-#
-# Alsa:
-# Получить текущий уровень громкости с процентами:
-# ──────────────────────────────────────────────────
-# amixer sget Master | awk -F'[][]' '/Front Left:/ { print $2; exit }'
-# amixer sget Capture | awk -F'[][]' '/Front Left:/ { print $2; exit }'
-# ──────────────────────────────────────────────────
-# Получить текущий уровень громкости без процентов:
-# ──────────────────────────────────────────────────
-# amixer sget Master | awk -F'[^0-9]+' '/Front Left:/ { print $3; exit }'
-# amixer sget Capture | awk -F'[^0-9]+' '/Front Left:/ { print $3; exit }'
-# ──────────────────────────────────────────────────
-# Получить статус mute (on/off):
-# ──────────────────────────────────────────────────
-# amixer sget Master | awk -F'[][]' '/Front Left:/ { print $4; exit }'
-# amixer sget Capture | awk -F'[][]' '/Front Left:/ { print $4; exit }'
-# ──────────────────────────────────────────────────
-# Увеличить громкость:
-# ──────────────────────────────────────────────────
-# amixer -q sset Master 5%+
-# amixer -q sset Capture 5%+
-# ──────────────────────────────────────────────────
-# Уменьшить громкость:
-# ──────────────────────────────────────────────────
-# amixer -q sset Master 5%-
-# amixer -q sset Capture 5%-
-# ──────────────────────────────────────────────────
-# Отключение/включение устройства:
-# ──────────────────────────────────────────────────
-# amixer -q sset Master toggle
-# amixer -q sset Capture toggle
-# ──────────────────────────────────────────────────
-# Замеры скорости amixer vs wpctl [awk vs sed]:
-# ──────────────────────────────────────────────────
-#hyperfine --warmup 15 --runs 300 \
-#  'amixer sget Master | gawk -F"[^0-9]+" "/Front Left:/ { print \$3; exit }"' \
-#  'wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed "s/[^0-9]//g"' \
-#  'wpctl get-volume @DEFAULT_AUDIO_SINK@ | gawk "{print int(\$2 * 100); exit}"' \
-#  'wpctl get-volume @DEFAULT_AUDIO_SINK@ | mawk "{print int(\$2 * 100); exit}"'
+#   install -Dm755 wob-volume_wpctl.sh ~/.local/bin/wob-volume_wpctl.sh
 # ══════════════════════════════════════════════════════════════════════
-
-# Define WOB socket
-WOBSOCK="${WOBSOCK:-$XDG_RUNTIME_DIR/wob.sock}"
-
+# Additional:
 # Fallback to legacy FIFO (tail -f /tmp/wobpipe | wob) if socket not found:
 # [[ ! -S "$WOBSOCK" ]] && [[ -p "/tmp/wobpipe" ]] && WOBSOCK="/tmp/wobpipe"
+# ══════════════════════════════════════════════════════════════════════
 
-# Sound file (freedesktop theme)
-SOUND_VOLUME="/usr/share/sounds/freedesktop/stereo/audio-volume-change.oga"
-# SOUND_MUTE="/path/to/file"
+set -uo pipefail
 
-# Send integer value to wob
-wob_send() { echo "$1" > "$WOBSOCK" 2>/dev/null || true; }
+# ─── Constants ────────────────────────────────────────────────────────
 
-# Get current sink volume (percentage)
-sink_vol() { wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed 's/[^0-9]//g'; } #Alternative: wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print int($2 * 100); exit}'
-# Get current source volume (percentage)
-source_vol() { wpctl get-volume @DEFAULT_AUDIO_SOURCE@ | sed 's/[^0-9]//g'; } #Alternative: wpctl get-volume @DEFAULT_AUDIO_SOURCE@ | awk '{print int($2 * 100); exit}'
+readonly WOBSOCK="${XDG_RUNTIME_DIR:-/run/user/$(id -u)}/wob.sock"
+readonly SOUND_FILE="/usr/share/sounds/freedesktop/stereo/audio-volume-change.oga"
+readonly SINK="@DEFAULT_AUDIO_SINK@"
+readonly SOURCE="@DEFAULT_AUDIO_SOURCE@"
+readonly VOL_STEP="5%"
+readonly VOL_LIMIT="1.0"
 
-# Check mute status (sink|source)
-sink_muted() { wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q "MUTED"; }
-source_muted() { wpctl get-volume @DEFAULT_AUDIO_SOURCE@ | grep -q "MUTED"; }
+# ─── Usage ────────────────────────────────────────────────────────────
 
-# Play volume sound: kill previous pw-play process to avoid overlapping audio
-play_volume_sound() {
-    #[[ -f "$1" ]] || return
-    pkill -x pw-play 2>/dev/null
-    pw-play "$1" 2>/dev/null &
+_usage() {
+    cat <<HELP
+Usage: $(basename "${0}") <command>
+
+Speaker | Headphone (sink):
+  sink-up,     --sink-up      Increase speaker volume by ${VOL_STEP}
+  sink-down,   --sink-down    Decrease speaker volume by ${VOL_STEP}
+  sink-mute,   --sink-mute    Toggle speaker mute
+
+Microphone (source):
+  source-up,   --source-up    Increase microphone volume by ${VOL_STEP}
+  source-down, --source-down  Decrease microphone volume by ${VOL_STEP}
+  source-mute, --source-mute  Toggle microphone mute
+
+Prerequisites:
+  systemctl --user enable --now wob.socket
+HELP
 }
 
-# Main logic
-case "$1" in
-    sink-up|--sink-up)
-        wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+ --limit 1.0
-        wob_send "$(sink_vol)"
-        play_volume_sound "$SOUND_VOLUME"
-        ;;
-    sink-down|--sink-down)
-        wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%- --limit 1.0
-        wob_send "$(sink_vol)"
-        play_volume_sound "$SOUND_VOLUME"
-        ;;
-    sink-mute|--sink-mute)
-        wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
-        sink_muted && wob_send 0 || wob_send "$(sink_vol)"
-        ;;
-    source-up|--source-up)
-        wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 2%+ --limit 1.0
-        wob_send "$(source_vol)"
-        play_volume_sound "$SOUND_VOLUME"
-        ;;
-    source-down|--source-down)
-        wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 2%- --limit 1.0
-        wob_send "$(source_vol)"
-        play_volume_sound "$SOUND_VOLUME"
-        ;;
-    source-mute|--source-mute)
-        wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
-        source_muted && wob_send 0 || wob_send "$(source_vol)"
-        ;;
-    *)
-        echo "Usage: $0 {sink-up|sink-down|sink-mute|source-up|source-down|source-mute} (also supports -- variants)"
-        exit 1
-        ;;
-esac
+# ─── Helpers ─────────────────────────────────────────────────────────
+
+# Alt: wpctl get-volume "${SINK}" | sed 's/[^0-9]//g'
+_get_sink_volume() {
+    wpctl get-volume "${SINK}" | awk '{print int($2 * 100); exit}'
+}
+
+# Alt: wpctl get-volume "${SINK}" | sed 's/[^0-9]//g'
+_get_source_volume() {
+    wpctl get-volume "${SOURCE}" | awk '{print int($2 * 100); exit}'
+}
+
+# Alt: wpctl get-volume "${SINK}" | grep -q "MUTED"
+_is_sink_muted() {
+    [[ $(wpctl get-volume "${SINK}") == *MUTED* ]]
+}
+
+# Alt: wpctl get-volume "${SOURCE}" | grep -q "MUTED"
+_is_source_muted() {
+    [[ $(wpctl get-volume "${SOURCE}") == *MUTED* ]]
+}
+
+_play_sound() {
+    #[[ -f "${SOUND_FILE}" ]] || return 0
+    #pkill -x pw-play 2>/dev/null || true
+    pw-play "${SOUND_FILE}" 2>/dev/null &
+}
+
+_wob_send() {
+    #[[ -e "${WOBSOCK}" ]] || return 0
+    echo "${1}" > "${WOBSOCK}" 2>/dev/null &
+}
+
+# ─── Sink (Speaker) ──────────────────────────────────────────────────
+
+_sink_up() {
+    wpctl set-volume "${SINK}" "${VOL_STEP}+" --limit "${VOL_LIMIT}"
+    _wob_send "$(_get_sink_volume)"
+    _play_sound
+}
+
+_sink_down() {
+    wpctl set-volume "${SINK}" "${VOL_STEP}-" --limit "${VOL_LIMIT}"
+    _wob_send "$(_get_sink_volume)"
+    _play_sound
+}
+
+_sink_mute() {
+    wpctl set-mute "${SINK}" toggle
+    if _is_sink_muted; then
+        _wob_send 0
+    else
+        _wob_send "$(_get_sink_volume)"
+        _play_sound
+    fi
+}
+
+# ─── Source (Microphone) ─────────────────────────────────────────────
+
+_source_up() {
+    wpctl set-volume "${SOURCE}" "${VOL_STEP}+" --limit "${VOL_LIMIT}"
+    _wob_send "$(_get_source_volume)"
+    _play_sound
+}
+
+_source_down() {
+    wpctl set-volume "${SOURCE}" "${VOL_STEP}-" --limit "${VOL_LIMIT}"
+    _wob_send "$(_get_source_volume)"
+    _play_sound
+}
+
+_source_mute() {
+    wpctl set-mute "${SOURCE}" toggle
+    if _is_source_muted; then
+        _wob_send 0
+    else
+        _wob_send "$(_get_source_volume)"
+        _play_sound
+    fi
+}
+
+# ─── Entry point ─────────────────────────────────────────────────────
+
+_main_() {
+    case "${1:-}" in
+        sink-up|--sink-up)
+            _sink_up
+            ;;
+        sink-down|--sink-down)
+            _sink_down
+            ;;
+        sink-mute|--sink-mute)
+            _sink_mute
+            ;;
+        source-up|--source-up)
+            _source_up
+            ;;
+        source-down|--source-down)
+            _source_down
+            ;;
+        source-mute|--source-mute)
+            _source_mute
+            ;;
+        -h|--help)
+            _usage
+            exit 0
+            ;;
+        *)
+            printf 'Error: unknown command "%s"\n\n' "${1:-<empty>}" >&2
+            _usage >&2
+            exit 1
+            ;;
+    esac
+}
+
+_main_ "$@"

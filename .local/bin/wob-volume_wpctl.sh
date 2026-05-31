@@ -68,7 +68,7 @@ _play_sound() {
 }
 
 _wob_send() {
-    #[[ -e "${WOBSOCK}" ]] && || return 0
+    #[[ -e "${WOBSOCK}" ]] && return 0
     echo "${1}" > "${WOBSOCK}" 2>/dev/null &
 }
 

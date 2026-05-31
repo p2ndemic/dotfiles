@@ -10,13 +10,13 @@
 #   install -Dm755 wob-volume_wpctl.sh ~/.local/bin/wob-volume_wpctl.sh
 # ══════════════════════════════════════════════════════════════════════
 # Additional:
-# Fallback to legacy FIFO (tail -f /tmp/wobpipe | wob):
+# Fallback to legacy FIFO (tail -f /tmp/wobpipe | wob) if socket not found:
 # [[ ! -S "$WOBSOCK" ]] && [[ -p "/tmp/wobpipe" ]] && WOBSOCK="/tmp/wobpipe"
 # ══════════════════════════════════════════════════════════════════════
 
 set -uo pipefail
 
-# ─── Constants ───────────────────────────────────────────────────────────────
+# ─── Constants ────────────────────────────────────────────────────────
 
 readonly WOBSOCK="${XDG_RUNTIME_DIR:-/run/user/$(id -u)}/wob.sock"
 readonly SOUND_FILE="/usr/share/sounds/freedesktop/stereo/audio-volume-change.oga"
@@ -25,7 +25,7 @@ readonly SOURCE="@DEFAULT_AUDIO_SOURCE@"
 readonly VOL_STEP="5%"
 readonly VOL_LIMIT="1.0"
 
-# ─── Usage ───────────────────────────────────────────────────────────────────
+# ─── Usage ────────────────────────────────────────────────────────────
 
 _usage() {
     cat <<HELP
@@ -46,7 +46,7 @@ Prerequisites:
 HELP
 }
 
-# ─── Helpers ─────────────────────────────────────────────────────────────────
+# ─── Helpers ─────────────────────────────────────────────────────────
 
 _get_sink_volume() {
     wpctl get-volume "${SINK}" | awk '{print int($2 * 100); exit}'
@@ -75,7 +75,7 @@ _wob_send() {
     echo "${1}" > "${WOBSOCK}" 2>/dev/null &
 }
 
-# ─── Sink (Speaker) ──────────────────────────────────────────────────────────
+# ─── Sink (Speaker) ──────────────────────────────────────────────────
 
 _sink_up() {
     wpctl set-volume "${SINK}" "${VOL_STEP}+" --limit "${VOL_LIMIT}"
@@ -99,7 +99,7 @@ _sink_mute() {
     fi
 }
 
-# ─── Source (Microphone) ─────────────────────────────────────────────────────
+# ─── Source (Microphone) ─────────────────────────────────────────────
 
 _source_up() {
     wpctl set-volume "${SOURCE}" "${VOL_STEP}+" --limit "${VOL_LIMIT}"
@@ -123,7 +123,7 @@ _source_mute() {
     fi
 }
 
-# ─── Entry point ─────────────────────────────────────────────────────────────
+# ─── Entry point ─────────────────────────────────────────────────────
 
 _main_() {
     case "${1:-}" in

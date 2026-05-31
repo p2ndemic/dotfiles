@@ -27,7 +27,7 @@ _usage() {
     cat <<HELP
 Usage: $(basename "${0}") <command>
 
-Speaker (sink):
+Speaker | Headphone (sink):
   sink-up,     --sink-up      Increase speaker volume by ${VOL_STEP}
   sink-down,   --sink-down    Decrease speaker volume by ${VOL_STEP}
   sink-mute,   --sink-mute    Toggle speaker mute
@@ -68,7 +68,8 @@ _play_sound() {
 }
 
 _wob_send() {
-    echo "${1}" > "${WOBSOCK}" 2>/dev/null || true
+    #[[ -e "${WOBSOCK}" ]] && || return 0
+    echo "${1}" > "${WOBSOCK}" 2>/dev/null &
 }
 
 # ─── Sink (Speaker) ──────────────────────────────────────────────────────────
@@ -114,7 +115,7 @@ _source_mute() {
     if _is_source_muted; then
         _wob_send 0
     else
-        _wob_send "$(_get_sink_volume)"
+        _wob_send "$(_get_source_volume)"
         _play_sound
     fi
 }

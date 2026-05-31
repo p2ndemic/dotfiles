@@ -14,7 +14,7 @@ set -euo pipefail
 
 # ─── Constants ───────────────────────────────────────────────────────────────
 
-readonly WOBSOCK="${WOBSOCK:-${XDG_RUNTIME_DIR:-/run/user/$(id -u)}/wob.sock}"
+readonly WOBSOCK="${XDG_RUNTIME_DIR:-/run/user/$(id -u)}/wob.sock}"
 readonly SOUND_FILE="/usr/share/sounds/freedesktop/stereo/audio-volume-change.oga"
 readonly SINK="@DEFAULT_AUDIO_SINK@"
 readonly SOURCE="@DEFAULT_AUDIO_SOURCE@"
@@ -37,11 +37,8 @@ Microphone (source):
   source-down, --source-down  Decrease microphone volume by ${VOL_STEP}
   source-mute, --source-mute  Toggle microphone mute
 
-Environment:
-  WOBSOCK  Path to the WOB FIFO socket (default: \$XDG_RUNTIME_DIR/wob.sock)
-
 Prerequisites:
-  systemctl daemon-reload && systemctl --user enable --now wob.socket
+  systemctl --user enable --now wob.socket
 HELP
 }
 

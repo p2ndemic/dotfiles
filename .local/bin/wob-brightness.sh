@@ -8,17 +8,10 @@
 #
 # Usage:
 #   wob-brightness [up|--up|down|--down]
-#
-# Sends current brightness percentage to wob via:
-#   - systemd socket: $XDG_RUNTIME_DIR/wob.sock (default, recommended)
-#   - legacy FIFO:    /tmp/wobpipe (if socket absent and FIFO exists)
 # ══════════════════════════════════════════════════════════════════════
 
 # Define WOB socket
-WOBSOCK="${WOBSOCK:-$XDG_RUNTIME_DIR/wob.sock}"
-
-# Fallback to legacy FIFO (tail -f /tmp/wobpipe | wob) if socket not found:
-# [[ ! -S "$WOBSOCK" ]] && [[ -p "/tmp/wobpipe" ]] && WOBSOCK="/tmp/wobpipe"
+readonly WOBSOCK="${XDG_RUNTIME_DIR:-/run/user/$(id -u)}/wob.sock"
 
 # Send integer value to wob
 wob_send() { echo "$1" > "$WOBSOCK" 2>/dev/null || true; }
@@ -37,7 +30,7 @@ case "$1" in
         wob_send "$(get_brightness)"
         ;;
     *)
-        echo "Usage: $0 {up|--up|down|--down}"
+        echo "Usage: $(basename "${0}") {up|--up|down|--down}"
         exit 1
         ;;
 esac

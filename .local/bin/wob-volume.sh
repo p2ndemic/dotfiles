@@ -9,9 +9,12 @@
 #   systemctl daemon-reload && systemctl --user enable --now wob.socket
 #   install -Dm755 wob-volume_wpctl.sh ~/.local/bin/wob-volume_wpctl.sh
 # ══════════════════════════════════════════════════════════════════════
-# Additional:
-# Fallback to legacy FIFO (tail -f /tmp/wobpipe | wob) if socket not found:
-# [[ ! -S "$WOBSOCK" ]] && [[ -p "/tmp/wobpipe" ]] && WOBSOCK="/tmp/wobpipe"
+# Hyperfine test [awk vs sed] = (awk won):
+# ──────────────────────────────────────────────────────────────────────
+# hyperfine --warmup 15 --runs 300 \
+# 'wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed "s/[^0-9]//g"' \
+# 'wpctl get-volume @DEFAULT_AUDIO_SINK@ | gawk "{print int(\$2 * 100); exit}"' \
+# 'wpctl get-volume @DEFAULT_AUDIO_SINK@ | mawk "{print int(\$2 * 100); exit}"'
 # ══════════════════════════════════════════════════════════════════════
 
 set -uo pipefail
@@ -60,12 +63,12 @@ _get_source_volume() {
 
 # Alt: wpctl get-volume "${SINK}" | grep -q "MUTED"
 _is_sink_muted() {
-    [[ $(wpctl get-volume "${SINK}") == *MUTED* ]]
+    [[ $(wpctl get-volume "${SINK}") == *"[MUTED]"* ]]
 }
 
 # Alt: wpctl get-volume "${SOURCE}" | grep -q "MUTED"
 _is_source_muted() {
-    [[ $(wpctl get-volume "${SOURCE}") == *MUTED* ]]
+    [[ $(wpctl get-volume "${SOURCE}") == *"[MUTED]"* ]]
 }
 
 _play_sound() {

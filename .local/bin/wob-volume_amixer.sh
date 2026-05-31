@@ -76,7 +76,6 @@ readonly SOUND_FILE="/usr/share/sounds/freedesktop/stereo/audio-volume-change.og
 readonly SINK="Master"
 readonly SOURCE="Capture"
 readonly VOL_STEP="5%"
-#readonly VOL_LIMIT="1.0"
 
 # ─── Usage ────────────────────────────────────────────────────────────
 

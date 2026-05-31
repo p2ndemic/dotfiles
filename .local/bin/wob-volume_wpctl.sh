@@ -70,6 +70,7 @@ _play_sound() {
     disown "$!"
 }
 
+# Send integer value to wob
 _wob_send() {
     #[[ -e "${WOBSOCK}" ]] && return 0
     echo "${1}" > "${WOBSOCK}" 2>/dev/null &

@@ -1,6 +1,10 @@
-# Keyd config for Chromebook (Arch Linux)
+# ══════════════════════════════════════════════════════════════════════
+# Ref: https://github.com/rvaiya/keyd
+# ══════════════════════════════════════════════════════════════════════
+# Keyd config for Chromebook
 # Remaps Chromebook top-row keys and Super combos to standard function keys,
 # navigation keys, and other useful bindings.
+# ══════════════════════════════════════════════════════════════════════
 
 [ids]
 *
@@ -28,26 +32,25 @@
 # ── Super + Chromebook function row → F1-F10 ──────────────────────────
 # ── Verify key names with: ❯ wev -f wl_keyboard and ❯ sudo keyd monitor
 # ──────────────────────────────────────────────────────────────────────
-
-# XF86Back (wev key 166)
+# XF86Back [wev key 166]
 back = f1
-# XF86Reload (wev key 181)
+# XF86Reload [wev key 181]
 refresh = f2
-# XF86FullScreen (wev key 380)
+# XF86FullScreen [wev key 380]
 zoom = f3
-# XF86LaunchA (wev key 128)
+# XF86LaunchA [wev key 128]
 scale = f4
-# Print (wev key 107)
+# Print [wev key 107]
 sysrq = f5
-# XF86MonBrightnessDown (wev key 232)
+# XF86MonBrightnessDown [wev key 232]
 brightnessdown = f6
-# XF86MonBrightnessUp (wev key 233)
+# XF86MonBrightnessUp [wev key 233]
 brightnessup = f7
-# XF86AudioMute (wev key 121)
+# XF86AudioMute [wev key 121]
 mute = f8
-# XF86AudioLowerVolume (wev key 122)
+# XF86AudioLowerVolume [wev key 122]
 volumedown = f9
-# XF86AudioRaiseVolume (wev key 123)
+# XF86AudioRaiseVolume [wev key 123]
 volumeup = f10
 
 # ── Super + arrows / navigation ───────────────────────────────────────
@@ -57,9 +60,14 @@ up = pageup
 down = pagedown
 
 # ── Super + Right Alt → CapsLock ──────────────────────────────────────
+# Multi_key [wev key 108]
 rightalt = capslock
+# ── Super + Right Ctrl → CapsLock ──────────────────────────────────────
+# Control_R [wev key 105]
+# rightcontrol = capslock
 
 # ── Super + BackSpace → Delete ────────────────────────────────────────
+# BackSpace [wev key 22]
 backspace = delete
 
 # ── Composite layer: Super + Shift + BackSpace → Shift+Delete ─────────

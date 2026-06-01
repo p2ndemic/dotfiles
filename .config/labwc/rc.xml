@@ -12,6 +12,7 @@
     <allowTearing>fullscreen</allowTearing>
     <!-- Automatically enable new outputs when connected -->
     <autoEnableOutputs>yes</autoEnableOutputs>
+    <hdr>no</hdr>
     <reuseOutputMode>no</reuseOutputMode>
     <xwaylandPersistence>no</xwaylandPersistence>
     <!-- Enable/disable primary selection clipboard (affects middle-click paste) -->
@@ -109,6 +110,8 @@
     <followMouse>no</followMouse>
     <followMouseRequiresMovement>yes</followMouseRequiresMovement>
     <raiseOnFocus>yes</raiseOnFocus>
+    <!-- Delay (ms) before applying raise-on-focus. 0 = immediate -->
+    <raiseOnFocusDelay>0</raiseOnFocusDelay>
   </focus>
 
   <!-- ══════════════════════════════════════════════════════════════ -->
@@ -171,7 +174,7 @@
     </keybind>
 
     <!-- ─── Launcher ─── -->
-    <!-- Super (release) — Fuzzel launcher -->
+    <!-- Fuzzel launcher [Super _Release] -->
     <!--
     <keybind key="Super_L" onRelease="yes">
       <action name="Execute">
@@ -179,10 +182,10 @@
       </action>
     </keybind>
     -->
-    <!-- Super + D — Fuzzel launcher -->
+    <!-- Fuzzel launcher [Super + D] -->
     <keybind key="W-d">
       <action name="Execute">
-        <command>sh -c 'pkill -x fuzzel || exec uwsm app -- fuzzel'</command>
+        <command>/usr/bin/sh -c 'pkill -x fuzzel || exec uwsm app -- fuzzel'</command>
       </action>
     </keybind>
 
@@ -190,7 +193,7 @@
     <!-- Task manager (btop) -->
     <keybind key="W-Escape">
       <action name="Execute">
-        <command>uwsm app -- foot --app-id="btop" --title="btop" btop</command>
+        <command>uwsm app -- foot --app-id="btop" --title="btop" -- btop</command>
       </action>
     </keybind>
     <!-- File manager (pcmanfm-qt) -->
@@ -205,16 +208,28 @@
         <command>uwsm app -- firefox</command>
       </action>
     </keybind>
-    <!-- Text editor (featherpad) -->
+    <!-- Browser (brave) [Super + Alt + B] -->
+    <keybind key="W-A-b">
+      <action name="Execute">
+        <command>uwsm app -- brave</command>
+      </action>
+    </keybind>
+    <!-- Text editor (zed) -->
     <keybind key="W-t">
       <action name="Execute">
-        <command>uwsm app -- featherpad</command>
+        <command>uwsm app -- zeditor</command>
+      </action>
+    </keybind>
+    <!-- Text editor (micro) [Super + Alt + T] -->
+    <keybind key="W-A-t">
+      <action name="Execute">
+        <command>uwsm app -- foot --app-id="micro" --title="micro" -- micro</command>
       </action>
     </keybind>
     <!-- System update (sudo pacman -Syu) -->
     <keybind key="W-u">
       <action name="Execute">
-        <command>uwsm app -- foot --hold sudo pacman -Syu</command>
+        <command>uwsm app -- foot --hold -- sudo pacman -Syu</command>
       </action>
     </keybind>
 
@@ -233,13 +248,13 @@
     </keybind>
 
     <!-- ─── File Operations ─── -->
-    <!-- Delete file (ydotool Delete) -->
+    <!-- Delete file (wtype Delete) -->
     <keybind key="W-BackSpace">
       <action name="Execute">
         <command>wtype -k Delete</command>
       </action>
     </keybind>
-    <!-- Force delete file (ydotool Shift+Delete) -->
+    <!-- Force delete file (wtype Shift + Delete) -->
     <keybind key="W-S-BackSpace">
       <action name="Execute">
         <command>wtype -M shift -k Delete -m shift</command>
@@ -265,7 +280,7 @@
     <keybind key="W-a">
       <action name="ToggleMaximize" />
     </keybind>
-    <!-- Toggle show desktop (Super+Alt+D) -->
+    <!-- Toggle show desktop [Super + Alt + D] -->
     <keybind key="W-A-d">
       <action name="ToggleShowDesktop" />
     </keybind>
@@ -299,10 +314,6 @@
     <!-- Show window menu -->
     <keybind key="A-Space">
       <action name="ShowMenu" menu="client-menu" atCursor="no" />
-    </keybind>
-    <!-- Toggle show desktop (minimize all / restore) -->
-    <keybind key="W-S-d">
-      <action name="ToggleShowDesktop" />
     </keybind>
 
     <!-- ─── Snap / Tiling ─── -->
@@ -406,7 +417,7 @@
       </action>
     </keybind>
 
-    <!-- Volume -->
+    <!-- Volume Control [XF86_Keys] -->
     <keybind key="XF86_AudioLowerVolume">
       <action name="Execute">
         <command>~/.local/bin/wob-volume.sh --sink-down</command>
@@ -428,6 +439,28 @@
       </action>
     </keybind>
 
+    <!-- Volume Control (amixer) [Super + XF86_Keys] -->
+    <keybind key="W-XF86_AudioLowerVolume">
+      <action name="Execute">
+        <command>amixer -q sset Master 5%-</command>
+      </action>
+    </keybind>
+    <keybind key="W-XF86_AudioRaiseVolume">
+      <action name="Execute">
+        <command>amixer -q sset Master 5%+</command>
+      </action>
+    </keybind>
+    <keybind key="W-XF86_AudioMute">
+      <action name="Execute">
+        <command>amixer -q sset Master toggle</command>
+      </action>
+    </keybind>
+    <keybind key="W-XF86AudioMicMute">
+      <action name="Execute">
+        <command>amixer -q sset Capture toggle</command>
+      </action>
+    </keybind>
+
     <!-- Media Playback -->
     <keybind key="XF86AudioNext">
       <action name="Execute">
@@ -445,13 +478,13 @@
       </action>
     </keybind>
 
-    <!-- Power Off -->
+    <!-- Power menu -->
     <keybind key="XF86PowerOff">
       <action name="Execute">
         <command>~/.local/bin/fuzzel-power-menu_index.sh</command>
       </action>
     </keybind>
-    <!-- Power menu (Super + P) -->
+    <!-- Power menu [Super + P] -->
     <keybind key="W-p">
       <action name="Execute">
         <command>~/.local/bin/fuzzel-power-menu_index.sh</command>
@@ -557,7 +590,7 @@
     <!-- AllDesktops button -->
     <context name="AllDesktops">
       <mousebind button="Left" action="Click">
-        <action name="ToggleOmnipresent" />
+        <action name="None" />
       </mousebind>
     </context>
   </mouse>

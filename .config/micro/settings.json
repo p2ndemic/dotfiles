@@ -10,7 +10,7 @@
     },
     "autosu": true,
     "clipboard": "external",
-    "colorscheme": "dukedark-tc",
+    "colorscheme": "dukedark_mod-tc",
     "diffgutter": true,
     "ft:asciidoc": {
         "tabsize": 2

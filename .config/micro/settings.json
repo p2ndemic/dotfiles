@@ -1,4 +1,13 @@
 {
+    "*.bak": {
+        "filetype": "micro"
+    },
+    "*.conf": {
+        "filetype": "ini"
+    },
+    "*.txt": {
+        "filetype": "micro"
+    },
     "autosu": true,
     "clipboard": "external",
     "colorscheme": "dukedark-tc",
@@ -157,6 +166,7 @@
     "parsecursor": true,
     "paste": false,
     "rmtrailingws": false,
+    "ruler": false,
     "savecursor": false,
     "saveundo": false,
     "scrollbar": true,

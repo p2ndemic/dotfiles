@@ -166,6 +166,7 @@
     "softwrap": true,
     "statusformatl": "$(filename) $(modified)$(overwrite) $(status.paste)| ft:$(opt:filetype) | $(opt:fileformat) | $(opt:encoding)",
     "statusformatr": "$(line):$(col) | $(lines) ",
+    "tabhighlight": false,
     "tabmovement": true,
     "tabsize": 4,
     "tabstospaces": true,

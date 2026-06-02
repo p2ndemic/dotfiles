@@ -10,8 +10,8 @@
     "\u001b\u0009": "command:reset showchars",
 
     "F3": "FindNext",
-    "ShiftF3": "FindPrevious",
+    "Shift-F3": "FindPrevious",
 
-    "Ctrl-Shift-Down": "FindNext",
-    "Ctrl-Shift-Up": "FindPrevious"
+    "Alt-Ctrl-Down": "FindNext",
+    "Alt-Ctrl-Up": "FindPrevious"
 }

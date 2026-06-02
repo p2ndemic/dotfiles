@@ -7,5 +7,8 @@
     "\u001bе": "command:toggle hltaberrors",
     "\u001bц": "command:toggle hltrailingws",
     "\u001bщ": "command:set showchars 'tab=›,space=·'",
-    "\u001bш": "command:set showchars ''"
+    "\u001bш": "command:set showchars ''",
+
+    "\u000e": "FindNext",
+    "\u0010": "FindPrevious"
 }

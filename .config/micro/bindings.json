@@ -3,14 +3,16 @@
     "Alt-w": "command:toggle hltrailingws",
     "Alt-o": "command:set showchars 'tab=›,space=·'",
     "Alt-i": "command:set showchars ''",
+    "Alt-Ctrl-i": "command:reset showchars",
 
     "\u001bе": "command:toggle hltaberrors",
     "\u001bц": "command:toggle hltrailingws",
     "\u001bщ": "command:set showchars 'tab=›,space=·'",
     "\u001bш": "command:set showchars ''",
+    "\u001b\u0009": "command:reset showchars",
 
     "F3": "FindNext",
-    "Shift-F3": "FindPrevious",
+    "ShiftF3": "FindPrevious",
 
     "Ctrl-Shift-Down": "FindNext",
     "Ctrl-Shift-Up": "FindPrevious"

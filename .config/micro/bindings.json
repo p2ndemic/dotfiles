@@ -10,7 +10,7 @@
     "\u001bш": "command:set showchars ''",
 
     "F3": "FindNext",
-    "ShiftF3": "FindPrevious",
+    "Shift-F3": "FindPrevious",
 
     "Ctrl-Shift-Down": "FindNext",
     "Ctrl-Shift-Up": "FindPrevious"

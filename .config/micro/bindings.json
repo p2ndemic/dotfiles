@@ -1,12 +1,12 @@
 {
     "Alt-r": "command:toggle ruler",
-    "Alt-s": "command:set showchars 'tab=›,space=·'",
+    "Alt-s": "command:setlocal showchars 'tab=›,space=·'",
     "Alt-Ctrl-s": "command:reset showchars",
     "Alt-t": "command:togglelocal hltaberrors|command:togglelocal hltrailingws",
     "Alt-w": "command:toggle softwrap|command:toggle wordwrap",
 
     "\u001bк": "command:toggle ruler",
-    "\u001bы": "command:set showchars 'tab=›,space=·'",
+    "\u001bы": "command:setlocal showchars 'tab=›,space=·'",
     "\u001b\u0013": "command:reset showchars",
     "\u001bе": "command:togglelocal hltaberrors|command:togglelocal hltrailingws",
     "\u001bц": "command:toggle softwrap|command:toggle wordwrap",

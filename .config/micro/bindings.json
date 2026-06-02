@@ -9,6 +9,9 @@
     "\u001bщ": "command:set showchars 'tab=›,space=·'",
     "\u001bш": "command:set showchars ''",
 
-    "\u000e": "FindNext",
-    "\u0010": "FindPrevious"
+    "F3": "FindNext",
+    "ShiftF3": "FindPrevious",
+
+    "Ctrl-Shift-Down": "FindNext",
+    "Ctrl-Shift-Up": "FindPrevious"
 }

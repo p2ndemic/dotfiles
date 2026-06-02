@@ -3,6 +3,153 @@
     "clipboard": "external",
     "colorscheme": "dukedark-tc",
     "diffgutter": true,
+    "ft:asciidoc": {
+        "tabsize": 2
+    },
+    "ft:asm": {
+        "tabstospaces": false
+    },
+    "ft:awk": {
+        "tabstospaces": false
+    },
+    "ft:c": {
+        "tabsize": 2
+    },
+    "ft:c++": {
+        "tabsize": 2
+    },
+    "ft:clojure": {
+        "tabsize": 2
+    },
+    "ft:cmake": {
+        "tabsize": 2
+    },
+    "ft:crystal": {
+        "tabsize": 2
+    },
+    "ft:css": {
+        "tabsize": 2
+    },
+    "ft:cuda": {
+        "tabstospaces": false
+    },
+    "ft:dart": {
+        "tabsize": 2
+    },
+    "ft:ebuild": {
+        "tabstospaces": false
+    },
+    "ft:elixir": {
+        "tabsize": 2
+    },
+    "ft:forth": {
+        "tabstospaces": false
+    },
+    "ft:gdscript": {
+        "tabstospaces": false
+    },
+    "ft:gleam": {
+        "tabsize": 2
+    },
+    "ft:go": {
+        "tabstospaces": false
+    },
+    "ft:gomod": {
+        "tabstospaces": false
+    },
+    "ft:graphql": {
+        "tabsize": 2
+    },
+    "ft:haskell": {
+        "tabsize": 2
+    },
+    "ft:html": {
+        "tabsize": 2
+    },
+    "ft:html5": {
+        "tabsize": 2
+    },
+    "ft:jinja2": {
+        "tabsize": 2
+    },
+    "ft:json": {
+        "tabsize": 2
+    },
+    "ft:jsonnet": {
+        "tabsize": 2
+    },
+    "ft:justfile": {
+        "tabstospaces": false
+    },
+    "ft:lisp": {
+        "tabsize": 2
+    },
+    "ft:lua": {
+        "tabsize": 2
+    },
+    "ft:makefile": {
+        "tabstospaces": false
+    },
+    "ft:markdown": {
+        "tabsize": 2
+    },
+    "ft:meson": {
+        "tabsize": 2
+    },
+    "ft:msbuild": {
+        "tabsize": 2
+    },
+    "ft:nim": {
+        "tabsize": 2
+    },
+    "ft:nix": {
+        "tabsize": 2
+    },
+    "ft:ocaml": {
+        "tabsize": 2
+    },
+    "ft:proto": {
+        "tabsize": 2
+    },
+    "ft:puppet": {
+        "tabsize": 2
+    },
+    "ft:r": {
+        "tabsize": 2
+    },
+    "ft:ruby": {
+        "tabsize": 2
+    },
+    "ft:scala": {
+        "tabsize": 2
+    },
+    "ft:shell": {
+        "tabsize": 4
+    },
+    "ft:svelte": {
+        "tabsize": 2
+    },
+    "ft:terraform": {
+        "tabsize": 2
+    },
+    "ft:tex": {
+        "tabsize": 2
+    },
+    "ft:typescript": {
+        "tabsize": 2
+    },
+    "ft:vue": {
+        "tabsize": 2
+    },
+    "ft:xml": {
+        "tabsize": 2
+    },
+    "ft:yaml": {
+        "tabsize": 2
+    },
+    "ft:zsh": {
+        "tabsize": 4
+    },
     "helpsplit": "vsplit",
     "hlsearch": true,
     "matchbracestyle": "highlight",
@@ -10,10 +157,11 @@
     "parsecursor": true,
     "paste": false,
     "rmtrailingws": false,
+    "savecursor": false,
+    "saveundo": false,
     "scrollbar": true,
     "scrollbarchar": "│",
     "scrollspeed": 3,
-    "showchars": "tab=›,space=·",
     "smartpaste": true,
     "softwrap": true,
     "statusformatl": "$(filename) $(modified)$(overwrite) $(status.paste)| ft:$(opt:filetype) | $(opt:fileformat) | $(opt:encoding)",
@@ -24,55 +172,5 @@
     "truecolor": "on",
     "useprimary": true,
     "wordwrap": true,
-    "xterm": false,
-    "ft:asm":        { "tabstospaces": false },
-    "ft:awk":        { "tabstospaces": false },
-    "ft:cuda":       { "tabstospaces": false },
-    "ft:ebuild":     { "tabstospaces": false },
-    "ft:forth":      { "tabstospaces": false },
-    "ft:gdscript":   { "tabstospaces": false },
-    "ft:go":         { "tabstospaces": false },
-    "ft:gomod":      { "tabstospaces": false },
-    "ft:justfile":   { "tabstospaces": false },
-    "ft:makefile":   { "tabstospaces": false },
-    "ft:asciidoc":   { "tabsize": 2 },
-    "ft:c":          { "tabsize": 2 },
-    "ft:c++":        { "tabsize": 2 },
-    "ft:clojure":    { "tabsize": 2 },
-    "ft:cmake":      { "tabsize": 2 },
-    "ft:crystal":    { "tabsize": 2 },
-    "ft:css":        { "tabsize": 2 },
-    "ft:dart":       { "tabsize": 2 },
-    "ft:elixir":     { "tabsize": 2 },
-    "ft:gleam":      { "tabsize": 2 },
-    "ft:graphql":    { "tabsize": 2 },
-    "ft:haskell":    { "tabsize": 2 },
-    "ft:html":       { "tabsize": 2 },
-    "ft:html5":      { "tabsize": 2 },
-    "ft:jinja2":     { "tabsize": 2 },
-    "ft:json":       { "tabsize": 2 },
-    "ft:jsonnet":    { "tabsize": 2 },
-    "ft:lisp":       { "tabsize": 2 },
-    "ft:lua":        { "tabsize": 2 },
-    "ft:markdown":   { "tabsize": 2 },
-    "ft:meson":      { "tabsize": 2 },
-    "ft:msbuild":    { "tabsize": 2 },
-    "ft:nim":        { "tabsize": 2 },
-    "ft:nix":        { "tabsize": 2 },
-    "ft:ocaml":      { "tabsize": 2 },
-    "ft:proto":      { "tabsize": 2 },
-    "ft:puppet":     { "tabsize": 2 },
-    "ft:r":          { "tabsize": 2 },
-    "ft:ruby":       { "tabsize": 2 },
-    "ft:scala":      { "tabsize": 2 },
-    "ft:svelte":     { "tabsize": 2 },
-    "ft:terraform":  { "tabsize": 2 },
-    "ft:tex":        { "tabsize": 2 },
-    "ft:twig":       { "tabsize": 2 },
-    "ft:typescript": { "tabsize": 2 },
-    "ft:vue":        { "tabsize": 2 },
-    "ft:xml":        { "tabsize": 2 },
-    "ft:yaml":       { "tabsize": 2 },
-    "ft:shell":      { "tabsize": 4 },
-    "ft:zsh":        { "tabsize": 4 }
+    "xterm": false
 }

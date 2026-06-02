@@ -1,13 +1,11 @@
 {
     "Alt-t": "command:toggle hltaberrors",
     "Alt-w": "command:toggle hltrailingws",
-    "Alt-i": "command:set showchars 'tab=›,space=·'",
-    "Alt-Ctrl-i": "command:set showchars ''",
+    "Alt-o": "command:set showchars 'tab=›,space=·'",
+    "Alt-i": "command:set showchars ''",
 
-    "Ctrl-f": "Find",
-    "Ctrl-n": "FindNext",
-    "Ctrl-p": "FindPrevious",
-
-    "Ctrl-l": "FindNext",
-    "Ctrl-j": "FindPrevious"
+    "\u001bе": "command:toggle hltaberrors",
+    "\u001bц": "command:toggle hltrailingws",
+    "\u001bщ": "command:set showchars 'tab=›,space=·'",
+    "\u001bш": "command:set showchars ''"
 }

@@ -8,11 +8,11 @@ readonly PROG="labshot"
 readonly LOCK_FILE="${XDG_RUNTIME_DIR:-/tmp}/labshot.lock"
 
 readonly SCREENSHOT_DIR="${XDG_SCREENSHOTS_DIR:-${XDG_PICTURES_DIR:-$HOME/Pictures}/Screenshots}"
-readonly SCREENSHOT_DATEFMT="%d%m%Y_%H%M%S"
+readonly SCREENSHOT_DATEFMT="%Y%m%d_%H%M%S"
 readonly SCREENSHOT_TIMESTAMP="$(date +"$SCREENSHOT_DATEFMT")"
 readonly SCREENSHOT_FULLNAME="$SCREENSHOT_DIR/screenshot_$SCREENSHOT_TIMESTAMP.png"
 
-readonly LABSHOT_EDITOR="satty"
+readonly LABSHOT_EDITOR="${LABSHOT_EDITOR:-satty}"
 
 # ══════════════════════════════════════════════════════════════════════════════
 # Option defaults
@@ -39,7 +39,7 @@ Actions (1st positional argument):
   copy          Copy screenshot to clipboard
   save          Save screenshot to file
   copysave      Copy and save (default)
-  edit          Open screenshot in $EDITOR_BIN for annotation
+  edit          Open screenshot in $LABSHOT_EDITOR for annotation
 
 Modes (2nd positional argument):
   screen        Capture full screen (default)
@@ -51,6 +51,7 @@ File (3rd positional argument):
 
 Environment:
   XDG_SCREENSHOTS_DIR     Override screenshot save directory
+  LABSHOT_EDITOR          Screenshot editor for 'edit' action (default: $LABSHOT_EDITOR)
 
 Options:
   -c, --cursor            Include mouse cursor
@@ -226,6 +227,19 @@ fi
 (( OPT_WAIT > 0 )) && sleep "$OPT_WAIT"
 
 # ══════════════════════════════════════════════════════════════════════════════
+# Editor arguments (depends on $LABSHOT_EDITOR)
+# ══════════════════════════════════════════════════════════════════════════════
+LABSHOT_EDITOR_ARGS=()
+case "$LABSHOT_EDITOR" in
+    satty)
+        LABSHOT_EDITOR_ARGS=(--output-filename "$OUTPUT_FILE" --filename -)
+        ;;
+    *)
+        LABSHOT_EDITOR_ARGS=(-)
+        ;;
+esac
+
+# ══════════════════════════════════════════════════════════════════════════════
 # Freeze + Area selection
 # ══════════════════════════════════════════════════════════════════════════════
 GEOM=""
@@ -260,6 +274,6 @@ case "$ACTION" in
         notify_save
         ;;
     edit)
-        grim "${GRIM_ARGS[@]}" - | "$LABSHOT_EDITOR" --output-filename "$OUTPUT_FILE" --filename -
+        grim "${GRIM_ARGS[@]}" - | "$LABSHOT_EDITOR" "${LABSHOT_EDITOR_ARGS[@]}"
         ;;
 esac

@@ -11,6 +11,10 @@
     "\u001bе": "command:togglelocal hltaberrors|command:togglelocal hltrailingws",
     "\u001bц": "command:toggle softwrap|command:toggle wordwrap",
 
+    "Alt-Enter": "CommandMode",
+    "\u001b[27;5;13~": "CommandMode",
+    "\u001b[27;2;13~": "InsertNewline",
+
     "F3": "FindNext",
     "Shift-F3": "FindPrevious",
 

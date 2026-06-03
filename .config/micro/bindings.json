@@ -19,5 +19,10 @@
     "Shift-F3": "FindPrevious",
 
     "Alt-Ctrl-Down": "FindNext",
-    "Alt-Ctrl-Up": "FindPrevious"
+    "Alt-Ctrl-Up": "FindPrevious",
+
+    "command": {
+        "Alt-Enter": "AbortCommand",
+        "\u001b[27;5;13~": "AbortCommand"
+    }
 }

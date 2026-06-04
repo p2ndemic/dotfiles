@@ -23,6 +23,7 @@
 
     "command": {
         "Alt-Enter": "AbortCommand",
-        "\u001b[27;5;13~": "AbortCommand"
+        "\u001b[27;5;13~": "AbortCommand",
+        "Ctrl-e": "AbortCommand"
     }
 }

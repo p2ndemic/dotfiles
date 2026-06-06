@@ -220,6 +220,12 @@
         <command>uwsm app -- zeditor</command>
       </action>
     </keybind>
+    <!-- Text editor (yazi) [Super + Alt + T] -->
+    <keybind key="W-t">
+      <action name="Execute">
+        <command>uwsm app -- foot --app-id="yazi" -- yazi</command>
+      </action>
+    </keybind>
     <!-- Text editor (micro) [Super + Alt + T] -->
     <keybind key="W-A-t">
       <action name="Execute">
@@ -440,22 +446,22 @@
     </keybind>
 
     <!-- Volume Control (amixer) [Super + XF86_Keys] -->
-    <keybind key="W-XF86_AudioLowerVolume">
+    <keybind key="A-XF86_AudioLowerVolume">
       <action name="Execute">
-        <command>amixer -q sset Master 5%-</command>
+        <command>amixer -q sset Master 2%-</command>
       </action>
     </keybind>
-    <keybind key="W-XF86_AudioRaiseVolume">
+    <keybind key="A-XF86_AudioRaiseVolume">
       <action name="Execute">
-        <command>amixer -q sset Master 5%+</command>
+        <command>amixer -q sset Master 2%+</command>
       </action>
     </keybind>
-    <keybind key="W-XF86_AudioMute">
+    <keybind key="A-XF86_AudioMute">
       <action name="Execute">
         <command>amixer -q sset Master toggle</command>
       </action>
     </keybind>
-    <keybind key="W-XF86AudioMicMute">
+    <keybind key="A-XF86AudioMicMute">
       <action name="Execute">
         <command>amixer -q sset Capture toggle</command>
       </action>

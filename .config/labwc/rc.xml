@@ -202,6 +202,12 @@
         <command>uwsm app -- pcmanfm-qt</command>
       </action>
     </keybind>
+    <!-- File manager (yazi) [Super + Alt + e] -->
+    <keybind key="W-e">
+      <action name="Execute">
+        <command>uwsm app -- foot --app-id="yazi" -- yazi</command>
+      </action>
+    </keybind>
     <!-- Browser (firefox) -->
     <keybind key="W-b">
       <action name="Execute">
@@ -218,12 +224,6 @@
     <keybind key="W-t">
       <action name="Execute">
         <command>uwsm app -- zeditor</command>
-      </action>
-    </keybind>
-    <!-- Text editor (yazi) [Super + Alt + T] -->
-    <keybind key="W-t">
-      <action name="Execute">
-        <command>uwsm app -- foot --app-id="yazi" -- yazi</command>
       </action>
     </keybind>
     <!-- Text editor (micro) [Super + Alt + T] -->
@@ -445,7 +445,7 @@
       </action>
     </keybind>
 
-    <!-- Volume Control (amixer) [Super + XF86_Keys] -->
+    <!-- Volume Control (amixer) [Alt + XF86_Keys] -->
     <keybind key="A-XF86_AudioLowerVolume">
       <action name="Execute">
         <command>amixer -q sset Master 2%-</command>

@@ -79,8 +79,9 @@
   <!-- ══════════════════════════════════════════════════════════════ -->
   <!-- WINDOW SWITCHER -->
   <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- order: [focus | age] -->
   <windowSwitcher preview="yes" outlines="yes" unshade="yes" order="age">
-    <!-- OSD style: [classic | thumbnail] -->
+    <!-- style: [classic | thumbnail] -->
     <!-- output: [all | focused | cursor] -->
     <osd show="yes" style="classic" output="all" thumbnailLabelFormat="%T" />
     <fields>
@@ -499,16 +500,14 @@
 
     <!-- ─── Screenshots ─── -->
     <keybind key="XF86FullScreen">
-      <action name="Execute">
-        <command>~/.local/bin/fuzzel-launch-menu_index.sh</command>
-      </action>
+      <action name="ToggleDecorations" />
     </keybind>
     <keybind key="XF86LaunchA">
       <action name="Execute">
         <command>~/.local/bin/labshot --freeze copysave area</command>
       </action>
     </keybind>
-    <keybind key="W-XF86LaunchA">
+    <keybind key="A-XF86LaunchA">
       <action name="Execute">
         <command>~/.local/bin/labshot --freeze edit area</command>
       </action>
@@ -518,7 +517,7 @@
         <command>~/.local/bin/labshot copysave screen</command>
       </action>
     </keybind>
-    <keybind key="W-Print">
+    <keybind key="A-Print">
       <action name="Execute">
         <command>~/.local/bin/labshot edit screen</command>
       </action>

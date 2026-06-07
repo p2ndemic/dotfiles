@@ -299,9 +299,6 @@
     <keybind key="W-m">
       <action name="Iconify" />
     </keybind>
-    <keybind key="W-z">
-      <action name="Iconify" />
-    </keybind>
     <!-- Toggle shade (roll up) -->
     <keybind key="W-h">
       <action name="ToggleShade" />
@@ -538,6 +535,9 @@
     <!-- Reload configuration -->
     <keybind key="W-S-r">
       <action name="Reconfigure" />
+    </keybind>
+    <keybind key="W-\">
+      <action name="DebugToggleKeyStateIndicator" />
     </keybind>
     <keybind key="W-F12">
       <action name="ToggleKeybinds" />

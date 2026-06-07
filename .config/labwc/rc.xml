@@ -79,7 +79,7 @@
   <!-- ══════════════════════════════════════════════════════════════ -->
   <!-- WINDOW SWITCHER -->
   <!-- ══════════════════════════════════════════════════════════════ -->
-  <windowSwitcher preview="yes" outlines="yes" unshade="yes" order="focus">
+  <windowSwitcher preview="yes" outlines="yes" unshade="yes" order="age">
     <!-- OSD style: [classic | thumbnail] -->
     <!-- output: [all | focused | cursor] -->
     <osd show="yes" style="classic" output="all" thumbnailLabelFormat="%T" />
@@ -203,7 +203,7 @@
       </action>
     </keybind>
     <!-- File manager (yazi) [Super + Alt + e] -->
-    <keybind key="W-e">
+    <keybind key="W-A-e">
       <action name="Execute">
         <command>uwsm app -- foot --app-id="yazi" -- yazi</command>
       </action>
@@ -400,13 +400,13 @@
     <keybind key="W-S-5">
       <action name="SendToDesktop" to="5" follow="no" />
     </keybind>
-    <keybind key="W-A-Left">
+    <keybind key="W-S-Left">
       <action name="GoToDesktop" to="left" wrap="yes" />
     </keybind>
-    <keybind key="W-A-Right">
+    <keybind key="W-S-Right">
       <action name="GoToDesktop" to="right" wrap="yes" />
     </keybind>
-    <keybind key="W-A-Down">
+    <keybind key="W-S-Down">
       <action name="GoToDesktop" to="last" toggle="yes" />
     </keybind>
 

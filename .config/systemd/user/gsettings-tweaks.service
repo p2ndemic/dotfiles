@@ -35,7 +35,7 @@ Type=oneshot
 # key entirely. They rely solely on this 'color-scheme' switch to toggle 
 # their built-in light or dark styles.
 # ══════════════════════════════════════════════════════════════════════
-ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+#ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 # ══════════════════════════════════════════════════════════════════════
 # GTK THEME (For older GTK3 applications)
 # ──────────────────────────────────────────────────────────────────────
@@ -47,7 +47,7 @@ ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface color-scheme 'prefe
 # ──────────────────────────────────────────────────────────────────────
 # [QT] Additional: QT_QPA_PLATFORMTHEME=gtk3
 # ══════════════════════════════════════════════════════════════════════
-ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3-dark'
+#ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3-dark'
 # [Adwaita | MoreWaita | Numix | Numix-Light | Numix-Circle | Numix-Circle-Light | ...  ]
 # [Numix-Adwaita | Numix-Adwaita-Light] - моя кастомная тема
 ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface icon-theme 'MoreWaita'

@@ -94,8 +94,6 @@ ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface overlay-scrolling t
 # [Минимально = 0.5 | По умолчанию = 1.0 | Максимально = 3.0]
 # ──────────────────────────────────────────────────────────────────────
 #ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface text-scaling-factor 1.0
-# [small | large]
-ExecStart=/usr/bin/gsettings set org.gnome.desktop.interface toolbar-icons-size 'small'
 # [default: appmenu:close]
 ExecStart=/usr/bin/gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,maximize,close'
 # [default: pc105+inet]

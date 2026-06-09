@@ -1,0 +1,24 @@
+[Desktop Entry]
+Type=Application
+Name=Brave Origin (beta)
+GenericName=Web Browser
+GenericName[ru]=Веб-браузер
+Comment=Access the Internet
+Comment[ru]=Доступ в Интернет
+Icon=brave-origin-beta
+Exec=/usr/bin/brave-origin-beta %U
+Terminal=false
+Actions=new-window;new-private-window;
+MimeType=application/pdf;application/rdf+xml;application/rss+xml;application/xhtml+xml;application/xhtml_xml;application/xml;image/gif;image/jpeg;image/png;image/webp;text/html;text/xml;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/chromium;
+Categories=Network;WebBrowser;
+StartupNotify=true
+
+[Desktop Action new-window]
+Name=New Window
+Name[ru]=Новое окно
+Exec=/usr/bin/brave-origin-beta
+
+[Desktop Action new-private-window]
+Name=New Incognito Window
+Name[ru]=Новое окно в режиме инкогнито
+Exec=/usr/bin/brave-origin-beta --incognito

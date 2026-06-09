@@ -1,11 +1,11 @@
 [Desktop Entry]
+Type=Application
 Name=Hyprpicker
 GenericName=Color Picker
 Comment=A wlroots-compatible Wayland color picker that does not suck
-Exec=hyprpicker --autocopy --notify --no-fractional
 Icon=applications-graphics
+Exec=hyprpicker --autocopy --notify --no-fractional
 Terminal=false
-Type=Application
 Categories=Graphics;Utility;
 Keywords=color;colour;picker;palette;
 StartupNotify=false

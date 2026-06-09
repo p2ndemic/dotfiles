@@ -10,15 +10,20 @@ set -uo pipefail
 
 # ─── Constants ────────────────────────────────────────────────────────
 readonly WOBSOCK="${XDG_RUNTIME_DIR:-/run/user/$(id -u)}/wob.sock"
-readonly BRIGHTNESS_STEP="5"
+readonly BRIGHTNESS_STEP="${WOB_BRIGHTNESS_STEP:-5}"
 
 # ─── Usage ────────────────────────────────────────────────────────────
 _usage() {
     cat <<HELP
 Usage: $(basename "${0}") <command>
+
 Brightness:
   up,   --up    Increase brightness by ${BRIGHTNESS_STEP}%
   down, --down  Decrease brightness by ${BRIGHTNESS_STEP}%
+
+Environment:
+  WOB_BRIGHTNESS_STEP  Brightness step in percent (default: 5)
+
 Prerequisites:
   systemctl --user enable --now wob.socket
 HELP

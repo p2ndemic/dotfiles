@@ -417,12 +417,25 @@ DRI_NO_MSAA=1
 # =============================================
 # Ref: https://gstreamer.freedesktop.org/documentation/gstreamer/running.html?gi-language=c
 # Ref: https://www.libsdl.org/release/SDL-1.2.15/docs/html/sdlenvvars.html
+# Ref: https://wiki.libsdl.org/SDL2/FAQUsingSDL
+# Ref: https://wiki.libsdl.org/SDL3/EnvironmentVariables
 # =============================================
 
-# → Can break some native games
-# → Run SDL2 applications on Wayland. Remove or set to x11 if games that provide older versions of SDL cause compatibility issues
+# SDL2
+# [ x11 | wayland ]
 #SDL_VIDEODRIVER=wayland
 
+# [ pulseaudio | pulse | alsa | pipewire ]
+#SDL_AUDIODRIVER=pipewire
+
+# SDL3
+# [ x11 | wayland ]
+#SDL_VIDEO_DRIVER=x11|wayland
+# [ pulseaudio | pulse | alsa | pipewire ]
+#SDL_AUDIO_DRIVER=pipewire
+
+#HiDPI
+SDL_VIDEO_WAYLAND_SCALE_TO_DISPLAY=1
 
 # =============================================
 #    Wayland Compositors Environment Variables

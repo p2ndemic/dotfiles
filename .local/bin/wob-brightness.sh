@@ -6,7 +6,6 @@
 #   sudo pacman -S --needed brightnessctl wob
 #   systemctl daemon-reload && systemctl --user enable --now wob.socket
 # ══════════════════════════════════════════════════════════════════════
-#!/usr/bin/env bash
 set -uo pipefail
 
 # ─── Constants ────────────────────────────────────────────────────────

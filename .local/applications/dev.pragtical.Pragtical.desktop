@@ -3,7 +3,7 @@ Type=Application
 Name=Pragtical
 Comment=The practical and pragmatic code editor.
 Icon=pragtical
-Exec=SDL_VIDEO_WAYLAND_SCALE_TO_DISPLAY=1 PRAGTICAL_RENDERER=sdlgpu pragtical %F
+Exec=env SDL_VIDEO_WAYLAND_SCALE_TO_DISPLAY=1 PRAGTICAL_RENDERER=sdlgpu -- pragtical %F
 Terminal=false
 MimeType=text/plain;inode/directory;
 Categories=Development;IDE;TextEditor;

@@ -1,0 +1,98 @@
+# ══════════════════════════════════════════════════════════════════════
+# Ref: https://github.com/rvaiya/keyd
+# ══════════════════════════════════════════════════════════════════════
+# Keyd config for Chromebook
+# Remaps Chromebook top-row keys and Super combos to standard function keys,
+# navigation keys, and other useful bindings.
+# ══════════════════════════════════════════════════════════════════════
+# Installation:
+#   sudo pacman -S keyd
+#   sudo systemctl enable --now keyd.service
+# ──────────────────────────────────────────────────────────────────────
+# Reloading:
+#   sudo keyd check   — validate config syntax before applying
+#   sudo keyd reload  — apply changes without restarting the service
+# ══════════════════════════════════════════════════════════════════════
+[ids]
+*
+
+[global]
+# Disable the automatic Control keypress injection that keyd uses
+# to suppress lone modifier taps in applications.
+# Needed to prevent spurious Control events with Super combos.
+disable_modifier_guard = 1
+
+# ── Chromebook function row → F1-F10 by default ───────────────────────
+# Verify key names with: ❯ wev -f wl_keyboard and ❯ sudo keyd monitor
+[main]
+# XF86Back [wev key: 166]
+back = f1
+# XF86Reload [wev key: 181]
+refresh = f2
+# XF86FullScreen [wev key: 380]
+zoom = f3
+# XF86LaunchA [wev key: 128]
+scale = f4
+# Print [wev key: 107]
+sysrq = f5
+# XF86MonBrightnessDown [wev key: 232]
+brightnessdown = f6
+# XF86MonBrightnessUp [wev key: 233]
+brightnessup = f7
+# XF86AudioMute [wev key: 121]
+mute = f8
+# XF86AudioLowerVolume [wev key: 122]
+volumedown = f9
+# XF86AudioRaiseVolume [wev key: 123]
+volumeup = f10
+
+# [meta:M] — layer activated while Super (Meta) is held.
+# The :M suffix means unbound keys still emit the Meta modifier as usual.
+# Explicitly bound keys below override that behaviour and emit their mapped value only.
+[meta:M]
+
+# ── Super + number row → F1-F10 ───────────────────────────────────────
+1 = f1
+2 = f2
+3 = f3
+4 = f4
+5 = f5
+6 = f6
+7 = f7
+8 = f8
+9 = f9
+0 = f10
+
+# ── Super + F1-F10 → Chromebook function row ──────────────────────────
+f1 = back
+f2 = refresh
+f3 = zoom
+f4 = scale
+f5 = sysrq
+f6 = brightnessdown
+f7 = brightnessup
+f8 = mute
+f9 = volumedown
+f10 = volumeup
+
+# ── Super + arrows / navigation ───────────────────────────────────────
+left = home
+right = end
+up = pageup
+down = pagedown
+
+# ── Super + Right Alt → CapsLock ──────────────────────────────────────
+# Multi_key [wev key: 108]
+rightalt = capslock
+# ── Super + Right Ctrl → CapsLock ─────────────────────────────────────
+# Control_R [wev key: 105]
+# rightcontrol = capslock
+
+# ── Super + BackSpace → Delete ────────────────────────────────────────
+# BackSpace [wev key: 22]
+backspace = delete
+
+# ── Composite layer: Super + Shift + BackSpace → Shift+Delete ─────────
+# Must be declared AFTER the constituent layers (meta, shift)
+[meta+shift]
+backspace = S-delete

@@ -628,6 +628,11 @@ PROTON_FORCE_LARGE_ADDRESS_AWARE=1
 # MESA_VK_ENABLE_SUBMIT_THREAD=true
 
 
+
+#For VKD3D games: ANV_DEBUG=experimental VKD3D_CONFIG=descriptor_heap %command%
+#For DXVK games: ANV_DEBUG=experimental DXVK_CONFIG="dxvk.enableDescriptorHeap=True" %command%
+
+
 # → Testing:
 # 1️⃣: ❯ gamescope -- glxgears
 # 2️⃣: ❯ gamescope --expose-wayland -- vkcube
